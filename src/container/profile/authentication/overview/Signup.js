@@ -31,7 +31,7 @@ function SignUp() {
       <Col xxl={6} xl={8} md={12} sm={18} xs={24}>
         <AuthFormWrap>
           <div className="ninjadash-authentication-top">
-            <h2 className="ninjadash-authentication-top__title">Sign Up HexaDash</h2>
+            <h2 className="ninjadash-authentication-top__title">Sign Up Invoice</h2>
           </div>
           <div className="ninjadash-authentication-content">
             <Form name="register" onFinish={handleSubmit} layout="vertical">
