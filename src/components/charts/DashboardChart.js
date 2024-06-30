@@ -107,7 +107,7 @@ function DashboardChart({
               bodyColor: '#525768',
               bodyFontSize: 11,
               bodyFontStyle: 'normal',
-              bodyFontFamily: "'Jost', sans-serif",
+              bodyFontFamily: "-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
               borderColor: '#F1F2F6',
               usePointStyle: true,
               borderWidth: 1,
@@ -190,7 +190,7 @@ DashboardChart.defaultProps = {
       ticks: {
         beginAtZero: true,
         fontSize: 14,
-        fontFamily: 'Jost',
+        fontFamily: '-apple-system, BlinkMacSystemFont, Segoe UI',
         color: '#8C90A4',
         max: 80,
         stepStartValue: 5,
@@ -212,7 +212,7 @@ DashboardChart.defaultProps = {
       ticks: {
         beginAtZero: true,
         fontSize: 14,
-        fontFamily: 'Jost',
+        fontFamily: '-apple-system, BlinkMacSystemFont, Segoe UI',
         color: '#8C90A4',
       },
     },

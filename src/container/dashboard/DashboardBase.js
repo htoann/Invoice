@@ -299,7 +299,7 @@ function DashboardBase() {
                 headless
                 title={
                   <span>
-                    Typography <span className="color-primary">Jost</span>
+                    Typography <span className="color-primary">Segoe UI</span>
                   </span>
                 }
                 size="large"

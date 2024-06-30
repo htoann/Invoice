@@ -1,6 +1,3 @@
-import UilFacebook from '@iconscout/react-unicons/icons/uil-facebook-f';
-import UilGithub from '@iconscout/react-unicons/icons/uil-github';
-import UilTwitter from '@iconscout/react-unicons/icons/uil-twitter';
 import { Button, Col, Form, Input, Row } from 'antd';
 import { Auth0Lock } from 'auth0-lock';
 import React, { useCallback, useState } from 'react';
@@ -8,11 +5,10 @@ import React, { useCallback, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { ReactSVG } from 'react-svg';
 import { AuthFormWrap } from './style';
-import { login, authOLogin } from '../../../../redux/authentication/actionCreator';
 import { Checkbox } from '../../../../components/checkbox/checkbox';
 import { auth0options } from '../../../../config/auth0';
+import { authOLogin, login } from '../../../../redux/authentication/actionCreator';
 
 const domain = process.env.REACT_APP_AUTH0_DOMAIN;
 const clientId = process.env.REACT_APP_AUTH0_CLIENT_ID;
@@ -89,37 +85,6 @@ function SignIn() {
                   {isLoading ? 'Loading...' : 'Sign In'}
                 </Button>
               </Form.Item>
-              <p className="ninjadash-form-divider">
-                <span>Or</span>
-              </p>
-              <ul className="ninjadash-social-login">
-                <li>
-                  <Link className="google-social" to="#">
-                    <ReactSVG src={require(`../../../../static/img/icon/google-plus.svg`).default} />
-                  </Link>
-                </li>
-                <li>
-                  <Link className="facebook-social" to="#">
-                    <UilFacebook />
-                  </Link>
-                </li>
-                <li>
-                  <Link className="twitter-social" to="#">
-                    <UilTwitter />
-                  </Link>
-                </li>
-                <li>
-                  <Link className="github-social" to="#">
-                    <UilGithub />
-                  </Link>
-                </li>
-              </ul>
-              <div className="auth0-login">
-                <Link to="#" onClick={() => lock.show()}>
-                  SignIn with Auth0
-                </Link>
-                <Link to="/fbSignIn">SignIn With Firebase</Link>
-              </div>
             </Form>
           </div>
           <div className="ninjadash-authentication-bottom">

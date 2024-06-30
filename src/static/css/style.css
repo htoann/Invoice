@@ -1,5 +1,13 @@
 /* Utilitiy classes */
 
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Apple Color Emoji, Arial, sans-serif,
+    Segoe UI Emoji, Segoe UI Symbol;
+}
+
 .spin {
   height: 100vh;
   display: flex;
@@ -73,8 +81,8 @@
 }
 
 .status.error {
-  background-color: #FF0F0F10;
-  color: #FF0F0F;
+  background-color: #ff0f0f10;
+  color: #ff0f0f;
 }
 
 .modal-video-close-btn {
@@ -136,7 +144,7 @@ ul {
 /* default card style */
 
 .ant-card {
-  box-shadow: 0 5px 20px rgba(173,181,217,.05);
+  box-shadow: 0 5px 20px rgba(173, 181, 217, 0.05);
 }
 
 .ant-card-body {
@@ -263,7 +271,7 @@ ul {
 } */
 
 .growth-downward h1 sub {
-  color: #FF0F0F;
+  color: #ff0f0f;
 }
 
 .growth-upward h1 sub {
@@ -296,7 +304,7 @@ ul {
   justify-content: center;
 }
 
-.revenue-doughnut>div {
+.revenue-doughnut > div {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -324,7 +332,7 @@ ul {
   align-items: center;
 }
 
-.ant-progress>div {
+.ant-progress > div {
   display: flex;
   flex-direction: column;
 }
@@ -351,7 +359,7 @@ ul {
 /* progress bars */
 
 .progress-primary .ant-progress-bg {
-  background: #8231D3;
+  background: #8231d3;
 }
 
 .progress-secondary .ant-progress-bg {
@@ -371,13 +379,13 @@ ul {
 }
 
 .progress-danger .ant-progress-bg {
-  background: #FF0F0F;
+  background: #ff0f0f;
 }
 
 /* color classes */
 
 .color-primary {
-  color: #8231D3;
+  color: #8231d3;
 }
 
 .color-secondary {
@@ -385,7 +393,7 @@ ul {
 }
 
 .color-info {
-  color: #00AAFF;
+  color: #00aaff;
 }
 
 .color-warning {
@@ -397,11 +405,11 @@ ul {
 }
 
 .color-danger {
-  color: #FF0F0F;
+  color: #ff0f0f;
 }
 
 .color-dark {
-  color: #0A0A0A;
+  color: #0a0a0a;
 }
 
 .color-error {
@@ -432,13 +440,13 @@ ul {
 }
 
 .ant-btn.ant-btn-white:hover {
-  color: #8231D3;
+  color: #8231d3;
   background-color: #fff;
-  border-color: #8231D3;
+  border-color: #8231d3;
 }
 
 .ant-btn.ant-btn-white:hover svg {
-  color: #8231D3;
+  color: #8231d3;
 }
 
 .ant-btn-white:focus {
@@ -451,13 +459,13 @@ ul {
 }
 
 .ant-btn.ant-btn-dashed:hover {
-  color: #8231D3;
-  border: 1px dashed #8231D3;
+  color: #8231d3;
+  border: 1px dashed #8231d3;
 }
 
 .ant-btn-primary[disabled] {
   color: #fff;
-  background: #8231D360;
+  background: #8231d360;
 }
 
 .ant-btn-light[disabled] {
@@ -479,7 +487,7 @@ ul {
 
 .ant-btn-primary[disabled]:hover {
   color: #fff !important;
-  background: #8231D360 !important;
+  background: #8231d360 !important;
 }
 
 .btn-icon {
@@ -498,7 +506,7 @@ ul {
 
 .btn-inc:hover,
 .btn-dec:hover {
-  background: #8231D310 !important;
+  background: #8231d310 !important;
   border: 0 none !important;
 }
 
@@ -506,16 +514,16 @@ ul {
 .btn-inc:hover svg,
 .btn-dec:hover i,
 .btn-dec:hover svg {
-  color: #8231D3;
+  color: #8231d3;
 }
 
 /* input styles */
 
-.ant-form-item-label>label {
+.ant-form-item-label > label {
   font-weight: 500;
 }
 
-.ant-picker-input>input::placeholder {
+.ant-picker-input > input::placeholder {
   color: #adb4d2 !important;
 }
 
@@ -553,7 +561,7 @@ ul {
 }
 
 .ant-pagination-item-active {
-  background-color: #8231D3 !important;
+  background-color: #8231d3 !important;
 }
 
 .ant-pagination-item-active a {
@@ -613,7 +621,7 @@ ul {
 
 .ant-pagination-jump-prev .ant-pagination-item-container .ant-pagination-item-ellipsis,
 .ant-pagination-jump-next .ant-pagination-item-container .ant-pagination-item-ellipsis {
-  font-family: "Jost", sans-serif !important;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
 }
 
 .ant-pagination .ant-select-single .ant-select-selector .ant-select-selection-item {
@@ -621,7 +629,10 @@ ul {
   color: #404040;
 }
 
-.ant-pagination .ant-select-single:not(.ant-select-customize-input) .ant-select-selector .ant-select-selection-search-input {
+.ant-pagination
+  .ant-select-single:not(.ant-select-customize-input)
+  .ant-select-selector
+  .ant-select-selection-search-input {
   height: 100% !important;
 }
 
@@ -638,7 +649,9 @@ ul {
   margin-top: 30px !important;
 }
 
-.ant-table-thead>tr>th:not(:last-child):not(.ant-table-selection-column):not(.ant-table-row-expand-icon-cell):not([colspan])::before {
+.ant-table-thead
+  > tr
+  > th:not(:last-child):not(.ant-table-selection-column):not(.ant-table-row-expand-icon-cell):not([colspan])::before {
   display: none;
 }
 
@@ -695,7 +708,9 @@ ul {
   line-height: 40px;
 }
 
-.ant-tree-select.ant-select-single:not(.ant-select-customize-input) .ant-select-selector .ant-select-selection-search-input {
+.ant-tree-select.ant-select-single:not(.ant-select-customize-input)
+  .ant-select-selector
+  .ant-select-selection-search-input {
   height: 100% !important;
 }
 
@@ -729,8 +744,12 @@ ul {
   justify-content: center !important;
 }
 
-.ant-steps .ant-steps-item:not(.ant-steps-item-active)>.ant-steps-item-container[role="button"]:hover .ant-steps-icon svg {
-  color: #8231D3;
+.ant-steps
+  .ant-steps-item:not(.ant-steps-item-active)
+  > .ant-steps-item-container[role='button']:hover
+  .ant-steps-icon
+  svg {
+  color: #8231d3;
 }
 
 /* rate */
@@ -890,7 +909,7 @@ ul {
 .ninjadash-addTask-modal .ant-modal-header .ant-modal-title {
   font-size: 16px;
   font-weight: 500;
-  color: #0A0A0A;
+  color: #0a0a0a;
 }
 
 .ninjadash-addTask-modal .ninjadash-addTask-modal-inner .ant-form-item {
@@ -973,7 +992,7 @@ ul {
 
 .ant-popover .ant-popover-inner {
   padding: 15px;
-  box-shadow: 0 15px 25px rgba(146, 153, 184, .20);
+  box-shadow: 0 15px 25px rgba(146, 153, 184, 0.2);
   border-radius: 6px;
 }
 
@@ -1013,7 +1032,7 @@ ul {
 }
 
 .ant-select-dropdown .ant-select-item.ant-select-item-option-active {
-  background: #8231D305;
+  background: #8231d305;
 }
 
 .ant-select-dropdown .ant-select-item.ant-select-item-option-selected .ant-select-item-option-content {
@@ -1021,12 +1040,12 @@ ul {
 }
 
 .ant-select-dropdown .ant-select-item.ant-select-item-option-selected {
-  color: #8231D3;
-  background: #8231D306;
+  color: #8231d3;
+  background: #8231d306;
 }
 
 .ant-select-dropdown .ant-select-item.ant-select-item-option-selected .ant-select-item-option-content {
-  color: #8231D3;
+  color: #8231d3;
   font-weight: 500;
 }
 
@@ -1098,7 +1117,7 @@ ul {
 }
 
 .ant-dropdown-menu li:hover {
-  background-color: #8231D305;
+  background-color: #8231d305;
 }
 
 .ninjadash-top-dropdown .ninjadash-top-dropdown__title {
@@ -1150,7 +1169,7 @@ ul {
   text-align: center;
   font-size: 13px;
   font-weight: 500;
-  color: #8231D3;
+  color: #8231d3;
   padding: 15px 0;
   border-radius: 0 0 6px 6px;
   justify-content: center;
@@ -1166,7 +1185,7 @@ ul {
   height: 100%;
   box-shadow: 0 -15px 20px #9299b808;
   z-index: 1;
-  content: "";
+  content: '';
 }
 
 .ninjadash-top-dropdown .ninjadash-top-dropdown__nav li a.btn-seeAll:hover:after {
@@ -1183,7 +1202,7 @@ ul {
 }
 
 .ninjadash-top-dropdown .ninjadash-top-dropdown__nav li a:hover figcaption h1 {
-  color: #8231D3;
+  color: #8231d3;
 }
 
 .ninjadash-top-dropdown .ninjadash-top-dropdown__nav li a:after {
@@ -1195,7 +1214,7 @@ ul {
   height: 100%;
   box-shadow: 0 15px 50px #9299b820;
   z-index: 1;
-  content: "";
+  content: '';
   opacity: 0;
   visibility: hidden;
 }
@@ -1218,13 +1237,13 @@ ul {
 }
 
 .ninjadash-top-dropdown .ninjadash-top-dropdown__content .notification-icon.bg-primary {
-  background: #8231D315;
-  color: #8231D3;
+  background: #8231d315;
+  color: #8231d3;
 }
 
 .ninjadash-top-dropdown .ninjadash-top-dropdown__content .notification-icon.bg-secondary {
-  background: #5840FF15;
-  color: #5840FF;
+  background: #5840ff15;
+  color: #5840ff;
 }
 
 .ninjadash-top-dropdown .ninjadash-top-dropdown__content .notification-icon svg {
@@ -1247,7 +1266,7 @@ ul {
 }
 
 .ninjadash-top-dropdown .notification-text h1 span {
-  color: #8231D3;
+  color: #8231d3;
   font-weight: 500;
   padding-left: 0;
 }
@@ -1335,7 +1354,7 @@ ul {
   width: 13px;
   height: 13px;
   background: #fff;
-  content: "";
+  content: '';
 }
 
 .ant-tooltip .ant-tooltip-arrow .ant-tooltip-arrow-content {
@@ -1386,8 +1405,8 @@ ul {
 }
 
 .badge.badge-primary {
-  background: #8231D315;
-  color: #8231D3;
+  background: #8231d315;
+  color: #8231d3;
 }
 
 /* Cascade Styles */
@@ -1454,7 +1473,7 @@ ul {
 
 /* Input Affix */
 
-.ant-input-affix-wrapper>input.ant-input {
+.ant-input-affix-wrapper > input.ant-input {
   padding-left: 5px;
 }
 
@@ -1541,7 +1560,7 @@ ul {
   padding-left: 15px;
 }
 
-html[dir="rtl"] .ninjadash-upload-basic .ninjadash-upload-text {
+html[dir='rtl'] .ninjadash-upload-basic .ninjadash-upload-text {
   padding-left: 0px;
   padding-right: 15px;
 }
@@ -1554,7 +1573,7 @@ html[dir="rtl"] .ninjadash-upload-basic .ninjadash-upload-text {
   border-left: 1px solid #e3e6ef;
 }
 
-html[dir="rtl"] .ninjadash-upload-basic .ninjadash-upload-browse {
+html[dir='rtl'] .ninjadash-upload-basic .ninjadash-upload-browse {
   border-left: 0 none;
   border-right: 1px solid #e3e6ef;
 }
@@ -1618,12 +1637,12 @@ html[dir="rtl"] .ninjadash-upload-basic .ninjadash-upload-browse {
 }
 
 /* Table Bordered*/
-.table-bordered .ant-table-thead>tr>th {
+.table-bordered .ant-table-thead > tr > th {
   background: #fff;
   border-top: 1px solid #f1f2f6;
 }
 
-.table-bordered .ant-table-tbody>tr>td {
+.table-bordered .ant-table-tbody > tr > td {
   border-color: #f1f2f6 !important;
 }
 
@@ -1889,7 +1908,7 @@ html[dir="rtl"] .ninjadash-upload-basic .ninjadash-upload-browse {
 }
 
 .ninjadash-event-details-modal.ninjadash-event-details-modal-primary .ant-modal-header {
-  background-color: #8231D3;
+  background-color: #8231d3;
 }
 
 .ninjadash-event-details-modal.ninjadash-event-details-modal-secondary .ant-modal-header {
@@ -2035,7 +2054,7 @@ html[dir="rtl"] .ninjadash-upload-basic .ninjadash-upload-browse {
 .ninjadash-task-details .ant-modal-header .ant-modal-title h4 {
   font-size: 20px;
   font-weight: 500;
-  color: #0A0A0A;
+  color: #0a0a0a;
   margin-bottom: 4px;
 }
 
@@ -2095,7 +2114,7 @@ html[dir="rtl"] .ninjadash-upload-basic .ninjadash-upload-browse {
   z-index: 222;
 }
 
-html[dir="rtl"] .ninjadash-task-details .ant-modal-body .ninjadash-checklist-block .addChecklist-form {
+html[dir='rtl'] .ninjadash-task-details .ant-modal-body .ninjadash-checklist-block .addChecklist-form {
   left: auto;
   right: 0;
 }
@@ -2125,11 +2144,22 @@ html[dir="rtl"] .ninjadash-task-details .ant-modal-body .ninjadash-checklist-blo
   color: #9299bb;
 }
 
-.ninjadash-task-details .ant-modal-body .ninjadash-checklist-block .addChecklist-form .addChecklist-form-action .btn-add {
+.ninjadash-task-details
+  .ant-modal-body
+  .ninjadash-checklist-block
+  .addChecklist-form
+  .addChecklist-form-action
+  .btn-add {
   margin-right: 15px;
 }
 
-html[dir="rtl"] .ninjadash-task-details .ant-modal-body .ninjadash-checklist-block .addChecklist-form .addChecklist-form-action .btn-add {
+html[dir='rtl']
+  .ninjadash-task-details
+  .ant-modal-body
+  .ninjadash-checklist-block
+  .addChecklist-form
+  .addChecklist-form-action
+  .btn-add {
   margin-left: 15px;
   margin-right: 0;
 }
@@ -2167,19 +2197,35 @@ html[dir="rtl"] .ninjadash-task-details .ant-modal-body .ninjadash-checklist-blo
   margin-bottom: 0;
 }
 
-.ninjadash-task-details .ant-modal-body .ninjadash-checklist-row .ninjadash-checklist__progress .ant-progress-inner .ant-progress-bg {
+.ninjadash-task-details
+  .ant-modal-body
+  .ninjadash-checklist-row
+  .ninjadash-checklist__progress
+  .ant-progress-inner
+  .ant-progress-bg {
   height: 5px !important;
   background-color: #01b81a;
 }
 
-.ninjadash-task-details .ant-modal-body .ninjadash-checklist-row .ninjadash-checklist__progress .ant-progress .ant-progress-text {
+.ninjadash-task-details
+  .ant-modal-body
+  .ninjadash-checklist-row
+  .ninjadash-checklist__progress
+  .ant-progress
+  .ant-progress-text {
   font-size: 12px;
   font-weight: 500;
   order: -1;
   margin: 0 10px 0 0;
 }
 
-html[dir="rtl"] .ninjadash-task-details .ant-modal-body .ninjadash-checklist-row .ninjadash-checklist__progress .ant-progress .ant-progress-text {
+html[dir='rtl']
+  .ninjadash-task-details
+  .ant-modal-body
+  .ninjadash-checklist-row
+  .ninjadash-checklist__progress
+  .ant-progress
+  .ant-progress-text {
   margin: 0 0 0 10px;
 }
 
@@ -2193,7 +2239,12 @@ html[dir="rtl"] .ninjadash-task-details .ant-modal-body .ninjadash-checklist-row
   border-color: #c6d0dc;
 }
 
-.ninjadash-task-details .ant-modal-body .ninjadash-checklist-tasks .ant-checkbox-wrapper .ant-checkbox-checked .ant-checkbox-inner {
+.ninjadash-task-details
+  .ant-modal-body
+  .ninjadash-checklist-tasks
+  .ant-checkbox-wrapper
+  .ant-checkbox-checked
+  .ant-checkbox-inner {
   background-color: #01b81a;
 }
 
@@ -2239,7 +2290,7 @@ html[dir="rtl"] .ninjadash-task-details .ant-modal-body .ninjadash-checklist-row
   background-color: #fff !important;
 }
 
-.page-header-actions button+button {
+.page-header-actions button + button {
   margin-left: 8px;
 }
 
@@ -2247,7 +2298,7 @@ html[dir="rtl"] .ninjadash-task-details .ant-modal-body .ninjadash-checklist-row
   width: 12px;
   height: 12px;
   margin-right: 2px;
-  color: #8231D3;
+  color: #8231d3;
 }
 
 /* Layout Css */
@@ -2299,7 +2350,7 @@ html[dir="rtl"] .ninjadash-task-details .ant-modal-body .ninjadash-checklist-row
 }
 
 .chart-label .label-dot.dot-info {
-  background: #8231D3;
+  background: #8231d3;
 }
 
 .chart-label .label-dot.dot-warning {
@@ -2471,7 +2522,7 @@ html[dir="rtl"] .ninjadash-task-details .ant-modal-body .ninjadash-checklist-row
   .ant-pagination-jump-prev .ant-pagination-item-container .ant-pagination-item-ellipsis,
   .ant-pagination-jump-next .ant-pagination-item-container .ant-pagination-item-ellipsis {
     line-height: 2;
-    font-family: "Jost", sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   }
 
   .ant-table-pagination {
@@ -2566,7 +2617,7 @@ html[dir="rtl"] .ninjadash-task-details .ant-modal-body .ninjadash-checklist-row
     flex-flow: column;
   }
 
-  .ant-card-head-wrapper .ant-card-extra .ant-dropdown-trigger+.card-nav {
+  .ant-card-head-wrapper .ant-card-extra .ant-dropdown-trigger + .card-nav {
     margin-bottom: 8px;
   }
 
@@ -2578,13 +2629,13 @@ html[dir="rtl"] .ninjadash-task-details .ant-modal-body .ninjadash-checklist-row
     display: none;
   }
 
-  .ant-card-head-title>div {
+  .ant-card-head-title > div {
     display: flex;
     flex-flow: column;
     align-items: center;
   }
 
-  .ant-card-head-title>div span {
+  .ant-card-head-title > div span {
     margin: 8px 0 0;
   }
 
@@ -2621,7 +2672,7 @@ html[dir="rtl"] .ninjadash-task-details .ant-modal-body .ninjadash-checklist-row
 .addEvent-modal .ant-modal-header .ant-modal-title {
   font-size: 15px;
   font-weight: 500;
-  color: #0A0A0A;
+  color: #0a0a0a;
 }
 
 .addEvent-modal .ant-modal-body {
@@ -2648,7 +2699,7 @@ html[dir="rtl"] .ninjadash-task-details .ant-modal-body .ninjadash-checklist-row
 }
 
 .placement-confirm .ant-btn.ant-btn-white:hover {
-  border-color: #8231D3;
+  border-color: #8231d3;
 }
 
 @media only screen and (max-width: 479px) {
@@ -2844,7 +2895,7 @@ html[dir="rtl"] .ninjadash-task-details .ant-modal-body .ninjadash-checklist-row
   padding: 7px 12px;
   border: 0 none;
   font-size: 12px;
-  background: #0A0A0A;
+  background: #0a0a0a;
 }
 
 .btn-rtl {
@@ -2885,7 +2936,7 @@ html[dir="rtl"] .ninjadash-task-details .ant-modal-body .ninjadash-checklist-row
 
 /* Style your items */
 
-.my-masonry-grid_column>div {
+.my-masonry-grid_column > div {
   /* change div to reference your elements you put in <Masonry> */
   background: grey;
   margin-bottom: 30px;
@@ -2900,57 +2951,57 @@ html[dir="rtl"] .ninjadash-task-details .ant-modal-body .ninjadash-checklist-row
   display: none;
 }
 
-li.active>.display {
+li.active > .display {
   display: block;
 }
 
 /* rtl section from here */
-html[dir="rtl"] .ant-card-head-title span {
+html[dir='rtl'] .ant-card-head-title span {
   margin-right: 15px;
 }
 
-html[dir="rtl"] span[aria-label="arrow-right"] svg,
-html[dir="rtl"] span[aria-label="arrow-left"] svg {
+html[dir='rtl'] span[aria-label='arrow-right'] svg,
+html[dir='rtl'] span[aria-label='arrow-left'] svg {
   transform: rotateY(180deg);
 }
 
-html[dir="rtl"] .ant-menu.ant-menu-vertical {
+html[dir='rtl'] .ant-menu.ant-menu-vertical {
   text-align: right !important;
 }
 
-html[dir="rtl"] .ant-menu.ant-menu-vertical .ant-menu-submenu-placement-rightTop {
+html[dir='rtl'] .ant-menu.ant-menu-vertical .ant-menu-submenu-placement-rightTop {
   left: -170px !important;
 }
 
-html[dir="rtl"] .ant-menu.ant-menu-vertical .ant-menu-vertical-left {
+html[dir='rtl'] .ant-menu.ant-menu-vertical .ant-menu-vertical-left {
   text-align: right;
 }
 
-html[dir="rtl"] .ant-modal-confirm .ant-modal-confirm-btns .ant-btn+.ant-btn {
+html[dir='rtl'] .ant-modal-confirm .ant-modal-confirm-btns .ant-btn + .ant-btn {
   margin-left: 0;
   margin-right: 8px;
 }
 
-html[dir="rtl"] .ant-menu.ant-menu-vertical .ant-menu-submenu-arrow {
+html[dir='rtl'] .ant-menu.ant-menu-vertical .ant-menu-submenu-arrow {
   right: auto;
   left: 16px;
   transform: rotateY(180deg);
 }
 
-html[dir="rtl"] .ant-menu-vertical .ant-menu-submenu-title {
+html[dir='rtl'] .ant-menu-vertical .ant-menu-submenu-title {
   padding-right: 15px !important;
 }
 
-html[dir="rtl"] .project-modal-footer {
+html[dir='rtl'] .project-modal-footer {
   text-align: right !important;
 }
 
-html[dir="rtl"] .ant-card-extra .ant-dropdown-trigger {
+html[dir='rtl'] .ant-card-extra .ant-dropdown-trigger {
   margin-right: 20px !important;
   margin-left: 0 !important;
 }
 
-html[dir="rtl"] .dark-mode .ninjadash-navbar-menu {
+html[dir='rtl'] .dark-mode .ninjadash-navbar-menu {
   margin-right: 20px;
 }
 
@@ -3047,14 +3098,14 @@ html[dir="rtl"] .dark-mode .ninjadash-navbar-menu {
 .dark-mode .ant-modal-title,
 .dark-mode .ant-modal-confirm-body .ant-modal-confirm-title,
 .dark-mode .ant-drawer-title,
-.dark-mode .ant-form-item-label>label,
+.dark-mode .ant-form-item-label > label,
 .dark-mode .ant-picker-header button,
 .dark-mode .ant-notification-notice-message {
   color: #fff;
 }
 
 .dark-mode .ant-btn.ant-btn-white:hover {
-  color: #8231D3;
+  color: #8231d3;
 }
 
 .dark-mode .ninjadash-task-details .ant-modal-body .ninjadash-checklist-tasks .ant-checkbox-wrapper .ant-checkbox-inner,
@@ -3086,7 +3137,7 @@ html[dir="rtl"] .dark-mode .ninjadash-navbar-menu {
 .dark-mode .ant-pagination .ant-pagination-jump-next,
 .dark-mode .ant-pagination .ant-pagination-item,
 .dark-mode .ant-pagination .ant-pagination-options .ant-select-selector {
-  border: 1px solid #282B37 !important;
+  border: 1px solid #282b37 !important;
   background-color: #fff;
 }
 

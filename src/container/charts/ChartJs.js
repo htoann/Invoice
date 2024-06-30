@@ -61,7 +61,7 @@ function ChartJs() {
         ticks: {
           beginAtZero: true,
           fontSize: 14,
-          fontFamily: 'Jost',
+          fontFamily: '-apple-system, BlinkMacSystemFont, Segoe UI',
           color: '#8C90A4',
           max: 80,
           stepSize: 20,
@@ -81,7 +81,7 @@ function ChartJs() {
         },
         ticks: {
           fontSize: 14,
-          fontFamily: 'Jost',
+          fontFamily: '-apple-system, BlinkMacSystemFont, Segoe UI',
           fontColor: '#8C90A4',
         },
       },
@@ -307,7 +307,7 @@ function ChartJs() {
                     ticks: {
                       beginAtZero: true,
                       fontSize: 14,
-                      fontFamily: 'Jost',
+                      fontFamily: '-apple-system, BlinkMacSystemFont, Segoe UI',
                       color: '#8C90A4',
                       max: 80,
                       stepSize: 20,
@@ -328,7 +328,7 @@ function ChartJs() {
                     },
                     ticks: {
                       fontSize: 14,
-                      fontFamily: 'Jost',
+                      fontFamily: '-apple-system, BlinkMacSystemFont, Segoe UI',
                       fontColor: '#8C90A4',
                     },
                   },

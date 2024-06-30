@@ -78,7 +78,7 @@ const theme = {
   'dash-color': dashColor, // info state color
   'extra-light-color': extraLightColor, // Extra Light state color
   'extra-light-hover': extraLightHover, // Extra Light state color
-  'font-family': "'Jost', sans-serif",
+  'font-family': "-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
   'font-size-base': '15px', // major text font size
   'heading-color': headingColor, // heading text color
   'text-color': textColor, // major text color

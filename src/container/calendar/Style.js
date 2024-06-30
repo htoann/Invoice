@@ -114,7 +114,7 @@ const CalendarWrapper = Styled.div`
       }
     }
     .react-calendar{
-        font-family: 'Jost', sans-serif;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
         width: 100%;
         border-radius: 10px;
         padding: 60px 55px 40px;

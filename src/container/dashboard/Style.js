@@ -1048,7 +1048,7 @@ const RevenueGeneratedWrapper = Styled.div`
 
 const ChartContainer = Styled.div`
     display: block;
-    font-family: 'Jost', sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     &.ninjadash-chart-pie{
         .chartjs-tooltip {
             padding: 4px !important;
@@ -1104,7 +1104,7 @@ const ChartContainer = Styled.div`
         font-size: 12px;
         line-height: 1;
         font-weight: 500 !important;
-        font-family: 'Jost', sans-serif;;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;;
         text-transform: capitalize;
         margin-bottom: 4px;
     }
@@ -1112,7 +1112,7 @@ const ChartContainer = Styled.div`
         color: #63b963;
         font-size: 22px;
         font-weight: 600 !important;
-        font-family: 'Jost', sans-serif;;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;;
     }
     .tooltip-value sup {
         font-size: 12px;

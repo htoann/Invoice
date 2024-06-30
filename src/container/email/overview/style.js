@@ -354,10 +354,10 @@ const MailBox = Styled.div`
       }
       .DraftEditor-root{
         font-size: 14px;
-        font-family: 'Jost', sans-serif;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       }
       .EditorToolbar__root___3_Aqz{
-        font-family: 'Jost', sans-serif;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
         border-bottom-color: ${({ theme }) => theme[theme.mainContent]['border-color-default']};
         .public-DraftStyleDefault-block{
           color: ${({ theme }) => theme[theme.mainContent]['gray-text']};
@@ -1117,7 +1117,7 @@ const MessageReply = Styled.div`
       .DraftEditor-root{
         >div{
           font-size: 14px;
-          font-family: 'Jost', sans-serif;
+          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
         }
       }
       .public-DraftEditorPlaceholder-root{

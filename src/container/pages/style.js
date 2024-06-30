@@ -1729,14 +1729,14 @@ const TestimonialStyleWrapper = Styled.div`
       .swiper-button-prev{
         left: 10px;
         &:before{
-          font-family: 'Jost', sans-serif;
+          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
           content: url('${require('../../static/img/icon/arrow-left.png')}');
         }
       }
       .swiper-button-next{
         right: 10px;
         &:before{
-          font-family: 'Jost', sans-serif;
+          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
           content: url('${require('../../static/img/icon/arrow-right.png')}');
         }
       }
@@ -1842,7 +1842,7 @@ const TestimonialStyleWrapper = Styled.div`
           left: 36%;
         }
         &:before{
-          font-family: 'Jost', sans-serif;
+          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
           content: url('${require('../../static/img/icon/arrow-left.png')}');
         }
       }
@@ -1855,7 +1855,7 @@ const TestimonialStyleWrapper = Styled.div`
           right: 36%;
         }
         &:before{
-          font-family: 'Jost', sans-serif;
+          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
           content: url('${require('../../static/img/icon/arrow-right.png')}');
         }
       }
@@ -2041,7 +2041,7 @@ const TestimonialStyleWrapper = Styled.div`
           left: 36%;
         }
         &:before{
-          font-family: 'Jost', sans-serif;
+          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
           content: url('${require('../../static/img/icon/arrow-left.png')}');
         }
       }
@@ -2054,7 +2054,7 @@ const TestimonialStyleWrapper = Styled.div`
           right: 36%;
         }
         &:before{
-          font-family: 'Jost', sans-serif;
+          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
           content: url('${require('../../static/img/icon/arrow-right.png')}');
         }
       }
