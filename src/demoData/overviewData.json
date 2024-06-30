@@ -58,7 +58,7 @@
     "id": 5,
     "type": "primary",
     "icon": "arrow-growth.svg",
-    "label": "Total Traffic",
+    "label": "Hoá đơn bán ra",
     "total": "30825",
     "suffix": "",
     "prefix": "",
@@ -66,7 +66,7 @@
     "statusRate": "25.36",
     "decimels": 0,
     "separator": ",",
-    "dataPeriod": "Since last month"
+    "dataPeriod": "3 tháng gần đây"
   },
   {
     "id": 6,

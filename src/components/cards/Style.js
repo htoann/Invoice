@@ -185,7 +185,7 @@ const OverviewCardWrap = Styled.div`
                         font-size: 14px;
                     }
                     .ninjadash-status-label{
-                        ${({ theme }) => (!theme.rtl ? 'margin-left' : 'margin-right')}: 10px;
+                        ${({ theme }) => (!theme.rtl ? 'margin-left' : 'margin-right')}: 0px;
                         color: ${({ theme }) => theme[theme.mainContent]['gray-light-text']};
                     }
                     .ninjadash-status-rate{

@@ -1,5 +1,3 @@
-import UilDown from '@iconscout/react-unicons/icons/uil-arrow-down';
-import UilUp from '@iconscout/react-unicons/icons/uil-arrow-up';
 import { Card } from 'antd';
 import propTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
@@ -77,10 +75,6 @@ function OverviewCard({ data, className, bottomStatus, contentFirst, halfCircleI
           {bottomStatus ? (
             <div className="ninjadash-overview-card__bottom">
               <span className={`ninjadash-overview-status ninjadash-status-${status}`}>
-                <span className="ninjadash-status-rate">
-                  {status === 'growth' ? <UilUp /> : <UilDown />}
-                  {statusRate}%
-                </span>
                 <span className="ninjadash-status-label">{dataPeriod}</span>
               </span>
             </div>

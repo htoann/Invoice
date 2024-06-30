@@ -58,9 +58,9 @@ const AuthFormWrap = Styled.div`
     }
   }
   .ninjadash-authentication-content{
-    padding: 30px 40px;
+    padding: 30px 40px 0 30px;
     @media only screen and (max-width: 1599px){
-      padding: 30px;
+      padding: 30px 30px 0 30px;
     }
     .ant-form-item-label {
       > label{
