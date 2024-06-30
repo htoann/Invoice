@@ -23,7 +23,6 @@
   "rules": {
     "prettier/prettier": "error",
     "import/no-named-as-default-member": 0,
-    "import/order": [2, { "groups": ["external", "index", "sibling", "parent", "internal", "builtin"] }],
     "react/function-component-definition": [
       2,
       {

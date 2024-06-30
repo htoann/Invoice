@@ -169,5 +169,9 @@
   "6": "6",
   "7": "7",
   "crud": "CRUD",
-  "features": "Tính năng"
+  "features": "Tính năng",
+  "manage_invoices": "Quản lý hoá đơn",
+  "category": "Danh mục",
+  "report": "Báo cáo",
+  "connect_tax_authorities": "Kết nối cơ quan thuế"
 }

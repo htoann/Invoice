@@ -1,8 +1,8 @@
 import { ConfigProvider } from 'antd';
 import 'antd/dist/antd.less';
-import React, { useEffect, useState, lazy } from 'react';
+import React, { lazy, useEffect, useState } from 'react';
 import { Provider, useSelector } from 'react-redux';
-import { BrowserRouter as Router, Navigate, Route, Routes } from 'react-router-dom';
+import { Navigate, Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 
 import { ThemeProvider } from 'styled-components';
 import ProtectedRoute from './components/utilities/protectedRoute';

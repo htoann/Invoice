@@ -1,31 +1,32 @@
-import React, { useLayoutEffect } from 'react';
-import { NavLink, Link } from 'react-router-dom';
 import {
-  UilEnvelope,
-  UilChat,
-  UilShoppingCart,
   Uil500px,
+  UilApps,
+  UilAt,
   UilBagAlt,
   UilCalendarAlt,
-  UilUsersAlt,
-  UilAt,
-  UilClipboardAlt,
-  // UilExpandArrowsAlt,
+  UilChartBar,
+  UilChat,
   UilCheckSquare,
+  UilClipboardAlt,
+  UilCompactDisc,
+  UilEdit,
+  UilEnvelope,
   UilExchange,
   UilFile,
   UilHeadphones,
-  UilChartBar,
-  UilCompactDisc,
-  UilTable,
-  UilSquareFull,
-  UilApps,
-  UilEdit,
   UilMap,
+  UilShoppingCart,
+  UilSquareFull,
+  UilTable,
+  UilUsersAlt,
 } from '@iconscout/react-unicons';
+import React, { useLayoutEffect } from 'react';
+import { useTranslation } from 'react-i18next';
+import { Link, NavLink } from 'react-router-dom';
 import { TopMenuStyle } from './Style';
 
 function TopMenu() {
+  const { t } = useTranslation();
   const path = '/admin';
 
   useLayoutEffect(() => {
@@ -62,67 +63,15 @@ function TopMenu() {
     <TopMenuStyle>
       <div className="ninjadash-top-menu">
         <ul>
-          <li className="has-subMenu">
-            <Link to="#" className="parent">
-              Dashboard
+          <li>
+            <Link to="/admin" className="parent">
+              {t('overview')}
             </Link>
-            <ul className="subMenu">
-              <li>
-                <NavLink to={`${path}/admin`} onClick={addParentActive}>
-                  Demo 1
-                </NavLink>
-              </li>
-              <li>
-                <NavLink to={`${path}/demo-2`} onClick={addParentActive}>
-                  Demo 2
-                </NavLink>
-              </li>
-              <li>
-                <NavLink to={`${path}/demo-3`} onClick={addParentActive}>
-                  Demo 3
-                </NavLink>
-              </li>
-              <li>
-                <NavLink to={`${path}/demo-4`} onClick={addParentActive}>
-                  Demo 4
-                </NavLink>
-              </li>
-              <li>
-                <NavLink to={`${path}/demo-5`} onClick={addParentActive}>
-                  Demo 5
-                </NavLink>
-              </li>
-              <li>
-                <NavLink to={`${path}/demo-6`} onClick={addParentActive}>
-                  Demo 6
-                </NavLink>
-              </li>
-              <li>
-                <NavLink to={`${path}/demo-7`} onClick={addParentActive}>
-                  Demo 7
-                </NavLink>
-              </li>
-              <li>
-                <NavLink to={`${path}/demo-8`} onClick={addParentActive}>
-                  Demo 8
-                </NavLink>
-              </li>
-              <li>
-                <NavLink to={`${path}/demo-9`} onClick={addParentActive}>
-                  Demo 9
-                </NavLink>
-              </li>
-              <li>
-                <NavLink to={`${path}/demo-10`} onClick={addParentActive}>
-                  Demo 10
-                </NavLink>
-              </li>
-            </ul>
           </li>
 
           <li className="has-subMenu">
             <Link to="#" className="parent">
-              Apps
+              {t('manage_invoices')}
             </Link>
             <ul className="subMenu">
               <li className="has-subMenu-left">
@@ -392,7 +341,7 @@ function TopMenu() {
 
           <li className="mega-item has-subMenu">
             <Link to="#" className="parent">
-              Pages
+              {t('inbox')}
             </Link>
             <ul className="megaMenu-wrapper megaMenu-small">
               <li>
@@ -512,7 +461,7 @@ function TopMenu() {
           </li>
           <li className="mega-item has-subMenu">
             <Link to="#" className="parent">
-              Components
+              {t('category')}
             </Link>
             <ul className="megaMenu-wrapper megaMenu-wide">
               <li>
@@ -775,7 +724,203 @@ function TopMenu() {
           </li>
           <li className="has-subMenu">
             <Link to="#" className="parent">
-              Features
+              {t('report')}
+            </Link>
+            <ul className="subMenu">
+              <li className="has-subMenu-left">
+                <Link to="#" className="parent">
+                  <UilChartBar />
+                  Charts
+                </Link>
+                <ul className="subMenu">
+                  <li>
+                    <NavLink onClick={addParentActive} to={`${path}/charts/chartjs`}>
+                      Chart Js
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink to={`${path}/charts/google-chart`}>Google Chart</NavLink>
+                  </li>
+                  <li className="has-subMenu-left">
+                    <Link to="#">Rechart</Link>
+                    <ul className="subMenu">
+                      <li>
+                        <NavLink onClick={addParentActive} to={`${path}/charts/recharts/bar`}>
+                          Bar Chart
+                        </NavLink>
+                      </li>
+                      <li>
+                        <NavLink onClick={addParentActive} to={`${path}/charts/recharts/area`}>
+                          Area Charts
+                        </NavLink>
+                      </li>
+                      <li>
+                        <NavLink onClick={addParentActive} to={`${path}/charts/recharts/composed`}>
+                          Composed Charts
+                        </NavLink>
+                      </li>
+                      <li>
+                        <NavLink onClick={addParentActive} to={`${path}/charts/recharts/line`}>
+                          Line Charts
+                        </NavLink>
+                      </li>
+                      <li>
+                        <NavLink onClick={addParentActive} to={`${path}/charts/recharts/pie`}>
+                          Pie Charts
+                        </NavLink>
+                      </li>
+                      <li>
+                        <NavLink onClick={addParentActive} to={`${path}/charts/recharts/radar`}>
+                          Radar Charts
+                        </NavLink>
+                      </li>
+                      <li>
+                        <NavLink onClick={addParentActive} to={`${path}/charts/recharts/radial`}>
+                          Radial Charts
+                        </NavLink>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <NavLink onClick={addParentActive} to={`${path}/charts/peity`}>
+                      Peity Chart
+                    </NavLink>
+                  </li>
+                </ul>
+              </li>
+              <li className="has-subMenu-left">
+                <Link to="#" className="parent">
+                  <UilCompactDisc />
+                  Form
+                </Link>
+                <ul className="subMenu">
+                  <li>
+                    <NavLink onClick={addParentActive} to={`${path}/form-layout`}>
+                      Form Layouts
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink onClick={addParentActive} to={`${path}/form-elements`}>
+                      Form Elements
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink onClick={addParentActive} to={`${path}/form-components`}>
+                      Form Components
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink onClick={addParentActive} to={`${path}/form-validation`}>
+                      Form Validation
+                    </NavLink>
+                  </li>
+                </ul>
+              </li>
+              <li className="has-subMenu-left">
+                <Link to="#" className="parent">
+                  <UilTable />
+                  Tables
+                </Link>
+                <ul className="subMenu">
+                  <li>
+                    <NavLink onClick={addParentActive} to={`${path}/tables/basic`}>
+                      Basic Table
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink onClick={addParentActive} to={`${path}/tables/dataTable`}>
+                      Data Table
+                    </NavLink>
+                  </li>
+                </ul>
+              </li>
+              <li className="has-subMenu-left">
+                <Link to="#" className="parent">
+                  <UilSquareFull />
+                  Widgets
+                </Link>
+                <ul className="subMenu">
+                  <li>
+                    <NavLink onClick={addParentActive} to={`${path}/widgets/chart`}>
+                      Chart
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink onClick={addParentActive} to={`${path}/widgets/card`}>
+                      Card
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink onClick={addParentActive} to={`${path}/widgets/mixed`}>
+                      Mixed
+                    </NavLink>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <NavLink onClick={addParentActive} to={`${path}/wizards`}>
+                  <UilSquareFull />
+                  Wizards
+                </NavLink>
+              </li>
+              <li className="has-subMenu-left">
+                <Link to="#" className="parent">
+                  <UilApps />
+                  Icons
+                </Link>
+                <ul className="subMenu">
+                  <li>
+                    <NavLink onClick={addParentActive} to={`${path}/icons/feathers`}>
+                      Feather Icons(svg)
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink onClick={addParentActive} to={`${path}/icons/font-awesome`}>
+                      Font Awesome
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink onClick={addParentActive} to={`${path}/icons/antd`}>
+                      Ant Design Icons
+                    </NavLink>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <NavLink onClick={addParentActive} to={`${path}/editor`}>
+                  <UilEdit />
+                  Editor
+                </NavLink>
+              </li>
+
+              <li className="has-subMenu-left">
+                <Link to="#" className="parent">
+                  <UilMap />
+                  Maps
+                </Link>
+                <ul className="subMenu">
+                  <li>
+                    <NavLink onClick={addParentActive} to={`${path}/maps/google`}>
+                      Google Maps
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink onClick={addParentActive} to={`${path}/maps/leaflet`}>
+                      Leaflet Maps
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink onClick={addParentActive} to={`${path}/maps/Vector`}>
+                      Vector Maps
+                    </NavLink>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li className="has-subMenu">
+            <Link to="#" className="parent">
+              {t('connect_tax_authorities')}
             </Link>
             <ul className="subMenu">
               <li className="has-subMenu-left">

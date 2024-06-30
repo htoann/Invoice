@@ -22,7 +22,6 @@ import {
   UilEnvelope,
   UilExchange,
   UilExclamationOctagon,
-  // UilExpandArrowsAlt,
   UilFile,
   UilFileShieldAlt,
   UilHeadphones,
@@ -43,16 +42,16 @@ import {
   UilWindowSection,
 } from '@iconscout/react-unicons';
 import { Menu } from 'antd';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 
 import UilEllipsisV from '@iconscout/react-unicons/icons/uil-ellipsis-v';
 import propTypes from 'prop-types';
-import { NavTitle } from './Style';
 import versions from '../demoData/changelog.json';
 import { changeDirectionMode, changeLayoutMode, changeMenuMode } from '../redux/themeLayout/actionCreator';
+import { NavTitle } from './Style';
 
 function MenuItems({ toggleCollapsed }) {
   const { t } = useTranslation();
@@ -85,6 +84,12 @@ function MenuItems({ toggleCollapsed }) {
     !topMenu ? [`${mainPathSplit.length > 2 ? mainPathSplit[1] : 'dashboard'}`] : [],
   );
 
+  useEffect(() => {
+    const html = document.querySelector('html');
+    html.classList.add('ninjadash-topmenu');
+    dispatch(changeMenuMode(true));
+  }, []);
+
   const onOpenChange = (keys) => {
     setOpenKeys(keys[keys.length - 1] !== 'recharts' ? [keys.length && keys[keys.length - 1]] : keys);
   };
@@ -105,6 +110,7 @@ function MenuItems({ toggleCollapsed }) {
     }
     dispatch(changeMenuMode(topMode));
   };
+
   const changeLayoutDirection = (rtlMode) => {
     if (rtlMode) {
       const html = document.querySelector('html');
@@ -1432,7 +1438,6 @@ function MenuItems({ toggleCollapsed }) {
       onOpenChange={onOpenChange}
       onClick={onClick}
       mode={!topMenu || window.innerWidth <= 991 ? 'inline' : 'horizontal'}
-      // // eslint-disable-next-line no-nested-ternary
       defaultSelectedKeys={
         !topMenu
           ? [

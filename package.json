@@ -76,7 +76,7 @@
     "web-vitals": "^2.1.4",
     "xlsx": "^0.17.5"
   },
-  "homepage": "/hexadash-react",
+  "homepage": "/",
   "resolutions": {
     "autoprefixer": "10.4.5"
   },

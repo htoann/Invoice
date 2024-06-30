@@ -5,10 +5,7 @@ import { Cards } from '../../components/cards/frame/cards-frame';
 import { Main } from '../styled';
 
 const OverviewDataList = lazy(() => import('./overview/demoTwo/OverviewDataList'));
-const SaleRevenue = lazy(() => import('./overview/demoTwo/SaleRevenue'));
 const NewProduct = lazy(() => import('./overview/demoTwo/NewProduct'));
-// const RevenueGenerated = lazy(() => import('./overview/demoTwo/RevenueGenerated'));
-const SourceRevenueGenerated = lazy(() => import('./overview/demoTwo/SourceRevenueGenerated'));
 const BestSeller = lazy(() => import('./overview/demoTwo/BestSeller'));
 
 function DemoTwo() {
@@ -42,28 +39,6 @@ function DemoTwo() {
         </Row>
 
         <Row justify="center" gutter={25}>
-          <Col xxl={12} xs={24}>
-            <Suspense
-              fallback={
-                <Cards headless>
-                  <Skeleton active />
-                </Cards>
-              }
-            >
-              <SaleRevenue />
-            </Suspense>
-          </Col>
-          <Col xxl={12} lg={12} xs={24}>
-            <Suspense
-              fallback={
-                <Cards headless>
-                  <Skeleton active />
-                </Cards>
-              }
-            >
-              <SourceRevenueGenerated />
-            </Suspense>
-          </Col>
           <Col xxl={8} lg={12} xs={24}>
             <Suspense
               fallback={
