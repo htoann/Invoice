@@ -36,7 +36,6 @@ const DatePicker = lazy(() => import('../../container/ui-elements/DatePicker'));
 const Switches = lazy(() => import('../../container/ui-elements/Switch'));
 const TimePicker = lazy(() => import('../../container/ui-elements/Timepicker'));
 const TreeSelect = lazy(() => import('../../container/ui-elements/TreeSelect'));
-const Calendar = lazy(() => import('../../container/ui-elements/Calender'));
 const Form = lazy(() => import('../../container/ui-elements/Form'));
 const List = lazy(() => import('../../container/ui-elements/List'));
 const Skeleton = lazy(() => import('../../container/ui-elements/Skeleton'));
@@ -87,7 +86,6 @@ function ComponentRoute() {
       <Route path="select" element={<Selects />} />
       <Route path="timePicker" element={<TimePicker />} />
       <Route path="tree-select" element={<TreeSelect />} />
-      <Route path="calendar" element={<Calendar />} />
       <Route path="form" element={<Form />} />
       <Route path="dropdown" element={<Dropdown />} />
       <Route path="result" element={<Result />} />

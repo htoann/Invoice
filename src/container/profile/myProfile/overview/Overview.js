@@ -12,7 +12,6 @@ import { ProductOverviewTable } from './Style';
 import { Cards } from '../../../../components/cards/frame/cards-frame';
 import Heading from '../../../../components/heading/heading';
 import { CardBarChart2, EChartCard, ChartContainer } from '../../../dashboard/Style';
-import DashboardChart from '../../../../components/charts/DashboardChart';
 
 const moreContent = (
   <>
@@ -120,50 +119,6 @@ function Overview() {
                 </p>
               </CardBarChart2>
             </div>
-            <div className="card-chunk">
-              <ChartContainer>
-                <div className="ninjadash-chart-container">
-                  <DashboardChart
-                    type="bar"
-                    height={180}
-                    id="bar1"
-                    labels={['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul']}
-                    datasets={[
-                      {
-                        data: [20, 60, 50, 45, 50, 60, 70],
-                        backgroundColor: '#EFEFFE',
-                        hoverBackgroundColor: '#5F63F2',
-                        label: 'Orders',
-                        barPercentage: 1,
-                      },
-                    ]}
-                    scales={{
-                      y: {
-                        display: false,
-                        stacked: true,
-                        gridLines: {
-                          display: false,
-                        },
-                        ticks: {
-                          display: false,
-                        },
-                      },
-                      x: {
-                        display: false,
-                        stacked: true,
-                        gridLines: {
-                          display: false,
-                        },
-                        ticks: {
-                          display: false,
-                        },
-                      },
-                    }}
-                    // options={chartOptions}
-                  />
-                </div>
-              </ChartContainer>
-            </div>
           </EChartCard>
         </Cards>
       </Col>
@@ -182,53 +137,6 @@ function Overview() {
                 </p>
               </CardBarChart2>
             </div>
-
-            <div className="card-chunk">
-              <ChartContainer>
-                <div className="ninjadash-chart-container">
-                  <DashboardChart
-                    height={180}
-                    type="bar"
-                    id="bar2"
-                    labels={['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul']}
-                    datasets={[
-                      {
-                        data: [20, 60, 50, 45, 50, 60, 70],
-                        backgroundColor: '#FFF0F6',
-                        hoverBackgroundColor: '#FF69A5',
-                        label: 'Revenue',
-                        barPercentage: 1,
-                      },
-                    ]}
-                    legends={{
-                      display: false,
-                    }}
-                    scales={{
-                      y: {
-                        display: false,
-                        stacked: true,
-                        gridLines: {
-                          display: false,
-                        },
-                        ticks: {
-                          display: false,
-                        },
-                      },
-                      x: {
-                        display: false,
-                        stacked: true,
-                        gridLines: {
-                          display: false,
-                        },
-                        ticks: {
-                          display: false,
-                        },
-                      },
-                    }}
-                  />
-                </div>
-              </ChartContainer>
-            </div>
           </EChartCard>
         </Cards>
       </Col>
@@ -246,53 +154,6 @@ function Overview() {
                   <span>Since last week</span>
                 </p>
               </CardBarChart2>
-            </div>
-
-            <div className="card-chunk">
-              <ChartContainer>
-                <div className="ninjadash-chart-container">
-                  <DashboardChart
-                    height={180}
-                    type="bar"
-                    id="bar3"
-                    labels={['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul']}
-                    datasets={[
-                      {
-                        data: [20, 60, 50, 45, 50, 60, 70],
-                        backgroundColor: '#E8FAF4',
-                        hoverBackgroundColor: '#20C997',
-                        label: 'Avg Orders',
-                        barPercentage: 1,
-                      },
-                    ]}
-                    legends={{
-                      display: false,
-                    }}
-                    scales={{
-                      y: {
-                        display: false,
-                        stacked: true,
-                        gridLines: {
-                          display: false,
-                        },
-                        ticks: {
-                          display: false,
-                        },
-                      },
-                      x: {
-                        display: false,
-                        stacked: true,
-                        gridLines: {
-                          display: false,
-                        },
-                        ticks: {
-                          display: false,
-                        },
-                      },
-                    }}
-                  />
-                </div>
-              </ChartContainer>
             </div>
           </EChartCard>
         </Cards>

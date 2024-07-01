@@ -14,7 +14,6 @@ import config from '../../../../config/config';
 import { BorderLessHeading } from '../../../styled';
 import { ChartContainer, RevenueGeneratedWrapper } from '../../Style';
 import { Cards } from '../../../../components/cards/frame/cards-frame';
-import DashboardChart from '../../../../components/charts/DashboardChart';
 
 const SourceRevenueGenerated = React.memo(() => {
   const { mainContent } = useSelector((state) => {
@@ -96,13 +95,6 @@ const SourceRevenueGenerated = React.memo(() => {
       <RevenueGeneratedWrapper>
         <Cards title="Source Of Revenue Generated" size="large" more={moreContent}>
           <div className="ninjadsh-revenue-wrap">
-            <div className="ninjadsh-revenue-chart">
-              <ChartContainer className="ninjadash-chart-pie">
-                <div className="ninjadash-chart-container">
-                  <DashboardChart {...chartjsPieChart} type="pie" id="pieChart" />
-                </div>
-              </ChartContainer>
-            </div>
             <div className="ninjadsh-revenue-chart-source">
               <div className="ninjadsh-revenue-chart-source__single">
                 <div className="ninjadsh-revenue-chart-source__icon ninjadash-twitter">

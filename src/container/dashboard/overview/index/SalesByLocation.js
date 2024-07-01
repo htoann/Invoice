@@ -8,7 +8,6 @@ import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import { Scrollbars } from '@pezhmanparsaee/react-custom-scrollbars';
 import { Link, NavLink } from 'react-router-dom';
-import { ComposableMap, Geographies, Geography, ZoomableGroup } from 'react-simple-maps';
 import ReactTooltip from 'react-tooltip';
 import { Cards } from '../../../../components/cards/frame/cards-frame';
 import { LocationTableWrap, SaleLocationMap } from '../../Style';
@@ -163,51 +162,6 @@ const SaleByLocation = React.memo(() => {
           <SaleLocationMap>
             <div>
               <ReactTooltip>{content}</ReactTooltip>
-              <ComposableMap
-                data-tip=""
-                data-html
-                projectionConfig={{
-                  scale: window.innerWidth <= 440 ? 160 : 160,
-                }}
-                viewBox="110, 50, 800, 410"
-              >
-                <ZoomableGroup zoom={position.zoom} center={position.coordinates} onMoveEnd={handleMoveEnd}>
-                  <Geographies geography={geoUrl}>
-                    {({ geographies }) =>
-                      geographies.map((geo) => (
-                        <Geography
-                          key={geo.rsmKey}
-                          geography={geo}
-                          onMouseEnter={() => {
-                            const { name } = geo.properties;
-                            setContent(`${name}`);
-                          }}
-                          onMouseLeave={() => {
-                            setContent('');
-                          }}
-                          fill="#DBE1E8"
-                          stroke="#FFF"
-                          strokeWidth={0.5}
-                          style={{
-                            default: {
-                              fill: '#DBE1E8',
-                              outline: 'none',
-                            },
-                            hover: {
-                              fill: '#5F63F2',
-                              outline: 'none',
-                            },
-                            pressed: {
-                              fill: '#5F63F2',
-                              outline: 'none',
-                            },
-                          }}
-                        />
-                      ))
-                    }
-                  </Geographies>
-                </ZoomableGroup>
-              </ComposableMap>
 
               <div className="controls">
                 <button type="button" onClick={handleZoomIn} aria-label="Zoom In">

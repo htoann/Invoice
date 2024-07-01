@@ -12,7 +12,6 @@ import Widgets from './widgets';
 import withAdminLayout from '../../layout/withAdminLayout';
 import AccountList from '../../pages/mails/AccountList';
 
-const Charts = lazy(() => import('./charts'));
 const KnowledgeBase = lazy(() => import('../../container/pages/knowledgeBase/Index'));
 const AllArticle = lazy(() => import('../../container/pages/knowledgeBase/AllArticle'));
 const KnowledgeSingle = lazy(() => import('../../container/pages/knowledgeBase/SingleKnowledge'));
@@ -30,19 +29,16 @@ const Note = lazy(() => import('../../container/note/Note'));
 const Contact = lazy(() => import('../../container/contact/Contact'));
 const ContactGrid = lazy(() => import('../../container/contact/ContactGrid'));
 const ContactAddNew = lazy(() => import('../../container/contact/AddNew'));
-const Calendars = lazy(() => import('../../container/calendar/Calendar'));
 const Projects = lazy(() => import('./projects'));
 const Myprofile = lazy(() => import('../../container/profile/myProfile/Index'));
 const Chat = lazy(() => import('../../container/chat/ChatApp'));
 const Inbox = lazy(() => import('../../container/email/Email'));
-const Maps = lazy(() => import('./maps'));
 const Editors = lazy(() => import('../../container/pages/Editor'));
 const Icons = lazy(() => import('./icons'));
 const Tables = lazy(() => import('./table'));
 const Jobs = lazy(() => import('../../container/jobSearch/Jobs'));
 const JobDetails = lazy(() => import('../../container/jobSearch/JobSearchDetails'));
 const JobApply = lazy(() => import('../../container/jobSearch/JobApplication'));
-const Firebase = lazy(() => import('./firebase'));
 const NotFound = lazy(() => import('../../container/pages/404'));
 
 const Admin = React.memo(() => {
@@ -66,7 +62,6 @@ const Admin = React.memo(() => {
         <Route path="knowledgeBase/*" element={<KnowledgeBase />} />
         <Route path="knowledgebaseSingle/:id" element={<KnowledgeSingle />} />
         <Route path="components/*" element={<Components />} />
-        <Route path="charts/*" element={<Charts />} />
         <Route path="app/task/*" element={<Task />} />
         <Route path="users/*" element={<Users />} />
         <Route path="app/support/tickets/*" element={<Tickets />} />
@@ -81,7 +76,6 @@ const Admin = React.memo(() => {
         <Route path="contact/list" element={<Contact />} />
         <Route path="contact/grid" element={<ContactGrid />} />
         <Route path="contact/addNew" element={<ContactAddNew />} />
-        <Route path="app/calendar/*" element={<Calendars />} />
         <Route path="features/*" element={<Features />} />
         <Route path="project/*" element={<Projects />} />
         <Route path="profile/myProfile/*" element={<Myprofile />} />
@@ -90,7 +84,6 @@ const Admin = React.memo(() => {
         {/* Change */}
         <Route path="email/account-list" element={<AccountList />} />
         <Route path="email/*" element={<Inbox />} />
-        <Route path="maps/*" element={<Maps />} />
         <Route path="editor" element={<Editors />} />
         <Route path="icons/*" element={<Icons />} />
         <Route path="tables/*" element={<Tables />} />
@@ -98,7 +91,6 @@ const Admin = React.memo(() => {
         <Route path="app/jobs/*" element={<Jobs />} />
         <Route path="app/job/apply" element={<JobApply />} />
         <Route path="app/jobDetails/:id" element={<JobDetails />} />
-        <Route path="firestore/*" element={<Firebase />} />
         <Route path="axios/*" element={<Axios />} />
         <Route path="*" element={<NotFound />} />
       </Routes>

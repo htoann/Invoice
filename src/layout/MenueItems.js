@@ -538,13 +538,6 @@ function MenuItems({ toggleCollapsed }) {
         </NavLink>
       ),
     ),
-    // getItem(
-    //   <NavLink onClick={toggleCollapsed} to={`${path}/app/kanban`}>
-    //     {t('kanban Board')}
-    //   </NavLink>,
-    //   'kanban',
-    //   !topMenu && <UilExpandArrowsAlt />,
-    // ),
     getItem(`${t('import')} ${t('export')}`, 'importExport', !topMenu && <UilExchange />, [
       getItem(
         <NavLink onClick={toggleCollapsed} to={`${path}/importExport/import`}>

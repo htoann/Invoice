@@ -9,7 +9,6 @@ import { NavLink } from 'react-router-dom';
 import UilUp from '@iconscout/react-unicons/icons/uil-arrow-up';
 import UilDown from '@iconscout/react-unicons/icons/uil-arrow-down';
 import { Cards } from '../../../../components/cards/frame/cards-frame';
-import DashboardChart from '../../../../components/charts/DashboardChart';
 import { chartLinearGradient, customTooltips } from '../../../../components/utilities/utilities';
 import { BorderLessHeading } from '../../../styled';
 import { ChartContainer, SalesRevenueWrapper } from '../../Style';
@@ -119,62 +118,6 @@ const SalesReport = React.memo(({ title }) => {
                     </span>
                   </div>
                 </div>
-                <DashboardChart
-                  type="line"
-                  id="ninjadash-sales-revenue"
-                  labels={salesRevenue.labels}
-                  datasets={salesRevenueDatasets}
-                  scales={{
-                    y: {
-                      grid: {
-                        color: '#485e9029',
-                        borderDash: [3, 3],
-                        zeroLineColor: '#485e9029',
-                        zeroLineWidth: 1,
-                        zeroLineBorderDash: [3, 3],
-                      },
-                      ticks: {
-                        beginAtZero: true,
-                        fontSize: 13,
-                        color: '#8C90A4',
-                        suggestedMin: 50,
-                        suggestedMax: 80,
-                        stepSize: 20,
-                        callback(label) {
-                          return `${label}k`;
-                        },
-                      },
-                    },
-
-                    x: {
-                      grid: {
-                        display: true,
-                        zeroLineWidth: 1,
-                        zeroLineColor: 'transparent',
-                        color: 'transparent',
-                        z: 1,
-                        tickMarkLength: 0,
-                      },
-                      ticks: {
-                        color: '#8C90A4',
-                        padding: 10,
-                      },
-                    },
-                  }}
-                  tooltip={{
-                    custom: customTooltips,
-                    callbacks: {
-                      title() {
-                        return `Total Revenue`;
-                      },
-                      label(t) {
-                        const { formattedValue, dataset } = t;
-                        return `${dataset.label}: ${formattedValue}k`;
-                      },
-                    },
-                  }}
-                  height={window.innerWidth <= 575 ? 175 : 100}
-                />
               </div>
             </Cards>
           </ChartContainer>

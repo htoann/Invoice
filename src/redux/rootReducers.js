@@ -1,7 +1,5 @@
 import { combineReducers } from 'redux';
-import { firestoreReducer } from 'redux-firestore';
 import authReducer from './authentication/reducers';
-import Calender from './calendar/reducers';
 import cartData from './cart/reducers';
 import { chatReducer, groupChatReducer, SingleChatGroupReducer, SingleChatReducer } from './chat/reducers';
 import Contact from './contact/reducers';
@@ -9,12 +7,9 @@ import { axiosCrudReducer, axiosSingleCrudReducer } from './crud/axios/reducers'
 import dataTable from './data-filter/reducers';
 import { emailReducer, SingleEmailReducer } from './email/reducers';
 import FileManager from './fileManager/reducers';
-import firebaseAuth from './firebase/auth/reducers';
-import { fsCrudReducer, fsSingleCrudReducer } from './firebase/firestore/reducers';
 import galleryReducer from './gallary/reducers';
 import { headerSearchReducer } from './headerSearch/reducers';
 import jobs from './jobs/reducers';
-import kanbanBoardReducer from './kanban/reducers';
 import { readMessageReducer } from './message/reducers';
 import Note from './note/reducers';
 import { readNotificationReducer } from './notification/reducers';
@@ -32,10 +27,6 @@ import Todo from './todo/reducers';
 import { userGroupReducer, userReducer } from './users/reducers';
 
 const rootReducers = combineReducers({
-  fs: firestoreReducer,
-  crud: fsCrudReducer,
-  singleCrud: fsSingleCrudReducer,
-  firebaseAuth,
   themeUsers: themeUsersReducer,
   headerSearchData: headerSearchReducer,
   message: readMessageReducer,
@@ -63,10 +54,8 @@ const rootReducers = combineReducers({
   Note,
   AxiosCrud: axiosCrudReducer,
   Task,
-  KanbanBoard: kanbanBoardReducer,
   Contact,
   Profile,
-  Calender,
   FileManager,
   tickets,
   jobs,
