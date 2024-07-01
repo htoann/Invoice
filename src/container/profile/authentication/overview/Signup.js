@@ -1,15 +1,11 @@
+import { Button, Col, Form, Input, Row } from 'antd';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ReactSVG } from 'react-svg';
-import { Row, Col, Form, Input, Button } from 'antd';
-import UilFacebook from '@iconscout/react-unicons/icons/uil-facebook-f';
-import UilTwitter from '@iconscout/react-unicons/icons/uil-twitter';
-import UilGithub from '@iconscout/react-unicons/icons/uil-github';
 
 import { useDispatch } from 'react-redux';
-import { AuthFormWrap } from './style';
 import { Checkbox } from '../../../../components/checkbox/checkbox';
 import { register } from '../../../../redux/authentication/actionCreator';
+import { AuthFormWrap } from './style';
 
 function SignUp() {
   const dispatch = useDispatch();
@@ -62,31 +58,6 @@ function SignUp() {
                   Create Account
                 </Button>
               </Form.Item>
-              <p className="ninjadash-form-divider">
-                <span>Or</span>
-              </p>
-              <ul className="ninjadash-social-login">
-                <li>
-                  <Link className="google-social" to="#">
-                    <ReactSVG src={require(`../../../../static/img/icon/google-plus.svg`).default} />
-                  </Link>
-                </li>
-                <li>
-                  <Link className="facebook-social" to="#">
-                    <UilFacebook />
-                  </Link>
-                </li>
-                <li>
-                  <Link className="twitter-social" to="#">
-                    <UilTwitter />
-                  </Link>
-                </li>
-                <li>
-                  <Link className="github-social" to="#">
-                    <UilGithub />
-                  </Link>
-                </li>
-              </ul>
             </Form>
           </div>
           <div className="ninjadash-authentication-bottom">

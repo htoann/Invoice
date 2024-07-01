@@ -8,7 +8,7 @@ import UilTrash from '@iconscout/react-unicons/icons/uil-trash-alt';
 import { Link } from 'react-router-dom';
 import { PageHeader } from '../../components/page-headers/page-headers';
 import { Cards } from '../../components/cards/frame/cards-frame';
-import DataTable from '../../components/table/DataTable';
+import DataTable from '../../components/data-table/DataTable';
 import UserListTable from '../pages/overview/UserTable';
 import ProjectLists from '../project/overview/List';
 import TaskList from '../project/overview/TaskList';

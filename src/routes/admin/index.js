@@ -10,6 +10,7 @@ import Pages from './pages';
 import Users from './users';
 import Widgets from './widgets';
 import withAdminLayout from '../../layout/withAdminLayout';
+import AccountList from '../../pages/mails/AccountList';
 
 const Charts = lazy(() => import('./charts'));
 const KnowledgeBase = lazy(() => import('../../container/pages/knowledgeBase/Index'));
@@ -26,7 +27,6 @@ const Import = lazy(() => import('../../container/importExport/Import'));
 const Export = lazy(() => import('../../container/importExport/Export'));
 const ToDo = lazy(() => import('../../container/toDo/ToDo'));
 const Note = lazy(() => import('../../container/note/Note'));
-// const Kanban = lazy(() => import('../../container/kanban/Index'));
 const Contact = lazy(() => import('../../container/contact/Contact'));
 const ContactGrid = lazy(() => import('../../container/contact/ContactGrid'));
 const ContactAddNew = lazy(() => import('../../container/contact/AddNew'));
@@ -78,7 +78,6 @@ const Admin = React.memo(() => {
         <Route path="importExport/export" element={<Export />} />
         <Route path="app/to-do" element={<ToDo />} />
         <Route path="app/note/*" element={<Note />} />
-        {/* <Route path="app/kanban/*" element={<Kanban />} /> */}
         <Route path="contact/list" element={<Contact />} />
         <Route path="contact/grid" element={<ContactGrid />} />
         <Route path="contact/addNew" element={<ContactAddNew />} />
@@ -88,6 +87,8 @@ const Admin = React.memo(() => {
         <Route path="profile/myProfile/*" element={<Myprofile />} />
         <Route path="ecommerce/*" element={<Ecommerce />} />
         <Route path="main/chat/*" element={<Chat />} />
+        {/* Change */}
+        <Route path="email/account-list" element={<AccountList />} />
         <Route path="email/*" element={<Inbox />} />
         <Route path="maps/*" element={<Maps />} />
         <Route path="editor" element={<Editors />} />
