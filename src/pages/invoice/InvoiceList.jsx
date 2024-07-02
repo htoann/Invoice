@@ -7,7 +7,6 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Cards } from '../../components/cards/frame/cards-frame';
-import DataTable from '../../components/data-table/DataTable';
 import { PageHeader } from '../../components/page-headers/page-headers';
 
 import { BorderLessHeading, Main } from '../../container/styled';
@@ -16,6 +15,7 @@ import { tableReadData } from '../../redux/data-filter/actionCreator';
 import CreateAccount from './components/CreateInvoice';
 import EditAccount from './components/EditInvoice';
 import { invoiceListDataTable } from './const';
+import DataTable from './components/data-table/DataTable';
 
 function InvoiceList() {
   const dispatch = useDispatch();
@@ -32,6 +32,7 @@ function InvoiceList() {
   ];
 
   const [invoiceList, setInvoiceList] = useState([]);
+  const [loaiHoaDon, setLoaiHoaDon] = useState('purchase');
   const [pagination, setPagination] = useState({ pageSize: 20, showSizeChanger: true, current: 1 });
 
   const [state, setState] = useState({
@@ -56,15 +57,17 @@ function InvoiceList() {
     }
   }, [dispatch]);
 
-  const getInvoiceList = async (page, pageSize = 20) => {
-    const data = await axios.get('http://localhost:8000/invoices', { params: { page, page_size: pageSize } });
+  const getInvoiceList = async (page, pageSize = 20, _loaiHoaDon = 'purchase') => {
+    const data = await axios.get('http://localhost:8000/invoices', {
+      params: { page, page_size: pageSize, loaihdon: _loaiHoaDon },
+    });
     setInvoiceList(data?.data?.results);
     setPagination({ ...pagination, total: Number(data?.data?.count) });
   };
 
   useEffect(() => {
-    getInvoiceList(pagination.current, pagination.pageSize);
-  }, [pagination.current, pagination.pageSize]);
+    getInvoiceList(pagination.current, pagination.pageSize, loaiHoaDon);
+  }, [pagination.current, pagination.pageSize, loaiHoaDon]);
 
   const showModal = () => {
     setState({
@@ -147,19 +150,18 @@ function InvoiceList() {
 
   // date_from;date_to;loaihdon;
 
-  // sold;purchases
-
   return (
     <>
-      <PageHeader className="ninjadash-page-header-main" title="Danh sách tài khoản" routes={PageRoutes} />
+      <PageHeader
+        className="ninjadash-page-header-main"
+        title={`Danh sách hóa đơn ${loaiHoaDon === 'purchase' ? 'mua vào' : 'bán ra'}`}
+        routes={PageRoutes}
+      />
       <Main>
         <Row gutter={15}>
           <Col xs={24}>
             <BorderLessHeading>
               <Cards>
-                <Button onClick={showModal} className="btn-add_new" size="default" type="primary" key="1">
-                  <Link to="#">+ Thêm</Link>
-                </Button>
                 <DataTable
                   filterOption
                   filterOnchange
@@ -170,6 +172,7 @@ function InvoiceList() {
                   onchangePagination={(_pagination) => {
                     setPagination(_pagination);
                   }}
+                  setLoaiHoaDon={setLoaiHoaDon}
                 />
               </Cards>
             </BorderLessHeading>
