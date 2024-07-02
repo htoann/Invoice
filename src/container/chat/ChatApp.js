@@ -19,7 +19,7 @@ const SingleGroup = lazy(() => import('./overview/SingleGroupChat'));
 function ChatApp() {
   const PageRoutes = [
     {
-      path: '/admin',
+      path: '/',
       breadcrumbName: 'Dashboard',
     },
     {

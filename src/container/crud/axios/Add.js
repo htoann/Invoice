@@ -76,7 +76,7 @@ function AddNew() {
         className="ninjadash-page-header-main"
         buttons={[
           <Button className="btn-add_new" size="default" key="1" type="primary">
-            <Link to="/admin/axios/crud/axios-view">View All</Link>
+            <Link to="/axios/crud/axios-view">View All</Link>
           </Button>,
         ]}
         ghost

@@ -9,7 +9,7 @@ import Alert from '../../components/alerts/alerts';
 function Alerts() {
   const PageRoutes = [
     {
-      path: '/admin',
+      path: '/',
       breadcrumbName: 'Dashboard',
     },
     {

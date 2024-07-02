@@ -30,7 +30,7 @@ const treeData = [
 function TreeSelects() {
   const PageRoutes = [
     {
-      path: '/admin',
+      path: '/',
       breadcrumbName: 'Dashboard',
     },
     {

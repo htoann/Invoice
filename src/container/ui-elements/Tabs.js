@@ -10,7 +10,7 @@ const { data, dataIcon, icon } = tabData;
 function Tabs() {
   const PageRoutes = [
     {
-      path: '/admin',
+      path: '/',
       breadcrumbName: 'Dashboard',
     },
     {

@@ -15,7 +15,7 @@ const { themeColor } = config;
 function DashboardBase() {
   const PageRoutes = [
     {
-      path: '/admin',
+      path: '/',
       breadcrumbName: 'Dashboard',
     },
     {

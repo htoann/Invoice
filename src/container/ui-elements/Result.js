@@ -10,7 +10,7 @@ const { Paragraph, Text } = Typography;
 function Results() {
   const PageRoutes = [
     {
-      path: '/admin',
+      path: '/',
       breadcrumbName: 'Dashboard',
     },
     {

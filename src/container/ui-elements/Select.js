@@ -15,7 +15,7 @@ const cityData = {
 function Selects() {
   const PageRoutes = [
     {
-      path: '/admin',
+      path: '/',
       breadcrumbName: 'Dashboard',
     },
     {

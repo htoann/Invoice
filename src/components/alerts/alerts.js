@@ -2,9 +2,16 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { AlertWrap } from './Style';
 
-function Alert(props) {
-  const { type, icon, message, description, showIcon, outlined, closable, closeText } = props;
-
+function Alert({
+  type = 'success',
+  icon,
+  message = 'Hello there! A simple success alert—check it out!',
+  description,
+  showIcon,
+  outlined,
+  closable,
+  closeText,
+}) {
   return (
     <AlertWrap
       message={message}
@@ -18,11 +25,6 @@ function Alert(props) {
     />
   );
 }
-
-Alert.defaultProps = {
-  type: 'success',
-  message: 'Hello there! A simple success alert—check it out!',
-};
 
 Alert.propTypes = {
   type: PropTypes.oneOf(['success', 'info', 'warning', 'error']),

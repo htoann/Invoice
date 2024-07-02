@@ -17,7 +17,7 @@ function JobCardView({ job }) {
             </div>
             <div className="ninjadash-media__body">
               <Heading as="h4">
-                <Link to={`/admin/app/jobDetails/${id}`}>{title}</Link>
+                <Link to={`/app/jobDetails/${id}`}>{title}</Link>
               </Heading>
               <p>{location}</p>
             </div>
@@ -38,7 +38,7 @@ function JobCardView({ job }) {
           </ul>
         </div>
         <div className="ninjadash-job-card__action">
-          <Link className="ninjadash-job-card-btn-details" to={`/admin/app/jobDetails/${id}`}>
+          <Link className="ninjadash-job-card-btn-details" to={`/app/jobDetails/${id}`}>
             View Details
           </Link>
         </div>

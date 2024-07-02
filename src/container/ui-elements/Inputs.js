@@ -9,7 +9,7 @@ const { TextArea } = Input;
 function Inputs() {
   const PageRoutes = [
     {
-      path: '/admin',
+      path: '/',
       breadcrumbName: 'Dashboard',
     },
     {

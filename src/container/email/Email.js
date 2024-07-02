@@ -24,7 +24,7 @@ const MailDetailView = lazy(() => import('./overview/MailDetailView'));
 function Email() {
   const PageRoutes = [
     {
-      path: '/admin',
+      path: '/',
       breadcrumbName: 'Email',
     },
     {

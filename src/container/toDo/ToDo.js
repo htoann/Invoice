@@ -12,7 +12,7 @@ import ToDos from '../../components/todo/Todo';
 function ToDo() {
   const PageRoutes = [
     {
-      path: '/admin',
+      path: '/',
       breadcrumbName: 'Dashboard',
     },
     {

@@ -26,70 +26,74 @@ const renderItem = (title, count) => {
   };
 };
 
-const AutoComplete = React.memo((props) => {
-  const { rtl } = useSelector((state) => {
-    return {
-      rtl: state.ChangeLayoutMode.rtlData,
-    };
-  });
-  const { customComponent, patterns, patternButtons, width, onSearch, options, placeholder } = props;
-
-  const content =
-    options?.length > 0 &&
-    options.map((group) => {
-      const { title, count } = group;
+const AutoComplete = React.memo(
+  ({
+    customComponent = null,
+    patterns = false,
+    patternButtons = false,
+    width = '350px',
+    onSearch = () => {},
+    options = [],
+    placeholder = 'Input here',
+  }) => {
+    const { rtl } = useSelector((state) => {
       return {
-        label: title,
-        options: [renderItem(title, <span className="certain-search-item-count">{count} people</span>)],
+        rtl: state.ChangeLayoutMode.rtlData,
       };
     });
 
-  const onSearching = (searchText) => {
-    onSearch(searchText);
-  };
+    const content =
+      options?.length > 0 &&
+      options.map((group) => {
+        const { title, count } = group;
+        return {
+          label: title,
+          options: [renderItem(title, <span className="certain-search-item-count">{count} people</span>)],
+        };
+      });
 
-  return customComponent ? (
-    <AutoCompleteStyled options={options} style={{ width }} onSelect={onSelect} onSearch={onSearching}>
-      {customComponent}
-    </AutoCompleteStyled>
-  ) : patterns ? (
-    <AutoCompleteStyled
-      className="certain-category-search"
-      popupClassName="certain-category-search-dropdown"
-      dropdownMatchSelectWidth={false}
-      dropdownStyle={{ width: 300 }}
-      style={{ width }}
-      options={content}
-      placeholder={placeholder}
-      onSearch={onSearching}
-    >
-      <Input
-        suffix={
-          patternButtons ? (
-            <Button className="search-btn" style={{ [rtl ? 'marginLeft' : 'marginRight']: -20 }} type="primary">
+    const onSearching = (searchText) => {
+      onSearch(searchText);
+    };
+
+    return customComponent ? (
+      <AutoCompleteStyled options={options} style={{ width }} onSelect={onSelect} onSearch={onSearching}>
+        {customComponent}
+      </AutoCompleteStyled>
+    ) : patterns ? (
+      <AutoCompleteStyled
+        className="certain-category-search"
+        popupClassName="certain-category-search-dropdown"
+        dropdownMatchSelectWidth={false}
+        dropdownStyle={{ width: 300 }}
+        style={{ width }}
+        options={content}
+        placeholder={placeholder}
+        onSearch={onSearching}
+      >
+        <Input
+          suffix={
+            patternButtons ? (
+              <Button className="search-btn" style={{ [rtl ? 'marginLeft' : 'marginRight']: -20 }} type="primary">
+                <SearchOutlined />
+              </Button>
+            ) : (
               <SearchOutlined />
-            </Button>
-          ) : (
-            <SearchOutlined />
-          )
-        }
+            )
+          }
+        />
+      </AutoCompleteStyled>
+    ) : (
+      <AutoCompleteStyled
+        options={options}
+        style={{ width }}
+        onSelect={onSelect}
+        onSearch={onSearching}
+        placeholder={placeholder}
       />
-    </AutoCompleteStyled>
-  ) : (
-    <AutoCompleteStyled
-      options={options}
-      style={{ width }}
-      onSelect={onSelect}
-      onSearch={onSearching}
-      placeholder={placeholder}
-    />
-  );
-});
-
-AutoComplete.defaultProps = {
-  width: '350px',
-  placeholder: 'Input here',
-};
+    );
+  },
+);
 
 AutoComplete.propTypes = {
   customComponent: PropTypes.node,

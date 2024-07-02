@@ -11,7 +11,7 @@ const antIcon = <LoadingOutlined style={{ fontSize: 24 }} />;
 function Spiner() {
   const PageRoutes = [
     {
-      path: '/admin',
+      path: '/',
       breadcrumbName: 'Dashboard',
     },
     {

@@ -8,7 +8,7 @@ import { Cards } from '../../components/cards/frame/cards-frame';
 function Calendars() {
   const PageRoutes = [
     {
-      path: '/admin',
+      path: '/',
       breadcrumbName: 'Dashboard',
     },
     {

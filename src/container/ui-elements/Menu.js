@@ -10,7 +10,7 @@ const { SubMenu } = Menu;
 function Menus() {
   const PageRoutes = [
     {
-      path: '/admin',
+      path: '/',
       breadcrumbName: 'Dashboard',
     },
     {

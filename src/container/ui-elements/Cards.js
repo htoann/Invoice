@@ -39,7 +39,7 @@ const content = (
 function CardContainer() {
   const PageRoutes = [
     {
-      path: '/admin',
+      path: '/',
       breadcrumbName: 'Dashboard',
     },
     {

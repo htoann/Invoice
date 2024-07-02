@@ -75,7 +75,7 @@ const showConfirm = () => {
 function Modals() {
   const PageRoutes = [
     {
-      path: '/admin',
+      path: '/',
       breadcrumbName: 'Dashboard',
     },
     {

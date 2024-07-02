@@ -13,7 +13,7 @@ const Ordersummary = lazy(() => import('./overview/Ordersummary'));
 function ShoppingCart() {
   const PageRoutes = [
     {
-      path: '/admin',
+      path: '/',
       breadcrumbName: 'Dashboard',
     },
     {

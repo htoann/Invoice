@@ -10,7 +10,7 @@ const { Dragger } = Upload;
 function Import() {
   const PageRoutes = [
     {
-      path: '/admin',
+      path: '/',
       breadcrumbName: 'Dashboard',
     },
     {

@@ -8,7 +8,7 @@ import { Main } from '../styled';
 function Tags() {
   const PageRoutes = [
     {
-      path: '/admin',
+      path: '/',
       breadcrumbName: 'Dashboard',
     },
     {

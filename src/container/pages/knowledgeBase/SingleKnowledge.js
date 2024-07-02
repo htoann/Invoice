@@ -58,7 +58,7 @@ function SingleKnowledge() {
             <div className="ninjadash-paginaion">
               <ul>
                 <li>
-                  <Link className="active" to="/admin/knowledgebase/plugins">
+                  <Link className="active" to="/knowledgebase/plugins">
                     Doc Home
                   </Link>
                 </li>

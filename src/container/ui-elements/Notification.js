@@ -15,7 +15,7 @@ import { Button } from '../../components/buttons/buttons';
 function Notifications() {
   const PageRoutes = [
     {
-      path: '/admin',
+      path: '/',
       breadcrumbName: 'Dashboard',
     },
     {

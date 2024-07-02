@@ -34,7 +34,7 @@ ExampleComment.propTypes = {
 function Comments() {
   const PageRoutes = [
     {
-      path: '/admin',
+      path: '/',
       breadcrumbName: 'Dashboard',
     },
     {

@@ -143,7 +143,7 @@ function AddSupportTicket() {
         createAt,
         action: (
           <div className="table-actions">
-            <Link className="view" to={`/admin/app/support/ticketDetails/${id}`}>
+            <Link className="view" to={`/app/support/ticketDetails/${id}`}>
               <UilEye />
             </Link>
             <Link onClick={() => showModalEdit(item)} className="edit" to="#">

@@ -11,7 +11,7 @@ import Heading from '../../../../components/heading/heading';
 import { Cards } from '../../../../components/cards/frame/cards-frame';
 
 function AuthorBox() {
-  const path = '/admin/pages/settings';
+  const path = '/pages/settings';
 
   return (
     <ProfileAuthorBox>

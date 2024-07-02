@@ -17,7 +17,7 @@ const { Dragger } = Upload;
 function AddProduct() {
   const PageRoutes = [
     {
-      path: '/admin',
+      path: '/',
       breadcrumbName: 'Dashboard',
     },
     {

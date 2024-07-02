@@ -1,6 +1,8 @@
 import UilEdit from '@iconscout/react-unicons/icons/uil-edit';
+import UilEye from '@iconscout/react-unicons/icons/uil-eye';
 import UilTrash from '@iconscout/react-unicons/icons/uil-trash-alt';
 import { Button, Col, Popconfirm, Row } from 'antd';
+import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -11,22 +13,24 @@ import { PageHeader } from '../../components/page-headers/page-headers';
 import { BorderLessHeading, Main } from '../../container/styled';
 import { contactDeleteData } from '../../redux/contact/actionCreator';
 import { tableReadData } from '../../redux/data-filter/actionCreator';
-import CreateAccount from './components/CreateAccount';
-import EditAccount from './components/EditAccount';
+import CreateAccount from './components/CreateInvoice';
+import EditAccount from './components/EditInvoice';
 
-function AccountList() {
+function InvoiceList() {
   const dispatch = useDispatch();
 
   const PageRoutes = [
     {
-      path: 'index',
-      breadcrumbName: 'Dashboard',
+      path: '/invoices',
+      breadcrumbName: 'Quản lý hóa đơn',
     },
     {
-      path: 'first',
-      breadcrumbName: 'Table',
+      path: '/invoices',
+      breadcrumbName: 'Danh sách hóa đơn',
     },
   ];
+
+  const [invoiceList, setInvoiceList] = useState([]);
 
   const [state, setState] = useState({
     selectedRowKeys: 0,
@@ -50,11 +54,20 @@ function AccountList() {
     }
   }, [dispatch]);
 
-  const { TableData } = useSelector((states) => {
-    return {
-      TableData: states.dataTable.tableData,
-    };
-  });
+  const getInvoiceList = async () => {
+    const data = await axios.get('http://localhost:8000/invoices');
+    setInvoiceList(data?.data?.results);
+  };
+
+  useEffect(() => {
+    getInvoiceList();
+  }, []);
+
+  // const { TableData } = useSelector((states) => {
+  //   return {
+  //     TableData: states.dataTable.tableData,
+  //   };
+  // });
 
   const showModal = () => {
     setState({
@@ -76,17 +89,22 @@ function AccountList() {
     dispatch(contactDeleteData(value));
   };
 
-  const tableDataScource = [];
+  const tableDataSource = [];
 
-  if (TableData.length > 0) {
-    TableData.map((item) => {
-      const { id, username, email } = item;
-      return tableDataScource.push({
+  console.log(invoiceList);
+
+  if (invoiceList.length > 0) {
+    invoiceList.map((item) => {
+      const { no: id, username, email } = item;
+      return tableDataSource.push({
         id,
         user: <span className="ninjadash-username">{username}</span>,
         email: <span>{email}</span>,
         action: (
           <div className="table-actions">
+            <Link className="view" to={`/invoices/${id}`}>
+              <UilEye />
+            </Link>
             <Link className="edit" to="#" onClick={showEditModal}>
               <UilEdit />
             </Link>
@@ -146,7 +164,7 @@ function AccountList() {
                 <DataTable
                   filterOption
                   filterOnchange
-                  tableData={tableDataScource}
+                  tableData={tableDataSource}
                   columns={dataTableColumn}
                   rowSelection={false}
                 />
@@ -163,4 +181,4 @@ function AccountList() {
   );
 }
 
-export default AccountList;
+export default InvoiceList;

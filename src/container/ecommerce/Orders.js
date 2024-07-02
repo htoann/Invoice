@@ -16,7 +16,7 @@ import { orderFilter } from '../../redux/orders/actionCreator';
 function Orders() {
   const PageRoutes = [
     {
-      path: '/admin',
+      path: '/',
       breadcrumbName: 'Dashboard',
     },
     {

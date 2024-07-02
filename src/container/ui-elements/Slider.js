@@ -8,7 +8,7 @@ import { Slider } from '../../components/slider/slider';
 function Sliders() {
   const PageRoutes = [
     {
-      path: '/admin',
+      path: '/',
       breadcrumbName: 'Dashboard',
     },
     {

@@ -8,7 +8,7 @@ import { Button } from '../../components/buttons/buttons';
 function EmptyData() {
   const PageRoutes = [
     {
-      path: '/admin',
+      path: '/',
       breadcrumbName: 'Dashboard',
     },
     {

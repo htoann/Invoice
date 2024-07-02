@@ -9,7 +9,7 @@ const { Option } = Select;
 function Drawers() {
   const PageRoutes = [
     {
-      path: '/admin',
+      path: '/',
       breadcrumbName: 'Dashboard',
     },
     {

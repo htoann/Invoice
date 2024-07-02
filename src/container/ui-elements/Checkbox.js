@@ -8,7 +8,7 @@ import { Checkbox } from '../../components/checkbox/checkbox';
 function Checkboxs() {
   const PageRoutes = [
     {
-      path: '/admin',
+      path: '/',
       breadcrumbName: 'Dashboard',
     },
     {

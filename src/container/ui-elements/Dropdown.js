@@ -13,7 +13,7 @@ import { Button } from '../../components/buttons/buttons';
 function Dropdowns() {
   const PageRoutes = [
     {
-      path: '/admin',
+      path: '/',
       breadcrumbName: 'Dashboard',
     },
     {

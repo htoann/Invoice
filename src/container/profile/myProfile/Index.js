@@ -16,7 +16,7 @@ const Activity = lazy(() => import('./overview/Activity'));
 function MyProfile() {
   const PageRoutes = [
     {
-      path: '/admin',
+      path: '/',
       breadcrumbName: 'Dashboard',
     },
     {

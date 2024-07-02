@@ -96,7 +96,7 @@ function Content({ searchData, email }) {
         content: (
           <EmailHeader>
             <Heading as="h5">
-              <Link to={`/admin/email/single/${id}`}>{subject}</Link>
+              <Link to={`/email/single/${id}`}>{subject}</Link>
               <span className={`mail-badge ${key <= 1 ? 'primary' : ''}`}>{type}</span>
             </Heading>
             <p>{textRefactor(body, 10)}</p>

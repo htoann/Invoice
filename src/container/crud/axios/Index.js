@@ -83,7 +83,7 @@ function ViewPage() {
         status: <span className={`status ${status}`}>{status}</span>,
         action: (
           <div className="table-actions">
-            <Link className="edit" to={`/admin/axios/crud/edit/${id}`}>
+            <Link className="edit" to={`/axios/crud/edit/${id}`}>
               <UilEdit />
             </Link>
             &nbsp;&nbsp;&nbsp;
@@ -149,7 +149,7 @@ function ViewPage() {
         subTitle={
           <div>
             <Button className="btn-add_new" size="default" key="1" type="primary">
-              <Link to="/admin/axios/crud/add">
+              <Link to="/axios/crud/add">
                 <UilPlus /> <span>Add New</span>
               </Link>
             </Button>

@@ -9,7 +9,7 @@ import ProtectedRoute from './components/utilities/protectedRoute';
 import config from './config/config';
 import store from './redux/store';
 
-import Admin from './routes/admin';
+import Index from './routes/index';
 import Auth from './routes/auth';
 import './static/css/style.css';
 
@@ -50,13 +50,13 @@ function ProviderConfig() {
               </Routes>
             ) : (
               <Routes>
-                <Route path="/admin/*" element={<ProtectedRoute path="/*" Component={Admin} />} />
+                <Route path="/*" element={<ProtectedRoute path="/*" Component={Index} />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
             )}
             {isLoggedIn && (path === process.env.PUBLIC_URL || path === `${process.env.PUBLIC_URL}/`) && (
               <Routes>
-                <Route path="/" element={<Navigate to="/admin" />} />
+                <Route path="/" element={<Navigate to="" />} />
               </Routes>
             )}
           </Router>

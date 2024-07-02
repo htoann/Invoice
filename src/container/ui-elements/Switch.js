@@ -9,7 +9,7 @@ import { Cards } from '../../components/cards/frame/cards-frame';
 function Switches() {
   const PageRoutes = [
     {
-      path: '/admin',
+      path: '/',
       breadcrumbName: 'Dashboard',
     },
     {

@@ -26,7 +26,7 @@ function KnowledgeBase() {
       breadcrumbName: 'Knowledgebase',
     },
   ];
-  const path = '/admin/knowledgebase';
+  const path = '/knowledgebase';
   return (
     <>
       <PageHeader className="ninjadash-page-header-main" title="Knowledgebase" routes={PageRoutes} />
@@ -77,7 +77,7 @@ function KnowledgeBase() {
                       <div className={`ninjadash-popular-article__single theme-${article.type}`} key={i}>
                         <h4 className="single-article-title">{article.title}</h4>
                         <p>{article.text}</p>
-                        <Link className="btn-link" to="/admin/knowledgebaseSingle/1">
+                        <Link className="btn-link" to="/knowledgebaseSingle/1">
                           Read more
                           <ArrowRightOutlined />
                         </Link>

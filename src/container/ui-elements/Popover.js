@@ -11,7 +11,7 @@ import { Popover } from '../../components/popup/popup';
 function Popovers() {
   const PageRoutes = [
     {
-      path: '/admin',
+      path: '/',
       breadcrumbName: 'Dashboard',
     },
     {

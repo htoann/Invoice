@@ -15,7 +15,7 @@ const ColorList = ['#f56a00', '#7265e6', '#ffbf00', '#00a2ae'];
 function Avatars() {
   const PageRoutes = [
     {
-      path: '/admin',
+      path: '/',
       breadcrumbName: 'Dashboard',
     },
     {

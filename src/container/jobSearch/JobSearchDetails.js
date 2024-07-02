@@ -45,7 +45,7 @@ function JobSearchDetails() {
   const navigate = useNavigate();
 
   const navigateToApply = () => {
-    navigate('/admin/app/job/apply');
+    navigate('/app/job/apply');
   };
 
   return (

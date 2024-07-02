@@ -64,7 +64,7 @@ function Users() {
           }
           buttons={[
             <Button className="btn-add_new" size="default" type="primary" key="1">
-              <Link to="/admin/pages/add-user/info">
+              <Link to="/pages/add-user/info">
                 <UilPlus /> Add New User
               </Link>
             </Button>,

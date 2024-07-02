@@ -20,7 +20,7 @@ import {
 function Timelines() {
   const PageRoutes = [
     {
-      path: '/admin',
+      path: '/',
       breadcrumbName: 'Dashboard',
     },
     {

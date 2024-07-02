@@ -16,7 +16,7 @@ function GridCard({ value }) {
         <div className="project-top">
           <div className="project-title">
             <h1>
-              <Link to={`/admin/project/projectDetails/${id}`}>{title}</Link>
+              <Link to={`/project/projectDetails/${id}`}>{title}</Link>
               <Tag className={status}>{status}</Tag>
             </h1>
             <Dropdown

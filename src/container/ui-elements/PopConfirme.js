@@ -10,7 +10,7 @@ import { Button } from '../../components/buttons/buttons';
 function Confirme() {
   const PageRoutes = [
     {
-      path: '/admin',
+      path: '/',
       breadcrumbName: 'Dashboard',
     },
     {

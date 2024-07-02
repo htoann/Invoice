@@ -14,7 +14,7 @@ function ArticlePlugin() {
               <h2 className="ninjadash-article-tab-signle__title">Introduction to Plugin</h2>
               <ul className="ninjadash-article-tab-signle__list">
                 <li>
-                  <NavLink to="/admin/knowledgebaseSingle/1">Log in and out of Plugins</NavLink>
+                  <NavLink to="/knowledgebaseSingle/1">Log in and out of Plugins</NavLink>
                 </li>
                 <li>
                   <NavLink to="#">Switch between accounts</NavLink>
@@ -26,7 +26,7 @@ function ArticlePlugin() {
                   <NavLink to="#">Reactivate your account</NavLink>
                 </li>
               </ul>
-              <Link to="/admin/knowledgebaseSingle/1" className="btn-link">
+              <Link to="/knowledgebaseSingle/1" className="btn-link">
                 See more <ArrowRightOutlined />
               </Link>
             </div>
@@ -36,7 +36,7 @@ function ArticlePlugin() {
               <h2 className="ninjadash-article-tab-signle__title">Introduction to Plugin</h2>
               <ul className="ninjadash-article-tab-signle__list">
                 <li>
-                  <NavLink to="/admin/knowledgebaseSingle/1">Log in and out of Plugins</NavLink>
+                  <NavLink to="/knowledgebaseSingle/1">Log in and out of Plugins</NavLink>
                 </li>
                 <li>
                   <NavLink to="#">Switch between accounts</NavLink>
@@ -48,7 +48,7 @@ function ArticlePlugin() {
                   <NavLink to="#">Reactivate your account</NavLink>
                 </li>
               </ul>
-              <Link to="/admin/knowledgebaseSingle/1" className="btn-link">
+              <Link to="/knowledgebaseSingle/1" className="btn-link">
                 See more <ArrowRightOutlined />
               </Link>
             </div>
@@ -58,7 +58,7 @@ function ArticlePlugin() {
               <h2 className="ninjadash-article-tab-signle__title">Introduction to Plugin</h2>
               <ul className="ninjadash-article-tab-signle__list">
                 <li>
-                  <NavLink to="/admin/knowledgebaseSingle/1">Log in and out of Plugins</NavLink>
+                  <NavLink to="/knowledgebaseSingle/1">Log in and out of Plugins</NavLink>
                 </li>
                 <li>
                   <NavLink to="#">Switch between accounts</NavLink>
@@ -70,7 +70,7 @@ function ArticlePlugin() {
                   <NavLink to="#">Reactivate your account</NavLink>
                 </li>
               </ul>
-              <Link to="/admin/knowledgebaseSingle/1" className="btn-link">
+              <Link to="/knowledgebaseSingle/1" className="btn-link">
                 See more <ArrowRightOutlined />
               </Link>
             </div>
@@ -80,7 +80,7 @@ function ArticlePlugin() {
               <h2 className="ninjadash-article-tab-signle__title">Introduction to Plugin</h2>
               <ul className="ninjadash-article-tab-signle__list">
                 <li>
-                  <NavLink to="/admin/knowledgebaseSingle/1">Log in and out of Plugins</NavLink>
+                  <NavLink to="/knowledgebaseSingle/1">Log in and out of Plugins</NavLink>
                 </li>
                 <li>
                   <NavLink to="#">Switch between accounts</NavLink>
@@ -92,7 +92,7 @@ function ArticlePlugin() {
                   <NavLink to="#">Reactivate your account</NavLink>
                 </li>
               </ul>
-              <Link to="/admin/knowledgebaseSingle/1" className="btn-link">
+              <Link to="/knowledgebaseSingle/1" className="btn-link">
                 See more <ArrowRightOutlined />
               </Link>
             </div>
@@ -102,7 +102,7 @@ function ArticlePlugin() {
               <h2 className="ninjadash-article-tab-signle__title">Introduction to Plugin</h2>
               <ul className="ninjadash-article-tab-signle__list">
                 <li>
-                  <NavLink to="/admin/knowledgebaseSingle/1">Log in and out of Plugins</NavLink>
+                  <NavLink to="/knowledgebaseSingle/1">Log in and out of Plugins</NavLink>
                 </li>
                 <li>
                   <NavLink to="#">Switch between accounts</NavLink>
@@ -114,7 +114,7 @@ function ArticlePlugin() {
                   <NavLink to="#">Reactivate your account</NavLink>
                 </li>
               </ul>
-              <Link to="/admin/knowledgebaseSingle/1" className="btn-link">
+              <Link to="/knowledgebaseSingle/1" className="btn-link">
                 See more <ArrowRightOutlined />
               </Link>
             </div>
@@ -124,7 +124,7 @@ function ArticlePlugin() {
               <h2 className="ninjadash-article-tab-signle__title">Introduction to Plugin</h2>
               <ul className="ninjadash-article-tab-signle__list">
                 <li>
-                  <NavLink to="/admin/knowledgebaseSingle/1">Log in and out of Plugins</NavLink>
+                  <NavLink to="/knowledgebaseSingle/1">Log in and out of Plugins</NavLink>
                 </li>
                 <li>
                   <NavLink to="#">Switch between accounts</NavLink>
@@ -136,7 +136,7 @@ function ArticlePlugin() {
                   <NavLink to="#">Reactivate your account</NavLink>
                 </li>
               </ul>
-              <Link to="/admin/knowledgebaseSingle/1" className="btn-link">
+              <Link to="/knowledgebaseSingle/1" className="btn-link">
                 See more <ArrowRightOutlined />
               </Link>
             </div>

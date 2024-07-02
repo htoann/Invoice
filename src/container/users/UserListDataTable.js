@@ -98,7 +98,7 @@ function UserList() {
           }
           buttons={[
             <Button className="btn-add_new" size="default" type="primary" key="1">
-              <Link to="/admin/users/add-user/info">+ Add New User</Link>
+              <Link to="/users/add-user/info">+ Add New User</Link>
             </Button>,
           ]}
         />

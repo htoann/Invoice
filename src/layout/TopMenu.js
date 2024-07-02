@@ -27,7 +27,7 @@ import { TopMenuStyle } from './Style';
 
 function TopMenu() {
   const { t } = useTranslation();
-  const path = '/admin';
+  const path = '/';
 
   useLayoutEffect(() => {
     const active = document.querySelector('.ninjadash-top-menu a.active');
@@ -64,7 +64,7 @@ function TopMenu() {
       <div className="ninjadash-top-menu">
         <ul>
           <li>
-            <Link to="/admin" className="parent">
+            <Link to="/" className="parent">
               {t('overview')}
             </Link>
           </li>
@@ -75,7 +75,7 @@ function TopMenu() {
             </Link>
             <ul className="subMenu">
               <li>
-                <Link to="#">Danh sách hoá đơn</Link>
+                <Link to="/invoices">Danh sách hoá đơn</Link>
               </li>
               <li>
                 <Link to="#">Kiểm tra tình trạng MST</Link>
@@ -84,12 +84,12 @@ function TopMenu() {
           </li>
 
           <li className="has-subMenu">
-            <Link to="/admin/email" className="parent">
+            <Link to="/email" className="parent">
               {t('inbox')}
             </Link>
             <ul className="subMenu">
               <li>
-                <Link to="/admin/email/account-list">Danh sách tài khoản</Link>
+                <Link to="/email/account-list">Danh sách tài khoản</Link>
               </li>
               <li>
                 <Link to="#">Hộp thư đến</Link>

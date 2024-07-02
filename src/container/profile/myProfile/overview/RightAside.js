@@ -62,7 +62,7 @@ function RightAside() {
       </Cards>
       <Cards
         isbutton={
-          <Link className="btn-seeAll" to="/admin/pages/gallery">
+          <Link className="btn-seeAll" to="/pages/gallery">
             See All
           </Link>
         }

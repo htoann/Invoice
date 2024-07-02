@@ -23,7 +23,7 @@ const Completed = lazy(() => import('./overview/completed'));
 function Task() {
   const PageRoutes = [
     {
-      path: '/admin',
+      path: '/',
       breadcrumbName: 'Dashboard',
     },
     {
@@ -102,7 +102,7 @@ function Task() {
     });
   };
 
-  const path = '/admin/app/task';
+  const path = '/app/task';
   return (
     <>
       <PageHeader className="ninjadash-page-header-main" title="Task" routes={PageRoutes} />

@@ -6,7 +6,7 @@ import { ButtonStyled, ButtonStyledGroup } from './styled';
 
 function Button(props) {
   const {
-    type,
+    type = 'default',
     shape,
     icon,
     size,
@@ -51,10 +51,6 @@ function Button(props) {
     </ButtonStyled>
   );
 }
-
-Button.defaultProps = {
-  type: 'default',
-};
 
 Button.propTypes = {
   type: PropTypes.oneOf([

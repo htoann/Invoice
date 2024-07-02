@@ -35,7 +35,7 @@ function AllArticle() {
             <div className="ninjadash-paginaion">
               <ul>
                 <li>
-                  <Link className="active" to="/admin/knowledgebase/plugins">
+                  <Link className="active" to="/knowledgebase/plugins">
                     Doc Home
                   </Link>
                 </li>
@@ -54,15 +54,15 @@ function AllArticle() {
                     <div className="ninjadash-article-category-links">
                       <ul>
                         <li>
-                          <Link to="/admin/knowledgebaseSingle/1">
+                          <Link to="/knowledgebaseSingle/1">
                             Log in and out of plugins view your success and other stats
                           </Link>
                         </li>
                         <li>
-                          <Link to="/admin/knowledgebaseSingle/1">Log in and out of Plugins</Link>
+                          <Link to="/knowledgebaseSingle/1">Log in and out of Plugins</Link>
                         </li>
                         <li>
-                          <Link to="/admin/knowledgebaseSingle/1">Switch between accounts</Link>
+                          <Link to="/knowledgebaseSingle/1">Switch between accounts</Link>
                         </li>
                         <li>
                           <Collapse onChange={callback}>
@@ -85,7 +85,7 @@ function AllArticle() {
                           </Collapse>
                         </li>
                         <li>
-                          <Link to="/admin/knowledgebaseSingle/1">Switch between accounts</Link>
+                          <Link to="/knowledgebaseSingle/1">Switch between accounts</Link>
                         </li>
                       </ul>
                     </div>
@@ -99,15 +99,15 @@ function AllArticle() {
                     <div className="ninjadash-article-category-links">
                       <ul>
                         <li>
-                          <Link to="/admin/knowledgebaseSingle/1">
+                          <Link to="/knowledgebaseSingle/1">
                             Log in and out of plugins view your success and other stats
                           </Link>
                         </li>
                         <li>
-                          <Link to="/admin/knowledgebaseSingle/1">Log in and out of Plugins</Link>
+                          <Link to="/knowledgebaseSingle/1">Log in and out of Plugins</Link>
                         </li>
                         <li>
-                          <Link to="/admin/knowledgebaseSingle/1">Switch between accounts</Link>
+                          <Link to="/knowledgebaseSingle/1">Switch between accounts</Link>
                         </li>
                         <li>
                           <Collapse onChange={callback}>
@@ -130,7 +130,7 @@ function AllArticle() {
                           </Collapse>
                         </li>
                         <li>
-                          <Link to="/admin/knowledgebaseSingle/1">Switch between accounts</Link>
+                          <Link to="/knowledgebaseSingle/1">Switch between accounts</Link>
                         </li>
                       </ul>
                     </div>
@@ -144,15 +144,15 @@ function AllArticle() {
                     <div className="ninjadash-article-category-links">
                       <ul>
                         <li>
-                          <Link to="/admin/knowledgebaseSingle/1">
+                          <Link to="/knowledgebaseSingle/1">
                             Log in and out of plugins view your success and other stats
                           </Link>
                         </li>
                         <li>
-                          <Link to="/admin/knowledgebaseSingle/1">Log in and out of Plugins</Link>
+                          <Link to="/knowledgebaseSingle/1">Log in and out of Plugins</Link>
                         </li>
                         <li>
-                          <Link to="/admin/knowledgebaseSingle/1">Switch between accounts</Link>
+                          <Link to="/knowledgebaseSingle/1">Switch between accounts</Link>
                         </li>
                         <li>
                           <Collapse onChange={callback}>
@@ -175,7 +175,7 @@ function AllArticle() {
                           </Collapse>
                         </li>
                         <li>
-                          <Link to="/admin/knowledgebaseSingle/1">Switch between accounts</Link>
+                          <Link to="/knowledgebaseSingle/1">Switch between accounts</Link>
                         </li>
                       </ul>
                     </div>
@@ -189,15 +189,15 @@ function AllArticle() {
                     <div className="ninjadash-article-category-links">
                       <ul>
                         <li>
-                          <Link to="/admin/knowledgebaseSingle/1">
+                          <Link to="/knowledgebaseSingle/1">
                             Log in and out of plugins view your success and other stats
                           </Link>
                         </li>
                         <li>
-                          <Link to="/admin/knowledgebaseSingle/1">Log in and out of Plugins</Link>
+                          <Link to="/knowledgebaseSingle/1">Log in and out of Plugins</Link>
                         </li>
                         <li>
-                          <Link to="/admin/knowledgebaseSingle/1">Switch between accounts</Link>
+                          <Link to="/knowledgebaseSingle/1">Switch between accounts</Link>
                         </li>
                         <li>
                           <Collapse onChange={callback}>
@@ -220,7 +220,7 @@ function AllArticle() {
                           </Collapse>
                         </li>
                         <li>
-                          <Link to="/admin/knowledgebaseSingle/1">Switch between accounts</Link>
+                          <Link to="/knowledgebaseSingle/1">Switch between accounts</Link>
                         </li>
                       </ul>
                     </div>

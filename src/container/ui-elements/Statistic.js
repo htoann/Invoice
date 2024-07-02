@@ -12,7 +12,7 @@ const { Countdown } = Statistic;
 function Statistics() {
   const PageRoutes = [
     {
-      path: '/admin',
+      path: '/',
       breadcrumbName: 'Dashboard',
     },
     {

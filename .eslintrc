@@ -53,6 +53,7 @@
     "no-unused-vars": "off",
     "jsx-a11y/img-redundant-alt": "off",
     "no-console": "off",
-    "react/prop-types": "off"
+    "react/prop-types": "off",
+    "import/order": "off"
   }
 }

@@ -10,7 +10,7 @@ const { TextArea } = Input;
 function AutoCompletess() {
   const PageRoutes = [
     {
-      path: '/admin',
+      path: '/',
       breadcrumbName: 'Dashboard',
     },
     {

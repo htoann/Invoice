@@ -31,7 +31,7 @@ const menu = (
 function Breadcrumbs() {
   const PageRoutes = [
     {
-      path: '/admin',
+      path: '/',
       breadcrumbName: 'Dashboard',
     },
     {

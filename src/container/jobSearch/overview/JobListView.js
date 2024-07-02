@@ -20,7 +20,7 @@ const JobListView = React.memo(({ job }) => {
               </div>
               <div className="ninjadash-media__body">
                 <Heading as="h4">
-                  <Link to={`/admin/app/jobDetails/${id}`}>{title}</Link>
+                  <Link to={`/app/jobDetails/${id}`}>{title}</Link>
                 </Heading>
                 <p>{location}</p>
               </div>
@@ -44,7 +44,7 @@ const JobListView = React.memo(({ job }) => {
           </Col>
           <Col xxl={5} xs={24}>
             <div className="ninjadash-job-card__action">
-              <Button size="small" type="light" shape="round" to={`/admin/app/jobDetails/${id}`}>
+              <Button size="small" type="light" shape="round" to={`/app/jobDetails/${id}`}>
                 View Details
               </Button>
             </div>

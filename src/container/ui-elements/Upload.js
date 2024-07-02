@@ -45,7 +45,7 @@ const beforeUpload = (file) => {
 function Uploads() {
   const PageRoutes = [
     {
-      path: '/admin',
+      path: '/',
       breadcrumbName: 'Dashboard',
     },
     {

@@ -13,7 +13,7 @@ import { Main } from '../styled';
 function Invoice() {
   const PageRoutes = [
     {
-      path: '/admin',
+      path: '/',
       breadcrumbName: 'Dashboard',
     },
     {

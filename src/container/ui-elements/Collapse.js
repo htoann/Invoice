@@ -9,7 +9,7 @@ const { Panel } = Collapse;
 function Collapses() {
   const PageRoutes = [
     {
-      path: '/admin',
+      path: '/',
       breadcrumbName: 'Dashboard',
     },
     {

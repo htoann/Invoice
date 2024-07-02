@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import { Cards } from '../../../components/cards/frame/cards-frame';
 import { Dropdown } from '../../../components/dropdown/dropdown';
 
-function FileListCard({ title }) {
+function FileListCard({ title = 'File' }) {
   return (
     <Cards title={title}>
       <div className="file-list">
@@ -221,10 +221,6 @@ function FileListCard({ title }) {
     </Cards>
   );
 }
-
-FileListCard.defaultProps = {
-  title: 'File',
-};
 
 FileListCard.propTypes = {
   title: PropTypes.string,

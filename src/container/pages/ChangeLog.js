@@ -11,7 +11,7 @@ const { Panel } = Collapse;
 function ChangeLog() {
   const PageRoutes = [
     {
-      path: '/admin',
+      path: '/',
       breadcrumbName: 'Dashboard',
     },
     {

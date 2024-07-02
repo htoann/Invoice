@@ -29,7 +29,7 @@ function ProductCards({ product }) {
           {popular ? <ReactSVG src={require(`../../../../static/img/icon/heart-fill.svg`).default} /> : <UilHeart />}
         </Link>
         <Heading className="product-single-title" as="h5">
-          <Link to={`/admin/ecommerce/productDetails/${id}`}>{name}</Link>
+          <Link to={`/ecommerce/productDetails/${id}`}>{name}</Link>
         </Heading>
         <div className="product-single-rating">
           <Rate allowHalf defaultValue={rate} disabled /> 4.9

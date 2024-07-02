@@ -338,7 +338,11 @@ function BannerCta2() {
   );
 }
 
-function PageHeaderBanner({ type, title, subtitle }) {
+function PageHeaderBanner({
+  type = '',
+  title = 'Welcome To Demo Dashboard',
+  subtitle = 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form',
+}) {
   return (
     <BannerWrapper
       className={type === 'corporate' ? 'ninjadash-top-banner ninjadash-top-banner-corporate' : 'ninjadash-top-banner'}
@@ -368,13 +372,6 @@ PageHeaderBanner.propTypes = {
   type: propTypes.string,
   title: propTypes.string,
   subtitle: propTypes.string,
-};
-
-PageHeaderBanner.defaultProps = {
-  type: '',
-  title: 'Welcome To Demo Dashboard',
-  subtitle:
-    'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form',
 };
 
 export {

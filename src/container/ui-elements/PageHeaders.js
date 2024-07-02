@@ -28,7 +28,7 @@ const routes = [
 function PageHeaders() {
   const PageRoutes = [
     {
-      path: '/admin',
+      path: '/',
       breadcrumbName: 'Dashboard',
     },
     {

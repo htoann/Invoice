@@ -24,14 +24,14 @@ function SignIn() {
 
   const handleSubmit = useCallback(
     (values) => {
-      dispatch(login(values, () => navigate('/admin')));
+      dispatch(login(values, () => navigate('/')));
     },
     [navigate, dispatch],
   );
 
   const handleAuthOSubmit = useCallback(
     (values) => {
-      dispatch(authOLogin(values, () => navigate('/admin')));
+      dispatch(authOLogin(values, () => navigate('/')));
     },
     [navigate, dispatch],
   );

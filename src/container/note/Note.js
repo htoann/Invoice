@@ -27,7 +27,7 @@ const { Option } = Select;
 function Note() {
   const PageRoutes = [
     {
-      path: '/admin',
+      path: '/',
       breadcrumbName: 'Dashboard',
     },
     {

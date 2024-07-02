@@ -13,7 +13,7 @@ import { Cards } from '../../components/cards/frame/cards-frame';
 function Sellers() {
   const PageRoutes = [
     {
-      path: '/admin',
+      path: '/',
       breadcrumbName: 'Dashboard',
     },
     {

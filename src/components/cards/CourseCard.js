@@ -17,7 +17,7 @@ function CourseCard({ courseData }) {
           </div>
           <div className="ninjadash-course-card-content">
             <h4 className="ninjadash-course-card-title">
-              <Link to={`/admin/app/course/courseDetails/${id}`}>{title}</Link>
+              <Link to={`/app/course/courseDetails/${id}`}>{title}</Link>
             </h4>
             <div className="ninjadash-course-card-author">
               <img src={require(`../../static/img/avatar/${authorImg}`)} alt="ninjaDash" />

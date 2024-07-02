@@ -14,7 +14,7 @@ const dateFormatList = ['DD/MM/YYYY', 'DD/MM/YY'];
 function DatePickers() {
   const PageRoutes = [
     {
-      path: '/admin',
+      path: '/',
       breadcrumbName: 'Dashboard',
     },
     {

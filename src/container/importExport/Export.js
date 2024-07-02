@@ -15,7 +15,7 @@ import { alertModal } from '../../components/modals/antd-modals';
 function Import() {
   const PageRoutes = [
     {
-      path: '/admin',
+      path: '/',
       breadcrumbName: 'Dashboard',
     },
     {

@@ -110,7 +110,7 @@ function Ordersummary({ subtotal, checkout }) {
             </Heading>
             {!checkout && (
               <Button className="btn-proceed" type="secondary" size="large">
-                <Link to="/admin/ecommerce/checkout">
+                <Link to="/ecommerce/checkout">
                   Proceed To Checkout
                   {!rtl ? <UilAngleRight /> : <UilAngleLeft />}
                 </Link>

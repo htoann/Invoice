@@ -22,7 +22,7 @@ const options = [
 function Cascaders() {
   const PageRoutes = [
     {
-      path: '/admin',
+      path: '/',
       breadcrumbName: 'Dashboard',
     },
     {

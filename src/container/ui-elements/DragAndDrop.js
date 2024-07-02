@@ -7,7 +7,7 @@ import DragAndDropTable from '../table/DragTable';
 function UserListDataTable() {
   const PageRoutes = [
     {
-      path: '/admin',
+      path: '/',
       breadcrumbName: 'Dashboard',
     },
     {

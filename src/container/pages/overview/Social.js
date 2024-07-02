@@ -87,7 +87,7 @@ function SocialProfile() {
               <Form.Item>
                 <div className="add-user-bottom text-right">
                   <Button className="ant-btn ant-btn-light" type="default" htmlType="submit">
-                    <Link to="/admin/users/add-user/work">Back</Link>
+                    <Link to="/users/add-user/work">Back</Link>
                   </Button>
                   <Button onClick={handleSubmit} type="primary">
                     Save Profile

@@ -9,7 +9,7 @@ const format = 'HH:mm';
 function TimePickers() {
   const PageRoutes = [
     {
-      path: '/admin',
+      path: '/',
       breadcrumbName: 'Dashboard',
     },
     {

@@ -74,7 +74,7 @@ function MenuItems({ toggleCollapsed }) {
 
   const dispatch = useDispatch();
 
-  const path = '/admin';
+  const path = '/';
   const pathName = window.location.pathname;
   const pathArray = pathName && pathName !== '/' ? pathName.split(path) : [];
   const mainPath = pathArray.length > 1 ? pathArray[1] : '';
@@ -775,7 +775,7 @@ function MenuItems({ toggleCollapsed }) {
         'date-picker',
         null,
       ),
-      getItem(<NavLink to="/admin/components/drag">Drag & Drop</NavLink>, 'drag', null),
+      getItem(<NavLink to="/components/drag">Drag & Drop</NavLink>, 'drag', null),
       getItem(
         <NavLink onClick={toggleCollapsed} to={`${path}/components/drawer`}>
           {t('drawer')}

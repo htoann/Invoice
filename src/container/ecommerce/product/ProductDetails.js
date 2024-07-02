@@ -13,7 +13,7 @@ const DetailsRight = lazy(() => import('./overview/DetailsRight'));
 function ProductDetails() {
   const PageRoutes = [
     {
-      path: '/admin',
+      path: '/',
       breadcrumbName: 'Dashboard',
     },
     {
@@ -65,7 +65,7 @@ function ProductDetails() {
                                     <Col md={4} key={value.id}>
                                       <div className="pdbl__image">
                                         <figure>
-                                          <Link to={`/admin/ecommerce/productDetails/${value.id}`}>
+                                          <Link to={`/ecommerce/productDetails/${value.id}`}>
                                             <img
                                               style={{ width: '100%' }}
                                               src={require(`../../../${value.img}`)}

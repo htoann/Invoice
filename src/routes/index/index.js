@@ -1,6 +1,9 @@
 import { Spin } from 'antd';
 import React, { lazy, Suspense, useEffect } from 'react';
 import { Route, Routes, useLocation } from 'react-router-dom';
+import withAdminLayout from '../../layout/withAdminLayout';
+import InvoiceList from '../../pages/invoice/InvoiceList';
+import AccountList from '../../pages/mails/AccountList';
 import Axios from './axios';
 import Dashboard from './dashboard';
 import Ecommerce from './ecommerce';
@@ -9,8 +12,6 @@ import Gallery from './gallery';
 import Pages from './pages';
 import Users from './users';
 import Widgets from './widgets';
-import withAdminLayout from '../../layout/withAdminLayout';
-import AccountList from '../../pages/mails/AccountList';
 
 const KnowledgeBase = lazy(() => import('../../container/pages/knowledgeBase/Index'));
 const AllArticle = lazy(() => import('../../container/pages/knowledgeBase/AllArticle'));
@@ -41,7 +42,7 @@ const JobDetails = lazy(() => import('../../container/jobSearch/JobSearchDetails
 const JobApply = lazy(() => import('../../container/jobSearch/JobApplication'));
 const NotFound = lazy(() => import('../../container/pages/404'));
 
-const Admin = React.memo(() => {
+const Index = React.memo(() => {
   const { pathname } = useLocation();
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -81,7 +82,8 @@ const Admin = React.memo(() => {
         <Route path="profile/myProfile/*" element={<Myprofile />} />
         <Route path="ecommerce/*" element={<Ecommerce />} />
         <Route path="main/chat/*" element={<Chat />} />
-        {/* Change */}
+        {/* Change routes */}
+        <Route path="invoices" element={<InvoiceList />} />
         <Route path="email/account-list" element={<AccountList />} />
         <Route path="email/*" element={<Inbox />} />
         <Route path="editor" element={<Editors />} />
@@ -98,4 +100,4 @@ const Admin = React.memo(() => {
   );
 });
 
-export default withAdminLayout(Admin);
+export default withAdminLayout(Index);

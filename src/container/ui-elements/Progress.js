@@ -11,7 +11,7 @@ const ButtonGroup = Button.Group;
 function ProgressBar() {
   const PageRoutes = [
     {
-      path: '/admin',
+      path: '/',
       breadcrumbName: 'Dashboard',
     },
     {

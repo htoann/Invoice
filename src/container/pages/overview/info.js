@@ -89,7 +89,7 @@ function Info() {
                     Reset
                   </Button>
                   <Button htmlType="submit" type="primary">
-                    <Link to="/admin/users/add-user/work">Save & Next</Link>
+                    <Link to="/users/add-user/work">Save & Next</Link>
                   </Button>
                 </div>
               </Form.Item>

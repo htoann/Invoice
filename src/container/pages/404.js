@@ -28,8 +28,8 @@ function NotFound() {
             404
           </Heading>
           <p>Sorry! the page you are looking for does not exist.</p>
-          <NavLink to="/admin">
-            <Button size="default" type="primary" to="/admin">
+          <NavLink to="/">
+            <Button size="default" type="primary" to="/">
               Return Home
             </Button>
           </NavLink>

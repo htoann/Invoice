@@ -7,7 +7,7 @@ import { Cards } from '../../components/cards/frame/cards-frame';
 function Lists() {
   const PageRoutes = [
     {
-      path: '/admin',
+      path: '/',
       breadcrumbName: 'Dashboard',
     },
     {

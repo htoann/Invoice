@@ -23,7 +23,7 @@ const customDot = (dot, { status, index }) => (
 function Stepess() {
   const PageRoutes = [
     {
-      path: '/admin',
+      path: '/',
       breadcrumbName: 'Dashboard',
     },
     {
