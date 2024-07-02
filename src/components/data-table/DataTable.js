@@ -8,8 +8,9 @@ import { dataLiveFilter, filterWithSubmit } from '../../redux/data-filter/action
 import { Button } from '../buttons/buttons';
 import { DataTableStyleWrap } from './Style';
 
-function DataTable({ filterOption, filterOnchange, rowSelection, tableData, columns }) {
+function DataTable({ filterOption, filterOnchange, rowSelection, tableData, columns, pagination, onchangePagination }) {
   const dispatch = useDispatch();
+
   const handleIdSearch = (e) => {
     const id = e.currentTarget.value;
     dispatch(dataLiveFilter(id, 'id'));
@@ -28,7 +29,9 @@ function DataTable({ filterOption, filterOnchange, rowSelection, tableData, colu
     const status = document.querySelector('.ninjadash-data-status .ant-select-selection-item').title;
     dispatch(filterWithSubmit(id, status));
   };
+
   const prefix = <UilSearch />;
+
   return (
     <DataTableStyleWrap>
       {filterOption ? (
@@ -82,15 +85,20 @@ function DataTable({ filterOption, filterOnchange, rowSelection, tableData, colu
           {rowSelection ? (
             <Table
               rowSelection={{
-                // type: state.selectionType,
                 ...rowSelection,
               }}
-              pagination={{ pageSize: 10, showSizeChanger: true }}
+              pagination={{ pageSize: 20, showSizeChanger: true, ...pagination }}
               dataSource={tableData}
               columns={columns}
+              onChange={onchangePagination}
             />
           ) : (
-            <Table pagination={{ pageSize: 10, showSizeChanger: true }} dataSource={tableData} columns={columns} />
+            <Table
+              pagination={{ pageSize: 20, showSizeChanger: true, ...pagination }}
+              dataSource={tableData}
+              columns={columns}
+              onChange={onchangePagination}
+            />
           )}
         </TableWrapper>
       </div>

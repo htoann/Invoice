@@ -15,6 +15,7 @@ import { contactDeleteData } from '../../redux/contact/actionCreator';
 import { tableReadData } from '../../redux/data-filter/actionCreator';
 import CreateAccount from './components/CreateInvoice';
 import EditAccount from './components/EditInvoice';
+import { invoiceListDataTable } from './const';
 
 function InvoiceList() {
   const dispatch = useDispatch();
@@ -31,6 +32,7 @@ function InvoiceList() {
   ];
 
   const [invoiceList, setInvoiceList] = useState([]);
+  const [pagination, setPagination] = useState({ pageSize: 20, showSizeChanger: true, current: 1 });
 
   const [state, setState] = useState({
     selectedRowKeys: 0,
@@ -54,20 +56,15 @@ function InvoiceList() {
     }
   }, [dispatch]);
 
-  const getInvoiceList = async () => {
-    const data = await axios.get('http://localhost:8000/invoices');
+  const getInvoiceList = async (page, pageSize = 20) => {
+    const data = await axios.get('http://localhost:8000/invoices', { params: { page, page_size: pageSize } });
     setInvoiceList(data?.data?.results);
+    setPagination({ ...pagination, total: Number(data?.data?.count) });
   };
 
   useEffect(() => {
-    getInvoiceList();
-  }, []);
-
-  // const { TableData } = useSelector((states) => {
-  //   return {
-  //     TableData: states.dataTable.tableData,
-  //   };
-  // });
+    getInvoiceList(pagination.current, pagination.pageSize);
+  }, [pagination.current, pagination.pageSize]);
 
   const showModal = () => {
     setState({
@@ -91,18 +88,42 @@ function InvoiceList() {
 
   const tableDataSource = [];
 
-  console.log(invoiceList);
-
   if (invoiceList.length > 0) {
     invoiceList.map((item) => {
-      const { no: id, username, email } = item;
       return tableDataSource.push({
-        id,
-        user: <span className="ninjadash-username">{username}</span>,
-        email: <span>{email}</span>,
+        id: item.no,
+        khmshdon: <span className="ninjadash-username">{item.khmshdon}</span>,
+        khhdon: <span>{item.khhdon}</span>,
+        shdon: <span>{item.shdon}</span>,
+        ntao: <span>{item.ntao}</span>,
+        nky: <span>{item.nky}</span>,
+        nhomhd: <span>{item.nhomhd}</span>,
+        chinhanh: <span>{item.chinhanh}</span>,
+        nmmst: <span>{item.nmmst}</span>,
+        nmten: <span>{item.nmten}</span>,
+        tgtcthue: <span>{item.tgtcthue}</span>,
+        tgtthue: <span>{item.tgtthue}</span>,
+        ttcktmai: <span>{item.ttcktmai}</span>,
+        thttlphi: <span>{item.thttlphi}</span>,
+        tgtttbso: <span>{item.tgtttbso}</span>,
+        dvtte: <span>{item.dvtte}</span>,
+        tthai: <span>{item.tthai}</span>,
+        ttxly: <span>{item.ttxly}</span>,
+        linkhd: <span>{item.linkhd}</span>,
+        matracuu: <span>{item.matracuu}</span>,
+        sohdgoc: <span>{item.sohdgoc}</span>,
+        sohdgocngay: <span>{item.sohdgocngay}</span>,
+        loaitd: <span>{item.loaitd}</span>,
+        ngaytd: <span>{item.ngaytd}</span>,
+        msttd: <span>{item.msttd}</span>,
+        tentd: <span>{item.tentd}</span>,
+        diachitd: <span>{item.diachitd}</span>,
+        ketquadoichieu: <span>{item.ketquadoichieu}</span>,
+        tinhtrangdn: <span>{item.tinhtrangdn}</span>,
+        ngaycongbo: <span>{item.ngaycongbo}</span>,
         action: (
           <div className="table-actions">
-            <Link className="view" to={`/invoices/${id}`}>
+            <Link className="view" to={`/invoices/${item.no}`}>
               <UilEye />
             </Link>
             <Link className="edit" to="#" onClick={showEditModal}>
@@ -110,7 +131,7 @@ function InvoiceList() {
             </Link>
             <Popconfirm
               title="Bạn có chắc chắn xóa người dùng này?"
-              onConfirm={() => handleUserDelete(id)}
+              onConfirm={() => handleUserDelete(item.no)}
               okText="Yes"
               cancelText="No"
             >
@@ -124,31 +145,9 @@ function InvoiceList() {
     });
   }
 
-  const dataTableColumn = [
-    {
-      title: 'STT',
-      dataIndex: 'id',
-      key: 'id',
-    },
-    {
-      title: 'Tên tài khoản',
-      dataIndex: 'user',
-      key: 'user',
-      sorter: (a, b) => a.user.props.children.localeCompare(b.user.props.children),
-    },
-    {
-      title: 'Địa chỉ email',
-      dataIndex: 'email',
-      key: 'email',
-      sorter: (a, b) => a.email.props.children.localeCompare(b.email.props.children),
-    },
-    {
-      title: 'Chức năng',
-      dataIndex: 'action',
-      key: 'action',
-      width: '90px',
-    },
-  ];
+  // date_from;date_to;loaihdon;
+
+  // sold;purchases
 
   return (
     <>
@@ -165,8 +164,12 @@ function InvoiceList() {
                   filterOption
                   filterOnchange
                   tableData={tableDataSource}
-                  columns={dataTableColumn}
+                  columns={invoiceListDataTable}
                   rowSelection={false}
+                  pagination={pagination}
+                  onchangePagination={(_pagination) => {
+                    setPagination(_pagination);
+                  }}
                 />
               </Cards>
             </BorderLessHeading>
