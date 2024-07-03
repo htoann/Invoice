@@ -127,7 +127,7 @@ function Invoice() {
                     <Col sm={12} xs={24}>
                       <figure className="company-logo">
                         {mainContent === 'lightMode' ? (
-                          <img src={require('../../static/img/logo_dark.svg').default} alt="" />
+                          <img src={require('../../static/img/logo_dark.png')} alt="" />
                         ) : (
                           <img src={require('../../static/img/logo_white.svg').default} alt="" />
                         )}

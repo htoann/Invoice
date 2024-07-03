@@ -15,7 +15,7 @@ const AuthLayout = (WraperContent) => {
         <AuthenticationWrap style={{ backgroundImage: `url("${require('../../../static/img/admin-bg-light.png')}")` }}>
           <div className="ninjadash-authentication-wrap">
             <div className="ninjadash-authentication-brand">
-              <img src={require(`../../../static/img/logo_dark.svg`).default} alt="" />
+              <img src={require(`../../../static/img/logo_dark.png`)} alt="" />
             </div>
             <WraperContent />
           </div>

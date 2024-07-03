@@ -84,12 +84,6 @@ function MenuItems({ toggleCollapsed }) {
     !topMenu ? [`${mainPathSplit.length > 2 ? mainPathSplit[1] : 'dashboard'}`] : [],
   );
 
-  useEffect(() => {
-    const html = document.querySelector('html');
-    html.classList.add('ninjadash-topmenu');
-    dispatch(changeMenuMode(true));
-  }, []);
-
   const onOpenChange = (keys) => {
     setOpenKeys(keys[keys.length - 1] !== 'recharts' ? [keys.length && keys[keys.length - 1]] : keys);
   };

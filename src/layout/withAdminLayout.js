@@ -128,7 +128,7 @@ const ThemeLayout = (WrappedComponent) => {
                       <img
                         src={
                           layoutMode === 'lightMode'
-                            ? require(`../static/img/logo_dark.svg`).default
+                            ? require(`../static/img/logo_dark.png`)
                             : require(`../static/img/logo_white.svg`).default
                         }
                         alt=""
@@ -215,7 +215,7 @@ const ThemeLayout = (WrappedComponent) => {
                     <Row>
                       <Col md={12} xs={24}>
                         <span className="admin-footer__copyright">
-                          © 2023<Link to="#">SovWare</Link>
+                          © 2024<Link to="#">Invoice System</Link>
                         </span>
                       </Col>
                       <Col md={12} xs={24}>

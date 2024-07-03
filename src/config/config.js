@@ -1,7 +1,7 @@
 import { themeColor } from './theme/themeVariables';
 
 const config = {
-  topMenu: false,
+  topMenu: true,
   rtl: false,
   mainTemplate: 'lightMode',
   themeColor,

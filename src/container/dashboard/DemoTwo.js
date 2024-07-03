@@ -39,7 +39,7 @@ function DemoTwo() {
         </Row>
 
         <Row justify="center" gutter={25}>
-          <Col xxl={8} lg={12} xs={24}>
+          <Col xxl={12} lg={12} xs={24}>
             <Suspense
               fallback={
                 <Cards headless>
@@ -50,7 +50,7 @@ function DemoTwo() {
               <NewProduct />
             </Suspense>
           </Col>
-          <Col xxl={16} xs={24}>
+          <Col xxl={12} xs={24}>
             <Suspense
               fallback={
                 <Cards headless>

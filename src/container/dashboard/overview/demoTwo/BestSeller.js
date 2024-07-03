@@ -101,7 +101,7 @@ const BestSeller = React.memo(() => {
               </ul>
             </div>
           }
-          title="Best Seller"
+          title="Trạng thái doanh nghiệp"
           size="large"
         >
           <TableDefaultStyle className="ninjadash-having-header-bg">

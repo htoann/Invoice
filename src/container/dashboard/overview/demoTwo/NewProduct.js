@@ -84,7 +84,7 @@ const NewProduct = React.memo(() => {
               </ul>
             </div>
           }
-          title="New Product"
+          title="Hóa đơn bị thay đổi bởi người bán - Nhà cung cấp"
           size="large"
         >
           <TableDefaultStyle className="ninjadash-having-header-bg">

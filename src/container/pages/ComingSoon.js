@@ -73,7 +73,7 @@ function ComingSoon() {
               <Cards headless>
                 <div className="ninjaDash-logo">
                   {mainContent === 'lightMode' ? (
-                    <img src={require('../../static/img/logo_dark.svg').default} alt="" />
+                    <img src={require('../../static/img/logo_dark.png')} alt="" />
                   ) : (
                     <img src={require('../../static/img/logo_white.svg').default} alt="" />
                   )}
@@ -123,7 +123,7 @@ function ComingSoon() {
                       </Link>
                     </li>
                   </ul>
-                  <p>2022 © Sovware</p>
+                  <p>2024 © Invoice System</p>
                 </div>
               </Cards>
             </ComingsoonStyleWrapper>

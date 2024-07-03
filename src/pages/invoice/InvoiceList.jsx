@@ -40,8 +40,8 @@ function InvoiceList() {
     invoiceList: [],
     pagination: { pageSize: 20, showSizeChanger: true, current: 1, total: 0 },
     loaiHoaDon: 'purchase',
-    date_from: 0,
-    date_to: 0,
+    date_from: undefined,
+    date_to: undefined,
   });
 
   const { users } = useSelector((stateItem) => {

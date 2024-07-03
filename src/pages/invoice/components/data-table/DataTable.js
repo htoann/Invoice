@@ -1,12 +1,14 @@
-import UilAngleDown from '@iconscout/react-unicons/icons/uil-angle-down';
 import UilSearch from '@iconscout/react-unicons/icons/uil-search';
 import { DatePicker, Select, Table } from 'antd';
+import axios from 'axios';
+import dayjs from 'dayjs';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { Button } from '../../../../components/buttons/buttons';
 import { TableWrapper } from '../../../../container/styled';
 import { dataLiveFilter } from '../../../../redux/data-filter/actionCreator';
+import { downloadFile } from '../../../../utility/utility';
 import { DataTableStyleWrap } from './Style';
 
 function DataTable({
@@ -48,6 +50,18 @@ function DataTable({
     );
   };
 
+  const handleExport = async () => {
+    try {
+      const response = await axios.get('http://localhost:8000/invoices_excel/', {
+        responseType: 'blob',
+      });
+
+      downloadFile(response, `HDDT-${dayjs(state.date_from || state.date_to).format('DD-MM-YYYY')}`);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const prefix = <UilSearch />;
 
   return (
@@ -73,9 +87,10 @@ function DataTable({
                 onChange={(e) => {
                   setState((prev) => ({
                     ...prev,
-                    date_from: new Date(e._d),
+                    date_from: dayjs(e._d).format('DD-MM-YYYY'),
                   }));
                 }}
+                format="DD/MM/yyyy"
               />
             </div>
             <div className="ninjadash-datatable-filter__input">
@@ -85,9 +100,10 @@ function DataTable({
                 onChange={(e) => {
                   setState((prev) => ({
                     ...prev,
-                    date_to: new Date(e._d),
+                    date_to: dayjs(e._d).format('DD-MM-YYYY'),
                   }));
                 }}
+                format="DD/MM/yyyy"
               />
             </div>
             <div className="ninjadash-datatable-filter__action">
@@ -101,6 +117,17 @@ function DataTable({
                 Tìm kiếm
               </Button>
             </div>
+
+            <Button
+              style={{ marginLeft: 'auto', marginTop: 20 }}
+              type="primary"
+              size="small"
+              onClick={handleExport}
+              disabled={!state.invoiceList?.length}
+              transparented
+            >
+              Xuất Excel
+            </Button>
           </div>
           {/* <div className="ninjadash-datatable-filter__right">
             <Input onChange={handleDataUser} size="default" placeholder="Search" prefix={prefix} />
@@ -109,16 +136,6 @@ function DataTable({
       ) : (
         ''
       )}
-
-      <Button
-        type="primary"
-        size="small"
-        onClick={handleSearch}
-        disabled={!state.date_from || !state.date_to}
-        transparented
-      >
-        Export <UilAngleDown />
-      </Button>
 
       <div className="ninjadasj-datatable">
         <TableWrapper className="table-data-view table-responsive">
