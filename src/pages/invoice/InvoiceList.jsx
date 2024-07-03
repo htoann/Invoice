@@ -57,19 +57,23 @@ function InvoiceList() {
   }, [dispatch]);
 
   const getInvoiceList = async (page, pageSize = 20, _loaiHoaDon = 'purchase') => {
-    const response = await axios.get('http://localhost:8000/invoices', {
-      params: { page, page_size: pageSize, loaihdon: _loaiHoaDon },
-    });
+    try {
+      const response = await axios.get('http://localhost:8000/invoices', {
+        params: { page, page_size: pageSize, loaihdon: _loaiHoaDon },
+      });
 
-    if (response?.data) {
-      setState((prev) => ({
-        ...prev,
-        invoiceList: response?.data?.results,
-        pagination: {
-          ...prev.pagination,
-          total: Number(response?.data?.count) || 0,
-        },
-      }));
+      if (response?.data) {
+        setState((prev) => ({
+          ...prev,
+          invoiceList: response?.data?.results,
+          pagination: {
+            ...prev.pagination,
+            total: Number(response?.data?.count) || 0,
+          },
+        }));
+      }
+    } catch (error) {
+      console.log(error);
     }
   };
 
