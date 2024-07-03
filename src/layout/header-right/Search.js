@@ -3,7 +3,6 @@ import UilTimes from '@iconscout/react-unicons/icons/uil-times';
 import { Form, Input } from 'antd';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-// import { useSelector } from 'react-redux';
 
 const SearchBar = React.memo(() => {
   const [form] = Form.useForm();

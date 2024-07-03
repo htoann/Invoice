@@ -6,7 +6,7 @@ import { Scrollbars } from '@pezhmanparsaee/react-custom-scrollbars';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { ReactSVG } from 'react-svg';
-import { UserActionDropDown } from './auth-info-style';
+import { UserActionDropDown } from './Style';
 import Heading from '../../components/heading/heading';
 import { Popover } from '../../components/popup/popup';
 

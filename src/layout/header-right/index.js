@@ -11,11 +11,11 @@ import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 
-import { InfoWraper, NavAuth, UserDropDwon } from './auth-info-style';
+import { InfoWraper, NavAuth, UserDropDwon } from './Style';
 import Message from './Message';
 import Notification from './Notification';
 import Search from './Search';
-import Settings from './settings';
+import Settings from './Settings';
 import { logOut } from '../../redux/authentication/actionCreator';
 
 import { Dropdown } from '../../components/dropdown/dropdown';
@@ -42,7 +42,7 @@ const AuthInfo = React.memo(() => {
     <UserDropDwon>
       <div className="user-dropdwon">
         <figure className="user-dropdwon__info">
-          <img src={require('../../../static/img/avatar/chat-auth.png')} alt="" />
+          <img src={require('../../static/img/avatar/chat-auth.png')} alt="" />
           <figcaption>
             <Heading as="h5">Abdullah Bin Talha</Heading>
             <p>UI Expert</p>
@@ -94,15 +94,15 @@ const AuthInfo = React.memo(() => {
   const country = (
     <NavAuth>
       <Link onClick={(e) => onFlagChangeHandle('en', e)} to="#">
-        <img src={require('../../../static/img/flag/en.png')} alt="" />
+        <img src={require('../../static/img/flag/en.png')} alt="" />
         <span>English</span>
       </Link>
       <Link onClick={(e) => onFlagChangeHandle('esp', e)} to="#">
-        <img src={require('../../../static/img/flag/esp.png')} alt="" />
+        <img src={require('../../static/img/flag/esp.png')} alt="" />
         <span>Spanish</span>
       </Link>
       <Link onClick={(e) => onFlagChangeHandle('ar', e)} to="#">
-        <img src={require('../../../static/img/flag/ar.png')} alt="" />
+        <img src={require('../../static/img/flag/ar.png')} alt="" />
         <span>Arabic</span>
       </Link>
     </NavAuth>

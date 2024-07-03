@@ -12,8 +12,8 @@ import { ThemeProvider } from 'styled-components';
 import MenueItems from './MenueItems';
 import { FooterStyle, LayoutContainer, SmallScreenAuthInfo, TopMenuSearch } from './Style';
 import TopMenu from './TopMenu';
-import Search from '../components/utilities/auth-info/Search';
-import AuthInfo from '../components/utilities/auth-info/info';
+import AuthInfo from './header-right/index';
+import SearchBar from './header-right/Search';
 
 const { theme } = require('../config/theme/themeVariables');
 
@@ -163,7 +163,7 @@ const ThemeLayout = (WrappedComponent) => {
                 <div className="ninjadash-header-content__mobile">
                   <div className="ninjadash-mobile-action">
                     <div className="btn-search" to="#">
-                      <Search />
+                      <SearchBar />
                     </div>
 
                     <Link className="btn-auth" onClick={onShowHide} to="#">

@@ -7,7 +7,7 @@ import { Scrollbars } from '@pezhmanparsaee/react-custom-scrollbars';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { ReactSVG } from 'react-svg';
-import { UserActionDropDown } from './auth-info-style';
+import { UserActionDropDown } from './Style';
 import Heading from '../../components/heading/heading';
 import { Popover } from '../../components/popup/popup';
 
@@ -188,7 +188,7 @@ const NotificationBox = React.memo(() => {
       <Popover placement="bottomLeft" content={content} action="click">
         <Badge dot offset={[-8, -5]}>
           <Link to="#" className="ninjadash-nav-action-link">
-            <ReactSVG src={require('../../../static/img/icon/bell.svg').default} />
+            <ReactSVG src={require('../../static/img/icon/bell.svg').default} />
           </Link>
         </Badge>
       </Popover>
