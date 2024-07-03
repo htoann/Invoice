@@ -56,10 +56,16 @@ function InvoiceList() {
     }
   }, [dispatch]);
 
-  const getInvoiceList = async (page, pageSize = 20, _loaiHoaDon = 'purchase') => {
+  const getInvoiceList = async (page, pageSize = 20, _loaiHoaDon = 'purchase', _dateFrom, _dateTo) => {
     try {
       const response = await axios.get('http://localhost:8000/invoices', {
-        params: { page, page_size: pageSize, loaihdon: _loaiHoaDon },
+        params: {
+          page,
+          page_size: pageSize,
+          loaihdon: _loaiHoaDon,
+          ...(_dateFrom && { date_from: _dateFrom }),
+          ...(_dateTo && { date_to: _dateTo }),
+        },
       });
 
       if (response?.data) {
@@ -169,11 +175,12 @@ function InvoiceList() {
               <Cards>
                 <DataTable
                   filterOption
-                  filterOnchange
                   tableData={tableDataSource}
                   columns={invoiceListDataTable}
                   pagination={pagination}
+                  state={state}
                   setState={setState}
+                  getInvoiceList={getInvoiceList}
                 />
               </Cards>
             </BorderLessHeading>

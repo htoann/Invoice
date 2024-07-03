@@ -1,3 +1,4 @@
+import UilAngleDown from '@iconscout/react-unicons/icons/uil-angle-down';
 import UilSearch from '@iconscout/react-unicons/icons/uil-search';
 import { DatePicker, Select, Table } from 'antd';
 import PropTypes from 'prop-types';
@@ -5,10 +6,19 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { Button } from '../../../../components/buttons/buttons';
 import { TableWrapper } from '../../../../container/styled';
-import { dataLiveFilter, filterWithSubmit } from '../../../../redux/data-filter/actionCreator';
+import { dataLiveFilter } from '../../../../redux/data-filter/actionCreator';
 import { DataTableStyleWrap } from './Style';
 
-function DataTable({ filterOption, filterOnchange, rowSelection = false, tableData, columns, pagination, setState }) {
+function DataTable({
+  filterOption,
+  rowSelection = false,
+  tableData,
+  columns,
+  pagination,
+  state,
+  setState,
+  getInvoiceList,
+}) {
   const dispatch = useDispatch();
 
   const handleIdSearch = (e) => {
@@ -29,9 +39,13 @@ function DataTable({ filterOption, filterOnchange, rowSelection = false, tableDa
   };
 
   const handleSearch = () => {
-    const id = document.querySelector('.ninjadash-data-id').value;
-    const status = document.querySelector('.ninjadash-data-status .ant-select-selection-item').title;
-    dispatch(filterWithSubmit(id, status));
+    getInvoiceList(
+      state.pagination.current,
+      state.pagination.pageSize,
+      state.loaiHoaDon,
+      state.date_from,
+      state.date_to,
+    );
   };
 
   const prefix = <UilSearch />;
@@ -40,87 +54,54 @@ function DataTable({ filterOption, filterOnchange, rowSelection = false, tableDa
     <DataTableStyleWrap>
       {filterOption ? (
         <div className="ninjadash-datatable-filter">
-          {!filterOnchange ? (
-            <div className="ninjadash-datatable-filter__left">
-              {/* <div className="ninjadash-datatable-filter__input">
-                <span className="label">Id:</span>
-                <Input className="ninjadash-data-id" placeholder="Search with Id" />
-              </div> */}
-              <div className="ninjadash-datatable-filter__input">
-                <span className="label">Loại hóa đơn</span>
-                <Select style={{ width: 200 }} className="ninjadash-data-status" defaultValue="purchase">
-                  <Select.Option value="purchase">Mua vào</Select.Option>
-                  <Select.Option value="sold">Bán ra</Select.Option>
-                </Select>
-              </div>
-              <div className="ninjadash-datatable-filter__input">
-                <span className="label">Ngày bắt đầu</span>
-                <DatePicker
-                  placeholder="Chọn ngày bắt đầu"
-                  onChange={() => {
-                    console.log();
-                  }}
-                />
-              </div>
-              <div className="ninjadash-datatable-filter__input">
-                <span className="label">Ngày kết thúc</span>
-                <DatePicker
-                  placeholder="Chọn ngày kết thúc"
-                  onChange={() => {
-                    console.log();
-                  }}
-                />
-              </div>
-              <div className="ninjadash-datatable-filter__action">
-                <Button type="primary" size="small" onClick={handleSearch} transparented>
-                  Tìm kiếm
-                </Button>
-              </div>
-            </div>
-          ) : (
-            <div className="ninjadash-datatable-filter__left">
-              {/* <div className="ninjadash-datatable-filter__input">
+          <div className="ninjadash-datatable-filter__left">
+            {/* <div className="ninjadash-datatable-filter__input">
                 <span className="label">Id:</span>
                 <Input onChange={handleIdSearch} placeholder="Search with Id" />
               </div> */}
-              <div className="ninjadash-datatable-filter__input">
-                <span className="label">Loại hóa đơn</span>
-                <Select onChange={handleLoaiHoaDonSearch} style={{ width: 200 }} defaultValue="purchase">
-                  <Select.Option value="purchase">Mua vào</Select.Option>
-                  <Select.Option value="sold">Bán ra</Select.Option>
-                </Select>
-              </div>
-              <div className="ninjadash-datatable-filter__input">
-                <span className="label">Ngày bắt đầu</span>
-                <DatePicker
-                  placeholder="Chọn ngày bắt đầu"
-                  onChange={(e) => {
-                    setState((prev) => ({
-                      ...prev,
-                      date_from: new Date(e._d),
-                    }));
-                  }}
-                />
-              </div>
-              <div className="ninjadash-datatable-filter__input">
-                <span className="label">Ngày kết thúc</span>
-                <DatePicker
-                  placeholder="Chọn ngày kết thúc"
-                  onChange={(e) => {
-                    setState((prev) => ({
-                      ...prev,
-                      date_from: new Date(e._d),
-                    }));
-                  }}
-                />
-              </div>
-              <div className="ninjadash-datatable-filter__action">
-                <Button type="primary" size="small" onClick={handleSearch} transparented>
-                  Tìm kiếm
-                </Button>
-              </div>
+            <div className="ninjadash-datatable-filter__input">
+              <span className="label">Loại hóa đơn</span>
+              <Select onChange={handleLoaiHoaDonSearch} style={{ width: 200 }} defaultValue="purchase">
+                <Select.Option value="purchase">Mua vào</Select.Option>
+                <Select.Option value="sold">Bán ra</Select.Option>
+              </Select>
             </div>
-          )}
+            <div className="ninjadash-datatable-filter__input">
+              <span className="label">Ngày bắt đầu</span>
+              <DatePicker
+                placeholder="Chọn ngày bắt đầu"
+                onChange={(e) => {
+                  setState((prev) => ({
+                    ...prev,
+                    date_from: new Date(e._d),
+                  }));
+                }}
+              />
+            </div>
+            <div className="ninjadash-datatable-filter__input">
+              <span className="label">Ngày kết thúc</span>
+              <DatePicker
+                placeholder="Chọn ngày kết thúc"
+                onChange={(e) => {
+                  setState((prev) => ({
+                    ...prev,
+                    date_to: new Date(e._d),
+                  }));
+                }}
+              />
+            </div>
+            <div className="ninjadash-datatable-filter__action">
+              <Button
+                type="primary"
+                size="small"
+                onClick={handleSearch}
+                disabled={!state.date_from || !state.date_to}
+                transparented
+              >
+                Tìm kiếm
+              </Button>
+            </div>
+          </div>
           {/* <div className="ninjadash-datatable-filter__right">
             <Input onChange={handleDataUser} size="default" placeholder="Search" prefix={prefix} />
           </div> */}
@@ -128,6 +109,16 @@ function DataTable({ filterOption, filterOnchange, rowSelection = false, tableDa
       ) : (
         ''
       )}
+
+      <Button
+        type="primary"
+        size="small"
+        onClick={handleSearch}
+        disabled={!state.date_from || !state.date_to}
+        transparented
+      >
+        Export <UilAngleDown />
+      </Button>
 
       <div className="ninjadasj-datatable">
         <TableWrapper className="table-data-view table-responsive">
@@ -167,7 +158,6 @@ function DataTable({ filterOption, filterOnchange, rowSelection = false, tableDa
 
 DataTable.propTypes = {
   filterOption: PropTypes.bool,
-  filterOnchange: PropTypes.bool,
   rowSelection: PropTypes.bool,
   tableData: PropTypes.array,
   columns: PropTypes.array,
