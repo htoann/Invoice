@@ -6,7 +6,7 @@ import { Main } from '../styled';
 import { Cards } from '../../components/cards/frame/cards-frame';
 import { Button } from '../../components/buttons/buttons';
 
-const props = {
+const uploadProps = {
   name: 'file',
   action: 'https://www.mocky.io/v2/5cc8019d300000980a055e76',
   headers: {
@@ -63,6 +63,7 @@ function Uploads() {
       },
     ],
     loading: false,
+    imageUrl: '',
     defaultFilelist: [
       {
         uid: '-1',
@@ -96,6 +97,7 @@ function Uploads() {
       // Get this url from response in real world.
       getBase64(info.file.originFileObj, (imageUrl) =>
         setState({
+          ...state,
           imageUrl,
           loading: false,
         }),
@@ -124,11 +126,11 @@ function Uploads() {
   );
   const { imageUrl, defaultFilelist } = state;
 
-  const defaultProps = {
+  const defaultUploadProps = {
     action: 'https://www.mocky.io/v2/5cc8019d300000980a055e76',
     onChange({ file, fileList }) {
       if (file.status !== 'uploading') {
-        setState({ ...state, defaultFilelist: [...defaultFilelist, fileList] });
+        setState({ ...state, defaultFilelist: fileList });
       }
     },
   };
@@ -140,7 +142,7 @@ function Uploads() {
         <Row gutter={15}>
           <Col sm={12} xs={24}>
             <Cards title="Basic">
-              <Upload {...props}>
+              <Upload {...uploadProps}>
                 <Button className="btn-outlined" size="large" type="light" outlined>
                   <UploadOutlined /> Click to Upload
                 </Button>
@@ -163,12 +165,10 @@ function Uploads() {
           <Col sm={12} xs={24}>
             <Cards title="Complete Control">
               <Upload
-                props={{
-                  action: 'https://www.mocky.io/v2/5cc8019d300000980a055e76',
-                  onChange: handleChange,
-                  multiple: true,
-                }}
+                action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+                onChange={handleChange}
                 fileList={state.fileList}
+                multiple
               >
                 <Button className="btn-outlined" size="large" type="light" outlined>
                   <UploadOutlined /> Upload
@@ -176,7 +176,7 @@ function Uploads() {
               </Upload>
             </Cards>
             <Cards title="Upload Default">
-              <Upload props={defaultProps} fileList={defaultFilelist}>
+              <Upload {...defaultUploadProps} fileList={defaultFilelist}>
                 <Button className="btn-outlined" size="large" type="light" outlined>
                   <UploadOutlined /> Upload
                 </Button>
