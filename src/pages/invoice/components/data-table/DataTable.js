@@ -1,31 +1,26 @@
 import UilSearch from '@iconscout/react-unicons/icons/uil-search';
-import { Select, Table } from 'antd';
+import { DatePicker, Select, Table } from 'antd';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { useDispatch } from 'react-redux';
+import { Button } from '../../../../components/buttons/buttons';
 import { TableWrapper } from '../../../../container/styled';
 import { dataLiveFilter, filterWithSubmit } from '../../../../redux/data-filter/actionCreator';
 import { DataTableStyleWrap } from './Style';
 
-function DataTable({
-  filterOption,
-  filterOnchange,
-  rowSelection,
-  tableData,
-  columns,
-  pagination,
-  onchangePagination,
-  setLoaiHoaDon,
-}) {
+function DataTable({ filterOption, filterOnchange, rowSelection = false, tableData, columns, pagination, setState }) {
   const dispatch = useDispatch();
 
   const handleIdSearch = (e) => {
     const id = e.currentTarget.value;
     dispatch(dataLiveFilter(id, 'id'));
   };
-  const handleStatusSearch = (value) => {
-    setLoaiHoaDon(value);
-    dispatch(dataLiveFilter(value, 'status'));
+
+  const handleLoaiHoaDonSearch = (value) => {
+    setState((prev) => ({
+      ...prev,
+      loaiHoaDon: value,
+    }));
   };
 
   const handleDataUser = (e) => {
@@ -58,11 +53,29 @@ function DataTable({
                   <Select.Option value="sold">Bán ra</Select.Option>
                 </Select>
               </div>
-              {/* <div className="ninjadash-datatable-filter__action">
+              <div className="ninjadash-datatable-filter__input">
+                <span className="label">Ngày bắt đầu</span>
+                <DatePicker
+                  placeholder="Chọn ngày bắt đầu"
+                  onChange={() => {
+                    console.log();
+                  }}
+                />
+              </div>
+              <div className="ninjadash-datatable-filter__input">
+                <span className="label">Ngày kết thúc</span>
+                <DatePicker
+                  placeholder="Chọn ngày kết thúc"
+                  onChange={() => {
+                    console.log();
+                  }}
+                />
+              </div>
+              <div className="ninjadash-datatable-filter__action">
                 <Button type="primary" size="small" onClick={handleSearch} transparented>
-                  Submit
+                  Tìm kiếm
                 </Button>
-              </div> */}
+              </div>
             </div>
           ) : (
             <div className="ninjadash-datatable-filter__left">
@@ -72,10 +85,39 @@ function DataTable({
               </div> */}
               <div className="ninjadash-datatable-filter__input">
                 <span className="label">Loại hóa đơn</span>
-                <Select onChange={handleStatusSearch} style={{ width: 200 }} defaultValue="purchase">
+                <Select onChange={handleLoaiHoaDonSearch} style={{ width: 200 }} defaultValue="purchase">
                   <Select.Option value="purchase">Mua vào</Select.Option>
                   <Select.Option value="sold">Bán ra</Select.Option>
                 </Select>
+              </div>
+              <div className="ninjadash-datatable-filter__input">
+                <span className="label">Ngày bắt đầu</span>
+                <DatePicker
+                  placeholder="Chọn ngày bắt đầu"
+                  onChange={(e) => {
+                    setState((prev) => ({
+                      ...prev,
+                      date_from: new Date(e._d),
+                    }));
+                  }}
+                />
+              </div>
+              <div className="ninjadash-datatable-filter__input">
+                <span className="label">Ngày kết thúc</span>
+                <DatePicker
+                  placeholder="Chọn ngày kết thúc"
+                  onChange={(e) => {
+                    setState((prev) => ({
+                      ...prev,
+                      date_from: new Date(e._d),
+                    }));
+                  }}
+                />
+              </div>
+              <div className="ninjadash-datatable-filter__action">
+                <Button type="primary" size="small" onClick={handleSearch} transparented>
+                  Tìm kiếm
+                </Button>
               </div>
             </div>
           )}
@@ -97,14 +139,24 @@ function DataTable({
               pagination={{ pageSize: 20, showSizeChanger: true, ...pagination }}
               dataSource={tableData}
               columns={columns}
-              onChange={onchangePagination}
+              onChange={(_pagination) => {
+                setState((prev) => ({
+                  ...prev,
+                  pagination: _pagination,
+                }));
+              }}
             />
           ) : (
             <Table
               pagination={{ pageSize: 20, showSizeChanger: true, ...pagination }}
               dataSource={tableData}
               columns={columns}
-              onChange={onchangePagination}
+              onChange={(_pagination) => {
+                setState((prev) => ({
+                  ...prev,
+                  pagination: _pagination,
+                }));
+              }}
             />
           )}
         </TableWrapper>

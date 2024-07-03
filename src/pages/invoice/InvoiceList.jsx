@@ -1,7 +1,7 @@
 import UilEdit from '@iconscout/react-unicons/icons/uil-edit';
 import UilEye from '@iconscout/react-unicons/icons/uil-eye';
 import UilTrash from '@iconscout/react-unicons/icons/uil-trash-alt';
-import { Button, Col, Popconfirm, Row } from 'antd';
+import { Col, Popconfirm, Row } from 'antd';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -10,12 +10,10 @@ import { Cards } from '../../components/cards/frame/cards-frame';
 import { PageHeader } from '../../components/page-headers/page-headers';
 
 import { BorderLessHeading, Main } from '../../container/styled';
-import { contactDeleteData } from '../../redux/contact/actionCreator';
 import { tableReadData } from '../../redux/data-filter/actionCreator';
-import CreateAccount from './components/CreateInvoice';
 import EditAccount from './components/EditInvoice';
-import { invoiceListDataTable } from './const';
 import DataTable from './components/data-table/DataTable';
+import { invoiceListDataTable } from './const';
 
 function InvoiceList() {
   const dispatch = useDispatch();
@@ -31,10 +29,6 @@ function InvoiceList() {
     },
   ];
 
-  const [invoiceList, setInvoiceList] = useState([]);
-  const [loaiHoaDon, setLoaiHoaDon] = useState('purchase');
-  const [pagination, setPagination] = useState({ pageSize: 20, showSizeChanger: true, current: 1 });
-
   const [state, setState] = useState({
     selectedRowKeys: 0,
     selectedRows: 0,
@@ -43,6 +37,11 @@ function InvoiceList() {
     modalType: 'primary',
     url: null,
     update: {},
+    invoiceList: [],
+    pagination: { pageSize: 20, showSizeChanger: true, current: 1, total: 0 },
+    loaiHoaDon: 'purchase',
+    date_from: 0,
+    date_to: 0,
   });
 
   const { users } = useSelector((stateItem) => {
@@ -58,23 +57,28 @@ function InvoiceList() {
   }, [dispatch]);
 
   const getInvoiceList = async (page, pageSize = 20, _loaiHoaDon = 'purchase') => {
-    const data = await axios.get('http://localhost:8000/invoices', {
+    const response = await axios.get('http://localhost:8000/invoices', {
       params: { page, page_size: pageSize, loaihdon: _loaiHoaDon },
     });
-    setInvoiceList(data?.data?.results);
-    setPagination({ ...pagination, total: Number(data?.data?.count) });
+
+    if (response?.data) {
+      setState((prev) => ({
+        ...prev,
+        invoiceList: response?.data?.results,
+        pagination: {
+          ...prev.pagination,
+          total: Number(response?.data?.count) || 0,
+        },
+      }));
+    }
   };
+
+  const { loaiHoaDon, invoiceList, pagination } = state;
+  const { current, pageSize } = pagination;
 
   useEffect(() => {
-    getInvoiceList(pagination.current, pagination.pageSize, loaiHoaDon);
-  }, [pagination.current, pagination.pageSize, loaiHoaDon]);
-
-  const showModal = () => {
-    setState({
-      ...state,
-      visible: true,
-    });
-  };
+    getInvoiceList(current, pageSize, loaiHoaDon);
+  }, [current, pageSize, loaiHoaDon]);
 
   const showEditModal = (data) => {
     setState({
@@ -86,7 +90,6 @@ function InvoiceList() {
 
   const handleUserDelete = (id) => {
     const value = users.filter((item) => item.id !== id);
-    dispatch(contactDeleteData(value));
   };
 
   const tableDataSource = [];
@@ -148,8 +151,6 @@ function InvoiceList() {
     });
   }
 
-  // date_from;date_to;loaihdon;
-
   return (
     <>
       <PageHeader
@@ -167,20 +168,14 @@ function InvoiceList() {
                   filterOnchange
                   tableData={tableDataSource}
                   columns={invoiceListDataTable}
-                  rowSelection={false}
                   pagination={pagination}
-                  onchangePagination={(_pagination) => {
-                    setPagination(_pagination);
-                  }}
-                  setLoaiHoaDon={setLoaiHoaDon}
+                  setState={setState}
                 />
               </Cards>
             </BorderLessHeading>
           </Col>
         </Row>
       </Main>
-
-      {state.visible && <CreateAccount state={state} setState={setState} />}
 
       {state.editVisible && <EditAccount state={state} setState={setState} />}
     </>

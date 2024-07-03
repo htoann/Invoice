@@ -53,6 +53,9 @@ const DataTableStyleWrap = Styled.div`
                     font-size: 14px;
                 }
             }
+            .ninjadash-datatable-filter__action{
+                margin-top: 20px;
+            }
         }
         .ninjadash-datatable-filter__right{
             min-width: 280px;
