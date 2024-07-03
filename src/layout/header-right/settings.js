@@ -3,8 +3,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { ReactSVG } from 'react-svg';
 import { SettingDropdwon } from './auth-info-style';
-import Heading from '../../heading/heading';
-import { Popover } from '../../popup/popup';
+import Heading from '../../components/heading/heading';
+import { Popover } from '../../components/popup/popup';
 
 const Settings = React.memo(() => {
   const content = (

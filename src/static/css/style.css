@@ -3179,3 +3179,7 @@ html[dir='rtl'] .dark-mode .ninjadash-navbar-menu {
     max-width: 100vw;
   }
 }
+
+.ant-table-cell {
+  font-weight: 400;
+}

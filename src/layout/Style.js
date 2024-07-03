@@ -966,7 +966,7 @@ const TopMenuStyle = Styled.div`
                         top: 70px;
                         opacity: 1;
                         visibility: visible;
-                        @media only screen and (max-width: 1399px){
+                        @media only screen and (max-width: 1700px){
                             top: 40px;
                         }
                     }
@@ -974,10 +974,11 @@ const TopMenuStyle = Styled.div`
                 >a{
                     padding: 24px 0;
                     line-height: 1.5;
-                    @media only screen and (max-width: 1399px){
+                    @media only screen and (max-width: 1700px){
                         padding: 6px 0;
                     }
                 }
+               
                 a{
                     display: flex;
                     align-items: center;

@@ -16,11 +16,11 @@ import Message from './Message';
 import Notification from './Notification';
 import Search from './Search';
 import Settings from './settings';
-import { logOut } from '../../../redux/authentication/actionCreator';
+import { logOut } from '../../redux/authentication/actionCreator';
 
-import { Dropdown } from '../../dropdown/dropdown';
-import Heading from '../../heading/heading';
-import { Popover } from '../../popup/popup';
+import { Dropdown } from '../../components/dropdown/dropdown';
+import Heading from '../../components/heading/heading';
+import { Popover } from '../../components/popup/popup';
 
 const AuthInfo = React.memo(() => {
   const dispatch = useDispatch();
@@ -110,17 +110,17 @@ const AuthInfo = React.memo(() => {
 
   return (
     <InfoWraper>
-      <Search />
+      {/* <Search /> */}
       <Message />
       <Notification />
-      <Settings />
-      <div className="ninjadash-nav-actions__item ninjadash-nav-actions__language">
+      {/* <Settings /> */}
+      {/* <div className="ninjadash-nav-actions__item ninjadash-nav-actions__language">
         <Dropdown placement="bottomRight" content={country} trigger="click">
           <Link to="#" className="ninjadash-nav-action-link">
             <img src={require(`../../../static/img/flag/${flag}.png`)} alt="" />
           </Link>
         </Dropdown>
-      </div>
+      </div> */}
       <div className="ninjadash-nav-actions__item ninjadash-nav-actions__author">
         <Popover placement="bottomRight" content={userContent} action="click">
           <Link to="#" className="ninjadash-nav-action-link">
