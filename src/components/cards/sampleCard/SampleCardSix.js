@@ -45,7 +45,15 @@ const Icon = styled.div`
   ${({ theme }) => (theme.rtl ? 'margin-left' : 'margin-right')}: 20px;
 `;
 
-function SampleCardSix({ item }) {
+const SampleCardSix = ({
+  item = {
+    id: 1,
+    title: '47',
+    content: 'Total tasks',
+    img: 'static/img/icon/1.svg',
+    className: 'primary',
+  },
+}) => {
   const { content, title, img, className } = item;
   return (
     <Cards headless>
@@ -77,20 +85,10 @@ function SampleCardSix({ item }) {
       </CardWrapper>
     </Cards>
   );
-}
+};
 
 SampleCardSix.propTypes = {
   item: propTypes.object,
-};
-
-SampleCardSix.defaultProps = {
-  item: {
-    id: 1,
-    title: '47',
-    content: 'Total tasks',
-    img: 'static/img/icon/1.svg',
-    className: 'primary',
-  },
 };
 
 export default SampleCardSix;

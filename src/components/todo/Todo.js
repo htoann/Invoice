@@ -17,7 +17,7 @@ import { Button } from '../buttons/buttons';
 import { Cards } from '../cards/frame/cards-frame';
 import { TaskListStyle } from '../tasklist/Style';
 
-function ToDos({ todoData, showModal, isApp, title, tab, status }) {
+const ToDos = ({ todoData = [], showModal, isApp = false, title = 'Todo List', tab, status }) => {
   const dispatch = useDispatch();
   const todoDataMore = useSelector((state) => state.Todo.data);
 
@@ -152,12 +152,6 @@ function ToDos({ todoData, showModal, isApp, title, tab, status }) {
       </TodoStyleWrapper>
     </>
   );
-}
-
-ToDos.defaultProps = {
-  todoData: [],
-  isApp: false,
-  title: 'Todo List',
 };
 
 ToDos.propTypes = {
@@ -168,4 +162,5 @@ ToDos.propTypes = {
   tab: PropTypes.node,
   status: PropTypes.string,
 };
+
 export default ToDos;

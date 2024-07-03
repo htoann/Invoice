@@ -74,7 +74,15 @@ const CardWrapper = styled.figure`
   }
 `;
 
-function SampleCardFour({ item }) {
+const SampleCardFour = ({
+  item = {
+    id: 1,
+    title: 'How to Use Apples Products',
+    content:
+      'Lorem Ipsum is simply dummy text of the printing printer took a galley of type and scrambled and typesetting industry.',
+    img: 'static/img/sampleCards/6.png',
+  },
+}) => {
   const { content, title, img } = item;
   return (
     <CardWrapper>
@@ -105,20 +113,10 @@ function SampleCardFour({ item }) {
       </figcaption>
     </CardWrapper>
   );
-}
+};
 
 SampleCardFour.propTypes = {
   item: propTypes.object,
-};
-
-SampleCardFour.defaultProps = {
-  item: {
-    id: 1,
-    title: 'How to Use Apples Products',
-    content:
-      'Lorem Ipsum is simply dummy text of the printing printer took a galley of type and scrambled and typesetting industry.',
-    img: 'static/img/sampleCards/6.png',
-  },
 };
 
 export default SampleCardFour;

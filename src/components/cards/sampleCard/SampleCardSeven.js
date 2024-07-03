@@ -112,7 +112,15 @@ const CardWrapper = styled.figure`
   }
 `;
 
-function SampleCardSeven({ item }) {
+const SampleCardSeven = ({
+  item = {
+    id: 1,
+    title: 'Adobe CC',
+    installed: true,
+    content: 'Lorem Ipsum is simply dummy text of the and the typesetting industry.',
+    img: 'static/img/icon/adobe.svg',
+  },
+}) => {
   const { installed, content, title, img } = item;
   const [state, setState] = useState({
     checked: false,
@@ -186,20 +194,10 @@ function SampleCardSeven({ item }) {
       </div>
     </CardWrapper>
   );
-}
+};
 
 SampleCardSeven.propTypes = {
   item: propTypes.object,
-};
-
-SampleCardSeven.defaultProps = {
-  item: {
-    id: 1,
-    title: 'Adobe CC',
-    installed: true,
-    content: 'Lorem Ipsum is simply dummy text of the and the typesetting industry.',
-    img: 'static/img/icon/adobe.svg',
-  },
 };
 
 export default SampleCardSeven;

@@ -119,7 +119,19 @@ const ImageUrl = styled.div`
   background-position: center center;
 `;
 
-function BannerCard({ item }) {
+const BannerCard = ({
+  item = {
+    id: 1,
+    type: 'primary',
+    icon: 'water-fall.svg',
+    bgImage: '',
+    title: 'Primary Color',
+    content:
+      'Lorem Ipsum is simply dummy text of the printing printer took a galley of type and scrambled and typesetting industry.',
+    authorName: 'Chris Doe',
+    authorImg: '10.png',
+  },
+}) => {
   const { content, icon, title, authorName, authorImg, type, bgImage } = item;
   return (
     <CardWrapper>
@@ -173,24 +185,10 @@ function BannerCard({ item }) {
       </ImageUrl>
     </CardWrapper>
   );
-}
+};
 
 BannerCard.propTypes = {
   item: propTypes.object,
-};
-
-BannerCard.defaultProps = {
-  item: {
-    id: 1,
-    type: 'primary',
-    icon: 'water-fall.svg',
-    bgImage: '',
-    title: 'Primary Color',
-    content:
-      'Lorem Ipsum is simply dummy text of the printing printer took a galley of type and scrambled and typesetting industry.',
-    authorName: 'Chris Doe',
-    authorImg: '10.png',
-  },
 };
 
 export default BannerCard;

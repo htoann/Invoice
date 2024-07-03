@@ -2,8 +2,8 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import * as headings from './style';
 
-function Heading(props) {
-  const { as, children, className, id } = props;
+const Heading = (props) => {
+  const { as = 'h1', children, className, id } = props;
   const StyledHeading = as ? headings[as.toUpperCase()] : headings.H1;
 
   return (
@@ -11,10 +11,6 @@ function Heading(props) {
       {children}
     </StyledHeading>
   );
-}
-
-Heading.defaultProps = {
-  as: 'h1',
 };
 
 Heading.propTypes = {

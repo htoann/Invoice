@@ -4,7 +4,12 @@ import FontAwesome from 'react-fontawesome';
 import { Link } from 'react-router-dom';
 import { ProfileCardWrapper } from './Style';
 
-function ProfileCard({ image, bgImage, title, tag }) {
+const ProfileCard = ({
+  image = 'static/img/users/1.png',
+  bgImage = 'static/img/banner/BG.png',
+  title = 'Robert Clinton',
+  tag = 'Best Seller of the last month',
+}) => {
   return (
     <ProfileCardWrapper>
       <figcaption>
@@ -36,20 +41,13 @@ function ProfileCard({ image, bgImage, title, tag }) {
       </figcaption>
     </ProfileCardWrapper>
   );
-}
+};
 
 ProfileCard.propTypes = {
   image: propTypes.string,
   bgImage: propTypes.string,
   title: propTypes.string,
   tag: propTypes.string,
-};
-
-ProfileCard.defaultProps = {
-  image: 'static/img/users/1.png',
-  bgImage: 'static/img/banner/BG.png',
-  title: 'Robert Clinton',
-  tag: 'Best Seller of the last month',
 };
 
 export default ProfileCard;

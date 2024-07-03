@@ -20,7 +20,14 @@ const CardWrapper = styled.figure`
   }
 `;
 
-function SampleCardThree({ item }) {
+const SampleCardThree = ({
+  item = {
+    id: 1,
+    title: 'User Friendly',
+    content: 'Lorem Ipsum is simply dummy text of the',
+    img: 'static/img/sampleCards/1.svg',
+  },
+}) => {
   const { content, title, img } = item;
   return (
     <CardWrapper>
@@ -31,19 +38,10 @@ function SampleCardThree({ item }) {
       </figcaption>
     </CardWrapper>
   );
-}
+};
 
 SampleCardThree.propTypes = {
   item: propTypes.object,
-};
-
-SampleCardThree.defaultProps = {
-  item: {
-    id: 1,
-    title: 'User Friendly',
-    content: 'Lorem Ipsum is simply dummy text of the',
-    img: 'static/img/sampleCards/1.svg',
-  },
 };
 
 export default SampleCardThree;

@@ -54,7 +54,14 @@ const CardWrapper = styled.figure`
   }
 `;
 
-function SampleCardFive({ item }) {
+const SampleCardFive = ({
+  item = {
+    id: 1,
+    title: 'How to Use Apples Products',
+    content: 'Lorem Ipsum is simply dummy text of the printing ',
+    img: 'static/img/sampleCards/6.png',
+  },
+}) => {
   const { content, title, img, auth } = item;
   return (
     <CardWrapper>
@@ -71,19 +78,10 @@ function SampleCardFive({ item }) {
       </figcaption>
     </CardWrapper>
   );
-}
+};
 
 SampleCardFive.propTypes = {
   item: propTypes.object,
-};
-
-SampleCardFive.defaultProps = {
-  item: {
-    id: 1,
-    title: 'How to Use Apples Products',
-    content: 'Lorem Ipsum is simply dummy text of the printing ',
-    img: 'static/img/sampleCards/6.png',
-  },
 };
 
 export default SampleCardFive;

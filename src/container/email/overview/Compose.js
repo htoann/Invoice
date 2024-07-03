@@ -7,7 +7,7 @@ import propTypes from 'prop-types';
 import { MailBox } from './style';
 import MailComposer from './MailComposer';
 
-function Compose({ close }) {
+const Compose = ({ close = () => {} }) => {
   const [state, setState] = useState({
     value: RichTextEditor.createEmptyValue(),
     tags: [],
@@ -47,14 +47,10 @@ function Compose({ close }) {
       </div>
     </MailBox>
   );
-}
+};
 
 Compose.propTypes = {
   close: propTypes.func,
-};
-
-Compose.defaultProps = {
-  close: () => {},
 };
 
 export default Compose;

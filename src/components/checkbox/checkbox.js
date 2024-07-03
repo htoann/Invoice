@@ -5,9 +5,18 @@ import { CheckboxStyle } from './style';
 
 const CheckboxGroup = CheckboxStyle.Group;
 
-function Checkbox(props) {
-  const { item, defaultSelect, checked, multiple, onChange, onChangeTriger, defaultChecked, disabled, children } =
-    props;
+const Checkbox = (props) => {
+  const {
+    item,
+    defaultSelect,
+    checked = false,
+    multiple,
+    onChange,
+    onChangeTriger,
+    defaultChecked,
+    disabled,
+    children,
+  } = props;
   const plainOptions = item;
   const [state, setState] = useState({
     checkedList: defaultSelect,
@@ -57,10 +66,6 @@ function Checkbox(props) {
       <CheckboxGroup options={plainOptions} value={state.checkedList} onChange={onMultiChange} />
     </div>
   );
-}
-
-Checkbox.defaultProps = {
-  checked: false,
 };
 
 Checkbox.propTypes = {

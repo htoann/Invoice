@@ -6,7 +6,7 @@ import { OverviewDataStyleWrap } from '../../Style';
 
 import OverviewData from '../../../../demoData/overviewData.json';
 
-const OverviewDataList = React.memo(({ column }) => {
+const OverviewDataList = React.memo(({ column = '2' }) => {
   const OverviewDataSorted = OverviewData.slice(0, 4);
 
   return (
@@ -26,10 +26,6 @@ const OverviewDataList = React.memo(({ column }) => {
 
 OverviewDataList.propTypes = {
   column: propTypes.string,
-};
-
-OverviewDataList.defaultProps = {
-  column: '2',
 };
 
 export default OverviewDataList;

@@ -1,15 +1,15 @@
+import UilDown from '@iconscout/react-unicons/icons/uil-arrow-down';
+import UilUp from '@iconscout/react-unicons/icons/uil-arrow-up';
+import UilBookOpen from '@iconscout/react-unicons/icons/uil-book-open';
+import UilFile from '@iconscout/react-unicons/icons/uil-file';
+import UilFileAlt from '@iconscout/react-unicons/icons/uil-file-alt';
+import UilPrint from '@iconscout/react-unicons/icons/uil-print';
+import UilTimes from '@iconscout/react-unicons/icons/uil-times';
 import PropTypes from 'prop-types';
 import React from 'react';
-import UilPrint from '@iconscout/react-unicons/icons/uil-print';
-import UilBookOpen from '@iconscout/react-unicons/icons/uil-book-open';
-import UilFileAlt from '@iconscout/react-unicons/icons/uil-file-alt';
-import UilFile from '@iconscout/react-unicons/icons/uil-file';
-import UilTimes from '@iconscout/react-unicons/icons/uil-times';
 import { NavLink } from 'react-router-dom';
-import UilUp from '@iconscout/react-unicons/icons/uil-arrow-up';
-import UilDown from '@iconscout/react-unicons/icons/uil-arrow-down';
 import { Cards } from '../../../../components/cards/frame/cards-frame';
-import { chartLinearGradient, customTooltips } from '../../../../components/utilities/utilities';
+import { chartLinearGradient } from '../../../../components/utilities/utilities';
 import { BorderLessHeading } from '../../../styled';
 import { ChartContainer, SalesRevenueWrapper } from '../../Style';
 
@@ -22,7 +22,7 @@ const salesRevenue = {
   labels: ['Jan', 'Feb', 'Mar', 'App', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
 };
 
-const SalesReport = React.memo(({ title }) => {
+const SalesReport = React.memo(({ title = 'Sales Report' }) => {
   const moreContent = (
     <>
       <NavLink to="#">
@@ -126,10 +126,6 @@ const SalesReport = React.memo(({ title }) => {
     </SalesRevenueWrapper>
   );
 });
-
-SalesReport.defaultProps = {
-  title: 'Sales Report',
-};
 
 SalesReport.propTypes = {
   title: PropTypes.string,

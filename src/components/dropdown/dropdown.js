@@ -3,9 +3,27 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Content, DropdownStyle } from './dropdown-style';
 
-function Dropdown(props) {
-  const { content, placement, title, action, children, style, className } = props;
-
+const Dropdown = ({
+  content = (
+    <>
+      <Link to="#">
+        <span>Export to CSV</span>
+      </Link>
+      <Link to="#">
+        <span>Export to XML</span>
+      </Link>
+      <Link to="#">
+        <span>Export to Drive</span>
+      </Link>
+    </>
+  ),
+  placement = 'bottomRight',
+  title,
+  action = ['hover'],
+  children,
+  style = {},
+  className = 'ninjadash-dropdown',
+}) => {
   return (
     <DropdownStyle
       overlayClassName={className}
@@ -18,28 +36,6 @@ function Dropdown(props) {
       {children}
     </DropdownStyle>
   );
-}
-
-const content = (
-  <>
-    <Link to="#">
-      <span>Export to CSV</span>
-    </Link>
-    <Link to="#">
-      <span>Export to XML</span>
-    </Link>
-    <Link to="#">
-      <span>Export to Drive</span>
-    </Link>
-  </>
-);
-
-Dropdown.defaultProps = {
-  action: ['hover'],
-  placement: 'bottomRight',
-  content,
-  style: {},
-  className: 'ninjadash-dropdown',
 };
 
 Dropdown.propTypes = {

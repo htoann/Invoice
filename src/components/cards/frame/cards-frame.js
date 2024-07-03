@@ -6,7 +6,7 @@ import { CardFrame } from './style';
 import { Dropdown } from '../../dropdown/dropdown';
 import Heading from '../../heading/heading';
 
-function Cards(props) {
+const Cards = (props) => {
   const {
     title,
     children,
@@ -18,7 +18,7 @@ function Cards(props) {
     isbutton,
     bodyStyle,
     headStyle,
-    border,
+    border = false,
     bodypadding,
     className,
   } = props;
@@ -66,10 +66,6 @@ function Cards(props) {
       )}
     </>
   );
-}
-
-Cards.defaultProps = {
-  border: false,
 };
 
 Cards.propTypes = {

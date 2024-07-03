@@ -6,7 +6,13 @@ import { useLocation } from 'react-router-dom';
 import { ReactSVG } from 'react-svg';
 import { OverviewCardWrap } from './Style';
 
-function OverviewCard({ data, className, bottomStatus, contentFirst, halfCircleIcon }) {
+const OverviewCard = ({
+  data = {},
+  className = 'ninjadash-overview-card-box',
+  bottomStatus = true,
+  contentFirst = false,
+  halfCircleIcon = false,
+}) => {
   const [didViewCountUp, setDidViewCountUp] = useState(false);
 
   const { pathname } = useLocation();
@@ -85,14 +91,8 @@ function OverviewCard({ data, className, bottomStatus, contentFirst, halfCircleI
       </Card>
     </OverviewCardWrap>
   );
-}
-OverviewCard.defaultProps = {
-  data: {},
-  className: 'ninjadash-overview-card-box',
-  bottomStatus: true,
-  contentFirst: false,
-  halfCircleIcon: false,
 };
+
 OverviewCard.propTypes = {
   data: propTypes.object,
   className: propTypes.string,

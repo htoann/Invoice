@@ -5,7 +5,21 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { BlogCardStyleWrap } from './Style';
 
-function BlogCard({ item, theme }) {
+const BlogCard = ({
+  item = {
+    id: 1,
+    title: 'Technology Change the World',
+    content: 'Lorem Ipsum is simply dummy text of the printer took a galley of type and scrambled',
+    category: 'Web Development',
+    img: '1.png',
+    author: 'Machel Bold',
+    authorImg: '1.png',
+    postDate: '15 March 2021',
+    favouriteBy: '15k',
+    viewedBy: '20k',
+  },
+  theme,
+}) => {
   const { content, title, img } = item;
   return (
     <BlogCardStyleWrap>
@@ -60,27 +74,11 @@ function BlogCard({ item, theme }) {
       </figure>
     </BlogCardStyleWrap>
   );
-}
+};
 
 BlogCard.propTypes = {
   item: propTypes.object,
   theme: propTypes.string,
-};
-
-BlogCard.defaultProps = {
-  item: {
-    id: 1,
-    title: 'Technology Change the World',
-    content: 'Lorem Ipsum is simply dummy text of the printer took a galley of type and scrambled',
-    category: 'Web Development',
-    img: '1.png',
-    author: 'Machel Bold',
-    authorImg: '1.png',
-    postDate: '15 March 2021',
-    favouriteBy: '15k',
-    viewedBy: '20k',
-  },
-  theme: 'style-1',
 };
 
 export default BlogCard;

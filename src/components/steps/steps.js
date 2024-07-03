@@ -7,24 +7,24 @@ import { ActionWrapper, StepsStyle } from './style';
 
 const { Step } = StepsStyle;
 
-function Steps({
+const Steps = ({
   isvertical,
   size,
-  current,
+  current = 0,
   direction,
   status,
   progressDot,
   steps,
   isswitch,
   navigation,
-  onNext,
-  onPrev,
-  onDone,
-  onChange,
+  onNext = () => {},
+  onPrev = () => {},
+  onDone = () => message.success('Processing complete!'),
+  onChange = () => {},
   children,
-  height,
-  isfinished,
-}) {
+  height = 150,
+  isfinished = false,
+}) => {
   const [state, setState] = useState({
     currents: current,
   });
@@ -170,13 +170,6 @@ function Steps({
       )}
     </>
   );
-}
-
-Steps.defaultProps = {
-  current: 0,
-  height: 150,
-  onDone: () => message.success('Processing complete!'),
-  isfinished: false,
 };
 
 Steps.propTypes = {

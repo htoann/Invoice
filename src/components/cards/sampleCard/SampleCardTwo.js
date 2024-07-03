@@ -27,7 +27,15 @@ const CardWrapper = styled.figure`
   }
 `;
 
-function SampleCardTwo({ item }) {
+const SampleCardTwo = ({
+  item = {
+    id: 1,
+    title: 'Creative Planning',
+    content:
+      'Lorem Ipsum is simply dummy text of the printer took a galley of type and scrambled and typesetting industry.',
+    img: 'static/img/icon/strategy.svg',
+  },
+}) => {
   const { content, title, img } = item;
   return (
     <CardWrapper>
@@ -39,20 +47,10 @@ function SampleCardTwo({ item }) {
       </figcaption>
     </CardWrapper>
   );
-}
+};
 
 SampleCardTwo.propTypes = {
   item: propTypes.object,
-};
-
-SampleCardTwo.defaultProps = {
-  item: {
-    id: 1,
-    title: 'Creative Planning',
-    content:
-      'Lorem Ipsum is simply dummy text of the printer took a galley of type and scrambled and typesetting industry.',
-    img: 'static/img/icon/strategy.svg',
-  },
 };
 
 export default SampleCardTwo;

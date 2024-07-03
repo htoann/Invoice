@@ -54,6 +54,7 @@
     "jsx-a11y/img-redundant-alt": "off",
     "no-console": "off",
     "react/prop-types": "off",
-    "import/order": "off"
+    "import/order": "off",
+    "react/function-component-definition": "off"
   }
 }

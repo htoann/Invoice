@@ -6,11 +6,20 @@ import { Button } from '../buttons/buttons';
 
 const RadioGroup = Radio.Group;
 
-function Drawer(props) {
-  const { width, title, placement, children, customPlacement, render, childDrawer, childTitle, btnText } = props;
+const Drawer = ({
+  width = 320,
+  title,
+  placement = 'right',
+  children,
+  customPlacement,
+  render,
+  childDrawer,
+  childTitle,
+  btnText = 'Open',
+}) => {
   const [state, setState] = useState({
     open: false,
-    placement: placement || 'right',
+    placement,
     childrenDrawer: false,
   });
 
@@ -123,11 +132,6 @@ function Drawer(props) {
       </DrawerStyle>
     </>
   );
-}
-
-Drawer.defaultProps = {
-  btnText: 'Open',
-  width: 320,
 };
 
 Drawer.propTypes = {

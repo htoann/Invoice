@@ -2,9 +2,48 @@ import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import { CascaderStyle } from './style';
 
-function Cascader(props) {
-  const { data, defaultValue, trigger, onChange, isShowSearch, loading, placeholder } = props;
-
+const Cascader = ({
+  data = [
+    {
+      value: 'zhejiang',
+      label: 'Zhejiang',
+      children: [
+        {
+          value: 'hangzhou',
+          label: 'Hangzhou',
+          children: [
+            {
+              value: 'xihu',
+              label: 'West Lake',
+            },
+          ],
+        },
+      ],
+    },
+    {
+      value: 'jiangsu',
+      label: 'Jiangsu',
+      children: [
+        {
+          value: 'nanjing',
+          label: 'Nanjing',
+          children: [
+            {
+              value: 'zhonghuamen',
+              label: 'Zhong Hua Men',
+            },
+          ],
+        },
+      ],
+    },
+  ],
+  defaultValue = [],
+  trigger = 'click',
+  placeholder = 'Please select',
+  onChange,
+  isShowSearch,
+  loading,
+}) => {
   const options = data;
   const [state, setState] = useState({
     options,
@@ -56,46 +95,6 @@ function Cascader(props) {
       changeOnSelect={!!loading}
     />
   );
-}
-
-Cascader.defaultProps = {
-  data: [
-    {
-      value: 'zhejiang',
-      label: 'Zhejiang',
-      children: [
-        {
-          value: 'hangzhou',
-          label: 'Hangzhou',
-          children: [
-            {
-              value: 'xihu',
-              label: 'West Lake',
-            },
-          ],
-        },
-      ],
-    },
-    {
-      value: 'jiangsu',
-      label: 'Jiangsu',
-      children: [
-        {
-          value: 'nanjing',
-          label: 'Nanjing',
-          children: [
-            {
-              value: 'zhonghuamen',
-              label: 'Zhong Hua Men',
-            },
-          ],
-        },
-      ],
-    },
-  ],
-  defaultValue: [],
-  trigger: 'click',
-  placeholder: 'Please select',
 };
 
 Cascader.propTypes = {

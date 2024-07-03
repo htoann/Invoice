@@ -5,8 +5,28 @@ import { Link } from 'react-router-dom';
 import { Content, PopoverStyle, Title } from './style';
 import './style.css';
 
-function Popover(props) {
-  const { content, placement, title, action, children } = props;
+const Popover = ({
+  content = (
+    <>
+      <Link to="#">
+        <UilCheck />
+        <span>Btn Dropdown one</span>
+      </Link>
+      <Link to="#">
+        <UilCheck />
+        <span>Btn Dropdown two</span>
+      </Link>
+      <Link to="#">
+        <UilCheck />
+        <span>Btn Dropdown three</span>
+      </Link>
+    </>
+  ),
+  placement = 'bottom',
+  title,
+  action = 'hover',
+  children,
+}) => {
   const content1 = <Content>{content}</Content>;
 
   return (
@@ -14,29 +34,6 @@ function Popover(props) {
       {children}
     </PopoverStyle>
   );
-}
-
-const content = (
-  <>
-    <Link to="#">
-      <UilCheck />
-      <span>Btn Dropdown one</span>
-    </Link>
-    <Link to="#">
-      <UilCheck />
-      <span>Btn Dropdown two</span>
-    </Link>
-    <Link to="#">
-      <UilCheck />
-      <span>Btn Dropdown three</span>
-    </Link>
-  </>
-);
-
-Popover.defaultProps = {
-  action: 'hover',
-  placement: 'bottom',
-  content,
 };
 
 Popover.propTypes = {

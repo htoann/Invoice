@@ -32,7 +32,14 @@ const CardWrapper = styled.figure`
   }
 `;
 
-function SampleCardOne({ item }) {
+const SampleCardOne = ({
+  item = {
+    id: 1,
+    title: 'Technology Change the World',
+    content: 'Lorem Ipsum is simply dummy text of the printer took a galley of type and scrambled',
+    img: 'static/img/sampleCards/1.png',
+  },
+}) => {
   const { content, title, img } = item;
   return (
     <CardWrapper>
@@ -46,19 +53,10 @@ function SampleCardOne({ item }) {
       </figcaption>
     </CardWrapper>
   );
-}
+};
 
 SampleCardOne.propTypes = {
   item: propTypes.object,
-};
-
-SampleCardOne.defaultProps = {
-  item: {
-    id: 1,
-    title: 'Technology Change the World',
-    content: 'Lorem Ipsum is simply dummy text of the printer took a galley of type and scrambled',
-    img: 'static/img/sampleCards/1.png',
-  },
 };
 
 export default SampleCardOne;
