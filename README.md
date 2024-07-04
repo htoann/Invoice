@@ -6,9 +6,7 @@
   docker-compose up
 ```
 
-## Run Locally
-
-Quick install
+## Quick install
 
 ```
   git clone https://github.com/htoann/Invoice
