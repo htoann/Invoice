@@ -20,11 +20,11 @@ export const EmailList = () => {
 
   const PageRoutes = [
     {
-      path: 'index',
+      path: '/email/inbox',
       breadcrumbName: 'Hộp thư',
     },
     {
-      path: 'first',
+      path: '/email/email-list',
       breadcrumbName: 'Danh sách email',
     },
   ];

@@ -1,21 +1,21 @@
-import React, { useState, useEffect } from 'react';
 import UilAngleLeft from '@iconscout/react-unicons/icons/uil-angle-left';
 import UilAngleRight from '@iconscout/react-unicons/icons/uil-angle-right';
+import UilEllipsisV from '@iconscout/react-unicons/icons/uil-ellipsis-v';
 import UilPaperclip from '@iconscout/react-unicons/icons/uil-paperclip';
 import UilSlidersV from '@iconscout/react-unicons/icons/uil-sliders-v';
-import UilEllipsisV from '@iconscout/react-unicons/icons/uil-ellipsis-v';
 import moment from 'moment';
-import { Link } from 'react-router-dom';
 import propTypes from 'prop-types';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useEffect, useState } from 'react';
 import FontAwesome from 'react-fontawesome';
-import { Style, EmailAuthor, EmailHeader } from './style';
-import Topbar from './Topbar';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { AutoComplete } from '../../../../../components/autoComplete/autoComplete';
+import { Dropdown } from '../../../../../components/dropdown/dropdown';
 import Heading from '../../../../../components/heading/heading';
 import { textRefactor } from '../../../../../components/utilities/utilities';
-import { Dropdown } from '../../../../../components/dropdown/dropdown';
-import { onStarUpdate, onSortingAscending, onSortingDescending } from '../../../../../redux/email/actionCreator';
+import { onSortingAscending, onSortingDescending, onStarUpdate } from '../../../../../redux/email/actionCreator';
+import Topbar from './Topbar';
+import { EmailAuthor, EmailHeader, Style } from './style';
 
 function Content({ searchData, email }) {
   const dispatch = useDispatch();
@@ -67,8 +67,6 @@ function Content({ searchData, email }) {
   const data = [];
   if (emails !== undefined)
     emails.map((inbox, key) => {
-      // eslint-disable-next-line no-shadow
-
       const { id, type, userName, status, img, subject, body, attach, stared } = inbox;
 
       const same = moment(id).format('MM-DD-YYYY') === moment().format('MM-DD-YYYY');
@@ -85,7 +83,7 @@ function Content({ searchData, email }) {
             >
               <FontAwesome name="star-o" />
             </Link>
-            <img src={require(`../../../${img}`)} alt="" />
+            <img src={require(`../../../../../${img}`)} alt="" />
             <Heading as="h5">
               <Link to="#">{userName}</Link>
             </Heading>

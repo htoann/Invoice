@@ -55,9 +55,9 @@ export const TopMenu = () => {
               <li>
                 <Link to="/invoices">Danh sách hoá đơn</Link>
               </li>
-              <li>
+              {/* <li>
                 <Link to="#">Kiểm tra tình trạng MST</Link>
-              </li>
+              </li> */}
             </ul>
           </li>
 

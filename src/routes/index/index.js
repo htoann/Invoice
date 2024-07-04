@@ -4,6 +4,7 @@ import { Route, Routes, useLocation } from 'react-router-dom';
 import withAdminLayout from '../../layout/withAdminLayout';
 import InvoiceList from '../../pages/invoice/InvoiceList';
 import { EmailList } from '../../pages/mails/c-pages/email-list/EmailList';
+import Email from '../../pages/mails/c-pages/inbox/Email';
 import Axios from './axios';
 import Dashboard from './dashboard';
 import Ecommerce from './ecommerce';
@@ -33,7 +34,6 @@ const ContactAddNew = lazy(() => import('../../container/contact/AddNew'));
 const Projects = lazy(() => import('./projects'));
 const Myprofile = lazy(() => import('../../container/profile/myProfile/Index'));
 const Chat = lazy(() => import('../../container/chat/ChatApp'));
-const Inbox = lazy(() => import('../../container/email/Email'));
 const Editors = lazy(() => import('../../container/pages/Editor'));
 const Icons = lazy(() => import('./icons'));
 const Tables = lazy(() => import('./table'));
@@ -85,7 +85,7 @@ const Index = React.memo(() => {
         {/* Change routes */}
         <Route path="invoices" element={<InvoiceList />} />
         <Route path="email/email-list" element={<EmailList />} />
-        <Route path="email/*" element={<Inbox />} />
+        <Route path="email/*" element={<Email />} />
         <Route path="editor" element={<Editors />} />
         <Route path="icons/*" element={<Icons />} />
         <Route path="tables/*" element={<Tables />} />

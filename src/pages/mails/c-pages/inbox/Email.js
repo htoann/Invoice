@@ -24,12 +24,12 @@ const MailDetailView = lazy(() => import('./overview/MailDetailView'));
 function Email() {
   const PageRoutes = [
     {
-      path: '/',
-      breadcrumbName: 'Email',
+      path: '/email/',
+      breadcrumbName: 'Hộp thư',
     },
     {
-      path: '',
-      breadcrumbName: 'Email',
+      path: '/email/inbox',
+      breadcrumbName: 'Hộp thư đến',
     },
   ];
 

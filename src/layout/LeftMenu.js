@@ -108,7 +108,7 @@ export const LeftMenu = ({ toggleCollapsed }) => {
       !topMenu && <UilCreateDashboard />,
       createMenuItems([
         { path: '/invoices', textKey: 'Danh sách hoá đơn', key: 'invoice-list' },
-        { path: '/invoices', textKey: 'Kiểm tra tình trạng MST', key: 'Kiểm tra tình trạng MST' },
+        // { path: '/invoices', textKey: 'Kiểm tra tình trạng MST', key: 'Kiểm tra tình trạng MST' },
       ]),
     ),
     getItem(
