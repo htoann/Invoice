@@ -21,6 +21,7 @@ export const invoiceListDataTable = [
     dataIndex: 'shdon',
     key: 'shdon',
     sorter: (a, b) => a.shdon.props.children - b.shdon.props.children,
+    fixed: true,
   },
   {
     title: 'Ngày lập',
