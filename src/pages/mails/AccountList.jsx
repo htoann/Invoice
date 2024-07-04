@@ -21,11 +21,11 @@ function AccountList() {
   const PageRoutes = [
     {
       path: 'index',
-      breadcrumbName: 'Dashboard',
+      breadcrumbName: 'Hộp thư',
     },
     {
       path: 'first',
-      breadcrumbName: 'Table',
+      breadcrumbName: 'Danh sách tài khoản',
     },
   ];
 

@@ -1,11 +1,12 @@
-import { Form, Input } from 'antd';
-import React from 'react';
+import { Checkbox, Col, DatePicker, Form, Input, Row } from 'antd';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Button } from '../../../components/buttons/buttons';
+import { Modal } from '../../../components/modals/antd-modals';
 import { AddUser } from '../../../container/pages/style';
 import { BasicFormWrapper } from '../../../container/styled';
 import { contactAddData } from '../../../redux/contact/actionCreator';
-import { Modal } from '../../../components/modals/antd-modals';
-import { Button } from '../../../components/buttons/buttons';
 
 function CreateAccount({ state, setState }) {
   const dispatch = useDispatch();
@@ -15,6 +16,17 @@ function CreateAccount({ state, setState }) {
     };
   });
   const [form] = Form.useForm();
+
+  const [imgCapcha, setImgCapcha] = useState();
+
+  const getCapcha = async () => {
+    const data = await axios.get('https://hoadondientu.gdt.gov.vn:30000/captcha');
+    setImgCapcha(data?.data?.content || null);
+  };
+
+  useEffect(() => {
+    getCapcha();
+  }, []);
 
   const onCancel = () => {
     setState({
@@ -57,30 +69,69 @@ function CreateAccount({ state, setState }) {
         <div className="project-modal">
           <AddUser>
             <BasicFormWrapper>
-              <Form form={form} name="contact" onFinish={handleOk}>
-                <Form.Item label="Name" name="name">
-                  <Input placeholder="Input Name" />
-                </Form.Item>
-
+              <Form form={form} name="username" onFinish={handleOk}>
                 <Form.Item
-                  label="Email Address"
-                  name="email"
-                  rules={[{ message: 'Please input your email!', type: 'email' }]}
+                  name="name"
+                  rules={[{ message: 'Vui lòng nhập tên đăng nhập', required: true }]}
+                  initialValue="ninjadash@dm.com"
+                  label="Tên đăng nhập"
                 >
                   <Input placeholder="name@example.com" />
                 </Form.Item>
 
-                <Form.Item name="phone" label="Phone Number">
-                  <Input placeholder="+440 2546 5236" />
+                <Form.Item
+                  name="password"
+                  initialValue="123456"
+                  label="Mật khẩu"
+                  rules={[{ message: 'Vui lòng nhập mật khẩu', required: true }]}
+                >
+                  <Input.Password placeholder="Mật khẩu" />
                 </Form.Item>
 
-                <Form.Item name="designation" label="Position">
-                  <Input placeholder="Input Position" />
-                </Form.Item>
+                <Row justify="center" align="middle">
+                  <Col xl={12} xs={24}>
+                    <Form.Item
+                      name="capcha"
+                      initialValue=""
+                      label="Mã xác nhận"
+                      rules={[{ message: 'Vui lòng nhập mã xác nhận', required: true }]}
+                    >
+                      <Input />
+                    </Form.Item>
+                  </Col>
+                  <Col xl={12} xs={24}>
+                    {imgCapcha && (
+                      <img
+                        style={{ margin: 'auto', display: 'flex' }}
+                        alt="Capcha image"
+                        src={`data:image/svg+xml;utf8,${encodeURIComponent(imgCapcha)}`}
+                      />
+                    )}
+                  </Col>
+                </Row>
 
-                <Form.Item name="company" label="Company Name">
-                  <Input placeholder="Company Name" />
-                </Form.Item>
+                <div style={{ padding: '20px' }}>
+                  <Row gutter={16} style={{ marginBottom: '10px', display: 'flex', alignItems: 'center' }}>
+                    <Col span={12}>
+                      <Checkbox>Đồng bộ hoá đơn bán ra</Checkbox>
+                    </Col>
+                    <Col span={12}>
+                      <Form.Item label="Đồng bộ từ ngày">
+                        <DatePicker placeholder="" />
+                      </Form.Item>
+                    </Col>
+                  </Row>
+                  <Row gutter={16} style={{ display: 'flex', alignItems: 'center' }}>
+                    <Col span={12}>
+                      <Checkbox>Đồng bộ hoá đơn mua vào</Checkbox>
+                    </Col>
+                    <Col span={12}>
+                      <Form.Item label="Đồng bộ từ ngày">
+                        <DatePicker placeholder="" />
+                      </Form.Item>
+                    </Col>
+                  </Row>
+                </div>
 
                 <div style={{ justifyContent: 'end', display: 'flex' }}>
                   <Button
