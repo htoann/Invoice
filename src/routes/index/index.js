@@ -3,7 +3,7 @@ import React, { lazy, Suspense, useEffect } from 'react';
 import { Route, Routes, useLocation } from 'react-router-dom';
 import withAdminLayout from '../../layout/withAdminLayout';
 import InvoiceList from '../../pages/invoice/InvoiceList';
-import AccountList from '../../pages/mails/AccountList';
+import { EmailList } from '../../pages/mails/c-pages/email-list/EmailList';
 import Axios from './axios';
 import Dashboard from './dashboard';
 import Ecommerce from './ecommerce';
@@ -84,7 +84,7 @@ const Index = React.memo(() => {
         <Route path="main/chat/*" element={<Chat />} />
         {/* Change routes */}
         <Route path="invoices" element={<InvoiceList />} />
-        <Route path="email/account-list" element={<AccountList />} />
+        <Route path="email/email-list" element={<EmailList />} />
         <Route path="email/*" element={<Inbox />} />
         <Route path="editor" element={<Editors />} />
         <Route path="icons/*" element={<Icons />} />

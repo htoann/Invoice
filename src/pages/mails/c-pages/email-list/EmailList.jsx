@@ -4,18 +4,18 @@ import { Button, Col, Popconfirm, Row } from 'antd';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { Cards } from '../../components/cards/frame/cards-frame';
-import DataTable from '../../components/data-table/DataTable';
-import { PageHeader } from '../../components/page-headers/page-headers';
+import { Cards } from '../../../../components/cards/frame/cards-frame';
+import DataTable from '../../../../components/data-table/DataTable';
+import { PageHeader } from '../../../../components/page-headers/page-headers';
 
-import { Main } from '../../container/styled';
-import { contactDeleteData } from '../../redux/contact/actionCreator';
-import { tableReadData } from '../../redux/data-filter/actionCreator';
-import CreateAccount from './components/CreateAccount';
-import EditAccount from './components/EditAccount';
-import { BorderLessHeading } from './style';
+import { Main } from '../../../../container/styled';
+import { contactDeleteData } from '../../../../redux/contact/actionCreator';
+import { tableReadData } from '../../../../redux/data-filter/actionCreator';
+import CreateAccount from '../../components/CreateAccount';
+import EditAccount from '../../components/EditAccount';
+import { BorderLessHeading } from '../../style';
 
-function AccountList() {
+export const EmailList = () => {
   const dispatch = useDispatch();
 
   const PageRoutes = [
@@ -162,6 +162,4 @@ function AccountList() {
       {state.editVisible && <EditAccount state={state} setState={setState} />}
     </>
   );
-}
-
-export default AccountList;
+};
