@@ -10,11 +10,12 @@ import { tableReadData } from '../../redux/data-filter/actionCreator';
 import DataTable from './components/data-table/DataTable';
 import { invoiceListDataTable } from './const';
 import { BorderLessHeading } from './style';
+import { handleTableDataSource } from './utils';
 
 function InvoiceList() {
   const dispatch = useDispatch();
 
-  const PageRoutes = [
+  const pageRoutes = [
     {
       path: '/invoices',
       breadcrumbName: 'Quản lý hóa đơn',
@@ -41,15 +42,15 @@ function InvoiceList() {
     }
   }, [dispatch]);
 
-  const getInvoiceList = async (page, pageSize = 20, _loaiHoaDon = 'purchase', _dateFrom, _dateTo) => {
+  const getInvoiceList = async (page, page_size = 20, loaihdon = 'purchase', date_from, date_to) => {
     try {
       const response = await axios.get('http://localhost:8000/invoices', {
         params: {
           page,
-          page_size: pageSize,
-          loaihdon: _loaiHoaDon,
-          ...(_dateFrom && { date_from: _dateFrom }),
-          ...(_dateTo && { date_to: _dateTo }),
+          page_size,
+          loaihdon,
+          ...(date_from && { date_from }),
+          ...(date_to && { date_to }),
         },
       });
 
@@ -68,58 +69,21 @@ function InvoiceList() {
     }
   };
 
-  const { loaiHoaDon, invoiceList, pagination } = state;
+  const { loaiHoaDon, pagination } = state;
   const { current, pageSize } = pagination;
 
   useEffect(() => {
     getInvoiceList(current, pageSize, loaiHoaDon);
   }, [current, pageSize, loaiHoaDon]);
 
-  const tableDataSource = [];
-
-  if (invoiceList.length > 0) {
-    invoiceList.map((item) => {
-      return tableDataSource.push({
-        id: item.no,
-        khmshdon: <span className="ninjadash-username">{item.khmshdon}</span>,
-        khhdon: <span>{item.khhdon}</span>,
-        shdon: <span>{item.shdon}</span>,
-        ntao: <span>{item.ntao}</span>,
-        nky: <span>{item.nky}</span>,
-        nhomhd: <span>{item.nhomhd}</span>,
-        chinhanh: <span>{item.chinhanh}</span>,
-        nmmst: <span>{item.nmmst}</span>,
-        nmten: <span>{item.nmten}</span>,
-        tgtcthue: <span>{item.tgtcthue}</span>,
-        tgtthue: <span>{item.tgtthue}</span>,
-        ttcktmai: <span>{item.ttcktmai}</span>,
-        thttlphi: <span>{item.thttlphi}</span>,
-        tgtttbso: <span>{item.tgtttbso}</span>,
-        dvtte: <span>{item.dvtte}</span>,
-        tthai: <span>{item.tthai}</span>,
-        ttxly: <span>{item.ttxly}</span>,
-        linkhd: <span>{item.linkhd}</span>,
-        matracuu: <span>{item.matracuu}</span>,
-        sohdgoc: <span>{item.sohdgoc}</span>,
-        sohdgocngay: <span>{item.sohdgocngay}</span>,
-        loaitd: <span>{item.loaitd}</span>,
-        ngaytd: <span>{item.ngaytd}</span>,
-        msttd: <span>{item.msttd}</span>,
-        tentd: <span>{item.tentd}</span>,
-        diachitd: <span>{item.diachitd}</span>,
-        ketquadoichieu: <span>{item.ketquadoichieu}</span>,
-        tinhtrangdn: <span>{item.tinhtrangdn}</span>,
-        ngaycongbo: <span>{item.ngaycongbo}</span>,
-      });
-    });
-  }
+  const tableDataSource = handleTableDataSource();
 
   return (
     <>
       <PageHeader
         className="ninjadash-page-header-main"
         title={`Danh sách hóa đơn ${loaiHoaDon === 'purchase' ? 'mua vào' : 'bán ra'}`}
-        routes={PageRoutes}
+        routes={pageRoutes}
       />
       <Main>
         <Row gutter={15}>
