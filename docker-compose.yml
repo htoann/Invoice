@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  client:
+    build: client
+    container_name: client
+    volumes:
+      - ./client:/app
+    restart: always
+    ports:
+      - '80:80'
+volumes:
+  invoice-client:
