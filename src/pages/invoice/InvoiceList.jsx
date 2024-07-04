@@ -69,14 +69,14 @@ function InvoiceList() {
     }
   };
 
-  const { loaiHoaDon, pagination } = state;
+  const { loaiHoaDon, invoiceList, pagination } = state;
   const { current, pageSize } = pagination;
 
   useEffect(() => {
     getInvoiceList(current, pageSize, loaiHoaDon);
   }, [current, pageSize, loaiHoaDon]);
 
-  const tableDataSource = handleTableDataSource();
+  const tableDataSource = handleTableDataSource(invoiceList);
 
   return (
     <>

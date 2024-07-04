@@ -1,7 +1,7 @@
 export const handleTableDataSource = (invoiceList) => {
   const tableDataSource = [];
 
-  if (invoiceList.length > 0) {
+  if (invoiceList?.length > 0) {
     invoiceList.map((item) => {
       return tableDataSource.push({
         id: item.no,
