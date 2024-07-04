@@ -8,28 +8,24 @@ const login = (values, callback) => {
   return async (dispatch) => {
     dispatch(loginBegin());
     try {
-      const response = await DataService.post('/login', values);
-      if (response.data.errors) {
-        dispatch(loginErr(response.data.errors));
-      } else {
-        Cookies.set('access_token', response.data.data.token);
-        Cookies.set('logedIn', true);
-        dispatch(loginSuccess(true));
-        callback();
-      }
+      // const response = await DataService.post('/login', values);
+      // if (response.data.errors) {
+      //   dispatch(loginErr(response.data.errors));
+      // } else {
+      //   Cookies.set('access_token', response.data.data.token);
+      //   Cookies.set('logedIn', true);
+      //   dispatch(loginSuccess(true));
+      //   callback();
+      // }
+
+      // Change signin/login
+      Cookies.set('access_token', 'Lmao');
+      Cookies.set('logedIn', true);
+      dispatch(loginSuccess(true));
+      callback();
     } catch (err) {
       dispatch(loginErr(err));
     }
-  };
-};
-
-const authOLogin = (values, callback) => {
-  return async (dispatch) => {
-    dispatch(loginBegin());
-    Cookies.set('access_token', values.accessToken);
-    Cookies.set('logedIn', true);
-    dispatch(loginSuccess(true));
-    callback();
   };
 };
 
@@ -63,4 +59,4 @@ const logOut = (callback) => {
   };
 };
 
-export { login, authOLogin, logOut, register };
+export { login, logOut, register };

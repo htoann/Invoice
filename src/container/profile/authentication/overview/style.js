@@ -246,7 +246,6 @@ const AuthFormWrap = Styled.div`
     text-align: center;
     padding: 25px;
     border-radius: 0 0 6px 6px;
-    background-color: ${({ theme }) => theme[theme.mainContent]['dark-background']};
     p{
       font-size: 14px;
       font-weight: 500;

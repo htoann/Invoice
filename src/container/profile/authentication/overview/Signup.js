@@ -27,42 +27,39 @@ function SignUp() {
       <Col xxl={6} xl={8} md={12} sm={18} xs={24}>
         <AuthFormWrap>
           <div className="ninjadash-authentication-top">
-            <h2 className="ninjadash-authentication-top__title">Sign Up Invoice</h2>
+            <h2 className="ninjadash-authentication-top__title">Đăng ký vào hệ thống hoá đơn</h2>
           </div>
           <div className="ninjadash-authentication-content">
             <Form name="register" onFinish={handleSubmit} layout="vertical">
-              <Form.Item label="Name" name="name" rules={[{ required: true, message: 'Please input your Full name!' }]}>
-                <Input placeholder="Full name" />
-              </Form.Item>
               <Form.Item
-                name="email"
-                label="Email Address"
-                rules={[{ required: true, message: 'Please input your email!', type: 'email' }]}
+                label="Tên đăng nhập"
+                name="name"
+                rules={[{ required: true, message: 'Vui lòng nhập tên đăng nhập' }]}
               >
-                <Input placeholder="name@example.com" />
+                <Input placeholder="Tên đăng nhập" />
               </Form.Item>
               <Form.Item
-                label="Password"
+                label="Mật khẩu"
                 name="password"
-                rules={[{ required: true, message: 'Please input your password!' }]}
+                rules={[{ required: true, message: 'Vui lòng nhập mật khẩu' }]}
               >
-                <Input.Password placeholder="Password" />
+                <Input.Password placeholder="Mật khẩu" />
               </Form.Item>
               <div className="ninjadash-auth-extra-links">
                 <Checkbox onChange={onChange} checked={state.checked}>
-                  Creating an account means you’re okay with our Terms of Service and Privacy Policy
+                  Tạo tài khoản nghĩa là bạn đồng ý với Điều khoản dịch vụ và Chính sách quyền riêng tư của chúng tôi
                 </Checkbox>
               </div>
               <Form.Item>
                 <Button className="btn-create" htmlType="submit" type="primary" size="large">
-                  Create Account
+                  Tạo tài khoản
                 </Button>
               </Form.Item>
             </Form>
           </div>
           <div className="ninjadash-authentication-bottom">
             <p>
-              Already have an account?<Link to="/">Sign In</Link>
+              Đã có tài khoản?<Link to="/">Đăng nhập</Link>
             </p>
           </div>
         </AuthFormWrap>
