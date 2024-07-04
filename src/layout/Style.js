@@ -1040,7 +1040,7 @@ const TopMenuStyle = Styled.div`
             z-index: 98;
             box-shadow: 0px 15px 40px 0px rgba(82, 63, 105, 0.15);
             @media only screen and (max-width: 1300px){
-                width: 180px;
+                width: 250px;
             }
             .subMenu{
                 width: 250px;
