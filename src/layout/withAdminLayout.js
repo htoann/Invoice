@@ -2,18 +2,18 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable react/prop-types */
 import UilEllipsisV from '@iconscout/react-unicons/icons/uil-ellipsis-v';
+import { Scrollbars } from '@pezhmanparsaee/react-custom-scrollbars';
 import { Button, Col, Layout, Row } from 'antd';
 import propTypes from 'prop-types';
 import { Component } from 'react';
-import { Scrollbars } from '@pezhmanparsaee/react-custom-scrollbars';
 import { connect } from 'react-redux';
 import { Link, NavLink } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
-import MenueItems from './MenueItems';
+import LeftMenu from './LeftMenu';
 import { FooterStyle, LayoutContainer, SmallScreenAuthInfo, TopMenuSearch } from './Style';
 import TopMenu from './TopMenu';
-import AuthInfo from './header-right/index';
 import SearchBar from './header-right/Search';
+import AuthInfo from './header-right/index';
 
 const { theme } = require('../config/theme/themeVariables');
 
@@ -83,7 +83,7 @@ const ThemeLayout = (WrappedComponent) => {
       const renderView = ({ style }) => {
         const customStyle = {
           marginRight: 'auto',
-          [rtl ? 'marginLeft' : 'marginRight']: '-17px',
+          [rtl ? 'marginLeft' : 'marginRight']: '-19px',
         };
         return <div style={{ ...style, ...customStyle }} />;
       };
@@ -203,7 +203,7 @@ const ThemeLayout = (WrappedComponent) => {
                       renderView={renderView}
                       renderTrackVertical={(props) => <div {...props} className="ninjadash-track-vertical" />}
                     >
-                      <MenueItems topMenu={topMenu} toggleCollapsed={toggleCollapsedMobile} />
+                      <LeftMenu topMenu={topMenu} toggleCollapsed={toggleCollapsedMobile} />
                     </Scrollbars>
                   </Sider>
                 </ThemeProvider>

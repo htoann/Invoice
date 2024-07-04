@@ -1,28 +1,6 @@
-import {
-  Uil500px,
-  UilApps,
-  UilAt,
-  UilBagAlt,
-  UilCalendarAlt,
-  UilChartBar,
-  UilChat,
-  UilCheckSquare,
-  UilClipboardAlt,
-  UilCompactDisc,
-  UilEdit,
-  UilEnvelope,
-  UilExchange,
-  UilFile,
-  UilHeadphones,
-  UilMap,
-  UilShoppingCart,
-  UilSquareFull,
-  UilTable,
-  UilUsersAlt,
-} from '@iconscout/react-unicons';
 import React, { useLayoutEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Link, NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { TopMenuStyle } from './Style';
 
 function TopMenu() {

@@ -1,59 +1,15 @@
-import {
-  Uil500px,
-  UilAirplay,
-  UilArrowGrowth,
-  UilAt,
-  UilBagAlt,
-  UilBookAlt,
-  UilBookOpen,
-  UilBookReader,
-  UilCalendarAlt,
-  UilChartBar,
-  UilChat,
-  UilCheckSquare,
-  UilCircle,
-  UilClipboardAlt,
-  UilClock,
-  UilCompactDisc,
-  UilCreateDashboard,
-  UilDatabase,
-  UilDocumentLayoutLeft,
-  UilEdit,
-  UilEnvelope,
-  UilExchange,
-  UilExclamationOctagon,
-  UilFile,
-  UilFileShieldAlt,
-  UilHeadphones,
-  UilIcons,
-  UilImages,
-  UilLayerGroup,
-  UilMap,
-  UilPresentation,
-  UilQuestionCircle,
-  UilSearch,
-  UilServer,
-  UilSetting,
-  UilShoppingCart,
-  UilSquareFull,
-  UilTable,
-  UilUsdCircle,
-  UilUsersAlt,
-  UilWindowSection,
-} from '@iconscout/react-unicons';
+import { UilAt, UilCreateDashboard } from '@iconscout/react-unicons';
 import { Menu } from 'antd';
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 
 import UilEllipsisV from '@iconscout/react-unicons/icons/uil-ellipsis-v';
 import propTypes from 'prop-types';
-import versions from '../demoData/changelog.json';
 import { changeDirectionMode, changeLayoutMode, changeMenuMode } from '../redux/themeLayout/actionCreator';
-import { NavTitle } from './Style';
 
-function MenuItems({ toggleCollapsed }) {
+function LeftMenu({ toggleCollapsed }) {
   const { t } = useTranslation();
 
   function getItem(label, key, icon, children, type) {
@@ -125,123 +81,104 @@ function MenuItems({ toggleCollapsed }) {
   };
 
   const items = [
-    getItem(t('dashboard'), 'dashboard', !topMenu && <UilCreateDashboard />, [
-      getItem(
-        <NavLink onClick={toggleCollapsed} to={path}>
-          {t('demo')} {t('1')}
-        </NavLink>,
-        'demo-1',
-        null,
-      ),
-      getItem(
-        <NavLink onClick={toggleCollapsed} to={`${path}/demo-2`}>
-          {t('demo')} {t('2')}
-        </NavLink>,
-        'demo-2',
-        null,
-      ),
-      getItem(
-        <NavLink onClick={toggleCollapsed} to={`${path}/demo-3`}>
-          {t('demo')} {t('3')}
-        </NavLink>,
-        'demo-3',
-        null,
-      ),
-      getItem(
-        <NavLink onClick={toggleCollapsed} to={`${path}/demo-4`}>
-          {t('demo')} {t('4')}
-        </NavLink>,
-        'demo-4',
-        null,
-      ),
-      getItem(
-        <NavLink onClick={toggleCollapsed} to={`${path}/demo-5`}>
-          {t('demo')} {t('5')}
-        </NavLink>,
-        'demo-5',
-        null,
-      ),
-      getItem(
-        <NavLink onClick={toggleCollapsed} to={`${path}/demo-6`}>
-          {t('demo')} {t('6')}
-        </NavLink>,
-        'demo-6',
-        null,
-      ),
-      getItem(
-        <NavLink onClick={toggleCollapsed} to={`${path}/demo-7`}>
-          {t('demo')} {t('7')}
-        </NavLink>,
-        'demo-7',
-        null,
-      ),
-      getItem(
-        <NavLink onClick={toggleCollapsed} to={`${path}/demo-8`}>
-          {t('demo')} {t('8')}
-        </NavLink>,
-        'demo-8',
-        null,
-      ),
-      getItem(
-        <NavLink onClick={toggleCollapsed} to={`${path}/demo-9`}>
-          {t('demo')} {t('9')}
-        </NavLink>,
-        'demo-9',
-        null,
-      ),
-      getItem(
-        <NavLink onClick={toggleCollapsed} to={`${path}/demo-10`}>
-          {t('demo')} {t('10')}
-        </NavLink>,
-        'demo-10',
-        null,
-      ),
-    ]),
-    getItem(t('contact'), 'contact', !topMenu && <UilAt />, [
-      getItem(
-        <NavLink onClick={toggleCollapsed} to={`${path}/contact/grid`}>
-          {t('contact')} {t('grid')}
-        </NavLink>,
-        'contact-grid',
-        null,
-      ),
-      getItem(
-        <NavLink onClick={toggleCollapsed} to={`${path}/contact/list`}>
-          {t('contact')} {t('list')}
-        </NavLink>,
-        'contact-list',
-        null,
-      ),
-      getItem(
-        <NavLink onClick={toggleCollapsed} to={`${path}/contact/addNew`}>
-          {t('contact')} {t('create')}
-        </NavLink>,
-        'addNew',
-        null,
-      ),
-    ]),
     getItem(
-      <NavLink onClick={toggleCollapsed} to={`${path}/app/note/all`}>
-        {t('note')}
+      <NavLink onClick={toggleCollapsed} to="/">
+        {t('overview')}
       </NavLink>,
-      'note',
+      '404',
       !topMenu && (
-        <NavLink className="menuItem-iocn" to={`${path}/app/note/all`}>
-          <UilClipboardAlt />
+        <NavLink className="menuItem-iocn" to="/">
+          <UilCreateDashboard />
         </NavLink>
       ),
     ),
-    getItem(
-      <NavLink onClick={toggleCollapsed} to={`${path}/app/to-do`}>
-        {t('to')} {t('do')}
-      </NavLink>,
-      'to-do',
-      !topMenu && (
-        <NavLink className="menuItem-iocn" to={`${path}/app/to-do`}>
-          <UilCheckSquare />
-        </NavLink>
+    getItem(t('manage_invoices'), 'manage_invoices', !topMenu && <UilCreateDashboard />, [
+      getItem(
+        <NavLink onClick={toggleCollapsed} to="/invoices">
+          {t('Danh sách hoá đơn')}
+        </NavLink>,
+        'invoice-list',
+        null,
       ),
-    ),
+      getItem(
+        <NavLink onClick={toggleCollapsed} to="/invoices">
+          {t('Kiểm tra tình trạng MST')}
+        </NavLink>,
+        'Kiểm tra tình trạng MST',
+        null,
+      ),
+    ]),
+    getItem(t('inbox'), 'inbox', !topMenu && <UilAt />, [
+      getItem(
+        <NavLink onClick={toggleCollapsed} to="/email/account-list">
+          {t('Danh sách tài khoản')}
+        </NavLink>,
+        'account-list',
+        null,
+      ),
+      getItem(
+        <NavLink onClick={toggleCollapsed} to="/email/account-list">
+          {t('Hộp thư đến')}
+        </NavLink>,
+        'Hộp thư đến',
+        null,
+      ),
+      getItem(
+        <NavLink onClick={toggleCollapsed} to="/email/account-list">
+          {t('Lịch sử đồng bộ')}
+        </NavLink>,
+        'Lịch sử đồng bộ',
+        null,
+      ),
+    ]),
+    getItem(t('category'), 'category', !topMenu && <UilAt />, [
+      getItem(
+        <NavLink onClick={toggleCollapsed} to="/email/account-list">
+          {t('Hàng hoá/Dịch vụ')}
+        </NavLink>,
+        'Hàng hoá/Dịch vụ',
+        null,
+      ),
+    ]),
+    getItem(t('report'), 'report', !topMenu && <UilAt />, [
+      getItem(
+        <NavLink onClick={toggleCollapsed} to="/email/account-list">
+          {t('Bảng kê hoá đơn')}
+        </NavLink>,
+        'Bảng kê hoá đơn',
+        null,
+      ),
+      getItem(
+        <NavLink onClick={toggleCollapsed} to="/email/account-list">
+          {t('Tờ khai thuế 01GTGT')}
+        </NavLink>,
+        'Tờ khai thuế 01GTGT',
+        null,
+      ),
+      getItem(
+        <NavLink onClick={toggleCollapsed} to="/email/account-list">
+          {t('Hoá đơn mua vào bị thay thế/điều chỉnh gần đây')}
+        </NavLink>,
+        'Hoá đơn mua vào bị thay thế/điều chỉnh gần đây',
+        null,
+      ),
+      getItem(
+        <NavLink onClick={toggleCollapsed} to="/email/account-list">
+          {t('Tình trạng doanh nghiệp')}
+        </NavLink>,
+        'Tình trạng doanh nghiệp',
+        null,
+      ),
+    ]),
+    getItem(t('connect_tax_authorities'), 'connect_tax_authorities', !topMenu && <UilAt />, [
+      getItem(
+        <NavLink onClick={toggleCollapsed} to="/email/account-list">
+          {t('Bảng kê hoá đơn')}
+        </NavLink>,
+        'Bảng kê hoá đơn',
+        null,
+      ),
+    ]),
   ];
 
   return (
@@ -266,8 +203,8 @@ function MenuItems({ toggleCollapsed }) {
   );
 }
 
-MenuItems.propTypes = {
+LeftMenu.propTypes = {
   toggleCollapsed: propTypes.func,
 };
 
-export default MenuItems;
+export default LeftMenu;
