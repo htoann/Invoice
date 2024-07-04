@@ -9,10 +9,10 @@ import UilEllipsisV from '@iconscout/react-unicons/icons/uil-ellipsis-v';
 import propTypes from 'prop-types';
 import { changeDirectionMode, changeLayoutMode, changeMenuMode } from '../redux/themeLayout/actionCreator';
 
-function LeftMenu({ toggleCollapsed }) {
+export const LeftMenu = ({ toggleCollapsed }) => {
   const { t } = useTranslation();
 
-  function getItem(label, key, icon, children, type) {
+  const getItem = (label, key, icon, children, type) => {
     return {
       key,
       icon,
@@ -20,7 +20,7 @@ function LeftMenu({ toggleCollapsed }) {
       label,
       type,
     };
-  }
+  };
 
   const { topMenu } = useSelector((state) => {
     return {
@@ -80,105 +80,88 @@ function LeftMenu({ toggleCollapsed }) {
     document.body.classList.remove('dark-mode');
   };
 
+  const createNavLink = (pathLink, textKey) => {
+    return (
+      <NavLink onClick={toggleCollapsed} to={pathLink}>
+        {t(textKey)}
+      </NavLink>
+    );
+  };
+
+  const createMenuItems = (items) => {
+    return items.map((item) => getItem(createNavLink(item.path, item.textKey), item.key, null));
+  };
+
   const items = [
     getItem(
-      <NavLink onClick={toggleCollapsed} to="/">
-        {t('overview')}
-      </NavLink>,
+      createNavLink('/', 'overview'),
       '404',
       !topMenu && (
-        <NavLink className="menuItem-iocn" to="/">
+        <NavLink className="menuItem-icon" to="/">
           <UilCreateDashboard />
         </NavLink>
       ),
     ),
-    getItem(t('manage_invoices'), 'manage_invoices', !topMenu && <UilCreateDashboard />, [
-      getItem(
-        <NavLink onClick={toggleCollapsed} to="/invoices">
-          {t('Danh sách hoá đơn')}
-        </NavLink>,
-        'invoice-list',
-        null,
-      ),
-      getItem(
-        <NavLink onClick={toggleCollapsed} to="/invoices">
-          {t('Kiểm tra tình trạng MST')}
-        </NavLink>,
-        'Kiểm tra tình trạng MST',
-        null,
-      ),
-    ]),
-    getItem(t('inbox'), 'inbox', !topMenu && <UilAt />, [
-      getItem(
-        <NavLink onClick={toggleCollapsed} to="/email/account-list">
-          {t('Danh sách tài khoản')}
-        </NavLink>,
-        'account-list',
-        null,
-      ),
-      getItem(
-        <NavLink onClick={toggleCollapsed} to="/email/account-list">
-          {t('Hộp thư đến')}
-        </NavLink>,
-        'Hộp thư đến',
-        null,
-      ),
-      getItem(
-        <NavLink onClick={toggleCollapsed} to="/email/account-list">
-          {t('Lịch sử đồng bộ')}
-        </NavLink>,
-        'Lịch sử đồng bộ',
-        null,
-      ),
-    ]),
-    getItem(t('category'), 'category', !topMenu && <UilAt />, [
-      getItem(
-        <NavLink onClick={toggleCollapsed} to="/email/account-list">
-          {t('Hàng hoá/Dịch vụ')}
-        </NavLink>,
-        'Hàng hoá/Dịch vụ',
-        null,
-      ),
-    ]),
-    getItem(t('report'), 'report', !topMenu && <UilAt />, [
-      getItem(
-        <NavLink onClick={toggleCollapsed} to="/email/account-list">
-          {t('Bảng kê hoá đơn')}
-        </NavLink>,
-        'Bảng kê hoá đơn',
-        null,
-      ),
-      getItem(
-        <NavLink onClick={toggleCollapsed} to="/email/account-list">
-          {t('Tờ khai thuế 01GTGT')}
-        </NavLink>,
-        'Tờ khai thuế 01GTGT',
-        null,
-      ),
-      getItem(
-        <NavLink onClick={toggleCollapsed} to="/email/account-list">
-          {t('Hoá đơn mua vào bị thay thế/điều chỉnh gần đây')}
-        </NavLink>,
-        'Hoá đơn mua vào bị thay thế/điều chỉnh gần đây',
-        null,
-      ),
-      getItem(
-        <NavLink onClick={toggleCollapsed} to="/email/account-list">
-          {t('Tình trạng doanh nghiệp')}
-        </NavLink>,
-        'Tình trạng doanh nghiệp',
-        null,
-      ),
-    ]),
-    getItem(t('connect_tax_authorities'), 'connect_tax_authorities', !topMenu && <UilAt />, [
-      getItem(
-        <NavLink onClick={toggleCollapsed} to="/email/account-list">
-          {t('Bảng kê hoá đơn')}
-        </NavLink>,
-        'Bảng kê hoá đơn',
-        null,
-      ),
-    ]),
+    getItem(
+      t('manage_invoices'),
+      'manage_invoices',
+      !topMenu && <UilCreateDashboard />,
+      createMenuItems([
+        { path: '/invoices', textKey: 'Danh sách hoá đơn', key: 'invoice-list' },
+        { path: '/invoices', textKey: 'Kiểm tra tình trạng MST', key: 'Kiểm tra tình trạng MST' },
+      ]),
+    ),
+    getItem(
+      t('inbox'),
+      'inbox',
+      !topMenu && <UilAt />,
+      createMenuItems([
+        { path: '/email/account-list', textKey: 'Danh sách tài khoản', key: 'account-list' },
+        { path: '/email/account-list', textKey: 'Hộp thư đến', key: 'Hộp thư đến' },
+        { path: '/email/account-list', textKey: 'Lịch sử đồng bộ', key: 'Lịch sử đồng bộ' },
+      ]),
+    ),
+    getItem(
+      t('category'),
+      'category',
+      !topMenu && <UilAt />,
+      createMenuItems([
+        { path: '/email/account-list', textKey: 'Cơ cấu tổ chức', key: 'Cơ cấu tổ chức' },
+        { path: '/email/account-list', textKey: 'Nhà cung cấp', key: 'Nhà cung cấp' },
+        { path: '/email/account-list', textKey: 'Khách hàng', key: 'Khách hàng' },
+        { path: '/email/account-list', textKey: 'Hàng hoá', key: 'Hàng hoá' },
+        { path: '/email/account-list', textKey: 'Khoản mục chi phí', key: 'Khoản mục chi phí' },
+      ]),
+    ),
+    getItem(
+      t('report'),
+      'report',
+      !topMenu && <UilAt />,
+      createMenuItems([
+        {
+          path: '/email/account-list',
+          textKey: 'Báo cáo tổng hợp hoá đơn mua vào/bán ra',
+          key: 'Báo cáo tổng hợp hoá đơn mua vào/bán ra',
+        },
+        {
+          path: '/email/account-list',
+          textKey: 'Bảng kê hoá đơn thay thế/điều chỉnh',
+          key: 'Bảng kê hoá đơn thay thế/điều chỉnh',
+        },
+        {
+          path: '/email/account-list',
+          textKey: 'Xuất dữ liệu cho phần mềm kế toán',
+          key: 'Xuất dữ liệu cho phần mềm kế toán',
+        },
+        { path: '/email/account-list', textKey: 'Báo cáo kiểm tra đơn giá', key: 'Báo cáo kiểm tra đơn giá' },
+        { path: '/email/account-list', textKey: 'Đối chiếu tài khoản', key: 'Đối chiếu tài khoản' },
+        {
+          path: '/email/account-list',
+          textKey: 'Báo cáo đối chiếu chênh lệch hoá đơn',
+          key: 'Báo cáo đối chiếu chênh lệch hoá đơn',
+        },
+      ]),
+    ),
   ];
 
   return (
@@ -201,10 +184,8 @@ function LeftMenu({ toggleCollapsed }) {
       items={items}
     />
   );
-}
+};
 
 LeftMenu.propTypes = {
   toggleCollapsed: propTypes.func,
 };
-
-export default LeftMenu;

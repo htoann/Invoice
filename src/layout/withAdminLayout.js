@@ -9,11 +9,11 @@ import { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link, NavLink } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
-import LeftMenu from './LeftMenu';
 import { FooterStyle, LayoutContainer, SmallScreenAuthInfo, TopMenuSearch } from './Style';
-import TopMenu from './TopMenu';
 import SearchBar from './header-right/Search';
 import AuthInfo from './header-right/index';
+import { LeftMenu } from './LeftMenu';
+import { TopMenu } from './TopMenu';
 
 const { theme } = require('../config/theme/themeVariables');
 
@@ -257,4 +257,5 @@ const ThemeLayout = (WrappedComponent) => {
 
   return connect(mapStateToProps)(LayoutComponent);
 };
+
 export default ThemeLayout;

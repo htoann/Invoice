@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { TopMenuStyle } from './Style';
 
-function TopMenu() {
+export const TopMenu = () => {
   const { t } = useTranslation();
   const path = '/';
 
@@ -84,7 +84,19 @@ function TopMenu() {
             </Link>
             <ul className="subMenu">
               <li>
-                <Link to="#">Hàng hoá/Dịch vụ</Link>
+                <Link to="#">Cơ cấu tổ chức</Link>
+              </li>
+              <li>
+                <Link to="#">Nhà cung cấp</Link>
+              </li>
+              <li>
+                <Link to="#">Khách hàng</Link>
+              </li>
+              <li>
+                <Link to="#">Hàng hoá</Link>
+              </li>
+              <li>
+                <Link to="#">Khoản mục chi phí</Link>
               </li>
             </ul>
           </li>
@@ -95,21 +107,27 @@ function TopMenu() {
             </Link>
             <ul className="subMenu" style={{ width: 400 }}>
               <li>
-                <Link to="#">Bảng kê hoá đơn</Link>
+                <Link to="#">Báo cáo tổng hợp hoá đơn mua vào/bán ra</Link>
               </li>
               <li>
-                <Link to="#">Tờ khai thuế 01GTGT</Link>
+                <Link to="#">Bảng kê hoá đơn thay thế/điều chỉnh</Link>
               </li>
               <li>
-                <Link to="#">Hoá đơn mua vào bị thay thế/điều chỉnh gần đây</Link>
+                <Link to="#">Xuất dữ liệu cho phần mềm kế toán</Link>
               </li>
               <li>
-                <Link to="#">Tình trạng doanh nghiệp</Link>
+                <Link to="#">Báo cáo kiểm tra đơn giá</Link>
+              </li>
+              <li>
+                <Link to="#">Đối chiếu tài khoản</Link>
+              </li>
+              <li>
+                <Link to="#">Báo cáo đối chiếu chênh lệch hoá đơn</Link>
               </li>
             </ul>
           </li>
 
-          <li className="has-subMenu">
+          {/* <li className="has-subMenu">
             <Link to="#" className="parent">
               {t('connect_tax_authorities')}
             </Link>
@@ -118,11 +136,9 @@ function TopMenu() {
                 <Link to="#">Bảng kê hoá đơn</Link>
               </li>
             </ul>
-          </li>
+          </li> */}
         </ul>
       </div>
     </TopMenuStyle>
   );
-}
-
-export default TopMenu;
+};
