@@ -3,7 +3,7 @@ import { useCallback, useEffect, useState } from 'react';
 
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { login } from '../../../../redux/authentication/actionCreator';
 import { AuthFormWrap } from './style';
 
@@ -24,7 +24,7 @@ function SignIn() {
   );
 
   const getCapcha = async () => {
-    const data = await axios.get('https://hoadondientu.gdt.gov.vn:30000/captcha');
+    const data = await axios.get(process.env.REACT_APP_HDDT_CAPTCHA);
     setImgCapcha(data?.data?.content || null);
     setKeyCapcha(data?.data?.key || null);
   };

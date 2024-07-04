@@ -1,13 +1,13 @@
+import { UilFileExport, UilSearch } from '@iconscout/react-unicons';
 import { DatePicker, Select, Table } from 'antd';
-import axios from 'axios';
 import dayjs from 'dayjs';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Button } from '../../../../components/buttons/buttons';
+import { DataService } from '../../../../config/dataService/dataService';
 import { TableWrapper } from '../../../../container/styled';
 import { downloadFile } from '../../../../utility/utility';
 import { DataTableStyleWrap } from './Style';
-import { UilFileExport, UilSearch } from '@iconscout/react-unicons';
 
 function DataTable({
   filterOption,
@@ -38,7 +38,7 @@ function DataTable({
 
   const handleExport = async () => {
     try {
-      const response = await axios.get('http://localhost:8000/invoices_excel/', {
+      const response = await DataService.get('invoices_excel/', {
         responseType: 'blob',
       });
 

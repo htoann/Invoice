@@ -25,7 +25,7 @@ function AccountList() {
     },
     {
       path: 'first',
-      breadcrumbName: 'Danh sách tài khoản',
+      breadcrumbName: 'Danh sách email',
     },
   ];
 
@@ -135,14 +135,14 @@ function AccountList() {
 
   return (
     <>
-      <PageHeader className="ninjadash-page-header-main" title="Danh sách tài khoản" routes={PageRoutes} />
+      <PageHeader className="ninjadash-page-header-main" title="Danh sách email" routes={PageRoutes} />
       <Main>
         <Row gutter={15}>
           <Col xs={24}>
             <BorderLessHeading>
               <Cards>
                 <Button onClick={showModal} className="btn-add_new" size="default" type="primary" key="1">
-                  <Link to="#">+ Thêm</Link>
+                  <Link to="#">+ Thêm email</Link>
                 </Button>
                 <DataTable
                   filterOption

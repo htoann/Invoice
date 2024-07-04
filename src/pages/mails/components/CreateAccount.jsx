@@ -20,7 +20,7 @@ function CreateAccount({ state, setState }) {
   const [imgCapcha, setImgCapcha] = useState();
 
   const getCapcha = async () => {
-    const data = await axios.get('https://hoadondientu.gdt.gov.vn:30000/captcha');
+    const data = await axios.get(process.env.REACT_APP_HDDT_CAPTCHA);
     setImgCapcha(data?.data?.content || null);
   };
 

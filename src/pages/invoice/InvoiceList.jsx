@@ -1,10 +1,10 @@
 import { Col, Row } from 'antd';
-import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Cards } from '../../components/cards/frame/cards-frame';
 import { PageHeader } from '../../components/page-headers/page-headers';
 
+import { DataService } from '../../config/dataService/dataService';
 import { Main } from '../../container/styled';
 import { tableReadData } from '../../redux/data-filter/actionCreator';
 import DataTable from './components/data-table/DataTable';
@@ -44,7 +44,7 @@ function InvoiceList() {
 
   const getInvoiceList = async (page, page_size = 20, loaihdon = 'purchase', date_from, date_to) => {
     try {
-      const response = await axios.get('http://localhost:8000/invoices', {
+      const response = await DataService.get('invoices', {
         params: {
           page,
           page_size,
