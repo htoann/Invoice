@@ -48,7 +48,6 @@ function SignIn() {
 
   const getCapcha = async () => {
     const data = await axios.get('https://hoadondientu.gdt.gov.vn:30000/captcha');
-    console.log(data);
     setImgCapcha(data?.data?.content || null);
   };
 
@@ -67,7 +66,7 @@ function SignIn() {
           <div className="ninjadash-authentication-content">
             <Form name="login" form={form} onFinish={handleSubmit} layout="vertical">
               <Form.Item
-                name="email"
+                name="name"
                 rules={[{ message: 'Vui lòng nhập tên đăng nhập', required: true }]}
                 initialValue="ninjadash@dm.com"
                 label="Tên đăng nhập"
@@ -80,7 +79,7 @@ function SignIn() {
                 label="Mật khẩu"
                 rules={[{ message: 'Vui lòng nhập mật khẩu', required: true }]}
               >
-                <Input.Password placeholder="Password" />
+                <Input.Password placeholder="Mật khẩu" />
               </Form.Item>
 
               <Row justify="center" align="middle">
