@@ -3,7 +3,6 @@ import axios from 'axios';
 import dayjs from 'dayjs';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { useDispatch } from 'react-redux';
 import { Button } from '../../../../components/buttons/buttons';
 import { TableWrapper } from '../../../../container/styled';
 import { downloadFile } from '../../../../utility/utility';
@@ -20,8 +19,6 @@ function DataTable({
   setState,
   getInvoiceList,
 }) {
-  const dispatch = useDispatch();
-
   const handleLoaiHoaDonSearch = (value) => {
     setState((prev) => ({
       ...prev,

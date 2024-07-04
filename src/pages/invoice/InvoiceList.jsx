@@ -1,17 +1,12 @@
-import UilEdit from '@iconscout/react-unicons/icons/uil-edit';
-import UilEye from '@iconscout/react-unicons/icons/uil-eye';
-import UilTrash from '@iconscout/react-unicons/icons/uil-trash-alt';
-import { Col, Popconfirm, Row } from 'antd';
+import { Col, Row } from 'antd';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import { Cards } from '../../components/cards/frame/cards-frame';
 import { PageHeader } from '../../components/page-headers/page-headers';
 
 import { Main } from '../../container/styled';
 import { tableReadData } from '../../redux/data-filter/actionCreator';
-import EditAccount from './components/EditInvoice';
 import DataTable from './components/data-table/DataTable';
 import { invoiceListDataTable } from './const';
 import { BorderLessHeading } from './style';
@@ -33,22 +28,11 @@ function InvoiceList() {
   const [state, setState] = useState({
     selectedRowKeys: 0,
     selectedRows: 0,
-    visible: false,
-    editVisible: false,
-    modalType: 'primary',
-    url: null,
-    update: {},
     invoiceList: [],
     pagination: { pageSize: 20, showSizeChanger: true, current: 1, total: 0 },
     loaiHoaDon: 'purchase',
     date_from: undefined,
     date_to: undefined,
-  });
-
-  const { users } = useSelector((stateItem) => {
-    return {
-      users: stateItem.Contact.data,
-    };
   });
 
   useEffect(() => {
@@ -91,18 +75,6 @@ function InvoiceList() {
     getInvoiceList(current, pageSize, loaiHoaDon);
   }, [current, pageSize, loaiHoaDon]);
 
-  const showEditModal = (data) => {
-    setState({
-      ...state,
-      editVisible: true,
-      update: data,
-    });
-  };
-
-  const handleUserDelete = (id) => {
-    const value = users.filter((item) => item.id !== id);
-  };
-
   const tableDataSource = [];
 
   if (invoiceList.length > 0) {
@@ -138,26 +110,6 @@ function InvoiceList() {
         ketquadoichieu: <span>{item.ketquadoichieu}</span>,
         tinhtrangdn: <span>{item.tinhtrangdn}</span>,
         ngaycongbo: <span>{item.ngaycongbo}</span>,
-        action: (
-          <div className="table-actions">
-            <Link className="view" to={`/invoices/${item.no}`}>
-              <UilEye />
-            </Link>
-            <Link className="edit" to="#" onClick={showEditModal}>
-              <UilEdit />
-            </Link>
-            <Popconfirm
-              title="Bạn có chắc chắn xóa người dùng này?"
-              onConfirm={() => handleUserDelete(item.no)}
-              okText="Yes"
-              cancelText="No"
-            >
-              <Link className="ninjadash-delete" to="#">
-                <UilTrash />
-              </Link>
-            </Popconfirm>
-          </div>
-        ),
       });
     });
   }
@@ -188,8 +140,6 @@ function InvoiceList() {
           </Col>
         </Row>
       </Main>
-
-      {state.editVisible && <EditAccount state={state} setState={setState} />}
     </>
   );
 }
