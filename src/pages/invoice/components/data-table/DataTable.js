@@ -1,4 +1,3 @@
-import UilSearch from '@iconscout/react-unicons/icons/uil-search';
 import { DatePicker, Select, Table } from 'antd';
 import axios from 'axios';
 import dayjs from 'dayjs';
@@ -7,7 +6,6 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { Button } from '../../../../components/buttons/buttons';
 import { TableWrapper } from '../../../../container/styled';
-import { dataLiveFilter } from '../../../../redux/data-filter/actionCreator';
 import { downloadFile } from '../../../../utility/utility';
 import { DataTableStyleWrap } from './Style';
 
@@ -23,21 +21,11 @@ function DataTable({
 }) {
   const dispatch = useDispatch();
 
-  const handleIdSearch = (e) => {
-    const id = e.currentTarget.value;
-    dispatch(dataLiveFilter(id, 'id'));
-  };
-
   const handleLoaiHoaDonSearch = (value) => {
     setState((prev) => ({
       ...prev,
       loaiHoaDon: value,
     }));
-  };
-
-  const handleDataUser = (e) => {
-    const { value } = e.currentTarget;
-    dispatch(dataLiveFilter(value, 'name'));
   };
 
   const handleSearch = () => {
@@ -56,23 +44,17 @@ function DataTable({
         responseType: 'blob',
       });
 
-      downloadFile(response, `HDDT-${dayjs(state.date_from || state.date_to).format('DD-MM-YYYY')}`);
+      downloadFile(response, `HDDT${dayjs(state.date_from || state.date_to).format('DDMMYYYYHHmmss')}.xlsx`);
     } catch (error) {
       console.log(error);
     }
   };
-
-  const prefix = <UilSearch />;
 
   return (
     <DataTableStyleWrap>
       {filterOption ? (
         <div className="ninjadash-datatable-filter">
           <div className="ninjadash-datatable-filter__left">
-            {/* <div className="ninjadash-datatable-filter__input">
-                <span className="label">Id:</span>
-                <Input onChange={handleIdSearch} placeholder="Search with Id" />
-              </div> */}
             <div className="ninjadash-datatable-filter__input">
               <span className="label">Loại hóa đơn</span>
               <Select onChange={handleLoaiHoaDonSearch} style={{ width: 200 }} defaultValue="purchase">
@@ -87,7 +69,7 @@ function DataTable({
                 onChange={(e) => {
                   setState((prev) => ({
                     ...prev,
-                    date_from: dayjs(e._d).format('DD-MM-YYYY'),
+                    date_from: e?._d ? dayjs(e._d).format('DD-MM-YYYY') : null,
                   }));
                 }}
                 format="DD/MM/yyyy"
@@ -100,20 +82,14 @@ function DataTable({
                 onChange={(e) => {
                   setState((prev) => ({
                     ...prev,
-                    date_to: dayjs(e._d).format('DD-MM-YYYY'),
+                    date_to: e?._d ? dayjs(e._d).format('DD-MM-YYYY') : null,
                   }));
                 }}
                 format="DD/MM/yyyy"
               />
             </div>
             <div className="ninjadash-datatable-filter__action">
-              <Button
-                type="primary"
-                size="small"
-                onClick={handleSearch}
-                disabled={!state.date_from || !state.date_to}
-                transparented
-              >
+              <Button type="primary" size="small" onClick={handleSearch} transparented>
                 Tìm kiếm
               </Button>
             </div>
@@ -129,9 +105,6 @@ function DataTable({
               Xuất Excel
             </Button>
           </div>
-          {/* <div className="ninjadash-datatable-filter__right">
-            <Input onChange={handleDataUser} size="default" placeholder="Search" prefix={prefix} />
-          </div> */}
         </div>
       ) : (
         ''

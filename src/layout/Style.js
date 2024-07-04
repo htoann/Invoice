@@ -963,11 +963,11 @@ const TopMenuStyle = Styled.div`
                 }
                 &:hover{
                     >.subMenu{
-                        top: 70px;
+                        top: 65px;
                         opacity: 1;
                         visibility: visible;
                         @media only screen and (max-width: 1700px){
-                            top: 40px;
+                            top: 45px;
                         }
                     }
                 }
