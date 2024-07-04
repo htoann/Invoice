@@ -1,14 +1,10 @@
-import React from 'react';
-import { Row, Col, Table } from 'antd';
-import DragAndDropTable from './DragTable';
-import { PageHeader } from '../../components/page-headers/page-headers';
+import { Col, Row, Table } from 'antd';
 import { Cards } from '../../components/cards/frame/cards-frame';
+import { PageHeader } from '../../components/page-headers/page-headers';
+import BestSeller from '../dashboard/overview/BusinessStatus';
+import RevenueGenerated from '../dashboard/overview/RevenueGenerated';
 import { Main } from '../styled';
-import SaleByLocation from '../dashboard/overview/index/SalesByLocation';
-import GeneratedRevenue from '../dashboard/overview/demoTwo/RevenueGenerated';
-import BestSeller from '../dashboard/overview/demoTwo/BestSeller';
-import TopSellingProduct from '../dashboard/overview/index/TopSellingProducts';
-import BrowseState from '../dashboard/overview/index/BrowserState';
+import DragAndDropTable from './DragTable';
 
 function Tables() {
   const dataSource = [
@@ -55,19 +51,10 @@ function Tables() {
             </Cards>
           </Col>
           <Col xs={24}>
-            <SaleByLocation />
-          </Col>
-          <Col xs={24}>
-            <GeneratedRevenue />
+            <RevenueGenerated />
           </Col>
           <Col xs={24}>
             <BestSeller />
-          </Col>
-          <Col xl={12} xs={24}>
-            <TopSellingProduct />
-          </Col>
-          <Col xl={12} xs={24}>
-            <BrowseState />
           </Col>
           <Col xs={24}>
             <DragAndDropTable />

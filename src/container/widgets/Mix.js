@@ -1,13 +1,11 @@
-import React, { lazy } from 'react';
-import { Row, Col } from 'antd';
-import { MixedCardWrap } from './Style';
-import { PageHeader } from '../../components/page-headers/page-headers';
-import { Main } from '../styled';
+import { Col, Row } from 'antd';
+import { lazy } from 'react';
 import { Cards } from '../../components/cards/frame/cards-frame';
-import Newsletter from '../../components/cards/Newsletter';
+import { PageHeader } from '../../components/page-headers/page-headers';
 import Ordersummary from '../ecommerce/overview/Ordersummary';
+import { Main } from '../styled';
+import { MixedCardWrap } from './Style';
 
-const SalesByLocation = lazy(() => import('../dashboard/overview/index/SalesByLocation'));
 const SocialMediaOverview = lazy(() => import('./overview/SocialMediaOverview'));
 const DailyOverview = lazy(() => import('./overview/DailyOverview'));
 
@@ -32,10 +30,6 @@ function WidgetsCard() {
               <Cards headless>
                 <Ordersummary subtotal={1200} />
               </Cards>
-            </Col>
-            <Col xxl={16} xl={14} xs={24}>
-              <SalesByLocation />
-              <Newsletter />
             </Col>
             <Col xxl={8} xs={24}>
               <SocialMediaOverview />

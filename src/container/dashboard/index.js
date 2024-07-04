@@ -1,33 +1,20 @@
-import React, { lazy, Suspense } from 'react';
-import { Row, Col, Skeleton } from 'antd';
-import { PageHeader } from '../../components/page-headers/page-headers';
+import { Col, Row, Skeleton } from 'antd';
+import { Suspense } from 'react';
 import { Cards } from '../../components/cards/frame/cards-frame';
+import { PageHeader } from '../../components/page-headers/page-headers';
 import { Main } from '../styled';
-
-const OverviewDataList = lazy(() => import('./overview/index/OverviewDataList'));
-const SalesReport = lazy(() => import('./overview/index/SalesReport'));
-const SalesByLocation = lazy(() => import('./overview/index/SalesByLocation'));
-const TopSellingProduct = lazy(() => import('./overview/index/TopSellingProducts'));
-const BrowserState = lazy(() => import('./overview/index/BrowserState'));
+import BusinessStatus from './overview/BusinessStatus';
+import InvoicesChange from './overview/InvoicesChange';
+import OverviewDataList from './overview/OverviewDataList';
 
 function Dashboard() {
-  const PageRoutes = [
-    {
-      path: 'index',
-      breadcrumbName: 'Dashboard',
-    },
-    {
-      path: 'first',
-      breadcrumbName: 'Demo 1',
-    },
-  ];
   return (
     <>
-      <PageHeader className="ninjadash-page-header-main" title="Dashboard" routes={PageRoutes} />
+      <PageHeader className="ninjadash-page-header-main" title="Tổng quan" />
 
       <Main>
-        <Row gutter={25}>
-          <Col xxl={12} xs={24}>
+        <Row justify="center">
+          <Col xs={24}>
             <Suspense
               fallback={
                 <Cards headless>
@@ -38,6 +25,9 @@ function Dashboard() {
               <OverviewDataList />
             </Suspense>
           </Col>
+        </Row>
+
+        <Row justify="center" gutter={25}>
           <Col xxl={12} xs={24}>
             <Suspense
               fallback={
@@ -46,10 +36,10 @@ function Dashboard() {
                 </Cards>
               }
             >
-              <SalesReport />
+              <InvoicesChange />
             </Suspense>
           </Col>
-          <Col xxl={16} xs={24}>
+          <Col xxl={12} xs={24}>
             <Suspense
               fallback={
                 <Cards headless>
@@ -57,31 +47,7 @@ function Dashboard() {
                 </Cards>
               }
             >
-              <SalesByLocation />
-            </Suspense>
-          </Col>
-        </Row>
-        <Row gutter={25}>
-          <Col xl={12} xs={24}>
-            <Suspense
-              fallback={
-                <Cards headless>
-                  <Skeleton active />
-                </Cards>
-              }
-            >
-              <TopSellingProduct />
-            </Suspense>
-          </Col>
-          <Col xl={12} xs={24}>
-            <Suspense
-              fallback={
-                <Cards headless>
-                  <Skeleton active />
-                </Cards>
-              }
-            >
-              <BrowserState />
+              <BusinessStatus />
             </Suspense>
           </Col>
         </Row>

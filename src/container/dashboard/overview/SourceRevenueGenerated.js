@@ -1,19 +1,19 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
-import { NavLink } from 'react-router-dom';
-import { ReactSVG } from 'react-svg';
 import UilBookOpen from '@iconscout/react-unicons/icons/uil-book-open';
+import UilFacebook from '@iconscout/react-unicons/icons/uil-facebook-f';
 import UilFile from '@iconscout/react-unicons/icons/uil-file';
 import UilFileAlt from '@iconscout/react-unicons/icons/uil-file-alt';
 import UilPrint from '@iconscout/react-unicons/icons/uil-print';
 import UilTimes from '@iconscout/react-unicons/icons/uil-times';
-import UilFacebook from '@iconscout/react-unicons/icons/uil-facebook-f';
 import UilTwitter from '@iconscout/react-unicons/icons/uil-twitter';
-import GoogleIcon from '../../../../static/img/icon/google-customIcon.svg';
-import config from '../../../../config/config';
-import { BorderLessHeading } from '../../../styled';
-import { ChartContainer, RevenueGeneratedWrapper } from '../../Style';
-import { Cards } from '../../../../components/cards/frame/cards-frame';
+import React from 'react';
+import { useSelector } from 'react-redux';
+import { NavLink } from 'react-router-dom';
+import { ReactSVG } from 'react-svg';
+import GoogleIcon from '../../../static/img/icon/google-customIcon.svg';
+import { Cards } from '../../../components/cards/frame/cards-frame';
+import config from '../../../config/config';
+import { BorderLessHeading } from '../../styled';
+import { RevenueGeneratedWrapper } from '../Style';
 
 const SourceRevenueGenerated = React.memo(() => {
   const { mainContent } = useSelector((state) => {

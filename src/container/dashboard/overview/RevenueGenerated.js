@@ -1,11 +1,11 @@
 import { Progress, Table } from 'antd';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Cards } from '../../../../components/cards/frame/cards-frame';
-import { BorderLessHeading, TableDefaultStyle } from '../../../styled';
-import { RevenueGeneratedWrapper } from '../../Style';
+import { Cards } from '../../../components/cards/frame/cards-frame';
+import { BorderLessHeading, TableDefaultStyle } from '../../styled';
+import { RevenueGeneratedWrapper } from '../Style';
 
-import tableData from '../../../../demoData/table-data.json';
+import tableData from '../../../demoData/table-data.json';
 
 const { revenueGenerated } = tableData;
 

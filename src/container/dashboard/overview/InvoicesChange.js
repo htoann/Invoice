@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { Table } from 'antd';
 import { Link } from 'react-router-dom';
-import { Cards } from '../../../../components/cards/frame/cards-frame';
-import { NewProductWrapper } from '../../Style';
-import { BorderLessHeading, TableDefaultStyle } from '../../../styled';
+import { Cards } from '../../../components/cards/frame/cards-frame';
+import { NewProductWrapper } from '../Style';
+import { BorderLessHeading, TableDefaultStyle } from '../../styled';
 
-import tableData from '../../../../demoData/table-data.json';
+import tableData from '../../../demoData/table-data.json';
 
 const { newProduct } = tableData;
 
@@ -22,7 +22,7 @@ const productColumns = [
   },
 ];
 
-const NewProduct = React.memo(() => {
+const InvoicesChange = React.memo(() => {
   const [state, setState] = useState({
     productTab: 'today',
   });
@@ -39,7 +39,7 @@ const NewProduct = React.memo(() => {
         pName: (
           <div className="ninjadash-info-element align-center-v">
             <div className="ninjadash-info-element__media">
-              <img src={require(`../../../../static/img/products/electronics/${img}`)} alt="ninjadash Product" />
+              <img src={require(`../../../static/img/products/electronics/${img}`)} alt="ninjadash Product" />
             </div>
             <div className="ninjadash-info-element__content">
               <span className="ninjadash-info-element__text">{name}</span>
@@ -100,4 +100,4 @@ const NewProduct = React.memo(() => {
   );
 });
 
-export default NewProduct;
+export default InvoicesChange;

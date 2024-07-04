@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
 import { Table } from 'antd';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Cards } from '../../../../components/cards/frame/cards-frame';
-import { BorderLessHeading, TableDefaultStyle } from '../../../styled';
+import { Cards } from '../../../components/cards/frame/cards-frame';
+import { BorderLessHeading, TableDefaultStyle } from '../../styled';
 
-import tableData from '../../../../demoData/table-data.json';
+import tableData from '../../../demoData/table-data.json';
 
 const { bestSeller } = tableData;
 
@@ -36,7 +36,7 @@ const sellerColumns = [
   },
 ];
 
-const BestSeller = React.memo(() => {
+const BusinessStatus = React.memo(() => {
   const [state, setState] = useState({
     sellerTab: 'today',
   });
@@ -53,7 +53,7 @@ const BestSeller = React.memo(() => {
         sellerName: (
           <div className="ninjadash-info-element align-center-v">
             <div className="ninjadash-info-element__media">
-              <img src={require(`../../../../static/img/sellers/${img}`)} alt="ninjadash Product" />
+              <img src={require(`../../../static/img/sellers/${img}`)} alt="ninjadash Product" />
             </div>
             <div className="ninjadash-info-element__content">
               <span className="ninjadash-info-element__text">{name}</span>
@@ -115,4 +115,4 @@ const BestSeller = React.memo(() => {
   );
 });
 
-export default BestSeller;
+export default BusinessStatus;
