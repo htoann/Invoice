@@ -1,12 +1,10 @@
 import { Button, Col, Form, Input, Row } from 'antd';
-import { Auth0Lock } from 'auth0-lock';
-import React, { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
-import { auth0options } from '../../../../config/auth0';
-import { authOLogin, login } from '../../../../redux/authentication/actionCreator';
+import { login } from '../../../../redux/authentication/actionCreator';
 import { AuthFormWrap } from './style';
 
 const domain = process.env.REACT_APP_AUTH0_DOMAIN;
@@ -20,31 +18,12 @@ function SignIn() {
 
   const [imgCapcha, setImgCapcha] = useState();
 
-  const lock = new Auth0Lock(clientId, domain, auth0options);
-
   const handleSubmit = useCallback(
     (values) => {
       dispatch(login(values, () => navigate('/')));
     },
     [navigate, dispatch],
   );
-
-  const handleAuthOSubmit = useCallback(
-    (values) => {
-      dispatch(authOLogin(values, () => navigate('/')));
-    },
-    [navigate, dispatch],
-  );
-
-  lock.on('authenticated', (authResult) => {
-    lock.getUserInfo(authResult.accessToken, (error) => {
-      if (error) {
-        return;
-      }
-      handleAuthOSubmit(authResult);
-      lock.hide();
-    });
-  });
 
   const getCapcha = async () => {
     const data = await axios.get('https://hoadondientu.gdt.gov.vn:30000/captcha');
