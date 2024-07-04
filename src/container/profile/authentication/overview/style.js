@@ -58,7 +58,8 @@ const AuthFormWrap = Styled.div`
     }
   }
   .ninjadash-authentication-content{
-    padding: 30px 40px 0 30px;
+    // padding: 30px 40px 0 30px; // change after has register
+    padding: 30px 40px;
     @media only screen and (max-width: 1599px){
       padding: 30px 30px 0 30px;
     }

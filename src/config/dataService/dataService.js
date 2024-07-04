@@ -1,16 +1,22 @@
 import axios from 'axios';
 import { getItem } from '../../utility/localStorageControl';
 
-const API_ENDPOINT = `${process.env.REACT_APP_API_ENDPOINT}/api`;
+const API_ENDPOINT = process.env.REACT_APP_API_ENDPOINT;
 
-const authHeader = () => ({
-  Authorization: `Bearer ${getItem('access_token')}`,
-});
+const authHeader = () => {
+  if (getItem('access_token')) {
+    return {
+      Authorization: `Bearer ${getItem('access_token')}`,
+    };
+  }
+
+  return {};
+};
 
 const client = axios.create({
   baseURL: API_ENDPOINT,
   headers: {
-    Authorization: `Bearer ${getItem('access_token')}`,
+    ...authHeader(),
     'Content-Type': 'application/json',
   },
 });
@@ -61,7 +67,7 @@ client.interceptors.request.use((config) => {
   // For example tag along the bearer access token to request header or set a cookie
   const requestConfig = config;
   const { headers } = config;
-  requestConfig.headers = { ...headers, Authorization: `Bearer ${getItem('access_token')}` };
+  requestConfig.headers = { ...headers, ...authHeader() };
 
   return requestConfig;
 });

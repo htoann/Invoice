@@ -7,9 +7,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import { login } from '../../../../redux/authentication/actionCreator';
 import { AuthFormWrap } from './style';
 
-const domain = process.env.REACT_APP_AUTH0_DOMAIN;
-const clientId = process.env.REACT_APP_AUTH0_CLIENT_ID;
-
 function SignIn() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -17,17 +14,19 @@ function SignIn() {
   const [form] = Form.useForm();
 
   const [imgCapcha, setImgCapcha] = useState();
+  const [keyCapcha, setKeyCapcha] = useState();
 
   const handleSubmit = useCallback(
     (values) => {
-      dispatch(login(values, () => navigate('/')));
+      dispatch(login({ ...values, ckey: keyCapcha }, () => navigate('/')));
     },
-    [navigate, dispatch],
+    [navigate, dispatch, keyCapcha],
   );
 
   const getCapcha = async () => {
     const data = await axios.get('https://hoadondientu.gdt.gov.vn:30000/captcha');
     setImgCapcha(data?.data?.content || null);
+    setKeyCapcha(data?.data?.key || null);
   };
 
   useEffect(() => {
@@ -45,16 +44,16 @@ function SignIn() {
           <div className="ninjadash-authentication-content">
             <Form name="login" form={form} onFinish={handleSubmit} layout="vertical">
               <Form.Item
-                name="name"
+                name="username"
                 rules={[{ message: 'Vui lòng nhập tên đăng nhập', required: true }]}
-                initialValue="ninjadash@dm.com"
+                initialValue=""
                 label="Tên đăng nhập"
               >
                 <Input placeholder="name@example.com" />
               </Form.Item>
               <Form.Item
                 name="password"
-                initialValue="123456"
+                initialValue=""
                 label="Mật khẩu"
                 rules={[{ message: 'Vui lòng nhập mật khẩu', required: true }]}
               >
@@ -64,7 +63,7 @@ function SignIn() {
               <Row justify="center" align="middle">
                 <Col xl={12} xs={24}>
                   <Form.Item
-                    name="capcha"
+                    name="cvalue"
                     initialValue=""
                     label="Mã xác nhận"
                     rules={[{ message: 'Vui lòng nhập mã xác nhận', required: true }]}
@@ -90,11 +89,11 @@ function SignIn() {
               </Form.Item>
             </Form>
           </div>
-          <div className="ninjadash-authentication-bottom">
+          {/* <div className="ninjadash-authentication-bottom">
             <p>
               Chưa có tài khoản?<Link to="/register">Đăng ký</Link>
             </p>
-          </div>
+          </div> */}
         </AuthFormWrap>
       </Col>
     </Row>
