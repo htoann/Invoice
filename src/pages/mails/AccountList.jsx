@@ -1,18 +1,19 @@
 import UilEdit from '@iconscout/react-unicons/icons/uil-edit';
 import UilTrash from '@iconscout/react-unicons/icons/uil-trash-alt';
 import { Button, Col, Popconfirm, Row } from 'antd';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Cards } from '../../components/cards/frame/cards-frame';
 import DataTable from '../../components/data-table/DataTable';
 import { PageHeader } from '../../components/page-headers/page-headers';
 
-import { BorderLessHeading, Main } from '../../container/styled';
+import { Main } from '../../container/styled';
 import { contactDeleteData } from '../../redux/contact/actionCreator';
 import { tableReadData } from '../../redux/data-filter/actionCreator';
 import CreateAccount from './components/CreateAccount';
 import EditAccount from './components/EditAccount';
+import { BorderLessHeading } from './style';
 
 function AccountList() {
   const dispatch = useDispatch();

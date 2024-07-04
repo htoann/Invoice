@@ -3,17 +3,18 @@ import UilEye from '@iconscout/react-unicons/icons/uil-eye';
 import UilTrash from '@iconscout/react-unicons/icons/uil-trash-alt';
 import { Col, Popconfirm, Row } from 'antd';
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Cards } from '../../components/cards/frame/cards-frame';
 import { PageHeader } from '../../components/page-headers/page-headers';
 
-import { BorderLessHeading, Main } from '../../container/styled';
+import { Main } from '../../container/styled';
 import { tableReadData } from '../../redux/data-filter/actionCreator';
 import EditAccount from './components/EditInvoice';
 import DataTable from './components/data-table/DataTable';
 import { invoiceListDataTable } from './const';
+import { BorderLessHeading } from './style';
 
 function InvoiceList() {
   const dispatch = useDispatch();
