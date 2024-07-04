@@ -8,6 +8,7 @@ import { Button } from '../../../../components/buttons/buttons';
 import { TableWrapper } from '../../../../container/styled';
 import { downloadFile } from '../../../../utility/utility';
 import { DataTableStyleWrap } from './Style';
+import { UilFileExport, UilSearch } from '@iconscout/react-unicons';
 
 function DataTable({
   filterOption,
@@ -89,7 +90,7 @@ function DataTable({
               />
             </div>
             <div className="ninjadash-datatable-filter__action">
-              <Button type="primary" size="small" onClick={handleSearch} transparented>
+              <Button type="primary" size="small" onClick={handleSearch} transparented icon={<UilSearch />}>
                 Tìm kiếm
               </Button>
             </div>
@@ -103,6 +104,7 @@ function DataTable({
               transparented
             >
               Xuất Excel
+              <UilFileExport style={{ marginLeft: 8 }} />
             </Button>
           </div>
         </div>
