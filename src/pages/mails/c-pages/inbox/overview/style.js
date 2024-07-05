@@ -1261,10 +1261,12 @@ const EmailWrapper = Styled.div`
     background: transparent !important;
   }
   .trigger-col {
+    /* min-width: 600px; */
+
     button{
       svg{
-        width: 18px;
-        height: 18px;
+        /* width: 18px;
+        height: 18px; */
       }
     }
   }
@@ -1292,12 +1294,12 @@ const EmailWrapper = Styled.div`
       position: fixed;
       ${({ theme }) => (theme.rtl ? 'right' : 'left')}: 0;
       top: 60px;
-      width: 280px;
+      width: 500px;
       height: 100%;
       z-index: 99;
     }
     .ant-card{
-      min-height: 900px;
+      /* min-height: 900px; */
       .ant-card-body{
         padding: 0px !important;
       }
@@ -1312,7 +1314,7 @@ const EmailWrapper = Styled.div`
   }
 
   .mail-sidebar-bottom{
-    padding: 0 15px 25px 15px;
+    padding: 25px 15px;
     ul{
       li {
         a{

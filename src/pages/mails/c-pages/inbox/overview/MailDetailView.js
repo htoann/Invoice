@@ -114,8 +114,8 @@ function Single() {
               <div className="d-flex justify-content-between align-items-center">
                 <div className="message-subject">
                   <Heading as="h2">
-                    {email.subject}
-                    <span className="mail-badge primary">{email.type}</span>
+                    {email?.subject}
+                    <span className="mail-badge primary">{email?.type}</span>
                   </Heading>
                 </div>
 
@@ -133,30 +133,30 @@ function Single() {
 
               <div className="message-box d-flex justify-content-between align-items-center">
                 <div className="message-author">
-                  <img style={{ width: '60px', borderRadius: '50%' }} src={email.img} alt="" />
+                  <img style={{ width: '60px', borderRadius: '50%' }} src={email?.img} alt="" />
                   <div>
-                    <Heading as="h4">{email.userName}</Heading>
+                    <Heading as="h4">{email?.userName}</Heading>
                     <Dropdown
                       placement="bottom"
                       content={
                         <ul className="mail-props">
                           <li>
-                            <span>From:</span> <span>{email.from}</span>{' '}
+                            <span>From:</span> <span>{email?.from}</span>{' '}
                           </li>
                           <li>
-                            <span>To:</span> <span>{email.to}</span>{' '}
+                            <span>To:</span> <span>{email?.to}</span>{' '}
                           </li>
                           <li>
                             <span>CC:</span> <span>example@gamil.com</span>{' '}
                           </li>
                           <li>
-                            <span>Date:</span> <span>{moment(email.id).format('LLL')}</span>
+                            <span>Date:</span> <span>{moment(email?.id).format('LLL')}</span>
                           </li>
                         </ul>
                       }
                     >
                       <Link to="#">
-                        To {email.to}
+                        To {email?.to}
                         <UilAngleDown />
                       </Link>
                     </Dropdown>
@@ -167,10 +167,10 @@ function Single() {
                   <span>
                     <UilPaperclip />
                   </span>
-                  <span> {moment(email.id).format('LLL')} </span>
+                  <span> {moment(email?.id).format('LLL')} </span>
                   <Link
-                    className={email.stared ? 'starActive' : 'starDeactivate'}
-                    onClick={() => onStaredChange(email.id)}
+                    className={email?.stared ? 'starActive' : 'starDeactivate'}
+                    onClick={() => onStaredChange(email?.id)}
                     to="#"
                   >
                     <FontAwesome name="star-o" />
@@ -186,10 +186,10 @@ function Single() {
 
               <div className="message-body">
                 <span className="welcome-text">Hello Adam,</span>
-                <p>{email.body}</p>
+                <p>{email?.body}</p>
 
                 <Heading as="h6">
-                  Best Regards <br /> {email.userName}
+                  Best Regards <br /> {email?.userName}
                 </Heading>
               </div>
 
@@ -291,8 +291,8 @@ function Single() {
                   <span className="meta-list">
                     <span className="date-meta">Jan 2, 2020, 5:22 PM</span>
                     <Link
-                      className={email.stared ? 'starActive' : 'starDeactivate'}
-                      onClick={() => onStaredChange(email.id)}
+                      className={email?.stared ? 'starActive' : 'starDeactivate'}
+                      onClick={() => onStaredChange(email?.id)}
                       to="#"
                     >
                       <FontAwesome name="star-o" />

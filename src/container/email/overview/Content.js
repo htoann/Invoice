@@ -67,9 +67,7 @@ function Content({ searchData, email }) {
   const data = [];
   if (emails !== undefined)
     emails.map((inbox, key) => {
-      // eslint-disable-next-line no-shadow
-
-      const { id, type, userName, status, img, subject, body, attach, stared } = inbox;
+      const { id, type, userName, status, img, subject, body, attach, stared } = inbox || {};
 
       const same = moment(id).format('MM-DD-YYYY') === moment().format('MM-DD-YYYY');
       return data.push({

@@ -4,6 +4,7 @@ import Content from './Content';
 
 function Inbox() {
   const [searchData, email] = useSelector((state) => [state.headerSearchData, state.email.allMessage]);
+
   return (
     <Content
       email={email.filter((value) => {
