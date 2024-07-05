@@ -18,13 +18,13 @@ import { BorderLessHeading } from '../../style';
 export const EmailList = () => {
   const dispatch = useDispatch();
 
-  const PageRoutes = [
+  const pageRoutes = [
     {
       path: '/email/inbox',
       breadcrumbName: 'Hộp thư',
     },
     {
-      path: '/email/email-list',
+      path: '/email',
       breadcrumbName: 'Danh sách email',
     },
   ];
@@ -135,7 +135,7 @@ export const EmailList = () => {
 
   return (
     <>
-      <PageHeader className="ninjadash-page-header-main" title="Danh sách email" routes={PageRoutes} />
+      <PageHeader className="ninjadash-page-header-main" title="Danh sách email" routes={pageRoutes} />
       <Main>
         <Row gutter={15}>
           <Col xs={24}>

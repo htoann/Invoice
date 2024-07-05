@@ -84,7 +84,7 @@ const Index = React.memo(() => {
         <Route path="main/chat/*" element={<Chat />} />
         {/* Change routes */}
         <Route path="invoices" element={<InvoiceList />} />
-        <Route path="email/email-list" element={<EmailList />} />
+        <Route path="email" element={<EmailList />} />
         <Route path="email/*" element={<Email />} />
         <Route path="editor" element={<Editors />} />
         <Route path="icons/*" element={<Icons />} />

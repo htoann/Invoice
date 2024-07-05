@@ -67,7 +67,7 @@ export const TopMenu = () => {
             </Link>
             <ul className="subMenu">
               <li>
-                <Link to="/email/email-list">Danh sách email</Link>
+                <Link to="/email">Danh sách email</Link>
               </li>
               <li>
                 <Link to="/email/inbox">Hộp thư đến</Link>

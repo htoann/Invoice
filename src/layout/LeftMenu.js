@@ -116,7 +116,7 @@ export const LeftMenu = ({ toggleCollapsed }) => {
       'inbox',
       !topMenu && <UilAt />,
       createMenuItems([
-        { path: '/email/email-list', textKey: 'Danh sách email', key: 'account-list' },
+        { path: '/email', textKey: 'Danh sách email', key: 'account-list' },
         { path: '/email/inbox', textKey: 'Hộp thư đến', key: 'Hộp thư đến' },
         { path: '/email/account-list', textKey: 'Lịch sử đồng bộ', key: 'Lịch sử đồng bộ' },
       ]),
