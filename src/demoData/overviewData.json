@@ -10,7 +10,7 @@
     "status": "growth",
     "statusRate": "25.36",
     "decimel": 0,
-    "dataPeriod": "Since last month"
+    "dataPeriod": "3 tháng gần đây"
   },
   {
     "id": 2,
@@ -24,7 +24,7 @@
     "statusRate": "25.36",
     "decimels": 0,
     "separator": ",",
-    "dataPeriod": "Since last month"
+    "dataPeriod": "3 tháng gần đây"
   },
   {
     "id": 3,
@@ -38,7 +38,7 @@
     "statusRate": "25.36",
     "decimels": 0,
     "separator": ",",
-    "dataPeriod": "Since last month"
+    "dataPeriod": "3 tháng gần đây"
   },
   {
     "id": 4,
@@ -52,7 +52,7 @@
     "statusRate": "25.36",
     "decimels": 0,
     "separator": ",",
-    "dataPeriod": "Since last month"
+    "dataPeriod": "3 tháng gần đây"
   },
   {
     "id": 5,
@@ -79,7 +79,7 @@
     "status": "growth",
     "statusRate": "9.87",
     "decimels": 0,
-    "dataPeriod": "Since last month"
+    "dataPeriod": "3 tháng gần đây"
   },
   {
     "id": 7,
@@ -92,7 +92,7 @@
     "status": "down",
     "statusRate": "12.36",
     "decimels": 0,
-    "dataPeriod": "Since last month"
+    "dataPeriod": "3 tháng gần đây"
   },
   {
     "id": 8,
@@ -105,6 +105,6 @@
     "status": "growth",
     "statusRate": "9.87",
     "decimels": 2,
-    "dataPeriod": "Since last month"
+    "dataPeriod": "3 tháng gần đây"
   }
 ]

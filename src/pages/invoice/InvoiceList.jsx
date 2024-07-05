@@ -45,13 +45,11 @@ function InvoiceList() {
   const getInvoiceList = async (page, page_size = 20, loaihdon = 'purchase', date_from, date_to) => {
     try {
       const response = await DataService.get('invoices', {
-        params: {
-          page,
-          page_size,
-          loaihdon,
-          ...(date_from && { date_from }),
-          ...(date_to && { date_to }),
-        },
+        page,
+        page_size,
+        loaihdon,
+        ...(date_from && { date_from }),
+        ...(date_to && { date_to }),
       });
 
       if (response?.data) {
@@ -73,7 +71,9 @@ function InvoiceList() {
   const { current, pageSize } = pagination;
 
   useEffect(() => {
+    console.log(current);
     getInvoiceList(current, pageSize, loaiHoaDon);
+    console.log('asd');
   }, [current, pageSize, loaiHoaDon]);
 
   const tableDataSource = handleTableDataSource(invoiceList);
