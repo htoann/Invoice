@@ -1,13 +1,13 @@
 import UilInbox from '@iconscout/react-unicons/icons/uil-inbox';
 import { Input, Pagination, Select } from 'antd';
+import { Option } from 'antd/lib/mentions';
+import Paragraph from 'antd/lib/typography/Paragraph';
 import propTypes from 'prop-types';
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import inboxList from '../../../../../demoData/emailData2.json';
 import accountList from '../../../../../demoData/data-table.json';
+import inboxList from '../../../../../demoData/emailData2.json';
 import { EmailNav } from './style';
-import { Option } from 'antd/lib/mentions';
-import { id } from 'date-fns/locale';
 
 export const InboxList = React.memo(({ toggleCollapsed }) => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -74,11 +74,17 @@ export const InboxList = React.memo(({ toggleCollapsed }) => {
                 <NavLink to={`./inbox/${item.id}`} onClick={toggleCollapsed}>
                   <UilInbox />
                   <span className="nav-text" style={{ padding: '5px 0' }}>
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: 10, width: '100%', flex: 1 }}>
-                      <span style={{ width: '100%', fontWeight: 500, color: 'rgb(64, 64, 64)' }}>{item?.subject}</span>
-                      <span style={{ width: '100%' }}>{item?.from}</span>
+                    <div style={{ display: 'flex', flexDirection: 'column', width: '100%', flex: 1 }}>
+                      <Paragraph ellipsis style={{ width: '100%', fontWeight: 500, color: 'rgb(64, 64, 64)' }}>
+                        {item?.subject}
+                      </Paragraph>
+                      <Paragraph ellipsis style={{ width: '100%', marginBottom: 0 }}>
+                        {item?.from}
+                      </Paragraph>
                     </div>
-                    <span style={{ whiteSpace: 'nowrap' }}>{item?.date}</span>
+                    <span style={{ whiteSpace: 'nowrap', fontSize: '13px', fontWeight: 400, color: 'rgb(64, 64, 64)' }}>
+                      {item?.date}
+                    </span>
                   </span>
                 </NavLink>
               </li>
