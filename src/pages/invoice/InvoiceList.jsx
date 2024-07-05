@@ -71,9 +71,7 @@ function InvoiceList() {
   const { current, pageSize } = pagination;
 
   useEffect(() => {
-    console.log(current);
     getInvoiceList(current, pageSize, loaiHoaDon);
-    console.log('asd');
   }, [current, pageSize, loaiHoaDon]);
 
   const tableDataSource = handleTableDataSource(invoiceList);
