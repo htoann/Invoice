@@ -26,7 +26,6 @@ const Courses = lazy(() => import('../../container/course/Index'));
 const CourseDetails = lazy(() => import('../../container/course/CourseDetails'));
 const Import = lazy(() => import('../../container/importExport/Import'));
 const Export = lazy(() => import('../../container/importExport/Export'));
-const ToDo = lazy(() => import('../../container/toDo/ToDo'));
 const Note = lazy(() => import('../../container/note/Note'));
 const Contact = lazy(() => import('../../container/contact/Contact'));
 const ContactGrid = lazy(() => import('../../container/contact/ContactGrid'));
@@ -78,7 +77,6 @@ const Index = React.memo(() => {
         <Route path="app/course/*" element={<Courses />} />
         <Route path="importExport/import" element={<Import />} />
         <Route path="importExport/export" element={<Export />} />
-        <Route path="app/to-do" element={<ToDo />} />
         <Route path="app/note/*" element={<Note />} />
         <Route path="contact/list" element={<Contact />} />
         <Route path="contact/grid" element={<ContactGrid />} />

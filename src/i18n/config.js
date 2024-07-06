@@ -6,22 +6,16 @@ i18n.use(initReactI18next).init({
   lng: 'vi',
   resources: {
     vi: {
-      translations: require('./localization/vi/translation.json'),
+      translations: require('./localization/vi.json'),
     },
     en: {
-      translations: require('./localization/en/translation.json'),
-    },
-    esp: {
-      translations: require('./localization/esp/translation.json'),
-    },
-    ar: {
-      translations: require('./localization/ar/translation.json'),
+      translations: require('./localization/en.json'),
     },
   },
   ns: ['translations'],
   defaultNS: 'translations',
 });
 
-i18n.languages = ['vi', 'en', 'esp', 'ar'];
+i18n.languages = ['vi', 'en'];
 
 export default i18n;
