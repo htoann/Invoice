@@ -15,14 +15,12 @@ const BlogThree = lazy(() => import('../../container/pages/blog/BlogThree'));
 const BlogDetails = lazy(() => import('../../container/pages/blog/BlogDetails'));
 const BlankPage = lazy(() => import('../../container/pages/BlankPage'));
 const Settings = lazy(() => import('../../container/profile/settings/Settings'));
-const ChangeLog = lazy(() => import('../../container/pages/ChangeLog'));
 const Banners = lazy(() => import('../../container/pages/Banners'));
 const Testimonials = lazy(() => import('../../container/pages/Testimonials'));
 
 function PagesRoute() {
   return (
     <Routes>
-      <Route path="changelog" element={<ChangeLog />} />
       <Route path="settings/*" element={<Settings />} />
       <Route path="Pricing" element={<Pricing />} />
       <Route path="banners" element={<Banners />} />

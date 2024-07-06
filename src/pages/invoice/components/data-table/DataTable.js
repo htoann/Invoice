@@ -113,6 +113,7 @@ function DataTable({
         <TableWrapper className="table-data-view table-responsive">
           {rowSelection ? (
             <Table
+              bordered
               rowSelection={{
                 ...rowSelection,
               }}
@@ -128,6 +129,7 @@ function DataTable({
             />
           ) : (
             <Table
+              bordered
               pagination={{ pageSize: 20, showSizeChanger: true, ...pagination }}
               dataSource={tableData}
               columns={columns}

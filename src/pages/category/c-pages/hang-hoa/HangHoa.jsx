@@ -1,22 +1,21 @@
 import { UilFileExport } from '@iconscout/react-unicons';
-import UilEdit from '@iconscout/react-unicons/icons/uil-edit';
-import UilTrash from '@iconscout/react-unicons/icons/uil-trash-alt';
-import { Button, Col, Popconfirm, Row } from 'antd';
+import { Button, Col, Input, Popconfirm, Row } from 'antd';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Cards } from '../../../../components/cards/frame/cards-frame';
-import DataTable from '../../../../components/data-table/DataTable';
 import { PageHeader } from '../../../../components/page-headers/page-headers';
 
-import { DataService } from '../../../../config/dataService/dataService';
+import UilEdit from '@iconscout/react-unicons/icons/uil-edit';
+import UilTrash from '@iconscout/react-unicons/icons/uil-trash-alt';
 import { Main } from '../../../../container/styled';
 import { contactDeleteData } from '../../../../redux/contact/actionCreator';
 import { tableReadData } from '../../../../redux/data-filter/actionCreator';
-import { downloadFile, formatTime } from '../../../../utility/utility';
 import { BorderLessHeading } from '../../style';
 import CreateAccount from './components/CreateAccount';
+import DataTable from './components/data-table/DataTable';
 import EditAccount from './components/EditAccount';
+import { handleExport } from './utils';
 
 export const HangHoa = () => {
   const dispatch = useDispatch();
@@ -36,6 +35,9 @@ export const HangHoa = () => {
       users: stateItem.Contact.data,
     };
   });
+
+  const [searchText, setSearchText] = useState('');
+  const [filteredData, setFilteredData] = useState(users || []);
 
   useEffect(() => {
     if (dispatch) {
@@ -63,11 +65,54 @@ export const HangHoa = () => {
     dispatch(contactDeleteData(value));
   };
 
+  const stopPropagation = (e) => {
+    e.stopPropagation();
+  };
+
+  const handleSearch = (e, dataIndex) => {
+    const value = e.target.value.toLowerCase();
+    setSearchText(value);
+    setFilteredData(users.filter((item) => item[dataIndex].toString().toLowerCase().includes(value)));
+  };
+
   const tableDataScource = [];
 
-  if (users.length > 0) {
-    users.map((item, index) => {
+  tableDataScource.push({
+    key: 'searchInput',
+    id: '',
+    user: (
+      <Input
+        style={{ width: 'auto' }}
+        onClick={stopPropagation}
+        onFocus={stopPropagation}
+        onKeyDown={stopPropagation}
+        value={searchText.name}
+        onChange={(e) => {
+          e.stopPropagation();
+          handleSearch(e, 'name');
+        }}
+      />
+    ),
+    email: (
+      <Input
+        style={{ width: 'auto' }}
+        onClick={stopPropagation}
+        onFocus={stopPropagation}
+        onKeyDown={stopPropagation}
+        value={searchText.name}
+        onChange={(e) => {
+          e.stopPropagation();
+          handleSearch(e, 'email');
+        }}
+      />
+    ),
+    disableSort: true,
+  });
+
+  if (filteredData?.length > 0) {
+    filteredData.map((item, index) => {
       const { id, name, email } = item;
+
       return tableDataScource.push({
         key: id,
         id: index + 1,
@@ -101,22 +146,73 @@ export const HangHoa = () => {
       key: 'id',
     },
     {
-      title: 'Tên tài khoản',
+      title: 'Mã hàng',
       dataIndex: 'user',
       key: 'name',
-      sorter: (a, b) => a.user.props.children.localeCompare(b.user.props.children),
+      sorter: (a, b) => {
+        if (b?.disableSort) return null;
+        return a.user.props.children.localeCompare(b.user.props.children);
+      },
     },
     {
-      title: 'Địa chỉ email',
+      title: 'Tên hàng bán ra',
       dataIndex: 'email',
       key: 'email',
-      sorter: (a, b) => a.email.props.children.localeCompare(b.email.props.children),
+      sorter: (a, b) => {
+        if (b?.key === 'searchInput') return null;
+        return a.user.props.children.localeCompare(b.user.props.children);
+      },
+    },
+    {
+      title: 'Tên hàng bán ra',
+      dataIndex: 'email',
+      key: 'email',
+      sorter: (a, b) => {
+        if (b?.key === 'searchInput') return null;
+        return a.user.props.children.localeCompare(b.user.props.children);
+      },
+    },
+    {
+      title: 'Tên hàng bán ra',
+      dataIndex: 'email',
+      key: 'email',
+      sorter: (a, b) => {
+        if (b?.key === 'searchInput') return null;
+        return a.user.props.children.localeCompare(b.user.props.children);
+      },
+    },
+    {
+      title: 'Tên hàng bán ra',
+      dataIndex: 'email',
+      key: 'email',
+      sorter: (a, b) => {
+        if (b?.key === 'searchInput') return null;
+        return a.user.props.children.localeCompare(b.user.props.children);
+      },
+    },
+    {
+      title: 'Tên hàng bán ra',
+      dataIndex: 'email',
+      key: 'email',
+      sorter: (a, b) => {
+        if (b?.key === 'searchInput') return null;
+        return a.user.props.children.localeCompare(b.user.props.children);
+      },
+    },
+    {
+      title: 'Tên hàng bán ra',
+      dataIndex: 'email',
+      key: 'email',
+      sorter: (a, b) => {
+        if (b?.key === 'searchInput') return null;
+        return a.user.props.children.localeCompare(b.user.props.children);
+      },
     },
     {
       title: 'Chức năng',
       dataIndex: 'action',
       key: 'action',
-      width: '90px',
+      fixed: true,
     },
   ];
 
@@ -125,21 +221,9 @@ export const HangHoa = () => {
       setState({ ...state, selectedRowKeys, selectedRows });
     },
     getCheckboxProps: (record) => ({
-      disabled: record.name === 'Disabled User', // Column configuration not to be checked
+      disabled: record.key === 'searchInput',
       name: record.name,
     }),
-  };
-
-  const handleExport = async () => {
-    try {
-      const response = await DataService.get('invoices_excel/', {
-        responseType: 'blob',
-      });
-
-      downloadFile(response, `HangHoa${formatTime(state.date_from || state.date_to)}.xlsx`);
-    } catch (error) {
-      console.log(error);
-    }
   };
 
   return (
@@ -158,7 +242,7 @@ export const HangHoa = () => {
                     className="btn-add_new"
                     type="primary"
                     size="default"
-                    onClick={handleExport}
+                    onClick={() => handleExport(state.date_from || state.date_to)}
                     disabled={!state.invoiceList?.length}
                     transparented
                   >

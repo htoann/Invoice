@@ -7,7 +7,7 @@
     "stared": false,
     "phone": "+90014525",
     "company": "Business Development",
-    "email": "john@gmail.com",
+    "email": "duran.clayton@example.com",
     "img": "static/img/users/1.png"
   },
   {
@@ -18,7 +18,7 @@
     "stared": true,
     "phone": "+90014525",
     "company": "Business Development",
-    "email": "john@gmail.com",
+    "email": "david.milar@example.com",
     "img": "static/img/users/2.png"
   },
   {
@@ -29,7 +29,7 @@
     "stared": true,
     "phone": "+90014525",
     "company": "Business Development",
-    "email": "john@gmail.com",
+    "email": "tom.curan@example.com",
     "img": "static/img/users/1.png"
   },
   {
@@ -40,7 +40,7 @@
     "stared": false,
     "phone": "+90014525",
     "company": "Business Development",
-    "email": "john@gmail.com",
+    "email": "stuard.broad@example.com",
     "img": "static/img/users/4.png"
   },
   {
@@ -51,7 +51,7 @@
     "stared": false,
     "phone": "+90014525",
     "company": "Business Development",
-    "email": "john@gmail.com",
+    "email": "crish.moris@example.com",
     "img": "static/img/users/5.png"
   },
   {
@@ -62,7 +62,7 @@
     "stared": false,
     "phone": "+90014525",
     "company": "Business Development",
-    "email": "john@gmail.com",
+    "email": "salman.but@example.com",
     "img": "static/img/users/6.png"
   },
   {
@@ -73,7 +73,7 @@
     "stared": false,
     "phone": "+90014525",
     "company": "Business Development",
-    "email": "john@gmail.com",
+    "email": "mohammad.amir@example.com",
     "img": "static/img/users/7.png"
   },
   {
@@ -84,7 +84,7 @@
     "stared": false,
     "phone": "+90014525",
     "company": "Business Development",
-    "email": "john@gmail.com",
+    "email": "musfiqur.rohim@example.com",
     "img": "static/img/users/8.png"
   }
 ]
