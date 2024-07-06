@@ -15,4 +15,4 @@
   yarn start
 ```
 
-## Made By Clay - 2024 © Invoice System
+## 2024 © Invoice System
