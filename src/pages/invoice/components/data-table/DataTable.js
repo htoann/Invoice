@@ -6,7 +6,7 @@ import React from 'react';
 import { Button } from '../../../../components/buttons/buttons';
 import { DataService } from '../../../../config/dataService/dataService';
 import { TableWrapper } from '../../../../container/styled';
-import { downloadFile } from '../../../../utility/utility';
+import { downloadFile, formatTime } from '../../../../utility/utility';
 import { DataTableStyleWrap } from './Style';
 
 function DataTable({
@@ -42,7 +42,7 @@ function DataTable({
         responseType: 'blob',
       });
 
-      downloadFile(response, `HDDT${dayjs(state.date_from || state.date_to).format('DDMMYYYYHHmmss')}.xlsx`);
+      downloadFile(response, `HDDT${formatTime(state.date_from || state.date_to)}.xlsx`);
     } catch (error) {
       console.log(error);
     }
@@ -100,8 +100,8 @@ function DataTable({
               disabled={!state.invoiceList?.length}
               transparented
             >
+              <UilFileExport />
               Xuất Excel
-              <UilFileExport style={{ marginLeft: 8 }} />
             </Button>
           </div>
         </div>

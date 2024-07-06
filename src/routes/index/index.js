@@ -2,6 +2,7 @@ import { Spin } from 'antd';
 import React, { lazy, Suspense, useEffect } from 'react';
 import { Route, Routes, useLocation } from 'react-router-dom';
 import withAdminLayout from '../../layout/withAdminLayout';
+import { HangHoa } from '../../pages/category/c-pages/hang-hoa/HangHoa';
 import InvoiceList from '../../pages/invoice/InvoiceList';
 import { EmailList } from '../../pages/mails/c-pages/email-list/EmailList';
 import Email from '../../pages/mails/c-pages/inbox/Email';
@@ -9,7 +10,6 @@ import Axios from './axios';
 import Dashboard from './dashboard';
 import Ecommerce from './ecommerce';
 import Features from './features';
-import Gallery from './gallery';
 import Pages from './pages';
 import Users from './users';
 import Widgets from './widgets';
@@ -58,7 +58,13 @@ const Index = React.memo(() => {
       <Routes>
         <Route index path="/*" element={<Dashboard />} />
         <Route path="pages/*" element={<Pages />} />
-        <Route path="gallery/*" element={<Gallery />} />
+
+        {/* Change routes */}
+        <Route path="invoices" element={<InvoiceList />} />
+        <Route path="email" element={<EmailList />} />
+        <Route path="email/*" element={<Email />} />
+        <Route path="category/hang-hoa" element={<HangHoa />} />
+
         <Route path="all-articles" element={<AllArticle />} />
         <Route path="knowledgeBase/*" element={<KnowledgeBase />} />
         <Route path="knowledgebaseSingle/:id" element={<KnowledgeSingle />} />
@@ -82,10 +88,6 @@ const Index = React.memo(() => {
         <Route path="profile/myProfile/*" element={<Myprofile />} />
         <Route path="ecommerce/*" element={<Ecommerce />} />
         <Route path="main/chat/*" element={<Chat />} />
-        {/* Change routes */}
-        <Route path="invoices" element={<InvoiceList />} />
-        <Route path="email" element={<EmailList />} />
-        <Route path="email/*" element={<Email />} />
         <Route path="editor" element={<Editors />} />
         <Route path="icons/*" element={<Icons />} />
         <Route path="tables/*" element={<Tables />} />

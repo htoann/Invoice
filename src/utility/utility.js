@@ -1,3 +1,5 @@
+import dayjs from 'dayjs';
+
 /**
  * Return ellipsis of a given string
  * @param {string} text
@@ -58,4 +60,10 @@ const downloadFile = (response, fileName = getFileName(response)) => {
   }
 };
 
-export { ellipsis, idGenerator, downloadFile };
+const formatTime = (date, format = 'DDMMYYYYHHmmss') => {
+  if (!date) return new Date();
+
+  return dayjs(date).format(format);
+};
+
+export { ellipsis, idGenerator, downloadFile, formatTime };
