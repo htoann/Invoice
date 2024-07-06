@@ -5,11 +5,10 @@ import { Cards } from '../../components/cards/frame/cards-frame';
 import { PageHeader } from '../../components/page-headers/page-headers';
 
 import { DataService } from '../../config/dataService/dataService';
-import { Main } from '../../container/styled';
+import { BorderLessHeading, Main } from '../../container/styled';
 import { tableReadData } from '../../redux/data-filter/actionCreator';
 import DataTable from './components/data-table/DataTable';
 import { invoiceListDataTable } from './const';
-import { BorderLessHeading } from './style';
 import { handleTableDataSource } from './utils';
 
 function InvoiceList() {
@@ -87,7 +86,7 @@ function InvoiceList() {
         <Row gutter={15}>
           <Col xs={24}>
             <BorderLessHeading>
-              <Cards>
+              <Cards headless>
                 <DataTable
                   filterOption
                   tableData={tableDataSource}

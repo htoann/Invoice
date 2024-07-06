@@ -1,88 +1,80 @@
-import UilSearch from '@iconscout/react-unicons/icons/uil-search';
-import { Input, Select, Table } from 'antd';
+import { UilFileExport } from '@iconscout/react-unicons';
+import { Select, Table } from 'antd';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { useDispatch } from 'react-redux';
-import { DataTableStyleWrap } from './Style';
-import { dataLiveFilter, filterWithSubmit } from '../../../../../../redux/data-filter/actionCreator';
-import { TableWrapper } from '../../../../../../container/styled';
+import { Link } from 'react-router-dom';
 import { Button } from '../../../../../../components/buttons/buttons';
+import { TableWrapper } from '../../../../../../container/styled';
+import { handleExport } from '../../utils';
+import { DataTableStyleWrap } from './Style';
 
 function DataTable({
   filterOption,
-  filterOnchange,
   rowSelection,
   tableData,
   columns,
   pagination,
   onchangePagination,
-  displayEmpty,
+  setState,
+  state,
 }) {
-  const dispatch = useDispatch();
-
-  const handleIdSearch = (e) => {
-    const id = e.currentTarget.value;
-    dispatch(dataLiveFilter(id, 'id'));
+  const handleLoaiHoaDonSearch = (value) => {
+    setState((prev) => ({
+      ...prev,
+      loaiHoaDon: value,
+    }));
   };
-  const handleStatusSearch = (value) => {
-    dispatch(dataLiveFilter(value, 'status'));
-  };
-
-  const handleDataUser = (e) => {
-    const { value } = e.currentTarget;
-    dispatch(dataLiveFilter(value, 'name'));
-  };
-
-  const handleSearch = () => {
-    const id = document.querySelector('.ninjadash-data-id').value;
-    const status = document.querySelector('.ninjadash-data-status .ant-select-selection-item').title;
-    dispatch(filterWithSubmit(id, status));
-  };
-
-  const prefix = <UilSearch />;
 
   return (
     <DataTableStyleWrap>
       {filterOption ? (
         <div className="ninjadash-datatable-filter">
-          {!filterOnchange ? (
-            <div className="ninjadash-datatable-filter__left">
-              <div className="ninjadash-datatable-filter__input">
-                <span className="label">Id:</span>
-                <Input className="ninjadash-data-id" placeholder="Search with Id" />
-              </div>
-              <div className="ninjadash-datatable-filter__input">
-                <span className="label">Status:</span>
-                <Select style={{ width: 200 }} className="ninjadash-data-status" defaultValue="active">
-                  <Select.Option value="active">Active</Select.Option>
-                  <Select.Option value="deactiveted">Deactivated</Select.Option>
-                  <Select.Option value="blocked">Blocked</Select.Option>
-                </Select>
-              </div>
-              <div className="ninjadash-datatable-filter__action">
-                <Button type="primary" size="small" onClick={handleSearch} transparented>
-                  Submit
-                </Button>
-              </div>
+          <div className="ninjadash-datatable-filter__left">
+            <div className="ninjadash-datatable-filter__input">
+              <span className="label">Tài khoản thuế (2 tài khoản)</span>
+              <Select onChange={handleLoaiHoaDonSearch} style={{ width: 200 }} defaultValue="purchase">
+                <Select.Option value="purchase">Mua vào</Select.Option>
+                <Select.Option value="sold">Bán ra</Select.Option>
+              </Select>
             </div>
-          ) : (
-            <div className="ninjadash-datatable-filter__left">
-              <div className="ninjadash-datatable-filter__input">
-                <span className="label">Id:</span>
-                <Input onChange={handleIdSearch} placeholder="Search with Id" />
+          </div>
+          <div
+            style={{
+              display: 'flex',
+              gap: 10,
+              marginRight: 'auto',
+              marginTop: 10,
+              justifyContent: 'space-between',
+              width: '100%',
+            }}
+          >
+            <Button
+              onClick={() => {
+                setState({
+                  ...state,
+                  visible: true,
+                });
+              }}
+              className="btn-add_new"
+              size="small"
+              type="primary"
+              key="1"
+            >
+              <Link to="#">+ Thêm mã hàng</Link>
+            </Button>
+            <Button
+              className="btn-add_new"
+              type="primary"
+              size="small"
+              onClick={() => handleExport(state.date_from || state.date_to)}
+              disabled={!state.invoiceList?.length}
+              transparented
+            >
+              <div style={{ display: 'flex' }}>
+                <UilFileExport style={{ marginRight: 8, height: 20 }} />
+                <div>Xuất Excel</div>
               </div>
-              <div className="ninjadash-datatable-filter__input">
-                <span className="label">Status:</span>
-                <Select onChange={handleStatusSearch} style={{ width: 200 }} defaultValue="active">
-                  <Select.Option value="active">Active</Select.Option>
-                  <Select.Option value="deactiveted">Deactivated</Select.Option>
-                  <Select.Option value="blocked">Blocked</Select.Option>
-                </Select>
-              </div>
-            </div>
-          )}
-          <div className="ninjadash-datatable-filter__right">
-            <Input onChange={handleDataUser} size="default" placeholder="Search" prefix={prefix} />
+            </Button>
           </div>
         </div>
       ) : (
@@ -98,7 +90,7 @@ function DataTable({
                 ...rowSelection,
               }}
               pagination={{ pageSize: 20, showSizeChanger: true, ...pagination }}
-              dataSource={displayEmpty ? [] : tableData}
+              dataSource={tableData}
               columns={columns}
               onChange={onchangePagination}
             />
@@ -106,7 +98,7 @@ function DataTable({
             <Table
               // bordered
               pagination={{ pageSize: 20, showSizeChanger: true, ...pagination }}
-              dataSource={displayEmpty ? [] : tableData}
+              dataSource={tableData}
               columns={columns}
               onChange={onchangePagination}
             />
@@ -119,7 +111,6 @@ function DataTable({
 
 DataTable.propTypes = {
   filterOption: PropTypes.bool,
-  filterOnchange: PropTypes.bool,
   rowSelection: PropTypes.bool,
   tableData: PropTypes.array,
   columns: PropTypes.array,

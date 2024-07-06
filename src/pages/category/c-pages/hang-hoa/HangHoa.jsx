@@ -1,5 +1,4 @@
-import { UilFileExport } from '@iconscout/react-unicons';
-import { Button, Col, Input, Popconfirm, Row } from 'antd';
+import { Col, Input, Popconfirm, Row } from 'antd';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -8,14 +7,12 @@ import { PageHeader } from '../../../../components/page-headers/page-headers';
 
 import UilEdit from '@iconscout/react-unicons/icons/uil-edit';
 import UilTrash from '@iconscout/react-unicons/icons/uil-trash-alt';
-import { Main } from '../../../../container/styled';
+import { BorderLessHeading, Main } from '../../../../container/styled';
 import { contactDeleteData } from '../../../../redux/contact/actionCreator';
 import { tableReadData } from '../../../../redux/data-filter/actionCreator';
-import { BorderLessHeading } from '../../style';
 import CreateAccount from './components/CreateAccount';
 import DataTable from './components/data-table/DataTable';
 import EditAccount from './components/EditAccount';
-import { handleExport } from './utils';
 
 export const HangHoa = () => {
   const dispatch = useDispatch();
@@ -44,13 +41,6 @@ export const HangHoa = () => {
       dispatch(tableReadData());
     }
   }, [dispatch]);
-
-  const showModal = () => {
-    setState({
-      ...state,
-      visible: true,
-    });
-  };
 
   const showEditModal = (data) => {
     setState({
@@ -164,7 +154,7 @@ export const HangHoa = () => {
       },
     },
     {
-      title: 'Tên hàng bán ra',
+      title: 'Tên hàng mua vào',
       dataIndex: 'email',
       key: 'email',
       sorter: (a, b) => {
@@ -173,7 +163,7 @@ export const HangHoa = () => {
       },
     },
     {
-      title: 'Tên hàng bán ra',
+      title: 'Đơn vị tính',
       dataIndex: 'email',
       key: 'email',
       sorter: (a, b) => {
@@ -182,7 +172,7 @@ export const HangHoa = () => {
       },
     },
     {
-      title: 'Tên hàng bán ra',
+      title: 'Tài khoản hàng hóa',
       dataIndex: 'email',
       key: 'email',
       sorter: (a, b) => {
@@ -191,7 +181,7 @@ export const HangHoa = () => {
       },
     },
     {
-      title: 'Tên hàng bán ra',
+      title: 'Tài khoản giá vốn',
       dataIndex: 'email',
       key: 'email',
       sorter: (a, b) => {
@@ -200,7 +190,7 @@ export const HangHoa = () => {
       },
     },
     {
-      title: 'Tên hàng bán ra',
+      title: 'Tài khoản doanh thu',
       dataIndex: 'email',
       key: 'email',
       sorter: (a, b) => {
@@ -233,31 +223,14 @@ export const HangHoa = () => {
         <Row gutter={15}>
           <Col xs={24}>
             <BorderLessHeading>
-              <Cards>
-                <div style={{ display: 'flex', gap: 10, justifyContent: 'space-between' }}>
-                  <Button onClick={showModal} className="btn-add_new" size="default" type="primary" key="1">
-                    <Link to="#">+ Thêm mã hàng</Link>
-                  </Button>
-                  <Button
-                    className="btn-add_new"
-                    type="primary"
-                    size="default"
-                    onClick={() => handleExport(state.date_from || state.date_to)}
-                    disabled={!state.invoiceList?.length}
-                    transparented
-                  >
-                    <div style={{ display: 'flex' }}>
-                      <UilFileExport style={{ marginRight: 8, height: 20 }} />
-                      <div>Xuất Excel</div>
-                    </div>
-                  </Button>
-                </div>
+              <Cards headless>
                 <DataTable
                   filterOption
-                  filterOnchange
                   tableData={tableDataScource}
                   columns={dataTableColumn}
                   rowSelection={rowSelection}
+                  state={state}
+                  setState={setState}
                 />
               </Cards>
             </BorderLessHeading>

@@ -8,12 +8,11 @@ import { Cards } from '../../../../components/cards/frame/cards-frame';
 import DataTable from '../../../../components/data-table/DataTable';
 import { PageHeader } from '../../../../components/page-headers/page-headers';
 
-import { Main } from '../../../../container/styled';
+import { BorderLessHeading, Main } from '../../../../container/styled';
 import { contactDeleteData } from '../../../../redux/contact/actionCreator';
 import { tableReadData } from '../../../../redux/data-filter/actionCreator';
 import CreateAccount from '../../components/CreateAccount';
 import EditAccount from '../../components/EditAccount';
-import { BorderLessHeading } from '../../style';
 
 export const EmailList = () => {
   const dispatch = useDispatch();
@@ -140,7 +139,7 @@ export const EmailList = () => {
         <Row gutter={15}>
           <Col xs={24}>
             <BorderLessHeading>
-              <Cards>
+              <Cards headless>
                 <Button onClick={showModal} className="btn-add_new" size="default" type="primary" key="1">
                   <Link to="#">+ Thêm email</Link>
                 </Button>

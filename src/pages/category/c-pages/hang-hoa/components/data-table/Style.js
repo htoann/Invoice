@@ -7,6 +7,7 @@ const DataTableStyleWrap = Styled.div`
         justify-content: space-between;
         width: 100%;
         margin: 20px 0 25px 0;
+        flex-direction: column;
         @media only screen and (max-width: 767px){
             flex-direction: column;
             align-items: flex-start;
@@ -33,7 +34,7 @@ const DataTableStyleWrap = Styled.div`
             }
             .ninjadash-datatable-filter__input{
                 display: flex;
-                align-items: center;
+                flex-direction: column;
                 padding-right: 20px;
                 @media only screen and (max-width: 475px){
                     margin-bottom: 15px;
@@ -47,6 +48,10 @@ const DataTableStyleWrap = Styled.div`
                     @media only screen and (max-width: 475px){
                         width: 100% !important;
                     }
+                },
+                .label{
+                    margin-bottom: 8px;
+                    font-size: 14px;
                 }
             }
         }
