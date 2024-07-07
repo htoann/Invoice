@@ -1,8 +1,7 @@
 import { UilFileExport, UilSearch } from '@iconscout/react-unicons';
 import { DatePicker, Select, Table } from 'antd';
-import dayjs from 'dayjs';
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { useState } from 'react';
 import { Button } from '../../../../components/buttons/buttons';
 import { DataService } from '../../../../config/dataService/dataService';
 import { TableWrapper } from '../../../../container/styled';
@@ -19,6 +18,9 @@ function DataTable({
   setState,
   getInvoiceList,
 }) {
+  const [startDate, setStartDate] = useState();
+  const [endDate, setEndDate] = useState();
+
   const handleLoaiHoaDonSearch = (value) => {
     setState((prev) => ({
       ...prev,
@@ -48,6 +50,14 @@ function DataTable({
     }
   };
 
+  const disabledStartDate = (current) => {
+    return endDate && current ? current?._d.getTime() > endDate.getTime() : false;
+  };
+
+  const disabledEndDate = (current) => {
+    return startDate && current ? current?._d.getTime() < startDate.getTime() : false;
+  };
+
   return (
     <DataTableStyleWrap>
       {filterOption ? (
@@ -67,10 +77,12 @@ function DataTable({
                 onChange={(e) => {
                   setState((prev) => ({
                     ...prev,
-                    date_from: e?._d ? dayjs(e._d).format('DD-MM-YYYY') : null,
+                    date_from: e?._d ? formatTime(e._d, 'DD-MM-YYYY') : null,
                   }));
+                  setStartDate(e?._d || null);
                 }}
                 format="DD/MM/yyyy"
+                disabledDate={disabledStartDate}
               />
             </div>
             <div className="ninjadash-datatable-filter__input">
@@ -80,10 +92,12 @@ function DataTable({
                 onChange={(e) => {
                   setState((prev) => ({
                     ...prev,
-                    date_to: e?._d ? dayjs(e._d).format('DD-MM-YYYY') : null,
+                    date_to: e?._d ? formatTime(e._d, 'DD-MM-YYYY') : null,
                   }));
+                  setEndDate(e?._d || null);
                 }}
                 format="DD/MM/yyyy"
+                disabledDate={disabledEndDate}
               />
             </div>
             <div className="ninjadash-datatable-filter__action">

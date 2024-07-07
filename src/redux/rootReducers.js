@@ -23,7 +23,6 @@ import Task from './task/reducers';
 import { teamReducer } from './team/reducers';
 import ChangeLayoutMode from './themeLayout/reducers';
 import themeUsersReducer from './themeUsers/reducers';
-import Todo from './todo/reducers';
 import { userGroupReducer, userReducer } from './users/reducers';
 
 const rootReducers = combineReducers({
@@ -50,7 +49,6 @@ const rootReducers = combineReducers({
   project: SingleProjectReducer,
   ChangeLayoutMode,
   cart: cartData,
-  Todo,
   Note,
   AxiosCrud: axiosCrudReducer,
   Task,
