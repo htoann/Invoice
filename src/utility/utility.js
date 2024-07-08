@@ -1,4 +1,6 @@
 import dayjs from 'dayjs';
+import viVN from 'antd/lib/locale/vi_VN';
+import enUS from 'antd/lib/locale/en_US';
 
 /**
  * Return ellipsis of a given string
@@ -66,4 +68,15 @@ const formatTime = (date, format = 'DDMMYYYYHHmmss') => {
   return dayjs(date).format(format);
 };
 
-export { ellipsis, idGenerator, downloadFile, formatTime };
+const getAntdLocale = (language) => {
+  switch (language) {
+    case 'vi':
+      return viVN;
+    case 'en':
+      return enUS;
+    default:
+      return viVN;
+  }
+};
+
+export { ellipsis, idGenerator, downloadFile, formatTime, getAntdLocale };

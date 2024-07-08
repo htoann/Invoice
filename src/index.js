@@ -1,21 +1,24 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import App from './App';
-import './i18n/config';
 import reportWebVitals from './reportWebVitals';
 
 import { ConfigProvider } from 'antd';
-import viVN from 'antd/lib/locale/vi_VN';
+
 import moment from 'moment';
 import 'moment/locale/vi';
+import i18n from './i18n/config';
+import { getAntdLocale } from './utility/utility';
 
-moment.locale('vi');
+const currentLanguage = i18n.language;
+
+moment.locale(currentLanguage);
 
 const rootElement = document.getElementById('root');
 const root = createRoot(rootElement);
 root.render(
   <React.StrictMode>
-    <ConfigProvider locale={viVN}>
+    <ConfigProvider locale={getAntdLocale(currentLanguage)}>
       <App />
     </ConfigProvider>
   </React.StrictMode>,
