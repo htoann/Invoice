@@ -1,4 +1,4 @@
-import { Form, Input } from 'antd';
+import { AutoComplete, Form, Input } from 'antd';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Button } from '../../../../../components/buttons/buttons';
@@ -7,7 +7,7 @@ import { AddUser } from '../../../../../container/pages/style';
 import { BasicFormWrapper } from '../../../../../container/styled';
 import { contactAddData } from '../../../../../redux/contact/actionCreator';
 
-function EditAccount({ state, setState }) {
+function EditHangHoa({ state, setState }) {
   const dispatch = useDispatch();
   const { users } = useSelector((stateItem) => {
     return {
@@ -57,7 +57,7 @@ function EditAccount({ state, setState }) {
     <div>
       <Modal
         type={state.modalType}
-        title="Cập nhật người dùng"
+        title="Chỉnh sửa mã hàng"
         visible={state.editVisible}
         footer={null}
         onCancel={handleCancel}
@@ -66,29 +66,38 @@ function EditAccount({ state, setState }) {
           <AddUser>
             <BasicFormWrapper>
               <Form form={form} name="contactEdit" onFinish={handleEditOk}>
-                <Form.Item initialValue={update.name} label="Name" name="name">
-                  <Input placeholder="Input Name" />
-                </Form.Item>
-
                 <Form.Item
-                  label="Email Address"
-                  name="email"
-                  rules={[{ message: 'Please input your email!', type: 'email' }]}
-                  initialValue={update.email}
+                  initialValue={update.name}
+                  label="Mã hàng"
+                  name="name"
+                  required
+                  rules={[{ message: 'Vui lòng nhập mã hàng' }]}
                 >
-                  <Input placeholder="name@example.com" />
+                  <Input />
                 </Form.Item>
 
-                <Form.Item initialValue={update.phone} name="phone" label="Phone Number">
-                  <Input placeholder="+440 2546 5236" />
+                <Form.Item label="Đơn vị tính" name="email" initialValue={update.email}>
+                  <Input />
                 </Form.Item>
 
-                <Form.Item initialValue={update.designation} name="designation" label="Position">
-                  <Input placeholder="Input Position" />
+                <Form.Item initialValue={update.phone} name="phone" label="Tài khoản hàng hoá (15_)">
+                  <Input />
                 </Form.Item>
 
-                <Form.Item initialValue={update.company} name="company" label="Company Name">
-                  <Input placeholder="Company Name" />
+                <Form.Item initialValue={update.designation} name="designation" label="Tài khoản giá vốn (63_)">
+                  <Input />
+                </Form.Item>
+
+                <Form.Item initialValue={update.company} name="company" label="Tài khoản doanh thu (51_)">
+                  <Input />
+                </Form.Item>
+
+                <Form.Item initialValue={update.company} name="company" label="Tên hàng bán ra">
+                  <AutoComplete />
+                </Form.Item>
+
+                <Form.Item initialValue={update.company} name="company" label="Tên hàng mua vào">
+                  <Input />
                 </Form.Item>
 
                 <div style={{ justifyContent: 'end', display: 'flex' }}>
@@ -121,4 +130,4 @@ function EditAccount({ state, setState }) {
   );
 }
 
-export default EditAccount;
+export default EditHangHoa;

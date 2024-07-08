@@ -1,8 +1,7 @@
+import { DownloadOutlined } from '@ant-design/icons';
 import { UilFileExport } from '@iconscout/react-unicons';
 import { Select, Table } from 'antd';
 import PropTypes from 'prop-types';
-import React from 'react';
-import { Link } from 'react-router-dom';
 import { Button } from '../../../../../../components/buttons/buttons';
 import { TableWrapper } from '../../../../../../container/styled';
 import { handleExport } from '../../utils';
@@ -48,33 +47,58 @@ function DataTable({
               width: '100%',
             }}
           >
-            <Button
-              onClick={() => {
-                setState({
-                  ...state,
-                  visible: true,
-                });
-              }}
-              className="btn-add_new"
-              size="small"
-              type="primary"
-              key="1"
-            >
-              <Link to="#">+ Thêm mã hàng</Link>
-            </Button>
-            <Button
-              className="btn-add_new"
-              type="primary"
-              size="small"
-              onClick={() => handleExport(state.date_from || state.date_to)}
-              disabled={!state.invoiceList?.length}
-              transparented
-            >
-              <div style={{ display: 'flex' }}>
-                <UilFileExport style={{ marginRight: 8, height: 20 }} />
-                <div>Xuất Excel</div>
-              </div>
-            </Button>
+            <div style={{ display: 'flex', gap: 10, alignItems: 'center' }}>
+              <Button
+                onClick={() => {
+                  setState({
+                    ...state,
+                    visible: true,
+                  });
+                }}
+                className="btn-add_new"
+                size="small"
+                type="success"
+                key="1"
+              >
+                + Thêm mã hàng
+              </Button>
+
+              <Button className="btn-add_new" size="small" type="primary" key="2">
+                <UilFileExport />
+                Gán mã hàng
+              </Button>
+
+              <Button className="btn-add_new" size="small" type="primary" key="3">
+                <UilFileExport />
+                Gán tài khoản
+              </Button>
+            </div>
+
+            <div style={{ display: 'flex', gap: 10, alignItems: 'center' }}>
+              <Button
+                type="info"
+                size="small"
+                outlined
+                onClick={() => handleExport(state.date_from || state.date_to)}
+                disabled={!state.invoiceList?.length}
+              >
+                <div style={{ display: 'flex' }}>
+                  <div>Đồng bộ</div>
+                </div>
+              </Button>
+              <Button
+                type="primary"
+                size="small"
+                outlined
+                onClick={() => handleExport(state.date_from || state.date_to)}
+                disabled={!state.invoiceList?.length}
+              >
+                <div style={{ display: 'flex' }}>
+                  <DownloadOutlined style={{ marginRight: 8, height: 20 }} />
+                  <div>Xuất Excel</div>
+                </div>
+              </Button>
+            </div>
           </div>
         </div>
       ) : (

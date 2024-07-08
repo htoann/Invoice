@@ -10,9 +10,9 @@ import UilTrash from '@iconscout/react-unicons/icons/uil-trash-alt';
 import { BorderLessHeading, Main } from '../../../../container/styled';
 import { contactDeleteData } from '../../../../redux/contact/actionCreator';
 import { tableReadData } from '../../../../redux/data-filter/actionCreator';
-import CreateAccount from './components/CreateAccount';
+import CreateHangHoa from './components/CreateHangHoa';
 import DataTable from './components/data-table/DataTable';
-import EditAccount from './components/EditAccount';
+import EditHangHoa from './components/EditHangHoa';
 
 export const HangHoa = () => {
   const dispatch = useDispatch();
@@ -50,7 +50,7 @@ export const HangHoa = () => {
     });
   };
 
-  const handleUserDelete = (id) => {
+  const handleDelete = (id) => {
     const value = users.filter((item) => item.id !== id);
     dispatch(contactDeleteData(value));
   };
@@ -110,12 +110,12 @@ export const HangHoa = () => {
         email: <span>{email}</span>,
         action: (
           <div className="table-actions">
-            <Link className="edit" to="#" onClick={showEditModal}>
+            <Link className="edit" to="#" onClick={() => showEditModal(item)}>
               <UilEdit />
             </Link>
             <Popconfirm
               title="Bạn có chắc chắn xóa người dùng này?"
-              onConfirm={() => handleUserDelete(id)}
+              onConfirm={() => handleDelete(id)}
               okText="Yes"
               cancelText="No"
             >
@@ -202,7 +202,7 @@ export const HangHoa = () => {
       title: 'Chức năng',
       dataIndex: 'action',
       key: 'action',
-      fixed: true,
+      fixed: 'right',
     },
   ];
 
@@ -238,9 +238,9 @@ export const HangHoa = () => {
         </Row>
       </Main>
 
-      {state.visible && <CreateAccount state={state} setState={setState} />}
+      {state.visible && <CreateHangHoa state={state} setState={setState} />}
 
-      {state.editVisible && <EditAccount state={state} setState={setState} />}
+      {state.editVisible && <EditHangHoa state={state} setState={setState} />}
     </>
   );
 };

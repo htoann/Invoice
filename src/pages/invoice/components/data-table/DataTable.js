@@ -1,4 +1,5 @@
-import { UilFileExport, UilSearch } from '@iconscout/react-unicons';
+import { DownloadOutlined } from '@ant-design/icons';
+import { UilSearch } from '@iconscout/react-unicons';
 import { DatePicker, Select, Table } from 'antd';
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
@@ -110,11 +111,11 @@ function DataTable({
               style={{ marginLeft: 'auto', marginTop: 20 }}
               type="primary"
               size="small"
+              outlined
               onClick={handleExport}
               disabled={!state.invoiceList?.length}
-              transparented
             >
-              <UilFileExport />
+              <DownloadOutlined />
               Xuất Excel
             </Button>
           </div>

@@ -3183,3 +3183,7 @@ html[dir='rtl'] .dark-mode .ninjadash-navbar-menu {
 .ant-table-cell {
   font-weight: 400;
 }
+
+.ant-modal {
+  top: 20px;
+}
