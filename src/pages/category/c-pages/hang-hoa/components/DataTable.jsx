@@ -2,10 +2,10 @@ import { DownloadOutlined } from '@ant-design/icons';
 import { UilFileExport } from '@iconscout/react-unicons';
 import { Select, Table } from 'antd';
 import PropTypes from 'prop-types';
-import { Button } from '../../../../../../components/buttons/buttons';
-import { TableWrapper } from '../../../../../../container/styled';
-import { handleExport } from '../../utils';
-import { DataTableStyleWrap } from './Style';
+import { Button } from '../../../../../components/buttons/buttons';
+import { TableWrapper } from '../../../../../container/styled';
+import { handleExport } from '../utils';
+import { DataTableStyleWrap } from '../style';
 
 function DataTable({
   filterOption,

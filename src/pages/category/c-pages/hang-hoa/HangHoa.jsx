@@ -11,8 +11,8 @@ import { BorderLessHeading, Main } from '../../../../container/styled';
 import { contactDeleteData } from '../../../../redux/contact/actionCreator';
 import { tableReadData } from '../../../../redux/data-filter/actionCreator';
 import CreateHangHoa from './components/CreateHangHoa';
-import DataTable from './components/data-table/DataTable';
 import EditHangHoa from './components/EditHangHoa';
+import DataTable from './components/DataTable';
 
 export const HangHoa = () => {
   const dispatch = useDispatch();

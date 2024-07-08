@@ -3,11 +3,11 @@ import { UilSearch } from '@iconscout/react-unicons';
 import { DatePicker, Select, Table } from 'antd';
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
-import { Button } from '../../../../components/buttons/buttons';
-import { DataService } from '../../../../config/dataService/dataService';
-import { TableWrapper } from '../../../../container/styled';
-import { downloadFile, formatTime } from '../../../../utility/utility';
-import { DataTableStyleWrap } from './Style';
+import { Button } from '../../../components/buttons/buttons';
+import { DataService } from '../../../config/dataService/dataService';
+import { TableWrapper } from '../../../container/styled';
+import { downloadFile, formatTime } from '../../../utility/utility';
+import { DataTableStyleWrap } from '../style';
 
 function DataTable({
   filterOption,

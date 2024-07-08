@@ -7,9 +7,9 @@ import { PageHeader } from '../../components/page-headers/page-headers';
 import { DataService } from '../../config/dataService/dataService';
 import { BorderLessHeading, Main } from '../../container/styled';
 import { tableReadData } from '../../redux/data-filter/actionCreator';
-import DataTable from './components/data-table/DataTable';
 import { invoiceListDataTable } from './const';
 import { handleTableDataSource } from './utils';
+import DataTable from './components/DataTable';
 
 function InvoiceList() {
   const dispatch = useDispatch();

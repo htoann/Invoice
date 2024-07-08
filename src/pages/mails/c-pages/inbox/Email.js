@@ -1,24 +1,15 @@
 import UilAlignLeft from '@iconscout/react-unicons/icons/uil-align-left';
 import UilAlignRight from '@iconscout/react-unicons/icons/uil-align-right';
-import UilPlus from '@iconscout/react-unicons/icons/uil-plus';
-import UilTimes from '@iconscout/react-unicons/icons/uil-times';
 import { Col, Row, Spin } from 'antd';
 import React, { lazy, Suspense, useLayoutEffect, useState } from 'react';
+import { Route, Routes } from 'react-router-dom';
 import { Button } from '../../../../components/buttons/buttons';
 import { Cards } from '../../../../components/cards/frame/cards-frame';
 import { PageHeader } from '../../../../components/page-headers/page-headers';
 import { Main } from '../../../../container/styled';
-import ComposeMail from './overview/Compose';
 import { InboxList } from './overview/InboxList';
 import { EmailWrapper, MailSideBar } from './overview/style';
-import { Route, Routes } from 'react-router-dom';
 
-const Inbox = lazy(() => import('./overview/Inbox'));
-const Sent = lazy(() => import('./overview/Sent'));
-const Draft = lazy(() => import('./overview/Draft'));
-const Starred = lazy(() => import('./overview/Starred'));
-const Trash = lazy(() => import('./overview/Trash'));
-const Spam = lazy(() => import('./overview/Spam'));
 const MailDetailView = lazy(() => import('./overview/MailDetailView'));
 
 function Email() {
@@ -33,7 +24,6 @@ function Email() {
     },
   ];
 
-  const [isMailEditorOpen, setMailEditorStatus] = useState(false);
   const [state, setState] = useState({
     responsive: 0,
     collapsed: false,
@@ -58,19 +48,9 @@ function Email() {
     });
   };
 
-  const toggleMailComposer = () => {
-    setMailEditorStatus(!isMailEditorOpen);
-  };
-
-  const closeMailComposr = () => {
-    setMailEditorStatus(false);
-  };
-
   return (
     <>
       <PageHeader className="ninjadash-page-header-main" title="Hộp thư đến" routes={PageRoutes} />
-
-      {isMailEditorOpen && <ComposeMail close={closeMailComposr} />}
 
       <Main>
         <EmailWrapper>
@@ -110,13 +90,7 @@ function Email() {
                 }
               >
                 <Routes>
-                  <Route path="inbox/*" element={<Inbox />} />
                   <Route path="inbox/:id/*" element={<MailDetailView />} />
-                  <Route path="sent" element={<Sent />} />
-                  <Route path="drafts" element={<Draft />} />
-                  <Route path="starred" element={<Starred />} />
-                  <Route path="spam" element={<Spam />} />
-                  <Route path="trash" element={<Trash />} />
                 </Routes>
               </Suspense>
             </Col>

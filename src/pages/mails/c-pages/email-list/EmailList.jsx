@@ -139,7 +139,7 @@ export const EmailList = () => {
         <Row gutter={15}>
           <Col xs={24}>
             <BorderLessHeading>
-              <Cards headless>
+              <Cards>
                 <Button onClick={showModal} className="btn-add_new" size="default" type="primary" key="1">
                   <Link to="#">+ Thêm email</Link>
                 </Button>
