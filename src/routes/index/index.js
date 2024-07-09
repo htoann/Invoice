@@ -13,6 +13,7 @@ import Features from './features';
 import Pages from './pages';
 import Users from './users';
 import Widgets from './widgets';
+import { CoCauToChuc } from '../../pages/category/c-pages/co-cau-to-chuc/CoCauToChuc';
 
 const KnowledgeBase = lazy(() => import('../../container/pages/knowledgeBase/Index'));
 const AllArticle = lazy(() => import('../../container/pages/knowledgeBase/AllArticle'));
@@ -56,14 +57,15 @@ const Index = React.memo(() => {
     >
       <Routes>
         <Route index path="/*" element={<Dashboard />} />
-        <Route path="pages/*" element={<Pages />} />
 
         {/* Change routes */}
         <Route path="invoices" element={<InvoiceList />} />
         <Route path="email" element={<EmailList />} />
         <Route path="email/*" element={<Email />} />
         <Route path="danh-muc/hang-hoa" element={<HangHoa />} />
+        <Route path="danh-muc/co-cau-to-chuc" element={<CoCauToChuc />} />
 
+        <Route path="pages/*" element={<Pages />} />
         <Route path="all-articles" element={<AllArticle />} />
         <Route path="knowledgeBase/*" element={<KnowledgeBase />} />
         <Route path="knowledgebaseSingle/:id" element={<KnowledgeSingle />} />
