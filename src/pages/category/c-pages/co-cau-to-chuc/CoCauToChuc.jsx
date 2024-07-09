@@ -1,12 +1,11 @@
 import { RightOutlined } from '@ant-design/icons';
-import UilEdit from '@iconscout/react-unicons/icons/uil-edit';
-import UilTrash from '@iconscout/react-unicons/icons/uil-trash-alt';
-import { Col, Menu, Popconfirm, Row } from 'antd';
+import { Col, Menu, Row } from 'antd';
 import { useEffect, useState } from 'react';
 import { Button } from '../../../../components/buttons/buttons';
 import { Cards } from '../../../../components/cards/frame/cards-frame';
 import { PageHeader } from '../../../../components/page-headers/page-headers';
 import { BorderLessHeading, Main } from '../../../../container/styled';
+import MenuItem from './components/MenuItem';
 import data from './mock.json';
 
 export const CoCauToChuc = () => {
@@ -58,33 +57,17 @@ export const CoCauToChuc = () => {
                   >
                     + Thêm công ty
                   </Button>
-                  {Object.keys(data.companies).map((company) => (
-                    <Menu.Item key={company}>
-                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                        {company}
-                        <div style={{ marginRight: 8, display: 'flex', alignItems: 'center' }}>
-                          <Button
-                            icon={<UilEdit />}
-                            size="small"
-                            style={{ marginLeft: '8px', color: 'rgb(160, 160, 160)' }}
-                            onClick={() => handleEdit(company)}
-                          />
-                          <Popconfirm
-                            title="Bạn có muốn xoá công ty này không"
-                            onConfirm={() => handleDelete(company)}
-                            okText="Có"
-                            cancelText="Không"
-                          >
-                            <Button
-                              icon={<UilTrash />}
-                              size="small"
-                              style={{ marginLeft: '8px', color: 'rgb(160, 160, 160)' }}
-                            />
-                          </Popconfirm>
-                        </div>
-                      </div>
-                    </Menu.Item>
-                  ))}
+                  {Object.keys(data.companies)?.length > 0 &&
+                    Object.keys(data.companies).map((company) => (
+                      <Menu.Item key={company}>
+                        <MenuItem
+                          key={company}
+                          item={company}
+                          onEdit={() => handleEdit(company)}
+                          onDelete={() => handleDelete(company)}
+                        />
+                      </Menu.Item>
+                    ))}
                 </Menu>
               </Cards>
             </BorderLessHeading>
@@ -109,31 +92,14 @@ export const CoCauToChuc = () => {
                     >
                       + Thêm phòng ban
                     </Button>
-                    {data.companies[selectedCompany].map((department) => (
+                    {data?.companies?.[selectedCompany]?.map((department) => (
                       <Menu.Item key={department}>
-                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                          {department}
-                          <div style={{ marginRight: 8, display: 'flex', alignItems: 'center' }}>
-                            <Button
-                              icon={<UilEdit />}
-                              size="small"
-                              style={{ marginLeft: '8px', color: 'rgb(160, 160, 160)' }}
-                              onClick={() => handleEdit(department)}
-                            />
-                            <Popconfirm
-                              title="Bạn có muốn xoá phòng ban này không"
-                              onConfirm={() => handleDelete(department)}
-                              okText="Có"
-                              cancelText="Không"
-                            >
-                              <Button
-                                icon={<UilTrash />}
-                                size="small"
-                                style={{ marginLeft: '8px', color: 'rgb(160, 160, 160)' }}
-                              />
-                            </Popconfirm>
-                          </div>
-                        </div>
+                        <MenuItem
+                          key={department}
+                          item={department}
+                          onEdit={() => handleEdit(department)}
+                          onDelete={() => handleDelete(department)}
+                        />
                       </Menu.Item>
                     ))}
                   </Menu>
@@ -155,31 +121,14 @@ export const CoCauToChuc = () => {
                     >
                       + Thêm nhóm
                     </Button>
-                    {data.departments[selectedDepartment].map((team) => (
+                    {data?.departments?.[selectedDepartment]?.map((team) => (
                       <Menu.Item key={team}>
-                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                          {team}
-                          <div style={{ marginRight: 8, display: 'flex', alignItems: 'center' }}>
-                            <Button
-                              icon={<UilEdit />}
-                              size="small"
-                              style={{ marginLeft: '8px', color: 'rgb(160, 160, 160)' }}
-                              onClick={() => handleEdit(team)}
-                            />
-                            <Popconfirm
-                              title="Bạn có muốn xoá nhóm này không"
-                              onConfirm={() => handleDelete(team)}
-                              okText="Có"
-                              cancelText="Không"
-                            >
-                              <Button
-                                icon={<UilTrash />}
-                                size="small"
-                                style={{ marginLeft: '8px', color: 'rgb(160, 160, 160)' }}
-                              />
-                            </Popconfirm>
-                          </div>
-                        </div>
+                        <MenuItem
+                          key={team}
+                          item={team}
+                          onEdit={() => handleEdit(team)}
+                          onDelete={() => handleDelete(team)}
+                        />
                       </Menu.Item>
                     ))}
                   </Menu>
