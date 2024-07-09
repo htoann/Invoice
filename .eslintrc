@@ -58,6 +58,7 @@
     "react/function-component-definition": "off",
     "no-underscore-dangle": "off",
     "camelcase": "off",
-    "no-shadow": "off"
+    "no-shadow": "off",
+    "react/jsx-fragments": "off"
   }
 }

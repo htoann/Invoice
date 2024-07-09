@@ -93,8 +93,8 @@ export const EmailList = () => {
             <Popconfirm
               title="Bạn có chắc chắn xóa người dùng này?"
               onConfirm={() => handleUserDelete(id)}
-              okText="Yes"
-              cancelText="No"
+              okText="Có"
+              cancelText="Không"
             >
               <Link className="ninjadash-delete" to="#">
                 <UilTrash />

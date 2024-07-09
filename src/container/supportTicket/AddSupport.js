@@ -153,8 +153,8 @@ function AddSupportTicket() {
               title="Are you sure to delete this task?"
               onConfirm={(e) => confirm(id, e)}
               onCancel={cancel}
-              okText="Yes"
-              cancelText="No"
+              okText="Có"
+              cancelText="Không"
             >
               <Link className="delete" to="#">
                 <UilTrashAlt />

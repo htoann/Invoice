@@ -139,8 +139,8 @@ function TaskList({ taskStatus, header, description, taskLimit }) {
                             title="Are you sure to delete this task?"
                             onConfirm={() => handleTaskDelete(item.id)}
                             // onCancel={cancel}
-                            okText="Yes"
-                            cancelText="No"
+                            okText="Có"
+                            cancelText="Không"
                           >
                             <Link className="ninjadash-delete" to="#">
                               <UilTimes />
@@ -198,8 +198,8 @@ function TaskList({ taskStatus, header, description, taskLimit }) {
                           <Popconfirm
                             title="Are you sure to delete this task?"
                             onConfirm={() => handleTaskDelete(item.id)}
-                            okText="Yes"
-                            cancelText="No"
+                            okText="Có"
+                            cancelText="Không"
                           >
                             <Link className="ninjadash-delete" to="#">
                               <UilTimes />
@@ -254,8 +254,8 @@ function TaskList({ taskStatus, header, description, taskLimit }) {
                         <Popconfirm
                           title="Are you sure to delete this task?"
                           onConfirm={() => handleTaskDelete(item.id)}
-                          okText="Yes"
-                          cancelText="No"
+                          okText="Có"
+                          cancelText="Không"
                         >
                           <Link className="ninjadash-delete" to="#">
                             <UilTimes />

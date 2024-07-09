@@ -43,8 +43,8 @@ function Confirme() {
                 title="Are you sure delete this task?"
                 onConfirm={confirm}
                 onCancel={cancel}
-                okText="Yes"
-                cancelText="No"
+                okText="Có"
+                cancelText="Không"
               >
                 <Link to="#">Delete</Link>
               </Popconfirm>
@@ -57,34 +57,34 @@ function Confirme() {
                   className="pop-confirm pop-confirm-top"
                   style={{ [!rtl ? 'marginLeft' : 'marginRight']: 90, whiteSpace: 'nowrap' }}
                 >
-                  <Popconfirm placement="topLeft" title={text} onConfirm={onConfirm} okText="Yes" cancelText="No">
+                  <Popconfirm placement="topLeft" title={text} onConfirm={onConfirm} okText="Có" cancelText="Không">
                     <Button size="default" type="white" outlined>
                       TL
                     </Button>
                   </Popconfirm>
-                  <Popconfirm placement="top" title={text} onConfirm={onConfirm} okText="Yes" cancelText="No">
+                  <Popconfirm placement="top" title={text} onConfirm={onConfirm} okText="Có" cancelText="Không">
                     <Button size="default" type="white" outlined>
                       Top
                     </Button>
                   </Popconfirm>
-                  <Popconfirm placement="topRight" title={text} onConfirm={onConfirm} okText="Yes" cancelText="No">
+                  <Popconfirm placement="topRight" title={text} onConfirm={onConfirm} okText="Có" cancelText="Không">
                     <Button size="default" type="white" outlined>
                       TR
                     </Button>
                   </Popconfirm>
                 </div>
                 <div className="pop-confirm pop-confirm-left" style={{ width: 90, float: [!rtl ? 'left' : 'right'] }}>
-                  <Popconfirm placement="leftTop" title={text} onConfirm={onConfirm} okText="Yes" cancelText="No">
+                  <Popconfirm placement="leftTop" title={text} onConfirm={onConfirm} okText="Có" cancelText="Không">
                     <Button size="default" type="white" outlined>
                       LT
                     </Button>
                   </Popconfirm>
-                  <Popconfirm placement="left" title={text} onConfirm={onConfirm} okText="Yes" cancelText="No">
+                  <Popconfirm placement="left" title={text} onConfirm={onConfirm} okText="Có" cancelText="Không">
                     <Button size="default" type="white" outlined>
                       Left
                     </Button>
                   </Popconfirm>
-                  <Popconfirm placement="leftBottom" title={text} onConfirm={onConfirm} okText="Yes" cancelText="No">
+                  <Popconfirm placement="leftBottom" title={text} onConfirm={onConfirm} okText="Có" cancelText="Không">
                     <Button size="default" type="white" outlined>
                       LB
                     </Button>
@@ -94,17 +94,17 @@ function Confirme() {
                   className="pop-confirm pop-confirm-right"
                   style={{ width: 90, [!rtl ? 'marginLeft' : 'marginRight']: 390 }}
                 >
-                  <Popconfirm placement="rightTop" title={text} onConfirm={onConfirm} okText="Yes" cancelText="No">
+                  <Popconfirm placement="rightTop" title={text} onConfirm={onConfirm} okText="Có" cancelText="Không">
                     <Button size="default" type="white" outlined>
                       RT
                     </Button>
                   </Popconfirm>
-                  <Popconfirm placement="right" title={text} onConfirm={onConfirm} okText="Yes" cancelText="No">
+                  <Popconfirm placement="right" title={text} onConfirm={onConfirm} okText="Có" cancelText="Không">
                     <Button size="default" type="white" outlined>
                       Right
                     </Button>
                   </Popconfirm>
-                  <Popconfirm placement="rightBottom" title={text} onConfirm={onConfirm} okText="Yes" cancelText="No">
+                  <Popconfirm placement="rightBottom" title={text} onConfirm={onConfirm} okText="Có" cancelText="Không">
                     <Button size="default" type="white" outlined>
                       RB
                     </Button>
@@ -114,17 +114,17 @@ function Confirme() {
                   className="pop-confirm pop-confirm-bottom"
                   style={{ [!rtl ? 'marginLeft' : 'marginRight']: 100, clear: 'both', whiteSpace: 'nowrap' }}
                 >
-                  <Popconfirm placement="bottomLeft" title={text} onConfirm={onConfirm} okText="Yes" cancelText="No">
+                  <Popconfirm placement="bottomLeft" title={text} onConfirm={onConfirm} okText="Có" cancelText="Không">
                     <Button size="default" type="white" outlined>
                       BL
                     </Button>
                   </Popconfirm>
-                  <Popconfirm placement="bottom" title={text} onConfirm={onConfirm} okText="Yes" cancelText="No">
+                  <Popconfirm placement="bottom" title={text} onConfirm={onConfirm} okText="Có" cancelText="Không">
                     <Button size="default" type="white" outlined>
                       Bottom
                     </Button>
                   </Popconfirm>
-                  <Popconfirm placement="bottomRight" title={text} onConfirm={onConfirm} okText="Yes" cancelText="No">
+                  <Popconfirm placement="bottomRight" title={text} onConfirm={onConfirm} okText="Có" cancelText="Không">
                     <Button size="default" type="white" outlined>
                       BR
                     </Button>
