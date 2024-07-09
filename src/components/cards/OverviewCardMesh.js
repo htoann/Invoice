@@ -4,7 +4,6 @@ import UilUp from '@iconscout/react-unicons/icons/uil-arrow-up';
 import { Card } from 'antd';
 import propTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
-import CountUp from 'react-countup';
 import { useLocation } from 'react-router-dom';
 import { ReactSVG } from 'react-svg';
 import { OverviewCardMeshWrap } from './Style';
@@ -32,17 +31,6 @@ function OverviewCardMesh({ data, circleIcon }) {
           </div>
           <div className="ninjadash-overview-card__right">
             <div className="ninjadash-overview-card__right--content">
-              <h4 className="ninjadash-overview-total">
-                <CountUp
-                  start={0}
-                  end={didViewCountUp ? totalNumber : 0}
-                  suffix={suffix}
-                  prefix={prefix}
-                  delay={0.5}
-                  decimals={decimel}
-                  duration={2}
-                />
-              </h4>
               <span className="ninjadahs-overview-label">{label}</span>
             </div>
             <span className={`ninjadash-overview-status ninjadash-status-${status}`}>

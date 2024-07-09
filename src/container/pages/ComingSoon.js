@@ -2,7 +2,6 @@
 /* eslint-disable react/react-in-jsx-scope */
 import { Col, Form, Input, Row } from 'antd';
 import PropTypes from 'prop-types';
-import Countdown from 'react-countdown';
 import FontAwesome from 'react-fontawesome';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -84,9 +83,6 @@ function ComingSoon() {
                     Lorem Ipsum is simply dummy text of the printing and typesetting industry`s standard dummy text ever
                     since the 1500s,
                   </p>
-                </div>
-                <div className="strikingDash-countdown">
-                  <Countdown date={Date.now() + 1606546460} renderer={renderer} />
                 </div>
                 <div className="subscription-form">
                   <Form name="basic">

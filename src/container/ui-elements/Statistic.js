@@ -7,7 +7,6 @@ import { Cards } from '../../components/cards/frame/cards-frame';
 import { Button } from '../../components/buttons/buttons';
 
 const deadline = Date.now() + 1000 * 60 * 60 * 24 * 2 + 1000 * 30;
-const { Countdown } = Statistic;
 
 function Statistics() {
   const PageRoutes = [
@@ -76,16 +75,6 @@ function Statistics() {
                 </Col>
                 <Col span={12}>
                   <Statistic title="Unmerged" value={93} suffix="/ 100" />
-                </Col>
-              </Row>
-            </Cards>
-            <Cards title="Countdown" caption="The simplest use of Statistic">
-              <Row gutter={15}>
-                <Col md={12}>
-                  <Countdown title="Countdown" value={deadline} onFinish={onFinish} />
-                </Col>
-                <Col md={12}>
-                  <Countdown title="Million Seconds" value={deadline} format="HH:mm:ss:SSS" />
                 </Col>
               </Row>
             </Cards>

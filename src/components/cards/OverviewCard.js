@@ -1,7 +1,6 @@
 import { Card } from 'antd';
 import propTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
-import CountUp from 'react-countup';
 import { useLocation } from 'react-router-dom';
 import { ReactSVG } from 'react-svg';
 import { OverviewCardWrap } from './Style';
@@ -46,33 +45,9 @@ const OverviewCard = ({
               {halfCircleIcon ? (
                 <>
                   <span className="ninjadahs-overview-label">{label}</span>
-                  <h4 className="ninjadash-overview-total">
-                    <CountUp
-                      start={0}
-                      end={didViewCountUp ? totalNumber : 0}
-                      suffix={suffix}
-                      prefix={prefix}
-                      delay={0.5}
-                      decimals={decimels}
-                      separator={separator}
-                      duration={2}
-                    />
-                  </h4>
                 </>
               ) : (
                 <>
-                  <h4 className="ninjadash-overview-total">
-                    <CountUp
-                      start={0}
-                      end={didViewCountUp ? totalNumber : 0}
-                      suffix={suffix}
-                      prefix={prefix}
-                      delay={0.5}
-                      decimals={decimels}
-                      separator={separator}
-                      duration={2}
-                    />
-                  </h4>
                   <span className="ninjadahs-overview-label">{label}</span>
                 </>
               )}

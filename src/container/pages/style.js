@@ -1134,32 +1134,6 @@ const ComingsoonStyleWrapper = Styled.div`
       }
     }
   }
-  .strikingDash-countdown{
-    .countdown-time{
-      font-size: 42px;
-      font-weight: 600;
-      line-height: 1.45;
-      color: ${({ theme }) => theme[theme.mainContent]['dark-text']};
-      @media only screen and (max-width: 991px){
-        font-size: 32px;
-      }
-      @media only screen and (max-width: 575px){
-        font-size: 26px;
-      }
-      @media only screen and (max-width: 375px){
-        font-size: 20px;
-      }
-    }
-    .countdown-title{
-      font-size: 16px;
-      font-weight: 400;
-      display: block;
-      color: ${({ theme }) => theme[theme.mainContent]['gray-text']};
-      @media only screen and (max-width: 375px){
-        font-size: 15px;
-      }
-    }
-  }
   .subscription-form{
     margin-top: 40px;
     @media only screen and (max-width: 991px){
