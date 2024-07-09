@@ -2,7 +2,6 @@ import Styled from 'styled-components';
 
 const DataTableStyleWrap = Styled.div`
     .ninjadash-datatable-filter{
-        display: flex;
         align-items: center;
         justify-content: space-between;
         width: 100%;
@@ -13,8 +12,8 @@ const DataTableStyleWrap = Styled.div`
         }
         .ninjadash-datatable-filter__left{
             display: inline-flex;
-            width: 100%;
             align-items: center;
+            flex-wrap: wrap;
             @media only screen and (max-width: 767px){
                 margin-bottom: 20px;
             }

@@ -63,52 +63,54 @@ function DataTable({
     <DataTableStyleWrap>
       {filterOption ? (
         <div className="ninjadash-datatable-filter">
-          <div className="ninjadash-datatable-filter__left">
-            <div className="ninjadash-datatable-filter__input">
-              <span className="label">Loại hóa đơn</span>
-              <Select onChange={handleLoaiHoaDonSearch} style={{ width: 200 }} defaultValue="purchase">
-                <Select.Option value="purchase">Mua vào</Select.Option>
-                <Select.Option value="sold">Bán ra</Select.Option>
-              </Select>
-            </div>
-            <div className="ninjadash-datatable-filter__input">
-              <span className="label">Ngày bắt đầu</span>
-              <DatePicker
-                placeholder="Chọn ngày bắt đầu"
-                onChange={(e) => {
-                  setState((prev) => ({
-                    ...prev,
-                    date_from: e?._d ? formatTime(e._d, 'DD-MM-YYYY') : null,
-                  }));
-                  setStartDate(e?._d || null);
-                }}
-                format="DD/MM/yyyy"
-                disabledDate={disabledStartDate}
-              />
-            </div>
-            <div className="ninjadash-datatable-filter__input">
-              <span className="label">Ngày kết thúc</span>
-              <DatePicker
-                placeholder="Chọn ngày kết thúc"
-                onChange={(e) => {
-                  setState((prev) => ({
-                    ...prev,
-                    date_to: e?._d ? formatTime(e._d, 'DD-MM-YYYY') : null,
-                  }));
-                  setEndDate(e?._d || null);
-                }}
-                format="DD/MM/yyyy"
-                disabledDate={disabledEndDate}
-              />
-            </div>
-            <div className="ninjadash-datatable-filter__action">
-              <Button type="primary" size="small" onClick={handleSearch} transparented icon={<UilSearch />}>
-                Tìm kiếm
-              </Button>
+          <div style={{ justifyContent: 'space-between', display: 'flex', alignItems: 'center', flexWrap: 'wrap' }}>
+            <div className="ninjadash-datatable-filter__left">
+              <div className="ninjadash-datatable-filter__input">
+                <span className="label">Loại hóa đơn</span>
+                <Select onChange={handleLoaiHoaDonSearch} style={{ width: 200 }} defaultValue="purchase">
+                  <Select.Option value="purchase">Mua vào</Select.Option>
+                  <Select.Option value="sold">Bán ra</Select.Option>
+                </Select>
+              </div>
+              <div className="ninjadash-datatable-filter__input">
+                <span className="label">Ngày bắt đầu</span>
+                <DatePicker
+                  placeholder="Chọn ngày bắt đầu"
+                  onChange={(e) => {
+                    setState((prev) => ({
+                      ...prev,
+                      date_from: e?._d ? formatTime(e._d, 'DD-MM-YYYY') : null,
+                    }));
+                    setStartDate(e?._d || null);
+                  }}
+                  format="DD/MM/yyyy"
+                  disabledDate={disabledStartDate}
+                />
+              </div>
+              <div className="ninjadash-datatable-filter__input">
+                <span className="label">Ngày kết thúc</span>
+                <DatePicker
+                  placeholder="Chọn ngày kết thúc"
+                  onChange={(e) => {
+                    setState((prev) => ({
+                      ...prev,
+                      date_to: e?._d ? formatTime(e._d, 'DD-MM-YYYY') : null,
+                    }));
+                    setEndDate(e?._d || null);
+                  }}
+                  format="DD/MM/yyyy"
+                  disabledDate={disabledEndDate}
+                />
+              </div>
+              <div className="ninjadash-datatable-filter__action" style={{ marginRight: 10 }}>
+                <Button type="primary" size="small" onClick={handleSearch} transparented icon={<UilSearch />}>
+                  Tìm kiếm
+                </Button>
+              </div>
             </div>
 
             <Button
-              style={{ marginLeft: 'auto', marginTop: 20 }}
+              style={{ marginTop: 20 }}
               type="primary"
               size="small"
               outlined

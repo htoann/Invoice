@@ -364,7 +364,9 @@ const LayoutContainer = Styled.div`
                 }
             }
             & + .atbd-main-layout{
-                ${({ theme }) => (!theme.rtl ? 'margin-left' : 'margin-right')}: 80px;
+                /* Comment for now */
+                /* ${({ theme }) => (!theme.rtl ? 'margin-left' : 'margin-right')}: 80px; */
+                ${({ theme }) => (!theme.rtl ? 'margin-left' : 'margin-right')}: 0;
 
             }
             .ant-menu-item-group{
@@ -710,9 +712,11 @@ const LayoutContainer = Styled.div`
         margin-top: 74px;
         transition: 0.3s ease;
         
-        @media only screen and (max-width: 1150px){
+        /* Comment for now */
+        /* @media only screen and (max-width: 1150px){
             ${({ theme }) => (!theme.rtl ? 'margin-left' : 'margin-right')}: auto !important;
-        }
+        } */
+
         @media print {
             width: 100%;
             margin-left: 0;
