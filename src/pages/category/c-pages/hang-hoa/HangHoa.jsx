@@ -72,7 +72,7 @@ export const HangHoa = () => {
     id: '',
     user: (
       <Input
-        style={{ width: 'auto' }}
+        style={{ width: 'auto', height: 35 }}
         onClick={stopPropagation}
         onFocus={stopPropagation}
         onKeyDown={stopPropagation}
@@ -85,7 +85,7 @@ export const HangHoa = () => {
     ),
     email: (
       <Input
-        style={{ width: 'auto' }}
+        style={{ width: 'auto', height: 35 }}
         onClick={stopPropagation}
         onFocus={stopPropagation}
         onKeyDown={stopPropagation}
@@ -149,7 +149,7 @@ export const HangHoa = () => {
       dataIndex: 'email',
       key: 'email',
       sorter: (a, b) => {
-        if (b?.key === 'searchInput') return null;
+        if (b?.disableSort) return null;
         return a.user.props.children.localeCompare(b.user.props.children);
       },
     },
@@ -158,7 +158,7 @@ export const HangHoa = () => {
       dataIndex: 'email',
       key: 'email',
       sorter: (a, b) => {
-        if (b?.key === 'searchInput') return null;
+        if (b?.disableSort) return null;
         return a.user.props.children.localeCompare(b.user.props.children);
       },
     },
@@ -167,7 +167,7 @@ export const HangHoa = () => {
       dataIndex: 'email',
       key: 'email',
       sorter: (a, b) => {
-        if (b?.key === 'searchInput') return null;
+        if (b?.disableSort) return null;
         return a.user.props.children.localeCompare(b.user.props.children);
       },
     },
@@ -176,7 +176,7 @@ export const HangHoa = () => {
       dataIndex: 'email',
       key: 'email',
       sorter: (a, b) => {
-        if (b?.key === 'searchInput') return null;
+        if (b?.disableSort) return null;
         return a.user.props.children.localeCompare(b.user.props.children);
       },
     },
@@ -185,7 +185,7 @@ export const HangHoa = () => {
       dataIndex: 'email',
       key: 'email',
       sorter: (a, b) => {
-        if (b?.key === 'searchInput') return null;
+        if (b?.disableSort) return null;
         return a.user.props.children.localeCompare(b.user.props.children);
       },
     },
@@ -194,7 +194,7 @@ export const HangHoa = () => {
       dataIndex: 'email',
       key: 'email',
       sorter: (a, b) => {
-        if (b?.key === 'searchInput') return null;
+        if (b?.disableSort) return null;
         return a.user.props.children.localeCompare(b.user.props.children);
       },
     },

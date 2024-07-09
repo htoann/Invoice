@@ -1,22 +1,18 @@
 import UilEdit from '@iconscout/react-unicons/icons/uil-edit';
 import UilTrash from '@iconscout/react-unicons/icons/uil-trash-alt';
-import { Button, Col, Popconfirm, Row } from 'antd';
+import { Button, Col, Input, Popconfirm, Row } from 'antd';
 import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Cards } from '../../../../components/cards/frame/cards-frame';
-import DataTable from '../../../../components/data-table/DataTable';
 import { PageHeader } from '../../../../components/page-headers/page-headers';
 
 import { BorderLessHeading, Main } from '../../../../container/styled';
-import { contactDeleteData } from '../../../../redux/contact/actionCreator';
-import { tableReadData } from '../../../../redux/data-filter/actionCreator';
 import CreateAccount from '../../components/CreateAccount';
 import EditAccount from '../../components/EditAccount';
+import DataTable from './DataTable';
+import axios from './mockApi';
 
 export const EmailList = () => {
-  const dispatch = useDispatch();
-
   const pageRoutes = [
     {
       path: '/email/inbox',
@@ -36,25 +32,28 @@ export const EmailList = () => {
     modalType: 'primary',
     url: null,
     update: {},
+    pagination: { pageSize: 20, showSizeChanger: true, current: 1, total: 0 },
   });
 
-  const { users } = useSelector((stateItem) => {
-    return {
-      users: stateItem.Contact.data,
-    };
-  });
+  const { pagination } = state;
+
+  const [accounts, setAccounts] = useState([]);
+  const [filteredData, setFilteredData] = useState([]);
+  const [searchText, setSearchText] = useState('');
+
+  const getList = async () => {
+    try {
+      const response = await axios.get('/api/accounts');
+      setAccounts(response.data);
+      setFilteredData(response.data);
+    } catch (error) {
+      console.error('Failed to fetch accounts', error);
+    }
+  };
 
   useEffect(() => {
-    if (dispatch) {
-      dispatch(tableReadData());
-    }
-  }, [dispatch]);
-
-  const { TableData } = useSelector((states) => {
-    return {
-      TableData: states.dataTable.tableData,
-    };
-  });
+    getList();
+  }, []);
 
   const showModal = () => {
     setState({
@@ -71,19 +70,65 @@ export const EmailList = () => {
     });
   };
 
-  const handleUserDelete = (id) => {
-    const value = users.filter((item) => item.id !== id);
-    dispatch(contactDeleteData(value));
+  const handleDelete = async (id) => {
+    try {
+      await axios.delete(`/api/accounts/${id}`);
+      setAccounts(accounts.filter((account) => account.id !== id));
+    } catch (error) {
+      console.error('Failed to delete account', error);
+    }
+  };
+
+  const stopPropagation = (e) => {
+    e.stopPropagation();
+  };
+
+  const handleSearch = (e, dataIndex) => {
+    const value = e.target.value.toLowerCase();
+    setSearchText(value);
+    setFilteredData(accounts.filter((item) => item[dataIndex].toString().toLowerCase().includes(value)));
   };
 
   const tableDataScource = [];
 
-  if (TableData.length > 0) {
-    TableData.map((item) => {
+  tableDataScource.push({
+    key: 'searchInput',
+    id: '',
+    username: (
+      <Input
+        style={{ width: 'auto', height: 35 }}
+        onClick={stopPropagation}
+        onFocus={stopPropagation}
+        onKeyDown={stopPropagation}
+        value={searchText.name}
+        onChange={(e) => {
+          e.stopPropagation();
+          handleSearch(e, 'username');
+        }}
+      />
+    ),
+    email: (
+      <Input
+        style={{ width: 'auto', height: 35 }}
+        onClick={stopPropagation}
+        onFocus={stopPropagation}
+        onKeyDown={stopPropagation}
+        value={searchText.name}
+        onChange={(e) => {
+          e.stopPropagation();
+          handleSearch(e, 'email');
+        }}
+      />
+    ),
+    disableSort: true,
+  });
+
+  if (filteredData?.length > 0) {
+    filteredData.map((item) => {
       const { id, username, email } = item;
       return tableDataScource.push({
         id,
-        user: <span className="ninjadash-username">{username}</span>,
+        username: <span className="ninjadash-username">{username}</span>,
         email: <span>{email}</span>,
         action: (
           <div className="table-actions">
@@ -92,7 +137,7 @@ export const EmailList = () => {
             </Link>
             <Popconfirm
               title="Bạn có chắc chắn xóa người dùng này?"
-              onConfirm={() => handleUserDelete(id)}
+              onConfirm={() => handleDelete(id)}
               okText="Có"
               cancelText="Không"
             >
@@ -114,15 +159,21 @@ export const EmailList = () => {
     },
     {
       title: 'Tên tài khoản',
-      dataIndex: 'user',
-      key: 'user',
-      sorter: (a, b) => a.user.props.children.localeCompare(b.user.props.children),
+      dataIndex: 'username',
+      key: 'username',
+      sorter: (a, b) => {
+        if (b?.disableSort) return null;
+        return a.username.props.children.localeCompare(b.username.props.children);
+      },
     },
     {
       title: 'Địa chỉ email',
       dataIndex: 'email',
       key: 'email',
-      sorter: (a, b) => a.email.props.children.localeCompare(b.email.props.children),
+      sorter: (a, b) => {
+        if (b?.disableSort) return null;
+        return a.email.props.children.localeCompare(b.email.props.children);
+      },
     },
     {
       title: 'Chức năng',
@@ -144,11 +195,12 @@ export const EmailList = () => {
                   <Link to="#">+ Thêm email</Link>
                 </Button>
                 <DataTable
-                  filterOption
-                  filterOnchange
                   tableData={tableDataScource}
                   columns={dataTableColumn}
-                  rowSelection={false}
+                  pagination={pagination}
+                  state={state}
+                  setState={setState}
+                  getList={getList}
                 />
               </Cards>
             </BorderLessHeading>

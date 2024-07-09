@@ -3187,3 +3187,13 @@ html[dir='rtl'] .dark-mode .ninjadash-navbar-menu {
 .ant-modal {
   top: 20px;
 }
+
+.table tbody tr td {
+  font-weight: normal;
+}
+
+tr[data-row-key='searchInput'] {
+  td {
+    padding-bottom: 0 !important;
+  }
+}
