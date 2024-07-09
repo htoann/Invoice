@@ -62,7 +62,7 @@ const Index = React.memo(() => {
         <Route path="invoices" element={<InvoiceList />} />
         <Route path="email" element={<EmailList />} />
         <Route path="email/*" element={<Email />} />
-        <Route path="category/hang-hoa" element={<HangHoa />} />
+        <Route path="danh-muc/hang-hoa" element={<HangHoa />} />
 
         <Route path="all-articles" element={<AllArticle />} />
         <Route path="knowledgeBase/*" element={<KnowledgeBase />} />

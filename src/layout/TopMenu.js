@@ -93,7 +93,7 @@ export const TopMenu = () => {
                 <Link to="#">Khách hàng</Link>
               </li>
               <li>
-                <Link to="category/hang-hoa">Hàng hoá</Link>
+                <Link to="danh-muc/hang-hoa">Hàng hoá</Link>
               </li>
               <li>
                 <Link to="#">Khoản mục chi phí</Link>
