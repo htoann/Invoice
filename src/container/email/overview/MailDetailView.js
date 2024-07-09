@@ -26,8 +26,6 @@ import Heading from '../../../components/heading/heading';
 import { filterSinglePage, onStarUpdate } from '../../../redux/email/actionCreator';
 import { Cards } from '../../../components/cards/frame/cards-frame';
 
-const MailComposer = lazy(() => import('./MailComposer'));
-
 function Single() {
   const navigate = useNavigate();
   const email = useSelector((state) => state.emailSingle.data[0]);
@@ -57,7 +55,6 @@ function Single() {
     return (
       <>
         <img style={{ width: 50, height: 50 }} src={require('../../../static/img/email/2.png')} alt="" />
-        <MailComposer replay props={value} defaultTag="Alice Freeman" onSend={replyMail} />
       </>
     );
   });

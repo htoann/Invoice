@@ -23,8 +23,6 @@ const Task = lazy(() => import('../../container/task/Index'));
 const Tickets = lazy(() => import('../../container/supportTicket/Index'));
 const AddTicket = lazy(() => import('../../container/supportTicket/AddSupport'));
 const TicketDetails = lazy(() => import('../../container/supportTicket/SupportTicketDetails'));
-const Courses = lazy(() => import('../../container/course/Index'));
-const CourseDetails = lazy(() => import('../../container/course/CourseDetails'));
 const Import = lazy(() => import('../../container/importExport/Import'));
 const Export = lazy(() => import('../../container/importExport/Export'));
 const Note = lazy(() => import('../../container/note/Note'));
@@ -34,7 +32,6 @@ const ContactAddNew = lazy(() => import('../../container/contact/AddNew'));
 const Projects = lazy(() => import('./projects'));
 const Myprofile = lazy(() => import('../../container/profile/myProfile/Index'));
 const Chat = lazy(() => import('../../container/chat/ChatApp'));
-const Editors = lazy(() => import('../../container/pages/Editor'));
 const Icons = lazy(() => import('./icons'));
 const Tables = lazy(() => import('./table'));
 const Jobs = lazy(() => import('../../container/jobSearch/Jobs'));
@@ -75,8 +72,6 @@ const Index = React.memo(() => {
         <Route path="app/support/tickets/*" element={<Tickets />} />
         <Route path="app/support/tickets/add" element={<AddTicket />} />
         <Route path="app/support/ticketDetails/:id" element={<TicketDetails />} />
-        <Route path="app/course/courseDetails/:id" element={<CourseDetails />} />
-        <Route path="app/course/*" element={<Courses />} />
         <Route path="importExport/import" element={<Import />} />
         <Route path="importExport/export" element={<Export />} />
         <Route path="app/note/*" element={<Note />} />
@@ -88,7 +83,6 @@ const Index = React.memo(() => {
         <Route path="profile/myProfile/*" element={<Myprofile />} />
         <Route path="ecommerce/*" element={<Ecommerce />} />
         <Route path="main/chat/*" element={<Chat />} />
-        <Route path="editor" element={<Editors />} />
         <Route path="icons/*" element={<Icons />} />
         <Route path="tables/*" element={<Tables />} />
         <Route path="widgets/*" element={<Widgets />} />

@@ -4,7 +4,6 @@ import UilCheck from '@iconscout/react-unicons/icons/uil-check';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Col, Row } from 'antd';
-import ModalVideo from 'react-modal-video';
 import { RightAsideWrapper } from './Style';
 import { Button } from '../../../../components/buttons/buttons';
 import { Cards } from '../../../../components/cards/frame/cards-frame';
@@ -24,7 +23,6 @@ function RightAside() {
 
   return (
     <RightAsideWrapper>
-      <ModalVideo channel="youtube" autoplay isOpen={isOpen} videoId="L61p2uyiMSo" onClose={() => setOpen(false)} />
       <Cards title="Friends">
         <ul className="ff-widget">
           {friends.map(({ name, key, designation, status, img }) => {

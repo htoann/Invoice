@@ -6,7 +6,6 @@ import UilTimes from '@iconscout/react-unicons/icons/uil-times';
 import UilAlignLeft from '@iconscout/react-unicons/icons/uil-align-left';
 import UilAlignRight from '@iconscout/react-unicons/icons/uil-align-right';
 import EmailNavbar from './overview/Navbar';
-import ComposeMail from './overview/Compose';
 import { EmailWrapper, MailSideBar } from './overview/style';
 import { PageHeader } from '../../components/page-headers/page-headers';
 import { Cards } from '../../components/cards/frame/cards-frame';
@@ -69,8 +68,6 @@ function Email() {
   return (
     <>
       <PageHeader className="ninjadash-page-header-main" title="Dashboard" routes={PageRoutes} />
-
-      {isMailEditorOpen && <ComposeMail close={closeMailComposr} />}
 
       <Main>
         <EmailWrapper>
