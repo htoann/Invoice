@@ -179,10 +179,4 @@ export const invoiceListDataTable = [
     key: 'ngaycongbo',
     sorter: (a, b) => a.ngaycongbo.props.children.localeCompare(b.ngaycongbo.props.children),
   },
-  {
-    title: 'Chức năng',
-    dataIndex: 'action',
-    key: 'action',
-    width: '90px',
-  },
 ];
