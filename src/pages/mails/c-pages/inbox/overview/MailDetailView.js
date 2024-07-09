@@ -1,40 +1,24 @@
 import UilAngleDown from '@iconscout/react-unicons/icons/uil-angle-down';
-import UilAngleUp from '@iconscout/react-unicons/icons/uil-angle-up';
-import UilArchive from '@iconscout/react-unicons/icons/uil-archive';
 import UilArrowLeft from '@iconscout/react-unicons/icons/uil-arrow-left';
-import UilBookOpen from '@iconscout/react-unicons/icons/uil-book-open';
-import UilCornerUpLeft from '@iconscout/react-unicons/icons/uil-corner-up-left';
-import UilCornerUpRight from '@iconscout/react-unicons/icons/uil-corner-up-right';
-import UilEllipsisV from '@iconscout/react-unicons/icons/uil-ellipsis-v';
 import UilExclamationOctagon from '@iconscout/react-unicons/icons/uil-exclamation-octagon';
-import UilFolder from '@iconscout/react-unicons/icons/uil-folder';
-import UilImport from '@iconscout/react-unicons/icons/uil-import';
-import UilPaperclip from '@iconscout/react-unicons/icons/uil-paperclip';
 import UilPrint from '@iconscout/react-unicons/icons/uil-print';
 import UilRedo from '@iconscout/react-unicons/icons/uil-redo';
-import UilShareAlt from '@iconscout/react-unicons/icons/uil-share-alt';
-import UilTrash from '@iconscout/react-unicons/icons/uil-trash';
-import { Col, Row, Spin, Tooltip } from 'antd';
+import { Col, Row, Tooltip } from 'antd';
 import moment from 'moment';
-import React, { Suspense, lazy, useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import FontAwesome from 'react-fontawesome';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, NavLink, Route, Routes, useNavigate, useParams } from 'react-router-dom';
+import { Link, NavLink, useNavigate, useParams } from 'react-router-dom';
 import { Cards } from '../../../../../components/cards/frame/cards-frame';
 import { Dropdown } from '../../../../../components/dropdown/dropdown';
 import Heading from '../../../../../components/heading/heading';
 import { filterSinglePage, onStarUpdate } from '../../../../../redux/email/actionCreator';
-import { MailDetailsWrapper, MailRightAction, MessageAction, MessageDetails, MessageReply, ReplyList } from './style';
-
-const MailComposer = lazy(() => import('./MailComposer'));
+import { MailDetailsWrapper, MessageAction, MessageDetails } from './style';
 
 function Single() {
   const navigate = useNavigate();
   const email = useSelector((state) => state.emailSingle.data[0]);
   const dispatch = useDispatch();
-  const [state, setState] = useState({
-    replyMessage: 0,
-  });
 
   const params = useParams();
   useEffect(() => {
@@ -44,23 +28,9 @@ function Single() {
     }
   }, [params.id, dispatch]);
 
-  const replyMail = async (replyMessage) => {
-    // hit replyMail api
-    setState({ ...state, replyMessage });
-  };
-
   const onStaredChange = (id) => {
     dispatch(onStarUpdate(id));
   };
-
-  const ReplayMess = React.memo((value) => {
-    return (
-      <>
-        <img style={{ width: 50, height: 50 }} src={require('../../../../../static/img/email/2.png')} alt="" />
-        <MailComposer replay props={value} defaultTag="Alice Freeman" onSend={replyMail} />
-      </>
-    );
-  });
 
   return (
     <MailDetailsWrapper>
@@ -75,38 +45,38 @@ function Single() {
                 <UilRedo />
               </NavLink>
             </Tooltip>
-            <Tooltip placement="bottom" title="Archive">
+            {/* <Tooltip placement="bottom" title="Archive">
               <NavLink to="#">
                 <UilArchive />
               </NavLink>
-            </Tooltip>
+            </Tooltip> */}
             <Tooltip placement="bottom" title="Info">
               <NavLink to="#">
                 <UilExclamationOctagon />
               </NavLink>
             </Tooltip>
-            <Tooltip placement="bottom" title="Delete">
+            {/* <Tooltip placement="bottom" title="Delete">
               <NavLink to="#">
                 <UilTrash />
               </NavLink>
-            </Tooltip>
-            <Tooltip placement="bottom" title="Read">
+            </Tooltip> */}
+            {/* <Tooltip placement="bottom" title="Read">
               <NavLink to="#">
                 <UilBookOpen />
               </NavLink>
-            </Tooltip>
-            <Tooltip placement="bottom" title="Folder">
+            </Tooltip> */}
+            {/* <Tooltip placement="bottom" title="Folder">
               <NavLink to="#">
                 <UilFolder />
               </NavLink>
-            </Tooltip>
+            </Tooltip> */}
           </MessageAction>
         }
-        isbutton={
-          <MailRightAction>
-            <span>1 - 50 of 235</span>
-          </MailRightAction>
-        }
+        // isbutton={
+        //   <MailRightAction>
+        //     <span>1 - 50 of 235</span>
+        //   </MailRightAction>
+        // }
       >
         <Row gutter={15}>
           <Col>
@@ -120,10 +90,10 @@ function Single() {
                 </div>
 
                 <div className="message-action">
-                  <Link to="#" className="ex-coll">
+                  {/* <Link to="#" className="ex-coll">
                     <UilAngleUp />
                     <UilAngleDown />
-                  </Link>
+                  </Link> */}
 
                   <Link to="#">
                     <UilPrint />
@@ -164,9 +134,9 @@ function Single() {
                 </div>
 
                 <div className="message-excerpt">
-                  <span>
+                  {/* <span>
                     <UilPaperclip />
-                  </span>
+                  </span> */}
                   <span> {moment(email?.id).format('LLL')} </span>
                   <Link
                     className={email?.stared ? 'starActive' : 'starDeactivate'}
@@ -175,12 +145,12 @@ function Single() {
                   >
                     <FontAwesome name="star-o" />
                   </Link>
-                  <Link to="#">
+                  {/* <Link to="#">
                     <UilCornerUpLeft />
                   </Link>
                   <Link to="#">
                     <UilEllipsisV />
-                  </Link>
+                  </Link> */}
                 </div>
               </div>
 
@@ -193,151 +163,45 @@ function Single() {
                 </Heading>
               </div>
 
-              <div className="message-attachments">
-                <figure>
-                  <div className="attachment-image">
-                    <img src={require('../../../../../static/img/email/2.png')} alt="" />
+              <div style={{ display: 'flex', gap: 10, padding: '10px 0px' }}>
+                <div className="message-attachments">
+                  <div className="ninjadash-ticket-file-item d-flex">
+                    <div className="ninjadash-ticket-file-item__info d-flex">
+                      <div className="ninjadash-ticket-file-item__logo">
+                        <img
+                          style={{ width: '40px' }}
+                          src={require(`../../../../../static/img/files/pdf.png`)}
+                          alt="File Logo"
+                        />
+                      </div>
+                      <div className="ninjadash-file-item__content">
+                        <span className="ninjadash-ticket-file-name">Product-guidelines.pdf</span>
+                        <span className="ninjadash-ticket-file-size">522 KB</span>
+                      </div>
+                    </div>
                   </div>
-                  <div className="attachment-hover">
-                    <Link className="btn-link" to="#">
-                      <UilImport />
-                    </Link>
-                    <Link className="btn-link" to="#">
-                      <UilShareAlt />
-                    </Link>
-                  </div>
-                  <figcaption>
-                    <Heading as="h4">Attached.jpg</Heading>
-                    <p>256.5 KB</p>
-                  </figcaption>
-                </figure>
+                </div>
 
-                <figure>
-                  <div className="attachment-image">
-                    <img src={require('../../../../../static/img/email/1.png')} alt="" />
+                <div className="message-attachments">
+                  <div className="ninjadash-ticket-file-item d-flex">
+                    <div className="ninjadash-ticket-file-item__info d-flex">
+                      <div className="ninjadash-ticket-file-item__logo">
+                        <img
+                          style={{ width: '40px' }}
+                          src={require(`../../../../../static/img/files/csv.png`)}
+                          alt="File Logo"
+                        />
+                      </div>
+                      <div className="ninjadash-file-item__content">
+                        <span className="ninjadash-ticket-file-name">Product-guidelines.pdf</span>
+                        <span className="ninjadash-ticket-file-size">522 KB</span>
+                      </div>
+                    </div>
                   </div>
-                  <div className="attachment-hover">
-                    <Link className="btn-link" to="#">
-                      <UilImport />
-                    </Link>
-                    <Link className="btn-link" to="#">
-                      <UilShareAlt />
-                    </Link>
-                  </div>
-                  <figcaption>
-                    <Heading as="h4">Attached.jpg</Heading>
-                    <p>256.5 KB</p>
-                  </figcaption>
-                </figure>
-                <figure>
-                  <div className="attachment-image">
-                    <img src={require('../../../../../static/img/email/3.png')} alt="" />
-                  </div>
-                  <div className="attachment-hover">
-                    <Link className="btn-link" to="#">
-                      <UilImport />
-                    </Link>
-                    <Link className="btn-link" to="#">
-                      <UilShareAlt />
-                    </Link>
-                  </div>
-                  <figcaption>
-                    <Heading as="h4">Attached.zip</Heading>
-                    <p>256.5 KB</p>
-                  </figcaption>
-                </figure>
-                <figure>
-                  <div className="attachment-image">
-                    <img src={require('../../../../../static/img/email/4.png')} alt="" />
-                  </div>
-                  <div className="attachment-hover">
-                    <Link className="btn-link" to="#">
-                      <UilImport />
-                    </Link>
-                    <Link className="btn-link" to="#">
-                      <UilShareAlt />
-                    </Link>
-                  </div>
-                  <figcaption>
-                    <Heading as="h4">Attached.pdf</Heading>
-                    <p>256.5 KB</p>
-                  </figcaption>
-                </figure>
+                </div>
               </div>
               <hr />
             </MessageDetails>
-          </Col>
-        </Row>
-
-        <Row gutter={15}>
-          <Col xs={24}>
-            <ReplyList>
-              <div className="reply-view__single">
-                <figure className="reply-view__content d-flex">
-                  <img
-                    style={{ width: 50, height: 50 }}
-                    src={require('../../../../../static/img/email/2.png')}
-                    alt=""
-                  />
-                  <figcaption>
-                    <Heading as="h6">Reynante Labares</Heading>
-                    <p>
-                      Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
-                      inviduntLorem ipsum dolor...
-                    </p>
-                  </figcaption>
-                </figure>
-                <div className="reply-view__meta">
-                  <span className="meta-list">
-                    <span className="date-meta">Jan 2, 2020, 5:22 PM</span>
-                    <Link
-                      className={email?.stared ? 'starActive' : 'starDeactivate'}
-                      onClick={() => onStaredChange(email?.id)}
-                      to="#"
-                    >
-                      <FontAwesome name="star-o" />
-                    </Link>
-                    <Link to="#">
-                      <UilEllipsisV />
-                    </Link>
-                    <Link to="#">
-                      <UilCornerUpLeft />
-                    </Link>
-                  </span>
-                </div>
-              </div>
-            </ReplyList>
-            <MessageReply>
-              <nav>
-                <ul>
-                  <li>
-                    <NavLink to="./replay">
-                      <UilCornerUpLeft /> Reply
-                    </NavLink>
-                  </li>
-                  <li>
-                    <NavLink to="./forward">
-                      <UilCornerUpRight /> Forward
-                    </NavLink>
-                  </li>
-                </ul>
-              </nav>
-              <div className="reply-form d-flex">
-                <Suspense
-                  fallback={
-                    <div className="spin">
-                      <Spin />
-                    </div>
-                  }
-                >
-                  <div style={{ width: '100%' }} className="reply-box">
-                    <Routes>
-                      <Route path="replay" element={<ReplayMess />} />
-                    </Routes>
-                  </div>
-                </Suspense>
-              </div>
-            </MessageReply>
           </Col>
         </Row>
       </Cards>

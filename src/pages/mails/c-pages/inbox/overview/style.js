@@ -1014,232 +1014,39 @@ const MessageDetails = Styled.div`
         }
       }
     }
+
+    .ninjadash-ticket-file-item {
+    align-items: flex-start;
+    justify-content: space-between;
+    &:not(:last-child) {
+      margin-bottom: 22px;
+    }
+    span {
+      color: ${({ theme }) => theme[theme.mainContent]['gray-text']};
+    }
+    .ninjadash-ticket-file-item__logo {
+      ${({ theme }) => (!theme.rtl ? 'margin-right' : 'margin-left')}: 10px;
+    }
+    .ninjadash-file-item__content {
+      .ninjadash-ticket-file-name {
+        font-size: 15px;
+        font-weight: 500;
+        color: ${({ theme }) => theme[theme.mainContent]['gray-text']};
+      }
+      .ninjadash-ticket-file-size {
+        display: block;
+        font-size: 15px;
+        font-weight: 400;
+        color: ${({ theme }) => theme[theme.mainContent]['gray-light-text']};
+      }
+    }
+  }
   }
   hr{
     margin-bottom: 30px;
     border: 0 none;
     height: 1px;
     background: ${({ theme }) => theme[theme.mainContent]['border-color-default']};
-  }
-`;
-
-const MessageReply = Styled.div`
-  padding: 0 30px;
-  @media only screen and (max-width: 575px){
-    padding: 0 15px;
-  }
-  nav{
-    ${({ theme }) => (theme.rtl ? 'padding-right' : 'padding-left')}: 70px;
-    margin-bottom: 30px;
-    @media only screen and (max-width: 575px){
-      ${({ theme }) => (theme.rtl ? 'padding-right' : 'padding-left')}: 0;
-    }
-    ul{
-      display: flex;
-      align-items: center;
-      list-style:none;
-      margin: 0 -5px;
-      padding: 0;
-      li{
-        padding: 0 5px;
-        a{
-          border: 1px solid ${({ theme }) => theme[theme.mainContent]['border-color-default']};
-          line-height: 44px;
-          display: inline-flex;
-          align-items: center;
-          padding: 0 20px;
-          font-size: 14px;
-          font-weight: 500;
-          color: ${({ theme }) => theme[theme.mainContent]['gray-text']};
-          border-radius: 4px;
-          &:hover{
-            color: ${({ theme }) => theme['primary-color']};
-          }
-          svg{
-            width: 16px;
-            height: 16px;
-            margin-right: 4px;
-          }
-        }
-      }
-    }
-  }
-  .reply-form{
-    @media only screen and (max-width: 575px){
-      flex-flow: column;
-      align-items: center;
-    }
-    img{
-      margin: ${({ theme }) => (theme.rtl ? '10px 0 0 20px' : '10px 20px 0 0')};
-      border-radius: 50%;
-      @media only screen and (max-width: 575px){
-        margin: 0 0 20px;
-      }
-    }
-  }
-  .RichTextEditor__root___2QXK-{
-    border: 0 none;
-    padding: 15px 0px;
-    @media only screen and (max-width: 575px){
-      padding: 15px 0;
-    }
-    .public-DraftEditor-content{
-      min-height: 120px;
-    }
-  }
-  .reply-box{
-    display: flex;
-    > div{
-      width: 100%;
-      z-index: 10;
-      border: 1px solid ${({ theme }) => theme['border-color-light']};
-    }
-    .reply-inner{
-      width: 100%
-      border-bottom: 1px solid #F1F2F6 !important;
-      @media only screen and (max-width: 575px){
-        flex-flow: column;
-        align-items: flex-start !important;
-        padding-top: 15px;
-      }
-      .react-tagsinput{
-        border-bottom: 0 none !important;
-      }
-    }
-    .reply-title{
-      ${({ theme }) => (!theme.rtl ? 'margin-right' : 'margin-left')}: 10px;
-      color: ${({ theme }) => theme['light-color']};
-    }
-    .mail-cc{
-      color: ${({ theme }) => theme['light-color']};
-    }
-    .body{
-      .DraftEditor-root{
-        >div{
-          font-size: 14px;
-          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-        }
-      }
-      .public-DraftEditorPlaceholder-root{
-        padding-top: 20px;
-      }
-      .public-DraftEditor-content {
-        height: 155px;
-        padding-top: 20px;
-        @media only screen and (max-width: 575px){
-          height: 140px
-        }
-      }
-    }
-    .footer{
-      margin: 0 30px 0;
-      @media only screen and (max-width: 575px){
-        margin: 0 15px 0
-      }
-    }
-  }
-`;
-
-const ReplyList = Styled.div`
-  box-shadow: 0 15px 40px ${({ theme }) => theme['light-color']}10;
-  margin: 0px 0 50px;
-  padding-top: 30px;
-  .reply-view__single{
-    display: flex;
-    justify-content: space-between;
-    padding: 0 30px;
-    @media only screen and (max-width: 375px){
-      flex-flow: column;
-    }
-    &:not(:last-child){
-      margin-bottom: 30px;
-    }
-    .reply-view__content{
-      @media only screen and (max-width: 575px){
-          flex-flow: column;
-      }
-      img{
-        ${({ theme }) => (!theme.rtl ? 'margin-right' : 'margin-left')}: 20px;
-        border-radius: 50%;
-        @media only screen and (max-width: 575px){
-          margin: 0 0 15px 0;
-        }
-      }
-      figcaption{
-        h1{
-          font-weight: 500;
-          margin-bottom: 12px;
-          color: ${({ theme }) => theme[theme.mainContent]['dark-text']};
-        }
-        p{
-          font-size: 15px;
-          color: ${({ theme }) => theme[theme.mainContent]['gray-text']};
-        }
-      }
-    }
-    .reply-view__meta{
-      @media only screen and (max-width: 375px){
-        order: -1;
-      }
-      span{
-        font-size: 13px;
-      }
-      svg,
-      i,
-      span{
-        color: ${({ theme }) => theme[theme.mainContent]['gray-light-text']};
-      }
-      i,
-      span.fa{
-        font-size: 16px;
-      }
-      svg,
-      img{
-        width: 16px;
-      }
-      .meta-list{
-        display: flex;
-        align-items: center;
-        @media only screen and (max-width: 575px){
-            flex-flow: column;
-        }
-        @media only screen and (max-width: 375px){
-            flex-flow: row;
-            justify-content: flex-start;
-            margin-bottom: 20px;
-        }
-        a{
-          line-height: 1;
-        }
-        .date-meta{
-          min-width: 135px;
-          ${({ theme }) => (!theme.rtl ? 'margin-right' : 'margin-left')}: 30px;
-          @media only screen and (max-width: 767px){
-            ${({ theme }) => (!theme.rtl ? 'margin-right' : 'margin-left')}: 15px;
-          }
-          @media only screen and (max-width: 575px){
-            margin: 0 0 15px 0;
-          }
-          @media only screen and (max-width: 375px){
-            margin: ${({ theme }) => (theme.rtl ? '0 0 0 15px' : '0 15px 0 0')};
-          }
-        }
-        a{
-          &:not(:last-child){
-            ${({ theme }) => (!theme.rtl ? 'margin-right' : 'margin-left')}: 30px;
-            @media only screen and (max-width: 767px){
-              ${({ theme }) => (!theme.rtl ? 'margin-right' : 'margin-left')}: 15px;
-            }
-            @media only screen and (max-width: 575px){
-                margin: 0 0 15px 0;
-            }
-            @media only screen and (max-width: 375px){
-              margin: 0 15px 0 0;
-            }
-          }
-        }
-      }
-    }
   }
 `;
 
@@ -1350,8 +1157,6 @@ export {
   EmailHeader,
   MailDetailsWrapper,
   MessageDetails,
-  MessageReply,
-  ReplyList,
   MailRightAction,
   EmailWrapper,
 };

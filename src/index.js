@@ -7,6 +7,7 @@ import { ConfigProvider } from 'antd';
 
 import moment from 'moment';
 import 'moment/locale/vi';
+import 'moment/locale/es';
 import i18n from './i18n/config';
 import { getAntdLocale } from './utility/utility';
 
@@ -16,6 +17,7 @@ moment.locale(currentLanguage);
 
 const rootElement = document.getElementById('root');
 const root = createRoot(rootElement);
+
 root.render(
   <React.StrictMode>
     <ConfigProvider locale={getAntdLocale(currentLanguage)}>
