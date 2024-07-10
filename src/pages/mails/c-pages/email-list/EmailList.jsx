@@ -1,16 +1,15 @@
+import { Cards } from '@/components/cards/frame/cards-frame';
+import { PageHeader } from '@/components/page-headers/page-headers';
+import { BorderLessHeading, Main } from '@/container/styled';
 import UilEdit from '@iconscout/react-unicons/icons/uil-edit';
 import UilTrash from '@iconscout/react-unicons/icons/uil-trash-alt';
-import { Button, Col, Input, Popconfirm, Row, Skeleton } from 'antd';
+import { Button, Col, Input, notification, Popconfirm, Row, Skeleton } from 'antd';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Cards } from '../../../../components/cards/frame/cards-frame';
-import { PageHeader } from '../../../../components/page-headers/page-headers';
-
-import { BorderLessHeading, Main } from '../../../../container/styled';
 import axios from '../../mockApi';
-import CreateAccount from './components/CreateAccount';
-import EditAccount from './components/EditAccount';
 import DataTable from './DataTable';
+import CreateAccount from './components/CreateAccount';
+import UpdateAccount from './components/UpdateAccount';
 
 export const EmailList = () => {
   const [state, setState] = useState({
@@ -26,6 +25,7 @@ export const EmailList = () => {
 
   const { pagination } = state;
 
+  const [initAccounts, setInitAccounts] = useState([]);
   const [accounts, setAccounts] = useState([]);
   const [isLoadingGetList, setIsLoadingGetList] = useState(false);
   const [searchText, setSearchText] = useState('');
@@ -36,6 +36,7 @@ export const EmailList = () => {
       const response = await axios.get('/api/accounts');
 
       setAccounts(response.data);
+      setInitAccounts(response.data);
     } catch (error) {
       console.error('Failed to fetch accounts', error);
     } finally {
@@ -66,8 +67,16 @@ export const EmailList = () => {
     try {
       await axios.delete(`/api/accounts/${id}`);
       setAccounts(accounts.filter((account) => account.id !== id));
+
+      notification.success({
+        message: 'Xóa thành công',
+        description: 'Tài khoản đã được xóa thành công.',
+      });
     } catch (error) {
-      console.error('Failed to delete account', error);
+      notification.error({
+        message: 'Xóa thất bại',
+        description: 'Không thể xóa tài khoản. Vui lòng thử lại sau.',
+      });
     }
   };
 
@@ -78,7 +87,7 @@ export const EmailList = () => {
   const handleSearch = (e, dataIndex) => {
     const value = e.target.value.toLowerCase();
     setSearchText(value);
-    setAccounts(accounts.filter((item) => item[dataIndex].toString().toLowerCase().includes(value)));
+    setAccounts(initAccounts.filter((item) => item[dataIndex].toString().toLowerCase().includes(value)));
   };
 
   const tableDataScource = [];
@@ -119,12 +128,13 @@ export const EmailList = () => {
     accounts.map((item, index) => {
       const { id, username, email } = item;
       return tableDataScource.push({
-        id: index + 1,
+        stt: index + 1,
+        id,
         username: <span className="ninjadash-username">{username}</span>,
         email: <span>{email}</span>,
         action: (
           <div className="table-actions">
-            <Link className="edit" to="#" onClick={showEditModal}>
+            <Link className="edit" to="#" onClick={() => showEditModal(item)}>
               <UilEdit />
             </Link>
             <Popconfirm
@@ -146,8 +156,8 @@ export const EmailList = () => {
   const dataTableColumn = [
     {
       title: 'STT',
-      dataIndex: 'id',
-      key: 'id',
+      dataIndex: 'stt',
+      key: 'stt',
     },
     {
       title: 'Tên tài khoản',
@@ -208,7 +218,9 @@ export const EmailList = () => {
         <CreateAccount state={state} setState={setState} accounts={accounts} setAccounts={setAccounts} />
       )}
 
-      {state.editVisible && <EditAccount state={state} setState={setState} />}
+      {state.editVisible && (
+        <UpdateAccount state={state} setState={setState} accounts={accounts} setAccounts={setAccounts} />
+      )}
     </>
   );
 };

@@ -5,10 +5,10 @@ const axios = axiosLmao.create();
 
 const mock = new MockAdapter(axios, { delayResponse: 500 });
 
-let accounts = [
-  { id: 1, username: 'user1', email: 'user1@example.com' },
-  { id: 2, username: 'user2', email: 'user2@example.com' },
-  { id: 3, username: 'user3', email: 'user3@example.com' },
+const accounts = [
+  { id: 1, username: 'user1', email: 'user1@example.com', password: 'user1@example.com' },
+  { id: 2, username: 'user2', email: 'user2@example.com', password: 'user1@example.com' },
+  { id: 3, username: 'user3', email: 'user3@example.com', password: 'user1@example.com' },
 ];
 
 mock.onGet('/api/accounts').reply(200, accounts);
@@ -30,18 +30,17 @@ mock.onPost('/api/accounts').reply((config) => {
 });
 
 mock.onDelete(/\/api\/accounts\/\d+/).reply((config) => {
-  const id = parseInt(config.url.split('/').pop(), 10);
-  accounts = accounts.filter((account) => account.id !== id);
   return [204];
 });
 
 mock.onPut(/\/api\/accounts\/\d+/).reply((config) => {
   const id = parseInt(config.url.split('/').pop(), 10);
-  const { username, email } = JSON.parse(config.data);
+  const { username, email, password } = JSON.parse(config.data);
   const account = accounts.find((acc) => acc.id === id);
   if (account) {
     account.username = username;
     account.email = email;
+    account.password = password;
     return [200, account];
   }
   return [404];

@@ -3,7 +3,7 @@ import { Modal } from '@/components/modals/antd-modals';
 import { AddUser } from '@/container/pages/style';
 import { BasicFormWrapper } from '@/container/styled';
 import axios from '@/pages/mails/mockApi';
-import { Form, Input } from 'antd';
+import { Form, Input, notification } from 'antd';
 import { useState } from 'react';
 
 function CreateAccount({ state, setState, accounts, setAccounts }) {
@@ -33,6 +33,15 @@ function CreateAccount({ state, setState, accounts, setAccounts }) {
     if (newAccount) {
       setAccounts([...accounts, newAccount]);
       onCancel();
+      notification.success({
+        message: 'Thành công',
+        description: 'Tài khoản đã được tạo thành công',
+      });
+    } else {
+      notification.error({
+        message: 'Lỗi',
+        description: 'Đã xảy ra lỗi khi tạo tài khoản',
+      });
     }
   };
 
