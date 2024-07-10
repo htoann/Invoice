@@ -10,7 +10,6 @@ function DataTable({ tableData, columns, pagination, state, setState, getList })
       <div className="ninjadasj-datatable" style={{ marginTop: 30 }}>
         <TableWrapper className="table-data-view table-responsive">
           <Table
-            bordered
             pagination={{ pageSize: 20, showSizeChanger: true, ...pagination }}
             dataSource={tableData}
             columns={columns}

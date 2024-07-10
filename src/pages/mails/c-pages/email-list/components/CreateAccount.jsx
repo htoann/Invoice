@@ -1,9 +1,9 @@
+import { Button } from '@/components/buttons/buttons';
+import { Modal } from '@/components/modals/antd-modals';
+import { AddUser } from '@/container/pages/style';
+import { BasicFormWrapper } from '@/container/styled';
+import axios from '@/pages/mails/mockApi';
 import { Form, Input } from 'antd';
-import { Button } from '../../../../../components/buttons/buttons';
-import { Modal } from '../../../../../components/modals/antd-modals';
-import { AddUser } from '../../../../../container/pages/style';
-import { BasicFormWrapper } from '../../../../../container/styled';
-import axios from '../../../mockApi';
 import { useState } from 'react';
 
 function CreateAccount({ state, setState, accounts, setAccounts }) {

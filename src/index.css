@@ -3188,12 +3188,29 @@ html[dir='rtl'] .dark-mode .ninjadash-navbar-menu {
   top: 20px;
 }
 
-.table tbody tr td {
-  font-weight: normal;
+.table {
+  tbody tr td {
+    font-weight: normal;
+  }
 }
 
 tr[data-row-key='searchInput'] {
   td {
     padding-bottom: 0 !important;
+  }
+}
+
+.ant-input-affix-wrapper.ant-input-password {
+  padding: 0 !important;
+
+  .ant-input {
+    padding-left: 20px;
+    padding-right: 45px;
+  }
+
+  .ant-input-suffix {
+    position: absolute;
+    right: 16px;
+    top: 16px;
   }
 }

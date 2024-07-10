@@ -2,6 +2,7 @@
 import { theme } from './src/config/theme/themeVariables';
 
 const CracoLessPlugin = require('craco-less');
+const path = require('path');
 
 module.exports = {
   webpack: {
@@ -12,6 +13,9 @@ module.exports = {
           stream: false,
         },
       },
+    },
+    alias: {
+      '@': path.resolve(__dirname, 'src'),
     },
   },
   plugins: [

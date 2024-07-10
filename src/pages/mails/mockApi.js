@@ -15,6 +15,12 @@ mock.onGet('/api/accounts').reply(200, accounts);
 
 mock.onPost('/api/accounts').reply((config) => {
   const { username, email, password } = JSON.parse(config.data);
+
+  const emailExists = accounts.some((account) => account.email === email);
+  if (emailExists) {
+    return [409, { message: 'Email already exists' }];
+  }
+
   const newAccount = {
     username,
     email,

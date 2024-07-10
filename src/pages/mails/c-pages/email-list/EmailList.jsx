@@ -13,17 +13,6 @@ import EditAccount from './components/EditAccount';
 import DataTable from './DataTable';
 
 export const EmailList = () => {
-  const pageRoutes = [
-    {
-      path: '/email/inbox',
-      breadcrumbName: 'Hộp thư',
-    },
-    {
-      path: '/email',
-      breadcrumbName: 'Danh sách email',
-    },
-  ];
-
   const [state, setState] = useState({
     selectedRowKeys: 0,
     selectedRows: 0,
@@ -188,7 +177,7 @@ export const EmailList = () => {
 
   return (
     <>
-      <PageHeader className="ninjadash-page-header-main" title="Danh sách email" routes={pageRoutes} />
+      <PageHeader className="ninjadash-page-header-main" title="Danh sách email" />
       <Main>
         <Row gutter={15}>
           <Col xs={24}>

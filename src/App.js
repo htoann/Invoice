@@ -11,7 +11,7 @@ import store from './redux/store';
 
 import Index from './routes/index';
 import Auth from './routes/auth';
-import './static/css/style.css';
+import './index.css';
 
 const NotFound = lazy(() => import('./container/pages/404'));
 

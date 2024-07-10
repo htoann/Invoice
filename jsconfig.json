@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "jsx": "preserve",
+    "paths": {
+      "@/*": ["./src/*"],
+      "@/components/*": ["./components/*"],
+      "@/config/*": ["./config/*"],
+      "@/container/*": ["./container/*"],
+      "@/demoData/*": ["./demoData/*"],
+      "@/i18n/*": ["./i18n/*"],
+      "@/layout/*": ["./layout/*"],
+      "@/pages/*": ["./pages/*"],
+      "@/redux/*": ["./redux/*"],
+      "@/routes/*": ["./routes/*"],
+      "@/static/*": ["./static/*"],
+      "@/utility/*": ["./utility/*"]
+    }
+  },
+  "exclude": ["node_modules", "build"]
+}
