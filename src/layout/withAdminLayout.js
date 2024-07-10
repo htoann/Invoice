@@ -211,7 +211,7 @@ const ThemeLayout = (WrappedComponent) => {
               <Layout className="atbd-main-layout">
                 <Content>
                   <WrappedComponent {...this.props} />
-                  <FooterStyle className="admin-footer">
+                  {/* <FooterStyle className="admin-footer">
                     <Row>
                       <Col md={12} xs={24}>
                         <span className="admin-footer__copyright">
@@ -226,7 +226,7 @@ const ThemeLayout = (WrappedComponent) => {
                         </div>
                       </Col>
                     </Row>
-                  </FooterStyle>
+                  </FooterStyle> */}
                 </Content>
               </Layout>
             </Layout>
