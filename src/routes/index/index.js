@@ -24,7 +24,6 @@ const Tickets = lazy(() => import('../../container/supportTicket/Index'));
 const AddTicket = lazy(() => import('../../container/supportTicket/AddSupport'));
 const TicketDetails = lazy(() => import('../../container/supportTicket/SupportTicketDetails'));
 const Import = lazy(() => import('../../container/importExport/Import'));
-const Export = lazy(() => import('../../container/importExport/Export'));
 const Note = lazy(() => import('../../container/note/Note'));
 const Contact = lazy(() => import('../../container/contact/Contact'));
 const ContactGrid = lazy(() => import('../../container/contact/ContactGrid'));
@@ -73,7 +72,6 @@ const Index = React.memo(() => {
         <Route path="app/support/tickets/add" element={<AddTicket />} />
         <Route path="app/support/ticketDetails/:id" element={<TicketDetails />} />
         <Route path="importExport/import" element={<Import />} />
-        <Route path="importExport/export" element={<Export />} />
         <Route path="app/note/*" element={<Note />} />
         <Route path="contact/list" element={<Contact />} />
         <Route path="contact/grid" element={<ContactGrid />} />

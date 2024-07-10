@@ -8,7 +8,6 @@ import UilMessage from '@iconscout/react-unicons/icons/uil-message';
 import UilLeft from '@iconscout/react-unicons/icons/uil-arrow-left';
 import { useDispatch, useSelector } from 'react-redux';
 import Avatar from 'antd/lib/avatar/avatar';
-import Picker from 'emoji-picker-react';
 import { TicketDetailsBox, ClientConversation } from './Style';
 import { PageHeader } from '../../components/page-headers/page-headers';
 import { Main } from '../styled';
@@ -108,10 +107,6 @@ function SupportTicketDetails() {
     setState({
       inputValue: '',
     });
-  };
-
-  const onEmojiClick = (event, emojiObject) => {
-    setState({ ...state, inputValue: inputValue + emojiObject.emoji });
   };
 
   const onPickerShow = () => {
@@ -230,7 +225,6 @@ function SupportTicketDetails() {
                         <div className="chatbox-reply-form d-flex">
                           <div className="chatbox-reply-input">
                             <span className="smile-icon">
-                              {pickerShow && <Picker onEmojiClick={onEmojiClick} />}
                               <Link onClick={onPickerShow} to="#">
                                 <UilSmile />
                               </Link>

@@ -9,7 +9,6 @@ import UilMessage from '@iconscout/react-unicons/icons/uil-message';
 import { Link } from 'react-router-dom';
 import Masonry from 'react-masonry-css';
 import { Input, Upload, message, Comment, Avatar } from 'antd';
-import Picker from 'emoji-picker-react';
 import moment from 'moment';
 import { useSelector, useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -287,7 +286,6 @@ function Posts({ postId, from, time, img, like, comment, content, author }) {
                     {pickerShow && (
                       <>
                         <BackShadowEmoji onClick={() => setPickerShow(false)} />
-                        <Picker onEmojiClick={onEmojiClick} />
                       </>
                     )}
                     <Link onClick={onPickerShow} to="#">

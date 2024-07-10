@@ -15,7 +15,6 @@ import UilTrashAlt from '@iconscout/react-unicons/icons/uil-trash-alt';
 import UilUsersAlt from '@iconscout/react-unicons/icons/uil-users-alt';
 import UilPlus from '@iconscout/react-unicons/icons/uil-plus';
 import moment from 'moment';
-import Picker from 'emoji-picker-react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { Scrollbars } from '@pezhmanparsaee/react-custom-scrollbars';
 import { SmileOutlined, MoreOutlined } from '@ant-design/icons';
@@ -437,7 +436,6 @@ function SingleGroupChat({ match }) {
               }`}
             >
               <span className="smile-icon">
-                {pickerShow && <Picker onEmojiClick={onEmojiClick} />}
                 <Link onClick={onPickerShow} to="#">
                   <UilSmile />
                 </Link>

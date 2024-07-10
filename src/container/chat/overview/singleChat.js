@@ -17,7 +17,6 @@ import moment from 'moment';
 import { SmileOutlined, MoreOutlined } from '@ant-design/icons';
 import PropTypes from 'prop-types';
 import { Scrollbars } from '@pezhmanparsaee/react-custom-scrollbars';
-import Picker from 'emoji-picker-react';
 import { SingleChatWrapper, MessageList, Footer, BackShadowEmoji } from '../style';
 import Heading from '../../../components/heading/heading';
 import { Button } from '../../../components/buttons/buttons';
@@ -429,7 +428,6 @@ function SingleChat({ match, dashboard }) {
             >
               <div className="chatbox-reply-input">
                 <span className="smile-icon">
-                  {pickerShow && <Picker onEmojiClick={onEmojiClick} />}
                   <Link onClick={onPickerShow} to="#">
                     <UilSmile />
                   </Link>

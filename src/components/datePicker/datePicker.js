@@ -1,6 +1,4 @@
-// eslint-disable-next-line max-classes-per-file
 import { DatePicker } from 'antd';
-import { addDays } from 'date-fns';
 import React, { useState } from 'react';
 import { DateRangePicker } from 'react-date-range';
 import 'react-date-range/dist/styles.css'; // main style file
@@ -14,7 +12,7 @@ function DateRangePickerOne() {
     dateRangePicker: {
       selection: {
         startDate: new Date(),
-        endDate: addDays(new Date(), 7),
+        endDate: new Date(),
         key: 'selection',
       },
     },
