@@ -1,19 +1,15 @@
 import { Col, Row } from 'antd';
 import { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
 import { Cards } from '../../components/cards/frame/cards-frame';
 import { PageHeader } from '../../components/page-headers/page-headers';
 
 import { DataService } from '../../config/dataService/dataService';
 import { BorderLessHeading, Main } from '../../container/styled';
-import { tableReadData } from '../../redux/data-filter/actionCreator';
+import DataTable from './components/DataTable';
 import { invoiceListDataTable } from './const';
 import { handleTableDataSource } from './utils';
-import DataTable from './components/DataTable';
 
 function InvoiceList() {
-  const dispatch = useDispatch();
-
   const pageRoutes = [
     {
       path: '/invoices',
@@ -34,12 +30,6 @@ function InvoiceList() {
     date_from: undefined,
     date_to: undefined,
   });
-
-  useEffect(() => {
-    if (dispatch) {
-      dispatch(tableReadData());
-    }
-  }, [dispatch]);
 
   const getInvoiceList = async (page, page_size = 20, loaihdon = 'purchase', date_from, date_to) => {
     try {
