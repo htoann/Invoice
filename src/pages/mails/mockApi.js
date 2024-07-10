@@ -14,13 +14,12 @@ let accounts = [
 mock.onGet('/api/accounts').reply(200, accounts);
 
 mock.onPost('/api/accounts').reply((config) => {
-  const { username, email } = JSON.parse(config.data);
+  const { username, email, password } = JSON.parse(config.data);
   const newAccount = {
-    id: accounts.length + 1,
     username,
     email,
+    password,
   };
-  accounts.push(newAccount);
   return [201, newAccount];
 });
 

@@ -1,11 +1,11 @@
 import { Form, Input } from 'antd';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { AddUser } from '../../../container/pages/style';
-import { BasicFormWrapper } from '../../../container/styled';
-import { contactAddData } from '../../../redux/contact/actionCreator';
-import { Button } from '../../../components/buttons/buttons';
-import { Modal } from '../../../components/modals/antd-modals';
+import { AddUser } from '../../../../../container/pages/style';
+import { BasicFormWrapper } from '../../../../../container/styled';
+import { contactAddData } from '../../../../../redux/contact/actionCreator';
+import { Button } from '../../../../../components/buttons/buttons';
+import { Modal } from '../../../../../components/modals/antd-modals';
 
 function EditAccount({ state, setState }) {
   const dispatch = useDispatch();

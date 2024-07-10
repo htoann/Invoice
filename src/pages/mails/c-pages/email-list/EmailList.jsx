@@ -1,16 +1,16 @@
 import UilEdit from '@iconscout/react-unicons/icons/uil-edit';
 import UilTrash from '@iconscout/react-unicons/icons/uil-trash-alt';
-import { Button, Col, Input, Popconfirm, Row } from 'antd';
+import { Button, Col, Input, Popconfirm, Row, Skeleton } from 'antd';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Cards } from '../../../../components/cards/frame/cards-frame';
 import { PageHeader } from '../../../../components/page-headers/page-headers';
 
 import { BorderLessHeading, Main } from '../../../../container/styled';
-import CreateAccount from '../../components/CreateAccount';
-import EditAccount from '../../components/EditAccount';
+import axios from '../../mockApi';
+import CreateAccount from './components/CreateAccount';
+import EditAccount from './components/EditAccount';
 import DataTable from './DataTable';
-import axios from './mockApi';
 
 export const EmailList = () => {
   const pageRoutes = [
@@ -38,16 +38,19 @@ export const EmailList = () => {
   const { pagination } = state;
 
   const [accounts, setAccounts] = useState([]);
-  const [filteredData, setFilteredData] = useState([]);
+  const [isLoadingGetList, setIsLoadingGetList] = useState(false);
   const [searchText, setSearchText] = useState('');
 
   const getList = async () => {
     try {
+      setIsLoadingGetList(true);
       const response = await axios.get('/api/accounts');
+
       setAccounts(response.data);
-      setFilteredData(response.data);
     } catch (error) {
       console.error('Failed to fetch accounts', error);
+    } finally {
+      setIsLoadingGetList(false);
     }
   };
 
@@ -86,7 +89,7 @@ export const EmailList = () => {
   const handleSearch = (e, dataIndex) => {
     const value = e.target.value.toLowerCase();
     setSearchText(value);
-    setFilteredData(accounts.filter((item) => item[dataIndex].toString().toLowerCase().includes(value)));
+    setAccounts(accounts.filter((item) => item[dataIndex].toString().toLowerCase().includes(value)));
   };
 
   const tableDataScource = [];
@@ -123,11 +126,11 @@ export const EmailList = () => {
     disableSort: true,
   });
 
-  if (filteredData?.length > 0) {
-    filteredData.map((item) => {
+  if (accounts?.length > 0) {
+    accounts.map((item, index) => {
       const { id, username, email } = item;
       return tableDataScource.push({
-        id,
+        id: index + 1,
         username: <span className="ninjadash-username">{username}</span>,
         email: <span>{email}</span>,
         action: (
@@ -194,21 +197,27 @@ export const EmailList = () => {
                 <Button onClick={showModal} className="btn-add_new" size="default" type="primary" key="1">
                   <Link to="#">+ Thêm email</Link>
                 </Button>
-                <DataTable
-                  tableData={tableDataScource}
-                  columns={dataTableColumn}
-                  pagination={pagination}
-                  state={state}
-                  setState={setState}
-                  getList={getList}
-                />
+                {isLoadingGetList ? (
+                  <Skeleton active style={{ marginTop: 30 }} />
+                ) : (
+                  <DataTable
+                    tableData={tableDataScource}
+                    columns={dataTableColumn}
+                    pagination={pagination}
+                    state={state}
+                    setState={setState}
+                    getList={getList}
+                  />
+                )}
               </Cards>
             </BorderLessHeading>
           </Col>
         </Row>
       </Main>
 
-      {state.visible && <CreateAccount state={state} setState={setState} />}
+      {state.visible && (
+        <CreateAccount state={state} setState={setState} accounts={accounts} setAccounts={setAccounts} />
+      )}
 
       {state.editVisible && <EditAccount state={state} setState={setState} />}
     </>
