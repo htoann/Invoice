@@ -3180,18 +3180,35 @@ html[dir='rtl'] .dark-mode .ninjadash-navbar-menu {
   }
 }
 
-.ant-table-cell {
-  font-weight: 400;
+.ant-table-tbody {
+  .ant-table-cell span {
+    font-weight: 400;
+  }
 }
 
-.ant-modal {
-  top: 20px;
+.table-search {
+  .ant-table-thead {
+    .ant-table-cell {
+      &:not(.ant-table-column-has-sorters) {
+        display: flex;
+        min-height: 100px;
+      }
+
+      .ant-table-column-sorter {
+        margin-bottom: 40px;
+      }
+    }
+  }
 }
 
 .table {
   tbody tr td {
     font-weight: normal;
   }
+}
+
+.ant-modal {
+  top: 20px;
 }
 
 tr[data-row-key='searchInput'] {

@@ -19,7 +19,21 @@ const accounts = [
   { id: 11, username: 'user11', email: 'user11@example.com', password: 'user11@example.com' },
 ];
 
-mock.onGet('/api/accounts').reply(200, accounts);
+mock.onGet('/api/accounts').reply((config) => {
+  const params = new URLSearchParams(config.params);
+  const username = params.get('username');
+  const email = params.get('email');
+
+  let results = accounts;
+  if (username) {
+    results = results.filter((account) => account.username.includes(username));
+  }
+  if (email) {
+    results = results.filter((account) => account.email.includes(email));
+  }
+
+  return [200, results];
+});
 
 mock.onPost('/api/accounts').reply((config) => {
   const { username, email, password } = JSON.parse(config.data);

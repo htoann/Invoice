@@ -61,6 +61,7 @@
     "no-shadow": "off",
     "react/jsx-fragments": "off",
     "import/extensions": "off",
-    "import/no-unresolved": "off"
+    "import/no-unresolved": "off",
+    "no-unused-expressions": "off"
   }
 }

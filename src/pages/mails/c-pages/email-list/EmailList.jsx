@@ -25,22 +25,34 @@ export const EmailList = () => {
 
   const { pagination } = state;
 
-  const [initAccounts, setInitAccounts] = useState([]);
   const [accounts, setAccounts] = useState([]);
   const [isLoadingGetList, setIsLoadingGetList] = useState(false);
-  const [searchText, setSearchText] = useState('');
+  const [searchLoading, setSearchLoading] = useState(false);
+  const [searchParams, setSearchParams] = useState({ username: '', password: '' });
 
-  const getList = async () => {
+  const getList = async ({ username = '', email = '', searchLoading = true } = {}) => {
     try {
-      setIsLoadingGetList(true);
-      const response = await axios.get('/api/accounts');
+      if (searchLoading) {
+        setSearchLoading(true);
+      } else {
+        setIsLoadingGetList(true);
+      }
+      const response = await axios.get('/api/accounts', {
+        params: {
+          username,
+          email,
+        },
+      });
 
       setAccounts(response.data);
-      setInitAccounts(response.data);
     } catch (error) {
       console.error('Failed to fetch accounts', error);
     } finally {
-      setIsLoadingGetList(false);
+      if (searchLoading) {
+        setSearchLoading(false);
+      } else {
+        setIsLoadingGetList(false);
+      }
     }
   };
 
@@ -84,12 +96,6 @@ export const EmailList = () => {
     e.stopPropagation();
   };
 
-  const handleSearch = (e, dataIndex) => {
-    const value = e.target.value.toLowerCase();
-    setSearchText(value);
-    setAccounts(initAccounts.filter((item) => item[dataIndex].toString().toLowerCase().includes(value)));
-  };
-
   const tableDataScource = [];
 
   if (accounts?.length > 0) {
@@ -129,11 +135,16 @@ export const EmailList = () => {
         style={{ width: 'auto', height: 35, marginTop: 10 }}
         onClick={stopPropagation}
         onFocus={stopPropagation}
-        onKeyDown={stopPropagation}
-        value={searchText.name}
+        value={searchParams[name]}
         onChange={(e) => {
           e.stopPropagation();
-          handleSearch(e, name);
+          setSearchParams({ ...searchParams, [name]: e.target.value.toLowerCase() });
+        }}
+        onKeyDown={(e) => {
+          stopPropagation(e);
+          if (e.key === 'Enter') {
+            getList({ ...searchParams, shouldLoading: false });
+          }
         }}
       />
     </>
@@ -152,7 +163,7 @@ export const EmailList = () => {
       sorter: (a, b) => a.username.props.children.localeCompare(b.username.props.children),
     },
     {
-      title: <>{customHeader('Địa chỉ email', 'username')}</>,
+      title: <>{customHeader('Địa chỉ email', 'email')}</>,
       dataIndex: 'email',
       key: 'email',
       sorter: (a, b) => a.email.props.children.localeCompare(b.email.props.children),
@@ -183,9 +194,8 @@ export const EmailList = () => {
                     tableData={tableDataScource}
                     columns={dataTableColumn}
                     pagination={pagination}
-                    state={state}
                     setState={setState}
-                    getList={getList}
+                    loading={searchLoading}
                   />
                 )}
               </Cards>

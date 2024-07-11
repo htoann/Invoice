@@ -1,15 +1,15 @@
 import { Table } from 'antd';
 import PropTypes from 'prop-types';
-import React from 'react';
 import { TableWrapper } from '../../../../container/styled';
 import { DataTableStyleWrap } from './style';
 
-function DataTable({ tableData, columns, pagination, state, setState, getList }) {
+function DataTable({ tableData, columns, pagination, setState, loading }) {
   return (
     <DataTableStyleWrap>
       <div className="ninjadasj-datatable" style={{ marginTop: 30 }}>
         <TableWrapper className="table-data-view table-responsive">
           <Table
+            className="table-search"
             pagination={{ pageSize: 20, showSizeChanger: true, ...pagination }}
             dataSource={tableData}
             columns={columns}
@@ -19,6 +19,7 @@ function DataTable({ tableData, columns, pagination, state, setState, getList })
                 pagination: _pagination,
               }));
             }}
+            loading={loading}
           />
         </TableWrapper>
       </div>
