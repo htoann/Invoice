@@ -4,7 +4,7 @@ const Main = Styled.div`
     padding: 0px 30px 20px;
     // Change
     // min-height: 715px;
-    min-height: 705px;
+    min-height: calc(100vh - 100px - 72px);
     background-color: transparent;
     &.grid-boxed{
         padding: 0px 180px 20px;

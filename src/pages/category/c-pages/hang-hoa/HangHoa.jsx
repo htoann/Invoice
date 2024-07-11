@@ -67,45 +67,14 @@ export const HangHoa = () => {
 
   const tableDataScource = [];
 
-  tableDataScource.push({
-    key: 'searchInput',
-    id: '',
-    user: (
-      <Input
-        style={{ width: 'auto', height: 35 }}
-        onClick={stopPropagation}
-        onFocus={stopPropagation}
-        onKeyDown={stopPropagation}
-        value={searchText.name}
-        onChange={(e) => {
-          e.stopPropagation();
-          handleSearch(e, 'name');
-        }}
-      />
-    ),
-    email: (
-      <Input
-        style={{ width: 'auto', height: 35 }}
-        onClick={stopPropagation}
-        onFocus={stopPropagation}
-        onKeyDown={stopPropagation}
-        value={searchText.name}
-        onChange={(e) => {
-          e.stopPropagation();
-          handleSearch(e, 'email');
-        }}
-      />
-    ),
-    disableSort: true,
-  });
-
   if (filteredData?.length > 0) {
     filteredData.map((item, index) => {
       const { id, name, email } = item;
 
       return tableDataScource.push({
         key: id,
-        id: index + 1,
+        stt: index + 1,
+        id,
         user: <span className="ninjadash-username">{name}</span>,
         email: <span>{email}</span>,
         action: (
@@ -129,82 +98,42 @@ export const HangHoa = () => {
     });
   }
 
-  const dataTableColumn = [
-    {
-      title: 'STT',
-      dataIndex: 'id',
-      key: 'id',
-    },
-    {
-      title: 'Mã hàng',
-      dataIndex: 'user',
-      key: 'name',
-      sorter: (a, b) => {
-        if (b?.disableSort) return null;
-        return a.user.props.children.localeCompare(b.user.props.children);
-      },
-    },
-    {
-      title: 'Tên hàng bán ra',
-      dataIndex: 'email',
-      key: 'email',
-      sorter: (a, b) => {
-        if (b?.disableSort) return null;
-        return a.user.props.children.localeCompare(b.user.props.children);
-      },
-    },
-    {
-      title: 'Tên hàng mua vào',
-      dataIndex: 'email',
-      key: 'email',
-      sorter: (a, b) => {
-        if (b?.disableSort) return null;
-        return a.user.props.children.localeCompare(b.user.props.children);
-      },
-    },
-    {
-      title: 'Đơn vị tính',
-      dataIndex: 'email',
-      key: 'email',
-      sorter: (a, b) => {
-        if (b?.disableSort) return null;
-        return a.user.props.children.localeCompare(b.user.props.children);
-      },
-    },
-    {
-      title: 'Tài khoản hàng hóa',
-      dataIndex: 'email',
-      key: 'email',
-      sorter: (a, b) => {
-        if (b?.disableSort) return null;
-        return a.user.props.children.localeCompare(b.user.props.children);
-      },
-    },
-    {
-      title: 'Tài khoản giá vốn',
-      dataIndex: 'email',
-      key: 'email',
-      sorter: (a, b) => {
-        if (b?.disableSort) return null;
-        return a.user.props.children.localeCompare(b.user.props.children);
-      },
-    },
-    {
-      title: 'Tài khoản doanh thu',
-      dataIndex: 'email',
-      key: 'email',
-      sorter: (a, b) => {
-        if (b?.disableSort) return null;
-        return a.user.props.children.localeCompare(b.user.props.children);
-      },
-    },
-    {
-      title: 'Chức năng',
-      dataIndex: 'action',
-      key: 'action',
-      fixed: 'right',
-    },
+  const customHeader = (title, name) => (
+    <>
+      <div>{title}</div>
+      <Input
+        style={{ width: 'auto', height: 35, marginTop: 10 }}
+        onClick={stopPropagation}
+        onFocus={stopPropagation}
+        onKeyDown={stopPropagation}
+        value={searchText.name}
+        onChange={(e) => {
+          e.stopPropagation();
+          handleSearch(e, name);
+        }}
+      />
+    </>
+  );
+
+  const columnData = [
+    { title: 'STT', dataIndex: 'stt', key: 'stt' },
+    { title: 'Mã hàng', dataIndex: 'mahang', key: 'mahang' },
+    { title: 'Tên hàng bán ra', dataIndex: 'tenHangBan', key: 'tenHangBan' },
+    { title: 'Tên hàng mua vào', dataIndex: 'tenHangMua', key: 'tenHangMua' },
+    { title: 'Đơn vị tính', dataIndex: 'donViTinh', key: 'donViTinh' },
+    { title: 'Tài khoản hàng hóa', dataIndex: 'taiKhoanHang', key: 'taiKhoanHang' },
+    { title: 'Tài khoản giá vốn', dataIndex: 'taiKhoanGiaVon', key: 'taiKhoanGiaVon' },
+    { title: 'Tài khoản doanh thu', dataIndex: 'taiKhoanDoanhThu', key: 'taiKhoanDoanhThu' },
+    { title: 'Chức năng', dataIndex: 'action', key: 'action', fixed: 'right' },
   ];
+
+  const dataTableColumn = columnData.map((col) => ({
+    title: col.key === 'stt' || col.key === 'action' ? col.title : <>{customHeader(col.title, col.dataIndex)}</>,
+    dataIndex: col.dataIndex,
+    key: col.key,
+    sorter:
+      col.key !== 'stt' && col.key !== 'action' ? (a, b) => a[col.dataIndex].localeCompare(b[col.dataIndex]) : false,
+  }));
 
   const rowSelection = {
     onChange: (selectedRowKeys, selectedRows) => {

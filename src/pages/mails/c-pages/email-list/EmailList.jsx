@@ -92,42 +92,11 @@ export const EmailList = () => {
 
   const tableDataScource = [];
 
-  tableDataScource.push({
-    key: 'searchInput',
-    id: '',
-    username: (
-      <Input
-        style={{ width: 'auto', height: 35 }}
-        onClick={stopPropagation}
-        onFocus={stopPropagation}
-        onKeyDown={stopPropagation}
-        value={searchText.name}
-        onChange={(e) => {
-          e.stopPropagation();
-          handleSearch(e, 'username');
-        }}
-      />
-    ),
-    email: (
-      <Input
-        style={{ width: 'auto', height: 35 }}
-        onClick={stopPropagation}
-        onFocus={stopPropagation}
-        onKeyDown={stopPropagation}
-        value={searchText.name}
-        onChange={(e) => {
-          e.stopPropagation();
-          handleSearch(e, 'email');
-        }}
-      />
-    ),
-    disableSort: true,
-  });
-
   if (accounts?.length > 0) {
     accounts.map((item, index) => {
       const { id, username, email } = item;
       return tableDataScource.push({
+        key: id,
         stt: index + 1,
         id,
         username: <span className="ninjadash-username">{username}</span>,
@@ -153,6 +122,23 @@ export const EmailList = () => {
     });
   }
 
+  const customHeader = (title, name) => (
+    <>
+      <div>{title}</div>
+      <Input
+        style={{ width: 'auto', height: 35, marginTop: 10 }}
+        onClick={stopPropagation}
+        onFocus={stopPropagation}
+        onKeyDown={stopPropagation}
+        value={searchText.name}
+        onChange={(e) => {
+          e.stopPropagation();
+          handleSearch(e, name);
+        }}
+      />
+    </>
+  );
+
   const dataTableColumn = [
     {
       title: 'STT',
@@ -160,22 +146,16 @@ export const EmailList = () => {
       key: 'stt',
     },
     {
-      title: 'Tên tài khoản',
+      title: <>{customHeader('Tên tài khoản', 'username')}</>,
       dataIndex: 'username',
       key: 'username',
-      sorter: (a, b) => {
-        if (b?.disableSort) return null;
-        return a.username.props.children.localeCompare(b.username.props.children);
-      },
+      sorter: (a, b) => a.username.props.children.localeCompare(b.username.props.children),
     },
     {
-      title: 'Địa chỉ email',
+      title: <>{customHeader('Địa chỉ email', 'username')}</>,
       dataIndex: 'email',
       key: 'email',
-      sorter: (a, b) => {
-        if (b?.disableSort) return null;
-        return a.email.props.children.localeCompare(b.email.props.children);
-      },
+      sorter: (a, b) => a.email.props.children.localeCompare(b.email.props.children),
     },
     {
       title: 'Chức năng',
