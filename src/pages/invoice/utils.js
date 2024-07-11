@@ -1,9 +1,10 @@
-export const handleTableDataSource = (invoiceList) => {
+export const handleTableDataSource = (invoiceList, current, pageSize) => {
   const tableDataSource = [];
 
   if (invoiceList?.length > 0) {
-    invoiceList.map((item) => {
+    invoiceList.map((item, index) => {
       return tableDataSource.push({
+        stt: (current - 1) * pageSize + index + 1,
         id: item.no,
         khmshdon: <span className="ninjadash-username">{item.khmshdon}</span>,
         khhdon: <span>{item.khhdon}</span>,

@@ -25,7 +25,11 @@ export const HangHoa = () => {
     modalType: 'primary',
     url: null,
     update: {},
+    pagination: { pageSize: 20, showSizeChanger: true, current: 1, total: 0 },
   });
+
+  const { pagination } = state;
+  const { current, pageSize } = pagination;
 
   const { users } = useSelector((stateItem) => {
     return {
@@ -73,7 +77,7 @@ export const HangHoa = () => {
 
       return tableDataScource.push({
         key: id,
-        stt: index + 1,
+        stt: (current - 1) * pageSize + index + 1,
         id,
         user: <span className="ninjadash-username">{name}</span>,
         email: <span>{email}</span>,
@@ -109,7 +113,13 @@ export const HangHoa = () => {
         value={searchText.name}
         onChange={(e) => {
           e.stopPropagation();
-          handleSearch(e, name);
+          if (e.key === 'Enter') {
+            setState({
+              ...state,
+              pagination: { ...pagination, current: 1 },
+            });
+            // getList({ ...searchParams, shouldLoading: false, page: 1, page_size: pageSize });
+          }
         }}
       />
     </>

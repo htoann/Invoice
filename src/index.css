@@ -3231,3 +3231,7 @@ tr[data-row-key='searchInput'] {
     top: 16px;
   }
 }
+
+.ninjadash-top-menu ul li a {
+  color: #404040 !important;
+}

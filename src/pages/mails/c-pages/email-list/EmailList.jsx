@@ -30,7 +30,7 @@ export const EmailList = () => {
   const [searchLoading, setSearchLoading] = useState(false);
   const [searchParams, setSearchParams] = useState({ username: '', password: '' });
 
-  const getList = async ({ username = '', email = '', searchLoading = true } = {}) => {
+  const getList = async ({ username = '', email = '', page = 1, page_size = 20, searchLoading = true } = {}) => {
     try {
       if (searchLoading) {
         setSearchLoading(true);
@@ -41,10 +41,19 @@ export const EmailList = () => {
         params: {
           username,
           email,
+          page,
+          page_size,
         },
       });
 
-      setAccounts(response.data);
+      setAccounts(response?.data?.results);
+      setState((prev) => ({
+        ...prev,
+        pagination: {
+          ...prev.pagination,
+          total: Number(response?.data?.count) || 0,
+        },
+      }));
     } catch (error) {
       console.error('Failed to fetch accounts', error);
     } finally {
@@ -56,9 +65,11 @@ export const EmailList = () => {
     }
   };
 
+  const { current, pageSize } = pagination;
+
   useEffect(() => {
-    getList();
-  }, []);
+    getList({ ...searchParams, page: current, page_size: pageSize });
+  }, [current, pageSize]);
 
   const showModal = () => {
     setState({
@@ -103,7 +114,7 @@ export const EmailList = () => {
       const { id, username, email } = item;
       return tableDataScource.push({
         key: id,
-        stt: index + 1,
+        stt: (current - 1) * pageSize + index + 1,
         id,
         username: <span className="ninjadash-username">{username}</span>,
         email: <span>{email}</span>,
@@ -143,7 +154,11 @@ export const EmailList = () => {
         onKeyDown={(e) => {
           stopPropagation(e);
           if (e.key === 'Enter') {
-            getList({ ...searchParams, shouldLoading: false });
+            setState({
+              ...state,
+              pagination: { ...pagination, current: 1 },
+            });
+            getList({ ...searchParams, shouldLoading: false, page: 1, page_size: pageSize });
           }
         }}
       />

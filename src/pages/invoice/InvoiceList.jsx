@@ -31,8 +31,17 @@ function InvoiceList() {
     date_to: undefined,
   });
 
-  const getInvoiceList = async (page, page_size = 20, loaihdon = 'purchase', date_from, date_to) => {
+  const [isLoading, setLoading] = useState(false);
+  const [searchLoading, setSearchLoading] = useState(false);
+
+  const getInvoiceList = async (page, page_size = 20, loaihdon = 'purchase', date_from, date_to, searchLoading) => {
     try {
+      if (searchLoading) {
+        setSearchLoading(true);
+      } else {
+        setLoading(true);
+      }
+
       const response = await DataService.get('invoices', {
         page,
         page_size,
@@ -53,6 +62,12 @@ function InvoiceList() {
       }
     } catch (error) {
       console.log(error);
+    } finally {
+      if (searchLoading) {
+        setSearchLoading(false);
+      } else {
+        setLoading(false);
+      }
     }
   };
 
@@ -60,10 +75,10 @@ function InvoiceList() {
   const { current, pageSize } = pagination;
 
   useEffect(() => {
-    getInvoiceList(current, pageSize, loaiHoaDon);
-  }, [current, pageSize, loaiHoaDon]);
+    getInvoiceList(current, pageSize);
+  }, [current, pageSize]);
 
-  const tableDataSource = handleTableDataSource(invoiceList);
+  const tableDataSource = handleTableDataSource(invoiceList, current, pageSize);
 
   return (
     <>
@@ -85,6 +100,7 @@ function InvoiceList() {
                   state={state}
                   setState={setState}
                   getInvoiceList={getInvoiceList}
+                  loading={isLoading || searchLoading}
                 />
               </Cards>
             </BorderLessHeading>

@@ -2,23 +2,14 @@ import { DownloadOutlined } from '@ant-design/icons';
 import { UilSearch } from '@iconscout/react-unicons';
 import { DatePicker, Select, Table } from 'antd';
 import PropTypes from 'prop-types';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Button } from '../../../components/buttons/buttons';
 import { DataService } from '../../../config/dataService/dataService';
 import { TableWrapper } from '../../../container/styled';
 import { downloadFile, formatTime } from '../../../utility/utility';
 import { DataTableStyleWrap } from '../style';
 
-function DataTable({
-  filterOption,
-  rowSelection = false,
-  tableData,
-  columns,
-  pagination,
-  state,
-  setState,
-  getInvoiceList,
-}) {
+function DataTable({ filterOption, loading, tableData, columns, pagination, state, setState, getInvoiceList }) {
   const [startDate, setStartDate] = useState();
   const [endDate, setEndDate] = useState();
 
@@ -27,16 +18,19 @@ function DataTable({
       ...prev,
       loaiHoaDon: value,
     }));
+    setState({
+      ...state,
+      pagination: { ...pagination, current: 1 },
+    });
+    getInvoiceList(1, state.pagination.pageSize, value, state.date_from, state.date_to, true);
   };
 
   const handleSearch = () => {
-    getInvoiceList(
-      state.pagination.current,
-      state.pagination.pageSize,
-      state.loaiHoaDon,
-      state.date_from,
-      state.date_to,
-    );
+    setState({
+      ...state,
+      pagination: { ...pagination, current: 1 },
+    });
+    getInvoiceList(1, state.pagination.pageSize, state.loaiHoaDon, state.date_from, state.date_to, true);
   };
 
   const handleExport = async () => {
@@ -128,36 +122,18 @@ function DataTable({
 
       <div className="ninjadasj-datatable">
         <TableWrapper className="table-data-view table-responsive">
-          {rowSelection ? (
-            <Table
-              bordered
-              rowSelection={{
-                ...rowSelection,
-              }}
-              pagination={{ pageSize: 20, showSizeChanger: true, ...pagination }}
-              dataSource={tableData}
-              columns={columns}
-              onChange={(_pagination) => {
-                setState((prev) => ({
-                  ...prev,
-                  pagination: _pagination,
-                }));
-              }}
-            />
-          ) : (
-            <Table
-              bordered
-              pagination={{ pageSize: 20, showSizeChanger: true, ...pagination }}
-              dataSource={tableData}
-              columns={columns}
-              onChange={(_pagination) => {
-                setState((prev) => ({
-                  ...prev,
-                  pagination: _pagination,
-                }));
-              }}
-            />
-          )}
+          <Table
+            pagination={{ pageSize: 20, showSizeChanger: true, ...pagination }}
+            dataSource={tableData}
+            columns={columns}
+            onChange={(_pagination) => {
+              setState((prev) => ({
+                ...prev,
+                pagination: _pagination,
+              }));
+            }}
+            loading={loading}
+          />
         </TableWrapper>
       </div>
     </DataTableStyleWrap>
@@ -166,7 +142,6 @@ function DataTable({
 
 DataTable.propTypes = {
   filterOption: PropTypes.bool,
-  rowSelection: PropTypes.bool,
   tableData: PropTypes.array,
   columns: PropTypes.array,
 };
