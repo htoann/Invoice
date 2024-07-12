@@ -1,11 +1,12 @@
+import Email from '@/pages/mails/c-pages/inbox';
 import { Spin } from 'antd';
 import React, { lazy, Suspense, useEffect } from 'react';
 import { Route, Routes, useLocation } from 'react-router-dom';
 import withAdminLayout from '../../layout/withAdminLayout';
+import { CoCauToChuc } from '../../pages/category/c-pages/co-cau-to-chuc/CoCauToChuc';
 import { HangHoa } from '../../pages/category/c-pages/hang-hoa/HangHoa';
 import InvoiceList from '../../pages/invoice/InvoiceList';
 import { EmailList } from '../../pages/mails/c-pages/email-list/EmailList';
-import Email from '../../pages/mails/c-pages/inbox/Email';
 import Axios from './axios';
 import Dashboard from './dashboard';
 import Ecommerce from './ecommerce';
@@ -13,7 +14,6 @@ import Features from './features';
 import Pages from './pages';
 import Users from './users';
 import Widgets from './widgets';
-import { CoCauToChuc } from '../../pages/category/c-pages/co-cau-to-chuc/CoCauToChuc';
 
 const KnowledgeBase = lazy(() => import('../../container/pages/knowledgeBase/Index'));
 const AllArticle = lazy(() => import('../../container/pages/knowledgeBase/AllArticle'));

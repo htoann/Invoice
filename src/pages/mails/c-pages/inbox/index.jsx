@@ -7,15 +7,15 @@ import { Button } from '../../../../components/buttons/buttons';
 import { Cards } from '../../../../components/cards/frame/cards-frame';
 import { PageHeader } from '../../../../components/page-headers/page-headers';
 import { Main } from '../../../../container/styled';
-import { InboxList } from './overview/InboxList';
-import { EmailWrapper } from './overview/style';
+import { InboxList } from './components/InboxList';
+import { EmailWrapper } from './components/style';
 
-const MailDetailView = lazy(() => import('./overview/MailDetailView'));
+const MailDetailView = lazy(() => import('./components/MailDetailView'));
 
 function Email() {
   const { pathname } = useLocation();
 
-  const PageRoutes = [
+  const pageRoutes = [
     {
       path: '/email/',
       breadcrumbName: 'Hộp thư',
@@ -54,7 +54,7 @@ function Email() {
 
   return (
     <>
-      <PageHeader className="ninjadash-page-header-main" title="Hộp thư đến" routes={PageRoutes} />
+      <PageHeader className="ninjadash-page-header-main" title="Hộp thư đến" routes={pageRoutes} />
 
       <Main>
         <EmailWrapper>
