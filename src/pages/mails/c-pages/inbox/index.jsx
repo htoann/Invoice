@@ -1,16 +1,16 @@
+import { Button } from '@/components/buttons/buttons';
+import { Cards } from '@/components/cards/frame/cards-frame';
+import { PageHeader } from '@/components/page-headers/page-headers';
+import { Main } from '@/container/styled';
 import UilAlignLeft from '@iconscout/react-unicons/icons/uil-align-left';
 import UilAlignRight from '@iconscout/react-unicons/icons/uil-align-right';
 import { Col, Row, Spin } from 'antd';
-import React, { lazy, Suspense, useLayoutEffect, useState } from 'react';
+import { lazy, Suspense, useLayoutEffect, useState } from 'react';
 import { Route, Routes, useLocation } from 'react-router-dom';
-import { Button } from '../../../../components/buttons/buttons';
-import { Cards } from '../../../../components/cards/frame/cards-frame';
-import { PageHeader } from '../../../../components/page-headers/page-headers';
-import { Main } from '../../../../container/styled';
 import { InboxList } from './components/InboxList';
 import { EmailWrapper } from './components/style';
 
-const MailDetailView = lazy(() => import('./components/MailDetailView'));
+const MailDetailView = lazy(() => import('./components/MailDetail'));
 
 function Email() {
   const { pathname } = useLocation();

@@ -1,3 +1,7 @@
+import { Cards } from '@/components/cards/frame/cards-frame';
+import { Dropdown } from '@/components/dropdown/dropdown';
+import Heading from '@/components/heading/heading';
+import { filterSinglePage } from '@/redux/product/actionCreator';
 import UilAngleDown from '@iconscout/react-unicons/icons/uil-angle-down';
 import UilArrowLeft from '@iconscout/react-unicons/icons/uil-arrow-left';
 import UilExclamationOctagon from '@iconscout/react-unicons/icons/uil-exclamation-octagon';
@@ -5,32 +9,24 @@ import UilPrint from '@iconscout/react-unicons/icons/uil-print';
 import UilRedo from '@iconscout/react-unicons/icons/uil-redo';
 import { Col, Row, Tooltip } from 'antd';
 import moment from 'moment';
-import React, { useEffect } from 'react';
-import FontAwesome from 'react-fontawesome';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, NavLink, useNavigate, useParams } from 'react-router-dom';
-import { Cards } from '../../../../../components/cards/frame/cards-frame';
-import { Dropdown } from '../../../../../components/dropdown/dropdown';
-import Heading from '../../../../../components/heading/heading';
-import { filterSinglePage, onStarUpdate } from '../../../../../redux/email/actionCreator';
 import { MailDetailsWrapper, MessageAction, MessageDetails } from './style';
 
-function Single() {
+function MailDetail() {
   const navigate = useNavigate();
   const email = useSelector((state) => state.emailSingle.data[0]);
   const dispatch = useDispatch();
 
   const params = useParams();
+
   useEffect(() => {
     if (filterSinglePage) {
       const id = parseInt(params.id, 10);
       dispatch(filterSinglePage(id));
     }
   }, [params.id, dispatch]);
-
-  const onStaredChange = (id) => {
-    dispatch(onStarUpdate(id));
-  };
 
   return (
     <MailDetailsWrapper>
@@ -45,38 +41,13 @@ function Single() {
                 <UilRedo />
               </NavLink>
             </Tooltip>
-            {/* <Tooltip placement="bottom" title="Archive">
-              <NavLink to="#">
-                <UilArchive />
-              </NavLink>
-            </Tooltip> */}
             <Tooltip placement="bottom" title="Info">
               <NavLink to="#">
                 <UilExclamationOctagon />
               </NavLink>
             </Tooltip>
-            {/* <Tooltip placement="bottom" title="Delete">
-              <NavLink to="#">
-                <UilTrash />
-              </NavLink>
-            </Tooltip> */}
-            {/* <Tooltip placement="bottom" title="Read">
-              <NavLink to="#">
-                <UilBookOpen />
-              </NavLink>
-            </Tooltip> */}
-            {/* <Tooltip placement="bottom" title="Folder">
-              <NavLink to="#">
-                <UilFolder />
-              </NavLink>
-            </Tooltip> */}
           </MessageAction>
         }
-        // isbutton={
-        //   <MailRightAction>
-        //     <span>1 - 50 of 235</span>
-        //   </MailRightAction>
-        // }
       >
         <Row gutter={15}>
           <Col>
@@ -90,11 +61,6 @@ function Single() {
                 </div>
 
                 <div className="message-action">
-                  {/* <Link to="#" className="ex-coll">
-                    <UilAngleUp />
-                    <UilAngleDown />
-                  </Link> */}
-
                   <Link to="#">
                     <UilPrint />
                   </Link>
@@ -134,23 +100,7 @@ function Single() {
                 </div>
 
                 <div className="message-excerpt">
-                  {/* <span>
-                    <UilPaperclip />
-                  </span> */}
                   <span> {moment(email?.id).format('LLL')} </span>
-                  <Link
-                    className={email?.stared ? 'starActive' : 'starDeactivate'}
-                    onClick={() => onStaredChange(email?.id)}
-                    to="#"
-                  >
-                    <FontAwesome name="star-o" />
-                  </Link>
-                  {/* <Link to="#">
-                    <UilCornerUpLeft />
-                  </Link>
-                  <Link to="#">
-                    <UilEllipsisV />
-                  </Link> */}
                 </div>
               </div>
 
@@ -209,4 +159,4 @@ function Single() {
   );
 }
 
-export default Single;
+export default MailDetail;
