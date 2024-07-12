@@ -1,0 +1,128 @@
+import { Button } from '@/components/buttons/buttons';
+import { Cards } from '@/components/cards/frame/cards-frame';
+import { BorderLessHeading } from '@/container/styled';
+import { RightOutlined } from '@ant-design/icons';
+import { Col, Form, Input, Menu, Modal, Skeleton } from 'antd';
+import { useState } from 'react';
+import MenuItem from '../components/MenuItem';
+import axios from '../mockApi';
+
+const DepartmentList = ({ departments, loadingDepartments, selectedDepartment, setSelectedDepartment }) => {
+  const [showCreate, setShowCreate] = useState(false);
+  const [showEdit, setShowEdit] = useState(false);
+  const [editItem, setEditItem] = useState(null);
+
+  const [form] = Form.useForm();
+
+  const handleCreate = () => {
+    setShowCreate(true);
+  };
+
+  const handleEdit = (item) => {
+    setEditItem(item);
+    setShowEdit(true);
+    form.setFieldsValue(item);
+  };
+
+  const handleDelete = (id) => {
+    axios.delete(`/departments/${id}`);
+  };
+
+  const handleCreateSubmit = (values) => {
+    axios.post('/departments', values).then(() => {
+      setShowCreate(false);
+    });
+    form.resetFields();
+  };
+
+  const handleEditSubmit = (values) => {
+    axios.put(`/departments/${editItem.id}`, values).then(() => {
+      setShowEdit(false);
+    });
+  };
+
+  return (
+    <Col xs={24} sm={12} md={8} lg={8}>
+      <BorderLessHeading>
+        <Cards title="Phòng ban">
+          <Menu
+            style={{ width: '100%' }}
+            mode="inline"
+            selectedKeys={[selectedDepartment]}
+            onClick={({ key }) => setSelectedDepartment(key)}
+            itemIcon={<RightOutlined />}
+          >
+            <Button
+              onClick={() => handleCreate()}
+              size="extra-small"
+              type="primary"
+              outlined
+              style={{ marginBottom: 10 }}
+            >
+              + Thêm phòng ban
+            </Button>
+            {loadingDepartments ? (
+              <Skeleton active style={{ marginTop: 10 }} />
+            ) : (
+              departments?.length > 0 &&
+              departments.map((department) => (
+                <Menu.Item key={department.id}>
+                  <MenuItem
+                    key={department.id}
+                    item={department}
+                    onEdit={() => handleEdit(department)}
+                    onDelete={() => handleDelete(department.id)}
+                  />
+                </Menu.Item>
+              ))
+            )}
+          </Menu>
+        </Cards>
+      </BorderLessHeading>
+
+      <Modal
+        title="Thêm phòng ban"
+        visible={showCreate}
+        onCancel={() => {
+          setShowCreate(false);
+          form.resetFields();
+        }}
+        footer={null}
+      >
+        <Form form={form} onFinish={handleCreateSubmit}>
+          <Form.Item
+            name="name"
+            label="Tên phòng ban"
+            rules={[{ required: true, message: 'Vui lòng nhập tên phòng ban' }]}
+          >
+            <Input />
+          </Form.Item>
+          <Form.Item>
+            <Button type="primary" htmlType="submit">
+              Thêm
+            </Button>
+          </Form.Item>
+        </Form>
+      </Modal>
+
+      <Modal title="Chỉnh sửa phòng ban" visible={showEdit} onCancel={() => setShowEdit(false)} footer={null}>
+        <Form form={form} onFinish={handleEditSubmit}>
+          <Form.Item
+            name="name"
+            label="Tên phòng ban"
+            rules={[{ required: true, message: 'Vui lòng nhập tên phòng ban' }]}
+          >
+            <Input />
+          </Form.Item>
+          <Form.Item>
+            <Button type="primary" htmlType="submit">
+              Lưu
+            </Button>
+          </Form.Item>
+        </Form>
+      </Modal>
+    </Col>
+  );
+};
+
+export default DepartmentList;

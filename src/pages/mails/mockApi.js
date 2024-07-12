@@ -1,9 +1,9 @@
-import axiosLmao from 'axios';
+import axiosInstance from 'axios';
 import MockAdapter from 'axios-mock-adapter';
 import { accounts } from './mock';
 import { inbox } from './mockEmail';
 
-const axios = axiosLmao.create();
+const axios = axiosInstance.create();
 
 const mock = new MockAdapter(axios, { delayResponse: 500 });
 
