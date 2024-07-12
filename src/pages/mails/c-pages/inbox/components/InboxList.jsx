@@ -71,7 +71,7 @@ export const InboxList = React.memo(({ toggleCollapsed, setSelectedInbox, select
     }
   }, [selectedUserId, current, pageSize]);
 
-  const resetPagination = () => {
+  const resetCurrentPage = () => {
     setPagination((prev) => ({
       ...prev,
       current: 1,
@@ -101,7 +101,6 @@ export const InboxList = React.memo(({ toggleCollapsed, setSelectedInbox, select
         placeholder="Chọn tài khoản"
         onChange={(value) => {
           setSelectedUserId(value);
-          resetPagination();
           setSearchTerm('');
           setPagination({
             pageSize: 20,
@@ -129,7 +128,7 @@ export const InboxList = React.memo(({ toggleCollapsed, setSelectedInbox, select
         }}
         onPressEnter={() => {
           getList({ searchTerm, page_size: pageSize, userId: selectedUserId });
-          resetPagination();
+          resetCurrentPage();
         }}
       />
 

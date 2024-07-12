@@ -158,7 +158,7 @@ export const EmailList = () => {
               ...state,
               pagination: { ...pagination, current: 1 },
             });
-            getList({ ...searchParams, shouldLoading: false, page: 1, page_size: pageSize });
+            getList({ ...searchParams, shouldLoading: false, page_size: pageSize });
           }
         }}
       />
