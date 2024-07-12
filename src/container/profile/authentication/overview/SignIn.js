@@ -57,7 +57,7 @@ function SignIn() {
                 label="Mật khẩu"
                 rules={[{ message: 'Vui lòng nhập mật khẩu', required: true }]}
               >
-                <Input.Password placeholder="Mật khẩu" />
+                <Input.Password placeholder="Mật khẩu" style={{ height: 45 }} />
               </Form.Item>
 
               <Row justify="center" align="middle">
@@ -89,11 +89,6 @@ function SignIn() {
               </Form.Item>
             </Form>
           </div>
-          {/* <div className="ninjadash-authentication-bottom">
-            <p>
-              Chưa có tài khoản?<Link to="/register">Đăng ký</Link>
-            </p>
-          </div> */}
         </AuthFormWrap>
       </Col>
     </Row>
