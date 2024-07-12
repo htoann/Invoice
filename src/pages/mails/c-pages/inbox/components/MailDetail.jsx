@@ -1,7 +1,6 @@
 import { Cards } from '@/components/cards/frame/cards-frame';
 import { Dropdown } from '@/components/dropdown/dropdown';
 import Heading from '@/components/heading/heading';
-import { filterSinglePage } from '@/redux/product/actionCreator';
 import UilAngleDown from '@iconscout/react-unicons/icons/uil-angle-down';
 import UilArrowLeft from '@iconscout/react-unicons/icons/uil-arrow-left';
 import UilExclamationOctagon from '@iconscout/react-unicons/icons/uil-exclamation-octagon';
@@ -9,31 +8,16 @@ import UilPrint from '@iconscout/react-unicons/icons/uil-print';
 import UilRedo from '@iconscout/react-unicons/icons/uil-redo';
 import { Col, Row, Tooltip } from 'antd';
 import moment from 'moment';
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Link, NavLink, useNavigate, useParams } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { MailDetailsWrapper, MessageAction, MessageDetails } from './style';
 
-function MailDetail() {
-  const navigate = useNavigate();
-  const email = useSelector((state) => state.emailSingle.data[0]);
-  const dispatch = useDispatch();
-
-  const params = useParams();
-
-  useEffect(() => {
-    if (filterSinglePage) {
-      const id = parseInt(params.id, 10);
-      dispatch(filterSinglePage(id));
-    }
-  }, [params.id, dispatch]);
-
+function MailDetail({ selectedInbox: email, setSelectedInbox }) {
   return (
     <MailDetailsWrapper>
       <Cards
         title={
           <MessageAction>
-            <Link onClick={() => navigate(-1)} to="#">
+            <Link onClick={() => setSelectedInbox(null)}>
               <UilArrowLeft />
             </Link>
             <Tooltip placement="bottom" title="Refresh">

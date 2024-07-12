@@ -5,10 +5,10 @@ import { Option } from 'antd/lib/mentions';
 import Paragraph from 'antd/lib/typography/Paragraph';
 import propTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { EmailNav } from './style';
 
-export const InboxList = React.memo(({ toggleCollapsed }) => {
+export const InboxList = React.memo(({ toggleCollapsed, setSelectedInbox, selectedInbox }) => {
   const [pagination, setPagination] = useState({
     pageSize: 20,
     showSizeChanger: true,
@@ -142,7 +142,14 @@ export const InboxList = React.memo(({ toggleCollapsed }) => {
               {inboxList.length > 0 ? (
                 inboxList.map((item) => (
                   <li key={item.id}>
-                    <NavLink to={`./inbox/${item.id}`} onClick={toggleCollapsed}>
+                    <Link
+                      className={item?.id === selectedInbox?.id ? 'active' : ''}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        toggleCollapsed && toggleCollapsed();
+                        setSelectedInbox(item);
+                      }}
+                    >
                       <UilInbox />
                       <span className="nav-text" style={{ padding: '5px 0' }}>
                         <div style={{ display: 'flex', flexDirection: 'column', width: '100%', flex: 1 }}>
@@ -159,7 +166,7 @@ export const InboxList = React.memo(({ toggleCollapsed }) => {
                           {item?.date}
                         </span>
                       </span>
-                    </NavLink>
+                    </Link>
                   </li>
                 ))
               ) : (
