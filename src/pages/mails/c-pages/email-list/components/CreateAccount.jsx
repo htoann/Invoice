@@ -31,7 +31,7 @@ function CreateAccount({ state, setState, accounts, setAccounts }) {
   const handleOk = async (values) => {
     const newAccount = await createNewAccount(values);
     if (newAccount) {
-      setAccounts([...accounts, newAccount]);
+      setAccounts([newAccount, ...accounts]);
       onCancel();
       notification.success({
         message: 'Thành công',
