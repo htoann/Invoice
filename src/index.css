@@ -3235,3 +3235,7 @@ tr[data-row-key='searchInput'] {
 .ninjadash-top-menu ul li a {
   color: #404040 !important;
 }
+
+.ninjadash-top-menu ul li > ul li a:hover {
+  color: #8231d3;
+}

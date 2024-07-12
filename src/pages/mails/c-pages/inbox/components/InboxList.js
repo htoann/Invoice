@@ -1,47 +1,110 @@
+import axios from '@/pages/mails/mockApi';
 import UilInbox from '@iconscout/react-unicons/icons/uil-inbox';
-import { Input, Pagination, Select } from 'antd';
+import { Input, Pagination, Select, Skeleton } from 'antd';
 import { Option } from 'antd/lib/mentions';
 import Paragraph from 'antd/lib/typography/Paragraph';
 import propTypes from 'prop-types';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import accountList from '../../../../../demoData/data-table.json';
-import inboxList from '../../../../../demoData/emailData2.json';
 import { EmailNav } from './style';
 
 export const InboxList = React.memo(({ toggleCollapsed }) => {
-  const [currentPage, setCurrentPage] = useState(1);
-  const [pageSize, setPageSize] = useState(10);
+  const [pagination, setPagination] = useState({
+    pageSize: 20,
+    showSizeChanger: true,
+    current: 1,
+    total: 0,
+  });
 
+  const { pageSize, current, total } = pagination;
+
+  const [inboxList, setInboxList] = useState([]);
+  const [accountList, setAccountList] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
+  const [selectedUserId, setSelectedUserId] = useState(null);
+
+  const [loading, setLoading] = useState(false);
+
+  const getUsers = async () => {
+    try {
+      setLoading(true);
+      const response = await axios.get('/api/accounts');
+      setAccountList(response?.data?.results);
+    } catch (error) {
+      console.error('Failed to fetch accounts', error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const getList = async ({ searchTerm = '', page = 1, page_size = 20, userId = '' } = {}) => {
+    try {
+      setLoading(true);
+      const response = await axios.get('/api/inbox', {
+        params: {
+          searchTerm,
+          page,
+          page_size,
+          userId,
+        },
+      });
+
+      setInboxList(response?.data?.results);
+      setPagination((prev) => ({
+        ...prev,
+        total: Number(response?.data?.count) || 0,
+      }));
+    } catch (error) {
+      console.error('Failed to fetch inbox list', error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    getUsers();
+  }, []);
+
+  useEffect(() => {
+    if (selectedUserId) {
+      getList({ searchTerm, page: current, page_size: pageSize, userId: selectedUserId });
+    }
+  }, [selectedUserId, searchTerm, current, pageSize]);
+
+  useEffect(() => {
+    setPagination((prev) => ({
+      ...prev,
+      current: 1,
+    }));
+  }, [selectedUserId]);
 
   const handlePageChange = (page, pageSize) => {
-    setCurrentPage(page);
-    setPageSize(pageSize);
+    setPagination((prev) => ({
+      ...prev,
+      current: page,
+      pageSize,
+    }));
   };
 
-  const sendersFilter = inboxList.filter((user) => user.from.toLowerCase().includes(searchTerm.toLowerCase()));
-
-  const startIndex = (currentPage - 1) * pageSize;
-  const endIndex = startIndex + pageSize;
-  const paginatedItems = sendersFilter.slice(startIndex, endIndex);
-
-  const users = accountList.map((item) => ({
-    id: item.id,
-    name: item.name,
-  }));
-
-  const handleChange = (value) => {
-    console.log(`Selected user ID: ${value}`);
-  };
-
-  const handleSearch = (event) => {
-    setSearchTerm(event.target.value);
-  };
+  const users =
+    accountList?.length > 0
+      ? accountList.map((item) => ({
+          id: item.id,
+          name: item.name,
+        }))
+      : [];
 
   return (
     <>
-      <Select style={{ width: '100%', marginBottom: 20 }} placeholder="Chọn tài khoản" onChange={handleChange}>
+      <Select
+        style={{ width: '100%', marginBottom: 20 }}
+        placeholder="Chọn tài khoản"
+        onChange={(value) => {
+          setSelectedUserId(value);
+        }}
+        loading={loading}
+        disabled={loading}
+      >
         {users.map((user) => (
           <Option key={user.id} value={user.id}>
             {user.name}
@@ -53,44 +116,61 @@ export const InboxList = React.memo(({ toggleCollapsed }) => {
         style={{ width: '100%', marginBottom: 20, height: 40 }}
         placeholder="Tìm kiếm theo người gửi"
         value={searchTerm}
-        onChange={handleSearch}
+        onChange={(event) => {
+          setSearchTerm(event.target.value);
+        }}
+        onPressEnter={() => getList({ searchTerm, page: current, page_size: pageSize, userId: selectedUserId })}
       />
 
-      <div style={{ display: 'flex', justifyContent: 'center' }}>
-        <Pagination
-          current={currentPage}
-          pageSize={pageSize}
-          onChange={handlePageChange}
-          total={sendersFilter.length}
-          showSizeChanger
-        />
-      </div>
+      {loading ? (
+        <Skeleton active />
+      ) : (
+        <>
+          <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 20 }}>
+            <Pagination
+              current={current}
+              pageSize={pageSize}
+              onChange={handlePageChange}
+              total={total}
+              showSizeChanger
+              onShowSizeChange={(current, size) => setPagination((prev) => ({ ...prev, pageSize: size }))}
+            />
+          </div>
 
-      <EmailNav>
-        <ul>
-          {paginatedItems.length > 0 &&
-            paginatedItems.map((item) => (
-              <li key={item.id}>
-                <NavLink to={`./inbox/${item.id}`} onClick={toggleCollapsed}>
-                  <UilInbox />
-                  <span className="nav-text" style={{ padding: '5px 0' }}>
-                    <div style={{ display: 'flex', flexDirection: 'column', width: '100%', flex: 1 }}>
-                      <Paragraph ellipsis style={{ width: '100%', fontWeight: 500, color: 'rgb(64, 64, 64)' }}>
-                        {item?.subject}
-                      </Paragraph>
-                      <Paragraph ellipsis style={{ width: '100%', marginBottom: 0 }}>
-                        {item?.from}
-                      </Paragraph>
-                    </div>
-                    <span style={{ whiteSpace: 'nowrap', fontSize: '13px', fontWeight: 400, color: 'rgb(64, 64, 64)' }}>
-                      {item?.date}
-                    </span>
-                  </span>
-                </NavLink>
-              </li>
-            ))}
-        </ul>
-      </EmailNav>
+          <EmailNav>
+            <ul>
+              {inboxList.length > 0 ? (
+                inboxList.map((item) => (
+                  <li key={item.id}>
+                    <NavLink to={`./inbox/${item.id}`} onClick={toggleCollapsed}>
+                      <UilInbox />
+                      <span className="nav-text" style={{ padding: '5px 0' }}>
+                        <div style={{ display: 'flex', flexDirection: 'column', width: '100%', flex: 1 }}>
+                          <Paragraph ellipsis style={{ width: '100%', fontWeight: 500, color: 'rgb(64, 64, 64)' }}>
+                            {item?.subject}
+                          </Paragraph>
+                          <Paragraph ellipsis style={{ width: '100%', marginBottom: 0 }}>
+                            {item?.from}
+                          </Paragraph>
+                        </div>
+                        <span
+                          style={{ whiteSpace: 'nowrap', fontSize: '13px', fontWeight: 400, color: 'rgb(64, 64, 64)' }}
+                        >
+                          {item?.date}
+                        </span>
+                      </span>
+                    </NavLink>
+                  </li>
+                ))
+              ) : (
+                <li>
+                  <Paragraph style={{ textAlign: 'center', padding: '10px 0' }}>No emails found</Paragraph>
+                </li>
+              )}
+            </ul>
+          </EmailNav>
+        </>
+      )}
     </>
   );
 });
