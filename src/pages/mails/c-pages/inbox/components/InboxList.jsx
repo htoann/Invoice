@@ -139,7 +139,7 @@ export const InboxList = React.memo(({ toggleCollapsed, setSelectedInbox, select
 
           <EmailNav>
             <ul>
-              {inboxList.length > 0 ? (
+              {inboxList?.length > 0 ? (
                 inboxList.map((item) => (
                   <li key={item.id}>
                     <Link
