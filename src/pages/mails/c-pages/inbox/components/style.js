@@ -449,8 +449,13 @@ const EmailNav = Styled.nav`
     padding: 0;
     max-height: calc(100vh - 426px);
     overflow: auto;
+    height: calc(100vh - 448px);
+    padding-right: 10px;
     li{
-      position: relative;
+      &:has(.empty) {
+        position: relative;
+        height: 100%;
+      }
       &.add-label-btn{
         direction: ${({ theme }) => (!theme.rtl ? 'ltr' : 'ltr')};
         a{
@@ -591,6 +596,9 @@ const EmailNav = Styled.nav`
 const MailDetailsWrapper = Styled.div`
   .ant-card-body{
     padding: 30px 0 !important;
+    max-height: calc(-272px + 100vh);
+    overflow: auto;
+    overflow-x: hidden;
   }
   .ant-card-head-wrapper{
     @media only screen and (max-width: 767px){
@@ -1109,6 +1117,7 @@ const EmailWrapper = Styled.div`
     }
     .ant-card{
       /* min-height: 900px; */
+      height: 100%;
       .ant-card-body{
         padding: 0px !important;
       }
@@ -1124,6 +1133,8 @@ const EmailWrapper = Styled.div`
 
   .mail-sidebar-bottom{
     padding: 25px 15px;
+    height: calc(100vh - 200px);
+    overflow: auto;
     ul{
       li {
         a{

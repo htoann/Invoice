@@ -14,13 +14,10 @@ function DataTable({ loading, tableData, columns, pagination, state, setState, g
   const [endDate, setEndDate] = useState();
 
   const handleLoaiHoaDonSearch = (value) => {
-    setState((prev) => ({
-      ...prev,
-      loaiHoaDon: value,
-    }));
     setState({
       ...state,
       pagination: { ...pagination, current: 1 },
+      loaiHoaDon: value,
     });
     getInvoiceList(1, state.pagination.pageSize, value, state.date_from, state.date_to, true);
   };

@@ -86,14 +86,6 @@ export const InboxList = React.memo(({ toggleCollapsed, setSelectedInbox, select
     }));
   };
 
-  const users =
-    accountList?.length > 0
-      ? accountList.map((item) => ({
-          id: item.id,
-          name: item.name,
-        }))
-      : [];
-
   return (
     <>
       <Select
@@ -112,40 +104,48 @@ export const InboxList = React.memo(({ toggleCollapsed, setSelectedInbox, select
         loading={loading}
         disabled={loading}
       >
-        {users.map((user) => (
+        {accountList.map((user) => (
           <Option key={user.id} value={user.id}>
-            {user.name}
+            {user.email}
           </Option>
         ))}
       </Select>
 
-      <Input
-        style={{ width: '100%', marginBottom: 20, height: 40 }}
-        placeholder="Tìm kiếm theo người gửi"
-        value={searchTerm}
-        onChange={(event) => {
-          setSearchTerm(event.target.value);
-        }}
-        onPressEnter={() => {
-          getList({ searchTerm, page_size: pageSize, userId: selectedUserId });
-          resetCurrentPage();
-        }}
-      />
+      {inboxList?.length > 0 && (
+        <Input
+          style={{ width: '100%', marginBottom: 20, height: 40 }}
+          placeholder="Tìm kiếm theo người gửi"
+          value={searchTerm}
+          onChange={(event) => {
+            setSearchTerm(event.target.value);
+          }}
+          onPressEnter={() => {
+            getList({ searchTerm, page_size: pageSize, userId: selectedUserId });
+            resetCurrentPage();
+          }}
+        />
+      )}
 
       {loading ? (
-        <Skeleton active />
+        <>
+          <Skeleton active />
+          <Skeleton style={{ marginTop: 10 }} active />
+          <Skeleton style={{ marginTop: 10 }} active />
+        </>
       ) : (
         <>
-          <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 20 }}>
-            <Pagination
-              current={current}
-              pageSize={pageSize}
-              onChange={handlePageChange}
-              total={total}
-              showSizeChanger
-              onShowSizeChange={(current, size) => setPagination((prev) => ({ ...prev, pageSize: size }))}
-            />
-          </div>
+          {inboxList?.length > 0 && (
+            <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 20 }}>
+              <Pagination
+                current={current}
+                pageSize={pageSize}
+                onChange={handlePageChange}
+                total={total}
+                showSizeChanger
+                onShowSizeChange={(current, size) => setPagination((prev) => ({ ...prev, pageSize: size }))}
+              />
+            </div>
+          )}
 
           <EmailNav>
             <ul>
@@ -181,7 +181,19 @@ export const InboxList = React.memo(({ toggleCollapsed, setSelectedInbox, select
                 ))
               ) : (
                 <li>
-                  <Paragraph style={{ textAlign: 'center', padding: '10px 0' }}>No emails found</Paragraph>
+                  <Paragraph
+                    style={{
+                      textAlign: 'center',
+                      padding: '10px 0',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      height: '100%',
+                    }}
+                    className="empty"
+                  >
+                    No emails found
+                  </Paragraph>
                 </li>
               )}
             </ul>

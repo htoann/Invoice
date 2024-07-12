@@ -2,8 +2,7 @@ import { Cards } from '@/components/cards/frame/cards-frame';
 import { Dropdown } from '@/components/dropdown/dropdown';
 import Heading from '@/components/heading/heading';
 import UilAngleDown from '@iconscout/react-unicons/icons/uil-angle-down';
-import UilArrowLeft from '@iconscout/react-unicons/icons/uil-arrow-left';
-import UilExclamationOctagon from '@iconscout/react-unicons/icons/uil-exclamation-octagon';
+import UilImport from '@iconscout/react-unicons/icons/uil-import';
 import UilPrint from '@iconscout/react-unicons/icons/uil-print';
 import UilRedo from '@iconscout/react-unicons/icons/uil-redo';
 import { Col, Row, Tooltip } from 'antd';
@@ -17,23 +16,15 @@ function MailDetail({ selectedInbox: email, setSelectedInbox }) {
       <Cards
         title={
           <MessageAction>
-            <Link onClick={() => setSelectedInbox(null)}>
-              <UilArrowLeft />
-            </Link>
             <Tooltip placement="bottom" title="Refresh">
               <NavLink to="#">
                 <UilRedo />
               </NavLink>
             </Tooltip>
-            <Tooltip placement="bottom" title="Info">
-              <NavLink to="#">
-                <UilExclamationOctagon />
-              </NavLink>
-            </Tooltip>
           </MessageAction>
         }
       >
-        <Row gutter={15} style={{ maxHeight: 'calc(100vh - 312px)', overflow: 'auto' }}>
+        <Row gutter={15}>
           <Col>
             <MessageDetails>
               <div className="d-flex justify-content-between align-items-center">
@@ -112,6 +103,9 @@ function MailDetail({ selectedInbox: email, setSelectedInbox }) {
                         <span className="ninjadash-ticket-file-name">Product-guidelines.pdf</span>
                         <span className="ninjadash-ticket-file-size">522 KB</span>
                       </div>
+                      <Link className="btn-link" to="#" style={{ marginLeft: 10 }}>
+                        <UilImport />
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -130,6 +124,9 @@ function MailDetail({ selectedInbox: email, setSelectedInbox }) {
                         <span className="ninjadash-ticket-file-name">Product-guidelines.pdf</span>
                         <span className="ninjadash-ticket-file-size">522 KB</span>
                       </div>
+                      <Link className="btn-link" to="#" style={{ marginLeft: 10 }}>
+                        <UilImport />
+                      </Link>
                     </div>
                   </div>
                 </div>

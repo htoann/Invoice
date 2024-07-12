@@ -24,6 +24,7 @@ export const EmailList = () => {
   });
 
   const { pagination } = state;
+  const { current, pageSize } = pagination;
 
   const [accounts, setAccounts] = useState([]);
   const [isLoadingGetList, setIsLoadingGetList] = useState(false);
@@ -64,8 +65,6 @@ export const EmailList = () => {
       }
     }
   };
-
-  const { current, pageSize } = pagination;
 
   useEffect(() => {
     getList({ ...searchParams, page: current, page_size: pageSize });
