@@ -33,7 +33,7 @@ function MailDetail({ selectedInbox: email, setSelectedInbox }) {
           </MessageAction>
         }
       >
-        <Row gutter={15}>
+        <Row gutter={15} style={{ maxHeight: 'calc(100vh - 312px)', overflow: 'auto' }}>
           <Col>
             <MessageDetails>
               <div className="d-flex justify-content-between align-items-center">

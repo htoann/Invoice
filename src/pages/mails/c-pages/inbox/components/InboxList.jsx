@@ -69,14 +69,14 @@ export const InboxList = React.memo(({ toggleCollapsed, setSelectedInbox, select
     if (selectedUserId) {
       getList({ searchTerm, page: current, page_size: pageSize, userId: selectedUserId });
     }
-  }, [selectedUserId, searchTerm, current, pageSize]);
+  }, [selectedUserId, current, pageSize]);
 
-  useEffect(() => {
+  const resetPagination = () => {
     setPagination((prev) => ({
       ...prev,
       current: 1,
     }));
-  }, [selectedUserId]);
+  };
 
   const handlePageChange = (page, pageSize) => {
     setPagination((prev) => ({
@@ -101,6 +101,14 @@ export const InboxList = React.memo(({ toggleCollapsed, setSelectedInbox, select
         placeholder="Chọn tài khoản"
         onChange={(value) => {
           setSelectedUserId(value);
+          resetPagination();
+          setSearchTerm('');
+          setPagination({
+            pageSize: 20,
+            showSizeChanger: true,
+            current: 1,
+            total: 0,
+          });
         }}
         loading={loading}
         disabled={loading}
@@ -119,7 +127,10 @@ export const InboxList = React.memo(({ toggleCollapsed, setSelectedInbox, select
         onChange={(event) => {
           setSearchTerm(event.target.value);
         }}
-        onPressEnter={() => getList({ searchTerm, page: current, page_size: pageSize, userId: selectedUserId })}
+        onPressEnter={() => {
+          getList({ searchTerm, page_size: pageSize, userId: selectedUserId });
+          resetPagination();
+        }}
       />
 
       {loading ? (

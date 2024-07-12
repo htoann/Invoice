@@ -447,6 +447,8 @@ const EmailNav = Styled.nav`
     list-style: none;
     margin: 20px 0;
     padding: 0;
+    max-height: calc(100vh - 426px);
+    overflow: auto;
     li{
       position: relative;
       &.add-label-btn{
