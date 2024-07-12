@@ -7,7 +7,7 @@ import { Button, Col, Input, notification, Popconfirm, Row, Skeleton } from 'ant
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from '../../mockApi';
-import DataTable from './DataTable';
+import DataTable from './components/DataTable';
 import CreateAccount from './components/CreateAccount';
 import UpdateAccount from './components/UpdateAccount';
 

@@ -1,4 +1,3 @@
-import Email from '@/pages/mails/c-pages/inbox';
 import { Spin } from 'antd';
 import React, { lazy, Suspense, useEffect } from 'react';
 import { Route, Routes, useLocation } from 'react-router-dom';
@@ -14,6 +13,7 @@ import Features from './features';
 import Pages from './pages';
 import Users from './users';
 import Widgets from './widgets';
+import Email from '@/pages/mails/c-pages/inbox/Inbox';
 
 const KnowledgeBase = lazy(() => import('../../container/pages/knowledgeBase/Index'));
 const AllArticle = lazy(() => import('../../container/pages/knowledgeBase/AllArticle'));

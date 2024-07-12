@@ -1,7 +1,7 @@
 import { Table } from 'antd';
 import PropTypes from 'prop-types';
-import { TableWrapper } from '../../../../container/styled';
-import { DataTableStyleWrap } from './style';
+import { DataTableStyleWrap } from '../style';
+import { TableWrapper } from '@/container/styled';
 
 function DataTable({ tableData, columns, pagination, setState, loading }) {
   return (
