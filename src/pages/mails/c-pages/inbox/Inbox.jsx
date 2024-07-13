@@ -13,7 +13,7 @@ import { EmailWrapper } from './components/style';
 function Email() {
   const pageRoutes = [
     {
-      path: '/email/',
+      path: '/email',
       breadcrumbName: 'Hộp thư',
     },
     {
