@@ -36,7 +36,7 @@ function DataTable({ loading, tableData, columns, pagination, state, setState, g
         responseType: 'blob',
       });
 
-      downloadFile(response, `HDDT${formatTime(state.date_from || state.date_to)}.xlsx`);
+      downloadFile(response, `HDDT${formatTime(startDate || endDate)}.xlsx`);
     } catch (error) {
       console.log(error);
     }
@@ -105,7 +105,7 @@ function DataTable({ loading, tableData, columns, pagination, state, setState, g
             size="small"
             outlined
             onClick={handleExport}
-            disabled={!state.invoiceList?.length}
+            // disabled={!state.invoiceList?.length}
           >
             <DownloadOutlined />
             Xuất Excel
