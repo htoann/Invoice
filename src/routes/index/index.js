@@ -31,9 +31,6 @@ const Projects = lazy(() => import('./projects'));
 const Myprofile = lazy(() => import('../../container/profile/myProfile/Index'));
 const Icons = lazy(() => import('./icons'));
 const Tables = lazy(() => import('./table'));
-const Jobs = lazy(() => import('../../container/jobSearch/Jobs'));
-const JobDetails = lazy(() => import('../../container/jobSearch/JobSearchDetails'));
-const JobApply = lazy(() => import('../../container/jobSearch/JobApplication'));
 const NotFound = lazy(() => import('../../container/pages/404'));
 
 const Index = React.memo(() => {
@@ -80,9 +77,6 @@ const Index = React.memo(() => {
         <Route path="icons/*" element={<Icons />} />
         <Route path="tables/*" element={<Tables />} />
         <Route path="widgets/*" element={<Widgets />} />
-        <Route path="app/jobs/*" element={<Jobs />} />
-        <Route path="app/job/apply" element={<JobApply />} />
-        <Route path="app/jobDetails/:id" element={<JobDetails />} />
         <Route path="axios/*" element={<Axios />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
