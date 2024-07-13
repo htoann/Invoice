@@ -4,7 +4,7 @@ import { DatePicker, Select, Table } from 'antd';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { Button } from '../../../components/buttons/buttons';
-import { DataService } from '../../../config/dataService/dataService';
+import { DataService } from '../../../config/dataService';
 import { TableWrapper } from '../../../container/styled';
 import { downloadFile, formatTime } from '../../../utility/utility';
 import { DataTableStyleWrap } from '../style';

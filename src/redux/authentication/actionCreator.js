@@ -1,6 +1,6 @@
 import Cookies from 'js-cookie';
 import actions from './actions';
-import { DataService } from '../../config/dataService/dataService';
+import { DataService } from '../../config/dataService';
 import { notification } from 'antd';
 
 const { loginBegin, loginSuccess, loginErr, logoutBegin, logoutSuccess, logoutErr } = actions;

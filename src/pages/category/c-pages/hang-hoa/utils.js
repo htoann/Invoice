@@ -1,4 +1,4 @@
-import { DataService } from '../../../../config/dataService/dataService';
+import { DataService } from '../../../../config/dataService';
 import { downloadFile, formatTime } from '../../../../utility/utility';
 
 export const handleExport = async (date) => {

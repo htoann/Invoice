@@ -24,13 +24,11 @@ const Tickets = lazy(() => import('../../container/supportTicket/Index'));
 const AddTicket = lazy(() => import('../../container/supportTicket/AddSupport'));
 const TicketDetails = lazy(() => import('../../container/supportTicket/SupportTicketDetails'));
 const Import = lazy(() => import('../../container/importExport/Import'));
-const Note = lazy(() => import('../../container/note/Note'));
 const Contact = lazy(() => import('../../container/contact/Contact'));
 const ContactGrid = lazy(() => import('../../container/contact/ContactGrid'));
 const ContactAddNew = lazy(() => import('../../container/contact/AddNew'));
 const Projects = lazy(() => import('./projects'));
 const Myprofile = lazy(() => import('../../container/profile/myProfile/Index'));
-const Chat = lazy(() => import('../../container/chat/ChatApp'));
 const Icons = lazy(() => import('./icons'));
 const Tables = lazy(() => import('./table'));
 const Jobs = lazy(() => import('../../container/jobSearch/Jobs'));
@@ -72,7 +70,6 @@ const Index = React.memo(() => {
         <Route path="app/support/tickets/add" element={<AddTicket />} />
         <Route path="app/support/ticketDetails/:id" element={<TicketDetails />} />
         <Route path="importExport/import" element={<Import />} />
-        <Route path="app/note/*" element={<Note />} />
         <Route path="contact/list" element={<Contact />} />
         <Route path="contact/grid" element={<ContactGrid />} />
         <Route path="contact/addNew" element={<ContactAddNew />} />
@@ -80,7 +77,6 @@ const Index = React.memo(() => {
         <Route path="project/*" element={<Projects />} />
         <Route path="profile/myProfile/*" element={<Myprofile />} />
         <Route path="ecommerce/*" element={<Ecommerce />} />
-        <Route path="main/chat/*" element={<Chat />} />
         <Route path="icons/*" element={<Icons />} />
         <Route path="tables/*" element={<Tables />} />
         <Route path="widgets/*" element={<Widgets />} />
