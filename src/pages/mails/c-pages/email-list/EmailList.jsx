@@ -82,7 +82,6 @@ export const EmailList = () => {
     axios
       .get('/departments')
       .then((response) => {
-        console.log(response);
         setDepartments(response.data.departments);
         setLoadingDepartments(false);
       })
