@@ -16,12 +16,9 @@ function SignIn() {
   const [imgCapcha, setImgCapcha] = useState();
   const [keyCapcha, setKeyCapcha] = useState();
 
-  const handleSubmit = useCallback(
-    (values) => {
-      dispatch(login({ ...values, ckey: keyCapcha }, () => navigate('/')));
-    },
-    [navigate, dispatch, keyCapcha],
-  );
+  const handleSubmit = (values) => {
+    dispatch(login({ ...values, ckey: keyCapcha }, () => navigate('/')));
+  };
 
   const getCapcha = async () => {
     const data = await axios.get(process.env.REACT_APP_HDDT_CAPTCHA);
@@ -46,14 +43,12 @@ function SignIn() {
               <Form.Item
                 name="username"
                 rules={[{ message: 'Vui lòng nhập tên đăng nhập', required: true }]}
-                initialValue=""
                 label="Tên đăng nhập"
               >
                 <Input placeholder="name@example.com" />
               </Form.Item>
               <Form.Item
                 name="password"
-                initialValue=""
                 label="Mật khẩu"
                 rules={[{ message: 'Vui lòng nhập mật khẩu', required: true }]}
               >
@@ -64,7 +59,6 @@ function SignIn() {
                 <Col xl={12} xs={24}>
                   <Form.Item
                     name="cvalue"
-                    initialValue=""
                     label="Mã xác nhận"
                     rules={[{ message: 'Vui lòng nhập mã xác nhận', required: true }]}
                   >

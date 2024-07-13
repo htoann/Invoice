@@ -1,6 +1,7 @@
 import Cookies from 'js-cookie';
 import actions from './actions';
 import { DataService } from '../../config/dataService/dataService';
+import { notification } from 'antd';
 
 const { loginBegin, loginSuccess, loginErr, logoutBegin, logoutSuccess, logoutErr } = actions;
 
@@ -22,6 +23,10 @@ const login = (values, callback) => {
       dispatch(loginSuccess(true));
       callback();
     } catch (err) {
+      notification.error({
+        message: 'Đăng nhập',
+        description: 'Đăng nhập thất bại',
+      });
       dispatch(loginErr(err));
     }
   };
