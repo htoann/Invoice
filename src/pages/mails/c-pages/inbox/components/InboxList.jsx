@@ -40,12 +40,10 @@ export const InboxList = React.memo(({ toggleCollapsed, setSelectedInbox, select
     try {
       setLoading(true);
       const response = await axios.get('/api/inbox', {
-        params: {
-          searchTerm,
-          page,
-          page_size,
-          userId,
-        },
+        searchTerm,
+        page,
+        page_size,
+        userId,
       });
 
       setInboxList(response?.data?.results);

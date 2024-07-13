@@ -7,8 +7,8 @@ import { Button, Col, Input, notification, Popconfirm, Row, Skeleton } from 'ant
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from '../../mockApi';
-import DataTable from './components/DataTable';
 import CreateAccount from './components/CreateAccount';
+import DataTable from './components/DataTable';
 import UpdateAccount from './components/UpdateAccount';
 
 export const EmailList = () => {
@@ -39,12 +39,10 @@ export const EmailList = () => {
         setIsLoadingGetList(true);
       }
       const response = await axios.get('/api/accounts', {
-        params: {
-          username,
-          email,
-          page,
-          page_size,
-        },
+        username,
+        email,
+        page,
+        page_size,
       });
 
       setAccounts(response?.data?.results);

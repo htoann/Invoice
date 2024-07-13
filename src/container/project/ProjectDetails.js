@@ -1,24 +1,24 @@
-import React, { lazy, Suspense, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { Row, Col, Progress, Spin } from 'antd';
-import UilPlus from '@iconscout/react-unicons/icons/uil-plus';
-import UilCheck from '@iconscout/react-unicons/icons/uil-check';
-import UilEditAlt from '@iconscout/react-unicons/icons/uil-edit-alt';
-import UilTrashAlt from '@iconscout/react-unicons/icons/uil-trash-alt';
-import UilListUl from '@iconscout/react-unicons/icons/uil-list-ul';
 import UilChartPie from '@iconscout/react-unicons/icons/uil-chart-pie';
-import UilWebGridAlt from '@iconscout/react-unicons/icons/uil-web-grid-alt';
+import UilCheck from '@iconscout/react-unicons/icons/uil-check';
 import UilClock from '@iconscout/react-unicons/icons/uil-clock';
+import UilEditAlt from '@iconscout/react-unicons/icons/uil-edit-alt';
+import UilListUl from '@iconscout/react-unicons/icons/uil-list-ul';
+import UilPlus from '@iconscout/react-unicons/icons/uil-plus';
+import UilTrashAlt from '@iconscout/react-unicons/icons/uil-trash-alt';
 import UilUserPlus from '@iconscout/react-unicons/icons/uil-user-plus';
-import { Link, NavLink, Routes, Route, useParams } from 'react-router-dom';
-import { ProjectDetailsWrapper, TaskLists } from './style';
-import FileListCard from './overview/FileListCard';
-import { PageHeader } from '../../components/page-headers/page-headers';
-import { Main } from '../styled';
-import Heading from '../../components/heading/heading';
-import { Cards } from '../../components/cards/frame/cards-frame';
+import UilWebGridAlt from '@iconscout/react-unicons/icons/uil-web-grid-alt';
+import { Col, Progress, Row, Spin } from 'antd';
+import { lazy, Suspense, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, NavLink, Route, Routes, useParams } from 'react-router-dom';
 import { Button } from '../../components/buttons/buttons';
+import { Cards } from '../../components/cards/frame/cards-frame';
+import Heading from '../../components/heading/heading';
+import { PageHeader } from '../../components/page-headers/page-headers';
 import { filterSinglePage } from '../../redux/project/actionCreator';
+import { Main } from '../styled';
+import FileListCard from './overview/FileListCard';
+import { ProjectDetailsWrapper, TaskLists } from './style';
 
 const TaskList = lazy(() => import('./overview/TaskList'));
 const Activities = lazy(() => import('./overview/Activities'));
@@ -27,6 +27,7 @@ function ProjectDetails() {
   const dispatch = useDispatch();
   const project = useSelector((state) => state.project.data);
   const params = useParams();
+
   useEffect(() => {
     if (!dispatch) {
       dispatch(filterSinglePage(parseInt(params.id, 10)));
