@@ -1,29 +1,20 @@
 import { Cards } from '@/components/cards/frame/cards-frame';
 import { Dropdown } from '@/components/dropdown/dropdown';
 import Heading from '@/components/heading/heading';
+import csvImg from '@/static/img/files/csv.png';
+import pdfImg from '@/static/img/files/pdf.png';
 import UilAngleDown from '@iconscout/react-unicons/icons/uil-angle-down';
 import UilImport from '@iconscout/react-unicons/icons/uil-import';
 import UilPrint from '@iconscout/react-unicons/icons/uil-print';
-import UilRedo from '@iconscout/react-unicons/icons/uil-redo';
-import { Col, Row, Tooltip } from 'antd';
+import { Col, Row } from 'antd';
 import moment from 'moment';
-import { Link, NavLink } from 'react-router-dom';
-import { MailDetailsWrapper, MessageAction, MessageDetails } from './style';
+import { Link } from 'react-router-dom';
+import { MailDetailsWrapper, MessageDetails } from './style';
 
-function MailDetail({ selectedInbox: email, setSelectedInbox }) {
+function MailDetail({ selectedInbox: email }) {
   return (
     <MailDetailsWrapper>
-      <Cards
-        title={
-          <MessageAction>
-            <Tooltip placement="bottom" title="Refresh">
-              <NavLink to="#">
-                <UilRedo />
-              </NavLink>
-            </Tooltip>
-          </MessageAction>
-        }
-      >
+      <Cards headless>
         <Row gutter={15}>
           <Col>
             <MessageDetails>
@@ -93,11 +84,7 @@ function MailDetail({ selectedInbox: email, setSelectedInbox }) {
                   <div className="ninjadash-ticket-file-item d-flex">
                     <div className="ninjadash-ticket-file-item__info d-flex">
                       <div className="ninjadash-ticket-file-item__logo">
-                        <img
-                          style={{ width: '40px' }}
-                          src={require(`../../../../../static/img/files/pdf.png`)}
-                          alt="File Logo"
-                        />
+                        <img style={{ width: '40px' }} src={pdfImg} alt="File Logo" />
                       </div>
                       <div className="ninjadash-file-item__content">
                         <span className="ninjadash-ticket-file-name">Product-guidelines.pdf</span>
@@ -114,11 +101,7 @@ function MailDetail({ selectedInbox: email, setSelectedInbox }) {
                   <div className="ninjadash-ticket-file-item d-flex">
                     <div className="ninjadash-ticket-file-item__info d-flex">
                       <div className="ninjadash-ticket-file-item__logo">
-                        <img
-                          style={{ width: '40px' }}
-                          src={require(`../../../../../static/img/files/csv.png`)}
-                          alt="File Logo"
-                        />
+                        <img style={{ width: '40px' }} src={csvImg} alt="File Logo" />
                       </div>
                       <div className="ninjadash-file-item__content">
                         <span className="ninjadash-ticket-file-name">Product-guidelines.pdf</span>

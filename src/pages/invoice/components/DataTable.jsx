@@ -105,7 +105,7 @@ function DataTable({ loading, tableData, columns, pagination, state, setState, g
             size="small"
             outlined
             onClick={handleExport}
-            // disabled={!state.invoiceList?.length}
+            disabled={!state.invoiceList?.length}
           >
             <DownloadOutlined />
             Xuất Excel
