@@ -1,8 +1,8 @@
 import { Modal } from '@/components/modals/antd-modals';
-import axios from '@/pages/mails/mockApi';
 import { Form, notification } from 'antd';
 import { useState } from 'react';
 import ModalAccount from './Modal';
+import axios from '@/mock/mails/mockApi';
 
 function CreateAccount({ state, setState, accounts, setAccounts }) {
   const [loading, setLoading] = useState(false);

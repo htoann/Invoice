@@ -7,7 +7,7 @@ import { RightOutlined } from '@ant-design/icons';
 import { Col, Form, Input, Menu, Skeleton } from 'antd';
 import { useState } from 'react';
 import MenuItem from '../components/MenuItem';
-import axios from '../mockApi';
+import axios from '@/mock/category/coCauToChucMockApi';
 
 const DepartmentList = ({ departments, loadingDepartments, selectedDepartment, setSelectedDepartment }) => {
   const [showCreate, setShowCreate] = useState(false);

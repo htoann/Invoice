@@ -1,4 +1,4 @@
-import axios from '@/pages/mails/mockApi';
+import axios from '@/mock/mails/mockApi';
 import UilInbox from '@iconscout/react-unicons/icons/uil-inbox';
 import { Input, Pagination, Select, Skeleton } from 'antd';
 import Paragraph from 'antd/lib/typography/Paragraph';

@@ -1,8 +1,8 @@
 import axiosInstance from 'axios';
 import MockAdapter from 'axios-mock-adapter';
-import { accounts } from './mock';
-import { inbox } from './mockEmail';
-import { departments } from '../category/c-pages/co-cau-to-chuc/mock';
+import { inbox } from './inbox';
+import { accounts } from '../accounts';
+import { departments } from '../category/coCauToChuc';
 
 const axios = axiosInstance.create();
 

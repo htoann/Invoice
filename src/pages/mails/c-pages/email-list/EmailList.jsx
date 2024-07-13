@@ -7,7 +7,7 @@ import UilTrash from '@iconscout/react-unicons/icons/uil-trash-alt';
 import { Col, Input, notification, Popconfirm, Row, Select, Skeleton } from 'antd';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import axios from '../../mockApi';
+import axios from '../../../../mock/mails/mockApi';
 import CreateAccount from './components/CreateAccount';
 import DataTable from './components/DataTable';
 import UpdateAccount from './components/UpdateAccount';

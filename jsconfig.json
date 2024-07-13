@@ -14,7 +14,8 @@
       "@/redux/*": ["./redux/*"],
       "@/routes/*": ["./routes/*"],
       "@/static/*": ["./static/*"],
-      "@/utility/*": ["./utility/*"]
+      "@/utility/*": ["./utility/*"],
+      "@/mock/*": ["./mock/*"]
     }
   },
   "exclude": ["node_modules", "build"]

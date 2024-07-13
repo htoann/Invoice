@@ -11,7 +11,6 @@ const Breadcrumb = lazy(() => import('../../container/ui-elements/Breadcrumb'));
 const Pagination = lazy(() => import('../../container/ui-elements/Pagination'));
 const PageHeader = lazy(() => import('../../container/ui-elements/PageHeaders'));
 const Steps = lazy(() => import('../../container/ui-elements/Steps'));
-const Comments = lazy(() => import('../../container/ui-elements/Comments'));
 const Empty = lazy(() => import('../../container/ui-elements/Empty'));
 const Statistic = lazy(() => import('../../container/ui-elements/Statistic'));
 const Rate = lazy(() => import('../../container/ui-elements/Rate'));
@@ -31,7 +30,6 @@ const Avatar = lazy(() => import('../../container/ui-elements/Avata'));
 const Badge = lazy(() => import('../../container/ui-elements/Badge'));
 const AutoComplete = lazy(() => import('../../container/ui-elements/AutoComplete'));
 const Checkbox = lazy(() => import('../../container/ui-elements/Checkbox'));
-const Cascader = lazy(() => import('../../container/ui-elements/Cascader'));
 const DatePicker = lazy(() => import('../../container/ui-elements/DatePicker'));
 const Switches = lazy(() => import('../../container/ui-elements/Switch'));
 const TimePicker = lazy(() => import('../../container/ui-elements/Timepicker'));
@@ -64,7 +62,6 @@ function ComponentRoute() {
       <Route path="pagination" element={<Pagination />} />
       <Route path="page-headers" element={<PageHeader />} />
       <Route path="steps" element={<Steps />} />
-      <Route path="comments" element={<Comments />} />
       <Route path="empty" element={<Empty />} />
       <Route path="statistic" element={<Statistic />} />
       <Route path="rate" element={<Rate />} />
@@ -80,7 +77,6 @@ function ComponentRoute() {
       <Route path="collapse" element={<Collapse />} />
       <Route path="auto-complete" element={<AutoComplete />} />
       <Route path="checkbox" element={<Checkbox />} />
-      <Route path="cascader" element={<Cascader />} />
       <Route path="date-picker" element={<DatePicker />} />
       <Route path="switch" element={<Switches />} />
       <Route path="select" element={<Selects />} />

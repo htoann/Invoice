@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import DepartmentList from './c-pages/Department';
 import MemberList from './c-pages/Member';
 import TeamList from './c-pages/Team';
-import axios from './mockApi';
+import axios from '@/mock/category/coCauToChucMockApi';
 
 export const CoCauToChuc = () => {
   const [departments, setDepartments] = useState([]);

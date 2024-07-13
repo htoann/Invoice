@@ -1,6 +1,6 @@
 import axiosInstance from 'axios';
 import MockAdapter from 'axios-mock-adapter';
-import { departments, subTeams, teams } from './mock';
+import { departments, subTeams, teams } from './coCauToChuc';
 
 const axios = axiosInstance.create();
 
