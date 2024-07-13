@@ -41,6 +41,7 @@ mock.onPost('/api/accounts').reply((config) => {
   }
 
   const newAccount = {
+    id: Math.random().toString(36).substr(2, 9),
     username,
     email,
     password,
