@@ -54,6 +54,7 @@ const AuthFormWrap = Styled.div`
       font-weight: 600;
       line-height: 1;
       margin-bottom: 0;
+      margin: 10px;
       color: ${({ theme }) => theme[theme.mainContent]['dark-text']};
     }
   }

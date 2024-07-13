@@ -105,7 +105,7 @@ export const InboxList = React.memo(({ toggleCollapsed, setSelectedInbox, select
         disabled={loading}
       >
         {accountList.map((user) => (
-          <Select.Option key={user.id} value={user.id} style={{ marginTop: 10 }}>
+          <Select.Option key={user.id} value={user.id}>
             {user.email}
           </Select.Option>
         ))}
