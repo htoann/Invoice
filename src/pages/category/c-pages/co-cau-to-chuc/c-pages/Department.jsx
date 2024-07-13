@@ -53,7 +53,7 @@ const DepartmentList = ({ departments, loadingDepartments, selectedDepartment, s
     form.resetFields();
   };
 
-  const customModal = (textSubmit = 'Lưu', onSubmit, onCancel, loading) => (
+  const customModal = (textSubmit = 'Lưu', onSubmit, onCancel, loading, editItem) => (
     <AddUser>
       <BasicFormWrapper>
         <Form form={form} onFinish={onSubmit}>
@@ -61,6 +61,7 @@ const DepartmentList = ({ departments, loadingDepartments, selectedDepartment, s
             name="name"
             label="Tên phòng ban"
             rules={[{ required: true, message: 'Vui lòng nhập tên phòng ban' }]}
+            initialValue={editItem?.name}
           >
             <Input />
           </Form.Item>
@@ -117,11 +118,11 @@ const DepartmentList = ({ departments, loadingDepartments, selectedDepartment, s
       </BorderLessHeading>
 
       <Modal title="Thêm phòng ban" visible={showCreate} onCancel={cancelCreate} footer={null}>
-        {customModal('Thêm', handleCreateSubmit, cancelCreate)}
+        {customModal('Thêm', handleCreateSubmit, cancelCreate, false)}
       </Modal>
 
       <Modal title="Chỉnh sửa phòng ban" visible={showEdit} onCancel={cancelEdit} footer={null}>
-        {customModal('Lưu', handleEditSubmit, cancelCreate)}
+        {customModal('Lưu', handleEditSubmit, cancelEdit, false, editItem)}
       </Modal>
     </Col>
   );

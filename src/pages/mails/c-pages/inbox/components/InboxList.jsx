@@ -1,7 +1,6 @@
 import axios from '@/pages/mails/mockApi';
 import UilInbox from '@iconscout/react-unicons/icons/uil-inbox';
 import { Input, Pagination, Select, Skeleton } from 'antd';
-import { Option } from 'antd/lib/mentions';
 import Paragraph from 'antd/lib/typography/Paragraph';
 import propTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
