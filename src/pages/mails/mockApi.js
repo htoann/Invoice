@@ -2,6 +2,7 @@ import axiosInstance from 'axios';
 import MockAdapter from 'axios-mock-adapter';
 import { accounts } from './mock';
 import { inbox } from './mockEmail';
+import { departments } from '../category/c-pages/co-cau-to-chuc/mock';
 
 const axios = axiosInstance.create();
 
@@ -86,4 +87,9 @@ mock.onGet('/api/inbox').reply((config) => {
 
   return [200, { results: paginatedInbox, count: filteredInbox.length }];
 });
+
+mock.onGet('/departments').reply(200, {
+  departments,
+});
+
 export default axios;

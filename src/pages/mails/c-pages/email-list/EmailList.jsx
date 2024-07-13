@@ -1,9 +1,10 @@
+import { Button } from '@/components/buttons/buttons';
 import { Cards } from '@/components/cards/frame/cards-frame';
 import { PageHeader } from '@/components/page-headers/page-headers';
 import { BorderLessHeading, Main } from '@/container/styled';
 import UilEdit from '@iconscout/react-unicons/icons/uil-edit';
 import UilTrash from '@iconscout/react-unicons/icons/uil-trash-alt';
-import { Button, Col, Input, notification, Popconfirm, Row, Skeleton } from 'antd';
+import { Col, Input, notification, Popconfirm, Row, Select, Skeleton } from 'antd';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from '../../mockApi';
@@ -29,9 +30,16 @@ export const EmailList = () => {
   const [accounts, setAccounts] = useState([]);
   const [isLoadingGetList, setIsLoadingGetList] = useState(false);
   const [searchLoading, setSearchLoading] = useState(false);
-  const [searchParams, setSearchParams] = useState({ username: '', password: '' });
+  const [searchParams, setSearchParams] = useState({ username: '', password: '', departmentId: '' });
 
-  const getList = async ({ username = '', email = '', page = 1, page_size = 20, searchLoading = true } = {}) => {
+  const getList = async ({
+    username = '',
+    email = '',
+    departmentId = '',
+    page = 1,
+    page_size = 20,
+    searchLoading = true,
+  } = {}) => {
     try {
       if (searchLoading) {
         setSearchLoading(true);
@@ -43,6 +51,7 @@ export const EmailList = () => {
         email,
         page,
         page_size,
+        departmentId,
       });
 
       setAccounts(response?.data?.results);
@@ -63,6 +72,24 @@ export const EmailList = () => {
       }
     }
   };
+
+  const [loadingDepartments, setLoadingDepartments] = useState(true);
+  const [departments, setDepartments] = useState([]);
+
+  useEffect(() => {
+    setLoadingDepartments(true);
+
+    axios
+      .get('/departments')
+      .then((response) => {
+        console.log(response);
+        setDepartments(response.data.departments);
+        setLoadingDepartments(false);
+      })
+      .catch(() => {
+        setLoadingDepartments(false);
+      });
+  }, []);
 
   useEffect(() => {
     getList({ ...searchParams, page: current, page_size: pageSize });
@@ -188,6 +215,11 @@ export const EmailList = () => {
     },
   ];
 
+  const handleSelectDepartment = (value) => {
+    setSearchParams({ ...searchParams, departmentId: value });
+    getList({ ...searchParams, shouldLoading: false, page_size: pageSize, departmentId: value });
+  };
+
   return (
     <>
       <PageHeader className="ninjadash-page-header-main" title="Danh sách email" />
@@ -196,9 +228,27 @@ export const EmailList = () => {
           <Col xs={24}>
             <BorderLessHeading>
               <Cards>
-                <Button onClick={showModal} className="btn-add_new" size="default" type="primary" key="1">
+                <Button onClick={showModal} type="primary" key="1">
                   <Link to="#">+ Thêm email</Link>
                 </Button>
+                <span className="label" style={{ marginLeft: 20 }}>
+                  Chọn phòng ban
+                </span>
+                <Select
+                  loading={loadingDepartments}
+                  disabled={loadingDepartments}
+                  onChange={handleSelectDepartment}
+                  style={{ width: 200, marginLeft: 10 }}
+                  defaultValue=""
+                >
+                  <Select.Option value="">All</Select.Option>
+                  {departments?.length > 0 &&
+                    departments.map((item) => (
+                      <Select.Option key={item.id} value={item.id}>
+                        {item.name}
+                      </Select.Option>
+                    ))}
+                </Select>
                 {isLoadingGetList ? (
                   <Skeleton active style={{ marginTop: 30 }} />
                 ) : (
