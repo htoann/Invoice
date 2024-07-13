@@ -1,13 +1,13 @@
 import { Button } from '@/components/buttons/buttons';
 import { Cards } from '@/components/cards/frame/cards-frame';
+import { Modal } from '@/components/modals/antd-modals';
+import { AddUser } from '@/container/pages/style';
 import { BasicFormWrapper, BorderLessHeading } from '@/container/styled';
 import { RightOutlined } from '@ant-design/icons';
 import { Col, Form, Input, Menu, Skeleton } from 'antd';
 import { useState } from 'react';
 import MenuItem from '../components/MenuItem';
 import axios from '../mockApi';
-import { Modal } from '@/components/modals/antd-modals';
-import { AddUser } from '@/container/pages/style';
 
 const DepartmentList = ({ departments, loadingDepartments, selectedDepartment, setSelectedDepartment }) => {
   const [showCreate, setShowCreate] = useState(false);
@@ -37,11 +37,45 @@ const DepartmentList = ({ departments, loadingDepartments, selectedDepartment, s
     form.resetFields();
   };
 
+  const cancelCreate = () => {
+    setShowCreate(false);
+    form.resetFields();
+  };
+
   const handleEditSubmit = (values) => {
     axios.put(`/departments/${editItem.id}`, values).then(() => {
       setShowEdit(false);
     });
   };
+
+  const cancelEdit = () => {
+    setShowEdit(false);
+    form.resetFields();
+  };
+
+  const customModal = (textSubmit = 'Lưu', onSubmit, onCancel, loading) => (
+    <AddUser>
+      <BasicFormWrapper>
+        <Form form={form} onFinish={onSubmit}>
+          <Form.Item
+            name="name"
+            label="Tên phòng ban"
+            rules={[{ required: true, message: 'Vui lòng nhập tên phòng ban' }]}
+          >
+            <Input />
+          </Form.Item>
+          <div style={{ justifyContent: 'end', display: 'flex' }}>
+            <Button size="default" type="white" outlined style={{ marginRight: 8 }} onClick={onCancel}>
+              Huỷ bỏ
+            </Button>
+            <Button htmlType="submit" size="default" type="primary" key="submit" loading={loading}>
+              {textSubmit}
+            </Button>
+          </div>
+        </Form>
+      </BasicFormWrapper>
+    </AddUser>
+  );
 
   return (
     <Col xs={24} sm={12} md={8} lg={8}>
@@ -82,54 +116,12 @@ const DepartmentList = ({ departments, loadingDepartments, selectedDepartment, s
         </Cards>
       </BorderLessHeading>
 
-      <Modal
-        title="Thêm phòng ban"
-        visible={showCreate}
-        onCancel={() => {
-          setShowCreate(false);
-          form.resetFields();
-        }}
-        footer={null}
-      >
-        <AddUser>
-          <BasicFormWrapper>
-            <Form form={form} onFinish={handleCreateSubmit}>
-              <Form.Item
-                name="name"
-                label="Tên phòng ban"
-                rules={[{ required: true, message: 'Vui lòng nhập tên phòng ban' }]}
-              >
-                <Input />
-              </Form.Item>
-              <Form.Item>
-                <Button type="primary" htmlType="submit">
-                  Thêm
-                </Button>
-              </Form.Item>
-            </Form>
-          </BasicFormWrapper>
-        </AddUser>
+      <Modal title="Thêm phòng ban" visible={showCreate} onCancel={cancelCreate} footer={null}>
+        {customModal('Thêm', handleCreateSubmit, cancelCreate)}
       </Modal>
 
-      <Modal title="Chỉnh sửa phòng ban" visible={showEdit} onCancel={() => setShowEdit(false)} footer={null}>
-        <AddUser>
-          <BasicFormWrapper>
-            <Form form={form} onFinish={handleEditSubmit}>
-              <Form.Item
-                name="name"
-                label="Tên phòng ban"
-                rules={[{ required: true, message: 'Vui lòng nhập tên phòng ban' }]}
-              >
-                <Input />
-              </Form.Item>
-              <Form.Item>
-                <Button type="primary" htmlType="submit">
-                  Lưu
-                </Button>
-              </Form.Item>
-            </Form>
-          </BasicFormWrapper>
-        </AddUser>
+      <Modal title="Chỉnh sửa phòng ban" visible={showEdit} onCancel={cancelEdit} footer={null}>
+        {customModal('Lưu', handleEditSubmit, cancelCreate)}
       </Modal>
     </Col>
   );
