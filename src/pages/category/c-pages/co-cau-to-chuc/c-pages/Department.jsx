@@ -1,11 +1,13 @@
 import { Button } from '@/components/buttons/buttons';
 import { Cards } from '@/components/cards/frame/cards-frame';
-import { BorderLessHeading } from '@/container/styled';
+import { BasicFormWrapper, BorderLessHeading } from '@/container/styled';
 import { RightOutlined } from '@ant-design/icons';
-import { Col, Form, Input, Menu, Modal, Skeleton } from 'antd';
+import { Col, Form, Input, Menu, Skeleton } from 'antd';
 import { useState } from 'react';
 import MenuItem from '../components/MenuItem';
 import axios from '../mockApi';
+import { Modal } from '@/components/modals/antd-modals';
+import { AddUser } from '@/container/pages/style';
 
 const DepartmentList = ({ departments, loadingDepartments, selectedDepartment, setSelectedDepartment }) => {
   const [showCreate, setShowCreate] = useState(false);
@@ -89,37 +91,45 @@ const DepartmentList = ({ departments, loadingDepartments, selectedDepartment, s
         }}
         footer={null}
       >
-        <Form form={form} onFinish={handleCreateSubmit}>
-          <Form.Item
-            name="name"
-            label="Tên phòng ban"
-            rules={[{ required: true, message: 'Vui lòng nhập tên phòng ban' }]}
-          >
-            <Input />
-          </Form.Item>
-          <Form.Item>
-            <Button type="primary" htmlType="submit">
-              Thêm
-            </Button>
-          </Form.Item>
-        </Form>
+        <AddUser>
+          <BasicFormWrapper>
+            <Form form={form} onFinish={handleCreateSubmit}>
+              <Form.Item
+                name="name"
+                label="Tên phòng ban"
+                rules={[{ required: true, message: 'Vui lòng nhập tên phòng ban' }]}
+              >
+                <Input />
+              </Form.Item>
+              <Form.Item>
+                <Button type="primary" htmlType="submit">
+                  Thêm
+                </Button>
+              </Form.Item>
+            </Form>
+          </BasicFormWrapper>
+        </AddUser>
       </Modal>
 
       <Modal title="Chỉnh sửa phòng ban" visible={showEdit} onCancel={() => setShowEdit(false)} footer={null}>
-        <Form form={form} onFinish={handleEditSubmit}>
-          <Form.Item
-            name="name"
-            label="Tên phòng ban"
-            rules={[{ required: true, message: 'Vui lòng nhập tên phòng ban' }]}
-          >
-            <Input />
-          </Form.Item>
-          <Form.Item>
-            <Button type="primary" htmlType="submit">
-              Lưu
-            </Button>
-          </Form.Item>
-        </Form>
+        <AddUser>
+          <BasicFormWrapper>
+            <Form form={form} onFinish={handleEditSubmit}>
+              <Form.Item
+                name="name"
+                label="Tên phòng ban"
+                rules={[{ required: true, message: 'Vui lòng nhập tên phòng ban' }]}
+              >
+                <Input />
+              </Form.Item>
+              <Form.Item>
+                <Button type="primary" htmlType="submit">
+                  Lưu
+                </Button>
+              </Form.Item>
+            </Form>
+          </BasicFormWrapper>
+        </AddUser>
       </Modal>
     </Col>
   );
