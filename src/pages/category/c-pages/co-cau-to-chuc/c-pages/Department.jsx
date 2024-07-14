@@ -99,7 +99,7 @@ const DepartmentList = ({ departments, loadingDepartments, selectedDepartment, s
               + Thêm phòng ban
             </Button>
             {loadingDepartments ? (
-              <Skeleton active style={{ marginTop: 10 }} />
+              <Skeleton active style={{ marginTop: 10, paddingRight: 10 }} />
             ) : (
               departments?.length > 0 &&
               departments.map((department) => (
