@@ -15,7 +15,6 @@ import { AutoComplete } from '../../../components/autoComplete/autoComplete';
 import Heading from '../../../components/heading/heading';
 import { textRefactor } from '../../../components/utilities/utilities';
 import { Dropdown } from '../../../components/dropdown/dropdown';
-import { onStarUpdate, onSortingAscending, onSortingDescending } from '../../../redux/email/actionCreator';
 
 function Content({ searchData, email }) {
   const dispatch = useDispatch();
@@ -60,10 +59,6 @@ function Content({ searchData, email }) {
     });
   };
 
-  const onStaredChange = (id) => {
-    dispatch(onStarUpdate(id));
-  };
-
   const data = [];
   if (emails !== undefined)
     emails.map((inbox, key) => {
@@ -74,13 +69,7 @@ function Content({ searchData, email }) {
         key: id,
         name: (
           <EmailAuthor>
-            <Link
-              onClick={() => {
-                onStaredChange(id);
-              }}
-              to="#"
-              className={stared ? 'starActive' : 'starDeactivate'}
-            >
+            <Link to="#" className={stared ? 'starActive' : 'starDeactivate'}>
               <FontAwesome name="star-o" />
             </Link>
             <img src={require(`../../../${img}`)} alt="" />
@@ -204,11 +193,6 @@ function Content({ searchData, email }) {
                     ...state,
                     sort: !sort,
                   });
-                  if (sort) {
-                    dispatch(onSortingAscending());
-                  } else {
-                    dispatch(onSortingDescending());
-                  }
                 }}
                 to="#"
               >
