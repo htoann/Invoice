@@ -114,7 +114,6 @@ function MailDetail({ selectedInbox: email }) {
                   </div>
                 </div>
               </div>
-              <hr />
             </MessageDetails>
           </Col>
         </Row>

@@ -595,8 +595,8 @@ const EmailNav = Styled.nav`
 
 const MailDetailsWrapper = Styled.div`
   .ant-card-body{
-    padding: 30px 0 !important;
-    max-height: calc(-272px + 100vh);
+    padding-top: 30px !important;
+    max-height: calc(-198px + 100vh);
     overflow: auto;
     overflow-x: hidden;
   }
@@ -1135,13 +1135,6 @@ const EmailWrapper = Styled.div`
     padding: 25px 15px;
     height: calc(100vh - 200px);
     overflow: auto;
-    ul{
-      li {
-        a{
-          text-transform: capitalize;
-        }
-      }
-    }
   }
 
   table{

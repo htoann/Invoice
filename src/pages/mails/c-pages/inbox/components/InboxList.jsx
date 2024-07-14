@@ -23,16 +23,18 @@ export const InboxList = React.memo(({ toggleCollapsed, setSelectedInbox, select
   const [selectedUserId, setSelectedUserId] = useState(null);
 
   const [loading, setLoading] = useState(false);
+  const [loadingUsers, setLoadingUser] = useState(false);
 
   const getUsers = async () => {
     try {
-      setLoading(true);
+      setLoadingUser(true);
       const response = await axios.get('/api/accounts');
       setAccountList(response?.data?.results);
+      response?.data?.results?.length > 0 && setSelectedUserId(response?.data?.results[0].id);
     } catch (error) {
       console.error('Failed to fetch accounts', error);
     } finally {
-      setLoading(false);
+      setLoadingUser(false);
     }
   };
 
@@ -83,30 +85,35 @@ export const InboxList = React.memo(({ toggleCollapsed, setSelectedInbox, select
     }));
   };
 
+  const accountsSelect =
+    accountList?.length > 0 &&
+    accountList.map((item) => ({
+      value: item.id,
+      label: item.email,
+    }));
+
   return (
     <>
-      <Select
-        style={{ width: '100%', marginBottom: 20 }}
-        placeholder="Chọn tài khoản"
-        onChange={(value) => {
-          setSelectedUserId(value);
-          setSearchTerm('');
-          setPagination({
-            pageSize: 20,
-            showSizeChanger: true,
-            current: 1,
-            total: 0,
-          });
-        }}
-        loading={loading}
-        disabled={loading}
-      >
-        {accountList.map((user) => (
-          <Select.Option key={user.id} value={user.id}>
-            {user.email}
-          </Select.Option>
-        ))}
-      </Select>
+      {!loadingUsers && (
+        <Select
+          style={{ width: '100%', marginBottom: 20 }}
+          placeholder="Chọn tài khoản"
+          onChange={(value) => {
+            setSelectedUserId(value);
+            setSearchTerm('');
+            setPagination({
+              pageSize: 20,
+              showSizeChanger: true,
+              current: 1,
+              total: 0,
+            });
+          }}
+          loading={loadingUsers}
+          disabled={loadingUsers}
+          defaultValue={Number(selectedUserId)}
+          options={accountsSelect}
+        />
+      )}
 
       {inboxList?.length > 0 && (
         <Input
@@ -123,7 +130,7 @@ export const InboxList = React.memo(({ toggleCollapsed, setSelectedInbox, select
         />
       )}
 
-      {loading ? (
+      {loading || loadingUsers ? (
         <>
           <Skeleton active />
           <Skeleton style={{ marginTop: 10 }} active />

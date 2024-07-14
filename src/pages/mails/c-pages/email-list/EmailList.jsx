@@ -147,7 +147,7 @@ export const EmailList = () => {
               <UilEdit />
             </Link>
             <Popconfirm
-              title="Bạn có chắc chắn xóa người dùng này?"
+              title="Bạn có chắc chắn muốn xóa tài khoản này?"
               onConfirm={() => handleDelete(id)}
               okText="Có"
               cancelText="Không"
@@ -240,7 +240,7 @@ export const EmailList = () => {
                   style={{ width: 200, marginLeft: 10 }}
                   defaultValue=""
                 >
-                  <Select.Option value="">All</Select.Option>
+                  <Select.Option value="">Tất cả</Select.Option>
                   {departments?.length > 0 &&
                     departments.map((item) => (
                       <Select.Option key={item.id} value={item.id}>

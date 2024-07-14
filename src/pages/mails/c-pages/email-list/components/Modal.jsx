@@ -11,7 +11,7 @@ const ModalAccount = ({ form, handleOk, state, onCancel, loading, textSubmit = '
         </Form.Item>
 
         <Form.Item
-          label="Địa chỉ Email"
+          label="Địa chỉ email"
           name="email"
           rules={[{ message: 'Vui lòng nhập địa chỉ email!', type: 'email', required: true }]}
           initialValue={state?.update.email}

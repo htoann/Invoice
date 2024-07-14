@@ -45,7 +45,7 @@ function CreateAccount({ state, setState, accounts, setAccounts }) {
   };
 
   return (
-    <Modal type="primary" title="Tạo người dùng" visible={state.visible} footer={null} onCancel={onCancel}>
+    <Modal type="primary" title="Tạo tài khoản" visible={state.visible} footer={null} onCancel={onCancel}>
       <div className="project-modal">
         <ModalAccount form={form} handleOk={handleOk} onCancel={onCancel} loading={loading} textSubmit="Tạo" />
       </div>

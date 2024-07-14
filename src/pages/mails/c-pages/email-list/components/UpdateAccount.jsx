@@ -46,7 +46,7 @@ const UpdateAccount = ({ state, setState, accounts, setAccounts }) => {
   return (
     <Modal
       type={state.modalType}
-      title="Cập nhật người dùng"
+      title="Cập nhật tài khoản"
       visible={state.editVisible}
       footer={null}
       onCancel={onCancel}
