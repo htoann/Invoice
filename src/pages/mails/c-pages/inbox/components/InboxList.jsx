@@ -155,7 +155,7 @@ export const InboxList = React.memo(({ toggleCollapsed, setSelectedInbox, select
             <ul>
               {inboxList?.length > 0 ? (
                 inboxList.map((item) => (
-                  <li key={item.id}>
+                  <li key={item.id} style={{ marginBottom: 5 }}>
                     <Link
                       className={item?.id === selectedInbox?.id ? 'active' : ''}
                       onClick={(e) => {

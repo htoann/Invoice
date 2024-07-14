@@ -918,7 +918,7 @@ const MessageDetails = Styled.div`
       color: ${({ theme }) => theme[theme.mainContent]['gray-text']};
       font-size: 15px;
       line-height: 1.667;
-      margin-bottom: 55px;
+      // margin-bottom: 55px;
     }
     h1{
       font-size: 15px;

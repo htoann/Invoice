@@ -5,7 +5,6 @@ import csvImg from '@/static/img/files/csv.png';
 import pdfImg from '@/static/img/files/pdf.png';
 import UilAngleDown from '@iconscout/react-unicons/icons/uil-angle-down';
 import UilImport from '@iconscout/react-unicons/icons/uil-import';
-import UilPrint from '@iconscout/react-unicons/icons/uil-print';
 import { Col, Row } from 'antd';
 import moment from 'moment';
 import { Link } from 'react-router-dom';
@@ -25,17 +24,15 @@ function MailDetail({ selectedInbox: email }) {
                     <span className="mail-badge primary">{email?.type}</span>
                   </Heading>
                 </div>
-
-                <div className="message-action">
-                  <Link to="#">
-                    <UilPrint />
-                  </Link>
-                </div>
               </div>
 
               <div className="message-box d-flex justify-content-between align-items-center">
                 <div className="message-author">
-                  <img style={{ width: '60px', borderRadius: '50%' }} src={email?.img} alt="" />
+                  <img
+                    style={{ width: '60px', borderRadius: '50%' }}
+                    src="https://cdn0.iconfinder.com/data/icons/user-pictures/100/matureman1-512.png"
+                    alt=""
+                  />
                   <div>
                     <Heading as="h4">{email?.userName}</Heading>
                     <Dropdown
@@ -66,17 +63,16 @@ function MailDetail({ selectedInbox: email }) {
                 </div>
 
                 <div className="message-excerpt">
-                  <span> {moment(email?.id).format('LLL')} </span>
+                  <span> {moment(email?.date).format('LLL')} </span>
                 </div>
               </div>
 
               <div className="message-body">
-                <span className="welcome-text">Hello Adam,</span>
+                {/* <span className="welcome-text">Hello Adam,</span> */}
                 <p>{email?.body}</p>
-
-                <Heading as="h6">
+                {/* <Heading as="h6">
                   Best Regards <br /> {email?.userName}
-                </Heading>
+                </Heading> */}
               </div>
 
               <div style={{ display: 'flex', gap: 10, padding: '10px 0px' }}>

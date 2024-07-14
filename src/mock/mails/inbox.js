@@ -42,7 +42,7 @@ export const inbox = [
     date: '03-07-2024',
   },
   {
-    userId: 4,
+    userId: 1,
     status: 'unread',
     type: 'inbox',
     stared: false,
@@ -56,7 +56,7 @@ export const inbox = [
     date: '04-07-2024',
   },
   {
-    userId: 3,
+    userId: 1,
     status: 'read',
     type: 'inbox',
     stared: true,
@@ -84,7 +84,7 @@ export const inbox = [
     date: '06-07-2024',
   },
   {
-    userId: 4,
+    userId: 1,
     status: 'unread',
     type: 'inbox',
     stared: false,
@@ -112,7 +112,7 @@ export const inbox = [
     date: '08-07-2024',
   },
   {
-    userId: 4,
+    userId: 1,
     status: 'unread',
     type: 'inbox',
     stared: true,
@@ -126,7 +126,7 @@ export const inbox = [
     date: '09-07-2024',
   },
   {
-    userId: 4,
+    userId: 1,
     status: 'read',
     type: 'inbox',
     stared: false,
@@ -154,7 +154,7 @@ export const inbox = [
     date: '11-07-2024',
   },
   {
-    userId: 4,
+    userId: 1,
     status: 'read',
     type: 'inbox',
     stared: true,
@@ -168,7 +168,7 @@ export const inbox = [
     date: '12-07-2024',
   },
   {
-    userId: 4,
+    userId: 1,
     status: 'unread',
     type: 'inbox',
     stared: false,
