@@ -1,20 +1,20 @@
-import React, { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
-import { Col, List, Row, Select, Spin } from 'antd';
-import UilSmile from '@iconscout/react-unicons/icons/uil-smile';
-import UilUpload from '@iconscout/react-unicons/icons/uil-upload';
+import { idGenerator } from '@/utils/index';
+import UilLeft from '@iconscout/react-unicons/icons/uil-arrow-left';
 import UilImport from '@iconscout/react-unicons/icons/uil-import';
 import UilMessage from '@iconscout/react-unicons/icons/uil-message';
-import UilLeft from '@iconscout/react-unicons/icons/uil-arrow-left';
-import { useDispatch, useSelector } from 'react-redux';
+import UilSmile from '@iconscout/react-unicons/icons/uil-smile';
+import UilUpload from '@iconscout/react-unicons/icons/uil-upload';
+import { Col, List, Row, Select, Spin } from 'antd';
 import Avatar from 'antd/lib/avatar/avatar';
-import { TicketDetailsBox, ClientConversation } from './Style';
-import { PageHeader } from '../../components/page-headers/page-headers';
-import { Main } from '../styled';
-import { Cards } from '../../components/cards/frame/cards-frame';
-import { singlePageReade, ticketUpdateData } from '../../redux/supportTickets/actionCreator';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, useParams } from 'react-router-dom';
 import { Button } from '../../components/buttons/buttons';
-import { idGenerator } from '../../utility/utility';
+import { Cards } from '../../components/cards/frame/cards-frame';
+import { PageHeader } from '../../components/page-headers/page-headers';
+import { singlePageReade, ticketUpdateData } from '../../redux/supportTickets/actionCreator';
+import { Main } from '../styled';
+import { ClientConversation, TicketDetailsBox } from './Style';
 
 const PageRoutes = [
   {

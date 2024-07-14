@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { getItem } from '../utility/localStorageControl';
+import { getItem } from '../utils/localStorageControl';
 
 const API_ENDPOINT = process.env.REACT_APP_API_ENDPOINT;
 

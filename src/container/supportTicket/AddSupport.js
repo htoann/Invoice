@@ -1,23 +1,23 @@
-import React, { lazy, useState, useEffect, Suspense } from 'react';
-import { Row, Col, Input, Select, Table, Popconfirm, Skeleton } from 'antd';
-import UilEye from '@iconscout/react-unicons/icons/uil-eye';
+import { idGenerator } from '@/utils/index';
+import { SearchOutlined } from '@ant-design/icons';
 import UilEdit from '@iconscout/react-unicons/icons/uil-edit';
+import UilEye from '@iconscout/react-unicons/icons/uil-eye';
 import UilPlus from '@iconscout/react-unicons/icons/uil-plus';
 import UilTrashAlt from '@iconscout/react-unicons/icons/uil-trash-alt';
-import { SearchOutlined } from '@ant-design/icons';
-import { Link } from 'react-router-dom';
+import { Col, Input, Popconfirm, Row, Select, Skeleton, Table } from 'antd';
 import moment from 'moment';
+import { lazy, Suspense, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { Button } from '../../components/buttons/buttons';
+import { Cards } from '../../components/cards/frame/cards-frame';
+import Heading from '../../components/heading/heading';
+import { PageHeader } from '../../components/page-headers/page-headers';
+import { ticketReadData, ticketUpdateData, ticketUpdateSearch } from '../../redux/supportTickets/actionCreator';
+import { Main, TableWrapper } from '../styled';
 import { TicketBox } from './Style';
 import SupportCreate from './SupportCreate';
 import SupportUpdate from './SupportUpdate';
-import { PageHeader } from '../../components/page-headers/page-headers';
-import { Main, TableWrapper } from '../styled';
-import { Cards } from '../../components/cards/frame/cards-frame';
-import Heading from '../../components/heading/heading';
-import { Button } from '../../components/buttons/buttons';
-import { idGenerator } from '../../utility/utility';
-import { ticketReadData, ticketUpdateData, ticketUpdateSearch } from '../../redux/supportTickets/actionCreator';
 
 const OverviewDataList = lazy(() => import('./overview/OverviewDataList'));
 

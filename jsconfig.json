@@ -14,7 +14,7 @@
       "@/redux/*": ["./redux/*"],
       "@/routes/*": ["./routes/*"],
       "@/static/*": ["./static/*"],
-      "@/utility/*": ["./utility/*"],
+      "@/utils/*": ["./utils/*"],
       "@/mock/*": ["./mock/*"]
     }
   },

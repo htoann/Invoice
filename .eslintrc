@@ -81,7 +81,7 @@
           ["@/redux", "./src/redux"],
           ["@/routes", "./src/routes"],
           ["@/static", "./src/static"],
-          ["@/utility", "./src/utility"],
+          ["@/utils", "./src/utils"],
           ["@/mock", "./src/mock"]
         ],
         "extensions": [".js", ".jsx", ".ts", ".tsx"]
