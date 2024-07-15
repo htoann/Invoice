@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { Cards } from '../../components/cards/frame/cards-frame';
 import { PageHeader } from '../../components/page-headers/page-headers';
 
-import { DataService } from '../../config/dataService/dataService';
+import { DataService } from '../../config/dataService';
 import { BorderLessHeading, Main } from '../../container/styled';
 import DataTable from './components/DataTable';
 import { invoiceListDataTable } from './const';
@@ -33,6 +33,9 @@ function InvoiceList() {
 
   const [isLoading, setLoading] = useState(false);
   const [searchLoading, setSearchLoading] = useState(false);
+
+  const { loaiHoaDon, invoiceList, pagination } = state;
+  const { current, pageSize } = pagination;
 
   const getInvoiceList = async (page, page_size = 20, loaihdon = 'purchase', date_from, date_to, searchLoading) => {
     try {
@@ -71,9 +74,6 @@ function InvoiceList() {
     }
   };
 
-  const { loaiHoaDon, invoiceList, pagination } = state;
-  const { current, pageSize } = pagination;
-
   useEffect(() => {
     getInvoiceList(current, pageSize);
   }, [current, pageSize]);
@@ -93,7 +93,6 @@ function InvoiceList() {
             <BorderLessHeading>
               <Cards headless>
                 <DataTable
-                  filterOption
                   tableData={tableDataSource}
                   columns={invoiceListDataTable}
                   pagination={pagination}

@@ -62,8 +62,8 @@ const downloadFile = (response, fileName = getFileName(response)) => {
   }
 };
 
-const formatTime = (date, format = 'DDMMYYYYHHmmss') => {
-  if (!date) return new Date();
+const formatTime = (date, format = 'DD-MM-YYYY-HHmmss') => {
+  if (!date) return dayjs(new Date()).format(format);
 
   return dayjs(date).format(format);
 };

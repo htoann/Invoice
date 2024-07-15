@@ -1,16 +1,19 @@
 import axiosInstance from 'axios';
 import MockAdapter from 'axios-mock-adapter';
-import { accounts } from './mock';
-import { inbox } from './mockEmail';
+import { inbox } from './inbox';
+import { accounts } from '../accounts';
+import { departments } from '../category/coCauToChuc';
 
 const axios = axiosInstance.create();
 
 const mock = new MockAdapter(axios, { delayResponse: 500 });
 
 mock.onGet('/api/accounts').reply((config) => {
-  const params = new URLSearchParams(config.params);
+  const params = new URLSearchParams(config);
   const username = params.get('username');
   const email = params.get('email');
+  const departmentId = parseInt(params.get('departmentId'));
+
   const page = parseInt(params.get('page')) || 1;
   const page_size = parseInt(params.get('page_size')) || 10;
 
@@ -21,6 +24,9 @@ mock.onGet('/api/accounts').reply((config) => {
   if (email) {
     console.log(email);
     results = results.filter((account) => account.email.includes(email));
+  }
+  if (departmentId) {
+    results = results.filter((account) => account.departmentId === departmentId);
   }
 
   const count = results.length;
@@ -41,6 +47,7 @@ mock.onPost('/api/accounts').reply((config) => {
   }
 
   const newAccount = {
+    id: Math.random().toString(36).substr(2, 9),
     username,
     email,
     password,
@@ -68,7 +75,7 @@ mock.onPut(/\/api\/accounts\/\d+/).reply((config) => {
 // Inbox
 
 mock.onGet('/api/inbox').reply((config) => {
-  const { userId, page = 1, page_size = 10, searchTerm = '' } = config.params;
+  const { userId, page = 1, page_size = 10, searchTerm = '' } = config;
 
   const filteredInbox = inbox
     .filter((email) => email.userId === parseInt(userId))
@@ -80,4 +87,9 @@ mock.onGet('/api/inbox').reply((config) => {
 
   return [200, { results: paginatedInbox, count: filteredInbox.length }];
 });
+
+mock.onGet('/departments').reply(200, {
+  departments,
+});
+
 export default axios;

@@ -5,7 +5,6 @@ import { TopMenuStyle } from './Style';
 
 export const TopMenu = () => {
   const { t } = useTranslation();
-  const path = '/';
 
   useLayoutEffect(() => {
     const active = document.querySelector('.ninjadash-top-menu a.active');

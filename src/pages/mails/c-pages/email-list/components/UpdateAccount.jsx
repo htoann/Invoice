@@ -1,8 +1,8 @@
 import { Modal } from '@/components/modals/antd-modals';
-import { BasicFormWrapper } from '@/container/styled';
-import axios from '@/pages/mails/mockApi';
-import { Button, Form, Input, notification } from 'antd';
+import axios from '@/mock/mails/mockApi';
+import { Form, notification } from 'antd';
 import { useState } from 'react';
+import ModalAccount from './Modal';
 
 const UpdateAccount = ({ state, setState, accounts, setAccounts }) => {
   const [form] = Form.useForm();
@@ -13,9 +13,10 @@ const UpdateAccount = ({ state, setState, accounts, setAccounts }) => {
       ...prevState,
       editVisible: false,
     }));
+    form.resetFields();
   };
 
-  const handleEditOk = async (values) => {
+  const handleOk = async (values) => {
     try {
       setLoading(true);
 
@@ -45,40 +46,19 @@ const UpdateAccount = ({ state, setState, accounts, setAccounts }) => {
   return (
     <Modal
       type={state.modalType}
-      title="Cập nhật người dùng"
+      title="Cập nhật tài khoản"
       visible={state.editVisible}
       footer={null}
       onCancel={onCancel}
     >
-      <BasicFormWrapper>
-        <Form form={form} name="edit_account" onFinish={handleEditOk}>
-          <Form.Item initialValue={state.update.username} label="Tên đăng nhập" name="username">
-            <Input placeholder="Nhập tên đăng nhập" />
-          </Form.Item>
-
-          <Form.Item
-            label="Địa chỉ Email"
-            name="email"
-            rules={[{ message: 'Vui lòng nhập địa chỉ email!', type: 'email' }]}
-            initialValue={state.update.email}
-          >
-            <Input placeholder="name@example.com" />
-          </Form.Item>
-
-          <Form.Item initialValue={state.update.password} name="password" label="Mật khẩu">
-            <Input.Password placeholder="Nhập mật khẩu" />
-          </Form.Item>
-
-          <div style={{ justifyContent: 'end', display: 'flex' }}>
-            <Button size="default" type="white" outlined style={{ marginRight: 8 }} onClick={onCancel}>
-              Huỷ bỏ
-            </Button>
-            <Button htmlType="submit" size="default" type="primary" key="submit" loading={loading}>
-              Lưu
-            </Button>
-          </div>
-        </Form>
-      </BasicFormWrapper>
+      <ModalAccount
+        form={form}
+        handleOk={handleOk}
+        state={state}
+        onCancel={onCancel}
+        loading={loading}
+        textSubmit="Lưu"
+      />
     </Modal>
   );
 };

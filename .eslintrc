@@ -61,7 +61,31 @@
     "no-shadow": "off",
     "react/jsx-fragments": "off",
     "import/extensions": "off",
-    "import/no-unresolved": "off",
-    "no-unused-expressions": "off"
+    // "import/no-unresolved": "off",
+    "no-unused-expressions": "off",
+    "jsx-a11y/click-events-have-key-events": "off",
+    "jsx-a11y/no-noninteractive-element-interactions": "off"
+  },
+  "settings": {
+    "import/resolver": {
+      "alias": {
+        "map": [
+          ["@", "./src"],
+          ["@/components", "./src/components"],
+          ["@/config", "./src/config"],
+          ["@/container", "./src/container"],
+          ["@/demoData", "./src/demoData"],
+          ["@/i18n", "./src/i18n"],
+          ["@/layout", "./src/layout"],
+          ["@/pages", "./src/pages"],
+          ["@/redux", "./src/redux"],
+          ["@/routes", "./src/routes"],
+          ["@/static", "./src/static"],
+          ["@/utils", "./src/utils"],
+          ["@/mock", "./src/mock"]
+        ],
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      }
+    }
   }
 }

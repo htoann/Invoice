@@ -20,7 +20,7 @@ const MemberList = ({ members, loadingMembers, handleCreate, handleEdit, handleD
               + Thêm thành viên
             </Button>
             {loadingMembers ? (
-              <Skeleton active style={{ marginTop: 10 }} />
+              <Skeleton active style={{ marginTop: 10, paddingRight: 10 }} />
             ) : (
               members?.length > 0 &&
               members.map((member) => (

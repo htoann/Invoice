@@ -13,7 +13,7 @@ import { EmailWrapper } from './components/style';
 function Email() {
   const pageRoutes = [
     {
-      path: '/email/',
+      path: '/email',
       breadcrumbName: 'Hộp thư',
     },
     {
@@ -79,7 +79,7 @@ function Email() {
 
             {selectedInbox && (
               <Col xxl={16} xl={15} lg={14} xs={24}>
-                <MailDetail selectedInbox={selectedInbox} setSelectedInbox={setSelectedInbox} />
+                <MailDetail selectedInbox={selectedInbox} />
               </Col>
             )}
           </Row>

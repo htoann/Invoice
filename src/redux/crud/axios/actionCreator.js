@@ -1,7 +1,7 @@
 import { notification } from 'antd';
 import Cookies from 'js-cookie';
 import actions from './actions';
-import { DataService } from '../../../config/dataService/dataService';
+import { DataService } from '../../../config/dataService';
 
 const addNotificationSuccess = () => {
   notification.success({

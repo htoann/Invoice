@@ -1,7 +1,6 @@
-import axios from '@/pages/mails/mockApi';
+import axios from '@/mock/mails/mockApi';
 import UilInbox from '@iconscout/react-unicons/icons/uil-inbox';
 import { Input, Pagination, Select, Skeleton } from 'antd';
-import { Option } from 'antd/lib/mentions';
 import Paragraph from 'antd/lib/typography/Paragraph';
 import propTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
@@ -24,16 +23,18 @@ export const InboxList = React.memo(({ toggleCollapsed, setSelectedInbox, select
   const [selectedUserId, setSelectedUserId] = useState(null);
 
   const [loading, setLoading] = useState(false);
+  const [loadingUsers, setLoadingUser] = useState(false);
 
   const getUsers = async () => {
     try {
-      setLoading(true);
+      setLoadingUser(true);
       const response = await axios.get('/api/accounts');
       setAccountList(response?.data?.results);
+      response?.data?.results?.length > 0 && setSelectedUserId(response?.data?.results[0].id);
     } catch (error) {
       console.error('Failed to fetch accounts', error);
     } finally {
-      setLoading(false);
+      setLoadingUser(false);
     }
   };
 
@@ -41,12 +42,10 @@ export const InboxList = React.memo(({ toggleCollapsed, setSelectedInbox, select
     try {
       setLoading(true);
       const response = await axios.get('/api/inbox', {
-        params: {
-          searchTerm,
-          page,
-          page_size,
-          userId,
-        },
+        searchTerm,
+        page,
+        page_size,
+        userId,
       });
 
       setInboxList(response?.data?.results);
@@ -86,72 +85,77 @@ export const InboxList = React.memo(({ toggleCollapsed, setSelectedInbox, select
     }));
   };
 
-  const users =
-    accountList?.length > 0
-      ? accountList.map((item) => ({
-          id: item.id,
-          name: item.name,
-        }))
-      : [];
+  const accountsSelect =
+    accountList?.length > 0 &&
+    accountList.map((item) => ({
+      value: item.id,
+      label: item.email,
+    }));
 
   return (
     <>
-      <Select
-        style={{ width: '100%', marginBottom: 20 }}
-        placeholder="Chọn tài khoản"
-        onChange={(value) => {
-          setSelectedUserId(value);
-          setSearchTerm('');
-          setPagination({
-            pageSize: 20,
-            showSizeChanger: true,
-            current: 1,
-            total: 0,
-          });
-        }}
-        loading={loading}
-        disabled={loading}
-      >
-        {users.map((user) => (
-          <Option key={user.id} value={user.id}>
-            {user.name}
-          </Option>
-        ))}
-      </Select>
+      {!loadingUsers && (
+        <Select
+          style={{ width: '100%', marginBottom: 20 }}
+          placeholder="Chọn tài khoản"
+          onChange={(value) => {
+            setSelectedUserId(value);
+            setSearchTerm('');
+            setPagination({
+              pageSize: 20,
+              showSizeChanger: true,
+              current: 1,
+              total: 0,
+            });
+          }}
+          loading={loadingUsers}
+          disabled={loadingUsers}
+          defaultValue={Number(selectedUserId)}
+          options={accountsSelect}
+        />
+      )}
 
-      <Input
-        style={{ width: '100%', marginBottom: 20, height: 40 }}
-        placeholder="Tìm kiếm theo người gửi"
-        value={searchTerm}
-        onChange={(event) => {
-          setSearchTerm(event.target.value);
-        }}
-        onPressEnter={() => {
-          getList({ searchTerm, page_size: pageSize, userId: selectedUserId });
-          resetCurrentPage();
-        }}
-      />
+      {inboxList?.length > 0 && (
+        <Input
+          style={{ width: '100%', marginBottom: 20, height: 40 }}
+          placeholder="Tìm kiếm theo người gửi"
+          value={searchTerm}
+          onChange={(event) => {
+            setSearchTerm(event.target.value);
+          }}
+          onPressEnter={() => {
+            getList({ searchTerm, page_size: pageSize, userId: selectedUserId });
+            resetCurrentPage();
+          }}
+        />
+      )}
 
-      {loading ? (
-        <Skeleton active />
+      {loading || loadingUsers ? (
+        <>
+          <Skeleton active />
+          <Skeleton style={{ marginTop: 10 }} active />
+          <Skeleton style={{ marginTop: 10 }} active />
+        </>
       ) : (
         <>
-          <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 20 }}>
-            <Pagination
-              current={current}
-              pageSize={pageSize}
-              onChange={handlePageChange}
-              total={total}
-              showSizeChanger
-              onShowSizeChange={(current, size) => setPagination((prev) => ({ ...prev, pageSize: size }))}
-            />
-          </div>
+          {inboxList?.length > 0 && (
+            <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 20 }}>
+              <Pagination
+                current={current}
+                pageSize={pageSize}
+                onChange={handlePageChange}
+                total={total}
+                showSizeChanger
+                onShowSizeChange={(current, size) => setPagination((prev) => ({ ...prev, pageSize: size }))}
+              />
+            </div>
+          )}
 
           <EmailNav>
             <ul>
               {inboxList?.length > 0 ? (
                 inboxList.map((item) => (
-                  <li key={item.id}>
+                  <li key={item.id} style={{ marginBottom: 5 }}>
                     <Link
                       className={item?.id === selectedInbox?.id ? 'active' : ''}
                       onClick={(e) => {
@@ -181,7 +185,19 @@ export const InboxList = React.memo(({ toggleCollapsed, setSelectedInbox, select
                 ))
               ) : (
                 <li>
-                  <Paragraph style={{ textAlign: 'center', padding: '10px 0' }}>No emails found</Paragraph>
+                  <Paragraph
+                    style={{
+                      textAlign: 'center',
+                      padding: '10px 0',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      height: '100%',
+                    }}
+                    className="empty"
+                  >
+                    No emails found
+                  </Paragraph>
                 </li>
               )}
             </ul>

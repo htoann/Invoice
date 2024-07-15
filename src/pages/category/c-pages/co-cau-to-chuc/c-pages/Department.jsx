@@ -2,11 +2,11 @@ import { Button } from '@/components/buttons/buttons';
 import { Cards } from '@/components/cards/frame/cards-frame';
 import { AddUser } from '@/container/pages/style';
 import { BasicFormWrapper, BorderLessHeading } from '@/container/styled';
+import axios from '@/mock/category/coCauToChucMockApi';
 import { RightOutlined } from '@ant-design/icons';
 import { Col, Form, Input, Menu, Modal, notification, Skeleton } from 'antd';
 import { useState } from 'react';
 import MenuItem from '../components/MenuItem';
-import axios from '../mockApi';
 
 const DepartmentList = ({
   departments,
@@ -76,6 +76,11 @@ const DepartmentList = ({
     }
   };
 
+  const cancelCreate = () => {
+    setShowCreate(false);
+    form.resetFields();
+  };
+
   const handleEditSubmit = async (values) => {
     try {
       console.log(values);
@@ -102,6 +107,36 @@ const DepartmentList = ({
     }
   };
 
+  const cancelEdit = () => {
+    setShowEdit(false);
+    form.resetFields();
+  };
+
+  const customModal = (textSubmit = 'Lưu', onSubmit, onCancel, loading, editItem) => (
+    <AddUser>
+      <BasicFormWrapper>
+        <Form form={form} onFinish={onSubmit}>
+          <Form.Item
+            name="name"
+            label="Tên phòng ban"
+            rules={[{ required: true, message: 'Vui lòng nhập tên phòng ban' }]}
+            initialValue={editItem?.name}
+          >
+            <Input />
+          </Form.Item>
+          <div style={{ justifyContent: 'end', display: 'flex' }}>
+            <Button size="default" type="white" outlined style={{ marginRight: 8 }} onClick={onCancel}>
+              Huỷ bỏ
+            </Button>
+            <Button htmlType="submit" size="default" type="primary" key="submit" loading={loading}>
+              {textSubmit}
+            </Button>
+          </div>
+        </Form>
+      </BasicFormWrapper>
+    </AddUser>
+  );
+
   return (
     <Col xs={24} sm={12} md={8} lg={8}>
       <BorderLessHeading>
@@ -123,7 +158,7 @@ const DepartmentList = ({
               + Thêm phòng ban
             </Button>
             {loadingDepartments ? (
-              <Skeleton active style={{ marginTop: 10 }} />
+              <Skeleton active style={{ marginTop: 10, paddingRight: 10 }} />
             ) : (
               departments?.length > 0 &&
               departments.map((department) => (
@@ -142,62 +177,12 @@ const DepartmentList = ({
         </Cards>
       </BorderLessHeading>
 
-      <Modal
-        title="Thêm phòng ban"
-        visible={showCreate}
-        onCancel={() => {
-          setShowCreate(false);
-          form.resetFields();
-        }}
-        footer={null}
-      >
-        <AddUser>
-          <BasicFormWrapper>
-            <Form form={form} onFinish={handleCreateSubmit}>
-              <Form.Item
-                name="name"
-                label="Tên phòng ban"
-                rules={[{ required: true, message: 'Vui lòng nhập tên phòng ban' }]}
-              >
-                <Input />
-              </Form.Item>
-              <div style={{ display: 'flex', justifyContent: 'end' }}>
-                <Button type="primary" htmlType="submit" size="default" loading={loading}>
-                  Thêm
-                </Button>
-              </div>
-            </Form>
-          </BasicFormWrapper>
-        </AddUser>
+      <Modal title="Thêm phòng ban" visible={showCreate} onCancel={cancelCreate} footer={null}>
+        {customModal('Thêm', handleCreateSubmit, cancelCreate, false)}
       </Modal>
 
-      <Modal
-        title="Chỉnh sửa phòng ban"
-        visible={showEdit}
-        onCancel={() => {
-          setShowEdit(false);
-          form.resetFields();
-        }}
-        footer={null}
-      >
-        <AddUser>
-          <BasicFormWrapper>
-            <Form form={form} onFinish={handleEditSubmit}>
-              <Form.Item
-                name="name"
-                label="Tên phòng ban"
-                rules={[{ required: true, message: 'Vui lòng nhập tên phòng ban' }]}
-              >
-                <Input />
-              </Form.Item>
-              <div style={{ display: 'flex', justifyContent: 'end' }}>
-                <Button type="primary" htmlType="submit" loading={loading}>
-                  Lưu
-                </Button>
-              </div>
-            </Form>
-          </BasicFormWrapper>
-        </AddUser>
+      <Modal title="Chỉnh sửa phòng ban" visible={showEdit} onCancel={cancelEdit} footer={null}>
+        {customModal('Lưu', handleEditSubmit, cancelEdit, false, editItem)}
       </Modal>
     </Col>
   );

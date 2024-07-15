@@ -1036,6 +1036,7 @@ ul {
 }
 
 .ant-select-dropdown .ant-select-item .ant-select-item-option-content {
+  padding: 7px;
   padding-left: 10px;
 }
 

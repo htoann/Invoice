@@ -23,7 +23,6 @@ import FontAwesome from 'react-fontawesome';
 import { MailDetailsWrapper, MessageAction, MessageDetails, ReplyList, MessageReply, MailRightAction } from './style';
 import { Dropdown } from '../../../components/dropdown/dropdown';
 import Heading from '../../../components/heading/heading';
-import { filterSinglePage, onStarUpdate } from '../../../redux/email/actionCreator';
 import { Cards } from '../../../components/cards/frame/cards-frame';
 
 function Single() {
@@ -35,20 +34,10 @@ function Single() {
   });
 
   const params = useParams();
-  useEffect(() => {
-    if (filterSinglePage) {
-      const id = parseInt(params.id, 10);
-      dispatch(filterSinglePage(id));
-    }
-  }, [params.id, dispatch]);
 
   const replyMail = async (replyMessage) => {
     // hit replyMail api
     setState({ ...state, replyMessage });
-  };
-
-  const onStaredChange = (id) => {
-    dispatch(onStarUpdate(id));
   };
 
   const ReplayMess = React.memo((value) => {
@@ -165,11 +154,7 @@ function Single() {
                     <UilPaperclip />
                   </span>
                   <span> {moment(email.id).format('LLL')} </span>
-                  <Link
-                    className={email.stared ? 'starActive' : 'starDeactivate'}
-                    onClick={() => onStaredChange(email.id)}
-                    to="#"
-                  >
+                  <Link className={email.stared ? 'starActive' : 'starDeactivate'} to="#">
                     <FontAwesome name="star-o" />
                   </Link>
                   <Link to="#">
@@ -283,11 +268,7 @@ function Single() {
                 <div className="reply-view__meta">
                   <span className="meta-list">
                     <span className="date-meta">Jan 2, 2020, 5:22 PM</span>
-                    <Link
-                      className={email.stared ? 'starActive' : 'starDeactivate'}
-                      onClick={() => onStaredChange(email.id)}
-                      to="#"
-                    >
+                    <Link className={email.stared ? 'starActive' : 'starDeactivate'} to="#">
                       <FontAwesome name="star-o" />
                     </Link>
                     <Link to="#">

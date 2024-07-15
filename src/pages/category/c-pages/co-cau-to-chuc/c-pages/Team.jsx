@@ -27,7 +27,7 @@ const TeamList = ({ teams, loadingTeams, selectedTeam, setSelectedTeam, handleCr
               + Thêm nhóm
             </Button>
             {loadingTeams ? (
-              <Skeleton active style={{ marginTop: 10 }} />
+              <Skeleton active style={{ marginTop: 10, paddingRight: 10 }} />
             ) : (
               teams?.length > 0 &&
               teams.map((team) => (
