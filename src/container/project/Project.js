@@ -154,7 +154,7 @@ function Project() {
             </div>
           </Col>
         </Row>
-        <CreateProject onCancel={onCancel} visible={visible} />
+        <CreateProject onCancel={onCancel} open={visible} />
       </Main>
     </>
   );

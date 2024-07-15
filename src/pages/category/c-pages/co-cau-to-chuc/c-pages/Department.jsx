@@ -177,11 +177,11 @@ const DepartmentList = ({
         </Cards>
       </BorderLessHeading>
 
-      <Modal title="Thêm phòng ban" visible={showCreate} onCancel={cancelCreate} footer={null}>
+      <Modal title="Thêm phòng ban" open={showCreate} onCancel={cancelCreate} footer={null}>
         {customModal('Thêm', handleCreateSubmit, cancelCreate, false)}
       </Modal>
 
-      <Modal title="Chỉnh sửa phòng ban" visible={showEdit} onCancel={cancelEdit} footer={null}>
+      <Modal title="Chỉnh sửa phòng ban" open={showEdit} onCancel={cancelEdit} footer={null}>
         {customModal('Lưu', handleEditSubmit, cancelEdit, false, editItem)}
       </Modal>
     </Col>

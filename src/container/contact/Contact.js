@@ -276,7 +276,7 @@ function ContactTable() {
         <Modal
           type={state.modalType}
           title="Contact Information"
-          visible={state.visible}
+          open={state.visible}
           footer={null}
           onCancel={handleCancel}
         >
@@ -319,7 +319,7 @@ function ContactTable() {
         <Modal
           type={state.modalType}
           title="Contact Information"
-          visible={state.editVisible}
+          open={state.editVisible}
           footer={null}
           onCancel={handleCancel}
         >

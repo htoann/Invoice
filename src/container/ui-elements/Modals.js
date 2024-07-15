@@ -122,7 +122,7 @@ function Modals() {
             <Modal
               type={state.modalType}
               title="Basic Modal"
-              visible={state.visible}
+              open={state.visible}
               onOk={handleOk}
               onCancel={handleCancel}
             >
@@ -157,7 +157,7 @@ function Modals() {
               type={state.modalType}
               color
               title="Basic Modal"
-              visible={state.colorModal}
+              open={state.colorModal}
               onOk={handleOk}
               onCancel={handleCancel}
             >

@@ -149,7 +149,7 @@ function Task() {
                   title="Add Task"
                   className="ninjadash-addTask-modal"
                   type={state.modalType}
-                  visible={state.visible}
+                  open={state.visible}
                   footer={null}
                   onCancel={handleCancel}
                 >
@@ -219,7 +219,7 @@ function Task() {
                   title="Add Task"
                   className="ninjadash-addTask-modal"
                   type={state.modalType}
-                  visible={state.visible}
+                  open={state.visible}
                   footer={null}
                   onCancel={handleCancel}
                 >

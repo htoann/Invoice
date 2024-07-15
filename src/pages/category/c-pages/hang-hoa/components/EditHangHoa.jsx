@@ -58,7 +58,7 @@ function EditHangHoa({ state, setState }) {
       <Modal
         type={state.modalType}
         title="Chỉnh sửa mã hàng"
-        visible={state.editVisible}
+        open={state.editVisible}
         footer={null}
         onCancel={handleCancel}
       >

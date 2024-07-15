@@ -23,7 +23,7 @@ function SupportCreate({ visible, onCancel, handleSubmit }) {
       getContainer={false}
       type="primary"
       title="Create Support"
-      visible={visible}
+      open={visible}
       footer={null}
       onCancel={handleCancel}
     >

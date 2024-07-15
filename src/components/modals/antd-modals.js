@@ -4,23 +4,12 @@ import { ModalStyled } from './styled';
 import { Button } from '../buttons/buttons';
 
 const Modal = (props) => {
-  const {
-    onCancel,
-    className = 'atbd-modal',
-    onOk,
-    visible,
-    title,
-    type,
-    color,
-    footer,
-    width = 620,
-    children,
-  } = props;
+  const { onCancel, className = 'atbd-modal', onOk, open, title, type, color, footer, width = 620, children } = props;
 
   return (
     <ModalStyled
       title={title}
-      visible={visible}
+      open={open}
       onOk={onOk}
       onCancel={onCancel}
       type={color ? type : false}
@@ -47,7 +36,7 @@ const Modal = (props) => {
 Modal.propTypes = {
   onCancel: PropTypes.func,
   onOk: PropTypes.func,
-  visible: PropTypes.bool,
+  open: PropTypes.bool,
   title: PropTypes.string,
   className: PropTypes.string,
   type: PropTypes.string,

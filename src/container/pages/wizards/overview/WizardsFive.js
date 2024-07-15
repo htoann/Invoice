@@ -505,7 +505,7 @@ function WizardsFive() {
                       </div>
                     </BasicFormWrapper>
                   ) : (
-                    <Modal footer={null} type="primary" visible={visible} onOk={handleOk} onCancel={handleCancel}>
+                    <Modal footer={null} type="primary" open={visible} onOk={handleOk} onCancel={handleCancel}>
                       <Row justify="center" style={{ width: '100%' }}>
                         <Col xl={20} xs={24}>
                           <Cards headless>

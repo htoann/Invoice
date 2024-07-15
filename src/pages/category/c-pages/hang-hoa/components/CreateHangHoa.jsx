@@ -48,7 +48,7 @@ function CreateHangHoa({ state, setState }) {
 
   return (
     <div>
-      <Modal type="primary" title="Thêm mã hàng" visible={state.visible} footer={null} onCancel={handleCancel}>
+      <Modal type="primary" title="Thêm mã hàng" open={state.visible} footer={null} onCancel={handleCancel}>
         <div className="project-modal">
           <AddUser>
             <BasicFormWrapper>

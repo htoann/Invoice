@@ -57,7 +57,7 @@ function CreateProject({ visible, onCancel }) {
     <Modal
       type={state.modalType}
       title="Create Project"
-      visible={state.visible}
+      open={state.visible}
       footer={[
         <div key="1" className="project-modal-footer">
           <Button size="default" type="primary" key="submit" onClick={handleOk}>

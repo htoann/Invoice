@@ -277,7 +277,7 @@ function TaskList({ taskStatus, header, description, taskLimit }) {
         title="Edit Task"
         className="ninjadash-addTask-modal"
         type={state.modalType}
-        visible={state.visible}
+        open={state.visible}
         footer={null}
         onCancel={handleCancel}
         forceRender

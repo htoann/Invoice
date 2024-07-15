@@ -143,7 +143,7 @@ function ContactGrid() {
         <Modal
           type={state.modalType}
           title="Contact Information"
-          visible={state.visible}
+          open={state.visible}
           footer={null}
           onCancel={handleCancel}
         >
@@ -187,7 +187,7 @@ function ContactGrid() {
         <Modal
           type={state.modalType}
           title="Contact Edit"
-          visible={state.editVisible}
+          open={state.editVisible}
           footer={null}
           onCancel={handleCancel}
         >

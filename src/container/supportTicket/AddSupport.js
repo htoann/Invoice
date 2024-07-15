@@ -287,12 +287,12 @@ function AddSupportTicket() {
           </Row>
         </TicketBox>
       </Main>
-      <SupportCreate onCancel={onCancel} handleSubmit={handleSubmit} visible={visible} />
+      <SupportCreate onCancel={onCancel} handleSubmit={handleSubmit} open={visible} />
       <SupportUpdate
         onCancel={onCancelEdit}
         editableData={editableData}
         handleSubmit={handleUpdate}
-        visible={visibleEdit}
+        open={visibleEdit}
       />
     </>
   );
