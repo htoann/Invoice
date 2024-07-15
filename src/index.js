@@ -5,12 +5,10 @@ import reportWebVitals from './reportWebVitals';
 
 import { ConfigProvider } from 'antd';
 
-import moment from 'moment';
-import 'moment/locale/es';
-import 'moment/locale/vi';
 import i18n from './i18n/config';
 import { getAntdLocale } from './utils';
 import dayjs from './utils/dayjs';
+import moment from './utils/moment';
 
 const locale = i18n.language;
 
