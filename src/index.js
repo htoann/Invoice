@@ -10,17 +10,19 @@ import 'moment/locale/es';
 import 'moment/locale/vi';
 import i18n from './i18n/config';
 import { getAntdLocale } from './utils';
+import dayjs from './utils/dayjs';
 
-const currentLanguage = i18n.language;
+const locale = i18n.language;
 
-moment.locale(currentLanguage);
+moment.locale(locale);
+dayjs.locale(locale);
 
 const rootElement = document.getElementById('root');
 const root = createRoot(rootElement);
 
 root.render(
   <React.StrictMode>
-    <ConfigProvider locale={getAntdLocale(currentLanguage)}>
+    <ConfigProvider locale={getAntdLocale(locale)}>
       <App />
     </ConfigProvider>
   </React.StrictMode>,
