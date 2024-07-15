@@ -30,7 +30,6 @@
       }
     ],
     "import/prefer-default-export": 0,
-    //"react-hooks/rules-of-hooks": 0,
     "import/no-extraneous-dependencies": 0,
     "jsx-a11y/anchor-is-valid": 0,
     "react/jsx-props-no-spreading": 0,
@@ -61,7 +60,6 @@
     "no-shadow": "off",
     "react/jsx-fragments": "off",
     "import/extensions": "off",
-    // "import/no-unresolved": "off",
     "no-unused-expressions": "off",
     "jsx-a11y/click-events-have-key-events": "off",
     "jsx-a11y/no-noninteractive-element-interactions": "off"
