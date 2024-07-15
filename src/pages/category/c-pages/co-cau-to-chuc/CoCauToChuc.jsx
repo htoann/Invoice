@@ -78,6 +78,7 @@ export const CoCauToChuc = () => {
         <Row gutter={15}>
           <DepartmentList
             departments={departments}
+            setDepartments={setDepartments}
             loadingDepartments={loadingDepartments}
             selectedDepartment={selectedDepartment}
             setSelectedDepartment={setSelectedDepartment}

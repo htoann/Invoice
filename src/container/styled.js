@@ -1668,6 +1668,7 @@ const Main = Styled.div`
 
 const BorderLessHeading = Styled.div`
     .ant-card{
+        height: calc(100vh - 200px);
         .ant-card-head{
             border: 0 none;
             min-height: 25px;

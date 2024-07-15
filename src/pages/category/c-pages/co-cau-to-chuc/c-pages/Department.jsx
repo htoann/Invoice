@@ -1,16 +1,25 @@
 import { Button } from '@/components/buttons/buttons';
 import { Cards } from '@/components/cards/frame/cards-frame';
-import { BorderLessHeading } from '@/container/styled';
+import { AddUser } from '@/container/pages/style';
+import { BasicFormWrapper, BorderLessHeading } from '@/container/styled';
 import { RightOutlined } from '@ant-design/icons';
-import { Col, Form, Input, Menu, Modal, Skeleton } from 'antd';
+import { Col, Form, Input, Menu, Modal, notification, Skeleton } from 'antd';
 import { useState } from 'react';
 import MenuItem from '../components/MenuItem';
 import axios from '../mockApi';
 
-const DepartmentList = ({ departments, loadingDepartments, selectedDepartment, setSelectedDepartment }) => {
+const DepartmentList = ({
+  departments,
+  setDepartments,
+  loadingDepartments,
+  selectedDepartment,
+  setSelectedDepartment,
+}) => {
   const [showCreate, setShowCreate] = useState(false);
   const [showEdit, setShowEdit] = useState(false);
   const [editItem, setEditItem] = useState(null);
+
+  const [loading, setLoading] = useState(false);
 
   const [form] = Form.useForm();
 
@@ -24,27 +33,79 @@ const DepartmentList = ({ departments, loadingDepartments, selectedDepartment, s
     form.setFieldsValue(item);
   };
 
-  const handleDelete = (id) => {
-    axios.delete(`/departments/${id}`);
+  const handleDelete = async (id) => {
+    try {
+      setLoading(true);
+      await axios.delete(`/departments/${id}`);
+      notification.success({
+        message: 'Xóa phòng ban',
+        description: 'Phòng ban đã được xóa thành công.',
+      });
+      setDepartments(departments.filter((item) => item.id !== id));
+    } catch (error) {
+      notification.error({
+        message: 'Lỗi',
+        description: 'Có lỗi xảy ra khi xóa phòng ban.',
+      });
+    } finally {
+      setLoading(false);
+    }
   };
 
-  const handleCreateSubmit = (values) => {
-    axios.post('/departments', values).then(() => {
+  const handleCreateSubmit = async (values) => {
+    try {
+      setLoading(true);
+      const response = await axios.post('/departments', {
+        department: values,
+      });
+      setDepartments([...departments, response.data]);
       setShowCreate(false);
-    });
-    form.resetFields();
+      form.resetFields();
+
+      notification.success({
+        message: 'Thêm phòng ban',
+        description: 'Phòng ban đã được thêm thành công.',
+      });
+    } catch (error) {
+      notification.error({
+        message: 'Lỗi',
+        description: 'Có lỗi xảy ra khi thêm phòng ban.',
+      });
+    } finally {
+      setLoading(false);
+    }
   };
 
-  const handleEditSubmit = (values) => {
-    axios.put(`/departments/${editItem.id}`, values).then(() => {
+  const handleEditSubmit = async (values) => {
+    try {
+      console.log(values);
+      setLoading(true);
+      const response = await axios.put(`/departments/${editItem.id}`, { department: values });
+      const updatedAccount = response.data;
+
+      const updatedAccounts = departments.map((acc) => (acc.id === updatedAccount.id ? updatedAccount : acc));
+      setDepartments(updatedAccounts);
+
+      form.resetFields();
       setShowEdit(false);
-    });
+      notification.success({
+        message: 'Chỉnh sửa phòng ban',
+        description: 'Phòng ban đã được chỉnh sửa thành công.',
+      });
+    } catch (error) {
+      notification.error({
+        message: 'Lỗi',
+        description: 'Có lỗi xảy ra khi chỉnh sửa phòng ban.',
+      });
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
     <Col xs={24} sm={12} md={8} lg={8}>
       <BorderLessHeading>
-        <Cards title="Phòng ban">
+        <Cards title="Phòng ban" style={{ height: 1000 }}>
           <Menu
             style={{ width: '100%' }}
             mode="inline"
@@ -72,6 +133,7 @@ const DepartmentList = ({ departments, loadingDepartments, selectedDepartment, s
                     item={department}
                     onEdit={() => handleEdit(department)}
                     onDelete={() => handleDelete(department.id)}
+                    loading={loading}
                   />
                 </Menu.Item>
               ))
@@ -89,37 +151,53 @@ const DepartmentList = ({ departments, loadingDepartments, selectedDepartment, s
         }}
         footer={null}
       >
-        <Form form={form} onFinish={handleCreateSubmit}>
-          <Form.Item
-            name="name"
-            label="Tên phòng ban"
-            rules={[{ required: true, message: 'Vui lòng nhập tên phòng ban' }]}
-          >
-            <Input />
-          </Form.Item>
-          <Form.Item>
-            <Button type="primary" htmlType="submit">
-              Thêm
-            </Button>
-          </Form.Item>
-        </Form>
+        <AddUser>
+          <BasicFormWrapper>
+            <Form form={form} onFinish={handleCreateSubmit}>
+              <Form.Item
+                name="name"
+                label="Tên phòng ban"
+                rules={[{ required: true, message: 'Vui lòng nhập tên phòng ban' }]}
+              >
+                <Input />
+              </Form.Item>
+              <div style={{ display: 'flex', justifyContent: 'end' }}>
+                <Button type="primary" htmlType="submit" size="default" loading={loading}>
+                  Thêm
+                </Button>
+              </div>
+            </Form>
+          </BasicFormWrapper>
+        </AddUser>
       </Modal>
 
-      <Modal title="Chỉnh sửa phòng ban" visible={showEdit} onCancel={() => setShowEdit(false)} footer={null}>
-        <Form form={form} onFinish={handleEditSubmit}>
-          <Form.Item
-            name="name"
-            label="Tên phòng ban"
-            rules={[{ required: true, message: 'Vui lòng nhập tên phòng ban' }]}
-          >
-            <Input />
-          </Form.Item>
-          <Form.Item>
-            <Button type="primary" htmlType="submit">
-              Lưu
-            </Button>
-          </Form.Item>
-        </Form>
+      <Modal
+        title="Chỉnh sửa phòng ban"
+        visible={showEdit}
+        onCancel={() => {
+          setShowEdit(false);
+          form.resetFields();
+        }}
+        footer={null}
+      >
+        <AddUser>
+          <BasicFormWrapper>
+            <Form form={form} onFinish={handleEditSubmit}>
+              <Form.Item
+                name="name"
+                label="Tên phòng ban"
+                rules={[{ required: true, message: 'Vui lòng nhập tên phòng ban' }]}
+              >
+                <Input />
+              </Form.Item>
+              <div style={{ display: 'flex', justifyContent: 'end' }}>
+                <Button type="primary" htmlType="submit" loading={loading}>
+                  Lưu
+                </Button>
+              </div>
+            </Form>
+          </BasicFormWrapper>
+        </AddUser>
       </Modal>
     </Col>
   );

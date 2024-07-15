@@ -4,10 +4,14 @@ import UilEdit from '@iconscout/react-unicons/icons/uil-edit';
 
 const EditButton = ({ onClick }) => (
   <Button
+    onClick={(e) => {
+      e.stopPropagation();
+      e.preventDefault();
+      onClick && onClick();
+    }}
     icon={<UilEdit />}
     size="small"
     style={{ marginLeft: '8px', color: 'rgb(160, 160, 160)' }}
-    onClick={onClick}
   />
 );
 

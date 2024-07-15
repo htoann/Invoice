@@ -23,7 +23,7 @@ mock.onPost('/departments').reply((config) => {
   const { department } = JSON.parse(config.data);
   const newDepartment = { ...department, id: (departments.length + 1).toString() };
   departments.push(newDepartment);
-  return [201, { department: newDepartment }];
+  return [201, newDepartment];
 });
 
 // Update a department
@@ -33,7 +33,7 @@ mock.onPut(/\/departments\/(\d+)/).reply((config) => {
   const index = departments.findIndex((dep) => dep.id === departmentId);
   if (index > -1) {
     departments[index] = { ...departments[index], ...department };
-    return [200, { department: departments[index] }];
+    return [200, departments[index]];
   }
   return [404, { error: 'Department not found' }];
 });
