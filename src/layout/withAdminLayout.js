@@ -1,19 +1,16 @@
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable react/prop-types */
 import UilEllipsisV from '@iconscout/react-unicons/icons/uil-ellipsis-v';
 import { Scrollbars } from '@pezhmanparsaee/react-custom-scrollbars';
 import { Button, Col, Layout, Row } from 'antd';
 import propTypes from 'prop-types';
 import { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link, NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
-import { FooterStyle, LayoutContainer, SmallScreenAuthInfo, TopMenuSearch } from './Style';
+import { LeftMenu } from './LeftMenu';
+import { LayoutContainer, SmallScreenAuthInfo, TopMenuSearch } from './Style';
+import { TopMenu } from './TopMenu';
 import SearchBar from './header-right/Search';
 import AuthInfo from './header-right/index';
-import { LeftMenu } from './LeftMenu';
-import { TopMenu } from './TopMenu';
 
 const { theme } = require('../config/theme/themeVariables');
 
