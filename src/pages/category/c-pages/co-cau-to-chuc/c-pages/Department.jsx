@@ -83,7 +83,6 @@ const DepartmentList = ({
 
   const handleEditSubmit = async (values) => {
     try {
-      console.log(values);
       setLoading(true);
       const response = await axios.put(`/departments/${editItem.id}`, { department: values });
       const updatedAccount = response.data;

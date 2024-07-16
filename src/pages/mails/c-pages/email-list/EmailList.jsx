@@ -84,7 +84,6 @@ export const EmailList = () => {
       try {
         setLoadingDepartments(true);
         const response = await axios.get('/departments');
-        console.log(response);
         setDepartments(response.data.departments);
       } catch (error) {
         console.log(error);

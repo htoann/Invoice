@@ -12,7 +12,6 @@ export const mailMockApi = (mock) => {
     }
 
     if (email) {
-      console.log(email);
       results = results.filter((account) => account.email.includes(email));
     }
 
