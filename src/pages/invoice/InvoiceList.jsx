@@ -1,10 +1,9 @@
+import { Cards } from '@/components/cards/frame/cards-frame';
+import { PageHeader } from '@/components/page-headers/page-headers';
+import { DataService } from '@/config/dataService';
+import { BorderLessHeading, Main } from '@/container/styled';
 import { Col, Row } from 'antd';
 import { useEffect, useState } from 'react';
-import { Cards } from '../../components/cards/frame/cards-frame';
-import { PageHeader } from '../../components/page-headers/page-headers';
-
-import { DataService } from '../../config/dataService';
-import { BorderLessHeading, Main } from '../../container/styled';
 import DataTable from './components/DataTable';
 import { invoiceListDataTable } from './const';
 import { handleTableDataSource } from './utils';
@@ -95,7 +94,6 @@ function InvoiceList() {
                 <DataTable
                   tableData={tableDataSource}
                   columns={invoiceListDataTable}
-                  pagination={pagination}
                   state={state}
                   setState={setState}
                   getInvoiceList={getInvoiceList}

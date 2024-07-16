@@ -9,17 +9,22 @@ import { DataService } from '../../../config/dataService';
 import { TableWrapper } from '../../../container/styled';
 import { DataTableStyleWrap } from '../style';
 
-function DataTable({ loading, tableData, columns, pagination, state, setState, getInvoiceList }) {
+function DataTable({ loading, tableData, columns, state, setState, getInvoiceList }) {
   const [startDate, setStartDate] = useState();
   const [endDate, setEndDate] = useState();
 
-  const handleLoaiHoaDonSearch = (value) => {
+  const { pagination, date_from, date_to, loaiHoaDon } = state;
+  const { pageSize } = pagination;
+
+  const getList = getInvoiceList(1, pageSize, loaiHoaDon, date_from, date_to, true);
+
+  const handleLoaiHoaDonSearch = (loaiHoaDon) => {
     setState({
       ...state,
       pagination: { ...pagination, current: 1 },
-      loaiHoaDon: value,
+      loaiHoaDon,
     });
-    getInvoiceList(1, state.pagination.pageSize, value, state.date_from, state.date_to, true);
+    getList();
   };
 
   const handleSearch = () => {
@@ -27,7 +32,7 @@ function DataTable({ loading, tableData, columns, pagination, state, setState, g
       ...state,
       pagination: { ...pagination, current: 1 },
     });
-    getInvoiceList(1, state.pagination.pageSize, state.loaiHoaDon, state.date_from, state.date_to, true);
+    getList();
   };
 
   const handleExport = async () => {
@@ -43,11 +48,11 @@ function DataTable({ loading, tableData, columns, pagination, state, setState, g
   };
 
   const disabledStartDate = (current) => {
-    return endDate && current ? current?._d.getTime() > endDate.getTime() : false;
+    return endDate && current ? current?._d?.getTime() > endDate.getTime() : false;
   };
 
   const disabledEndDate = (current) => {
-    return startDate && current ? current?._d.getTime() < startDate.getTime() : false;
+    return startDate && current ? current?._d?.getTime() < startDate.getTime() : false;
   };
 
   return (
@@ -119,10 +124,10 @@ function DataTable({ loading, tableData, columns, pagination, state, setState, g
             pagination={{ pageSize: 20, showSizeChanger: true, ...pagination }}
             dataSource={tableData}
             columns={columns}
-            onChange={(_pagination) => {
+            onChange={(pagination) => {
               setState((prev) => ({
                 ...prev,
-                pagination: _pagination,
+                pagination,
               }));
             }}
             loading={loading}
