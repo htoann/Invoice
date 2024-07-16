@@ -5,7 +5,7 @@ import { Main } from '@/container/styled';
 import UilAlignLeft from '@iconscout/react-unicons/icons/uil-align-left';
 import UilAlignRight from '@iconscout/react-unicons/icons/uil-align-right';
 import { Col, Row } from 'antd';
-import { useLayoutEffect, useState } from 'react';
+import { useEffect, useLayoutEffect, useState } from 'react';
 import { InboxList } from './components/InboxList';
 import MailDetail from './components/MailDetail';
 import { EmailWrapper } from './components/style';
@@ -48,6 +48,10 @@ function Email() {
     });
   };
 
+  useEffect(() => {
+    toggleCollapsed();
+  }, [selectedInbox]);
+
   return (
     <>
       <PageHeader className="ninjadash-page-header-main" title="Hộp thư đến" routes={pageRoutes} />
@@ -56,7 +60,7 @@ function Email() {
         <EmailWrapper>
           <Row gutter={25}>
             <Col className="trigger-col" xxl={8} xl={9} lg={10} xs={24}>
-              {selectedInbox && responsive <= 991 && (
+              {responsive <= 991 && (
                 <Button type="link" className="mail-sidebar-trigger" style={{ marginTop: 0 }} onClick={toggleCollapsed}>
                   {collapsed ? <UilAlignLeft /> : <UilAlignRight />}
                 </Button>
@@ -67,11 +71,7 @@ function Email() {
               >
                 <Cards headless>
                   <div className="mail-sidebar-bottom">
-                    <InboxList
-                      toggleCollapsed={responsive <= 991 ? toggleCollapsed : undefined}
-                      setSelectedInbox={setSelectedInbox}
-                      selectedInbox={selectedInbox}
-                    />
+                    <InboxList setSelectedInbox={setSelectedInbox} selectedInbox={selectedInbox} />
                   </div>
                 </Cards>
               </div>

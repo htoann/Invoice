@@ -2,12 +2,11 @@ import axios from '@/mock/index';
 import UilInbox from '@iconscout/react-unicons/icons/uil-inbox';
 import { Input, Pagination, Select, Skeleton, Tooltip } from 'antd';
 import Paragraph from 'antd/lib/typography/Paragraph';
-import propTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { EmailNav } from './style';
 
-export const InboxList = React.memo(({ toggleCollapsed, setSelectedInbox, selectedInbox }) => {
+export const InboxList = React.memo(({ setSelectedInbox, selectedInbox }) => {
   const [pagination, setPagination] = useState({
     pageSize: 20,
     showSizeChanger: true,
@@ -49,9 +48,9 @@ export const InboxList = React.memo(({ toggleCollapsed, setSelectedInbox, select
       });
 
       setInboxList(response?.data?.results);
-      if (response?.data?.results?.length > 0) {
-        setSelectedInbox(response?.data?.results[0]);
-      }
+      // if (response?.data?.results?.length > 0) {
+      //   setSelectedInbox(response?.data?.results[0]);
+      // }
       setPagination((prev) => ({
         ...prev,
         total: Number(response?.data?.count) || 0,
@@ -161,7 +160,6 @@ export const InboxList = React.memo(({ toggleCollapsed, setSelectedInbox, select
                       className={item?.id === selectedInbox?.id ? 'active' : ''}
                       onClick={(e) => {
                         e.preventDefault();
-                        toggleCollapsed && toggleCollapsed();
                         setSelectedInbox(item);
                       }}
                     >
@@ -216,7 +214,3 @@ export const InboxList = React.memo(({ toggleCollapsed, setSelectedInbox, select
     </>
   );
 });
-
-InboxList.propTypes = {
-  toggleCollapsed: propTypes.func,
-};

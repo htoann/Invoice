@@ -1156,7 +1156,7 @@ const EmailWrapper = Styled.div`
       background: #fff;
       position: fixed;
       ${({ theme }) => (theme.rtl ? 'right' : 'left')}: 0;
-      top: 60px;
+      /* top: 60px; */
       width: 500px;
       height: 100%;
       z-index: 99;
