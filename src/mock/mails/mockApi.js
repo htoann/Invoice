@@ -12,7 +12,7 @@ mock.onGet('/api/accounts').reply((config) => {
   const params = new URLSearchParams(config);
   const username = params.get('username');
   const email = params.get('email');
-  const departmentId = parseInt(params.get('departmentId'));
+  const departmentId = parseInt(params.get('department_id'));
 
   const page = parseInt(params.get('page')) || 1;
   const page_size = parseInt(params.get('page_size')) || 10;

@@ -2,12 +2,12 @@ import { Button } from '@/components/buttons/buttons';
 import { Cards } from '@/components/cards/frame/cards-frame';
 import { PageHeader } from '@/components/page-headers/page-headers';
 import { BorderLessHeading, Main } from '@/container/styled';
+import axios from '@/mock/mails/mockApi';
 import UilEdit from '@iconscout/react-unicons/icons/uil-edit';
 import UilTrash from '@iconscout/react-unicons/icons/uil-trash-alt';
 import { Col, Input, notification, Popconfirm, Row, Select, Skeleton } from 'antd';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import axios from '../../../../mock/mails/mockApi';
 import CreateAccount from './components/CreateAccount';
 import DataTable from './components/DataTable';
 import UpdateAccount from './components/UpdateAccount';
@@ -46,22 +46,25 @@ export const EmailList = () => {
       } else {
         setIsLoadingGetList(true);
       }
+
       const response = await axios.get('/api/accounts', {
         username,
         email,
         page,
         page_size,
-        departmentId,
+        department_id: departmentId,
       });
 
-      setAccounts(response?.data?.results);
-      setState((prev) => ({
-        ...prev,
-        pagination: {
-          ...prev.pagination,
-          total: Number(response?.data?.count) || 0,
-        },
-      }));
+      if (response?.data) {
+        setAccounts(response?.data?.results);
+        setState((prev) => ({
+          ...prev,
+          pagination: {
+            ...prev.pagination,
+            total: Number(response?.data?.count) || 0,
+          },
+        }));
+      }
     } catch (error) {
       console.error('Failed to fetch accounts', error);
     } finally {
@@ -77,17 +80,18 @@ export const EmailList = () => {
   const [departments, setDepartments] = useState([]);
 
   useEffect(() => {
-    setLoadingDepartments(true);
+    try {
+      setLoadingDepartments(true);
 
-    axios
-      .get('/departments')
-      .then((response) => {
+      const response = axios.get('/departments');
+      if (response?.data?.departments) {
         setDepartments(response.data.departments);
-        setLoadingDepartments(false);
-      })
-      .catch(() => {
-        setLoadingDepartments(false);
-      });
+      }
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setLoadingDepartments(false);
+    }
   }, []);
 
   useEffect(() => {
@@ -135,6 +139,7 @@ export const EmailList = () => {
   if (accounts?.length > 0) {
     accounts.map((item, index) => {
       const { id, username, email } = item;
+
       return tableDataScource.push({
         key: id,
         stt: (current - 1) * pageSize + index + 1,
@@ -214,9 +219,9 @@ export const EmailList = () => {
     },
   ];
 
-  const handleSelectDepartment = (value) => {
-    setSearchParams({ ...searchParams, departmentId: value });
-    getList({ ...searchParams, shouldLoading: false, page_size: pageSize, departmentId: value });
+  const handleSelectDepartment = (departmentId) => {
+    setSearchParams({ ...searchParams, departmentId });
+    getList({ ...searchParams, shouldLoading: false, page_size: pageSize, departmentId });
   };
 
   return (
@@ -227,27 +232,29 @@ export const EmailList = () => {
           <Col xs={24}>
             <BorderLessHeading>
               <Cards>
-                <Button onClick={showModal} type="primary" key="1">
-                  <Link to="#">+ Thêm email</Link>
-                </Button>
-                <span className="label" style={{ marginLeft: 20 }}>
-                  Chọn phòng ban
-                </span>
-                <Select
-                  loading={loadingDepartments}
-                  disabled={loadingDepartments}
-                  onChange={handleSelectDepartment}
-                  style={{ width: 200, marginLeft: 10 }}
-                  defaultValue=""
-                >
-                  <Select.Option value="">Tất cả</Select.Option>
-                  {departments?.length > 0 &&
-                    departments.map((item) => (
-                      <Select.Option key={item.id} value={item.id}>
-                        {item.name}
-                      </Select.Option>
-                    ))}
-                </Select>
+                <div style={{ display: 'flex', gap: 20, flexWrap: 'auto' }}>
+                  <Button onClick={showModal} type="primary" key="1">
+                    <Link to="#">+ Thêm email</Link>
+                  </Button>
+                  <div style={{ display: 'flex', gap: 2, flexWrap: 'auto', alignItems: 'center' }}>
+                    <span className="label">Chọn phòng ban</span>
+                    <Select
+                      loading={loadingDepartments}
+                      disabled={loadingDepartments}
+                      onChange={handleSelectDepartment}
+                      style={{ width: 200, marginLeft: 10 }}
+                      defaultValue=""
+                    >
+                      <Select.Option value="">Tất cả</Select.Option>
+                      {departments?.length > 0 &&
+                        departments.map((item) => (
+                          <Select.Option key={item.id} value={item.id}>
+                            {item.name}
+                          </Select.Option>
+                        ))}
+                    </Select>
+                  </div>
+                </div>
                 {isLoadingGetList ? (
                   <Skeleton active style={{ marginTop: 30 }} />
                 ) : (

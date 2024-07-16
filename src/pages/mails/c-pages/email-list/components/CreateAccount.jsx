@@ -1,8 +1,8 @@
 import { Modal } from '@/components/modals/antd-modals';
+import axios from '@/mock/mails/mockApi';
 import { Form, notification } from 'antd';
 import { useState } from 'react';
 import ModalAccount from './Modal';
-import axios from '@/mock/mails/mockApi';
 
 function CreateAccount({ state, setState, accounts, setAccounts }) {
   const [loading, setLoading] = useState(false);
@@ -19,7 +19,7 @@ function CreateAccount({ state, setState, accounts, setAccounts }) {
       const response = await axios.post('/api/accounts', data);
       return response.data;
     } catch (error) {
-      console.error('Failed to create account', error);
+      console.error(error);
       return null;
     } finally {
       setLoading(false);
