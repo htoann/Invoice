@@ -73,14 +73,20 @@ export const mailMockApi = (mock) => {
   mock.onGet('/api/inbox').reply((config) => {
     const { userId, page = 1, page_size = 20, searchTerm = '' } = config;
 
-    const filteredInbox = inbox
-      .filter((email) => email.receiver.id === userId)
-      .filter((email) => email.from.toLowerCase().includes(searchTerm.toLowerCase()));
+    let results = [];
+
+    if (userId) {
+      results = inbox.filter((email) => email.receiver.id === userId?.toString());
+    }
+
+    if (searchTerm) {
+      results = inbox.filter((email) => email.sender.email.toLowerCase().includes(searchTerm.toLowerCase()));
+    }
 
     const startIndex = (page - 1) * page_size;
     const endIndex = startIndex + page_size;
-    const paginatedInbox = filteredInbox.slice(startIndex, endIndex);
+    const paginatedInbox = results.slice(startIndex, endIndex);
 
-    return [200, { results: paginatedInbox, count: filteredInbox.length }];
+    return [200, { results: paginatedInbox, count: results.length }];
   });
 };
