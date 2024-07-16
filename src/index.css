@@ -8,6 +8,23 @@ body {
     Segoe UI Emoji, Segoe UI Symbol;
 }
 
+::-webkit-scrollbar {
+  height: 8px;
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ababab;
+  border-radius: 10px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgb(110, 111, 114);
+  border: 0;
+}
+
 .spin {
   height: 100vh;
   display: flex;
@@ -1334,54 +1351,12 @@ ul {
 
 /* Tooltip Styles */
 
-.ant-tooltip .ant-tooltip-inner {
-  min-height: 40px;
-  padding: 6px 20px;
-  font-size: 14px;
-  color: #404040;
-  background-color: #fff;
-  border-radius: 3px;
-  display: flex;
-  align-items: center;
-  border: 1px solid #f1f2f6;
-  box-shadow: 0 8px 15px #9299b815;
+.ant-tooltip-inner {
+  background-color: rgba(0, 0, 0, 0.85);
 }
 
-.ant-tooltip .ant-tooltip-arrow:after {
-  position: absolute;
-  left: 50%;
-  top: 30px;
-  transform: translateX(-50%);
-  width: 13px;
-  height: 13px;
-  background: #fff;
-  content: '';
-}
-
-.ant-tooltip .ant-tooltip-arrow .ant-tooltip-arrow-content {
-  width: 14px;
-  height: 14px;
-  top: 3px;
-  background: #fff;
-  z-index: 98;
-  --antd-arrow-background-color: #fff;
-}
-
-.ant-tooltip .ant-tooltip-arrow .ant-tooltip-arrow-content:before {
-  position: static;
-}
-
-.ant-tooltip-placement-bottom .ant-tooltip-arrow .ant-tooltip-arrow-content {
-  border: 1px solid #e3e6ef;
-  box-shadow: 0 0;
-}
-
-.ant-tooltip-placement-bottom .ant-tooltip-arrow {
-  top: -4.071068px;
-}
-
-.ant-slider-tooltip.ant-tooltip-placement-top .ant-tooltip-arrow {
-  transform: translateY(80%) translateX(-50%);
+.ant-tooltip-placement-top .ant-tooltip-arrow {
+  bottom: 1px;
 }
 
 /* Badge Styles */

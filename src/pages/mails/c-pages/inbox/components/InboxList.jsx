@@ -1,6 +1,6 @@
 import axios from '@/mock/index';
 import UilInbox from '@iconscout/react-unicons/icons/uil-inbox';
-import { Input, Pagination, Select, Skeleton } from 'antd';
+import { Input, Pagination, Select, Skeleton, Tooltip } from 'antd';
 import Paragraph from 'antd/lib/typography/Paragraph';
 import propTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
@@ -49,6 +49,9 @@ export const InboxList = React.memo(({ toggleCollapsed, setSelectedInbox, select
       });
 
       setInboxList(response?.data?.results);
+      if (response?.data?.results?.length > 0) {
+        setSelectedInbox(response?.data?.results[0]);
+      }
       setPagination((prev) => ({
         ...prev,
         total: Number(response?.data?.count) || 0,
@@ -163,20 +166,28 @@ export const InboxList = React.memo(({ toggleCollapsed, setSelectedInbox, select
                       }}
                     >
                       <UilInbox />
-                      <span className="nav-text" style={{ padding: '5px 0' }}>
-                        <div style={{ display: 'flex', flexDirection: 'column', width: '100%', flex: 1 }}>
-                          <Paragraph ellipsis style={{ width: '100%', fontWeight: 500, color: 'rgb(64, 64, 64)' }}>
-                            {item?.subject}
-                          </Paragraph>
-                          <Paragraph ellipsis style={{ width: '100%', marginBottom: 0 }}>
-                            {item?.from}
-                          </Paragraph>
+                      <span className="nav-text">
+                        <div className="email-container">
+                          <div className="email-content">
+                            <Paragraph className="email-subject" ellipsis>
+                              {item?.subject}
+                            </Paragraph>
+                            <Tooltip title={`${item?.sender.name} <${item?.sender.email}>`}>
+                              <Paragraph
+                                className="email-sender"
+                                ellipsis
+                                style={{
+                                  width: '100%',
+                                  marginBottom: 0,
+                                  lineHeight: '1.2rem',
+                                }}
+                              >
+                                {item?.sender.name} &lt;{item?.sender.email}&gt;
+                              </Paragraph>
+                            </Tooltip>
+                          </div>
+                          <span className="email-date">{item?.date}</span>
                         </div>
-                        <span
-                          style={{ whiteSpace: 'nowrap', fontSize: '13px', fontWeight: 400, color: 'rgb(64, 64, 64)' }}
-                        >
-                          {item?.date}
-                        </span>
                       </span>
                     </Link>
                   </li>

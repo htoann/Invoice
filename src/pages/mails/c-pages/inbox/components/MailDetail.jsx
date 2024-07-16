@@ -29,33 +29,33 @@ function MailDetail({ selectedInbox: email }) {
               <div className="message-box d-flex justify-content-between align-items-center">
                 <div className="message-author">
                   <img
-                    style={{ width: '60px', borderRadius: '50%' }}
+                    style={{ width: '40px', borderRadius: '50%' }}
                     src="https://cdn0.iconfinder.com/data/icons/user-pictures/100/matureman1-512.png"
                     alt=""
                   />
                   <div>
-                    <Heading as="h4">{email?.userName}</Heading>
+                    <Heading as="h4">{email?.sender.name}</Heading>
                     <Dropdown
                       placement="bottom"
                       content={
                         <ul className="mail-props">
                           <li>
-                            <span>From:</span> <span>{email?.from}</span>{' '}
+                            <span>From:</span> <span>{email?.sender.email}</span>{' '}
                           </li>
                           <li>
-                            <span>To:</span> <span>{email?.to}</span>{' '}
+                            <span>To:</span> <span>{email?.receiver.email}</span>{' '}
                           </li>
                           <li>
                             <span>CC:</span> <span>example@gamil.com</span>{' '}
                           </li>
                           <li>
-                            <span>Date:</span> <span>{moment(email?.id).format('LLL')}</span>
+                            <span>Date:</span> <span>{moment(email?.date).format('LLL')}</span>
                           </li>
                         </ul>
                       }
                     >
                       <Link to="#">
-                        To {email?.to}
+                        To {email?.receiver?.name}
                         <UilAngleDown />
                       </Link>
                     </Dropdown>
@@ -75,7 +75,7 @@ function MailDetail({ selectedInbox: email }) {
                 </Heading> */}
               </div>
 
-              <div style={{ display: 'flex', gap: 10, padding: '10px 0px' }}>
+              <div style={{ display: 'flex', gap: 10, padding: '10px 0px', flexWrap: 'wrap' }}>
                 <div className="message-attachments">
                   <div className="ninjadash-ticket-file-item d-flex">
                     <div className="ninjadash-ticket-file-item__info d-flex">

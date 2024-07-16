@@ -450,7 +450,7 @@ const EmailNav = Styled.nav`
     max-height: calc(100vh - 426px);
     overflow: auto;
     height: calc(100vh - 448px);
-    padding-right: 10px;
+    padding-right: 5px;
     li{
       &:has(.empty) {
         position: relative;
@@ -494,6 +494,7 @@ const EmailNav = Styled.nav`
         color: ${({ theme }) => theme[theme.mainContent]['gray-text']};
         svg{
           width: 16px;
+          min-width: 16px;
           ${({ theme }) => (!theme.rtl ? 'margin-right' : 'margin-left')}: 15px;
           color: ${({ theme }) => theme[theme.mainContent]['extra-light-text']};
         }
@@ -528,6 +529,45 @@ const EmailNav = Styled.nav`
         display: flex;
         align-items: center;
         justify-content: space-between;
+
+        .email-container {
+          display: grid;
+          grid-template-columns: 1fr auto;
+          gap: 0.5rem;
+          width: 100%;
+          flex: 1;
+          align-items: center;
+          grid-auto-flow: column;
+          grid-template-rows: auto;
+
+          .email-content {
+            display: flex;
+            flex-direction: column;
+            grid-column: 1 / 2;
+            overflow: hidden;
+
+            .email-subject {
+              width: 100%;
+              font-weight: 500;
+              color: rgb(64, 64, 64);
+              margin-bottom: 0.5rem;
+            }
+
+            .email-sender {
+              width: 100%;
+              margin-bottom: 0;
+              line-height: 1.2rem;
+            }
+          }
+
+          .email-date {
+            white-space: nowrap;
+            font-size: 13px;
+            font-weight: 400;
+            color: rgb(64, 64, 64);
+            grid-column: 2 / 3;
+          }
+        }
       }
       .add-label{
         box-shadow: 0 10px 40px rgba(146,153,184,0.2);
@@ -643,6 +683,7 @@ const MessageAction = Styled.div`
       height: 25px;
     }
     svg{
+      min-width: 16px;
       width: 16px;
       color: ${({ theme }) => theme[theme.mainContent]['extra-light-text']};
     }
@@ -740,6 +781,7 @@ const EmailHeader = Styled.div`
     }
     i,
     svg{
+      min-width: 16px;
       width: 16px;
       ${({ theme }) => (!theme.rtl ? 'margin-right' : 'margin-left')}: 6px;
     }
@@ -815,6 +857,7 @@ const MessageDetails = Styled.div`
       transition: 0.3s ease;
       color: ${({ theme }) => theme[theme.mainContent]['gray-light-text']};
       svg{
+        min-width: 16px;
         width: 16px;
         height: 16px;
         margin: -3px 0;
@@ -845,6 +888,7 @@ const MessageDetails = Styled.div`
         color: ${({ theme }) => theme[theme.mainContent]['gray-light-text']};
         svg,
         i{
+          min-width: 18px;
           width: 18px;
           height: 18px;
           ${({ theme }) => (theme.rtl ? 'margin-right' : 'margin-left')}: 5px;
@@ -877,6 +921,7 @@ const MessageDetails = Styled.div`
       ${({ theme }) => (theme.rtl ? 'padding-right' : 'padding-left')}: 0;
     }
     svg{
+      min-width: 16px;
       width: 16px;
       height: 16px;
     }
@@ -902,7 +947,7 @@ const MessageDetails = Styled.div`
   }
 
   .message-body{
-    ${({ theme }) => (theme.rtl ? 'padding-right' : 'padding-left')}: 82px;
+    ${({ theme }) => (theme.rtl ? 'padding-right' : 'padding-left')}: 60px;
     margin-top: 22px;
     @media only screen and (max-width: 767px){
       ${({ theme }) => (theme.rtl ? 'padding-right' : 'padding-left')}: 0px;
@@ -929,7 +974,7 @@ const MessageDetails = Styled.div`
   }
   .message-attachments{
     margin: 40px -5px 10px -5px;
-    ${({ theme }) => (theme.rtl ? 'padding-right' : 'padding-left')}: 82px;
+    ${({ theme }) => (theme.rtl ? 'padding-right' : 'padding-left')}: 60px;
     display: flex;
     flex-wrap: wrap;
     @media only screen and (max-width: 767px){
@@ -1002,6 +1047,7 @@ const MessageDetails = Styled.div`
           }
           svg,
           img{
+            min-width: 14.5px;
             width: 14.5px;
             color: #fff;
           }
