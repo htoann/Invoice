@@ -1,95 +1,87 @@
-import axiosInstance from 'axios';
-import MockAdapter from 'axios-mock-adapter';
-import { inbox } from './inbox';
 import { accounts } from '../accounts';
-import { departments } from '../category/coCauToChuc';
+import { inbox } from './inbox';
 
-const axios = axiosInstance.create();
+export const mailMockApi = (mock) => {
+  mock.onGet('/api/accounts').reply((config) => {
+    const { username, email, department_id = '', page = 1, page_size = 10 } = config;
 
-const mock = new MockAdapter(axios, { delayResponse: 500 });
+    let results = accounts;
 
-mock.onGet('/api/accounts').reply((config) => {
-  const params = new URLSearchParams(config);
-  const username = params.get('username');
-  const email = params.get('email');
-  const departmentId = parseInt(params.get('department_id'));
+    if (username) {
+      results = results.filter((account) => account.username.includes(username));
+    }
 
-  const page = parseInt(params.get('page')) || 1;
-  const page_size = parseInt(params.get('page_size')) || 10;
+    if (email) {
+      console.log(email);
+      results = results.filter((account) => account.email.includes(email));
+    }
 
-  let results = accounts;
-  if (username) {
-    results = results.filter((account) => account.username.includes(username));
-  }
-  if (email) {
-    console.log(email);
-    results = results.filter((account) => account.email.includes(email));
-  }
-  if (departmentId) {
-    results = results.filter((account) => account.departmentId === departmentId);
-  }
+    if (department_id) {
+      results = results.filter((account) => account.departmentId === department_id);
+    }
 
-  const count = results.length;
+    const count = results.length;
 
-  const start = (page - 1) * page_size;
-  const end = start + page_size;
-  const paginatedResults = results.slice(start, end);
+    const start = (page - 1) * page_size;
+    const end = start + page_size;
+    const paginatedResults = results.slice(start, end);
 
-  return [200, { results: paginatedResults, count }];
-});
+    return [200, { results: paginatedResults, count }];
+  });
 
-mock.onPost('/api/accounts').reply((config) => {
-  const { username, email, password } = JSON.parse(config.data);
+  mock.onPost('/api/accounts').reply((config) => {
+    const { username, email, password } = JSON.parse(config.data);
 
-  const emailExists = accounts.some((account) => account.email === email);
-  if (emailExists) {
-    return [409, { message: 'Email already exists' }];
-  }
+    const emailExists = accounts.some((account) => account.email === email);
+    if (emailExists) {
+      return [409, { message: 'Email already exists' }];
+    }
 
-  const newAccount = {
-    id: Math.random().toString(36).substr(2, 9),
-    username,
-    email,
-    password,
-  };
-  return [201, newAccount];
-});
+    const newAccount = {
+      id: Math.random().toString(36).substr(2, 9), // ID as a string
+      username,
+      email,
+      password,
+    };
+    accounts.push(newAccount); // Ensure new account is added to the accounts array
+    return [201, newAccount];
+  });
 
-mock.onDelete(/\/api\/accounts\/\d+/).reply((config) => {
-  return [204];
-});
+  mock.onDelete(/\/api\/accounts\/\w+/).reply((config) => {
+    const id = config.url.split('/').pop();
+    const accountIndex = accounts.findIndex((acc) => acc.id === id);
+    if (accountIndex !== -1) {
+      accounts.splice(accountIndex, 1); // Remove the account from the array
+      return [204];
+    }
+    return [404];
+  });
 
-mock.onPut(/\/api\/accounts\/\d+/).reply((config) => {
-  const id = parseInt(config.url.split('/').pop(), 10);
-  const { username, email, password } = JSON.parse(config.data);
-  const account = accounts.find((acc) => acc.id === id);
-  if (account) {
-    account.username = username;
-    account.email = email;
-    account.password = password;
-    return [200, account];
-  }
-  return [404];
-});
+  mock.onPut(/\/api\/accounts\/\w+/).reply((config) => {
+    const id = config.url.split('/').pop();
+    const { username, email, password } = JSON.parse(config.data);
+    const account = accounts.find((acc) => acc.id === id);
+    if (account) {
+      account.username = username;
+      account.email = email;
+      account.password = password;
+      return [200, account];
+    }
+    return [404];
+  });
 
-// Inbox
+  // Inbox
+  mock.onGet('/api/inbox').reply((config) => {
+    const { userId, page = 1, page_size = 20, searchTerm = '' } = config;
 
-mock.onGet('/api/inbox').reply((config) => {
-  const { userId, page = 1, page_size = 10, searchTerm = '' } = config;
+    const filteredInbox = inbox
+      .filter((email) => email.receiver.id === userId)
+      .filter((email) => email.from.toLowerCase().includes(searchTerm.toLowerCase()));
 
-  const filteredInbox = inbox
-    .filter((email) => email.userId === parseInt(userId))
-    .filter((email) => email.from.toLowerCase().includes(searchTerm.toLowerCase()));
+    const startIndex = (page - 1) * page_size;
+    const endIndex = startIndex + page_size;
+    const paginatedInbox = filteredInbox.slice(startIndex, endIndex);
 
-  const startIndex = (page - 1) * page_size;
-  const endIndex = startIndex + page_size;
-  const paginatedInbox = filteredInbox.slice(startIndex, endIndex);
-
-  return [200, { results: paginatedInbox, count: filteredInbox.length }];
-});
-
-mock.onGet('/departments').reply(200, {
-  departments,
-});
-
-export default axios;
+    return [200, { results: paginatedInbox, count: filteredInbox.length }];
+  });
+};

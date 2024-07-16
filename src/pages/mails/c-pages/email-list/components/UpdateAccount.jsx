@@ -1,5 +1,5 @@
 import { Modal } from '@/components/modals/antd-modals';
-import axios from '@/mock/mails/mockApi';
+import axios from '@/mock/index';
 import { Form, notification } from 'antd';
 import { useState } from 'react';
 import ModalAccount from './Modal';

@@ -2,7 +2,7 @@ import { Button } from '@/components/buttons/buttons';
 import { Cards } from '@/components/cards/frame/cards-frame';
 import { PageHeader } from '@/components/page-headers/page-headers';
 import { BorderLessHeading, Main } from '@/container/styled';
-import axios from '@/mock/mails/mockApi';
+import axios from '@/mock/index';
 import UilEdit from '@iconscout/react-unicons/icons/uil-edit';
 import UilTrash from '@iconscout/react-unicons/icons/uil-trash-alt';
 import { Col, Input, notification, Popconfirm, Row, Select, Skeleton } from 'antd';
@@ -80,18 +80,20 @@ export const EmailList = () => {
   const [departments, setDepartments] = useState([]);
 
   useEffect(() => {
-    try {
-      setLoadingDepartments(true);
-
-      const response = axios.get('/departments');
-      if (response?.data?.departments) {
+    const getDepartments = async () => {
+      try {
+        setLoadingDepartments(true);
+        const response = await axios.get('/departments');
+        console.log(response);
         setDepartments(response.data.departments);
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setLoadingDepartments(false);
       }
-    } catch (error) {
-      console.log(error);
-    } finally {
-      setLoadingDepartments(false);
-    }
+    };
+
+    getDepartments();
   }, []);
 
   useEffect(() => {

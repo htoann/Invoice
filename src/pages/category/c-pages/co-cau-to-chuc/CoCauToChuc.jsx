@@ -1,11 +1,11 @@
 import { PageHeader } from '@/components/page-headers/page-headers';
 import { Main } from '@/container/styled';
+import axios from '@/mock/index';
 import { Row } from 'antd';
 import { useEffect, useState } from 'react';
 import DepartmentList from './c-pages/Department';
 import MemberList from './c-pages/Member';
 import TeamList from './c-pages/Team';
-import axios from '@/mock/category/coCauToChucMockApi';
 
 export const CoCauToChuc = () => {
   const [departments, setDepartments] = useState([]);

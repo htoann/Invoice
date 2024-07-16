@@ -1,4 +1,4 @@
-import axios from '@/mock/mails/mockApi';
+import axios from '@/mock/index';
 import UilInbox from '@iconscout/react-unicons/icons/uil-inbox';
 import { Input, Pagination, Select, Skeleton } from 'antd';
 import Paragraph from 'antd/lib/typography/Paragraph';
@@ -65,9 +65,7 @@ export const InboxList = React.memo(({ toggleCollapsed, setSelectedInbox, select
   }, []);
 
   useEffect(() => {
-    if (selectedUserId) {
-      getList({ searchTerm, page: current, page_size: pageSize, userId: selectedUserId });
-    }
+    getList({ searchTerm, page: current, page_size: pageSize, userId: selectedUserId });
   }, [selectedUserId, current, pageSize]);
 
   const resetCurrentPage = () => {
@@ -110,7 +108,7 @@ export const InboxList = React.memo(({ toggleCollapsed, setSelectedInbox, select
           }}
           loading={loadingUsers}
           disabled={loadingUsers}
-          defaultValue={Number(selectedUserId)}
+          defaultValue={selectedUserId}
           options={accountsSelect}
         />
       )}
