@@ -25,7 +25,7 @@ function Email() {
   const [selectedInbox, setSelectedInbox] = useState('');
 
   const [state, setState] = useState({
-    responsive: 0,
+    responsive: window.innerWidth,
     collapsed: false,
   });
 
@@ -49,7 +49,7 @@ function Email() {
   };
 
   useEffect(() => {
-    toggleCollapsed();
+    responsive <= 991 && toggleCollapsed();
   }, [selectedInbox]);
 
   return (

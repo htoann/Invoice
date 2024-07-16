@@ -68,7 +68,7 @@ function Breadcrumbs() {
                   <Breadcrumb.Item>
                     <NavLink to="#">Component</NavLink>
                   </Breadcrumb.Item>
-                  <Breadcrumb.Item overlay={menu}>
+                  <Breadcrumb.Item menu={menu}>
                     <NavLink to="#">
                       <span>General</span>
                     </NavLink>

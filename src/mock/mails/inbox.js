@@ -15,7 +15,7 @@ export const inbox = [
     id: '1585118055048',
     subject: 'Meeting Reminder',
     body: 'Hi there, just a quick reminder about our meeting scheduled for tomorrow at 10 AM. Please let me know if you need to reschedule.',
-    date: '01-07-2024',
+    created_at: '01-07-2024',
   },
   {
     status: 'read',
@@ -33,7 +33,7 @@ export const inbox = [
     id: '1585118055049',
     subject: 'Project Update',
     body: 'Hi team, the latest project update has been uploaded to the shared drive. Please review and provide your feedback by EOD.',
-    date: '02-07-2024',
+    created_at: '02-07-2024',
   },
   {
     status: 'unread',
@@ -51,7 +51,7 @@ export const inbox = [
     id: '1585118055054',
     subject: 'Welcome to Our Platform',
     body: 'Dear user, welcome to our platform! We hope you have a great experience. If you need any assistance, feel free to reach out.',
-    date: '03-07-2024',
+    created_at: '03-07-2024',
   },
   {
     status: 'unread',
@@ -69,7 +69,7 @@ export const inbox = [
     id: '1585118055055',
     subject: 'Support Ticket Update',
     body: 'Hello, your support ticket has been updated. Please log in to your account to view the latest updates.',
-    date: '04-07-2024',
+    created_at: '04-07-2024',
   },
   {
     status: 'read',
@@ -87,7 +87,7 @@ export const inbox = [
     id: '1585118055056',
     subject: 'Monthly Newsletter',
     body: 'Hi there, here is your monthly newsletter with the latest updates and news from our company.',
-    date: '05-07-2024',
+    created_at: '05-07-2024',
   },
   {
     status: 'read',
@@ -105,7 +105,7 @@ export const inbox = [
     id: '1585118055057',
     subject: 'Account Verification Required',
     body: 'Dear user, please verify your account using the link provided to ensure continued access to our services.',
-    date: '06-07-2024',
+    created_at: '06-07-2024',
   },
   {
     status: 'unread',
@@ -123,7 +123,7 @@ export const inbox = [
     id: '1585118055058',
     subject: 'Special Offers Just for You',
     body: 'Hello, we have some exclusive offers for you this month. Check them out and save big!',
-    date: '07-07-2024',
+    created_at: '07-07-2024',
   },
   {
     status: 'read',
@@ -141,7 +141,7 @@ export const inbox = [
     id: '1585118055059',
     subject: 'Service Announcement',
     body: 'Dear user, we are making some updates to our service. Please review the changes on our website.',
-    date: '08-07-2024',
+    created_at: '08-07-2024',
   },
   {
     status: 'unread',
@@ -159,7 +159,7 @@ export const inbox = [
     id: '1585118055060',
     subject: 'New Contact Request',
     body: 'Hello, you have a new contact request. Please log in to your account to respond.',
-    date: '09-07-2024',
+    created_at: '09-07-2024',
   },
   {
     status: 'read',
@@ -177,7 +177,7 @@ export const inbox = [
     id: '1585118055061',
     subject: 'Exciting New Promotions',
     body: 'Hi there, check out our exciting new promotions and discounts available this month.',
-    date: '10-07-2024',
+    created_at: '10-07-2024',
   },
   {
     status: 'unread',
@@ -195,7 +195,7 @@ export const inbox = [
     id: '1585118055062',
     subject: 'We Value Your Feedback',
     body: 'Dear user, we would love to hear your feedback on our services. Please let us know your thoughts.',
-    date: '11-07-2024',
+    created_at: '11-07-2024',
   },
   {
     status: 'read',
@@ -213,7 +213,7 @@ export const inbox = [
     id: '1585118055063',
     subject: 'Latest News and Updates',
     body: 'Hello, here are the latest news and updates from our company. We hope you find them useful.',
-    date: '12-07-2024',
+    created_at: '12-07-2024',
   },
   {
     status: 'unread',
@@ -231,6 +231,6 @@ export const inbox = [
     id: '1585118055064',
     subject: 'Event Reminder',
     body: 'Dear user, just a reminder about the upcoming event this weekend. We hope to see you there!',
-    date: '13-07-2024',
+    created_at: '13-07-2024',
   },
 ];

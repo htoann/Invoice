@@ -30,7 +30,7 @@ const Dropdown = ({
       style={style}
       placement={placement}
       title={title}
-      overlay={<Content>{content}</Content>}
+      menu={<Content>{content}</Content>}
       trigger={action}
     >
       {children}

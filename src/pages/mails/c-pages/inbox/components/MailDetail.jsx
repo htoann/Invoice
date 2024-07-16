@@ -49,7 +49,7 @@ function MailDetail({ selectedInbox: email }) {
                             <span>CC:</span> <span>example@gamil.com</span>{' '}
                           </li>
                           <li>
-                            <span>Date:</span> <span>{moment(email?.date).format('LLL')}</span>
+                            <span>Date:</span> <span>{moment(email?.created_at).format('LLL')}</span>
                           </li>
                         </ul>
                       }
@@ -63,7 +63,7 @@ function MailDetail({ selectedInbox: email }) {
                 </div>
 
                 <div className="message-excerpt">
-                  <span> {moment(email?.date).format('LLL')} </span>
+                  <span> {moment(email?.created_at).format('LLL')} </span>
                 </div>
               </div>
 

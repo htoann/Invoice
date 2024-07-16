@@ -37,12 +37,12 @@ export const mailMockApi = (mock) => {
     }
 
     const newAccount = {
-      id: Math.random().toString(36).substr(2, 9), // ID as a string
+      id: Math.random().toString(36).substr(2, 9),
       username,
       email,
       password,
     };
-    accounts.push(newAccount); // Ensure new account is added to the accounts array
+    accounts.push(newAccount);
     return [201, newAccount];
   });
 
@@ -50,7 +50,7 @@ export const mailMockApi = (mock) => {
     const id = config.url.split('/').pop();
     const accountIndex = accounts.findIndex((acc) => acc.id === id);
     if (accountIndex !== -1) {
-      accounts.splice(accountIndex, 1); // Remove the account from the array
+      accounts.splice(accountIndex, 1);
       return [204];
     }
     return [404];
@@ -71,16 +71,16 @@ export const mailMockApi = (mock) => {
 
   // Inbox
   mock.onGet('/api/inbox').reply((config) => {
-    const { userId, page = 1, page_size = 20, searchTerm = '' } = config;
+    const { receiver_id, page = 1, page_size = 20, search_term = '' } = config;
 
     let results = [];
 
-    if (userId) {
-      results = inbox.filter((email) => email.receiver.id === userId?.toString());
+    if (receiver_id) {
+      results = inbox.filter((email) => email.receiver.id === receiver_id?.toString());
     }
 
-    if (searchTerm) {
-      results = inbox.filter((email) => email.sender.email.toLowerCase().includes(searchTerm.toLowerCase()));
+    if (search_term) {
+      results = inbox.filter((email) => email.sender.email.toLowerCase().includes(search_term.toLowerCase()));
     }
 
     const startIndex = (page - 1) * page_size;

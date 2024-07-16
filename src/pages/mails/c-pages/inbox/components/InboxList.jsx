@@ -41,10 +41,10 @@ export const InboxList = React.memo(({ setSelectedInbox, selectedInbox }) => {
     try {
       setLoading(true);
       const response = await axios.get('/api/inbox', {
-        searchTerm,
+        search_term: searchTerm,
         page,
         page_size,
-        userId,
+        receiver_id: userId,
       });
 
       setInboxList(response?.data?.results);
@@ -184,7 +184,7 @@ export const InboxList = React.memo(({ setSelectedInbox, selectedInbox }) => {
                               </Paragraph>
                             </Tooltip>
                           </div>
-                          <span className="email-date">{item?.date}</span>
+                          <span className="email-date">{item?.created_at}</span>
                         </div>
                       </span>
                     </Link>
