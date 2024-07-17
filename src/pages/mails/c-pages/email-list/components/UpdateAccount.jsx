@@ -34,6 +34,7 @@ const UpdateAccount = ({ state, setState, accounts, setAccounts }) => {
         description: 'Thông tin tài khoản đã được cập nhật thành công.',
       });
     } catch (error) {
+      console.log(error);
       notification.error({
         message: 'Cập nhật thất bại',
         description: 'Không thể cập nhật thông tin tài khoản. Vui lòng thử lại.',
