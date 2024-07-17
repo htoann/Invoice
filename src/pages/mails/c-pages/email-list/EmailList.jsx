@@ -240,6 +240,7 @@ export const EmailList = () => {
                   <div style={{ display: 'flex', gap: 2, flexWrap: 'auto', alignItems: 'center' }}>
                     <span className="label">Chọn phòng ban</span>
                     <Select
+                      popupClassName="dropdown-select"
                       loading={loadingDepartments}
                       disabled={loadingDepartments}
                       onChange={handleSelectDepartment}

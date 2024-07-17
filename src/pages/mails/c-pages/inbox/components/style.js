@@ -445,11 +445,10 @@ const MailBox = Styled.div`
 const EmailNav = Styled.nav`
   ul{
     list-style: none;
-    margin: 20px 0;
+    margin-top: 20px;
     padding: 0;
-    max-height: calc(100vh - 426px);
+    max-height: calc(100vh - 418px);
     overflow: auto;
-    height: calc(100vh - 448px);
     padding-right: 5px;
     li{
       &:has(.empty) {
@@ -1143,6 +1142,7 @@ const EmailWrapper = Styled.div`
     }
   }
   .mail-sideabr{
+    height: 100%;
     &.hide{
       transform: translateX(${({ theme }) => (theme.rtl ? '100%' : '-100%')});
       transition: .35s ease-in;
@@ -1166,6 +1166,7 @@ const EmailWrapper = Styled.div`
       height: 100%;
       .ant-card-body{
         padding: 0px !important;
+        height: 100%;
       }
     }
   }
@@ -1178,8 +1179,8 @@ const EmailWrapper = Styled.div`
   }
 
   .mail-sidebar-bottom{
-    padding: 25px 15px;
-    height: calc(100vh - 200px);
+    padding: 25px 15px 0 15px;
+    height: calc(100vh - 215px);
     overflow: auto;
   }
 

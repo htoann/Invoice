@@ -14,7 +14,7 @@ const PageHeaderStyle = Styled(PageHeader)`
     }
   }
   &.ant-page-header.has-breadcrumb{
-    padding-top: 15px;
+    /* padding-top: 15px; */
     .ant-breadcrumb{
       ol li{
         display: flex;
@@ -106,7 +106,7 @@ const PageHeaderStyle = Styled(PageHeader)`
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    padding: 34px 30px 24px;
+    padding: 24px 30px;
     @media only screen and (max-width: 991px){
       padding: 18px 15px 12px;
     }

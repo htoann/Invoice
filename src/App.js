@@ -1,6 +1,6 @@
 import { ConfigProvider } from 'antd';
 import 'antd/dist/antd.less';
-import React, { lazy, useEffect, useState } from 'react';
+import { lazy, useEffect, useState } from 'react';
 import { Provider, useSelector } from 'react-redux';
 import { Navigate, Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 
@@ -9,9 +9,9 @@ import ProtectedRoute from './components/utilities/protectedRoute';
 import config from './config/config';
 import store from './redux/store';
 
-import Index from './routes/index';
+import './index.scss';
 import Auth from './routes/auth';
-import './index.css';
+import Index from './routes/index';
 
 const NotFound = lazy(() => import('./container/pages/404'));
 

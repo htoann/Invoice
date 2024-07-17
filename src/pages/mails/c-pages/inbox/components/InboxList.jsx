@@ -96,6 +96,7 @@ export const InboxList = React.memo(({ setSelectedInbox, selectedInbox }) => {
     <>
       {!loadingUsers && (
         <Select
+          popupClassName="dropdown-select"
           style={{ width: '100%', marginBottom: 20 }}
           placeholder="Chọn tài khoản"
           onChange={(value) => {

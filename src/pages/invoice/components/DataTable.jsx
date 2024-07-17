@@ -64,7 +64,12 @@ function DataTable({ loading, tableData, columns, state, setState, getInvoiceLis
           <div className="ninjadash-datatable-filter__left">
             <div className="ninjadash-datatable-filter__input">
               <span className="label">Loại hóa đơn</span>
-              <Select onChange={handleLoaiHoaDonSearch} style={{ width: 200 }} defaultValue="purchase">
+              <Select
+                popupClassName="dropdown-select"
+                onChange={handleLoaiHoaDonSearch}
+                style={{ width: 200 }}
+                defaultValue="purchase"
+              >
                 <Select.Option value="purchase">Mua vào</Select.Option>
                 <Select.Option value="sold">Bán ra</Select.Option>
               </Select>
