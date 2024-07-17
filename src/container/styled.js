@@ -1,9 +1,7 @@
 import Styled from 'styled-components';
 
 const Main = Styled.div`
-    padding: 0px 30px 20px;
-    // Change
-    // min-height: 715px;
+    padding: 0px 30px 12px;
     min-height: calc(100vh - 100px - 72px);
     background-color: transparent;
     &.grid-boxed{
