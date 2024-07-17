@@ -44,7 +44,6 @@ const Upload = lazy(() => import('../../container/ui-elements/Upload'));
 const Message = lazy(() => import('../../container/ui-elements/Messages'));
 const Confirme = lazy(() => import('../../container/ui-elements/PopConfirme'));
 const Menu = lazy(() => import('../../container/ui-elements/Menu'));
-const DragDrop = lazy(() => import('../../container/ui-elements/DragAndDrop'));
 const DashboardBase = lazy(() => import('../../container/dashboard/DashboardBase'));
 const NotFound = lazy(() => import('../../container/pages/404'));
 
@@ -94,7 +93,6 @@ function ComponentRoute() {
       <Route path="message" element={<Message />} />
       <Route path="confirm" element={<Confirme />} />
       <Route path="menu" element={<Menu />} />
-      <Route path="drag" element={<DragDrop />} />
       <Route exact path="base" element={<DashboardBase />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
