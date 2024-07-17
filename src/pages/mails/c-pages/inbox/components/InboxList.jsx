@@ -2,6 +2,7 @@ import axios from '@/mock/index';
 import UilInbox from '@iconscout/react-unicons/icons/uil-inbox';
 import { Input, Pagination, Select, Skeleton } from 'antd';
 import Paragraph from 'antd/lib/typography/Paragraph';
+import useDepartments from 'hooks/useDepartments';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { EmailNav } from './style';
@@ -18,16 +19,20 @@ export const InboxList = React.memo(({ setSelectedInbox, selectedInbox }) => {
 
   const [inboxList, setInboxList] = useState([]);
   const [accountList, setAccountList] = useState([]);
+
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedUserId, setSelectedUserId] = useState(null);
+  const [selectedDepartmentId, setSelectedDepartmentId] = useState(null);
 
   const [loading, setLoading] = useState(false);
   const [loadingUsers, setLoadingUser] = useState(false);
 
-  const getUsers = async () => {
+  const { loadingDepartments, departments } = useDepartments();
+
+  const getUsers = async ({ departmentId = '' }) => {
     try {
       setLoadingUser(true);
-      const response = await axios.get('/api/accounts');
+      const response = await axios.get('/api/accounts', { department_id: departmentId });
       setAccountList(response?.data?.results);
       response?.data?.results?.length > 0 && setSelectedUserId(response?.data?.results[0].id);
     } catch (error) {
@@ -48,9 +53,6 @@ export const InboxList = React.memo(({ setSelectedInbox, selectedInbox }) => {
       });
 
       setInboxList(response?.data?.results);
-      // if (response?.data?.results?.length > 0) {
-      //   setSelectedInbox(response?.data?.results[0]);
-      // }
       setPagination((prev) => ({
         ...prev,
         total: Number(response?.data?.count) || 0,
@@ -63,8 +65,8 @@ export const InboxList = React.memo(({ setSelectedInbox, selectedInbox }) => {
   };
 
   useEffect(() => {
-    getUsers();
-  }, []);
+    getUsers({ departmentId: selectedDepartmentId });
+  }, [selectedDepartmentId]);
 
   useEffect(() => {
     getList({ searchTerm, page: current, page_size: pageSize, userId: selectedUserId });
@@ -85,6 +87,16 @@ export const InboxList = React.memo(({ setSelectedInbox, selectedInbox }) => {
     }));
   };
 
+  const handleReset = () => {
+    setSearchTerm('');
+    setPagination({
+      pageSize: 20,
+      showSizeChanger: true,
+      current: 1,
+      total: 0,
+    });
+  };
+
   const accountsSelect =
     accountList?.length > 0 &&
     accountList.map((item) => ({
@@ -92,53 +104,88 @@ export const InboxList = React.memo(({ setSelectedInbox, selectedInbox }) => {
       label: item.email,
     }));
 
+  const departmentsSelect = [
+    { label: 'Tất cả', value: '' },
+    ...departments.map((item) => ({
+      value: item.id,
+      label: item.name,
+    })),
+  ];
+
   return (
     <>
-      {!loadingUsers && (
-        <Select
-          popupClassName="dropdown-select"
-          style={{ width: '100%', marginBottom: 20 }}
-          placeholder="Chọn tài khoản"
-          onChange={(value) => {
-            setSelectedUserId(value);
-            setSearchTerm('');
-            setPagination({
-              pageSize: 20,
-              showSizeChanger: true,
-              current: 1,
-              total: 0,
-            });
+      <div style={{ display: 'flex', gap: 2, flexWrap: 'auto', flexDirection: 'column' }}>
+        {!loadingDepartments && (
+          <>
+            <span className="label mb-8">Chọn phòng ban</span>
+            <Select
+              popupClassName="dropdown-select"
+              style={{ width: '100%', marginBottom: 20 }}
+              placeholder="Chọn phòng ban"
+              onChange={(value) => {
+                setSelectedDepartmentId(value);
+
+                setSelectedUserId('');
+                handleReset();
+              }}
+              loading={loadingDepartments}
+              disabled={loadingDepartments}
+              defaultValue=""
+              options={departmentsSelect}
+            />
+          </>
+        )}
+      </div>
+
+      <div style={{ display: 'flex', gap: 2, flexWrap: 'auto', flexDirection: 'column' }}>
+        {!loadingUsers && (
+          <>
+            <span className="label mb-8">Chọn tài khoản</span>
+            <Select
+              popupClassName="dropdown-select"
+              style={{ width: '100%', marginBottom: 20 }}
+              placeholder="Chọn tài khoản"
+              onChange={(value) => {
+                setSelectedUserId(value);
+
+                handleReset();
+              }}
+              loading={loadingUsers}
+              disabled={loadingUsers}
+              defaultValue={selectedUserId}
+              options={accountsSelect}
+            />
+          </>
+        )}
+      </div>
+
+      {!loadingDepartments && (
+        <Input
+          style={{ width: '100%', marginBottom: 20, height: 40 }}
+          placeholder="Tìm kiếm theo người gửi"
+          value={searchTerm}
+          onChange={(event) => {
+            setSearchTerm(event.target.value);
           }}
-          loading={loadingUsers}
-          disabled={loadingUsers}
-          defaultValue={selectedUserId}
-          options={accountsSelect}
+          onPressEnter={() => {
+            getList({ searchTerm, page_size: pageSize, userId: selectedUserId });
+            resetCurrentPage();
+          }}
         />
       )}
 
-      <Input
-        style={{ width: '100%', marginBottom: 20, height: 40 }}
-        placeholder="Tìm kiếm theo người gửi"
-        value={searchTerm}
-        onChange={(event) => {
-          setSearchTerm(event.target.value);
-        }}
-        onPressEnter={() => {
-          getList({ searchTerm, page_size: pageSize, userId: selectedUserId });
-          resetCurrentPage();
-        }}
-      />
-
-      <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 20 }}>
-        <Pagination
-          current={current}
-          pageSize={pageSize}
-          onChange={handlePageChange}
-          total={total}
-          showSizeChanger
-          onShowSizeChange={(current, size) => setPagination((prev) => ({ ...prev, pageSize: size }))}
-        />
-      </div>
+      {!loadingUsers && !loadingDepartments && (
+        <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 20 }}>
+          <Pagination
+            current={current}
+            pageSize={pageSize}
+            onChange={handlePageChange}
+            total={total}
+            showSizeChanger
+            onShowSizeChange={(current, size) => setPagination((prev) => ({ ...prev, pageSize: size }))}
+          />
+        </div>
+      )}
 
       {loading || loadingUsers ? (
         <>

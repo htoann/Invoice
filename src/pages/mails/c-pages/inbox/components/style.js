@@ -447,8 +447,9 @@ const EmailNav = Styled.nav`
     list-style: none;
     margin-top: 20px;
     padding: 0;
-    max-height: calc(100vh - 418px);
-    overflow: auto;
+    /* Disabled scroll lỏ for now */
+    /* max-height: calc(100vh - 418px);
+    overflow: auto; */
     padding-right: 5px;
     li{
       &:has(.empty) {
@@ -1180,8 +1181,9 @@ const EmailWrapper = Styled.div`
 
   .mail-sidebar-bottom{
     padding: 25px 15px 0 15px;
-    height: calc(100vh - 215px);
-    overflow: auto;
+    /* Disable scroll lỏ for now */
+    /* height: calc(100vh - 215px); */
+    /* overflow: auto; */
   }
 
   table{

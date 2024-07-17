@@ -6,6 +6,7 @@ import axios from '@/mock/index';
 import UilEdit from '@iconscout/react-unicons/icons/uil-edit';
 import UilTrash from '@iconscout/react-unicons/icons/uil-trash-alt';
 import { Col, Input, notification, Popconfirm, Row, Select, Skeleton } from 'antd';
+import useDepartments from 'hooks/useDepartments';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import CreateAccount from './components/CreateAccount';
@@ -31,6 +32,8 @@ export const EmailList = () => {
   const [isLoadingGetList, setIsLoadingGetList] = useState(false);
   const [searchLoading, setSearchLoading] = useState(false);
   const [searchParams, setSearchParams] = useState({ username: '', password: '', departmentId: '' });
+
+  const { loadingDepartments, departments } = useDepartments();
 
   const getList = async ({
     username = '',
@@ -75,25 +78,6 @@ export const EmailList = () => {
       }
     }
   };
-
-  const [loadingDepartments, setLoadingDepartments] = useState(true);
-  const [departments, setDepartments] = useState([]);
-
-  useEffect(() => {
-    const getDepartments = async () => {
-      try {
-        setLoadingDepartments(true);
-        const response = await axios.get('/departments');
-        setDepartments(response.data.departments);
-      } catch (error) {
-        console.log(error);
-      } finally {
-        setLoadingDepartments(false);
-      }
-    };
-
-    getDepartments();
-  }, []);
 
   useEffect(() => {
     getList({ ...searchParams, page: current, page_size: pageSize });

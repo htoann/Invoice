@@ -2,35 +2,22 @@ import { PageHeader } from '@/components/page-headers/page-headers';
 import { Main } from '@/container/styled';
 import axios from '@/mock/index';
 import { Row } from 'antd';
+import useDepartments from 'hooks/useDepartments';
 import { useEffect, useState } from 'react';
 import DepartmentList from './c-pages/Department';
 import MemberList from './c-pages/Member';
 import TeamList from './c-pages/Team';
 
 export const CoCauToChuc = () => {
-  const [departments, setDepartments] = useState([]);
   const [selectedDepartment, setSelectedDepartment] = useState(null);
   const [teams, setTeams] = useState([]);
   const [selectedTeam, setSelectedTeam] = useState(null);
   const [members, setMembers] = useState([]);
 
-  const [loadingDepartments, setLoadingDepartments] = useState(true);
+  const { loadingDepartments, departments, setDepartments } = useDepartments();
+
   const [loadingTeams, setLoadingTeams] = useState(false);
   const [loadingMembers, setLoadingMembers] = useState(false);
-
-  useEffect(() => {
-    setLoadingDepartments(true);
-
-    axios
-      .get('/departments')
-      .then((response) => {
-        setDepartments(response.data.departments);
-        setLoadingDepartments(false);
-      })
-      .catch(() => {
-        setLoadingDepartments(false);
-      });
-  }, []);
 
   useEffect(() => {
     setTeams([]);
