@@ -10,6 +10,28 @@
     "sourceType": "module"
   },
   "plugins": ["react", "import", "react-hooks"],
+  "settings": {
+    "import/resolver": {
+      "alias": {
+        "map": [
+          ["@", "./src"],
+          ["@/components", "./src/components"],
+          ["@/config", "./src/config"],
+          ["@/container", "./src/container"],
+          ["@/demoData", "./src/demoData"],
+          ["@/i18n", "./src/i18n"],
+          ["@/layout", "./src/layout"],
+          ["@/pages", "./src/pages"],
+          ["@/redux", "./src/redux"],
+          ["@/routes", "./src/routes"],
+          ["@/static", "./src/static"],
+          ["@/utils", "./src/utils"],
+          ["@/mock", "./src/mock"]
+        ],
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      }
+    }
+  },
   "rules": {
     "prettier/prettier": "error",
     "import/no-named-as-default-member": 0,
@@ -53,28 +75,7 @@
     "no-unused-expressions": "off",
     "jsx-a11y/click-events-have-key-events": "off",
     "jsx-a11y/no-noninteractive-element-interactions": "off",
-    "jsx-a11y/no-static-element-interactions": "off"
-  },
-  "settings": {
-    "import/resolver": {
-      "alias": {
-        "map": [
-          ["@", "./src"],
-          ["@/components", "./src/components"],
-          ["@/config", "./src/config"],
-          ["@/container", "./src/container"],
-          ["@/demoData", "./src/demoData"],
-          ["@/i18n", "./src/i18n"],
-          ["@/layout", "./src/layout"],
-          ["@/pages", "./src/pages"],
-          ["@/redux", "./src/redux"],
-          ["@/routes", "./src/routes"],
-          ["@/static", "./src/static"],
-          ["@/utils", "./src/utils"],
-          ["@/mock", "./src/mock"]
-        ],
-        "extensions": [".js", ".jsx", ".ts", ".tsx"]
-      }
-    }
+    "jsx-a11y/no-static-element-interactions": "off",
+    "react/display-name": "off"
   }
 }
