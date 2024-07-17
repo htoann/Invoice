@@ -1,6 +1,6 @@
 import axios from '@/mock/index';
 import UilInbox from '@iconscout/react-unicons/icons/uil-inbox';
-import { Input, Pagination, Select, Skeleton, Tooltip } from 'antd';
+import { Input, Pagination, Select, Skeleton } from 'antd';
 import Paragraph from 'antd/lib/typography/Paragraph';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
@@ -167,19 +167,18 @@ export const InboxList = React.memo(({ setSelectedInbox, selectedInbox }) => {
                             <Paragraph className="email-subject" ellipsis>
                               {item?.subject}
                             </Paragraph>
-                            <Tooltip title={`${item?.sender.name} <${item?.sender.email}>`}>
-                              <Paragraph
-                                className="email-sender"
-                                ellipsis
-                                style={{
-                                  width: '100%',
-                                  marginBottom: 0,
-                                  lineHeight: '1.2rem',
-                                }}
-                              >
-                                {item?.sender.name} &lt;{item?.sender.email}&gt;
-                              </Paragraph>
-                            </Tooltip>
+                            <Paragraph
+                              className="email-sender"
+                              ellipsis
+                              style={{
+                                width: '100%',
+                                marginBottom: 0,
+                                lineHeight: '1.2rem',
+                              }}
+                              title={`${item?.sender.name} <${item?.sender.email}>`}
+                            >
+                              {item?.sender.name} &lt;{item?.sender.email}&gt;
+                            </Paragraph>
                           </div>
                           <span className="email-date">{item?.created_at}</span>
                         </div>
