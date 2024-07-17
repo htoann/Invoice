@@ -1,23 +1,13 @@
 {
   "env": {
     "browser": true,
-    "es6": true,
-    "jest": true
+    "es2021": true,
+    "node": true
   },
-  "extends": ["airbnb", "plugin:prettier/recommended", "prettier"],
-  "globals": {
-    "Atomics": "readonly",
-    "SharedArrayBuffer": "readonly"
-  },
+  "extends": ["plugin:prettier/recommended", "prettier"],
   "parserOptions": {
-    "parser": "@babel/eslint-parser",
-    "ecmaFeatures": {
-      "jsx": true
-    },
     "ecmaVersion": "latest",
-    "sourceType": "module",
-    "allowImportExportEverywhere": true,
-    "requireConfigFile": false
+    "sourceType": "module"
   },
   "plugins": ["react", "import", "react-hooks"],
   "rules": {
