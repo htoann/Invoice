@@ -185,7 +185,7 @@ const ThemeLayout = (WrappedComponent) => {
               {!topMenu || window.innerWidth <= 991 ? (
                 <ThemeProvider theme={theme}>
                   <Sider
-                    width={280}
+                    width={350}
                     style={SideBarStyle}
                     collapsed={collapsed}
                     theme={layoutMode === 'lightMode' ? 'light' : 'dark'}

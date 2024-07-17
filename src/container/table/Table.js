@@ -4,7 +4,6 @@ import { PageHeader } from '../../components/page-headers/page-headers';
 import BestSeller from '../dashboard/overview/BusinessStatus';
 import RevenueGenerated from '../dashboard/overview/RevenueGenerated';
 import { Main } from '../styled';
-import DragAndDropTable from './DragTable';
 
 function Tables() {
   const dataSource = [
@@ -55,9 +54,6 @@ function Tables() {
           </Col>
           <Col xs={24}>
             <BestSeller />
-          </Col>
-          <Col xs={24}>
-            <DragAndDropTable />
           </Col>
         </Row>
       </Main>
