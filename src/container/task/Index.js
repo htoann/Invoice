@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/control-has-associated-label */
 import React, { useState, lazy, Suspense, useLayoutEffect } from 'react';
 import { NavLink, Link, Routes, Route } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
