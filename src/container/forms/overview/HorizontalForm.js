@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
 import { Row, Col, Form, Input, Button } from 'antd';
 import { HorizontalFormStyleWrap } from './Style';

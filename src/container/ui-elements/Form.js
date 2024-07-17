@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState } from 'react';
 import { Row, Col, Form, Select, Input, InputNumber } from 'antd';
 import UilPlus from '@iconscout/react-unicons/icons/uil-plus';
