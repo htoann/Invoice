@@ -116,20 +116,29 @@ export const InboxList = React.memo(({ setSelectedInbox, selectedInbox }) => {
         />
       )}
 
-      {inboxList?.length > 0 && (
-        <Input
-          style={{ width: '100%', marginBottom: 20, height: 40 }}
-          placeholder="Tìm kiếm theo người gửi"
-          value={searchTerm}
-          onChange={(event) => {
-            setSearchTerm(event.target.value);
-          }}
-          onPressEnter={() => {
-            getList({ searchTerm, page_size: pageSize, userId: selectedUserId });
-            resetCurrentPage();
-          }}
+      <Input
+        style={{ width: '100%', marginBottom: 20, height: 40 }}
+        placeholder="Tìm kiếm theo người gửi"
+        value={searchTerm}
+        onChange={(event) => {
+          setSearchTerm(event.target.value);
+        }}
+        onPressEnter={() => {
+          getList({ searchTerm, page_size: pageSize, userId: selectedUserId });
+          resetCurrentPage();
+        }}
+      />
+
+      <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 20 }}>
+        <Pagination
+          current={current}
+          pageSize={pageSize}
+          onChange={handlePageChange}
+          total={total}
+          showSizeChanger
+          onShowSizeChange={(current, size) => setPagination((prev) => ({ ...prev, pageSize: size }))}
         />
-      )}
+      </div>
 
       {loading || loadingUsers ? (
         <>
@@ -139,19 +148,6 @@ export const InboxList = React.memo(({ setSelectedInbox, selectedInbox }) => {
         </>
       ) : (
         <>
-          {inboxList?.length > 0 && (
-            <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 20 }}>
-              <Pagination
-                current={current}
-                pageSize={pageSize}
-                onChange={handlePageChange}
-                total={total}
-                showSizeChanger
-                onShowSizeChange={(current, size) => setPagination((prev) => ({ ...prev, pageSize: size }))}
-              />
-            </div>
-          )}
-
           <EmailNav>
             <ul>
               {inboxList?.length > 0 ? (
