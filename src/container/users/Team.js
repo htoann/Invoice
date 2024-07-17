@@ -69,7 +69,7 @@ function Team() {
             </>
           }
           buttons={[
-            <Link to="/users/add-user/info" className="btn-add_new">
+            <Link key="1" to="/users/add-user/info" className="btn-add_new">
               <UilPlus /> Add New Member
             </Link>,
           ]}

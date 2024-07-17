@@ -16,7 +16,9 @@ function DataTable({ loading, tableData, columns, state, setState, getInvoiceLis
   const { pagination, date_from, date_to, loaiHoaDon } = state;
   const { pageSize } = pagination;
 
-  const getList = getInvoiceList(1, pageSize, loaiHoaDon, date_from, date_to, true);
+  const getList = () => {
+    getInvoiceList(1, pageSize, loaiHoaDon, date_from, date_to, true);
+  };
 
   const handleLoaiHoaDonSearch = (loaiHoaDon) => {
     setState({
