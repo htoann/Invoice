@@ -13,7 +13,7 @@
     "@iconscout/react-unicons": "^1.1.6",
     "@pezhmanparsaee/react-custom-scrollbars": "4.3.1",
     "antd": "^4.21.3",
-    "axios": "^0.25.0",
+    "axios": "^1.7.2",
     "axios-mock-adapter": "^1.22.0",
     "core-js": "^3.37.1",
     "dayjs": "^1.11.2",
