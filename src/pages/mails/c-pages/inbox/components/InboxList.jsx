@@ -137,27 +137,25 @@ export const InboxList = React.memo(({ setSelectedInbox, selectedInbox }) => {
         )}
       </div>
 
-      <div style={{ display: 'flex', gap: 2, flexWrap: 'auto', flexDirection: 'column' }}>
-        {!loadingUsers && (
-          <>
-            <span className="label mb-8">Chọn tài khoản</span>
-            <Select
-              popupClassName="dropdown-select"
-              style={{ width: '100%', marginBottom: 20 }}
-              placeholder="Chọn tài khoản"
-              onChange={(value) => {
-                setSelectedUserId(value);
+      {!loadingUsers && (
+        <div style={{ display: 'flex', gap: 2, flexWrap: 'auto', flexDirection: 'column' }}>
+          <span className="label mb-8">Chọn tài khoản</span>
+          <Select
+            popupClassName="dropdown-select"
+            style={{ width: '100%', marginBottom: 20 }}
+            placeholder="Chọn tài khoản"
+            onChange={(value) => {
+              setSelectedUserId(value);
 
-                handleReset();
-              }}
-              loading={loadingUsers}
-              disabled={loadingUsers}
-              defaultValue={selectedUserId}
-              options={accountsSelect}
-            />
-          </>
-        )}
-      </div>
+              handleReset();
+            }}
+            loading={loadingUsers}
+            disabled={loadingUsers}
+            defaultValue={selectedUserId}
+            options={accountsSelect}
+          />
+        </div>
+      )}
 
       {!loadingDepartments && (
         <Input
@@ -188,11 +186,11 @@ export const InboxList = React.memo(({ setSelectedInbox, selectedInbox }) => {
       )}
 
       {loading || loadingUsers ? (
-        <>
+        <div style={{ minHeight: 'calc(100vh - 230px)' }}>
           <Skeleton active />
           <Skeleton style={{ marginTop: 10 }} active />
           <Skeleton style={{ marginTop: 10 }} active />
-        </>
+        </div>
       ) : (
         <>
           <EmailNav>
