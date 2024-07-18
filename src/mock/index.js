@@ -1,6 +1,6 @@
 import axiosInstance from 'axios';
 import MockAdapter from 'axios-mock-adapter';
-import { coCauToChucMockApi } from './category/coCauToChucMockApi';
+import { coCauToChucMockApi } from './category/coCauToChuc/coCauToChucMockApi';
 import { mailMockApi } from './mails/mockApi';
 
 const axios = axiosInstance.create();

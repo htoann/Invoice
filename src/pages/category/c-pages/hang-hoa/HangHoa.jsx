@@ -1,22 +1,17 @@
-import { Col, Input, Popconfirm, Row } from 'antd';
-import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { Cards } from '../../../../components/cards/frame/cards-frame';
-import { PageHeader } from '../../../../components/page-headers/page-headers';
-
+import { Cards } from '@/components/cards/frame/cards-frame';
+import { PageHeader } from '@/components/page-headers/page-headers';
+import { BorderLessHeading, Main } from '@/container/styled';
+import axios from '@/mock/index';
 import UilEdit from '@iconscout/react-unicons/icons/uil-edit';
 import UilTrash from '@iconscout/react-unicons/icons/uil-trash-alt';
-import { BorderLessHeading, Main } from '../../../../container/styled';
-import { contactDeleteData } from '../../../../redux/contact/actionCreator';
-import { tableReadData } from '../../../../redux/data-filter/actionCreator';
+import { Col, Input, Popconfirm, Row, Skeleton, notification } from 'antd';
+import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import CreateHangHoa from './components/CreateHangHoa';
-import EditHangHoa from './components/EditHangHoa';
 import DataTable from './components/DataTable';
+import EditHangHoa from './components/EditHangHoa';
 
 export const HangHoa = () => {
-  const dispatch = useDispatch();
-
   const [state, setState] = useState({
     selectedRowKeys: 0,
     selectedRows: 0,
@@ -31,20 +26,50 @@ export const HangHoa = () => {
   const { pagination } = state;
   const { current, pageSize } = pagination;
 
-  const { users } = useSelector((stateItem) => {
-    return {
-      users: stateItem.Contact.data,
-    };
-  });
+  const [list, setList] = useState([]);
+  const [isLoadingGetList, setIsLoadingGetList] = useState(false);
+  const [searchLoading, setSearchLoading] = useState(false);
+  const [searchParams, setSearchParams] = useState({ username: '', password: '', departmentId: '' });
 
-  const [searchText, setSearchText] = useState('');
-  const [filteredData, setFilteredData] = useState(users || []);
+  const getList = async ({ username = '', email = '', page = 1, page_size = 20, searchLoading = true } = {}) => {
+    try {
+      if (searchLoading) {
+        setSearchLoading(true);
+      } else {
+        setIsLoadingGetList(true);
+      }
+
+      const response = await axios.get('/api/accounts', {
+        username,
+        email,
+        page,
+        page_size,
+      });
+
+      if (response?.data) {
+        setList(response?.data?.results);
+        setState((prev) => ({
+          ...prev,
+          pagination: {
+            ...prev.pagination,
+            total: Number(response?.data?.count) || 0,
+          },
+        }));
+      }
+    } catch (error) {
+      console.error(error);
+    } finally {
+      if (searchLoading) {
+        setSearchLoading(false);
+      } else {
+        setIsLoadingGetList(false);
+      }
+    }
+  };
 
   useEffect(() => {
-    if (dispatch) {
-      dispatch(tableReadData());
-    }
-  }, [dispatch]);
+    getList({ ...searchParams, page: current, page_size: pageSize });
+  }, [current, pageSize]);
 
   const showEditModal = (data) => {
     setState({
@@ -54,25 +79,31 @@ export const HangHoa = () => {
     });
   };
 
-  const handleDelete = (id) => {
-    const value = users.filter((item) => item.id !== id);
-    dispatch(contactDeleteData(value));
+  const handleDelete = async (id) => {
+    try {
+      await axios.delete(`/api/accounts/${id}`);
+      setList(list.filter((account) => account.id !== id));
+
+      notification.success({
+        message: 'Xóa thành công',
+        description: 'Hàng hoá đã được xóa thành công.',
+      });
+    } catch (error) {
+      notification.error({
+        message: 'Xóa thất bại',
+        description: 'Không thể xóa hàng hoá. Vui lòng thử lại sau.',
+      });
+    }
   };
 
   const stopPropagation = (e) => {
     e.stopPropagation();
   };
 
-  const handleSearch = (e, dataIndex) => {
-    const value = e.target.value.toLowerCase();
-    setSearchText(value);
-    setFilteredData(users.filter((item) => item[dataIndex].toString().toLowerCase().includes(value)));
-  };
-
   const tableDataScource = [];
 
-  if (filteredData?.length > 0) {
-    filteredData.map((item, index) => {
+  if (list?.length > 0) {
+    list.map((item, index) => {
       const { id, name, email } = item;
 
       return tableDataScource.push({
@@ -109,16 +140,19 @@ export const HangHoa = () => {
         style={{ width: 'auto', height: 35, marginTop: 10 }}
         onClick={stopPropagation}
         onFocus={stopPropagation}
-        onKeyDown={stopPropagation}
-        value={searchText.name}
+        value={searchParams[name]}
         onChange={(e) => {
           e.stopPropagation();
+          setSearchParams({ ...searchParams, [name]: e.target.value.toLowerCase() });
+        }}
+        onKeyDown={(e) => {
+          stopPropagation(e);
           if (e.key === 'Enter') {
             setState({
               ...state,
               pagination: { ...pagination, current: 1 },
             });
-            // getList({ ...searchParams, shouldLoading: false, page: 1, page_size: pageSize });
+            getList({ ...searchParams, shouldLoading: false, page_size: pageSize });
           }
         }}
       />
@@ -150,8 +184,7 @@ export const HangHoa = () => {
       setState({ ...state, selectedRowKeys, selectedRows });
     },
     getCheckboxProps: (record) => ({
-      disabled: record.key === 'searchInput',
-      name: record.name,
+      id: record.id,
     }),
   };
 
@@ -163,14 +196,18 @@ export const HangHoa = () => {
           <Col xs={24}>
             <BorderLessHeading>
               <Cards headless>
-                <DataTable
-                  filterOption
-                  tableData={tableDataScource}
-                  columns={dataTableColumn}
-                  rowSelection={rowSelection}
-                  state={state}
-                  setState={setState}
-                />
+                {isLoadingGetList ? (
+                  <Skeleton active style={{ marginTop: 30 }} />
+                ) : (
+                  <DataTable
+                    tableData={tableDataScource}
+                    columns={dataTableColumn}
+                    rowSelection={rowSelection}
+                    state={state}
+                    setState={setState}
+                    loading={searchLoading}
+                  />
+                )}
               </Cards>
             </BorderLessHeading>
           </Col>
