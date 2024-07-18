@@ -1,87 +1,47 @@
 import { PageHeader } from '@/components/page-headers/page-headers';
 import { Main } from '@/container/styled';
-import axios from '@/mock/index';
 import { Row } from 'antd';
-import useDepartments from 'hooks/useDepartments';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
+import BranchList from './c-pages/Branch';
 import DepartmentList from './c-pages/Department';
-import MemberList from './c-pages/Member';
-import TeamList from './c-pages/Team';
+import ProjectList from './c-pages/Project';
+import useBranches from './hook/useBranches';
+import useDepartments from './hook/useDepartments';
+import useProjects from './hook/useProjects';
 
 export const CoCauToChuc = () => {
-  const [selectedDepartment, setSelectedDepartment] = useState(null);
-  const [teams, setTeams] = useState([]);
-  const [selectedTeam, setSelectedTeam] = useState(null);
-  const [members, setMembers] = useState([]);
+  const { branches, setBranches, loadingBranches } = useBranches();
+  const [selectedBranch, setSelectedBranch] = useState(null);
 
-  const { loadingDepartments, departments, setDepartments } = useDepartments();
+  const { selectedDepartment, departments, setDepartments, loadingDepartments, setSelectedDepartment } =
+    useDepartments(selectedBranch);
 
-  const [loadingTeams, setLoadingTeams] = useState(false);
-  const [loadingMembers, setLoadingMembers] = useState(false);
-
-  useEffect(() => {
-    setTeams([]);
-    setSelectedTeam(null);
-
-    if (!selectedDepartment) {
-      return;
-    }
-
-    setLoadingTeams(true);
-    axios
-      .get(`/departments/${selectedDepartment}/teams`)
-      .then((response) => {
-        setTeams(response.data.teams);
-        setLoadingTeams(false);
-      })
-      .catch(() => {
-        setLoadingTeams(false);
-      });
-  }, [selectedDepartment]);
-
-  useEffect(() => {
-    setMembers([]);
-
-    if (!selectedTeam) {
-      return;
-    }
-
-    setLoadingMembers(true);
-    axios
-      .get(`/teams/${selectedTeam}/sub-teams`)
-      .then((response) => {
-        setMembers(response.data.members);
-        setLoadingMembers(false);
-      })
-      .catch(() => {
-        setLoadingMembers(false);
-      });
-  }, [selectedTeam, selectedDepartment]);
+  const { projects, setProjects, loadingProjects } = useProjects(selectedDepartment, selectedBranch);
 
   return (
     <>
       <PageHeader className="ninjadash-page-header-main" title="Cơ cấu tổ chức" />
       <Main>
         <Row gutter={15}>
-          <DepartmentList
-            list={departments}
-            setList={setDepartments}
-            loadingList={loadingDepartments}
-            selectedItem={selectedDepartment}
-            setSelectedItem={setSelectedDepartment}
+          <BranchList
+            list={branches}
+            setList={setBranches}
+            loadingList={loadingBranches}
+            selectedItem={selectedBranch}
+            setSelectedItem={setSelectedBranch}
           />
 
-          {selectedDepartment && (
-            <TeamList
-              list={teams}
-              setList={setTeams}
-              loadingList={loadingTeams}
-              selectedItem={selectedTeam}
-              setSelectedItem={setSelectedTeam}
+          {selectedBranch && (
+            <DepartmentList
+              list={departments}
+              setList={setDepartments}
+              loadingList={loadingDepartments}
+              selectedItem={selectedDepartment}
+              setSelectedItem={setSelectedDepartment}
             />
           )}
 
-          {selectedTeam && <MemberList list={members} setList={setMembers} loadingList={loadingMembers} />}
+          {selectedDepartment && <ProjectList list={projects} setList={setProjects} loadingList={loadingProjects} />}
         </Row>
       </Main>
     </>

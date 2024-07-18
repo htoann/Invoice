@@ -9,7 +9,7 @@ import { Col, Empty, Form, Input, Menu, notification, Skeleton } from 'antd';
 import { useState } from 'react';
 import MenuItem from '../components/MenuItem';
 
-const TeamList = ({ list, setList, loadingList, selectedItem, setSelectedItem }) => {
+const BranchList = ({ list, setList, loadingList, selectedItem, setSelectedItem }) => {
   const [showCreate, setShowCreate] = useState(false);
   const [showEdit, setShowEdit] = useState(false);
   const [editItem, setEditItem] = useState(null);
@@ -189,4 +189,4 @@ const TeamList = ({ list, setList, loadingList, selectedItem, setSelectedItem })
   );
 };
 
-export default TeamList;
+export default BranchList;

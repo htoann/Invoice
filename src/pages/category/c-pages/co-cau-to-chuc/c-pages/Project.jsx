@@ -9,7 +9,7 @@ import { Col, Empty, Form, Input, Menu, notification, Skeleton } from 'antd';
 import { useState } from 'react';
 import MenuItem from '../components/MenuItem';
 
-const MemberList = ({ list, setList, loadingList, selectedItem, setSelectedItem }) => {
+const ProjectList = ({ list, setList, loadingList }) => {
   const [showCreate, setShowCreate] = useState(false);
   const [showEdit, setShowEdit] = useState(false);
   const [editItem, setEditItem] = useState(null);
@@ -138,8 +138,8 @@ const MemberList = ({ list, setList, loadingList, selectedItem, setSelectedItem 
           <Menu
             style={{ width: '100%' }}
             mode="inline"
-            selectedKeys={[selectedItem]}
-            onClick={({ key }) => setSelectedItem(key)}
+            // selectedKeys={[selectedItem]}
+            // onClick={({ key }) => setSelectedItem(key)}
             itemIcon={<RightOutlined />}
           >
             {loadingList ? (
@@ -189,4 +189,4 @@ const MemberList = ({ list, setList, loadingList, selectedItem, setSelectedItem 
   );
 };
 
-export default MemberList;
+export default ProjectList;

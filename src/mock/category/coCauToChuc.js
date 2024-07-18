@@ -1,153 +1,65 @@
-export const departments = [
-  { id: '1', name: 'Engineering' },
-  { id: '2', name: 'Human Resources' },
-  { id: '3', name: 'Sales' },
-  { id: '4', name: 'Marketing' },
-  { id: '5', name: 'Finance' },
+export const branches = [
+  { id: '1', name: 'Headquarters' },
+  { id: '2', name: 'Regional Office East' },
+  { id: '3', name: 'Regional Office West' },
+  { id: '4', name: 'Regional Office North' },
+  { id: '5', name: 'Regional Office South' },
 ];
 
-export const teams = [
+export const departments = [
+  { id: '1', name: 'Engineering', branch_id: '1' },
+  { id: '2', name: 'Human Resources', branch_id: '1' },
+  { id: '3', name: 'Sales', branch_id: '2' },
+  { id: '4', name: 'Marketing', branch_id: '3' },
+  { id: '5', name: 'Finance', branch_id: '2' },
+  { id: '6', name: 'Customer Support', branch_id: '4' },
+  { id: '7', name: 'IT', branch_id: '5' },
+];
+
+export const projects = [
   {
     id: '1.1',
     name: 'Software Development',
     department_id: '1',
   },
   {
-    id: '1.3',
-    name: 'DevOps',
-    department_id: '1',
-  },
-  {
-    id: '1.4',
-    name: 'System Architecture',
+    id: '1.2',
+    name: 'Infrastructure Upgrade',
     department_id: '1',
   },
   {
     id: '2.1',
-    name: 'Digital Marketing',
-    department_id: '2',
-  },
-  {
-    id: '2.2',
-    name: 'Content Creation',
-    department_id: '2',
-  },
-  {
-    id: '2.3',
-    name: 'SEO',
+    name: 'Employee Onboarding System',
     department_id: '2',
   },
   {
     id: '3.1',
-    name: 'Lead Generation',
+    name: 'Sales Expansion',
     department_id: '3',
   },
   {
-    id: '3.2',
-    name: 'Account Management',
-    department_id: '3',
+    id: '4.1',
+    name: 'Digital Marketing Campaign',
+    department_id: '4',
   },
   {
-    id: '3.3',
-    name: 'Sales Operations',
-    department_id: '3',
-  },
-];
-
-export const subTeams = [
-  {
-    id: '1.1.1',
-    name: 'Backend Team',
-    team_id: '1.1',
+    id: '5.1',
+    name: 'Financial Forecasting',
+    department_id: '5',
   },
   {
-    id: '1.1.2',
-    name: 'Frontend Team',
-    team_id: '1.1',
+    id: '6.1',
+    name: 'Customer Feedback Portal',
+    department_id: '6',
   },
   {
-    id: '1.1.3',
-    name: 'Full Stack Team',
-    team_id: '1.1',
+    id: '7.1',
+    name: 'Network Security Upgrade',
+    department_id: '7',
   },
   {
-    id: '1.3.1',
-    name: 'Infrastructure Team',
-    team_id: '1.3',
-  },
-  {
-    id: '1.3.2',
-    name: 'CI/CD Team',
-    team_id: '1.3',
-  },
-  {
-    id: '1.4.1',
-    name: 'Design Team',
-    team_id: '1.4',
-  },
-  {
-    id: '1.4.2',
-    name: 'Implementation Team',
-    team_id: '1.4',
-  },
-  {
-    id: '2.1.1',
-    name: 'SEO Team',
-    team_id: '2.1',
-  },
-  {
-    id: '2.1.2',
-    name: 'PPC Team',
-    team_id: '2.1',
-  },
-  {
-    id: '2.2.1',
-    name: 'Blog Team',
-    team_id: '2.2',
-  },
-  {
-    id: '2.2.2',
-    name: 'Video Team',
-    team_id: '2.2',
-  },
-  {
-    id: '2.3.1',
-    name: 'On-Page SEO Team',
-    team_id: '2.3',
-  },
-  {
-    id: '2.3.2',
-    name: 'Off-Page SEO Team',
-    team_id: '2.3',
-  },
-  {
-    id: '3.1.1',
-    name: 'Outbound Team',
-    team_id: '3.1',
-  },
-  {
-    id: '3.1.2',
-    name: 'Inbound Team',
-    team_id: '3.1',
-  },
-  {
-    id: '3.2.1',
-    name: 'Corporate Accounts Team',
-    team_id: '3.2',
-  },
-  {
-    id: '3.2.2',
-    name: 'SME Accounts Team',
-    team_id: '3.2',
-  },
-  {
-    id: '3.3.1',
-    name: 'Sales Support Team',
-    team_id: '3.3',
-  },
-  {
-    id: '3.3.2',
-    name: 'Sales Analytics Team',
-    team_id: '3.3',
+    id: '7.2',
+    name: 'Cloud Migration',
+    department_id: '7',
   },
 ];
