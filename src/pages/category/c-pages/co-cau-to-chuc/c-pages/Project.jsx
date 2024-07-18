@@ -168,7 +168,13 @@ const ProjectList = ({ list, setList, loadingList }) => {
                 ))}
               </>
             ) : (
-              <Empty description="Không tìm thấy dự án nào" style={{ marginTop: '50%' }}>
+              <Empty
+                description="Không tìm thấy dự án nào"
+                className="common-center"
+                style={{
+                  minHeight: 'calc(100vh - 290px)',
+                }}
+              >
                 <Button size="small" type="primary" onClick={() => handleCreate()}>
                   Tạo mới
                 </Button>

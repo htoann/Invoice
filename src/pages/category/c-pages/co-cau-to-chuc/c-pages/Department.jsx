@@ -169,7 +169,13 @@ const DepartmentList = ({ list, setList, loadingList, selectedItem, setSelectedI
                 ))}
               </>
             ) : (
-              <Empty description="Không tìm thấy phòng ban nào" style={{ marginTop: '50%' }}>
+              <Empty
+                description="Không tìm thấy phòng ban nào"
+                className="common-center"
+                style={{
+                  minHeight: 'calc(100vh - 290px)',
+                }}
+              >
                 <Button size="small" type="primary" onClick={() => handleCreate()}>
                   Tạo mới
                 </Button>

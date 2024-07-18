@@ -97,7 +97,7 @@ function DataTable({ rowSelection, tableData, columns, pagination, setState, sta
       <div className="ninjadasj-datatable">
         <TableWrapper className="table-data-view table-responsive">
           <Table
-            // className="table-search"
+            className="table-search-selection"
             rowSelection={{
               ...rowSelection,
             }}

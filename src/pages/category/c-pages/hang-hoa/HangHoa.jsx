@@ -205,7 +205,9 @@ export const HangHoa = () => {
     dataIndex: col.dataIndex,
     key: col.key,
     sorter:
-      col.key !== 'stt' && col.key !== 'action' ? (a, b) => a[col.dataIndex].localeCompare(b[col.dataIndex]) : false,
+      col.key !== 'stt' && col.key !== 'action'
+        ? (a, b) => a[col.dataIndex].props.children.localeCompare(b[col.dataIndex].props.children)
+        : false,
     fixed: col.fixed,
   }));
 

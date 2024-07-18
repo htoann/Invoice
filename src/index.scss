@@ -3176,6 +3176,16 @@ html[dir='rtl'] .dark-mode .ninjadash-navbar-menu {
   }
 }
 
+.table-search-selection {
+  .ant-table-thead {
+    .ant-table-cell {
+      .ant-table-column-sorter {
+        margin-bottom: 40px;
+      }
+    }
+  }
+}
+
 .table {
   tbody tr td {
     font-weight: normal;
@@ -3221,4 +3231,12 @@ tr[data-row-key='searchInput'] {
     padding: 5px !important;
     padding-left: 10px !important;
   }
+}
+
+.common-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: auto;
+  align-items: center;
 }
