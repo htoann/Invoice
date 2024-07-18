@@ -1,47 +1,20 @@
-import React, { useState } from 'react';
-import UilThumbsUp from '@iconscout/react-unicons/icons/uil-thumbs-up';
 import UilCommentAlt from '@iconscout/react-unicons/icons/uil-comment-alt';
+import UilImage from '@iconscout/react-unicons/icons/uil-image';
+import UilMessage from '@iconscout/react-unicons/icons/uil-message';
+import UilPaperclip from '@iconscout/react-unicons/icons/uil-paperclip';
 import UilShareAlt from '@iconscout/react-unicons/icons/uil-share-alt';
 import UilSmile from '@iconscout/react-unicons/icons/uil-smile';
-import UilImage from '@iconscout/react-unicons/icons/uil-image';
-import UilPaperclip from '@iconscout/react-unicons/icons/uil-paperclip';
-import UilMessage from '@iconscout/react-unicons/icons/uil-message';
-import { Link } from 'react-router-dom';
-import Masonry from 'react-masonry-css';
-import { Input, Upload, message, Comment, Avatar } from 'antd';
+import UilThumbsUp from '@iconscout/react-unicons/icons/uil-thumbs-up';
+import { Avatar, Comment, Input, Upload, message } from 'antd';
 import moment from 'moment';
-import { useSelector, useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
-import { LightBox } from 'react-lightbox-pack';
-// eslint-disable-next-line import/no-unresolved
-// import 'react-lightbox-pack/dist/index.css';
-import { AllPosts, BackShadowEmoji, Title } from './style';
-import { Cards } from '../../../../../components/cards/frame/cards-frame';
+import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { Button } from '../../../../../components/buttons/buttons';
-import { likeUpdate, commentUpdate, postDelete } from '../../../../../redux/profile/actionCreator';
-
-const dataImages = [
-  {
-    id: 1,
-    image: require('../../../../../static/img/profile/post/506.png'),
-  },
-  {
-    id: 2,
-    image: require('../../../../../static/img/profile/post/907.png'),
-  },
-  {
-    id: 3,
-    image: require('../../../../../static/img/profile/post/brightland_3744.png'),
-  },
-  {
-    id: 4,
-    image: require('../../../../../static/img/profile/post/70.png'),
-  },
-  {
-    id: 5,
-    image: require('../../../../../static/img/profile/post/165.png'),
-  },
-];
+import { Cards } from '../../../../../components/cards/frame/cards-frame';
+import { commentUpdate, likeUpdate, postDelete } from '../../../../../redux/profile/actionCreator';
+import { AllPosts, BackShadowEmoji, Title } from './style';
 
 function ExampleComment({ children, replay }) {
   return (
@@ -71,7 +44,7 @@ ExampleComment.propTypes = {
   replay: PropTypes.object,
 };
 
-function Posts({ postId, from, time, img, like, comment, content, author }) {
+function Posts({ postId, from, time, like, comment, content, author }) {
   const dispatch = useDispatch();
   const { posts } = useSelector((state) => {
     return {
@@ -87,10 +60,6 @@ function Posts({ postId, from, time, img, like, comment, content, author }) {
 
   const [pickerShow, setPickerShow] = useState(false);
   const [textValue, setTextValue] = useState('');
-
-  const onEmojiClick = (event, emojiObject) => {
-    setTextValue(textValue + emojiObject.emoji);
-  };
 
   const onPickerShow = () => {
     setPickerShow(!pickerShow);
@@ -158,16 +127,6 @@ function Posts({ postId, from, time, img, like, comment, content, author }) {
     dispatch(postDelete(posts, id));
   };
 
-  // State
-  const [toggle, setToggle] = React.useState(false);
-  const [sIndex, setSIndex] = React.useState(0);
-
-  // Handler
-  const lightBoxHandler = (status, value) => {
-    setToggle(status);
-    setSIndex(value);
-  };
-
   return (
     <AllPosts>
       <Cards
@@ -188,71 +147,6 @@ function Posts({ postId, from, time, img, like, comment, content, author }) {
         }
       >
         <div className="post-content">
-          <div className="gallery">
-            {img.length ? (
-              <>
-                <Masonry
-                  breakpointCols={img.length <= 2 ? img.length : 2}
-                  className="my-masonry-grid"
-                  columnClassName="my-masonry-grid_column"
-                >
-                  {img.map((src, key) => {
-                    return (
-                      key <= 1 && (
-                        <Link
-                          key={key + 1}
-                          onClick={() => {
-                            lightBoxHandler(true, key);
-                          }}
-                        >
-                          <img key={key + 1} style={{ width: '100%' }} src={require(`../../../../../${src}`)} alt="" />
-                        </Link>
-                      )
-                    );
-                  })}
-                </Masonry>
-                {img.length > 2 && (
-                  <Masonry
-                    breakpointCols={img.length <= 2 ? img.length : 3}
-                    className="my-masonry-grid"
-                    columnClassName="my-masonry-grid_column"
-                  >
-                    {img.map((src, key) => {
-                      return (
-                        key > 1 && (
-                          <Link
-                            key={key + 1}
-                            onClick={() => {
-                              lightBoxHandler(true, key);
-                            }}
-                          >
-                            <img
-                              key={key + 1}
-                              style={{ width: '100%' }}
-                              src={require(`../../../../../${src}`)}
-                              alt=""
-                            />
-                          </Link>
-                        )
-                      );
-                    })}
-                  </Masonry>
-                )}
-              </>
-            ) : null}
-          </div>
-
-          <LightBox
-            state={toggle}
-            event={lightBoxHandler}
-            data={dataImages}
-            imageWidth="600px"
-            imageHeight="500px"
-            thumbnailHeight={50}
-            thumbnailWidth={50}
-            setImageIndex={setSIndex}
-            imageIndex={sIndex}
-          />
           <div className="post-text">
             <p>{content}</p>
           </div>

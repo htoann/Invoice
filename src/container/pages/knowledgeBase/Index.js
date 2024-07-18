@@ -1,15 +1,11 @@
-import React, { lazy, Suspense } from 'react';
-import Masonry, { ResponsiveMasonry } from 'react-responsive-masonry';
 import { Spin } from 'antd';
-import { Routes, NavLink, Route, Link } from 'react-router-dom';
-import { ArrowRightOutlined } from '@ant-design/icons';
-import KnowledgeBaseTop from './overview/Knowledgebase/knowledgeTop';
-import { KnowledgebaseArticleWrap, ArticleTabWrap, PopularArticleWrap, CtaWrap } from './style';
-import { PageHeader } from '../../../components/page-headers/page-headers';
+import { lazy, Suspense } from 'react';
+import { NavLink, Route, Routes } from 'react-router-dom';
 import { Button } from '../../../components/buttons/buttons';
+import { PageHeader } from '../../../components/page-headers/page-headers';
 import { Main } from '../../styled';
-
-import articles from '../../../demoData/article.json';
+import KnowledgeBaseTop from './overview/Knowledgebase/knowledgeTop';
+import { ArticleTabWrap, CtaWrap, KnowledgebaseArticleWrap, PopularArticleWrap } from './style';
 
 const Plugins = lazy(() => import('./overview/ArticlePlugin'));
 const Themes = lazy(() => import('./overview/ArticleTheme'));
@@ -71,20 +67,6 @@ function KnowledgeBase() {
             <PopularArticleWrap>
               <div className="ninjadash-popular-article ninjadash-popular-article-container">
                 <h2 className="ninjadash-popular-article__title">Popular articles</h2>
-                <ResponsiveMasonry columnsCountBreakPoints={{ 350: 1, 767: 2, 900: 3 }}>
-                  <Masonry className="ninjadash-popular-article__box" gutter="15px">
-                    {articles.map((article, i) => (
-                      <div className={`ninjadash-popular-article__single theme-${article.type}`} key={i}>
-                        <h4 className="single-article-title">{article.title}</h4>
-                        <p>{article.text}</p>
-                        <Link className="btn-link" to="/knowledgebaseSingle/1">
-                          Read more
-                          <ArrowRightOutlined />
-                        </Link>
-                      </div>
-                    ))}
-                  </Masonry>
-                </ResponsiveMasonry>
               </div>
             </PopularArticleWrap>
             <CtaWrap>

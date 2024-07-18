@@ -1177,14 +1177,14 @@
   resolved "https://registry.npmjs.org/@babel/regjsgen/-/regjsgen-0.8.0.tgz"
   integrity sha512-x/rqGMdzj+fWZvCOYForTghzbtqPDZ5gPwaoNGHdgDfF2QA/XZbCBp4Moo5scrkAMPhB7z26XM/AaHuIJdgauA==
 
-"@babel/runtime@^7.10.1", "@babel/runtime@^7.10.4", "@babel/runtime@^7.11.1", "@babel/runtime@^7.11.2", "@babel/runtime@^7.12.5", "@babel/runtime@^7.15.4", "@babel/runtime@^7.16.3", "@babel/runtime@^7.16.7", "@babel/runtime@^7.17.9", "@babel/runtime@^7.18.0", "@babel/runtime@^7.18.3", "@babel/runtime@^7.20.0", "@babel/runtime@^7.20.7", "@babel/runtime@^7.21.0", "@babel/runtime@^7.23.2", "@babel/runtime@^7.8.4", "@babel/runtime@^7.9.2":
+"@babel/runtime@^7.10.1", "@babel/runtime@^7.10.4", "@babel/runtime@^7.11.1", "@babel/runtime@^7.11.2", "@babel/runtime@^7.12.5", "@babel/runtime@^7.15.4", "@babel/runtime@^7.16.3", "@babel/runtime@^7.16.7", "@babel/runtime@^7.18.0", "@babel/runtime@^7.18.3", "@babel/runtime@^7.20.0", "@babel/runtime@^7.20.7", "@babel/runtime@^7.21.0", "@babel/runtime@^7.23.2", "@babel/runtime@^7.8.4", "@babel/runtime@^7.9.2":
   version "7.24.7"
   resolved "https://registry.npmjs.org/@babel/runtime/-/runtime-7.24.7.tgz"
   integrity sha512-UwgBRMjJP+xv857DCngvqXI3Iq6J4v0wXmwc6sapg+zyhbwmQX67LUEFrkK5tbyJ30jGuG3ZvWpBiB9LCy1kWw==
   dependencies:
     regenerator-runtime "^0.14.0"
 
-"@babel/runtime@^7.23.9":
+"@babel/runtime@^7.23.9", "@babel/runtime@^7.24.1":
   version "7.24.8"
   resolved "https://registry.npmjs.org/@babel/runtime/-/runtime-7.24.8.tgz"
   integrity sha512-5F7SDGs1T72ZczbRwbGO9lQi0NLjQxzl6i4lJxLxfW9U5UluCSyEJeniWvnhl3/euNiqQVbo8zruhsDfid0esA==
@@ -2017,9 +2017,9 @@
     "@svgr/plugin-svgo" "^5.5.0"
     loader-utils "^2.0.0"
 
-"@tanem/svg-injector@^10.1.21":
+"@tanem/svg-injector@^10.1.68":
   version "10.1.68"
-  resolved "https://registry.npmjs.org/@tanem/svg-injector/-/svg-injector-10.1.68.tgz"
+  resolved "https://registry.yarnpkg.com/@tanem/svg-injector/-/svg-injector-10.1.68.tgz#0bd08da3c4184b055a6fe16909037c96f49e3cd1"
   integrity sha512-UkJajeR44u73ujtr5GVSbIlELDWD/mzjqWe54YMK61ljKxFcJoPd9RBSaO7xj02ISCWUqJW99GjrS+sVF0UnrA==
   dependencies:
     "@babel/runtime" "^7.23.2"
@@ -2270,7 +2270,7 @@
   resolved "https://registry.npmjs.org/@types/prettier/-/prettier-2.7.3.tgz"
   integrity sha512-+68kP9yzs4LMp7VNh8gdzMSPZFL44MLGqiHWvttYJe+6qnuVr4Ek9wSBQoveqY/r+LwjCcU29kNVkidwim+kYA==
 
-"@types/prop-types@*", "@types/prop-types@^15.7.5":
+"@types/prop-types@*", "@types/prop-types@^15.7.12":
   version "15.7.12"
   resolved "https://registry.npmjs.org/@types/prop-types/-/prop-types-15.7.12.tgz"
   integrity sha512-5zvhXYtRNRluoE/jAp4GVsSduVUzNWKkOZrCDBWYtE7biZywwdC2AcEzg+cSMLFRfVgeAFqpfNabiPjxFddV1Q==
@@ -3737,7 +3737,7 @@ caniuse-api@^3.0.0:
     lodash.memoize "^4.1.2"
     lodash.uniq "^4.5.0"
 
-caniuse-lite@^1.0.0, caniuse-lite@^1.0.30001629, caniuse-lite@^1.0.30001638:
+caniuse-lite@^1.0.0, caniuse-lite@^1.0.30001629:
   version "1.0.30001639"
   resolved "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001639.tgz"
   integrity sha512-eFHflNTBIlFwP2AIKaYuBQN/apnUoKNhBdza8ZnW/h2di4LCZ4xFqYlxUxo+LQ76KFI1PGcC1QDxMbxTZpSCAg==
@@ -4144,13 +4144,13 @@ cosmiconfig@^7, cosmiconfig@^7.0.0, cosmiconfig@^7.0.1:
     path-type "^4.0.0"
     yaml "^1.10.0"
 
-craco-less@^2.1.0-alpha.0:
-  version "2.1.0-alpha.0"
-  resolved "https://registry.npmjs.org/craco-less/-/craco-less-2.1.0-alpha.0.tgz"
-  integrity sha512-1kj9Y7Y06Fbae3SJJtz1OvXsaKxjh0jTOwnvzKWOqrojQZbwC2K/d0dxDRUpHTDkIUmxbdzqMmI4LM9JfthQ6Q==
+craco-less@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/craco-less/-/craco-less-3.0.1.tgz#85824d9481c6d906e797ae6f4bd128ef592d6046"
+  integrity sha512-w4aDZYI1MTbK6DaKBvw6E8bgO1HgXmjRx5MNwOxzoFyPfpgamxiZOGyxnlvkAfYe2Q3LkSK1GcRRi8teyweBsQ==
   dependencies:
-    less "^4.1.1"
-    less-loader "^7.3.0"
+    less "^4.1.3"
+    less-loader "^11.1.3"
 
 create-ecdh@^4.0.0:
   version "4.0.4"
@@ -7585,18 +7585,14 @@ launch-editor@^2.6.0:
     picocolors "^1.0.0"
     shell-quote "^1.8.1"
 
-less-loader@^7.3.0:
-  version "7.3.0"
-  resolved "https://registry.npmjs.org/less-loader/-/less-loader-7.3.0.tgz"
-  integrity sha512-Mi8915g7NMaLlgi77mgTTQvK022xKRQBIVDSyfl3ErTuBhmZBQab0mjeJjNNqGbdR+qrfTleKXqbGI4uEFavxg==
-  dependencies:
-    klona "^2.0.4"
-    loader-utils "^2.0.0"
-    schema-utils "^3.0.0"
+less-loader@^11.1.3:
+  version "11.1.4"
+  resolved "https://registry.yarnpkg.com/less-loader/-/less-loader-11.1.4.tgz#e8a070844efaefbe59b978acaf57b9d3e868cf08"
+  integrity sha512-6/GrYaB6QcW6Vj+/9ZPgKKs6G10YZai/l/eJ4SLwbzqNTBsAqt5hSLVF47TgsiBxV1P6eAU0GYRH3YRuQU9V3A==
 
-less@^4.1.1:
+less@^4.1.3:
   version "4.2.0"
-  resolved "https://registry.npmjs.org/less/-/less-4.2.0.tgz"
+  resolved "https://registry.yarnpkg.com/less/-/less-4.2.0.tgz#cbefbfaa14a4cd388e2099b2b51f956e1465c450"
   integrity sha512-P3b3HJDBtSzsXUl0im2L7gTO5Ubg8mEN6G8qoTS77iXxXX4Hvu4Qj540PZDvQ8V6DmX6iXo98k7Md0Cm1PrLaA==
   dependencies:
     copy-anything "^2.0.1"
@@ -9972,7 +9968,7 @@ react-dev-utils@^12.0.1:
     strip-ansi "^6.0.1"
     text-table "^0.2.0"
 
-react-dom@^18.2.0, react-dom@^18.3.1:
+react-dom@^18.3.1:
   version "18.3.1"
   resolved "https://registry.npmjs.org/react-dom/-/react-dom-18.3.1.tgz"
   integrity sha512-5m4nQKp+rZRb09LNH59GM4BxTh9251/ylbKIbpe7TpGxfJ+9kv6BLkLBXIjjspbgbnIBNqlI23tRnTWT0snUIw==
@@ -10015,25 +10011,12 @@ react-is@^18.0.0, react-is@^18.2.0:
   resolved "https://registry.npmjs.org/react-is/-/react-is-18.3.1.tgz"
   integrity sha512-/LLMVyas0ljjAtoYiPqYiL8VWXzUUdThrmU5+n20DZv+a+ClRoevUzw5JxU+Ieh5/c87ytoTBV9G1FiKfNJdmg==
 
-react-lightbox-pack@^0.2.1:
-  version "0.2.1"
-  resolved "https://registry.npmjs.org/react-lightbox-pack/-/react-lightbox-pack-0.2.1.tgz"
-  integrity sha512-ces0LRhtnF2h/gj6DADGex5l5iHW1y/LmH1nKNZB3MqSqiH7WDLfaXtzMjdE1KSHopvScukDiLvlMc5kNb+qEg==
-  dependencies:
-    react "^18.2.0"
-    react-dom "^18.2.0"
-
 react-list@^0.8.13:
   version "0.8.17"
   resolved "https://registry.npmjs.org/react-list/-/react-list-0.8.17.tgz"
   integrity sha512-pgmzGi0G5uGrdHzMhgO7KR1wx5ZXVvI3SsJUmkblSAKtewIhMwbQiMuQiTE83ozo04BQJbe0r3WIWzSO0dR1xg==
   dependencies:
     prop-types "15"
-
-react-masonry-css@^1.0.16:
-  version "1.0.16"
-  resolved "https://registry.npmjs.org/react-masonry-css/-/react-masonry-css-1.0.16.tgz"
-  integrity sha512-KSW0hR2VQmltt/qAa3eXOctQDyOu7+ZBevtKgpNDSzT7k5LA/0XntNa9z9HKCdz3QlxmJHglTZ18e4sX4V8zZQ==
 
 react-redux@^7.2.6:
   version "7.2.9"
@@ -10051,13 +10034,6 @@ react-refresh@^0.11.0:
   version "0.11.0"
   resolved "https://registry.npmjs.org/react-refresh/-/react-refresh-0.11.0.tgz"
   integrity sha512-F27qZr8uUqwhWZboondsPx8tnC3Ct3SxZA3V5WyEvujRyyNv0VYPhoBg1gZ8/MV5tubQp76Trw8lTv9hzRBa+A==
-
-react-responsive-masonry@^2.1.4:
-  version "2.2.1"
-  resolved "https://registry.npmjs.org/react-responsive-masonry/-/react-responsive-masonry-2.2.1.tgz"
-  integrity sha512-QY1vH8vWd8YpW2g40zsFp4CjttK2NWw2btzHbxks8vDRe+0JZfsrtK7Ob3siCtg+9mttwsofmAB6dp9ujSYwKw==
-  dependencies:
-    caniuse-lite "^1.0.30001638"
 
 react-router-dom@^6.25.0:
   version "6.25.0"
@@ -10129,19 +10105,19 @@ react-scripts@^5.0.1:
   optionalDependencies:
     fsevents "^2.3.2"
 
-react-svg@^14.1.9:
-  version "14.1.19"
-  resolved "https://registry.npmjs.org/react-svg/-/react-svg-14.1.19.tgz"
-  integrity sha512-s2wBLSo2D3Wi0VNnZ4vzO54a6I3ZPN3qAMypkEWjg/OaTpLSFGVakG2CDE2cR/6cfWjIptDi/DAbT7TpL0OCow==
+react-svg@^16.1.34:
+  version "16.1.34"
+  resolved "https://registry.yarnpkg.com/react-svg/-/react-svg-16.1.34.tgz#50598db37d3b550372559d2c74eb6c203ad1ea24"
+  integrity sha512-L4ak1qNFLgzVbHm0xQEpHoIOqb3um/B0ybahd3U2TKoGZxb0JaPVI5lsAhvSng2P1kcsYEok2Z7RpcKx7arJGw==
   dependencies:
-    "@babel/runtime" "^7.17.9"
-    "@tanem/svg-injector" "^10.1.21"
-    "@types/prop-types" "^15.7.5"
+    "@babel/runtime" "^7.24.1"
+    "@tanem/svg-injector" "^10.1.68"
+    "@types/prop-types" "^15.7.12"
     prop-types "^15.8.1"
 
-react-tagsinput@^3.19.0:
+react-tagsinput@^3.20.3:
   version "3.20.3"
-  resolved "https://registry.npmjs.org/react-tagsinput/-/react-tagsinput-3.20.3.tgz"
+  resolved "https://registry.yarnpkg.com/react-tagsinput/-/react-tagsinput-3.20.3.tgz#d5790ccf8a387bdaa8c2c8306e62a7276ac581c1"
   integrity sha512-a+7nZ9gg0SwuoPPmh2AAB98OXYduwi6WgYWgWlPts3mq1ookXGphq9Fe/XLhQcdunkiqJO4WXjWXtHE9UlFyiw==
 
 "react@>=15.0.0 <17.0.0":
@@ -10153,7 +10129,7 @@ react-tagsinput@^3.19.0:
     object-assign "^4.1.1"
     prop-types "^15.6.2"
 
-react@^18.2.0, react@^18.3.1:
+react@^18.3.1:
   version "18.3.1"
   resolved "https://registry.yarnpkg.com/react/-/react-18.3.1.tgz#49ab892009c53933625bd16b2533fc754cab2891"
   integrity sha512-wS+hAgJShR0KhEvPJArfuPVN1+Hz1t0Y6n5jLrGQbkb4urgPE/0Rve+1kMB1v/oWgHgm4WIcV+i7F2pTVj+2iQ==
