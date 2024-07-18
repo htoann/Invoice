@@ -14,7 +14,7 @@ const useProjects = (selectedDepartment, selectedBranch) => {
 
     setLoadingProjects(true);
     axios
-      .get(`/departments/${selectedDepartment}/projects`)
+      .get(`/projects/${selectedDepartment}`)
       .then((response) => {
         setProjects(response.data.projects);
         setLoadingProjects(false);

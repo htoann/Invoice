@@ -1,6 +1,6 @@
 import axios from '@/mock/index';
 import UilInbox from '@iconscout/react-unicons/icons/uil-inbox';
-import { Input, Pagination, Select, Skeleton } from 'antd';
+import { Empty, Input, Pagination, Select, Skeleton } from 'antd';
 import Paragraph from 'antd/lib/typography/Paragraph';
 import useDepartments from 'hooks/useDepartments';
 import React, { useEffect, useState } from 'react';
@@ -234,21 +234,7 @@ export const InboxList = React.memo(({ setSelectedInbox, selectedInbox }) => {
                   </li>
                 ))
               ) : (
-                <li>
-                  <Paragraph
-                    style={{
-                      textAlign: 'center',
-                      padding: '10px 0',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      height: '100%',
-                    }}
-                    className="empty"
-                  >
-                    No emails found
-                  </Paragraph>
-                </li>
+                <Empty description="Không tìm thấy email nào" />
               )}
             </ul>
           </EmailNav>

@@ -4,13 +4,6 @@ export const coCauToChucMockApi = (mock) => {
   // Mock GET request to fetch all branches
   mock.onGet('/branches').reply(200, { branches });
 
-  // Mock GET request to fetch departments for a specific branch
-  mock.onGet(/\/branches\/(\d+)\/departments/).reply((config) => {
-    const branchId = config.url.split('/')[2];
-    const branchDepartments = departments.filter((dep) => dep.branch_id === branchId);
-    return [200, { departments: branchId ? branchDepartments : departments }];
-  });
-
   // Mock POST request to add a new branch
   mock.onPost('/branches').reply((config) => {
     const { branch } = JSON.parse(config.data);
@@ -53,8 +46,15 @@ export const coCauToChucMockApi = (mock) => {
     return [404, { error: 'Branch not found' }];
   });
 
+  // Mock GET request to fetch departments for a specific branch
+  mock.onGet(/\/departments(?:\/(\d+))?/).reply((config) => {
+    const branchId = config.url.split('/')[2];
+    const branchDepartments = departments.filter((dep) => dep.branch_id === branchId);
+    return [200, { departments: branchId ? branchDepartments : departments }];
+  });
+
   // Mock GET request to fetch projects for a specific department
-  mock.onGet(/\/departments\/(\d+)\/projects/).reply((config) => {
+  mock.onGet(/\/projects\/([\d.]+)/).reply((config) => {
     const departmentId = config.url.split('/')[2];
     const departmentProjects = projects.filter((proj) => proj.department_id === departmentId);
     return [200, { projects: departmentProjects }];

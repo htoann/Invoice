@@ -16,7 +16,7 @@ const useDepartments = (selectedBranch) => {
 
     setLoadingDepartments(true);
     axios
-      .get(`/branches/${selectedBranch}/departments`)
+      .get(`/departments/${selectedBranch}`)
       .then((response) => {
         setDepartments(response.data.departments);
         setLoadingDepartments(false);
