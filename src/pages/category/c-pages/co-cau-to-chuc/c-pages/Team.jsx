@@ -1,49 +1,190 @@
 import { Button } from '@/components/buttons/buttons';
 import { Cards } from '@/components/cards/frame/cards-frame';
-import { BorderLessHeading } from '@/container/styled';
+import { Modal } from '@/components/modals/antd-modals';
+import { AddUser } from '@/container/pages/style';
+import { BasicFormWrapper, BorderLessHeading } from '@/container/styled';
+import axios from '@/mock/index';
 import { RightOutlined } from '@ant-design/icons';
-import { Col, Menu, Skeleton } from 'antd';
+import { Col, Empty, Form, Input, Menu, notification, Skeleton } from 'antd';
+import { useState } from 'react';
 import MenuItem from '../components/MenuItem';
 
-const TeamList = ({ teams, loadingTeams, selectedTeam, setSelectedTeam, handleCreate, handleEdit, handleDelete }) => {
+const TeamList = ({ list, setList, loadingList, selectedItem, setSelectedItem }) => {
+  const [showCreate, setShowCreate] = useState(false);
+  const [showEdit, setShowEdit] = useState(false);
+  const [editItem, setEditItem] = useState(null);
+
+  const [loading, setLoading] = useState(false);
+
+  const [form] = Form.useForm();
+
+  const handleCreate = () => {
+    setShowCreate(true);
+  };
+
+  const handleEdit = (item) => {
+    setEditItem(item);
+    setShowEdit(true);
+    form.setFieldsValue(item);
+  };
+
+  const handleDelete = async (id) => {
+    try {
+      setLoading(true);
+      await axios.delete(`/departments/${id}`);
+      notification.success({
+        message: 'Xóa phòng ban',
+        description: 'Phòng ban đã được xóa thành công.',
+      });
+      setList(list.filter((item) => item.id !== id));
+    } catch (error) {
+      notification.error({
+        message: 'Lỗi',
+        description: 'Có lỗi xảy ra khi xóa phòng ban.',
+      });
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleCreateSubmit = async (values) => {
+    try {
+      setLoading(true);
+      const response = await axios.post('/departments', {
+        department: values,
+      });
+      setList([response.data, ...list]);
+      setShowCreate(false);
+      form.resetFields();
+
+      notification.success({
+        message: 'Thêm phòng ban',
+        description: 'Phòng ban đã được thêm thành công.',
+      });
+    } catch (error) {
+      notification.error({
+        message: 'Lỗi',
+        description: 'Có lỗi xảy ra khi thêm phòng ban.',
+      });
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleEditSubmit = async (values) => {
+    try {
+      setLoading(true);
+      const response = await axios.put(`/departments/${editItem.id}`, { department: { ...values, id: editItem.id } });
+      const updatedAccount = response.data;
+
+      const updatedAccounts = list.map((acc) => (acc.id === updatedAccount.id ? updatedAccount : acc));
+      setList(updatedAccounts);
+
+      form.resetFields();
+      setShowEdit(false);
+      notification.success({
+        message: 'Chỉnh sửa phòng ban',
+        description: 'Phòng ban đã được chỉnh sửa thành công.',
+      });
+    } catch (error) {
+      notification.error({
+        message: 'Lỗi',
+        description: 'Có lỗi xảy ra khi chỉnh sửa phòng ban.',
+      });
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const cancelCreate = () => {
+    setShowCreate(false);
+    form.resetFields();
+  };
+
+  const cancelEdit = () => {
+    setShowEdit(false);
+    form.resetFields();
+  };
+
+  const customModal = (textSubmit = 'Lưu', onSubmit, onCancel, loading) => (
+    <AddUser>
+      <BasicFormWrapper>
+        <Form form={form} onFinish={onSubmit}>
+          <Form.Item
+            name="name"
+            label="Tên phòng ban"
+            rules={[{ required: true, message: 'Vui lòng nhập tên phòng ban' }]}
+            initialValue={showEdit ? editItem?.name : ''}
+          >
+            <Input />
+          </Form.Item>
+          <div style={{ justifyContent: 'end', display: 'flex' }}>
+            <Button size="default" type="white" outlined style={{ marginRight: 8 }} onClick={onCancel}>
+              Huỷ bỏ
+            </Button>
+            <Button htmlType="submit" size="default" type="primary" key="submit" loading={loading}>
+              {textSubmit}
+            </Button>
+          </div>
+        </Form>
+      </BasicFormWrapper>
+    </AddUser>
+  );
+
   return (
     <Col xs={24} sm={12} md={8} lg={8}>
       <BorderLessHeading>
-        <Cards title="Nhóm">
+        <Cards title="Phòng ban" style={{ height: 1000 }}>
           <Menu
             style={{ width: '100%' }}
             mode="inline"
-            selectedKeys={[selectedTeam]}
-            onClick={({ key }) => setSelectedTeam(key)}
+            selectedKeys={[selectedItem]}
+            onClick={({ key }) => setSelectedItem(key)}
             itemIcon={<RightOutlined />}
           >
-            <Button
-              onClick={() => handleCreate()}
-              size="extra-small"
-              type="primary"
-              outlined
-              style={{ marginBottom: 10 }}
-            >
-              + Thêm nhóm
-            </Button>
-            {loadingTeams ? (
+            {loadingList ? (
               <Skeleton active style={{ marginTop: 10, paddingRight: 10 }} />
+            ) : list?.length > 0 ? (
+              <>
+                <Button
+                  onClick={() => handleCreate()}
+                  size="extra-small"
+                  type="primary"
+                  outlined
+                  style={{ marginBottom: 10 }}
+                >
+                  + Thêm phòng ban
+                </Button>
+                {list.map((department) => (
+                  <Menu.Item key={department.id}>
+                    <MenuItem
+                      key={department.id}
+                      item={department}
+                      onEdit={() => handleEdit(department)}
+                      onDelete={() => handleDelete(department.id)}
+                      loading={loading}
+                    />
+                  </Menu.Item>
+                ))}
+              </>
             ) : (
-              teams?.length > 0 &&
-              teams.map((team) => (
-                <Menu.Item key={team.id}>
-                  <MenuItem
-                    key={team.id}
-                    item={team}
-                    onEdit={() => handleEdit(team)}
-                    onDelete={() => handleDelete(team)}
-                  />
-                </Menu.Item>
-              ))
+              <Empty description="Không tìm thấy phòng ban nào">
+                <Button size="small" type="primary" onClick={() => handleCreate()}>
+                  Tạo mới
+                </Button>
+              </Empty>
             )}
           </Menu>
         </Cards>
       </BorderLessHeading>
+
+      <Modal title="Thêm phòng ban" open={showCreate} onCancel={cancelCreate} footer={null}>
+        {customModal('Thêm', handleCreateSubmit, cancelCreate, loading)}
+      </Modal>
+
+      <Modal title="Chỉnh sửa phòng ban" open={showEdit} onCancel={cancelEdit} footer={null}>
+        {customModal('Lưu', handleEditSubmit, cancelEdit, loading)}
+      </Modal>
     </Col>
   );
 };

@@ -64,21 +64,24 @@ export const CoCauToChuc = () => {
       <Main>
         <Row gutter={15}>
           <DepartmentList
-            departments={departments}
-            setDepartments={setDepartments}
-            loadingDepartments={loadingDepartments}
-            selectedDepartment={selectedDepartment}
-            setSelectedDepartment={setSelectedDepartment}
+            list={departments}
+            setList={setDepartments}
+            loadingList={loadingDepartments}
+            selectedItem={selectedDepartment}
+            setSelectedItem={setSelectedDepartment}
           />
+
           {selectedDepartment && (
             <TeamList
-              teams={teams}
-              loadingTeams={loadingTeams}
+              list={teams}
+              setList={setTeams}
+              loadingList={loadingTeams}
               selectedTeam={selectedTeam}
               setSelectedTeam={setSelectedTeam}
             />
           )}
-          {selectedTeam && <MemberList members={members} loadingMembers={loadingMembers} />}
+
+          {selectedTeam && <MemberList list={members} setList={setMembers} loadingList={loadingMembers} />}
         </Row>
       </Main>
     </>

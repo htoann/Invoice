@@ -5,17 +5,11 @@ import { AddUser } from '@/container/pages/style';
 import { BasicFormWrapper, BorderLessHeading } from '@/container/styled';
 import axios from '@/mock/index';
 import { RightOutlined } from '@ant-design/icons';
-import { Col, Form, Input, Menu, notification, Skeleton } from 'antd';
+import { Col, Empty, Form, Input, Menu, notification, Skeleton } from 'antd';
 import { useState } from 'react';
 import MenuItem from '../components/MenuItem';
 
-const DepartmentList = ({
-  departments,
-  setDepartments,
-  loadingDepartments,
-  selectedDepartment,
-  setSelectedDepartment,
-}) => {
+const DepartmentList = ({ list, setList, loadingList, selectedItem, setSelectedItem }) => {
   const [showCreate, setShowCreate] = useState(false);
   const [showEdit, setShowEdit] = useState(false);
   const [editItem, setEditItem] = useState(null);
@@ -42,7 +36,7 @@ const DepartmentList = ({
         message: 'Xóa phòng ban',
         description: 'Phòng ban đã được xóa thành công.',
       });
-      setDepartments(departments.filter((item) => item.id !== id));
+      setList(list.filter((item) => item.id !== id));
     } catch (error) {
       notification.error({
         message: 'Lỗi',
@@ -59,7 +53,7 @@ const DepartmentList = ({
       const response = await axios.post('/departments', {
         department: values,
       });
-      setDepartments([...departments, response.data]);
+      setList([response.data, ...list]);
       setShowCreate(false);
       form.resetFields();
 
@@ -83,8 +77,8 @@ const DepartmentList = ({
       const response = await axios.put(`/departments/${editItem.id}`, { department: { ...values, id: editItem.id } });
       const updatedAccount = response.data;
 
-      const updatedAccounts = departments.map((acc) => (acc.id === updatedAccount.id ? updatedAccount : acc));
-      setDepartments(updatedAccounts);
+      const updatedAccounts = list.map((acc) => (acc.id === updatedAccount.id ? updatedAccount : acc));
+      setList(updatedAccounts);
 
       form.resetFields();
       setShowEdit(false);
@@ -144,34 +138,41 @@ const DepartmentList = ({
           <Menu
             style={{ width: '100%' }}
             mode="inline"
-            selectedKeys={[selectedDepartment]}
-            onClick={({ key }) => setSelectedDepartment(key)}
+            selectedKeys={[selectedItem]}
+            onClick={({ key }) => setSelectedItem(key)}
             itemIcon={<RightOutlined />}
           >
-            <Button
-              onClick={() => handleCreate()}
-              size="extra-small"
-              type="primary"
-              outlined
-              style={{ marginBottom: 10 }}
-            >
-              + Thêm phòng ban
-            </Button>
-            {loadingDepartments ? (
+            {loadingList ? (
               <Skeleton active style={{ marginTop: 10, paddingRight: 10 }} />
+            ) : list?.length > 0 ? (
+              <>
+                <Button
+                  onClick={() => handleCreate()}
+                  size="extra-small"
+                  type="primary"
+                  outlined
+                  style={{ marginBottom: 10 }}
+                >
+                  + Thêm phòng ban
+                </Button>
+                {list.map((department) => (
+                  <Menu.Item key={department.id}>
+                    <MenuItem
+                      key={department.id}
+                      item={department}
+                      onEdit={() => handleEdit(department)}
+                      onDelete={() => handleDelete(department.id)}
+                      loading={loading}
+                    />
+                  </Menu.Item>
+                ))}
+              </>
             ) : (
-              departments?.length > 0 &&
-              departments.map((department) => (
-                <Menu.Item key={department.id}>
-                  <MenuItem
-                    key={department.id}
-                    item={department}
-                    onEdit={() => handleEdit(department)}
-                    onDelete={() => handleDelete(department.id)}
-                    loading={loading}
-                  />
-                </Menu.Item>
-              ))
+              <Empty description="Không tìm thấy phòng ban nào">
+                <Button size="small" type="primary" onClick={() => handleCreate()}>
+                  Tạo mới
+                </Button>
+              </Empty>
             )}
           </Menu>
         </Cards>

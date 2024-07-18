@@ -1,9 +1,8 @@
-import React from 'react';
-import { Row, Col, Empty } from 'antd';
+import { Col, Empty, Row } from 'antd';
+import { Button } from '../../components/buttons/buttons';
+import { Cards } from '../../components/cards/frame/cards-frame';
 import { PageHeader } from '../../components/page-headers/page-headers';
 import { Main } from '../styled';
-import { Cards } from '../../components/cards/frame/cards-frame';
-import { Button } from '../../components/buttons/buttons';
 
 function EmptyData() {
   const PageRoutes = [
