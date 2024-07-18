@@ -9,7 +9,7 @@ const DeleteButton = ({ onConfirm, loading }) => {
   };
 
   return (
-    <div onClick={handleClick}>
+    <div onClick={handleClick} style={{ height: 45 }}>
       <Popconfirm
         title="Bạn có muốn xoá mục này không"
         onConfirm={onConfirm}
