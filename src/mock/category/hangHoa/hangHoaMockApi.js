@@ -75,7 +75,6 @@ export const hangHoaMockApi = (mock) => {
   // Delete a product
   mock.onDelete(/\/products\/(\d+)/).reply((config) => {
     const id = config.url.split('/').pop();
-    console.log(id);
     const index = products.findIndex((p) => p.id === id);
     if (index !== -1) {
       products.splice(index, 1);
