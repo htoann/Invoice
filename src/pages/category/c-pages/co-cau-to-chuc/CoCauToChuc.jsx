@@ -76,8 +76,8 @@ export const CoCauToChuc = () => {
               list={teams}
               setList={setTeams}
               loadingList={loadingTeams}
-              selectedTeam={selectedTeam}
-              setSelectedTeam={setSelectedTeam}
+              selectedItem={selectedTeam}
+              setSelectedItem={setSelectedTeam}
             />
           )}
 
