@@ -28,25 +28,6 @@ const DepartmentList = ({ list, setList, loadingList, selectedItem, setSelectedI
     form.setFieldsValue(item);
   };
 
-  const handleDelete = async (id) => {
-    try {
-      setLoading(true);
-      await axios.delete(`/departments/${id}`);
-      notification.success({
-        message: 'Xóa phòng ban',
-        description: 'Phòng ban đã được xóa thành công.',
-      });
-      setList(list.filter((item) => item.id !== id));
-    } catch (error) {
-      notification.error({
-        message: 'Lỗi',
-        description: 'Có lỗi xảy ra khi xóa phòng ban.',
-      });
-    } finally {
-      setLoading(false);
-    }
-  };
-
   const handleCreateSubmit = async (values) => {
     try {
       setLoading(true);
@@ -90,6 +71,25 @@ const DepartmentList = ({ list, setList, loadingList, selectedItem, setSelectedI
       notification.error({
         message: 'Lỗi',
         description: 'Có lỗi xảy ra khi chỉnh sửa phòng ban.',
+      });
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleDelete = async (id) => {
+    try {
+      setLoading(true);
+      await axios.delete(`/departments/${id}`);
+      notification.success({
+        message: 'Xóa phòng ban',
+        description: 'Phòng ban đã được xóa thành công.',
+      });
+      setList(list.filter((item) => item.id !== id));
+    } catch (error) {
+      notification.error({
+        message: 'Lỗi',
+        description: 'Có lỗi xảy ra khi xóa phòng ban.',
       });
     } finally {
       setLoading(false);

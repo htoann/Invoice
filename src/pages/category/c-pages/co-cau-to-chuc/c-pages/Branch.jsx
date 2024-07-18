@@ -28,25 +28,6 @@ const BranchList = ({ list, setList, loadingList, selectedItem, setSelectedItem 
     form.setFieldsValue(item);
   };
 
-  const handleDelete = async (id) => {
-    try {
-      setLoading(true);
-      await axios.delete(`/departments/${id}`);
-      notification.success({
-        message: 'Xóa phòng ban',
-        description: 'Phòng ban đã được xóa thành công.',
-      });
-      setList(list.filter((item) => item.id !== id));
-    } catch (error) {
-      notification.error({
-        message: 'Lỗi',
-        description: 'Có lỗi xảy ra khi xóa phòng ban.',
-      });
-    } finally {
-      setLoading(false);
-    }
-  };
-
   const handleCreateSubmit = async (values) => {
     try {
       setLoading(true);
@@ -58,13 +39,13 @@ const BranchList = ({ list, setList, loadingList, selectedItem, setSelectedItem 
       form.resetFields();
 
       notification.success({
-        message: 'Thêm phòng ban',
-        description: 'Phòng ban đã được thêm thành công.',
+        message: 'Thêm chi nhánh',
+        description: 'Chi nhánh đã được thêm thành công.',
       });
     } catch (error) {
       notification.error({
         message: 'Lỗi',
-        description: 'Có lỗi xảy ra khi thêm phòng ban.',
+        description: 'Có lỗi xảy ra khi thêm chi nhánh.',
       });
     } finally {
       setLoading(false);
@@ -83,13 +64,32 @@ const BranchList = ({ list, setList, loadingList, selectedItem, setSelectedItem 
       form.resetFields();
       setShowEdit(false);
       notification.success({
-        message: 'Chỉnh sửa phòng ban',
-        description: 'Phòng ban đã được chỉnh sửa thành công.',
+        message: 'Chỉnh sửa chi nhánh',
+        description: 'Chi nhánh đã được chỉnh sửa thành công.',
       });
     } catch (error) {
       notification.error({
         message: 'Lỗi',
-        description: 'Có lỗi xảy ra khi chỉnh sửa phòng ban.',
+        description: 'Có lỗi xảy ra khi chỉnh sửa chi nhánh.',
+      });
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleDelete = async (id) => {
+    try {
+      setLoading(true);
+      await axios.delete(`/departments/${id}`);
+      notification.success({
+        message: 'Xóa chi nhánh',
+        description: 'Chi nhánh đã được xóa thành công.',
+      });
+      setList(list.filter((item) => item.id !== id));
+    } catch (error) {
+      notification.error({
+        message: 'Lỗi',
+        description: 'Có lỗi xảy ra khi xóa chi nhánh.',
       });
     } finally {
       setLoading(false);
@@ -112,8 +112,8 @@ const BranchList = ({ list, setList, loadingList, selectedItem, setSelectedItem 
         <Form form={form} onFinish={onSubmit}>
           <Form.Item
             name="name"
-            label="Tên phòng ban"
-            rules={[{ required: true, message: 'Vui lòng nhập tên phòng ban' }]}
+            label="Tên chi nhánh"
+            rules={[{ required: true, message: 'Vui lòng nhập tên chi nhánh' }]}
             initialValue={showEdit ? editItem?.name : ''}
           >
             <Input />
@@ -134,7 +134,7 @@ const BranchList = ({ list, setList, loadingList, selectedItem, setSelectedItem 
   return (
     <Col xs={24} sm={12} md={8} lg={8}>
       <BorderLessHeading>
-        <Cards title="Phòng ban" style={{ height: 1000 }}>
+        <Cards title="Chi nhánh" style={{ height: 1000 }}>
           <Menu
             style={{ width: '100%' }}
             mode="inline"
@@ -153,7 +153,7 @@ const BranchList = ({ list, setList, loadingList, selectedItem, setSelectedItem 
                   outlined
                   style={{ marginBottom: 10 }}
                 >
-                  + Thêm phòng ban
+                  + Thêm chi nhánh
                 </Button>
                 {list.map((department) => (
                   <Menu.Item key={department.id}>
@@ -168,7 +168,7 @@ const BranchList = ({ list, setList, loadingList, selectedItem, setSelectedItem 
                 ))}
               </>
             ) : (
-              <Empty description="Không tìm thấy phòng ban nào">
+              <Empty description="Không tìm thấy chi nhánh nào">
                 <Button size="small" type="primary" onClick={() => handleCreate()}>
                   Tạo mới
                 </Button>
@@ -178,11 +178,11 @@ const BranchList = ({ list, setList, loadingList, selectedItem, setSelectedItem 
         </Cards>
       </BorderLessHeading>
 
-      <Modal title="Thêm phòng ban" open={showCreate} onCancel={cancelCreate} footer={null}>
+      <Modal title="Thêm chi nhánh" open={showCreate} onCancel={cancelCreate} footer={null}>
         {customModal('Thêm', handleCreateSubmit, cancelCreate, loading)}
       </Modal>
 
-      <Modal title="Chỉnh sửa phòng ban" open={showEdit} onCancel={cancelEdit} footer={null}>
+      <Modal title="Chỉnh sửa chi nhánh" open={showEdit} onCancel={cancelEdit} footer={null}>
         {customModal('Lưu', handleEditSubmit, cancelEdit, loading)}
       </Modal>
     </Col>
