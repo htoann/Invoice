@@ -29,9 +29,28 @@ export const HangHoa = () => {
   const [list, setList] = useState([]);
   const [isLoadingGetList, setIsLoadingGetList] = useState(false);
   const [searchLoading, setSearchLoading] = useState(false);
-  const [searchParams, setSearchParams] = useState({ username: '', password: '', departmentId: '' });
+  const [searchParams, setSearchParams] = useState({
+    mahang: '',
+    tenHangBan: '',
+    tenHangMua: '',
+    donViTinh: '',
+    taiKhoanHang: '',
+    taiKhoanGiaVon: '',
+    taiKhoanDoanhThu: '',
+  });
 
-  const getList = async ({ username = '', email = '', page = 1, page_size = 20, searchLoading = true } = {}) => {
+  const getList = async ({
+    mahang = '',
+    tenHangBan = '',
+    tenHangMua = '',
+    donViTinh = '',
+    taiKhoanHang = '',
+    taiKhoanGiaVon = '',
+    taiKhoanDoanhThu = '',
+    page = 1,
+    page_size = 20,
+    searchLoading = true,
+  } = {}) => {
     try {
       if (searchLoading) {
         setSearchLoading(true);
@@ -39,9 +58,14 @@ export const HangHoa = () => {
         setIsLoadingGetList(true);
       }
 
-      const response = await axios.get('/api/accounts', {
-        username,
-        email,
+      const response = await axios.get('/products', {
+        mahang,
+        tenHangBan,
+        tenHangMua,
+        donViTinh,
+        taiKhoanHang,
+        taiKhoanGiaVon,
+        taiKhoanDoanhThu,
         page,
         page_size,
       });
@@ -81,7 +105,7 @@ export const HangHoa = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`/api/accounts/${id}`);
+      await axios.delete(`/products/${id}`);
       setList(list.filter((account) => account.id !== id));
 
       notification.success({
@@ -104,21 +128,26 @@ export const HangHoa = () => {
 
   if (list?.length > 0) {
     list.map((item, index) => {
-      const { id, name, email } = item;
+      const { id, mahang, tenHangBan, tenHangMua, donViTinh, taiKhoanHang, taiKhoanGiaVon, taiKhoanDoanhThu } = item;
 
       return tableDataScource.push({
         key: id,
         stt: (current - 1) * pageSize + index + 1,
         id,
-        user: <span className="ninjadash-username">{name}</span>,
-        email: <span>{email}</span>,
+        mahang: <span className="ninjadash-username">{mahang}</span>,
+        tenHangBan: <span className="ninjadash-username">{tenHangBan}</span>,
+        tenHangMua: <span className="ninjadash-username">{tenHangMua}</span>,
+        donViTinh: <span className="ninjadash-username">{donViTinh}</span>,
+        taiKhoanHang: <span className="ninjadash-username">{taiKhoanHang}</span>,
+        taiKhoanGiaVon: <span className="ninjadash-username">{taiKhoanGiaVon}</span>,
+        taiKhoanDoanhThu: <span className="ninjadash-username">{taiKhoanDoanhThu}</span>,
         action: (
           <div className="table-actions">
             <Link className="edit" to="#" onClick={() => showEditModal(item)}>
               <UilEdit />
             </Link>
             <Popconfirm
-              title="Bạn có chắc chắn xóa người dùng này?"
+              title="Bạn có chắc chắn muốn xoá?"
               onConfirm={() => handleDelete(id)}
               okText="Có"
               cancelText="Không"
@@ -177,6 +206,7 @@ export const HangHoa = () => {
     key: col.key,
     sorter:
       col.key !== 'stt' && col.key !== 'action' ? (a, b) => a[col.dataIndex].localeCompare(b[col.dataIndex]) : false,
+    fixed: col.fixed,
   }));
 
   const rowSelection = {
@@ -214,9 +244,9 @@ export const HangHoa = () => {
         </Row>
       </Main>
 
-      {state.visible && <CreateHangHoa state={state} setState={setState} />}
+      {state.visible && <CreateHangHoa state={state} setState={setState} list={list} setList={setList} />}
 
-      {state.editVisible && <EditHangHoa state={state} setState={setState} />}
+      {state.editVisible && <EditHangHoa state={state} setState={setState} list={list} setList={setList} />}
     </>
   );
 };
