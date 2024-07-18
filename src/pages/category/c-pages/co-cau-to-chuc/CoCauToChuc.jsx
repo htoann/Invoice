@@ -18,8 +18,6 @@ export const CoCauToChuc = () => {
 
   const { projects, setProjects, loadingProjects } = useProjects(selectedDepartment, selectedBranch);
 
-  console.log(branches);
-
   return (
     <>
       <PageHeader className="ninjadash-page-header-main" title="Cơ cấu tổ chức" />

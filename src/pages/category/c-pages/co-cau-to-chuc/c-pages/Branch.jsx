@@ -169,7 +169,7 @@ const BranchList = ({ list, setList, loadingList, selectedItem, setSelectedItem 
                 ))}
               </>
             ) : (
-              <Empty description="Không tìm thấy chi nhánh nào">
+              <Empty description="Không tìm thấy chi nhánh nào" style={{ marginTop: '50%' }}>
                 <Button size="small" type="primary" onClick={() => handleCreate()}>
                   Tạo mới
                 </Button>
