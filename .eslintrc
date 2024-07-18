@@ -9,7 +9,7 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "plugins": ["react", "import", "react-hooks", "react-refresh"],
+  "plugins": ["react", "import", "react-hooks"],
   "settings": {
     "import/resolver": {
       "alias": {
@@ -77,9 +77,6 @@
     "jsx-a11y/no-noninteractive-element-interactions": "off",
     "jsx-a11y/no-static-element-interactions": "off",
     "react/display-name": "off",
-    "react-refresh/only-export-components": [
-      "warn",
-      { "allowConstantExport": true }
-    ]
+    "react-hooks/exhaustive-deps": 0
   }
 }
