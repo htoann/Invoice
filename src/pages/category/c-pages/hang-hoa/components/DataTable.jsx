@@ -15,6 +15,8 @@ function DataTable({ rowSelection, tableData, columns, pagination, setState, sta
     }));
   };
 
+  const handleDongBo = () => {};
+
   return (
     <DataTableStyleWrap>
       <div className="ninjadash-datatable-filter">
@@ -69,7 +71,7 @@ function DataTable({ rowSelection, tableData, columns, pagination, setState, sta
               type="info"
               size="small"
               outlined
-              onClick={() => handleExport(state.date_from || state.date_to)}
+              onClick={() => handleDongBo()}
               disabled={!state.invoiceList?.length}
             >
               <div style={{ display: 'flex' }}>
@@ -80,7 +82,7 @@ function DataTable({ rowSelection, tableData, columns, pagination, setState, sta
               type="primary"
               size="small"
               outlined
-              onClick={() => handleExport(state.date_from || state.date_to)}
+              onClick={() => handleExport()}
               disabled={!state.invoiceList?.length}
             >
               <div style={{ display: 'flex' }}>
