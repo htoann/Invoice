@@ -31,8 +31,8 @@ const BranchList = ({ list, setList, loadingList, selectedItem, setSelectedItem 
   const handleCreateSubmit = async (values) => {
     try {
       setLoading(true);
-      const response = await axios.post('/departments', {
-        department: values,
+      const response = await axios.post('/branches', {
+        branch: values,
       });
       setList([response.data, ...list]);
       setShowCreate(false);
@@ -55,7 +55,7 @@ const BranchList = ({ list, setList, loadingList, selectedItem, setSelectedItem 
   const handleEditSubmit = async (values) => {
     try {
       setLoading(true);
-      const response = await axios.put(`/departments/${editItem.id}`, { department: { ...values, id: editItem.id } });
+      const response = await axios.put(`/branches/${editItem.id}`, { branch: { ...values, id: editItem.id } });
       const updatedAccount = response.data;
 
       const updatedAccounts = list.map((acc) => (acc.id === updatedAccount.id ? updatedAccount : acc));
@@ -80,12 +80,13 @@ const BranchList = ({ list, setList, loadingList, selectedItem, setSelectedItem 
   const handleDelete = async (id) => {
     try {
       setLoading(true);
-      await axios.delete(`/departments/${id}`);
+      await axios.delete(`/branches/${id}`);
       notification.success({
         message: 'Xóa chi nhánh',
         description: 'Chi nhánh đã được xóa thành công.',
       });
       setList(list.filter((item) => item.id !== id));
+      setSelectedItem(null);
     } catch (error) {
       notification.error({
         message: 'Lỗi',

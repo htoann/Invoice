@@ -31,21 +31,21 @@ const ProjectList = ({ list, setList, loadingList }) => {
   const handleCreateSubmit = async (values) => {
     try {
       setLoading(true);
-      const response = await axios.post('/departments', {
-        department: values,
+      const response = await axios.post('/projects', {
+        project: values,
       });
       setList([response.data, ...list]);
       setShowCreate(false);
       form.resetFields();
 
       notification.success({
-        message: 'Thêm phòng ban',
-        description: 'Phòng ban đã được thêm thành công.',
+        message: 'Thêm dự án',
+        description: 'Dự án đã được thêm thành công.',
       });
     } catch (error) {
       notification.error({
         message: 'Lỗi',
-        description: 'Có lỗi xảy ra khi thêm phòng ban.',
+        description: 'Có lỗi xảy ra khi thêm dự án.',
       });
     } finally {
       setLoading(false);
@@ -55,7 +55,7 @@ const ProjectList = ({ list, setList, loadingList }) => {
   const handleEditSubmit = async (values) => {
     try {
       setLoading(true);
-      const response = await axios.put(`/departments/${editItem.id}`, { department: { ...values, id: editItem.id } });
+      const response = await axios.put(`/projects/${editItem.id}`, { project: { ...values, id: editItem.id } });
       const updatedAccount = response.data;
 
       const updatedAccounts = list.map((acc) => (acc.id === updatedAccount.id ? updatedAccount : acc));
@@ -64,13 +64,13 @@ const ProjectList = ({ list, setList, loadingList }) => {
       form.resetFields();
       setShowEdit(false);
       notification.success({
-        message: 'Chỉnh sửa phòng ban',
-        description: 'Phòng ban đã được chỉnh sửa thành công.',
+        message: 'Chỉnh sửa dự án',
+        description: 'Dự án đã được chỉnh sửa thành công.',
       });
     } catch (error) {
       notification.error({
         message: 'Lỗi',
-        description: 'Có lỗi xảy ra khi chỉnh sửa phòng ban.',
+        description: 'Có lỗi xảy ra khi chỉnh sửa dự án.',
       });
     } finally {
       setLoading(false);
@@ -80,16 +80,16 @@ const ProjectList = ({ list, setList, loadingList }) => {
   const handleDelete = async (id) => {
     try {
       setLoading(true);
-      await axios.delete(`/departments/${id}`);
+      await axios.delete(`/projects/${id}`);
       notification.success({
-        message: 'Xóa phòng ban',
-        description: 'Phòng ban đã được xóa thành công.',
+        message: 'Xóa dự án',
+        description: 'Dự án đã được xóa thành công.',
       });
       setList(list.filter((item) => item.id !== id));
     } catch (error) {
       notification.error({
         message: 'Lỗi',
-        description: 'Có lỗi xảy ra khi xóa phòng ban.',
+        description: 'Có lỗi xảy ra khi xóa dự án.',
       });
     } finally {
       setLoading(false);
@@ -112,8 +112,8 @@ const ProjectList = ({ list, setList, loadingList }) => {
         <Form form={form} onFinish={onSubmit}>
           <Form.Item
             name="name"
-            label="Tên phòng ban"
-            rules={[{ required: true, message: 'Vui lòng nhập tên phòng ban' }]}
+            label="Tên dự án"
+            rules={[{ required: true, message: 'Vui lòng nhập tên dự án' }]}
             initialValue={showEdit ? editItem?.name : ''}
           >
             <Input />
@@ -134,7 +134,7 @@ const ProjectList = ({ list, setList, loadingList }) => {
   return (
     <Col xs={24} sm={12} md={8} lg={8}>
       <BorderLessHeading>
-        <Cards title="Phòng ban" style={{ height: 1000 }}>
+        <Cards title="Dự án" style={{ height: 1000 }}>
           <Menu
             style={{ width: '100%' }}
             mode="inline"
@@ -153,7 +153,7 @@ const ProjectList = ({ list, setList, loadingList }) => {
                   outlined
                   style={{ marginBottom: 10 }}
                 >
-                  + Thêm phòng ban
+                  + Thêm dự án
                 </Button>
                 {list.map((department) => (
                   <Menu.Item key={department.id}>
@@ -168,7 +168,7 @@ const ProjectList = ({ list, setList, loadingList }) => {
                 ))}
               </>
             ) : (
-              <Empty description="Không tìm thấy phòng ban nào">
+              <Empty description="Không tìm thấy dự án nào">
                 <Button size="small" type="primary" onClick={() => handleCreate()}>
                   Tạo mới
                 </Button>
@@ -178,11 +178,11 @@ const ProjectList = ({ list, setList, loadingList }) => {
         </Cards>
       </BorderLessHeading>
 
-      <Modal title="Thêm phòng ban" open={showCreate} onCancel={cancelCreate} footer={null}>
+      <Modal title="Thêm dự án" open={showCreate} onCancel={cancelCreate} footer={null}>
         {customModal('Thêm', handleCreateSubmit, cancelCreate, loading)}
       </Modal>
 
-      <Modal title="Chỉnh sửa phòng ban" open={showEdit} onCancel={cancelEdit} footer={null}>
+      <Modal title="Chỉnh sửa dự án" open={showEdit} onCancel={cancelEdit} footer={null}>
         {customModal('Lưu', handleEditSubmit, cancelEdit, loading)}
       </Modal>
     </Col>

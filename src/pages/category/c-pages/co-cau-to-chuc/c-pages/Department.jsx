@@ -86,6 +86,7 @@ const DepartmentList = ({ list, setList, loadingList, selectedItem, setSelectedI
         description: 'Phòng ban đã được xóa thành công.',
       });
       setList(list.filter((item) => item.id !== id));
+      setSelectedItem(null);
     } catch (error) {
       notification.error({
         message: 'Lỗi',
