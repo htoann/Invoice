@@ -136,7 +136,7 @@ const ProjectList = ({ list, setList, loadingList }) => {
       <BorderLessHeading>
         <Cards title="Dự án" style={{ height: 1000 }}>
           <Menu
-            style={{ width: '100%' }}
+            style={{ width: '100%', minHeight: 'calc(100vh - 290px)' }}
             mode="inline"
             // selectedKeys={[selectedItem]}
             // onClick={({ key }) => setSelectedItem(key)}

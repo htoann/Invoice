@@ -1,10 +1,9 @@
 import UilellipsisH from '@iconscout/react-unicons/icons/uil-ellipsis-h';
 import PropTypes from 'prop-types';
-import React from 'react';
 import { Link } from 'react-router-dom';
-import { CardFrame } from './style';
 import { Dropdown } from '../../dropdown/dropdown';
 import Heading from '../../heading/heading';
+import { CardFrame } from './style';
 
 const Cards = (props) => {
   const {

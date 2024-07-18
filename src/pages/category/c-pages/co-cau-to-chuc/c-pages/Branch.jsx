@@ -135,9 +135,9 @@ const BranchList = ({ list, setList, loadingList, selectedItem, setSelectedItem 
   return (
     <Col xs={24} sm={12} md={8} lg={8}>
       <BorderLessHeading>
-        <Cards title="Chi nhánh" style={{ height: 1000 }}>
+        <Cards title="Chi nhánh">
           <Menu
-            style={{ width: '100%' }}
+            style={{ width: '100%', minHeight: 'calc(100vh - 290px)' }}
             mode="inline"
             selectedKeys={[selectedItem]}
             onClick={({ key }) => setSelectedItem(key)}

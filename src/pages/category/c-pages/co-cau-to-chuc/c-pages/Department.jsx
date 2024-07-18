@@ -135,9 +135,9 @@ const DepartmentList = ({ list, setList, loadingList, selectedItem, setSelectedI
   return (
     <Col xs={24} sm={12} md={8} lg={8}>
       <BorderLessHeading>
-        <Cards title="Phòng ban" style={{ height: 1000 }}>
+        <Cards title="Phòng ban">
           <Menu
-            style={{ width: '100%' }}
+            style={{ width: '100%', minHeight: 'calc(100vh - 290px)' }}
             mode="inline"
             selectedKeys={[selectedItem]}
             onClick={({ key }) => setSelectedItem(key)}
