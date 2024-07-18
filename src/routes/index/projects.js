@@ -1,5 +1,5 @@
-import React, { lazy } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { lazy } from 'react';
+import { Route, Routes } from 'react-router-dom';
 
 const Project = lazy(() => import('../../container/project/Project'));
 const ProjectDetails = lazy(() => import('../../container/project/ProjectDetails'));

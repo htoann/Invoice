@@ -1,5 +1,5 @@
-import React, { lazy } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { lazy } from 'react';
+import { Route, Routes } from 'react-router-dom';
 
 const Basic = lazy(() => import('../../container/table/Table'));
 const DataTable = lazy(() => import('../../container/table/DataTable'));

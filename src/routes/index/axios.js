@@ -1,4 +1,4 @@
-import React, { lazy } from 'react';
+import { lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
 const AxiosView = lazy(() => import('../../container/crud/axios/Index'));
