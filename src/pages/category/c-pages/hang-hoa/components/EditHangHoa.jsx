@@ -1,5 +1,4 @@
 import { AutoComplete, Form, Input } from 'antd';
-import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Button } from '../../../../../components/buttons/buttons';
 import { Modal } from '../../../../../components/modals/antd-modals';
