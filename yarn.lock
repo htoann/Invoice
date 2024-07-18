@@ -10086,11 +10086,6 @@ react-svg@^16.1.34:
     "@types/prop-types" "^15.7.12"
     prop-types "^15.8.1"
 
-react-tagsinput@^3.20.3:
-  version "3.20.3"
-  resolved "https://registry.yarnpkg.com/react-tagsinput/-/react-tagsinput-3.20.3.tgz#d5790ccf8a387bdaa8c2c8306e62a7276ac581c1"
-  integrity sha512-a+7nZ9gg0SwuoPPmh2AAB98OXYduwi6WgYWgWlPts3mq1ookXGphq9Fe/XLhQcdunkiqJO4WXjWXtHE9UlFyiw==
-
 "react@>=15.0.0 <17.0.0":
   version "16.14.0"
   resolved "https://registry.npmjs.org/react/-/react-16.14.0.tgz"
