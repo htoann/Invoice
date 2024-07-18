@@ -1,10 +1,11 @@
 import { Button } from '@/components/buttons/buttons';
 import { Cards } from '@/components/cards/frame/cards-frame';
+import { Modal } from '@/components/modals/antd-modals';
 import { AddUser } from '@/container/pages/style';
 import { BasicFormWrapper, BorderLessHeading } from '@/container/styled';
 import axios from '@/mock/index';
 import { RightOutlined } from '@ant-design/icons';
-import { Col, Form, Input, Menu, Modal, notification, Skeleton } from 'antd';
+import { Col, Form, Input, Menu, notification, Skeleton } from 'antd';
 import { useState } from 'react';
 import MenuItem from '../components/MenuItem';
 
@@ -76,15 +77,10 @@ const DepartmentList = ({
     }
   };
 
-  const cancelCreate = () => {
-    setShowCreate(false);
-    form.resetFields();
-  };
-
   const handleEditSubmit = async (values) => {
     try {
       setLoading(true);
-      const response = await axios.put(`/departments/${editItem.id}`, { department: values });
+      const response = await axios.put(`/departments/${editItem.id}`, { department: { ...values, id: editItem.id } });
       const updatedAccount = response.data;
 
       const updatedAccounts = departments.map((acc) => (acc.id === updatedAccount.id ? updatedAccount : acc));
@@ -106,12 +102,17 @@ const DepartmentList = ({
     }
   };
 
+  const cancelCreate = () => {
+    setShowCreate(false);
+    form.resetFields();
+  };
+
   const cancelEdit = () => {
     setShowEdit(false);
     form.resetFields();
   };
 
-  const customModal = (textSubmit = 'Lưu', onSubmit, onCancel, loading, editItem) => (
+  const customModal = (textSubmit = 'Lưu', onSubmit, onCancel, loading) => (
     <AddUser>
       <BasicFormWrapper>
         <Form form={form} onFinish={onSubmit}>
@@ -119,7 +120,7 @@ const DepartmentList = ({
             name="name"
             label="Tên phòng ban"
             rules={[{ required: true, message: 'Vui lòng nhập tên phòng ban' }]}
-            initialValue={editItem?.name}
+            initialValue={showEdit ? editItem?.name : ''}
           >
             <Input />
           </Form.Item>
@@ -177,11 +178,11 @@ const DepartmentList = ({
       </BorderLessHeading>
 
       <Modal title="Thêm phòng ban" open={showCreate} onCancel={cancelCreate} footer={null}>
-        {customModal('Thêm', handleCreateSubmit, cancelCreate, false)}
+        {customModal('Thêm', handleCreateSubmit, cancelCreate, loading)}
       </Modal>
 
       <Modal title="Chỉnh sửa phòng ban" open={showEdit} onCancel={cancelEdit} footer={null}>
-        {customModal('Lưu', handleEditSubmit, cancelEdit, false, editItem)}
+        {customModal('Lưu', handleEditSubmit, cancelEdit, loading)}
       </Modal>
     </Col>
   );
