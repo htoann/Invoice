@@ -9,15 +9,19 @@ import ProtectedRoute from './components/utilities/protectedRoute';
 import config from './config/config';
 import store from './redux/store';
 
+import { useTranslation } from 'react-i18next';
 import './index.scss';
 import Auth from './routes/auth';
 import Index from './routes/index';
+import { getAntdLocale } from './utils';
 
 const NotFound = lazy(() => import('./container/pages/404'));
 
 const { themeColor } = config;
 
 function ProviderConfig() {
+  const { i18n } = useTranslation();
+
   const { rtl, isLoggedIn, topMenu, mainContent } = useSelector((state) => {
     return {
       rtl: state.ChangeLayoutMode.rtlData,
@@ -40,7 +44,7 @@ function ProviderConfig() {
   }, [setPath]);
 
   return (
-    <ConfigProvider direction={rtl ? 'rtl' : 'ltr'}>
+    <ConfigProvider direction={rtl ? 'rtl' : 'ltr'} locale={getAntdLocale(i18n.language)}>
       <ThemeProvider theme={{ ...themeColor, rtl, topMenu, mainContent }}>
         <>
           <Router basename={process.env.PUBLIC_URL}>
