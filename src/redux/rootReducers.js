@@ -1,7 +1,6 @@
 import { combineReducers } from 'redux';
 import authReducer from './authentication/reducers';
 import dataTable from './data-filter/reducers';
-import FileManager from './fileManager/reducers';
 import galleryReducer from './gallary/reducers';
 import { headerSearchReducer } from './headerSearch/reducers';
 import jobs from './jobs/reducers';
@@ -28,7 +27,6 @@ const rootReducers = combineReducers({
   ChangeLayoutMode,
   Note,
   Profile,
-  FileManager,
   tickets,
   jobs,
   dataTable,
