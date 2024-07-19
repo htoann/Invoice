@@ -61,7 +61,7 @@ function Email() {
         <EmailWrapper>
           <Row gutter={25}>
             <Col className="trigger-col" xxl={8} xl={9} lg={10} xs={24}>
-              {responsive <= 991 && (
+              {selectedInbox && responsive <= 991 && (
                 <Button type="link" className="mail-sidebar-trigger" style={{ marginTop: 0 }} onClick={toggleCollapsed}>
                   {collapsed ? <UilAlignLeft /> : <UilAlignRight />}
                 </Button>
@@ -71,7 +71,11 @@ function Email() {
                 className={`mail-sidebar ${selectedInbox && responsive <= 991 ? (collapsed ? 'show' : 'hide') : ''}`}
               >
                 <Cards headless>
-                  <div className="mail-sidebar-bottom">
+                  <div
+                    className={
+                      responsive <= 991 ? 'mail-sidebar-bottom mail-sidebar-bottom-scroll' : 'mail-sidebar-bottom'
+                    }
+                  >
                     <InboxList setSelectedInbox={setSelectedInbox} selectedInbox={selectedInbox} />
                   </div>
                 </Cards>

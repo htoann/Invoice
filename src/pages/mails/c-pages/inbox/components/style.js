@@ -1158,6 +1158,7 @@ const EmailWrapper = Styled.div`
       position: fixed;
       ${({ theme }) => (theme.rtl ? 'right' : 'left')}: 0;
       /* top: 60px; */
+      top: 72px;
       width: 500px;
       height: 100%;
       z-index: 99;
@@ -1184,6 +1185,12 @@ const EmailWrapper = Styled.div`
     /* Disable scroll lỏ for now */
     /* height: calc(100vh - 215px);
     overflow: auto; */
+  }
+
+  .mail-sidebar-bottom-scroll {
+    /* max-height: calc(100vh - 190px); */
+    height: inherit;
+    overflow: auto;
   }
 
   table{
