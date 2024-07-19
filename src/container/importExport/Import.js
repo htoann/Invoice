@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
-import { Row, Col, Upload, message } from 'antd';
-import UilUpload from '@iconscout/react-unicons/icons/uil-upload';
 import UilTrashAlt from '@iconscout/react-unicons/icons/uil-trash-alt';
-import { PageHeader } from '../../components/page-headers/page-headers';
-import { Main, ImportStyleWrap } from '../styled';
+import UilUpload from '@iconscout/react-unicons/icons/uil-upload';
+import { Col, Row, Upload, message } from 'antd';
+import { useState } from 'react';
 import Heading from '../../components/heading/heading';
+import { PageHeader } from '../../components/page-headers/page-headers';
+import { ImportStyleWrap, Main } from '../styled';
 
 const { Dragger } = Upload;
 function Import() {

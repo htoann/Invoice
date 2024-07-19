@@ -9,9 +9,6 @@ import { Cards } from '../../components/cards/frame/cards-frame';
 import DataTable from '../../components/data-table/DataTable';
 import { PageHeader } from '../../components/page-headers/page-headers';
 import UserListTable from '../pages/overview/UserTable';
-import ProjectLists from '../project/overview/List';
-import TaskList from '../project/overview/TaskList';
-import { TaskLists } from '../project/style';
 import { BorderLessHeading, Main } from '../styled';
 
 import { tableReadData } from '../../redux/data-filter/actionCreator';
@@ -312,11 +309,6 @@ function DataTables() {
             </BorderLessHeading>
           </Col>
           <Col xs={24}>
-            <Cards title="Project List">
-              <ProjectLists />
-            </Cards>
-          </Col>
-          <Col xs={24}>
             <Cards title="User List">
               <UserListTable />
             </Cards>
@@ -372,13 +364,6 @@ function DataTables() {
                 dataSource={dataSort}
                 onChange={onChange}
               />
-            </Cards>
-          </Col>
-          <Col xs={24}>
-            <Cards title="Task List">
-              <TaskLists>
-                <TaskList />
-              </TaskLists>
             </Cards>
           </Col>
         </Row>
