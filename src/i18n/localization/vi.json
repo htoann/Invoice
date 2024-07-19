@@ -248,6 +248,8 @@
   "Invoice_PublicationDate": "NGÀY CÔNG BỐ",
 
   "Invoice_InvoiceType": "Loại hóa đơn",
+  "Invoice_Management": "Quản lý hoá đơn",
+  "Invoice_List": "Danh sách hóa đơn",
 
   "Invoice_StartDate": "Ngày bắt đầu",
   "Invoice_SelectStartDate": "Chọn ngày bắt đầu",

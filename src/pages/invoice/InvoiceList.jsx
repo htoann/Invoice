@@ -89,9 +89,7 @@ function InvoiceList() {
     <>
       <PageHeader
         className="invoice-page-header-main"
-        title={`${t('Invoice_List')} ${
-          loaiHoaDon === 'purchase' ? t('Invoice_List_Purchase') : t('Invoice_List_Sold')
-        }`}
+        title={`${t('Invoice_List')} ${loaiHoaDon === 'purchase' ? t('Common_Purchase') : t('Common_Sold')}`}
         routes={pageRoutes}
       />
       <Main>

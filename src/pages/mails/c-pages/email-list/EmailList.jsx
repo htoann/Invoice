@@ -192,12 +192,14 @@ export const EmailList = () => {
       dataIndex: 'username',
       key: 'username',
       sorter: (a, b) => a.username.props.children.localeCompare(b.username.props.children),
+      className: 'searchInput',
     },
     {
       title: <>{customHeader(t('Common_Email'), 'email')}</>,
       dataIndex: 'email',
       key: 'email',
       sorter: (a, b) => a.email.props.children.localeCompare(b.email.props.children),
+      className: 'searchInput',
     },
     {
       title: t('Common_Action'),
