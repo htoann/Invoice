@@ -2,6 +2,7 @@ import axios from '@/mock/index';
 import UilInbox from '@iconscout/react-unicons/icons/uil-inbox';
 import { Empty, Input, Pagination, Select, Skeleton } from 'antd';
 import Paragraph from 'antd/lib/typography/Paragraph';
+import useAccounts from 'hooks/useAccounts';
 import useDepartments from 'hooks/useDepartments';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
@@ -18,29 +19,19 @@ export const InboxList = React.memo(({ setSelectedInbox, selectedInbox }) => {
   const { pageSize, current, total } = pagination;
 
   const [inboxList, setInboxList] = useState([]);
-  const [accountList, setAccountList] = useState([]);
+
+  const [selectedDepartmentId, setSelectedDepartmentId] = useState(null);
 
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedUserId, setSelectedUserId] = useState(null);
-  const [selectedDepartmentId, setSelectedDepartmentId] = useState(null);
-
   const [loading, setLoading] = useState(false);
-  const [loadingUsers, setLoadingUser] = useState(false);
+
+  const selectFirstAccount = (results) => {
+    setSelectedUserId(results[0].id);
+  };
 
   const { loadingDepartments, departments } = useDepartments();
-
-  const getUsers = async ({ departmentId = '' }) => {
-    try {
-      setLoadingUser(true);
-      const response = await axios.get('/api/accounts', { department_id: departmentId });
-      setAccountList(response?.data?.results);
-      response?.data?.results?.length > 0 && setSelectedUserId(response?.data?.results[0].id);
-    } catch (error) {
-      console.error('Failed to fetch accounts', error);
-    } finally {
-      setLoadingUser(false);
-    }
-  };
+  const { accountList, loadingUsers } = useAccounts(selectFirstAccount, selectedDepartmentId);
 
   const getList = async ({ searchTerm = '', page = 1, page_size = 20, userId = '' } = {}) => {
     try {
@@ -63,10 +54,6 @@ export const InboxList = React.memo(({ setSelectedInbox, selectedInbox }) => {
       setLoading(false);
     }
   };
-
-  useEffect(() => {
-    getUsers({ departmentId: selectedDepartmentId });
-  }, [selectedDepartmentId]);
 
   useEffect(() => {
     getList({ searchTerm, page: current, page_size: pageSize, userId: selectedUserId });

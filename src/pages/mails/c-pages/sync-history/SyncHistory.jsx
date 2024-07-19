@@ -2,40 +2,30 @@ import { Cards } from '@/components/cards/frame/cards-frame';
 import { PageHeader } from '@/components/page-headers/page-headers';
 import { BorderLessHeading, Main } from '@/container/styled';
 import axios from '@/mock/index';
-import UilEdit from '@iconscout/react-unicons/icons/uil-edit';
-import UilTrash from '@iconscout/react-unicons/icons/uil-trash-alt';
-import { Col, Input, notification, Popconfirm, Row, Select, Skeleton } from 'antd';
-import useDepartments from 'hooks/useDepartments';
+import { Col, Input, Row, Select, Skeleton } from 'antd';
+import useAccounts from 'hooks/useAccounts';
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import DataTable from './components/DataTable';
 
 export const SyncHistory = () => {
   const [state, setState] = useState({
-    selectedRowKeys: 0,
-    selectedRows: 0,
-    visible: false,
-    editVisible: false,
-    modalType: 'primary',
-    url: null,
-    update: {},
     pagination: { pageSize: 20, showSizeChanger: true, current: 1, total: 0 },
   });
 
   const { pagination } = state;
   const { current, pageSize } = pagination;
 
-  const [accounts, setAccounts] = useState([]);
+  const [list, setList] = useState([]);
   const [isLoadingGetList, setIsLoadingGetList] = useState(false);
   const [searchLoading, setSearchLoading] = useState(false);
-  const [searchParams, setSearchParams] = useState({ username: '', password: '', departmentId: '' });
+  const [searchParams, setSearchParams] = useState({ status: '', note: '', accountId: '' });
 
-  const { loadingDepartments, departments } = useDepartments();
+  const { loadingUsers, accountList } = useAccounts();
 
   const getList = async ({
-    username = '',
-    email = '',
-    departmentId = '',
+    status = '',
+    note = '',
+    accountId = '',
     page = 1,
     page_size = 20,
     searchLoading = true,
@@ -47,16 +37,16 @@ export const SyncHistory = () => {
         setIsLoadingGetList(true);
       }
 
-      const response = await axios.get('/api/accounts', {
-        username,
-        email,
+      const response = await axios.get('/sync-history', {
+        status,
+        note: +note,
         page,
         page_size,
-        department_id: departmentId,
+        account_id: accountId,
       });
 
       if (response?.data) {
-        setAccounts(response?.data?.results);
+        setList(response?.data?.results);
         setState((prev) => ({
           ...prev,
           pagination: {
@@ -66,7 +56,7 @@ export const SyncHistory = () => {
         }));
       }
     } catch (error) {
-      console.error('Failed to fetch accounts', error);
+      console.error(error);
     } finally {
       if (searchLoading) {
         setSearchLoading(false);
@@ -80,64 +70,26 @@ export const SyncHistory = () => {
     getList({ ...searchParams, page: current, page_size: pageSize });
   }, [current, pageSize]);
 
-  const showEditModal = (data) => {
-    setState({
-      ...state,
-      editVisible: true,
-      update: data,
-    });
-  };
-
-  const handleDelete = async (id) => {
-    try {
-      await axios.delete(`/api/accounts/${id}`);
-      setAccounts(accounts.filter((account) => account.id !== id));
-
-      notification.success({
-        message: 'Xóa thành công',
-        description: 'Tài khoản đã được xóa thành công.',
-      });
-    } catch (error) {
-      notification.error({
-        message: 'Xóa thất bại',
-        description: 'Không thể xóa tài khoản. Vui lòng thử lại sau.',
-      });
-    }
-  };
-
   const stopPropagation = (e) => {
     e.stopPropagation();
   };
 
   const tableDataScource = [];
 
-  if (accounts?.length > 0) {
-    accounts.map((item, index) => {
-      const { id, username, email } = item;
+  if (list?.length > 0) {
+    list.map((item, index) => {
+      const { id, time, query, status, note, totalInvoice, newInvoice } = item;
 
       return tableDataScource.push({
         key: id,
         stt: (current - 1) * pageSize + index + 1,
         id,
-        username: <span className="ninjadash-username">{username}</span>,
-        email: <span>{email}</span>,
-        action: (
-          <div className="table-actions">
-            <Link className="edit" to="#" onClick={() => showEditModal(item)}>
-              <UilEdit />
-            </Link>
-            <Popconfirm
-              title="Bạn có chắc chắn muốn xóa tài khoản này?"
-              onConfirm={() => handleDelete(id)}
-              okText="Có"
-              cancelText="Không"
-            >
-              <Link className="ninjadash-delete" to="#">
-                <UilTrash />
-              </Link>
-            </Popconfirm>
-          </div>
-        ),
+        time: <span>{time}</span>,
+        query: <span>{query}</span>,
+        status: <span>{status}</span>,
+        note: <span>{note}</span>,
+        totalInvoice: <span>{totalInvoice}</span>,
+        newInvoice: <span>{newInvoice}</span>,
       });
     });
   }
@@ -175,28 +127,48 @@ export const SyncHistory = () => {
       key: 'stt',
     },
     {
-      title: <>{customHeader('Tên tài khoản', 'username')}</>,
-      dataIndex: 'username',
-      key: 'username',
-      sorter: (a, b) => a.username.props.children.localeCompare(b.username.props.children),
+      title: 'Thời gian',
+      dataIndex: 'time',
+      key: 'time',
+      sorter: (a, b) => a.time.props.children.localeCompare(b.time.props.children),
     },
     {
-      title: <>{customHeader('Địa chỉ email', 'email')}</>,
-      dataIndex: 'email',
-      key: 'email',
-      sorter: (a, b) => a.email.props.children.localeCompare(b.email.props.children),
+      title: 'Query',
+      dataIndex: 'query',
+      key: 'query',
+      sorter: (a, b) => a.query.props.children.localeCompare(b.query.props.children),
     },
     {
-      title: 'Chức năng',
-      dataIndex: 'action',
-      key: 'action',
-      width: '90px',
+      title: <>{customHeader('Trạng thái', 'status')}</>,
+      dataIndex: 'status',
+      key: 'status',
+      sorter: (a, b) => a.status.props.children > b.status.props.children,
+      className: 'searchInput',
+    },
+    {
+      title: <>{customHeader('Ghi chú', 'note')}</>,
+      dataIndex: 'note',
+      key: 'note',
+      sorter: (a, b) => a.note.props.children.localeCompare(b.note.props.children),
+      className: 'searchInput',
+    },
+    {
+      title: 'Tổng số hoá đơn',
+      dataIndex: 'totalInvoice',
+      key: 'totalInvoice',
+      sorter: (a, b) => a.totalInvoice.props.children > b.totalInvoice.props.children,
+    },
+    {
+      title: 'Hoá đơn mới',
+      dataIndex: 'newInvoice',
+      key: 'newInvoice',
+      sorter: (a, b) => a.newInvoice.props.children > b.newInvoice.props.children,
     },
   ];
 
-  const handleSelectDepartment = (departmentId) => {
-    setSearchParams({ ...searchParams, departmentId });
-    getList({ ...searchParams, shouldLoading: false, page_size: pageSize, departmentId });
+  const handleSelectAccount = (accountId) => {
+    setSearchParams({ ...searchParams, accountId });
+    getList({ ...searchParams, shouldLoading: false, page_size: pageSize, accountId });
   };
 
   return (
@@ -212,15 +184,15 @@ export const SyncHistory = () => {
                     <span className="label">Chọn tài khoản</span>
                     <Select
                       popupClassName="dropdown-select"
-                      loading={loadingDepartments}
-                      disabled={loadingDepartments}
-                      onChange={handleSelectDepartment}
+                      loading={loadingUsers}
+                      disabled={loadingUsers}
+                      onChange={handleSelectAccount}
                       style={{ width: 200, marginLeft: 10 }}
                       defaultValue=""
                     >
                       <Select.Option value="">Tất cả</Select.Option>
-                      {departments?.length > 0 &&
-                        departments.map((item) => (
+                      {accountList?.length > 0 &&
+                        accountList.map((item) => (
                           <Select.Option key={item.id} value={item.id}>
                             {item.name}
                           </Select.Option>

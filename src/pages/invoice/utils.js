@@ -6,7 +6,7 @@ export const handleTableDataSource = (invoiceList, current, pageSize) => {
       return tableDataSource.push({
         stt: (current - 1) * pageSize + index + 1,
         id: item.no,
-        khmshdon: <span className="ninjadash-username">{item.khmshdon}</span>,
+        khmshdon: <span>{item.khmshdon}</span>,
         khhdon: <span>{item.khhdon}</span>,
         shdon: <span>{item.shdon}</span>,
         ntao: <span>{item.ntao}</span>,

@@ -7,6 +7,7 @@ export const syncHistory = [
     note: 'Sync completed successfully',
     totalInvoice: 150,
     newInvoice: 10,
+    account_id: '1',
   },
   {
     id: '2',
@@ -16,6 +17,7 @@ export const syncHistory = [
     note: 'Database connection timeout',
     totalInvoice: 0,
     newInvoice: 0,
+    account_id: '1',
   },
   {
     id: '3',
@@ -25,6 +27,7 @@ export const syncHistory = [
     note: 'Sync completed successfully',
     totalInvoice: 160,
     newInvoice: 10,
+    account_id: '1',
   },
   {
     id: '4',
@@ -34,6 +37,7 @@ export const syncHistory = [
     note: 'Sync completed successfully',
     totalInvoice: 170,
     newInvoice: 10,
+    account_id: '2',
   },
   {
     id: '5',
@@ -43,5 +47,6 @@ export const syncHistory = [
     note: 'Sync completed successfully',
     totalInvoice: 180,
     newInvoice: 10,
+    account_id: '2',
   },
 ];

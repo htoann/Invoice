@@ -3161,31 +3161,6 @@ html[dir='rtl'] .dark-mode .ninjadash-navbar-menu {
   }
 }
 
-.table-search {
-  .ant-table-thead {
-    .ant-table-cell {
-      &:not(.ant-table-column-has-sorters) {
-        display: flex;
-        min-height: 100px;
-      }
-
-      .ant-table-column-sorter {
-        margin-bottom: 40px;
-      }
-    }
-  }
-}
-
-.table-search-selection {
-  .ant-table-thead {
-    .ant-table-cell {
-      .ant-table-column-sorter {
-        margin-bottom: 40px;
-      }
-    }
-  }
-}
-
 .table {
   tbody tr td {
     font-weight: normal;
@@ -3240,3 +3215,39 @@ tr[data-row-key='searchInput'] {
   margin: auto;
   align-items: center;
 }
+
+.table-search {
+  .ant-table-thead {
+    .ant-table-cell {
+      &:not(.ant-table-column-has-sorters) {
+        display: flex;
+        min-height: 100px;
+      }
+
+      .ant-table-column-sorter {
+        margin-bottom: 45px;
+      }
+
+      &:not(.searchInput) {
+        .ant-table-column-title {
+          margin-bottom: 45px;
+        }
+      }
+    }
+  }
+}
+
+.table-search-selection {
+  .ant-table-thead {
+    .ant-table-cell {
+      .ant-table-column-sorter {
+        margin-bottom: 45px;
+      }
+    }
+  }
+
+  // .ant-table-selection {
+  //   height: 68px;
+  // }
+}
+// End common classname

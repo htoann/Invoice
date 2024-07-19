@@ -134,13 +134,13 @@ export const Product = () => {
         key: id,
         stt: (current - 1) * pageSize + index + 1,
         id,
-        mahang: <span className="ninjadash-username">{mahang}</span>,
-        tenHangBan: <span className="ninjadash-username">{tenHangBan}</span>,
-        tenHangMua: <span className="ninjadash-username">{tenHangMua}</span>,
-        donViTinh: <span className="ninjadash-username">{donViTinh}</span>,
-        taiKhoanHang: <span className="ninjadash-username">{taiKhoanHang}</span>,
-        taiKhoanGiaVon: <span className="ninjadash-username">{taiKhoanGiaVon}</span>,
-        taiKhoanDoanhThu: <span className="ninjadash-username">{taiKhoanDoanhThu}</span>,
+        mahang: <span>{mahang}</span>,
+        tenHangBan: <span>{tenHangBan}</span>,
+        tenHangMua: <span>{tenHangMua}</span>,
+        donViTinh: <span>{donViTinh}</span>,
+        taiKhoanHang: <span>{taiKhoanHang}</span>,
+        taiKhoanGiaVon: <span>{taiKhoanGiaVon}</span>,
+        taiKhoanDoanhThu: <span>{taiKhoanDoanhThu}</span>,
         action: (
           <div className="table-actions">
             <Link className="edit" to="#" onClick={() => showEditModal(item)}>
@@ -209,6 +209,7 @@ export const Product = () => {
         ? (a, b) => a[col.dataIndex].props.children.localeCompare(b[col.dataIndex].props.children)
         : false,
     fixed: col.fixed,
+    className: col.key === 'stt' || col.key === 'action' ? '' : 'searchInput',
   }));
 
   const rowSelection = {

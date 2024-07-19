@@ -1,5 +1,6 @@
 import { accounts } from '../accounts';
 import { inbox } from './inbox';
+import { syncHistory } from './syncHistory';
 
 export const mailMockApi = (mock) => {
   mock.onGet('/api/accounts').reply((config) => {
@@ -88,5 +89,27 @@ export const mailMockApi = (mock) => {
     const paginatedInbox = results.slice(startIndex, endIndex);
 
     return [200, { results: paginatedInbox, count: results.length }];
+  });
+
+  mock.onGet('/sync-history').reply((config) => {
+    const { account_id = '', status = '', note = '', page = 1, page_size = 20 } = config || {};
+
+    let results = syncHistory;
+
+    results = results.filter((item) => {
+      return (!status || item.status === status) && (!note || item.note.toLowerCase().includes(note.toLowerCase()));
+    });
+
+    if (account_id) {
+      results = results.filter((account) => account.account_id === account_id);
+    }
+
+    const count = results.length;
+
+    const start = (page - 1) * page_size;
+    const end = start + page_size;
+    const paginatedResults = results.slice(start, end);
+
+    return [200, { results: paginatedResults, count }];
   });
 };

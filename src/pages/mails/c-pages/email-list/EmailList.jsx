@@ -129,7 +129,7 @@ export const EmailList = () => {
         key: id,
         stt: (current - 1) * pageSize + index + 1,
         id,
-        username: <span className="ninjadash-username">{username}</span>,
+        username: <span>{username}</span>,
         email: <span>{email}</span>,
         action: (
           <div className="table-actions">

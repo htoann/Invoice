@@ -1,19 +1,18 @@
-/* eslint-disable react/jsx-no-bind */
-import React, { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { Row, Col, Table, Radio, Divider } from 'antd';
-import UilEye from '@iconscout/react-unicons/icons/uil-eye';
 import UilEdit from '@iconscout/react-unicons/icons/uil-edit';
+import UilEye from '@iconscout/react-unicons/icons/uil-eye';
 import UilTrash from '@iconscout/react-unicons/icons/uil-trash-alt';
+import { Col, Divider, Radio, Row, Table } from 'antd';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { PageHeader } from '../../components/page-headers/page-headers';
 import { Cards } from '../../components/cards/frame/cards-frame';
 import DataTable from '../../components/data-table/DataTable';
+import { PageHeader } from '../../components/page-headers/page-headers';
 import UserListTable from '../pages/overview/UserTable';
 import ProjectLists from '../project/overview/List';
 import TaskList from '../project/overview/TaskList';
-import { Main, BorderLessHeading } from '../styled';
 import { TaskLists } from '../project/style';
+import { BorderLessHeading, Main } from '../styled';
 
 import { tableReadData } from '../../redux/data-filter/actionCreator';
 
@@ -210,7 +209,7 @@ function DataTables() {
       const { id, name, country, company, position, status, date } = item;
       return tableDataScource.push({
         id: `#${id}`,
-        user: <span className="ninjadash-username">{name}</span>,
+        user: <span>{name}</span>,
         country: <span>{country}</span>,
         company: <span>{company}</span>,
         position,
