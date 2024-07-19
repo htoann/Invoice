@@ -127,13 +127,13 @@ export const Product = () => {
     e.stopPropagation();
   };
 
-  const tableDataScource = [];
+  const tableDataSource = [];
 
   if (list?.length > 0) {
     list.map((item, index) => {
       const { id, mahang, tenHangBan, tenHangMua, donViTinh, taiKhoanHang, taiKhoanGiaVon, taiKhoanDoanhThu } = item;
 
-      return tableDataScource.push({
+      return tableDataSource.push({
         key: id,
         stt: (current - 1) * pageSize + index + 1,
         id,
@@ -236,7 +236,7 @@ export const Product = () => {
                   <Skeleton active style={{ marginTop: 30 }} />
                 ) : (
                   <DataTable
-                    tableData={tableDataScource}
+                    tableData={tableDataSource}
                     columns={dataTableColumn}
                     rowSelection={rowSelection}
                     state={state}
