@@ -1,6 +1,5 @@
 import { Cards } from '@/components/cards/frame/cards-frame';
 import { PageHeader } from '@/components/page-headers/page-headers';
-import EditProduct from '@/container/ecommerce/product/EditProduct';
 import { BorderLessHeading, Main } from '@/container/styled';
 import axios from '@/mock/index';
 import UilEdit from '@iconscout/react-unicons/icons/uil-edit';
@@ -10,6 +9,7 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import CreateProduct from './components/CreateProduct';
 import DataTable from './components/DataTable';
+import EditProduct from './components/EditProduct';
 
 export const Product = () => {
   const [state, setState] = useState({
