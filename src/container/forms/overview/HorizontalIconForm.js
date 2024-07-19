@@ -1,11 +1,10 @@
-import React from 'react';
-import { Row, Col, Form, Input, Button } from 'antd';
-import UilUser from '@iconscout/react-unicons/icons/uil-user';
 import UilEnvelope from '@iconscout/react-unicons/icons/uil-envelope';
 import UilLock from '@iconscout/react-unicons/icons/uil-lock';
-import { HorizontalFormStyleWrap } from './Style';
+import UilUser from '@iconscout/react-unicons/icons/uil-user';
+import { Button, Col, Form, Input, Row } from 'antd';
 import { Cards } from '../../../components/cards/frame/cards-frame';
 import { BasicFormWrapper } from '../../styled';
+import { HorizontalFormStyleWrap } from './Style';
 
 function HorizontalIconForm() {
   return (

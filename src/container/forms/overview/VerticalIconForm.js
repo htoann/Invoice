@@ -1,11 +1,10 @@
-import React from 'react';
-import { Form, Input, Button } from 'antd';
-import UilUser from '@iconscout/react-unicons/icons/uil-user';
 import UilEnvelope from '@iconscout/react-unicons/icons/uil-envelope';
 import UilLock from '@iconscout/react-unicons/icons/uil-lock';
-import { VerticalFormStyleWrap } from './Style';
+import UilUser from '@iconscout/react-unicons/icons/uil-user';
+import { Button, Form, Input } from 'antd';
 import { Cards } from '../../../components/cards/frame/cards-frame';
 import { BasicFormWrapper } from '../../styled';
+import { VerticalFormStyleWrap } from './Style';
 
 function VerticalIconForm() {
   return (
