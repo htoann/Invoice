@@ -1,15 +1,15 @@
-import React from 'react';
-import { Rate, Row, Col } from 'antd';
-import UilShoppingBag from '@iconscout/react-unicons/icons/uil-shopping-bag';
 import UilHeart from '@iconscout/react-unicons/icons/uil-heart';
+import UilShoppingBag from '@iconscout/react-unicons/icons/uil-shopping-bag';
+import { Col, Rate, Row } from 'antd';
+import PropTypes from 'prop-types';
+import React from 'react';
 import { useDispatch } from 'react-redux';
 import { Link, NavLink } from 'react-router-dom';
-import PropTypes from 'prop-types';
 import { ReactSVG } from 'react-svg';
-import Heading from '../../../../components/heading/heading';
 import { Button } from '../../../../components/buttons/buttons';
-import { ProductCard } from '../../Style';
+import Heading from '../../../../components/heading/heading';
 import { updateWishList } from '../../../../redux/product/actionCreator';
+import { ProductCard } from '../../Style';
 
 const ProductCardsList = React.memo(({ product }) => {
   const { id, name, rate, price, oldPrice, popular, img, description } = product;

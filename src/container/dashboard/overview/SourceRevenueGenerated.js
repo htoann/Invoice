@@ -9,9 +9,9 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { ReactSVG } from 'react-svg';
-import GoogleIcon from '../../../static/img/icon/google-customIcon.svg';
 import { Cards } from '../../../components/cards/frame/cards-frame';
 import config from '../../../config/config';
+import GoogleIcon from '../../../static/img/icon/google-customIcon.svg';
 import { BorderLessHeading } from '../../styled';
 import { RevenueGeneratedWrapper } from '../Style';
 

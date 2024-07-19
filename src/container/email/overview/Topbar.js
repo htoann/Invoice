@@ -1,13 +1,13 @@
-import React from 'react';
-import UilRedo from '@iconscout/react-unicons/icons/uil-redo';
 import UilArchive from '@iconscout/react-unicons/icons/uil-archive';
-import UilExclamationOctagon from '@iconscout/react-unicons/icons/uil-exclamation-octagon';
-import UilTrash from '@iconscout/react-unicons/icons/uil-trash';
-import UilFolder from '@iconscout/react-unicons/icons/uil-folder';
 import UilBookOpen from '@iconscout/react-unicons/icons/uil-book-open';
+import UilExclamationOctagon from '@iconscout/react-unicons/icons/uil-exclamation-octagon';
+import UilFolder from '@iconscout/react-unicons/icons/uil-folder';
+import UilRedo from '@iconscout/react-unicons/icons/uil-redo';
+import UilTrash from '@iconscout/react-unicons/icons/uil-trash';
 import { Tooltip } from 'antd';
-import { NavLink } from 'react-router-dom';
 import propTypes from 'prop-types';
+import React from 'react';
+import { NavLink } from 'react-router-dom';
 import { MessageAction } from './style';
 
 const Topbar = React.memo(({ refreshState }) => {

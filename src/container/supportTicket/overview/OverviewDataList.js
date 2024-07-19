@@ -1,7 +1,7 @@
+import { Col, Row } from 'antd';
 import React from 'react';
-import { Row, Col } from 'antd';
-import { OverviewDataStyleWrap } from '../../dashboard/Style';
 import OverviewCard from '../../../components/cards/OverviewCard';
+import { OverviewDataStyleWrap } from '../../dashboard/Style';
 
 import SupportOverview from '../../../demoData/supportOverview.json';
 
