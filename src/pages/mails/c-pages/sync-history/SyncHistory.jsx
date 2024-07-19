@@ -23,7 +23,7 @@ export const SyncHistory = () => {
   const { loadingUsers, accountList } = useAccounts();
 
   const getList = async ({
-    status = '',
+    status = null,
     note = '',
     accountId = '',
     page = 1,
@@ -39,7 +39,7 @@ export const SyncHistory = () => {
 
       const response = await axios.get('/sync-history', {
         status,
-        note: +note,
+        note,
         page,
         page_size,
         account_id: accountId,

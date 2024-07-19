@@ -92,13 +92,17 @@ export const mailMockApi = (mock) => {
   });
 
   mock.onGet('/sync-history').reply((config) => {
-    const { account_id = '', status = '', note = '', page = 1, page_size = 20 } = config || {};
+    const { account_id = '', status = null, note = '', page = 1, page_size = 20 } = config || {};
 
     let results = syncHistory;
 
-    results = results.filter((item) => {
-      return (!status || item.status === status) && (!note || item.note.toLowerCase().includes(note.toLowerCase()));
-    });
+    if (status) {
+      results = results.filter((account) => account.status === +status);
+    }
+
+    if (note) {
+      results = results.filter((account) => account.note.toLowerCase().includes(note.toLowerCase()));
+    }
 
     if (account_id) {
       results = results.filter((account) => account.account_id === account_id);
