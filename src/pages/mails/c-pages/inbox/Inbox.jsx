@@ -7,19 +7,22 @@ import UilAlignLeft from '@iconscout/react-unicons/icons/uil-align-left';
 import UilAlignRight from '@iconscout/react-unicons/icons/uil-align-right';
 import { Col, Row } from 'antd';
 import { useEffect, useLayoutEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { InboxList } from './components/InboxList';
 import MailDetail from './components/MailDetail';
 import { EmailWrapper } from './components/style';
 
 function Email() {
+  const { t } = useTranslation();
+
   const pageRoutes = [
     {
       path: routes.email,
-      breadcrumbName: 'Hộp thư',
+      breadcrumbName: t('Common_Mail'),
     },
     {
       path: routes.emailInbox,
-      breadcrumbName: 'Hộp thư đến',
+      breadcrumbName: t('Common_Inbox'),
     },
   ];
 
@@ -55,7 +58,7 @@ function Email() {
 
   return (
     <>
-      <PageHeader className="invoice-page-header-main" title="Hộp thư đến" routes={pageRoutes} />
+      <PageHeader className="invoice-page-header-main" title={t('Common_Inbox')} routes={pageRoutes} />
 
       <Main>
         <EmailWrapper>

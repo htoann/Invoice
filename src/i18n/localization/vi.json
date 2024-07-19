@@ -198,6 +198,8 @@
   "Common_To": "Đến",
   "Common_CC": "CC",
   "Common_Date": "Ngày",
+  "Common_Mail": "Hộp thư",
+  "Common_Inbox": "Hộp thư đến",
 
   "Invoice_ModelCode": "Ký hiệu mẫu số",
   "Invoice_InvoiceCode": "Ký hiệu hóa đơn",
@@ -256,4 +258,5 @@
   "Mail_SearchBySender": "Tìm kiếm theo người gửi",
   "Common_NoEmailsFound": "Không tìm thấy email nào"
 
+  
 }
