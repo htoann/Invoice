@@ -3,10 +3,12 @@ import axios from '@/mock/index';
 import { Form, notification } from 'antd';
 import { useState } from 'react';
 import ModalAccount from './Modal';
+import { useTranslation } from 'react-i18next';
 
 const UpdateAccount = ({ state, setState, accounts, setAccounts }) => {
   const [form] = Form.useForm();
   const [loading, setLoading] = useState(false);
+  const { t } = useTranslation();
 
   const onCancel = () => {
     setState((prevState) => ({
@@ -30,14 +32,14 @@ const UpdateAccount = ({ state, setState, accounts, setAccounts }) => {
       onCancel();
 
       notification.success({
-        message: 'Cập nhật thành công',
-        description: 'Thông tin tài khoản đã được cập nhật thành công.',
+        message: t('Cập nhật thành công'),
+        description: t('Thông tin tài khoản đã được cập nhật thành công.'),
       });
     } catch (error) {
       console.log(error);
       notification.error({
-        message: 'Cập nhật thất bại',
-        description: 'Không thể cập nhật thông tin tài khoản. Vui lòng thử lại.',
+        message: t('Cập nhật thất bại'),
+        description: t('Không thể cập nhật thông tin tài khoản. Vui lòng thử lại.'),
       });
     } finally {
       setLoading(false);
@@ -45,14 +47,20 @@ const UpdateAccount = ({ state, setState, accounts, setAccounts }) => {
   };
 
   return (
-    <Modal type={state.modalType} title="Cập nhật tài khoản" open={state.editVisible} footer={null} onCancel={onCancel}>
+    <Modal
+      type={state.modalType}
+      title={t('Cập nhật tài khoản')}
+      open={state.editVisible}
+      footer={null}
+      onCancel={onCancel}
+    >
       <ModalAccount
         form={form}
         handleOk={handleOk}
         state={state}
         onCancel={onCancel}
         loading={loading}
-        textSubmit="Lưu"
+        textSubmit={t('Lưu')}
       />
     </Modal>
   );

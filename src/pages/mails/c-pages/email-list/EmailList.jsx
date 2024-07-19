@@ -12,8 +12,11 @@ import { Link } from 'react-router-dom';
 import CreateAccount from './components/CreateAccount';
 import DataTable from './components/DataTable';
 import UpdateAccount from './components/UpdateAccount';
+import { useTranslation } from 'react-i18next';
 
 export const EmailList = () => {
+  const { t } = useTranslation();
+
   const [state, setState] = useState({
     selectedRowKeys: 0,
     selectedRows: 0,
@@ -104,13 +107,13 @@ export const EmailList = () => {
       setAccounts(accounts.filter((account) => account.id !== id));
 
       notification.success({
-        message: 'Xóa thành công',
-        description: 'Tài khoản đã được xóa thành công.',
+        message: t('Xóa thành công'),
+        description: t('Tài khoản đã được xóa thành công.'),
       });
     } catch (error) {
       notification.error({
-        message: 'Xóa thất bại',
-        description: 'Không thể xóa tài khoản. Vui lòng thử lại sau.',
+        message: t('Xóa thất bại'),
+        description: t('Không thể xóa tài khoản. Vui lòng thử lại sau.'),
       });
     }
   };
@@ -137,10 +140,10 @@ export const EmailList = () => {
               <UilEdit />
             </Link>
             <Popconfirm
-              title="Bạn có chắc chắn muốn xóa tài khoản này?"
+              title={t('Bạn có chắc chắn muốn xóa tài khoản này?')}
               onConfirm={() => handleDelete(id)}
-              okText="Có"
-              cancelText="Không"
+              okText={t('Có')}
+              cancelText={t('Không')}
             >
               <Link className="invoice-delete" to="#">
                 <UilTrash />
@@ -154,7 +157,7 @@ export const EmailList = () => {
 
   const customHeader = (title, name) => (
     <>
-      <div>{title}</div>
+      <div>{t(title)}</div>
       <Input
         style={{ width: 'auto', height: 35, marginTop: 10 }}
         onClick={stopPropagation}
@@ -180,24 +183,24 @@ export const EmailList = () => {
 
   const dataTableColumn = [
     {
-      title: 'STT',
+      title: t('STT'),
       dataIndex: 'stt',
       key: 'stt',
     },
     {
-      title: <>{customHeader('Tên tài khoản', 'username')}</>,
+      title: <>{customHeader(t('Tên tài khoản'), 'username')}</>,
       dataIndex: 'username',
       key: 'username',
       sorter: (a, b) => a.username.props.children.localeCompare(b.username.props.children),
     },
     {
-      title: <>{customHeader('Địa chỉ email', 'email')}</>,
+      title: <>{customHeader(t('Địa chỉ email'), 'email')}</>,
       dataIndex: 'email',
       key: 'email',
       sorter: (a, b) => a.email.props.children.localeCompare(b.email.props.children),
     },
     {
-      title: 'Chức năng',
+      title: t('Chức năng'),
       dataIndex: 'action',
       key: 'action',
       width: '90px',
@@ -211,7 +214,7 @@ export const EmailList = () => {
 
   return (
     <>
-      <PageHeader className="invoice-page-header-main" title="Danh sách email" />
+      <PageHeader className="invoice-page-header-main" title={t('Danh sách email')} />
       <Main>
         <Row gutter={15}>
           <Col xs={24}>
@@ -219,10 +222,10 @@ export const EmailList = () => {
               <Cards>
                 <div style={{ display: 'flex', gap: 20, flexWrap: 'auto' }}>
                   <Button onClick={showModal} type="primary" key="1">
-                    <Link to="#">+ Thêm email</Link>
+                    <Link to="#">{t('+ Thêm email')}</Link>
                   </Button>
                   <div style={{ display: 'flex', gap: 2, flexWrap: 'auto', alignItems: 'center' }}>
-                    <span className="label">Chọn phòng ban</span>
+                    <span className="label">{t('Chọn phòng ban')}</span>
                     <Select
                       popupClassName="dropdown-select"
                       loading={loadingDepartments}
@@ -231,7 +234,7 @@ export const EmailList = () => {
                       style={{ width: 200, marginLeft: 10 }}
                       defaultValue=""
                     >
-                      <Select.Option value="">Tất cả</Select.Option>
+                      <Select.Option value="">{t('Tất cả')}</Select.Option>
                       {departments?.length > 0 &&
                         departments.map((item) => (
                           <Select.Option key={item.id} value={item.id}>

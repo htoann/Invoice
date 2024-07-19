@@ -65,21 +65,21 @@ function DataTable({ loading, tableData, columns, state, setState, getInvoiceLis
         <div style={{ justifyContent: 'space-between', display: 'flex', alignItems: 'center', flexWrap: 'wrap' }}>
           <div className="invoice-datatable-filter__left">
             <div className="invoice-datatable-filter__input">
-              <span className="label">{t('Loại hóa đơn')}</span>
+              <span className="label">{t('Invoice_DataTable_InvoiceType')}</span>
               <Select
                 popupClassName="dropdown-select"
                 onChange={handleLoaiHoaDonSearch}
                 style={{ width: 200 }}
                 defaultValue="purchase"
               >
-                <Select.Option value="purchase">{t('Mua vào')}</Select.Option>
-                <Select.Option value="sold">{t('Bán ra')}</Select.Option>
+                <Select.Option value="purchase">{t('Invoice_DataTable_Purchase')}</Select.Option>
+                <Select.Option value="sold">{t('Invoice_DataTable_Sold')}</Select.Option>
               </Select>
             </div>
             <div className="invoice-datatable-filter__input">
-              <span className="label">{t('Ngày bắt đầu')}</span>
+              <span className="label">{t('Invoice_DataTable_StartDate')}</span>
               <DatePicker
-                placeholder={t('Chọn ngày bắt đầu')}
+                placeholder={t('Invoice_DataTable_SelectStartDate')}
                 onChange={(e) => {
                   setState((prev) => ({
                     ...prev,
@@ -92,9 +92,9 @@ function DataTable({ loading, tableData, columns, state, setState, getInvoiceLis
               />
             </div>
             <div className="invoice-datatable-filter__input">
-              <span className="label">{t('Ngày kết thúc')}</span>
+              <span className="label">{t('Invoice_DataTable_EndDate')}</span>
               <DatePicker
-                placeholder={t('Chọn ngày kết thúc')}
+                placeholder={t('Invoice_DataTable_SelectEndDate')}
                 onChange={(e) => {
                   setState((prev) => ({
                     ...prev,
@@ -108,7 +108,7 @@ function DataTable({ loading, tableData, columns, state, setState, getInvoiceLis
             </div>
             <div className="invoice-datatable-filter__action" style={{ marginRight: 10 }}>
               <Button type="primary" size="small" onClick={handleSearch} transparent icon={<UilSearch />}>
-                {t('Tìm kiếm')}
+                {t('Invoice_DataTable_Search')}
               </Button>
             </div>
           </div>
@@ -122,7 +122,7 @@ function DataTable({ loading, tableData, columns, state, setState, getInvoiceLis
             disabled={!state.invoiceList?.length}
           >
             <DownloadOutlined />
-            {t('Xuất Excel')}
+            {t('Invoice_DataTable_ExportExcel')}
           </Button>
         </div>
       </div>

@@ -16,11 +16,11 @@ function InvoiceList() {
   const pageRoutes = [
     {
       path: routes.invoice,
-      breadcrumbName: t('Quản lý hóa đơn'),
+      breadcrumbName: t('Invoice_Management'),
     },
     {
       path: routes.invoice,
-      breadcrumbName: t('Danh sách hóa đơn'),
+      breadcrumbName: t('Invoice_List'),
     },
   ];
 
@@ -89,7 +89,9 @@ function InvoiceList() {
     <>
       <PageHeader
         className="invoice-page-header-main"
-        title={`${t('Danh sách hóa đơn')} ${loaiHoaDon === 'purchase' ? t('mua vào') : t('bán ra')}`}
+        title={`${t('Invoice_List')} ${
+          loaiHoaDon === 'purchase' ? t('Invoice_List_Purchase') : t('Invoice_List_Sold')
+        }`}
         routes={pageRoutes}
       />
       <Main>
