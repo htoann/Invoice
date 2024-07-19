@@ -1,15 +1,12 @@
-import React from 'react';
-import { Row, Col } from 'antd';
-import { DashboardBaseStyleWrap } from './Style';
-import { PageHeader } from '../../components/page-headers/page-headers';
-import { Cards } from '../../components/cards/frame/cards-frame';
+import { Col, Row } from 'antd';
 import { Button } from '../../components/buttons/buttons';
-import { Main } from '../styled';
+import { Cards } from '../../components/cards/frame/cards-frame';
 import Palette from '../../components/color-palette/palette';
-import config from '../../config/config';
 import Heading from '../../components/heading/heading';
-
-// @Todo console warning from button
+import { PageHeader } from '../../components/page-headers/page-headers';
+import config from '../../config/config';
+import { Main } from '../styled';
+import { DashboardBaseStyleWrap } from './Style';
 
 const { themeColor } = config;
 function DashboardBase() {
