@@ -173,7 +173,7 @@ function Orders() {
                   </Col>
                   <Col xxl={4} xs={24}>
                     <div className="table-toolbox-actions">
-                      <Button size="small" type="secondary" transparented>
+                      <Button size="small" type="secondary" transparent>
                         Export
                       </Button>
                       <Button size="small" type="primary">

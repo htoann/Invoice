@@ -296,7 +296,7 @@ function TaskList() {
     <div className="task-list-inner table-responsive">
       <Table pagination={false} rowSelection={rowSelection} dataSource={dataSource} columns={columns} />
       <div className="tasklist-action">
-        <Button type="primary" size="large" transparented>
+        <Button type="primary" size="large" transparent>
           <UilPlus /> Add New Task
         </Button>
       </div>

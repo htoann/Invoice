@@ -141,7 +141,7 @@ function WizardsSix() {
               size="default"
               type="danger"
               shape="circle"
-              transparented
+              transparent
             >
               <UilTrashAlt />
             </Button>

@@ -157,7 +157,7 @@ function WizardsFive() {
               size="default"
               type="danger"
               shape="circle"
-              transparented
+              transparent
             >
               <UilTrashAlt />
             </Button>

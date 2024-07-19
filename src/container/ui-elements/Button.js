@@ -58,28 +58,28 @@ function Buttons() {
             </Cards>
 
             <Cards title="Light Color" size="large">
-              <Button size="default" transparented type="primary">
+              <Button size="default" transparent type="primary">
                 Primary
               </Button>
-              <Button size="default" transparented type="secondary">
+              <Button size="default" transparent type="secondary">
                 Secondary
               </Button>
-              <Button size="default" transparented type="success">
+              <Button size="default" transparent type="success">
                 Success
               </Button>
-              <Button size="default" transparented type="info">
+              <Button size="default" transparent type="info">
                 Info
               </Button>
-              <Button size="default" transparented type="warning">
+              <Button size="default" transparent type="warning">
                 Warning
               </Button>
-              <Button size="default" transparented type="danger">
+              <Button size="default" transparent type="danger">
                 Danger
               </Button>
-              <Button size="default" transparented type="dark">
+              <Button size="default" transparent type="dark">
                 Dark
               </Button>
-              <Button className="btn-transparent" size="default" transparented type="light">
+              <Button className="btn-transparent" size="default" transparent type="light">
                 Light
               </Button>
             </Cards>
@@ -119,7 +119,7 @@ function Buttons() {
                 <UilLayers />
                 Default
               </Button>
-              <Button size="default" transparented type="primary">
+              <Button size="default" transparent type="primary">
                 <UilLayers />
                 Default
               </Button>
@@ -363,7 +363,7 @@ function Buttons() {
                 <UilLayers />
                 Default
               </Button>
-              <Button size="default" shape="circle" transparented type="primary">
+              <Button size="default" shape="circle" transparent type="primary">
                 <UilLayers />
                 Default
               </Button>
@@ -420,14 +420,7 @@ function Buttons() {
               <Button size="default" shape="circle" type="primary" loading>
                 Default
               </Button>
-              <Button
-                size="default"
-                shape="circle"
-                className="ant-btn-transparent"
-                transparented
-                type="primary"
-                loading
-              >
+              <Button size="default" shape="circle" className="ant-btn-transparent" transparent type="primary" loading>
                 Default
               </Button>
               <Button size="default" shape="circle" className="btn-outlined" outlined type="primary" loading>

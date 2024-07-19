@@ -107,7 +107,7 @@ function DataTable({ loading, tableData, columns, state, setState, getInvoiceLis
               />
             </div>
             <div className="invoice-datatable-filter__action" style={{ marginRight: 10 }}>
-              <Button type="primary" size="small" onClick={handleSearch} transparented icon={<UilSearch />}>
+              <Button type="primary" size="small" onClick={handleSearch} transparent icon={<UilSearch />}>
                 {t('Tìm kiếm')}
               </Button>
             </div>

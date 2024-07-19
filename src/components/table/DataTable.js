@@ -48,7 +48,7 @@ function DataTable({ filterOption, filterOnchange, rowSelection, tableData, colu
                 </Select>
               </div>
               <div className="invoice-datatable-filter__action">
-                <Button type="primary" size="small" onClick={handleSearch} transparented>
+                <Button type="primary" size="small" onClick={handleSearch} transparent>
                   Submit
                 </Button>
               </div>

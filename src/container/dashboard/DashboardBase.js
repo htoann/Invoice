@@ -257,7 +257,7 @@ function DashboardBase() {
                       type="primary"
                       size="large"
                       style={{ marginRight: '10px', marginBottom: '30px' }}
-                      transparented
+                      transparent
                     >
                       Large Button
                     </Button>
@@ -265,7 +265,7 @@ function DashboardBase() {
                       type="primary"
                       size="extra-small"
                       style={{ marginRight: '10px', marginBottom: '30px' }}
-                      transparented
+                      transparent
                     >
                       Extra Small
                     </Button>
@@ -273,7 +273,7 @@ function DashboardBase() {
                       type="primary"
                       size="small"
                       style={{ marginRight: '10px', marginBottom: '30px' }}
-                      transparented
+                      transparent
                     >
                       Small
                     </Button>
@@ -281,11 +281,11 @@ function DashboardBase() {
                       type="primary"
                       size="default"
                       style={{ marginRight: '10px', marginBottom: '30px' }}
-                      transparented
+                      transparent
                     >
                       Normal
                     </Button>
-                    <Button type="primary" size="large" transparented>
+                    <Button type="primary" size="large" transparent>
                       Large Button
                     </Button>
                   </Col>

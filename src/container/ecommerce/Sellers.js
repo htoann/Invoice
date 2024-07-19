@@ -140,7 +140,7 @@ function Sellers() {
                   <Col xxl={15} lg={5} xs={24} />
                   <Col xxl={4} lg={9} xs={24}>
                     <div className="table-toolbox-actions">
-                      <Button size="small" type="secondary" transparented>
+                      <Button size="small" type="secondary" transparent>
                         Export
                       </Button>
                       <Button size="small" type="primary">

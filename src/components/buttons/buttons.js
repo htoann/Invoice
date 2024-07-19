@@ -12,7 +12,7 @@ function Button(props) {
     size,
     outlined,
     ghost,
-    transparented,
+    transparent,
     raised,
     squared,
     color,
@@ -34,7 +34,7 @@ function Button(props) {
       squared={squared}
       outlined={outlined ? 1 : 0}
       ghost={ghost}
-      transparent={transparented ? 1 : 0}
+      transparent={transparent ? 1 : 0}
       raised={raised ? 1 : 0}
       data={type}
       size={size}
@@ -75,7 +75,7 @@ Button.propTypes = {
   size: PropTypes.string,
   color: PropTypes.string,
   outlined: PropTypes.bool,
-  transparented: PropTypes.bool,
+  transparent: PropTypes.bool,
   raised: PropTypes.bool,
   squared: PropTypes.bool,
   social: PropTypes.bool,
