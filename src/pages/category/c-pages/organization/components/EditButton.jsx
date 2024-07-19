@@ -10,7 +10,7 @@ const EditButton = ({ onClick }) => (
     }}
     icon={<UilEdit />}
     size="small"
-    style={{ marginLeft: '8px', color: 'rgb(160, 160, 160)' }}
+    style={{ marginLeft: '8px', color: '#a0a0a0' }}
   />
 );
 

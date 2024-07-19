@@ -1,8 +1,11 @@
 import { Button } from '@/components/buttons/buttons';
 import UilTrash from '@iconscout/react-unicons/icons/uil-trash-alt';
 import { Popconfirm } from 'antd';
+import { useTranslation } from 'react-i18next';
 
 const DeleteButton = ({ onConfirm, loading }) => {
+  const { t } = useTranslation();
+
   const handleClick = (e) => {
     e.stopPropagation();
     e.preventDefault();
@@ -11,10 +14,10 @@ const DeleteButton = ({ onConfirm, loading }) => {
   return (
     <div onClick={handleClick} style={{ height: 45 }}>
       <Popconfirm
-        title="Bạn có muốn xoá mục này không"
+        title={t('Common_Delete_Confirm')}
         onConfirm={onConfirm}
-        okText="Có"
-        cancelText="Không"
+        okText={t('Common_Yes')}
+        cancelText={t('Common_No')}
         loading={loading}
       >
         <Button

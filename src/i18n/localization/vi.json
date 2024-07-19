@@ -211,6 +211,7 @@
   "Common_Captcha": "Mã xác nhận",
   "Common_Captcha_Placeholder": "Vui lòng nhập mã xác nhận",
   "Common_CreateNew": "Tạo mới",
+  "Common_Delete_Confirm": "Bạn có muốn xoá mục này không",
 
   "Invoice_ModelCode": "Ký hiệu mẫu số",
   "Invoice_InvoiceCode": "Ký hiệu hóa đơn",
@@ -324,5 +325,8 @@
   "Project_Edit_Error": "Có lỗi xảy ra khi chỉnh sửa dự án.",
   "Project_Delete_Success": "Dự án đã được xóa thành công.",
   "Project_Delete_Error": "Có lỗi xảy ra khi xóa dự án.",
-  "Project_Not_Found": "Không tìm thấy dự án nào"
+  "Project_Not_Found": "Không tìm thấy dự án nào",
+  "Product_Create_Title": "Tạo hàng hoá",
+  "Product_Create_Success": "Hàng hoá đã được tạo thành công",
+  "Product_Create_Error": "Đã xảy ra lỗi khi tạo hàng hoá"
 }
