@@ -21,7 +21,7 @@ const Popover = lazy(() => import('../../container/ui-elements/Popover'));
 const Timeline = lazy(() => import('../../container/ui-elements/Timeline'));
 const Drawer = lazy(() => import('../../container/ui-elements/Drawer'));
 const Result = lazy(() => import('../../container/ui-elements/Result'));
-const Spiner = lazy(() => import('../../container/ui-elements/Spin'));
+const Spinner = lazy(() => import('../../container/ui-elements/Spin'));
 const Collapse = lazy(() => import('../../container/ui-elements/Collapse'));
 const Avatar = lazy(() => import('../../container/ui-elements/Avata'));
 const Badge = lazy(() => import('../../container/ui-elements/Badge'));
@@ -64,7 +64,7 @@ function ComponentRoute() {
       <Route path="popover" element={<Popover />} />
       <Route path="timeline" element={<Timeline />} />
       <Route path="drawer" element={<Drawer />} />
-      <Route path="spiner" element={<Spiner />} />
+      <Route path="spinner" element={<Spinner />} />
       <Route path="collapse" element={<Collapse />} />
       <Route path="auto-complete" element={<AutoComplete />} />
       <Route path="checkbox" element={<Checkbox />} />

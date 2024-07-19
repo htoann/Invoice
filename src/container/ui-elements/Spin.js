@@ -7,7 +7,7 @@ import { SpinerWraperStyle } from './ui-elements-styled';
 
 const antIcon = <LoadingOutlined style={{ fontSize: 24 }} />;
 
-function Spiner() {
+function Spinner() {
   const PageRoutes = [
     {
       path: '/',
@@ -55,4 +55,4 @@ function Spiner() {
   );
 }
 
-export default Spiner;
+export default Spinner;
