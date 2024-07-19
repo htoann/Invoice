@@ -7,9 +7,11 @@ import axios from '@/mock/index';
 import { RightOutlined } from '@ant-design/icons';
 import { Col, Empty, Form, Input, Menu, notification, Skeleton } from 'antd';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import MenuItem from '../components/MenuItem';
 
 const BranchList = ({ list, setList, loadingList, selectedItem, setSelectedItem }) => {
+  const { t } = useTranslation();
   const [showCreate, setShowCreate] = useState(false);
   const [showEdit, setShowEdit] = useState(false);
   const [editItem, setEditItem] = useState(null);
@@ -39,13 +41,13 @@ const BranchList = ({ list, setList, loadingList, selectedItem, setSelectedItem 
       form.resetFields();
 
       notification.success({
-        message: 'Thêm chi nhánh',
-        description: 'Chi nhánh đã được thêm thành công.',
+        message: t('Branch_Create_Success_Title'),
+        description: t('Branch_Create_Success_Description'),
       });
     } catch (error) {
       notification.error({
-        message: 'Lỗi',
-        description: 'Có lỗi xảy ra khi thêm chi nhánh.',
+        message: t('Common_Error'),
+        description: t('Branch_Create_Error_Description'),
       });
     } finally {
       setLoading(false);
@@ -64,13 +66,13 @@ const BranchList = ({ list, setList, loadingList, selectedItem, setSelectedItem 
       form.resetFields();
       setShowEdit(false);
       notification.success({
-        message: 'Chỉnh sửa chi nhánh',
-        description: 'Chi nhánh đã được chỉnh sửa thành công.',
+        message: t('Branch_Edit_Success_Title'),
+        description: t('Branch_Edit_Success_Description'),
       });
     } catch (error) {
       notification.error({
-        message: 'Lỗi',
-        description: 'Có lỗi xảy ra khi chỉnh sửa chi nhánh.',
+        message: t('Common_Error'),
+        description: t('Branch_Edit_Error_Description'),
       });
     } finally {
       setLoading(false);
@@ -82,15 +84,15 @@ const BranchList = ({ list, setList, loadingList, selectedItem, setSelectedItem 
       setLoading(true);
       await axios.delete(`/branches/${id}`);
       notification.success({
-        message: 'Xóa chi nhánh',
-        description: 'Chi nhánh đã được xóa thành công.',
+        message: t('Branch_Delete_Success_Title'),
+        description: t('Branch_Delete_Success_Description'),
       });
       setList(list.filter((item) => item.id !== id));
       setSelectedItem(null);
     } catch (error) {
       notification.error({
-        message: 'Lỗi',
-        description: 'Có lỗi xảy ra khi xóa chi nhánh.',
+        message: t('Common_Error'),
+        description: t('Branch_Delete_Error_Description'),
       });
     } finally {
       setLoading(false);
@@ -107,21 +109,21 @@ const BranchList = ({ list, setList, loadingList, selectedItem, setSelectedItem 
     form.resetFields();
   };
 
-  const customModal = (textSubmit = 'Lưu', onSubmit, onCancel, loading) => (
+  const customModal = (textSubmit, onSubmit, onCancel, loading) => (
     <AddUser>
       <BasicFormWrapper>
         <Form form={form} onFinish={onSubmit}>
           <Form.Item
             name="name"
-            label="Tên chi nhánh"
-            rules={[{ required: true, message: 'Vui lòng nhập tên chi nhánh' }]}
+            label={t('Branch_Name')}
+            rules={[{ required: true, message: t('Branch_Name_Required') }]}
             initialValue={showEdit ? editItem?.name : ''}
           >
             <Input />
           </Form.Item>
           <div style={{ justifyContent: 'end', display: 'flex' }}>
             <Button size="default" type="white" outlined style={{ marginRight: 8 }} onClick={onCancel}>
-              Huỷ bỏ
+              {t('Common_Cancel')}
             </Button>
             <Button htmlType="submit" size="default" type="primary" key="submit" loading={loading}>
               {textSubmit}
@@ -135,7 +137,7 @@ const BranchList = ({ list, setList, loadingList, selectedItem, setSelectedItem 
   return (
     <Col xs={24} sm={12} md={8} lg={8}>
       <BorderLessHeading>
-        <Cards title="Chi nhánh">
+        <Cards title={t('Branch_Title')}>
           <Menu
             style={{ width: '100%', minHeight: 'calc(100vh - 290px)' }}
             mode="inline"
@@ -154,7 +156,7 @@ const BranchList = ({ list, setList, loadingList, selectedItem, setSelectedItem 
                   outlined
                   style={{ marginBottom: 10 }}
                 >
-                  + Thêm chi nhánh
+                  + {t('Branch_Add')}
                 </Button>
                 {list.map((department) => (
                   <Menu.Item key={department.id}>
@@ -170,14 +172,14 @@ const BranchList = ({ list, setList, loadingList, selectedItem, setSelectedItem 
               </>
             ) : (
               <Empty
-                description="Không tìm thấy chi nhánh nào"
+                description={t('Branch_Empty_Description')}
                 className="common-center"
                 style={{
                   minHeight: 'calc(100vh - 290px)',
                 }}
               >
                 <Button size="small" type="primary" onClick={() => handleCreate()}>
-                  Tạo mới
+                  {t('Common_CreateNew')}
                 </Button>
               </Empty>
             )}
@@ -185,12 +187,12 @@ const BranchList = ({ list, setList, loadingList, selectedItem, setSelectedItem 
         </Cards>
       </BorderLessHeading>
 
-      <Modal title="Thêm chi nhánh" open={showCreate} onCancel={cancelCreate} footer={null}>
-        {customModal('Thêm', handleCreateSubmit, cancelCreate, loading)}
+      <Modal title={t('Branch_Create_Title')} open={showCreate} onCancel={cancelCreate} footer={null}>
+        {customModal(t('Branch_Add'), handleCreateSubmit, cancelCreate, loading)}
       </Modal>
 
-      <Modal title="Chỉnh sửa chi nhánh" open={showEdit} onCancel={cancelEdit} footer={null}>
-        {customModal('Lưu', handleEditSubmit, cancelEdit, loading)}
+      <Modal title={t('Branch_Edit_Title')} open={showEdit} onCancel={cancelEdit} footer={null}>
+        {customModal(t('Common_Save'), handleEditSubmit, cancelEdit, loading)}
       </Modal>
     </Col>
   );
