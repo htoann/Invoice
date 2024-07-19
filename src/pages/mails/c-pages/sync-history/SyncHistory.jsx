@@ -86,7 +86,7 @@ export const SyncHistory = () => {
         id,
         time: <span>{time}</span>,
         query: <span>{query}</span>,
-        status: <span>{status}</span>,
+        status: <span>{status === 1 ? 'Thành công' : 'Thất bại'}</span>,
         note: <span>{note}</span>,
         totalInvoice: <span>{totalInvoice}</span>,
         newInvoice: <span>{newInvoice}</span>,
