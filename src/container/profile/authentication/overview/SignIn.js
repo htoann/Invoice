@@ -1,4 +1,4 @@
-import { Button, Col, Form, Input, Row } from 'antd';
+import { Button, Col, Form, Input, notification, Row } from 'antd';
 import { useEffect, useState } from 'react';
 
 import { login } from '@/redux/authentication/actionCreator';
@@ -19,7 +19,18 @@ function SignIn() {
   const [keyCaptcha, setKeyCaptcha] = useState();
 
   const handleSubmit = (values) => {
-    dispatch(login({ ...values, ckey: keyCaptcha }, () => navigate('/')));
+    dispatch(
+      login(
+        { ...values, ckey: keyCaptcha },
+        () => navigate('/'),
+        () => {
+          notification.error({
+            message: t('Auth_SignIn'),
+            description: t('Auth_SignIn_Failed'),
+          });
+        },
+      ),
+    );
   };
 
   const getCaptcha = async () => {

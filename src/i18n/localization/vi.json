@@ -274,5 +274,6 @@
 
   "Auth_SignIn_Title": "Đăng nhập vào hệ thống hoá đơn",
   "Auth_SigningIn": "Đang đăng nhập...",
-  "Auth_SignIn": "Đăng nhập"
+  "Auth_SignIn": "Đăng nhập",
+  "Auth_SignIn_Failed": "Đăng nhập thất bại"
 }

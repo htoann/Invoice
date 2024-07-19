@@ -4,7 +4,7 @@ import actions from './actions';
 const { LOGIN_BEGIN, LOGIN_SUCCESS, LOGIN_ERR, LOGOUT_BEGIN, LOGOUT_SUCCESS, LOGOUT_ERR } = actions;
 
 const initState = {
-  login: Cookies.get('logedIn'),
+  login: Cookies.get('loggedIn'),
   loading: false,
   error: null,
 };

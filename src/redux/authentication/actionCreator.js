@@ -1,11 +1,10 @@
 import Cookies from 'js-cookie';
-import actions from './actions';
 import { DataService } from '../../config/dataService';
-import { notification } from 'antd';
+import actions from './actions';
 
 const { loginBegin, loginSuccess, loginErr, logoutBegin, logoutSuccess, logoutErr } = actions;
 
-const login = (values, callback) => {
+const login = (values, callback, errorHandle) => {
   return async (dispatch) => {
     dispatch(loginBegin());
     try {
@@ -14,20 +13,17 @@ const login = (values, callback) => {
       //   dispatch(loginErr(response.data.errors));
       // } else {
       //   Cookies.set('access_token', response.data.token.access_token);
-      //   Cookies.set('logedIn', true);
+      //   Cookies.set('loggedIn', true);
       //   dispatch(loginSuccess(true));
       //   callback();
       // }
-      Cookies.set('access_token', 'vippro');
-      Cookies.set('logedIn', true);
+      Cookies.set('access_token', 'cr7');
+      Cookies.set('loggedIn', true);
       dispatch(loginSuccess(true));
       callback();
     } catch (err) {
-      notification.error({
-        message: 'Đăng nhập',
-        description: 'Đăng nhập thất bại',
-      });
       dispatch(loginErr(err));
+      errorHandle();
     }
   };
 };
@@ -52,7 +48,7 @@ const logOut = (callback) => {
   return async (dispatch) => {
     dispatch(logoutBegin());
     try {
-      Cookies.remove('logedIn');
+      Cookies.remove('loggedIn');
       Cookies.remove('access_token');
       dispatch(logoutSuccess(false));
       callback();
