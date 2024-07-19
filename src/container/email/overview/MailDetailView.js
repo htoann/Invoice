@@ -88,7 +88,7 @@ function Single() {
             </Tooltip>
           </MessageAction>
         }
-        isbutton={
+        isButton={
           <MailRightAction>
             <span>1 - 50 of 235</span>
           </MailRightAction>

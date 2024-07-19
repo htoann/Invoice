@@ -1,5 +1,5 @@
 import actions from './actions';
-import initialState from '../../demoData/note.json';
+import initialState from '@/mock/demoData/note.json';
 
 const {
   noteReadBegin,

@@ -1,5 +1,5 @@
 import actions from './actions';
-import initialState from '../../demoData/data-table.json';
+import initialState from '@/mock/demoData/data-table.json';
 
 const {
   dataTableReadBegin,

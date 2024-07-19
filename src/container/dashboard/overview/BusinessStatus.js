@@ -1,10 +1,10 @@
 import { Table } from 'antd';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Cards } from '../../../components/cards/frame/cards-frame';
 import { BorderLessHeading, TableDefaultStyle } from '../../styled';
 
-import tableData from '../../../demoData/table-data.json';
+import tableData from '@/mock/demoData/table-data.json';
+import { Cards } from '@/components/cards/frame/cards-frame';
 
 const { bestSeller } = tableData;
 
@@ -80,7 +80,7 @@ const BusinessStatus = React.memo(() => {
     <div className="full-width-table">
       <BorderLessHeading>
         <Cards
-          isbutton={
+          isButton={
             <div className="invoice-card-nav">
               <ul>
                 <li className={sellerTab === 'today' ? 'invoice-active' : 'invoice-today'}>

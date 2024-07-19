@@ -5,7 +5,7 @@ import { Cards } from '../../../components/cards/frame/cards-frame';
 import { NewProductWrapper } from '../Style';
 import { BorderLessHeading, TableDefaultStyle } from '../../styled';
 
-import tableData from '../../../demoData/table-data.json';
+import tableData from '@/mock/demoData/table-data.json';
 
 const { newProduct } = tableData;
 
@@ -63,7 +63,7 @@ const InvoicesChange = React.memo(() => {
     <div className="full-width-table">
       <BorderLessHeading>
         <Cards
-          isbutton={
+          isButton={
             <div className="invoice-card-nav">
               <ul>
                 <li className={productTab === 'today' ? 'invoice-active' : 'invoice-today'}>

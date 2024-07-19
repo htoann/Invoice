@@ -1,5 +1,5 @@
 import actions from './actions';
-import staticData from '../../demoData/header-search.json';
+import staticData from '@/mock/demoData/header-search.json';
 
 const { SEARCH_HEADER_SUCCESS, SEARCH_HEADER_ERR } = actions;
 

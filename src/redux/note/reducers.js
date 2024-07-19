@@ -1,5 +1,5 @@
 import actions from './actions';
-import toData from '../../demoData/note.json';
+import toData from '@/mock/demoData/note.json';
 
 const initialState = {
   data: toData,

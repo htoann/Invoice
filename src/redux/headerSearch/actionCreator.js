@@ -1,5 +1,5 @@
 import actions from './actions';
-import initialState from '../../demoData/header-search.json';
+import initialState from '@/mock/demoData/header-search.json';
 
 const { searchHeaderBegin, searchHeaderSuccess, searchHeaderErr } = actions;
 

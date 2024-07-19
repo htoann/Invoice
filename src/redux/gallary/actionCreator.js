@@ -1,5 +1,5 @@
 import actions from './actions';
-import initialState from '../../demoData/gallery.json';
+import initialState from '@/mock/demoData/gallery.json';
 
 const { filterGalleryBegin, filterGallerySuccess, filterGalleryErr } = actions;
 

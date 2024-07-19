@@ -1,6 +1,6 @@
 import actions from './actions';
-import toData from '../../demoData/friends.json';
-import posts from '../../demoData/post.json';
+import toData from '@/mock/demoData/friends.json';
+import posts from '@/mock/demoData/post.json';
 
 const initialState = {
   friends: toData,

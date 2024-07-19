@@ -55,9 +55,9 @@ export const LeftMenu = ({ toggleCollapsed }) => {
   // const changeNavbar = (topMode) => {
   //   const html = document.querySelector('html');
   //   if (topMode) {
-  //     html.classList.add('invoice-topmenu');
+  //     html.classList.add('invoice-topMenu');
   //   } else {
-  //     html.classList.remove('invoice-topmenu');
+  //     html.classList.remove('invoice-topMenu');
   //   }
   //   dispatch(changeMenuMode(topMode));
   // };
@@ -73,11 +73,11 @@ export const LeftMenu = ({ toggleCollapsed }) => {
   //   dispatch(changeDirectionMode(rtlMode));
   // };
 
-  // const darkmodeActivated = () => {
+  // const darkModeActivated = () => {
   //   document.body.classList.add('dark-mode');
   // };
 
-  // const darkmodeDiactivated = () => {
+  // const darkModeDeactivated = () => {
   //   document.body.classList.remove('dark-mode');
   // };
 
@@ -95,7 +95,7 @@ export const LeftMenu = ({ toggleCollapsed }) => {
 
   const items = [
     getItem(
-      createNavLink('/', 'overview'),
+      createNavLink('/', 'Common_Overview'),
       '404',
       !topMenu && (
         <NavLink className="menuItem-icon" to="/">
@@ -108,22 +108,22 @@ export const LeftMenu = ({ toggleCollapsed }) => {
       'manage_invoices',
       !topMenu && <UilCreateDashboard />,
       createMenuItems([
-        { path: routes.invoice, textKey: 'Danh sách hoá đơn', key: 'invoice-list' },
+        { path: routes.invoice, textKey: t('Common_InvoiceList'), key: 'invoice-list' },
         // { path: routes.invoice, textKey: 'Kiểm tra tình trạng MST', key: 'Kiểm tra tình trạng MST' },
       ]),
     ),
     getItem(
-      t('inbox'),
+      t('Common_Mail'),
       'inbox',
       !topMenu && <UilAt />,
       createMenuItems([
-        { path: routes.email, textKey: 'Danh sách email', key: 'Danh sách email' },
-        { path: routes.emailInbox, textKey: 'Hộp thư đến', key: 'Hộp thư đến' },
-        { path: routes.emailSync, textKey: 'Lịch sử đồng bộ', key: 'Lịch sử đồng bộ' },
+        { path: routes.email, textKey: t('Mail_EmailList_Title'), key: 'Danh sách email' },
+        { path: routes.emailInbox, textKey: t('Common_Inbox'), key: 'Hộp thư đến' },
+        { path: routes.emailSync, textKey: t('Common_SyncHistory'), key: 'Lịch sử đồng bộ' },
       ]),
     ),
     getItem(
-      t('category'),
+      t('Common_Category'),
       'category',
       !topMenu && <UilAt />,
       createMenuItems([
@@ -135,7 +135,7 @@ export const LeftMenu = ({ toggleCollapsed }) => {
       ]),
     ),
     getItem(
-      t('report'),
+      t('Common_Report'),
       'report',
       !topMenu && <UilAt />,
       createMenuItems([

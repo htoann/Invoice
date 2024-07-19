@@ -3,7 +3,7 @@ import { Row, Col } from 'antd';
 import OverviewCard from '../../../components/cards/OverviewCard';
 import { OverviewDataStyleWrap } from '../Style';
 
-import OverviewData from '../../../demoData/overviewData.json';
+import OverviewData from '@/mock/demoData/overviewData.json';
 
 const OverviewDataList = React.memo(() => {
   const OverviewDataSorted = OverviewData.slice(Math.max(OverviewData.length - 4, 1));

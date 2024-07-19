@@ -1,7 +1,5 @@
-/* eslint-disable no-param-reassign */
-/* eslint-disable no-return-assign */
 import actions from './actions';
-import initialState from '../../demoData/friends.json';
+import initialState from '@/mock/demoData/friends.json';
 
 const { profileFriendsBegin, profileFriendsSuccess, profileFriendsErr, postDataBegin, postDataSuccess, postDataErr } =
   actions;

@@ -1,5 +1,5 @@
 import actions from './actions';
-import staticData from '../../demoData/gallery.json';
+import staticData from '@/mock/demoData/gallery.json';
 
 const initialState = {
   data: staticData,

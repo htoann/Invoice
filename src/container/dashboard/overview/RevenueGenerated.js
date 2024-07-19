@@ -5,7 +5,7 @@ import { Cards } from '../../../components/cards/frame/cards-frame';
 import { BorderLessHeading, TableDefaultStyle } from '../../styled';
 import { RevenueGeneratedWrapper } from '../Style';
 
-import tableData from '../../../demoData/table-data.json';
+import tableData from '@/mock/demoData/table-data.json';
 
 const { revenueGenerated } = tableData;
 
@@ -93,7 +93,7 @@ const RevenueGenerated = React.memo(() => {
     <div className="full-width-table">
       <BorderLessHeading>
         <Cards
-          isbutton={
+          isButton={
             <div className="invoice-card-nav">
               <ul>
                 <li className={revenueTab === 'today' ? 'invoice-active' : 'invoice-today'}>

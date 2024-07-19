@@ -1,5 +1,5 @@
 import actions from './actions';
-import initialState from '../../demoData/message-list.json';
+import initialState from '@/mock/demoData/message-list.json';
 
 const { readNotificationBegin, readNotificationSuccess, readNotificationErr } = actions;
 

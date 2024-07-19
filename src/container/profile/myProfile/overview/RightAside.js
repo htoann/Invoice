@@ -59,7 +59,7 @@ function RightAside() {
         </ul>
       </Cards>
       <Cards
-        isbutton={
+        isButton={
           <Link className="btn-seeAll" to="/pages/gallery">
             See All
           </Link>
@@ -81,7 +81,7 @@ function RightAside() {
         </div>
       </Cards>
       <Cards
-        isbutton={
+        isButton={
           <Link className="btn-seeAll" to="#">
             See All
           </Link>

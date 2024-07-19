@@ -44,17 +44,17 @@ export const TopMenu = () => {
         <ul>
           <li>
             <Link to="/" className="parent">
-              {t('overview')}
+              {t('Common_Overview')}
             </Link>
           </li>
 
           <li className="has-subMenu">
             <Link to="#" className="parent">
-              {t('manage_invoices')}
+              {t('Invoice_Management')}
             </Link>
             <ul className="subMenu">
               <li>
-                <Link to={routes.invoice}>Danh sách hoá đơn</Link>
+                <Link to={routes.invoice}>{t('Common_InvoiceList')}</Link>
               </li>
               {/* <li>
                 <Link to="#">Kiểm tra tình trạng MST</Link>
@@ -64,14 +64,14 @@ export const TopMenu = () => {
 
           <li className="has-subMenu">
             <Link to={routes.email} className="parent">
-              {t('inbox')}
+              {t('Common_Inbox')}
             </Link>
             <ul className="subMenu">
               <li>
-                <Link to={routes.email}>Danh sách email</Link>
+                <Link to={routes.email}>{t('Mail_EmailList_Title')}</Link>
               </li>
               <li>
-                <Link to={routes.emailInbox}>Hộp thư đến</Link>
+                <Link to={routes.emailInbox}>{t('Common_Inbox')}</Link>
               </li>
               <li>
                 <Link to={routes.emailSync}>Lịch sử đồng bộ</Link>
@@ -81,7 +81,7 @@ export const TopMenu = () => {
 
           <li className="has-subMenu">
             <Link to="#" className="parent">
-              {t('category')}
+              {t('Common_Category')}
             </Link>
             <ul className="subMenu">
               <li>
@@ -104,7 +104,7 @@ export const TopMenu = () => {
 
           <li className="has-subMenu">
             <Link to="#" className="parent">
-              {t('report')}
+              {t('Common_Report')}
             </Link>
             <ul className="subMenu" style={{ width: 400 }}>
               <li>

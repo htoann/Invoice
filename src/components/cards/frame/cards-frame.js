@@ -14,7 +14,7 @@ const Cards = (props) => {
     size,
     headless,
     caption,
-    isbutton,
+    isButton,
     bodyStyle,
     headStyle,
     border = false,
@@ -42,7 +42,7 @@ const Cards = (props) => {
                 </Dropdown>
               )}
 
-              {isbutton && isbutton}
+              {isButton && isButton}
             </>
           }
           style={{ width: '100%' }}
@@ -73,7 +73,7 @@ Cards.propTypes = {
   more: PropTypes.oneOfType([PropTypes.string, PropTypes.object, PropTypes.node]),
   bodyStyle: PropTypes.object,
   headStyle: PropTypes.object,
-  isbutton: PropTypes.node,
+  isButton: PropTypes.node,
   headless: PropTypes.bool,
   border: PropTypes.bool,
   caption: PropTypes.string,

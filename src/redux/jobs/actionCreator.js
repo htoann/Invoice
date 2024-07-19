@@ -1,5 +1,5 @@
 import actions from './actions';
-import initialState from '../../demoData/jobs.json';
+import initialState from '@/mock/demoData/jobs.json';
 
 const {
   jobsReadBegin,

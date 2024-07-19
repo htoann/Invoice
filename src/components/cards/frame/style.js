@@ -62,7 +62,7 @@ const BtnWraper = (theme) => `
 
 const CardFrame = Styled(Card)`
 
-  ${({ isbutton, theme }) => isbutton && BtnWraper(theme)}
+  ${({ isButton, theme }) => isButton && BtnWraper(theme)}
   margin-bottom: 25px !important;
 
   background-color: ${({ theme }) => theme[theme.mainContent]['white-background']};

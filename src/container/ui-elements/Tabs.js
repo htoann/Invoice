@@ -1,7 +1,7 @@
 import { Col, Row } from 'antd';
 import { PageHeader } from '../../components/page-headers/page-headers';
 import { Tab } from '../../components/tabs/tabs';
-import tabData from '../../demoData/tab-data.json';
+import tabData from '@/mock/demoData/tab-data.json';
 import { Main } from '../styled';
 
 const { data, dataIcon, icon } = tabData;
