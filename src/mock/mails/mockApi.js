@@ -3,7 +3,7 @@ import { inbox } from './inbox';
 import { syncHistory } from './syncHistory';
 
 export const mailMockApi = (mock) => {
-  mock.onGet('/api/accounts').reply((config) => {
+  mock.onGet('/accounts').reply((config) => {
     const { username, email, department_id = '', page = 1, page_size = 10 } = config;
 
     let results = accounts;
@@ -29,7 +29,7 @@ export const mailMockApi = (mock) => {
     return [200, { results: paginatedResults, count }];
   });
 
-  mock.onPost('/api/accounts').reply((config) => {
+  mock.onPost('/accounts').reply((config) => {
     const { username, email, password } = JSON.parse(config.data);
 
     const emailExists = accounts.some((account) => account.email === email);
@@ -47,7 +47,7 @@ export const mailMockApi = (mock) => {
     return [201, newAccount];
   });
 
-  mock.onDelete(/\/api\/accounts\/\w+/).reply((config) => {
+  mock.onDelete(/\/accounts\/\w+/).reply((config) => {
     const id = config.url.split('/').pop();
     const accountIndex = accounts.findIndex((acc) => acc.id === id);
     if (accountIndex !== -1) {
@@ -57,7 +57,7 @@ export const mailMockApi = (mock) => {
     return [404];
   });
 
-  mock.onPut(/\/api\/accounts\/\w+/).reply((config) => {
+  mock.onPut(/\/accounts\/\w+/).reply((config) => {
     const id = config.url.split('/').pop();
     const { username, email, password } = JSON.parse(config.data);
     const account = accounts.find((acc) => acc.id === id);
@@ -71,7 +71,7 @@ export const mailMockApi = (mock) => {
   });
 
   // Inbox
-  mock.onGet('/api/inbox').reply((config) => {
+  mock.onGet('/inbox').reply((config) => {
     const { receiver_id, page = 1, page_size = 20, search_term = '' } = config;
 
     let results = [];
