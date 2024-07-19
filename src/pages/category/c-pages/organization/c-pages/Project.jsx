@@ -7,9 +7,11 @@ import axios from '@/mock/index';
 import { RightOutlined } from '@ant-design/icons';
 import { Col, Empty, Form, Input, Menu, notification, Skeleton } from 'antd';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import MenuItem from '../components/MenuItem';
 
 const ProjectList = ({ list, setList, loadingList }) => {
+  const { t } = useTranslation();
   const [showCreate, setShowCreate] = useState(false);
   const [showEdit, setShowEdit] = useState(false);
   const [editItem, setEditItem] = useState(null);
@@ -39,13 +41,13 @@ const ProjectList = ({ list, setList, loadingList }) => {
       form.resetFields();
 
       notification.success({
-        message: 'Thêm dự án',
-        description: 'Dự án đã được thêm thành công.',
+        message: t('Common_Create'),
+        description: t('Project_Create_Success'),
       });
     } catch (error) {
       notification.error({
-        message: 'Lỗi',
-        description: 'Có lỗi xảy ra khi thêm dự án.',
+        message: t('Common_Error'),
+        description: t('Project_Create_Error'),
       });
     } finally {
       setLoading(false);
@@ -56,21 +58,21 @@ const ProjectList = ({ list, setList, loadingList }) => {
     try {
       setLoading(true);
       const response = await axios.put(`/projects/${editItem.id}`, { project: { ...values, id: editItem.id } });
-      const updatedAccount = response.data;
+      const updatedProject = response.data;
 
-      const updatedAccounts = list.map((acc) => (acc.id === updatedAccount.id ? updatedAccount : acc));
-      setList(updatedAccounts);
+      const updatedProjects = list.map((proj) => (proj.id === updatedProject.id ? updatedProject : proj));
+      setList(updatedProjects);
 
       form.resetFields();
       setShowEdit(false);
       notification.success({
-        message: 'Chỉnh sửa dự án',
-        description: 'Dự án đã được chỉnh sửa thành công.',
+        message: t('Common_Save'),
+        description: t('Project_Edit_Success'),
       });
     } catch (error) {
       notification.error({
-        message: 'Lỗi',
-        description: 'Có lỗi xảy ra khi chỉnh sửa dự án.',
+        message: t('Common_Error'),
+        description: t('Project_Edit_Error'),
       });
     } finally {
       setLoading(false);
@@ -82,14 +84,14 @@ const ProjectList = ({ list, setList, loadingList }) => {
       setLoading(true);
       await axios.delete(`/projects/${id}`);
       notification.success({
-        message: 'Xóa dự án',
-        description: 'Dự án đã được xóa thành công.',
+        message: t('Common_Delete'),
+        description: t('Project_Delete_Success'),
       });
       setList(list.filter((item) => item.id !== id));
     } catch (error) {
       notification.error({
-        message: 'Lỗi',
-        description: 'Có lỗi xảy ra khi xóa dự án.',
+        message: t('Common_Error'),
+        description: t('Project_Delete_Error'),
       });
     } finally {
       setLoading(false);
@@ -106,21 +108,21 @@ const ProjectList = ({ list, setList, loadingList }) => {
     form.resetFields();
   };
 
-  const customModal = (textSubmit = 'Lưu', onSubmit, onCancel, loading) => (
+  const customModal = (textSubmit, onSubmit, onCancel, loading) => (
     <AddUser>
       <BasicFormWrapper>
         <Form form={form} onFinish={onSubmit}>
           <Form.Item
             name="name"
-            label="Tên dự án"
-            rules={[{ required: true, message: 'Vui lòng nhập tên dự án' }]}
+            label={t('Project_Name')}
+            rules={[{ required: true, message: t('Project_Name_Required') }]}
             initialValue={showEdit ? editItem?.name : ''}
           >
             <Input />
           </Form.Item>
           <div style={{ justifyContent: 'end', display: 'flex' }}>
             <Button size="default" type="white" outlined style={{ marginRight: 8 }} onClick={onCancel}>
-              Huỷ bỏ
+              {t('Common_Cancel')}
             </Button>
             <Button htmlType="submit" size="default" type="primary" key="submit" loading={loading}>
               {textSubmit}
@@ -134,7 +136,7 @@ const ProjectList = ({ list, setList, loadingList }) => {
   return (
     <Col xs={24} sm={12} md={8} lg={8}>
       <BorderLessHeading>
-        <Cards title="Dự án" style={{ height: 1000 }}>
+        <Cards title={t('Project_Title')} style={{ height: 1000 }}>
           <Menu
             style={{ width: '100%', minHeight: 'calc(100vh - 290px)' }}
             mode="inline"
@@ -153,15 +155,15 @@ const ProjectList = ({ list, setList, loadingList }) => {
                   outlined
                   style={{ marginBottom: 10 }}
                 >
-                  + Thêm dự án
+                  {t('Project_Add')}
                 </Button>
-                {list.map((department) => (
-                  <Menu.Item key={department.id}>
+                {list.map((project) => (
+                  <Menu.Item key={project.id}>
                     <MenuItem
-                      key={department.id}
-                      item={department}
-                      onEdit={() => handleEdit(department)}
-                      onDelete={() => handleDelete(department.id)}
+                      key={project.id}
+                      item={project}
+                      onEdit={() => handleEdit(project)}
+                      onDelete={() => handleDelete(project.id)}
                       loading={loading}
                     />
                   </Menu.Item>
@@ -169,14 +171,14 @@ const ProjectList = ({ list, setList, loadingList }) => {
               </>
             ) : (
               <Empty
-                description="Không tìm thấy dự án nào"
+                description={t('Project_Not_Found')}
                 className="common-center"
                 style={{
                   minHeight: 'calc(100vh - 290px)',
                 }}
               >
                 <Button size="small" type="primary" onClick={() => handleCreate()}>
-                  Tạo mới
+                  {t('Project_Create')}
                 </Button>
               </Empty>
             )}
@@ -184,12 +186,12 @@ const ProjectList = ({ list, setList, loadingList }) => {
         </Cards>
       </BorderLessHeading>
 
-      <Modal title="Thêm dự án" open={showCreate} onCancel={cancelCreate} footer={null}>
-        {customModal('Thêm', handleCreateSubmit, cancelCreate, loading)}
+      <Modal title={t('Project_Add')} open={showCreate} onCancel={cancelCreate} footer={null}>
+        {customModal(t('Common_Create'), handleCreateSubmit, cancelCreate, loading)}
       </Modal>
 
-      <Modal title="Chỉnh sửa dự án" open={showEdit} onCancel={cancelEdit} footer={null}>
-        {customModal('Lưu', handleEditSubmit, cancelEdit, loading)}
+      <Modal title={t('Project_Edit')} open={showEdit} onCancel={cancelEdit} footer={null}>
+        {customModal(t('Common_Save'), handleEditSubmit, cancelEdit, loading)}
       </Modal>
     </Col>
   );
