@@ -107,13 +107,13 @@ export const EmailList = () => {
       setAccounts(accounts.filter((account) => account.id !== id));
 
       notification.success({
-        message: t('Xóa thành công'),
-        description: t('Tài khoản đã được xóa thành công.'),
+        message: t('Mail_EmailList_Title'),
+        description: t('Mail_EmailList_DeleteSuccess'),
       });
     } catch (error) {
       notification.error({
-        message: t('Xóa thất bại'),
-        description: t('Không thể xóa tài khoản. Vui lòng thử lại sau.'),
+        message: t('Mail_EmailList_Title'),
+        description: t('Mail_EmailList_DeleteError'),
       });
     }
   };
@@ -140,10 +140,10 @@ export const EmailList = () => {
               <UilEdit />
             </Link>
             <Popconfirm
-              title={t('Bạn có chắc chắn muốn xóa tài khoản này?')}
+              title={t('Mail_EmailList_ConfirmDelete')}
               onConfirm={() => handleDelete(id)}
-              okText={t('Có')}
-              cancelText={t('Không')}
+              okText={t('Common_Yes')}
+              cancelText={t('Common_No')}
             >
               <Link className="invoice-delete" to="#">
                 <UilTrash />
@@ -188,19 +188,19 @@ export const EmailList = () => {
       key: 'stt',
     },
     {
-      title: <>{customHeader(t('Tên tài khoản'), 'username')}</>,
+      title: <>{customHeader(t('Mail_EmailList_Username'), 'username')}</>,
       dataIndex: 'username',
       key: 'username',
       sorter: (a, b) => a.username.props.children.localeCompare(b.username.props.children),
     },
     {
-      title: <>{customHeader(t('Địa chỉ email'), 'email')}</>,
+      title: <>{customHeader(t('Mail_EmailList_Email'), 'email')}</>,
       dataIndex: 'email',
       key: 'email',
       sorter: (a, b) => a.email.props.children.localeCompare(b.email.props.children),
     },
     {
-      title: t('Chức năng'),
+      title: t('Common_Action'),
       dataIndex: 'action',
       key: 'action',
       width: '90px',
@@ -214,7 +214,7 @@ export const EmailList = () => {
 
   return (
     <>
-      <PageHeader className="invoice-page-header-main" title={t('Danh sách email')} />
+      <PageHeader className="invoice-page-header-main" title={t('Mail_EmailList_Title')} />
       <Main>
         <Row gutter={15}>
           <Col xs={24}>
@@ -222,10 +222,10 @@ export const EmailList = () => {
               <Cards>
                 <div style={{ display: 'flex', gap: 20, flexWrap: 'auto' }}>
                   <Button onClick={showModal} type="primary" key="1">
-                    <Link to="#">{t('+ Thêm email')}</Link>
+                    <Link to="#">{t('Mail_EmailList_Add')}</Link>
                   </Button>
                   <div style={{ display: 'flex', gap: 2, flexWrap: 'auto', alignItems: 'center' }}>
-                    <span className="label">{t('Chọn phòng ban')}</span>
+                    <span className="label">{t('Mail_EmailList_SelectDepartment')}</span>
                     <Select
                       popupClassName="dropdown-select"
                       loading={loadingDepartments}
@@ -234,7 +234,7 @@ export const EmailList = () => {
                       style={{ width: 200, marginLeft: 10 }}
                       defaultValue=""
                     >
-                      <Select.Option value="">{t('Tất cả')}</Select.Option>
+                      <Select.Option value="">{t('Common_All')}</Select.Option>
                       {departments?.length > 0 &&
                         departments.map((item) => (
                           <Select.Option key={item.id} value={item.id}>

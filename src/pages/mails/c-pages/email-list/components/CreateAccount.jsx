@@ -34,22 +34,28 @@ function CreateAccount({ state, setState, accounts, setAccounts }) {
       setAccounts([newAccount, ...accounts]);
       onCancel();
       notification.success({
-        message: t('Thành công'),
-        description: t('Tài khoản đã được tạo thành công'),
+        message: t('Common_Success'),
+        description: t('Mail_CreateAccount_Success'),
       });
       form.resetFields();
     } else {
       notification.error({
-        message: t('Lỗi'),
-        description: t('Đã xảy ra lỗi khi tạo tài khoản'),
+        message: t('Common_Error'),
+        description: t('Mail_CreateAccount_Error'),
       });
     }
   };
 
   return (
-    <Modal type="primary" title={t('Tạo tài khoản')} open={state.visible} footer={null} onCancel={onCancel}>
+    <Modal type="primary" title={t('Mail_CreateAccount_Title')} open={state.visible} footer={null} onCancel={onCancel}>
       <div className="project-modal">
-        <ModalAccount form={form} handleOk={handleOk} onCancel={onCancel} loading={loading} textSubmit={t('Tạo')} />
+        <ModalAccount
+          form={form}
+          handleOk={handleOk}
+          onCancel={onCancel}
+          loading={loading}
+          textSubmit={t('Common_Create')}
+        />
       </div>
     </Modal>
   );

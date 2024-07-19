@@ -9,12 +9,12 @@ const ModalAccount = ({ form, handleOk, state, onCancel, loading, textSubmit = '
   return (
     <BasicFormWrapper>
       <Form form={form} name="edit_account" onFinish={handleOk}>
-        <Form.Item initialValue={state?.update?.username} label={t('Tên tài khoản')} name="username">
-          <Input placeholder={t('Nhập tên đăng nhập')} />
+        <Form.Item initialValue={state?.update?.username} label={t('Mail_Username')} name="username">
+          <Input placeholder={t('Mail_Username_Placeholder')} />
         </Form.Item>
 
         <Form.Item
-          label={t('Địa chỉ email')}
+          label={t('Mail_Email')}
           name="email"
           rules={[{ message: t('Vui lòng nhập địa chỉ email!'), type: 'email', required: true }]}
           initialValue={state?.update.email}
@@ -25,18 +25,18 @@ const ModalAccount = ({ form, handleOk, state, onCancel, loading, textSubmit = '
         <Form.Item
           initialValue={state?.update?.password}
           name="password"
-          label={t('Mật khẩu')}
+          label={t('Common_Password')}
           rules={[{ required: true, message: t('Vui lòng nhập mật khẩu') }]}
         >
-          <Input.Password placeholder={t('Nhập mật khẩu')} />
+          <Input.Password placeholder={t('Common_Password_Placeholder')} />
         </Form.Item>
 
         <div style={{ justifyContent: 'end', display: 'flex' }}>
           <Button size="default" type="white" outlined style={{ marginRight: 8 }} onClick={onCancel}>
-            {t('Huỷ bỏ')}
+            {t('Common_Cancel')}
           </Button>
           <Button htmlType="submit" size="default" type="primary" key="submit" loading={loading}>
-            {textSubmit}
+            {t(textSubmit)}
           </Button>
         </div>
       </Form>

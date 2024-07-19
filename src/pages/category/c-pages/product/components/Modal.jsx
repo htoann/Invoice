@@ -3,7 +3,7 @@ import { AddUser } from '@/container/pages/style';
 import { BasicFormWrapper } from '@/container/styled';
 import { AutoComplete, Form, Input } from 'antd';
 
-const ModalHangHoa = ({ form, handleOk, state, onCancel, loading, textSubmit = 'Lưu' }) => {
+const ModalHangHoa = ({ form, handleOk, state, onCancel, loading, textSubmit }) => {
   return (
     <AddUser>
       <BasicFormWrapper>

@@ -32,14 +32,14 @@ const UpdateAccount = ({ state, setState, accounts, setAccounts }) => {
       onCancel();
 
       notification.success({
-        message: t('Cập nhật thành công'),
-        description: t('Thông tin tài khoản đã được cập nhật thành công.'),
+        message: t('Common_Success'),
+        description: t('Mail_UpdateAccount_Success'),
       });
     } catch (error) {
       console.log(error);
       notification.error({
-        message: t('Cập nhật thất bại'),
-        description: t('Không thể cập nhật thông tin tài khoản. Vui lòng thử lại.'),
+        message: t('Common_Error'),
+        description: t('Mail_UpdateAccount_Error'),
       });
     } finally {
       setLoading(false);
@@ -49,7 +49,7 @@ const UpdateAccount = ({ state, setState, accounts, setAccounts }) => {
   return (
     <Modal
       type={state.modalType}
-      title={t('Cập nhật tài khoản')}
+      title={t('Mail_UpdateAccount_Title')}
       open={state.editVisible}
       footer={null}
       onCancel={onCancel}
@@ -60,7 +60,7 @@ const UpdateAccount = ({ state, setState, accounts, setAccounts }) => {
         state={state}
         onCancel={onCancel}
         loading={loading}
-        textSubmit={t('Lưu')}
+        textSubmit={t('Common_Save')}
       />
     </Modal>
   );
