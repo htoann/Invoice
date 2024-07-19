@@ -74,7 +74,7 @@ export const TopMenu = () => {
                 <Link to={routes.emailInbox}>Hộp thư đến</Link>
               </li>
               <li>
-                <Link to={routes.emailInbox}>Lịch sử đồng bộ</Link>
+                <Link to={routes.emailSync}>Lịch sử đồng bộ</Link>
               </li>
             </ul>
           </li>

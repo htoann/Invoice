@@ -1,6 +1,6 @@
-import { products } from './hangHoa';
+import { products } from './product';
 
-export const hangHoaMockApi = (mock) => {
+export const productMockApi = (mock) => {
   mock.onGet('/products').reply((config) => {
     const {
       mahang = '',

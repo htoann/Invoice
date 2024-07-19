@@ -4,7 +4,7 @@ export const routes = {
   email: '/hop-thu',
   emailAccount: '/hop-thu/tai-khoan',
   emailInbox: '/hop-thu/hop-thu-den',
-  emailSync: '/danh-muc/dong-bo',
+  emailSync: '/hop-thu/dong-bo',
 
   category: '/danh-muc',
   categoryProduct: '/danh-muc/hang-hoa',

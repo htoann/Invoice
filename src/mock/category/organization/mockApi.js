@@ -1,6 +1,6 @@
-import { branches, departments, projects } from './coCauToChuc';
+import { branches, departments, projects } from './organization';
 
-export const coCauToChucMockApi = (mock) => {
+export const orgMockApi = (mock) => {
   // Mock GET request to fetch all branches
   mock.onGet('/branches').reply(200, { branches });
 

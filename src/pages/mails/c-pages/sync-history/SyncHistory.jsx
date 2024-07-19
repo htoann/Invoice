@@ -1,4 +1,3 @@
-import { Button } from '@/components/buttons/buttons';
 import { Cards } from '@/components/cards/frame/cards-frame';
 import { PageHeader } from '@/components/page-headers/page-headers';
 import { BorderLessHeading, Main } from '@/container/styled';
@@ -9,9 +8,7 @@ import { Col, Input, notification, Popconfirm, Row, Select, Skeleton } from 'ant
 import useDepartments from 'hooks/useDepartments';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import CreateAccount from './components/CreateAccount';
 import DataTable from './components/DataTable';
-import UpdateAccount from './components/UpdateAccount';
 
 export const SyncHistory = () => {
   const [state, setState] = useState({
@@ -82,13 +79,6 @@ export const SyncHistory = () => {
   useEffect(() => {
     getList({ ...searchParams, page: current, page_size: pageSize });
   }, [current, pageSize]);
-
-  const showModal = () => {
-    setState({
-      ...state,
-      visible: true,
-    });
-  };
 
   const showEditModal = (data) => {
     setState({
@@ -218,11 +208,8 @@ export const SyncHistory = () => {
             <BorderLessHeading>
               <Cards>
                 <div style={{ display: 'flex', gap: 20, flexWrap: 'auto' }}>
-                  <Button onClick={showModal} type="primary" key="1">
-                    <Link to="#">+ Thêm email</Link>
-                  </Button>
                   <div style={{ display: 'flex', gap: 2, flexWrap: 'auto', alignItems: 'center' }}>
-                    <span className="label">Chọn phòng ban</span>
+                    <span className="label">Chọn tài khoản</span>
                     <Select
                       popupClassName="dropdown-select"
                       loading={loadingDepartments}
@@ -257,14 +244,6 @@ export const SyncHistory = () => {
           </Col>
         </Row>
       </Main>
-
-      {state.visible && (
-        <CreateAccount state={state} setState={setState} accounts={accounts} setAccounts={setAccounts} />
-      )}
-
-      {state.editVisible && (
-        <UpdateAccount state={state} setState={setState} accounts={accounts} setAccounts={setAccounts} />
-      )}
     </>
   );
 };
