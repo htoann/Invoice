@@ -4,7 +4,7 @@ import { Form, notification } from 'antd';
 import { useState } from 'react';
 import ModalHangHoa from './Modal';
 
-function CreateHangHoa({ state, setState, list, setList }) {
+function CreateProduct({ state, setState, list, setList }) {
   const [loading, setLoading] = useState(false);
   const [form] = Form.useForm();
 
@@ -55,4 +55,4 @@ function CreateHangHoa({ state, setState, list, setList }) {
   );
 }
 
-export default CreateHangHoa;
+export default CreateProduct;

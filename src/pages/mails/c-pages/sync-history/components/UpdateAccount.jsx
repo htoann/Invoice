@@ -4,7 +4,7 @@ import { Form, notification } from 'antd';
 import { useState } from 'react';
 import ModalAccount from './Modal';
 
-const UpdateHangHoa = ({ state, setState, list, setList }) => {
+const UpdateAccount = ({ state, setState, accounts, setAccounts }) => {
   const [form] = Form.useForm();
   const [loading, setLoading] = useState(false);
 
@@ -20,24 +20,24 @@ const UpdateHangHoa = ({ state, setState, list, setList }) => {
     try {
       setLoading(true);
 
-      const response = await axios.put(`/products/${state.update.id}`, { ...values, id: state.update.id });
-      const updated = response.data;
+      const response = await axios.put(`/api/accounts/${state.update.id}`, values);
+      const updatedAccount = response.data;
 
-      const updatedAccounts = list.map((acc) => (acc.id === updated.id ? updated : acc));
-      setList(updatedAccounts);
+      const updatedAccounts = accounts.map((acc) => (acc.id === updatedAccount.id ? updatedAccount : acc));
+      setAccounts(updatedAccounts);
 
       form.resetFields();
       onCancel();
 
       notification.success({
         message: 'Cập nhật thành công',
-        description: 'Thông tin hàng hoá đã được cập nhật thành công.',
+        description: 'Thông tin tài khoản đã được cập nhật thành công.',
       });
     } catch (error) {
       console.log(error);
       notification.error({
         message: 'Cập nhật thất bại',
-        description: 'Không thể cập nhật thông tin hàng hoá. Vui lòng thử lại.',
+        description: 'Không thể cập nhật thông tin tài khoản. Vui lòng thử lại.',
       });
     } finally {
       setLoading(false);
@@ -45,7 +45,7 @@ const UpdateHangHoa = ({ state, setState, list, setList }) => {
   };
 
   return (
-    <Modal type={state.modalType} title="Cập nhật hàng hoá" open={state.editVisible} footer={null} onCancel={onCancel}>
+    <Modal type={state.modalType} title="Cập nhật tài khoản" open={state.editVisible} footer={null} onCancel={onCancel}>
       <ModalAccount
         form={form}
         handleOk={handleOk}
@@ -58,4 +58,4 @@ const UpdateHangHoa = ({ state, setState, list, setList }) => {
   );
 };
 
-export default UpdateHangHoa;
+export default UpdateAccount;

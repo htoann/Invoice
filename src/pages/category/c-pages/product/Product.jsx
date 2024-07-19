@@ -1,5 +1,6 @@
 import { Cards } from '@/components/cards/frame/cards-frame';
 import { PageHeader } from '@/components/page-headers/page-headers';
+import EditProduct from '@/container/ecommerce/product/EditProduct';
 import { BorderLessHeading, Main } from '@/container/styled';
 import axios from '@/mock/index';
 import UilEdit from '@iconscout/react-unicons/icons/uil-edit';
@@ -7,11 +8,10 @@ import UilTrash from '@iconscout/react-unicons/icons/uil-trash-alt';
 import { Col, Input, Popconfirm, Row, Skeleton, notification } from 'antd';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import CreateHangHoa from './components/CreateHangHoa';
+import CreateProduct from './components/CreateProduct';
 import DataTable from './components/DataTable';
-import EditHangHoa from './components/EditHangHoa';
 
-export const HangHoa = () => {
+export const Product = () => {
   const [state, setState] = useState({
     selectedRowKeys: 0,
     selectedRows: 0,
@@ -246,9 +246,9 @@ export const HangHoa = () => {
         </Row>
       </Main>
 
-      {state.visible && <CreateHangHoa state={state} setState={setState} list={list} setList={setList} />}
+      {state.visible && <CreateProduct state={state} setState={setState} list={list} setList={setList} />}
 
-      {state.editVisible && <EditHangHoa state={state} setState={setState} list={list} setList={setList} />}
+      {state.editVisible && <EditProduct state={state} setState={setState} list={list} setList={setList} />}
     </>
   );
 };

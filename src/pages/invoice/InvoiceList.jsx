@@ -2,6 +2,7 @@ import { Cards } from '@/components/cards/frame/cards-frame';
 import { PageHeader } from '@/components/page-headers/page-headers';
 import { DataService } from '@/config/dataService';
 import { BorderLessHeading, Main } from '@/container/styled';
+import { routes } from '@/routes/const';
 import { Col, Row } from 'antd';
 import { useEffect, useState } from 'react';
 import DataTable from './components/DataTable';
@@ -11,11 +12,11 @@ import { handleTableDataSource } from './utils';
 function InvoiceList() {
   const pageRoutes = [
     {
-      path: '/invoices',
+      path: routes.invoice,
       breadcrumbName: 'Quản lý hóa đơn',
     },
     {
-      path: '/invoices',
+      path: routes.invoice,
       breadcrumbName: 'Danh sách hóa đơn',
     },
   ];

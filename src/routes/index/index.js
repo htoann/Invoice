@@ -1,11 +1,14 @@
+import Organization from '@/pages/category/c-pages/organization/Organization';
+import { Product } from '@/pages/category/c-pages/product/Product';
+import Email from '@/pages/mails/c-pages/inbox/Inbox';
+import { SyncHistory } from '@/pages/mails/c-pages/sync-history/SyncHistory';
 import { Spin } from 'antd';
 import React, { lazy, Suspense, useEffect } from 'react';
 import { Route, Routes, useLocation } from 'react-router-dom';
 import withAdminLayout from '../../layout/withAdminLayout';
-import { CoCauToChuc } from '../../pages/category/c-pages/co-cau-to-chuc/CoCauToChuc';
-import { HangHoa } from '../../pages/category/c-pages/hang-hoa/HangHoa';
 import InvoiceList from '../../pages/invoice/InvoiceList';
 import { EmailList } from '../../pages/mails/c-pages/email-list/EmailList';
+import { routes } from '../const';
 import Axios from './axios';
 import Dashboard from './dashboard';
 import Ecommerce from './ecommerce';
@@ -13,7 +16,6 @@ import Features from './features';
 import Pages from './pages';
 import Users from './users';
 import Widgets from './widgets';
-import Email from '@/pages/mails/c-pages/inbox/Inbox';
 
 const KnowledgeBase = lazy(() => import('../../container/pages/knowledgeBase/Index'));
 const AllArticle = lazy(() => import('../../container/pages/knowledgeBase/AllArticle'));
@@ -49,12 +51,12 @@ const Index = React.memo(() => {
       <Routes>
         <Route index path="/*" element={<Dashboard />} />
 
-        {/* Change routes */}
-        <Route path="invoices" element={<InvoiceList />} />
-        <Route path="email" element={<EmailList />} />
-        <Route path="email/*" element={<Email />} />
-        <Route path="danh-muc/hang-hoa" element={<HangHoa />} />
-        <Route path="danh-muc/co-cau-to-chuc" element={<CoCauToChuc />} />
+        <Route path={routes.invoice} element={<InvoiceList />} />
+        <Route path={routes.email} element={<EmailList />} />
+        <Route path={routes.email + '/*'} element={<Email />} />
+        <Route path={routes.categoryProduct} element={<Product />} />
+        <Route path={routes.categoryOrg} element={<Organization />} />
+        <Route path={routes.categorySync} element={<SyncHistory />} />
 
         <Route path="pages/*" element={<Pages />} />
         <Route path="all-articles" element={<AllArticle />} />

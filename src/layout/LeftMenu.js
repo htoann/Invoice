@@ -2,12 +2,12 @@ import { UilAt, UilCreateDashboard } from '@iconscout/react-unicons';
 import { Menu } from 'antd';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 
+import { routes } from '@/routes/const';
 import UilEllipsisV from '@iconscout/react-unicons/icons/uil-ellipsis-v';
 import propTypes from 'prop-types';
-import { changeDirectionMode, changeLayoutMode, changeMenuMode } from '../redux/themeLayout/actionCreator';
 
 export const LeftMenu = ({ toggleCollapsed }) => {
   const { t } = useTranslation();
@@ -28,7 +28,7 @@ export const LeftMenu = ({ toggleCollapsed }) => {
     };
   });
 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   const path = '/';
   const pathName = window.location.pathname;
@@ -48,37 +48,38 @@ export const LeftMenu = ({ toggleCollapsed }) => {
     if (item.keyPath.length === 1) setOpenKeys([]);
   };
 
-  const changeLayout = (mode) => {
-    dispatch(changeLayoutMode(mode));
-  };
-  const changeNavbar = (topMode) => {
-    const html = document.querySelector('html');
-    if (topMode) {
-      html.classList.add('ninjadash-topmenu');
-    } else {
-      html.classList.remove('ninjadash-topmenu');
-    }
-    dispatch(changeMenuMode(topMode));
-  };
+  // const changeLayout = (mode) => {
+  //   dispatch(changeLayoutMode(mode));
+  // };
 
-  const changeLayoutDirection = (rtlMode) => {
-    if (rtlMode) {
-      const html = document.querySelector('html');
-      html.setAttribute('dir', 'rtl');
-    } else {
-      const html = document.querySelector('html');
-      html.setAttribute('dir', 'ltr');
-    }
-    dispatch(changeDirectionMode(rtlMode));
-  };
+  // const changeNavbar = (topMode) => {
+  //   const html = document.querySelector('html');
+  //   if (topMode) {
+  //     html.classList.add('ninjadash-topmenu');
+  //   } else {
+  //     html.classList.remove('ninjadash-topmenu');
+  //   }
+  //   dispatch(changeMenuMode(topMode));
+  // };
 
-  const darkmodeActivated = () => {
-    document.body.classList.add('dark-mode');
-  };
+  // const changeLayoutDirection = (rtlMode) => {
+  //   if (rtlMode) {
+  //     const html = document.querySelector('html');
+  //     html.setAttribute('dir', 'rtl');
+  //   } else {
+  //     const html = document.querySelector('html');
+  //     html.setAttribute('dir', 'ltr');
+  //   }
+  //   dispatch(changeDirectionMode(rtlMode));
+  // };
 
-  const darkmodeDiactivated = () => {
-    document.body.classList.remove('dark-mode');
-  };
+  // const darkmodeActivated = () => {
+  //   document.body.classList.add('dark-mode');
+  // };
+
+  // const darkmodeDiactivated = () => {
+  //   document.body.classList.remove('dark-mode');
+  // };
 
   const createNavLink = (pathLink, textKey) => {
     return (
@@ -107,8 +108,8 @@ export const LeftMenu = ({ toggleCollapsed }) => {
       'manage_invoices',
       !topMenu && <UilCreateDashboard />,
       createMenuItems([
-        { path: '/invoices', textKey: 'Danh sách hoá đơn', key: 'invoice-list' },
-        // { path: '/invoices', textKey: 'Kiểm tra tình trạng MST', key: 'Kiểm tra tình trạng MST' },
+        { path: routes.invoice, textKey: 'Danh sách hoá đơn', key: 'invoice-list' },
+        // { path: routes.invoice, textKey: 'Kiểm tra tình trạng MST', key: 'Kiểm tra tình trạng MST' },
       ]),
     ),
     getItem(
@@ -116,9 +117,9 @@ export const LeftMenu = ({ toggleCollapsed }) => {
       'inbox',
       !topMenu && <UilAt />,
       createMenuItems([
-        { path: '/email', textKey: 'Danh sách email', key: 'account-list' },
-        { path: '/email/inbox', textKey: 'Hộp thư đến', key: 'Hộp thư đến' },
-        { path: '/email/account-list', textKey: 'Lịch sử đồng bộ', key: 'Lịch sử đồng bộ' },
+        { path: routes.email, textKey: 'Danh sách email', key: 'Danh sách email' },
+        { path: routes.emailInbox, textKey: 'Hộp thư đến', key: 'Hộp thư đến' },
+        { path: routes.categorySync, textKey: 'Lịch sử đồng bộ', key: 'Lịch sử đồng bộ' },
       ]),
     ),
     getItem(
@@ -126,11 +127,11 @@ export const LeftMenu = ({ toggleCollapsed }) => {
       'category',
       !topMenu && <UilAt />,
       createMenuItems([
-        { path: '/email/account-list', textKey: 'Cơ cấu tổ chức', key: 'Cơ cấu tổ chức' },
-        { path: '/email/account-list', textKey: 'Nhà cung cấp', key: 'Nhà cung cấp' },
-        { path: '/email/account-list', textKey: 'Khách hàng', key: 'Khách hàng' },
-        { path: '/email/account-list', textKey: 'Hàng hoá', key: 'Hàng hoá' },
-        { path: '/email/account-list', textKey: 'Khoản mục chi phí', key: 'Khoản mục chi phí' },
+        { path: routes.emailAccount, textKey: 'Cơ cấu tổ chức', key: 'Cơ cấu tổ chức' },
+        { path: routes.emailAccount, textKey: 'Nhà cung cấp', key: 'Nhà cung cấp' },
+        { path: routes.emailAccount, textKey: 'Khách hàng', key: 'Khách hàng' },
+        { path: routes.emailAccount, textKey: 'Hàng hoá', key: 'Hàng hoá' },
+        { path: routes.emailAccount, textKey: 'Khoản mục chi phí', key: 'Khoản mục chi phí' },
       ]),
     ),
     getItem(
@@ -139,24 +140,24 @@ export const LeftMenu = ({ toggleCollapsed }) => {
       !topMenu && <UilAt />,
       createMenuItems([
         {
-          path: '/email/account-list',
+          path: routes.emailAccount,
           textKey: 'Báo cáo tổng hợp hoá đơn mua vào/bán ra',
           key: 'Báo cáo tổng hợp hoá đơn mua vào/bán ra',
         },
         {
-          path: '/email/account-list',
+          path: routes.emailAccount,
           textKey: 'Bảng kê hoá đơn thay thế/điều chỉnh',
           key: 'Bảng kê hoá đơn thay thế/điều chỉnh',
         },
         {
-          path: '/email/account-list',
+          path: routes.emailAccount,
           textKey: 'Xuất dữ liệu cho phần mềm kế toán',
           key: 'Xuất dữ liệu cho phần mềm kế toán',
         },
-        { path: '/email/account-list', textKey: 'Báo cáo kiểm tra đơn giá', key: 'Báo cáo kiểm tra đơn giá' },
-        { path: '/email/account-list', textKey: 'Đối chiếu tài khoản', key: 'Đối chiếu tài khoản' },
+        { path: routes.emailAccount, textKey: 'Báo cáo kiểm tra đơn giá', key: 'Báo cáo kiểm tra đơn giá' },
+        { path: routes.emailAccount, textKey: 'Đối chiếu tài khoản', key: 'Đối chiếu tài khoản' },
         {
-          path: '/email/account-list',
+          path: routes.emailAccount,
           textKey: 'Báo cáo đối chiếu chênh lệch hoá đơn',
           key: 'Báo cáo đối chiếu chênh lệch hoá đơn',
         },

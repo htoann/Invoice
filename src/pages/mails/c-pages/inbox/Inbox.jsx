@@ -2,6 +2,7 @@ import { Button } from '@/components/buttons/buttons';
 import { Cards } from '@/components/cards/frame/cards-frame';
 import { PageHeader } from '@/components/page-headers/page-headers';
 import { Main } from '@/container/styled';
+import { routes } from '@/routes/const';
 import UilAlignLeft from '@iconscout/react-unicons/icons/uil-align-left';
 import UilAlignRight from '@iconscout/react-unicons/icons/uil-align-right';
 import { Col, Row } from 'antd';
@@ -13,11 +14,11 @@ import { EmailWrapper } from './components/style';
 function Email() {
   const pageRoutes = [
     {
-      path: '/email',
+      path: routes.email,
       breadcrumbName: 'Hộp thư',
     },
     {
-      path: '/email/inbox',
+      path: routes.emailInbox,
       breadcrumbName: 'Hộp thư đến',
     },
   ];

@@ -1,4 +1,5 @@
-import React, { useLayoutEffect } from 'react';
+import { routes } from '@/routes/const';
+import { useLayoutEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { TopMenuStyle } from './Style';
@@ -22,20 +23,21 @@ export const TopMenu = () => {
     return () => window.removeEventListener('load', activeDefault);
   }, []);
 
-  const addParentActive = (event) => {
-    document.querySelectorAll('.parent').forEach((element) => {
-      element.classList.remove('active');
-    });
+  // const addParentActive = (event) => {
+  //   document.querySelectorAll('.parent').forEach((element) => {
+  //     element.classList.remove('active');
+  //   });
 
-    const hasSubMenuLeft = event.currentTarget.closest('.has-subMenu-left');
-    const megaMenu = event.currentTarget.closest('.megaMenu-wrapper');
-    if (!megaMenu) {
-      event.currentTarget.closest('ul').previousSibling.classList.add('active');
-      if (hasSubMenuLeft) hasSubMenuLeft.closest('ul').previousSibling.classList.add('active');
-    } else {
-      event.currentTarget.closest('.megaMenu-wrapper').previousSibling.classList.add('active');
-    }
-  };
+  //   const hasSubMenuLeft = event.currentTarget.closest('.has-subMenu-left');
+  //   const megaMenu = event.currentTarget.closest('.megaMenu-wrapper');
+  //   if (!megaMenu) {
+  //     event.currentTarget.closest('ul').previousSibling.classList.add('active');
+  //     if (hasSubMenuLeft) hasSubMenuLeft.closest('ul').previousSibling.classList.add('active');
+  //   } else {
+  //     event.currentTarget.closest('.megaMenu-wrapper').previousSibling.classList.add('active');
+  //   }
+  // };
+
   return (
     <TopMenuStyle>
       <div className="ninjadash-top-menu">
@@ -52,7 +54,7 @@ export const TopMenu = () => {
             </Link>
             <ul className="subMenu">
               <li>
-                <Link to="/invoices">Danh sách hoá đơn</Link>
+                <Link to={routes.invoice}>Danh sách hoá đơn</Link>
               </li>
               {/* <li>
                 <Link to="#">Kiểm tra tình trạng MST</Link>
@@ -61,15 +63,15 @@ export const TopMenu = () => {
           </li>
 
           <li className="has-subMenu">
-            <Link to="/email" className="parent">
+            <Link to={routes.email} className="parent">
               {t('inbox')}
             </Link>
             <ul className="subMenu">
               <li>
-                <Link to="/email">Danh sách email</Link>
+                <Link to={routes.email}>Danh sách email</Link>
               </li>
               <li>
-                <Link to="/email/inbox">Hộp thư đến</Link>
+                <Link to={routes.emailInbox}>Hộp thư đến</Link>
               </li>
               <li>
                 <Link to="#">Lịch sử đồng bộ</Link>
@@ -83,7 +85,7 @@ export const TopMenu = () => {
             </Link>
             <ul className="subMenu">
               <li>
-                <Link to="danh-muc/co-cau-to-chuc">Cơ cấu tổ chức</Link>
+                <Link to={routes.categoryOrg}>Cơ cấu tổ chức</Link>
               </li>
               <li>
                 <Link to="#">Nhà cung cấp</Link>
@@ -92,7 +94,7 @@ export const TopMenu = () => {
                 <Link to="#">Khách hàng</Link>
               </li>
               <li>
-                <Link to="danh-muc/hang-hoa">Hàng hoá</Link>
+                <Link to={routes.categoryProduct}>Hàng hoá</Link>
               </li>
               <li>
                 <Link to="#">Khoản mục chi phí</Link>

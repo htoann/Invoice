@@ -32,7 +32,7 @@ function CreateTaiKhoanThue({ state, setState }) {
     });
   };
 
-  const handleOk = (values) => {};
+  const handleOk = () => {};
 
   return (
     <div>

@@ -9,7 +9,7 @@ import useBranches from './hook/useBranches';
 import useDepartments from './hook/useDepartments';
 import useProjects from './hook/useProjects';
 
-export const CoCauToChuc = () => {
+export const Organization = () => {
   const { branches, setBranches, loadingBranches } = useBranches();
   const [selectedBranch, setSelectedBranch] = useState(null);
 
@@ -48,4 +48,4 @@ export const CoCauToChuc = () => {
   );
 };
 
-export default CoCauToChuc;
+export default Organization;
