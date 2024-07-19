@@ -2,7 +2,6 @@ import UilEllipsis from '@iconscout/react-unicons/icons/uil-ellipsis-h';
 import UilEye from '@iconscout/react-unicons/icons/uil-eye';
 import UilHeart from '@iconscout/react-unicons/icons/uil-heart';
 import propTypes from 'prop-types';
-import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { Dropdown } from '../dropdown/dropdown';
@@ -115,7 +114,7 @@ const CardWrapper = styled.figure`
 const ImageUrl = styled.div`
   ${({ bgUrl }) => bgUrl && `background-image: url(${require(`../../static/img/sampleCards/${bgUrl}`)})`};
   background-size: cover;
-  background-repeat: no-reapet;
+  background-repeat: no-repeat;
   background-position: center center;
 `;
 
@@ -166,7 +165,7 @@ const BannerCard = ({
         </div>
         <div className="banner-card__bottom  align-center-v justify-content-between">
           <div className="card-author">
-            <img src={require(`../../static/img/users/${authorImg}`)} alt="" />
+            {/* <img src={require(`../../static/img/users/${authorImg}`)} alt="" /> */}
             <span className="author-name">{authorName}</span>
           </div>
           <div className="card-meta">

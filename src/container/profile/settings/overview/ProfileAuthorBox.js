@@ -1,14 +1,13 @@
-import React from 'react';
-import { Upload } from 'antd';
+import UilBell from '@iconscout/react-unicons/icons/uil-bell';
 import UilCamera from '@iconscout/react-unicons/icons/uil-camera';
 import UilSetting from '@iconscout/react-unicons/icons/uil-setting';
-import UilBell from '@iconscout/react-unicons/icons/uil-bell';
 import UilUser from '@iconscout/react-unicons/icons/uil-user';
 import UilUsersAlt from '@iconscout/react-unicons/icons/uil-users-alt';
+import { Upload } from 'antd';
 import { Link, NavLink } from 'react-router-dom';
-import { ProfileAuthorBox } from './style';
-import Heading from '../../../../components/heading/heading';
 import { Cards } from '../../../../components/cards/frame/cards-frame';
+import Heading from '../../../../components/heading/heading';
+import { ProfileAuthorBox } from './style';
 
 function AuthorBox() {
   const path = '/pages/settings';
@@ -18,7 +17,7 @@ function AuthorBox() {
       <Cards headless>
         <div className="author-info">
           <figure>
-            <img src={require('../../../../static/img/users/1.png')} alt="" />
+            {/* <img src={require('../../../../static/img/users/1.png')} alt="" /> */}
 
             <Upload>
               <Link to="#">
