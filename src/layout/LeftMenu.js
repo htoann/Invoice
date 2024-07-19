@@ -119,7 +119,7 @@ export const LeftMenu = ({ toggleCollapsed }) => {
       createMenuItems([
         { path: routes.email, textKey: 'Danh sách email', key: 'Danh sách email' },
         { path: routes.emailInbox, textKey: 'Hộp thư đến', key: 'Hộp thư đến' },
-        { path: routes.categorySync, textKey: 'Lịch sử đồng bộ', key: 'Lịch sử đồng bộ' },
+        { path: routes.emailSync, textKey: 'Lịch sử đồng bộ', key: 'Lịch sử đồng bộ' },
       ]),
     ),
     getItem(

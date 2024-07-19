@@ -53,10 +53,10 @@ const Index = React.memo(() => {
 
         <Route path={routes.invoice} element={<InvoiceList />} />
         <Route path={routes.email} element={<EmailList />} />
+        <Route path={routes.emailSync} element={<SyncHistory />} />
         <Route path={routes.email + '/*'} element={<Email />} />
         <Route path={routes.categoryProduct} element={<Product />} />
         <Route path={routes.categoryOrg} element={<Organization />} />
-        <Route path={routes.categorySync} element={<SyncHistory />} />
 
         <Route path="pages/*" element={<Pages />} />
         <Route path="all-articles" element={<AllArticle />} />
