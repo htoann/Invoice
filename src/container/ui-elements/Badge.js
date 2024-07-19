@@ -1,19 +1,19 @@
-import React, { useState } from 'react';
-import { Row, Col, Badge, Switch } from 'antd';
-import { NavLink, Link } from 'react-router-dom';
+import { Badge, Col, Row, Switch } from 'antd';
+import { useState } from 'react';
+import { Link, NavLink } from 'react-router-dom';
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { ClockCircleOutlined, BellOutlined, MinusOutlined, PlusOutlined } from '@ant-design/icons';
-import {
-  BadgeWraperStyle,
-  BadgeStandAloneStyle,
-  BadgeOverflowStyle,
-  BadgeRedStyle,
-  BadgeDynamicStyle,
-} from './ui-elements-styled';
+import { BellOutlined, ClockCircleOutlined, MinusOutlined, PlusOutlined } from '@ant-design/icons';
+import { BtnGroup, Button } from '../../components/buttons/buttons';
+import { Cards } from '../../components/cards/frame/cards-frame';
 import { PageHeader } from '../../components/page-headers/page-headers';
 import { Main } from '../styled';
-import { Cards } from '../../components/cards/frame/cards-frame';
-import { BtnGroup, Button } from '../../components/buttons/buttons';
+import {
+  BadgeDynamicStyle,
+  BadgeOverflowStyle,
+  BadgeRedStyle,
+  BadgeStandAloneStyle,
+  BadgeWraperStyle,
+} from './ui-elements-styled';
 
 const colors = [
   'pink',

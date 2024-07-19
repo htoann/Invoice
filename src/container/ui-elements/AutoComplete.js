@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
-import { Row, Col, Input } from 'antd';
+import { Col, Input, Row } from 'antd';
+import { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { PageHeader } from '../../components/page-headers/page-headers';
-import { Main, AutoCompleteWrapper } from '../styled';
-import { Cards } from '../../components/cards/frame/cards-frame';
 import { AutoComplete } from '../../components/autoComplete/autoComplete';
+import { Cards } from '../../components/cards/frame/cards-frame';
+import { PageHeader } from '../../components/page-headers/page-headers';
+import { AutoCompleteWrapper, Main } from '../styled';
 
 const { TextArea } = Input;
 function AutoCompletess() {
