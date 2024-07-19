@@ -192,6 +192,8 @@
   "Common_Email": "Địa chỉ email",
   "Common_Password": "Mật khẩu",
   "Common_Password_Placeholder": "Nhập mật khẩu",
+  "Common_SelectDepartment": "Chọn phòng ban",
+  "Common_SelectAccount": "Chọn tài khoản",
 
   "Invoice_ModelCode": "Ký hiệu mẫu số",
   "Invoice_InvoiceCode": "Ký hiệu hóa đơn",
@@ -237,7 +239,6 @@
 
   "Mail_EmailList_Title": "Danh sách email",
   "Mail_EmailList_Add": "+ Thêm email",
-  "Mail_EmailList_SelectDepartment": "Chọn phòng ban",
   "Mail_EmailList_ConfirmDelete": "Bạn có chắc chắn muốn xóa tài khoản này?",
 
   "Mail_EmailList_DeleteSuccess": "Tài khoản đã được xóa thành công.",
@@ -245,7 +246,9 @@
   "Mail_EmailList_Username": "Tên tài khoản",
 
   "Mail_UpdateAccount_Title": "Cập nhật tài khoản",
-  "Mail_UpdateAccount_Success": "Thông tin tài khoản đã được cập nhật thành công.",
-  "Mail_UpdateAccount_Error": "Không thể cập nhật thông tin tài khoản. Vui lòng thử lại."
-  
+  "Mail_UpdateAccount_Success": "Tài khoản đã được cập nhật thành công.",
+  "Mail_UpdateAccount_Error": "Không thể cập nhật tài khoản. Vui lòng thử lại.",
+
+  "Mail_SearchBySender": "Tìm kiếm theo người gửi",
+  "Common_NoEmailsFound": "Không tìm thấy email nào"
 }

@@ -5,10 +5,13 @@ import Paragraph from 'antd/lib/typography/Paragraph';
 import useAccounts from 'hooks/useAccounts';
 import useDepartments from 'hooks/useDepartments';
 import React, { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { EmailNav } from './style';
 
 export const InboxList = React.memo(({ setSelectedInbox, selectedInbox }) => {
+  const { t } = useTranslation();
+
   const [pagination, setPagination] = useState({
     pageSize: 20,
     showSizeChanger: true,
@@ -92,7 +95,7 @@ export const InboxList = React.memo(({ setSelectedInbox, selectedInbox }) => {
     }));
 
   const departmentsSelect = [
-    { label: 'Tất cả', value: '' },
+    { label: t('Common_All'), value: '' },
     ...departments.map((item) => ({
       value: item.id,
       label: item.name,
@@ -104,14 +107,13 @@ export const InboxList = React.memo(({ setSelectedInbox, selectedInbox }) => {
       <div style={{ display: 'flex', gap: 2, flexWrap: 'auto', flexDirection: 'column' }}>
         {!loadingDepartments && (
           <>
-            <span className="label mb-8">Chọn phòng ban</span>
+            <span className="label mb-8">{t('Common_SelectDepartment')}</span>
             <Select
               popupClassName="dropdown-select"
               style={{ width: '100%', marginBottom: 20 }}
-              placeholder="Chọn phòng ban"
+              placeholder={t('Common_SelectDepartment')}
               onChange={(value) => {
                 setSelectedDepartmentId(value);
-
                 setSelectedUserId('');
                 handleReset();
               }}
@@ -126,14 +128,13 @@ export const InboxList = React.memo(({ setSelectedInbox, selectedInbox }) => {
 
       {!loadingUsers && (
         <div style={{ display: 'flex', gap: 2, flexWrap: 'auto', flexDirection: 'column' }}>
-          <span className="label mb-8">Chọn tài khoản</span>
+          <span className="label mb-8">{t('Common_SelectAccount')}</span>
           <Select
             popupClassName="dropdown-select"
             style={{ width: '100%', marginBottom: 20 }}
-            placeholder="Chọn tài khoản"
+            placeholder={t('Common_SelectAccount')}
             onChange={(value) => {
               setSelectedUserId(value);
-
               handleReset();
             }}
             loading={loadingUsers}
@@ -147,7 +148,7 @@ export const InboxList = React.memo(({ setSelectedInbox, selectedInbox }) => {
       {!loadingDepartments && (
         <Input
           style={{ width: '100%', marginBottom: 20, height: 40 }}
-          placeholder="Tìm kiếm theo người gửi"
+          placeholder={t('Mail_SearchBySender')}
           value={searchTerm}
           onChange={(event) => {
             setSearchTerm(event.target.value);
@@ -219,7 +220,7 @@ export const InboxList = React.memo(({ setSelectedInbox, selectedInbox }) => {
                   </li>
                 ))
               ) : (
-                <Empty description="Không tìm thấy email nào" />
+                <Empty description={t('Common_NoEmailsFound')} />
               )}
             </ul>
           </EmailNav>

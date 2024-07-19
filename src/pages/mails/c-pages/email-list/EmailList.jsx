@@ -225,7 +225,7 @@ export const EmailList = () => {
                     <Link to="#">{t('Mail_EmailList_Add')}</Link>
                   </Button>
                   <div style={{ display: 'flex', gap: 2, flexWrap: 'auto', alignItems: 'center' }}>
-                    <span className="label">{t('Mail_EmailList_SelectDepartment')}</span>
+                    <span className="label">{t('Common_SelectDepartment')}</span>
                     <Select
                       popupClassName="dropdown-select"
                       loading={loadingDepartments}
