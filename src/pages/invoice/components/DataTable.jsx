@@ -1,15 +1,17 @@
+import { Button } from '@/components/buttons/buttons';
+import { DataService } from '@/config/dataService';
+import { TableWrapper } from '@/container/styled';
 import { downloadFile, formatTime } from '@/utils/index';
 import { DownloadOutlined } from '@ant-design/icons';
 import { UilSearch } from '@iconscout/react-unicons';
 import { DatePicker, Select, Table } from 'antd';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
-import { Button } from '../../../components/buttons/buttons';
-import { DataService } from '../../../config/dataService';
-import { TableWrapper } from '../../../container/styled';
+import { useTranslation } from 'react-i18next';
 import { DataTableStyleWrap } from '../style';
 
 function DataTable({ loading, tableData, columns, state, setState, getInvoiceList }) {
+  const { t } = useTranslation();
   const [startDate, setStartDate] = useState();
   const [endDate, setEndDate] = useState();
 
@@ -63,21 +65,21 @@ function DataTable({ loading, tableData, columns, state, setState, getInvoiceLis
         <div style={{ justifyContent: 'space-between', display: 'flex', alignItems: 'center', flexWrap: 'wrap' }}>
           <div className="ninjadash-datatable-filter__left">
             <div className="ninjadash-datatable-filter__input">
-              <span className="label">Loại hóa đơn</span>
+              <span className="label">{t('Loại hóa đơn')}</span>
               <Select
                 popupClassName="dropdown-select"
                 onChange={handleLoaiHoaDonSearch}
                 style={{ width: 200 }}
                 defaultValue="purchase"
               >
-                <Select.Option value="purchase">Mua vào</Select.Option>
-                <Select.Option value="sold">Bán ra</Select.Option>
+                <Select.Option value="purchase">{t('Mua vào')}</Select.Option>
+                <Select.Option value="sold">{t('Bán ra')}</Select.Option>
               </Select>
             </div>
             <div className="ninjadash-datatable-filter__input">
-              <span className="label">Ngày bắt đầu</span>
+              <span className="label">{t('Ngày bắt đầu')}</span>
               <DatePicker
-                placeholder="Chọn ngày bắt đầu"
+                placeholder={t('Chọn ngày bắt đầu')}
                 onChange={(e) => {
                   setState((prev) => ({
                     ...prev,
@@ -90,9 +92,9 @@ function DataTable({ loading, tableData, columns, state, setState, getInvoiceLis
               />
             </div>
             <div className="ninjadash-datatable-filter__input">
-              <span className="label">Ngày kết thúc</span>
+              <span className="label">{t('Ngày kết thúc')}</span>
               <DatePicker
-                placeholder="Chọn ngày kết thúc"
+                placeholder={t('Chọn ngày kết thúc')}
                 onChange={(e) => {
                   setState((prev) => ({
                     ...prev,
@@ -106,7 +108,7 @@ function DataTable({ loading, tableData, columns, state, setState, getInvoiceLis
             </div>
             <div className="ninjadash-datatable-filter__action" style={{ marginRight: 10 }}>
               <Button type="primary" size="small" onClick={handleSearch} transparented icon={<UilSearch />}>
-                Tìm kiếm
+                {t('Tìm kiếm')}
               </Button>
             </div>
           </div>
@@ -120,7 +122,7 @@ function DataTable({ loading, tableData, columns, state, setState, getInvoiceLis
             disabled={!state.invoiceList?.length}
           >
             <DownloadOutlined />
-            Xuất Excel
+            {t('Xuất Excel')}
           </Button>
         </div>
       </div>

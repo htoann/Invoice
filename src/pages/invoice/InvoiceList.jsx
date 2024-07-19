@@ -5,21 +5,26 @@ import { BorderLessHeading, Main } from '@/container/styled';
 import { routes } from '@/routes/const';
 import { Col, Row } from 'antd';
 import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import DataTable from './components/DataTable';
-import { invoiceListDataTable } from './const';
+import { useInvoiceDataTable } from './useDataTable';
 import { handleTableDataSource } from './utils';
 
 function InvoiceList() {
+  const { t } = useTranslation();
+
   const pageRoutes = [
     {
       path: routes.invoice,
-      breadcrumbName: 'Quản lý hóa đơn',
+      breadcrumbName: t('Quản lý hóa đơn'),
     },
     {
       path: routes.invoice,
-      breadcrumbName: 'Danh sách hóa đơn',
+      breadcrumbName: t('Danh sách hóa đơn'),
     },
   ];
+
+  const invoiceListDataTable = useInvoiceDataTable();
 
   const [state, setState] = useState({
     selectedRowKeys: 0,
@@ -84,7 +89,7 @@ function InvoiceList() {
     <>
       <PageHeader
         className="ninjadash-page-header-main"
-        title={`Danh sách hóa đơn ${loaiHoaDon === 'purchase' ? 'mua vào' : 'bán ra'}`}
+        title={`${t('Danh sách hóa đơn')} ${loaiHoaDon === 'purchase' ? t('mua vào') : t('bán ra')}`}
         routes={pageRoutes}
       />
       <Main>
