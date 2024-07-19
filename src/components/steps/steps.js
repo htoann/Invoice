@@ -2,7 +2,7 @@ import UilArrowLeft from '@iconscout/react-unicons/icons/uil-arrow-left';
 import UilArrowRight from '@iconscout/react-unicons/icons/uil-arrow-right';
 import { Button, Col, message, Row } from 'antd';
 import PropTypes from 'prop-types';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { ActionWrapper, StepsStyle } from './style';
 
 const { Step } = StepsStyle;

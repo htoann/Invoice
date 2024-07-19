@@ -23,7 +23,7 @@ import { Popover } from '../../components/popup/popup';
 const AuthInfo = React.memo(() => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { i18n } = useTranslation();
+  const { i18n, t } = useTranslation();
 
   const [state, setState] = useState({
     flag: 'vi',
@@ -47,32 +47,32 @@ const AuthInfo = React.memo(() => {
         <ul className="user-dropdown__links">
           <li>
             <Link to="#">
-              <UilUser /> Profile
+              <UilUser /> {t('User_Profile')}
             </Link>
           </li>
           <li>
             <Link to="#">
-              <UilSetting /> Settings
+              <UilSetting /> {t('User_Settings')}
             </Link>
           </li>
           <li>
             <Link to="#">
-              <UilDollarSign /> Billing
+              <UilDollarSign /> {t('User_Billing')}
             </Link>
           </li>
           <li>
             <Link to="#">
-              <UilUsersAlt /> Activity
+              <UilUsersAlt /> {t('User_Activity')}
             </Link>
           </li>
           <li>
             <Link to="#">
-              <UilBell /> Help
+              <UilBell /> {t('User_Help')}
             </Link>
           </li>
         </ul>
         <Link className="user-dropdown__bottomAction" onClick={SignOut} to="#">
-          <UilSignout /> Sign Out
+          <UilSignout /> {t('User_SignOut')}
         </Link>
       </div>
     </UserDropDown>
@@ -91,11 +91,11 @@ const AuthInfo = React.memo(() => {
     <NavAuth>
       <Link onClick={(e) => onFlagChangeHandle('vi', e)} to="#">
         <img width="20" src={VieImg} alt="" />
-        <span>Vietnamese</span>
+        <span>{t('Language_Vietnamese')}</span>
       </Link>
       <Link onClick={(e) => onFlagChangeHandle('en', e)} to="#">
         <img src={EngImg} alt="" />
-        <span>English</span>
+        <span>{t('Language_English')}</span>
       </Link>
     </NavAuth>
   );

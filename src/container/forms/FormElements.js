@@ -1,14 +1,12 @@
-/* eslint-disable react/jsx-no-bind */
-import React from 'react';
-import { Row, Col, Form, Input, Select, Upload, message, Radio, Checkbox } from 'antd';
+import { Checkbox, Col, Form, Input, message, Radio, Row, Select, Upload } from 'antd';
 import { Link } from 'react-router-dom';
-import { GridForm } from './overview/GridForm';
-import { SizedForm } from './overview/SizedForm';
-import { InputForm } from './overview/InputForm';
-import { CheckListWrap } from './overview/Style';
-import { Main, BasicFormWrapper } from '../styled';
 import { Cards } from '../../components/cards/frame/cards-frame';
 import { PageHeader } from '../../components/page-headers/page-headers';
+import { BasicFormWrapper, Main } from '../styled';
+import { GridForm } from './overview/GridForm';
+import { InputForm } from './overview/InputForm';
+import { SizedForm } from './overview/SizedForm';
+import { CheckListWrap } from './overview/Style';
 
 const { Option } = Select;
 const { TextArea } = Input;

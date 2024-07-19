@@ -1,7 +1,7 @@
 import { PlusOutlined } from '@ant-design/icons';
 import { Input } from 'antd';
 import PropTypes from 'prop-types';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { TagStyle } from './style';
 
 const { CheckableTag } = TagStyle;

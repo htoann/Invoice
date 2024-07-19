@@ -216,6 +216,16 @@
   "Common_Sold": "Bán ra",
   "Common_TaxAccount": "Tài khoản thuế (2 tài khoản)",
   "Common_Sync": "Đồng bộ",
+  "Common_NoEmailsFound": "Không tìm thấy email nào",
+
+  "User_Profile": "Profile",
+  "User_Settings": "Settings",
+  "User_Billing": "Billing",
+  "User_Activity": "Activity",
+  "User_Help": "Help",
+  "User_SignOut": "Sign Out",
+  "Language_Vietnamese": "Vietnamese",
+  "Language_English": "English",
 
   "Invoice_ModelCode": "Ký hiệu mẫu số",
   "Invoice_InvoiceCode": "Ký hiệu hóa đơn",
@@ -246,11 +256,9 @@
   "Invoice_InformationVerificationResult": "KẾT QUẢ ĐỐI CHIẾU THÔNG TIN",
   "Invoice_CompanyStatus": "TÌNH TRẠNG DN",
   "Invoice_PublicationDate": "NGÀY CÔNG BỐ",
-
   "Invoice_InvoiceType": "Loại hóa đơn",
   "Invoice_Management": "Quản lý hoá đơn",
   "Invoice_List": "Danh sách hóa đơn",
-
   "Invoice_StartDate": "Ngày bắt đầu",
   "Invoice_SelectStartDate": "Chọn ngày bắt đầu",
   "Invoice_EndDate": "Ngày kết thúc",
@@ -259,21 +267,16 @@
   "Mail_CreateAccount_Title": "Tạo tài khoản",
   "Mail_CreateAccount_Success": "Tài khoản đã được tạo thành công",
   "Mail_CreateAccount_Error": "Đã xảy ra lỗi khi tạo tài khoản",
-
   "Mail_EmailList_Title": "Danh sách email",
   "Mail_EmailList_Add": "+ Thêm email",
   "Mail_EmailList_ConfirmDelete": "Bạn có chắc chắn muốn xóa tài khoản này?",
-
   "Mail_EmailList_DeleteSuccess": "Tài khoản đã được xóa thành công.",
   "Mail_EmailList_DeleteError": "Không thể xóa tài khoản. Vui lòng thử lại sau.",
   "Mail_EmailList_Username": "Tên tài khoản",
-
   "Mail_UpdateAccount_Title": "Cập nhật tài khoản",
   "Mail_UpdateAccount_Success": "Tài khoản đã được cập nhật thành công.",
   "Mail_UpdateAccount_Error": "Không thể cập nhật tài khoản. Vui lòng thử lại.",
-
   "Mail_SearchBySender": "Tìm kiếm theo người gửi",
-  "Common_NoEmailsFound": "Không tìm thấy email nào",
 
   "SyncHistory_PageHeader": "Danh sách đồng bộ",
   "SyncHistory_TotalInvoice": "Tổng số hóa đơn",
@@ -340,7 +343,6 @@
   "Product_UpdateTitle": "Cập nhật hàng hoá",
   "Product_UpdateSuccessDescription": "Thông tin hàng hoá đã được cập nhật thành công.",
   "Product_UpdateErrorDescription": "Không thể cập nhật thông tin hàng hoá. Vui lòng thử lại.",
-
   "Product_Code": "Mã hàng",
   "Product_RequiredCode": "Vui lòng nhập mã hàng",
   "Product_Unit": "Đơn vị tính",
