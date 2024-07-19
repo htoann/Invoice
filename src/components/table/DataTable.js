@@ -1,12 +1,11 @@
 import UilSearch from '@iconscout/react-unicons/icons/uil-search';
 import { Input, Select, Table } from 'antd';
 import PropTypes from 'prop-types';
-import React from 'react';
 import { useDispatch } from 'react-redux';
-import { DataTableStyleWrap } from './Style';
 import { TableWrapper } from '../../container/styled';
 import { dataLiveFilter, filterWithSubmit } from '../../redux/data-filter/actionCreator';
 import { Button } from '../buttons/buttons';
+import { DataTableStyleWrap } from './Style';
 
 function DataTable({ filterOption, filterOnchange, rowSelection, tableData, columns }) {
   const dispatch = useDispatch();
