@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
-import UilPlay from '@iconscout/react-unicons/icons/uil-play';
 import UilCheck from '@iconscout/react-unicons/icons/uil-check';
-import { useSelector, useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
+import UilPlay from '@iconscout/react-unicons/icons/uil-play';
 import { Col, Row } from 'antd';
-import { RightAsideWrapper } from './Style';
+import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { Button } from '../../../../components/buttons/buttons';
 import { Cards } from '../../../../components/cards/frame/cards-frame';
 import { profileFriendsChangeStatus } from '../../../../redux/profile/actionCreator';
+import { RightAsideWrapper } from './Style';
 import './video-modal.css';
 
 function RightAside() {

@@ -1,46 +1,35 @@
-import React, { useEffect, lazy, Suspense, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import UilArrowLeft from '@iconscout/react-unicons/icons/uil-arrow-left';
-import UilAngleUp from '@iconscout/react-unicons/icons/uil-angle-up';
 import UilAngleDown from '@iconscout/react-unicons/icons/uil-angle-down';
-import UilRedo from '@iconscout/react-unicons/icons/uil-redo';
+import UilAngleUp from '@iconscout/react-unicons/icons/uil-angle-up';
 import UilArchive from '@iconscout/react-unicons/icons/uil-archive';
-import UilTrash from '@iconscout/react-unicons/icons/uil-trash';
-import UilPrint from '@iconscout/react-unicons/icons/uil-print';
-import UilImport from '@iconscout/react-unicons/icons/uil-import';
-import UilPaperclip from '@iconscout/react-unicons/icons/uil-paperclip';
-import UilShareAlt from '@iconscout/react-unicons/icons/uil-share-alt';
-import UilEllipsisV from '@iconscout/react-unicons/icons/uil-ellipsis-v';
+import UilArrowLeft from '@iconscout/react-unicons/icons/uil-arrow-left';
+import UilBookOpen from '@iconscout/react-unicons/icons/uil-book-open';
 import UilCornerUpLeft from '@iconscout/react-unicons/icons/uil-corner-up-left';
 import UilCornerUpRight from '@iconscout/react-unicons/icons/uil-corner-up-right';
+import UilEllipsisV from '@iconscout/react-unicons/icons/uil-ellipsis-v';
 import UilExclamationOctagon from '@iconscout/react-unicons/icons/uil-exclamation-octagon';
-import UilBookOpen from '@iconscout/react-unicons/icons/uil-book-open';
 import UilFolder from '@iconscout/react-unicons/icons/uil-folder';
-import { Link, NavLink, Routes, Route, useParams, useNavigate } from 'react-router-dom';
-import { Tooltip, Row, Col, Spin } from 'antd';
+import UilImport from '@iconscout/react-unicons/icons/uil-import';
+import UilPaperclip from '@iconscout/react-unicons/icons/uil-paperclip';
+import UilPrint from '@iconscout/react-unicons/icons/uil-print';
+import UilRedo from '@iconscout/react-unicons/icons/uil-redo';
+import UilShareAlt from '@iconscout/react-unicons/icons/uil-share-alt';
+import UilTrash from '@iconscout/react-unicons/icons/uil-trash';
+import { Col, Row, Spin, Tooltip } from 'antd';
 import moment from 'moment';
+import React, { Suspense } from 'react';
 import FontAwesome from 'react-fontawesome';
-import { MailDetailsWrapper, MessageAction, MessageDetails, ReplyList, MessageReply, MailRightAction } from './style';
+import { useSelector } from 'react-redux';
+import { Link, NavLink, Route, Routes, useNavigate } from 'react-router-dom';
+import { Cards } from '../../../components/cards/frame/cards-frame';
 import { Dropdown } from '../../../components/dropdown/dropdown';
 import Heading from '../../../components/heading/heading';
-import { Cards } from '../../../components/cards/frame/cards-frame';
+import { MailDetailsWrapper, MailRightAction, MessageAction, MessageDetails, MessageReply, ReplyList } from './style';
 
 function Single() {
   const navigate = useNavigate();
   const email = useSelector((state) => state.emailSingle.data[0]);
-  const dispatch = useDispatch();
-  const [state, setState] = useState({
-    replyMessage: 0,
-  });
 
-  const params = useParams();
-
-  const replyMail = async (replyMessage) => {
-    // hit replyMail api
-    setState({ ...state, replyMessage });
-  };
-
-  const ReplayMess = React.memo((value) => {
+  const ReplayMess = React.memo(() => {
     return (
       <>
         <img style={{ width: 50, height: 50 }} src={require('../../../static/img/email/2.png')} alt="" />
