@@ -2,6 +2,7 @@ import { PageHeader } from '@/components/page-headers/page-headers';
 import { Main } from '@/container/styled';
 import { Row } from 'antd';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import BranchList from './c-pages/Branch';
 import DepartmentList from './c-pages/Department';
 import ProjectList from './c-pages/Project';
@@ -10,6 +11,8 @@ import useDepartments from './hook/useDepartments';
 import useProjects from './hook/useProjects';
 
 export const Organization = () => {
+  const { t } = useTranslation();
+
   const { branches, setBranches, loadingBranches } = useBranches();
   const [selectedBranch, setSelectedBranch] = useState(null);
 
@@ -20,7 +23,7 @@ export const Organization = () => {
 
   return (
     <>
-      <PageHeader className="invoice-page-header-main" title="Cơ cấu tổ chức" />
+      <PageHeader className="invoice-page-header-main" title={t('Org_Structure')} />
       <Main>
         <Row gutter={15}>
           <BranchList

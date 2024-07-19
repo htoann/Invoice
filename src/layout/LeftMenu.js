@@ -127,7 +127,7 @@ export const LeftMenu = ({ toggleCollapsed }) => {
       'category',
       !topMenu && <UilAt />,
       createMenuItems([
-        { path: routes.emailAccount, textKey: 'Cơ cấu tổ chức', key: 'Cơ cấu tổ chức' },
+        { path: routes.emailAccount, textKey: t('Org_Structure'), key: 'Cơ cấu tổ chức' },
         { path: routes.emailAccount, textKey: 'Nhà cung cấp', key: 'Nhà cung cấp' },
         { path: routes.emailAccount, textKey: 'Khách hàng', key: 'Khách hàng' },
         { path: routes.emailAccount, textKey: 'Hàng hoá', key: 'Hàng hoá' },

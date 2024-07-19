@@ -85,7 +85,7 @@ export const TopMenu = () => {
             </Link>
             <ul className="subMenu">
               <li>
-                <Link to={routes.categoryOrg}>Cơ cấu tổ chức</Link>
+                <Link to={routes.categoryOrg}>{t('Org_Structure')}</Link>
               </li>
               <li>
                 <Link to="#">Nhà cung cấp</Link>
