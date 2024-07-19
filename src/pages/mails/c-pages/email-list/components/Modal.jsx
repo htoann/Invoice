@@ -9,12 +9,12 @@ const ModalAccount = ({ form, handleOk, state, onCancel, loading, textSubmit = '
   return (
     <BasicFormWrapper>
       <Form form={form} name="edit_account" onFinish={handleOk}>
-        <Form.Item initialValue={state?.update?.username} label={t('Mail_Username')} name="username">
-          <Input placeholder={t('Mail_Username_Placeholder')} />
+        <Form.Item initialValue={state?.update?.username} label={t('Common_Username')} name="username">
+          <Input placeholder={t('Common_Username_Placeholder')} />
         </Form.Item>
 
         <Form.Item
-          label={t('Mail_Email')}
+          label={t('Common_Email')}
           name="email"
           rules={[{ message: t('Vui lòng nhập địa chỉ email!'), type: 'email', required: true }]}
           initialValue={state?.update.email}

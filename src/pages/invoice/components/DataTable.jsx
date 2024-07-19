@@ -108,7 +108,7 @@ function DataTable({ loading, tableData, columns, state, setState, getInvoiceLis
             </div>
             <div className="invoice-datatable-filter__action" style={{ marginRight: 10 }}>
               <Button type="primary" size="small" onClick={handleSearch} transparent icon={<UilSearch />}>
-                {t('Invoice_Search')}
+                {t('Common_Search')}
               </Button>
             </div>
           </div>
@@ -122,7 +122,7 @@ function DataTable({ loading, tableData, columns, state, setState, getInvoiceLis
             disabled={!state.invoiceList?.length}
           >
             <DownloadOutlined />
-            {t('Invoice_ExportExcel')}
+            {t('Common_ExportExcel')}
           </Button>
         </div>
       </div>
