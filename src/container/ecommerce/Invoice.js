@@ -116,7 +116,7 @@ function Invoice() {
 
   return (
     <div className="invoice-area">
-      <PageHeader className="ninjadash-page-header-main" title="Invoice" routes={PageRoutes} />
+      <PageHeader className="invoice-page-header-main" title="Invoice" routes={PageRoutes} />
       <Main>
         <Row gutter={15}>
           <Col md={24}>

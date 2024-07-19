@@ -61,10 +61,10 @@ function DataTable({ loading, tableData, columns, state, setState, getInvoiceLis
 
   return (
     <DataTableStyleWrap>
-      <div className="ninjadash-datatable-filter">
+      <div className="invoice-datatable-filter">
         <div style={{ justifyContent: 'space-between', display: 'flex', alignItems: 'center', flexWrap: 'wrap' }}>
-          <div className="ninjadash-datatable-filter__left">
-            <div className="ninjadash-datatable-filter__input">
+          <div className="invoice-datatable-filter__left">
+            <div className="invoice-datatable-filter__input">
               <span className="label">{t('Loại hóa đơn')}</span>
               <Select
                 popupClassName="dropdown-select"
@@ -76,7 +76,7 @@ function DataTable({ loading, tableData, columns, state, setState, getInvoiceLis
                 <Select.Option value="sold">{t('Bán ra')}</Select.Option>
               </Select>
             </div>
-            <div className="ninjadash-datatable-filter__input">
+            <div className="invoice-datatable-filter__input">
               <span className="label">{t('Ngày bắt đầu')}</span>
               <DatePicker
                 placeholder={t('Chọn ngày bắt đầu')}
@@ -91,7 +91,7 @@ function DataTable({ loading, tableData, columns, state, setState, getInvoiceLis
                 disabledDate={disabledStartDate}
               />
             </div>
-            <div className="ninjadash-datatable-filter__input">
+            <div className="invoice-datatable-filter__input">
               <span className="label">{t('Ngày kết thúc')}</span>
               <DatePicker
                 placeholder={t('Chọn ngày kết thúc')}
@@ -106,7 +106,7 @@ function DataTable({ loading, tableData, columns, state, setState, getInvoiceLis
                 disabledDate={disabledEndDate}
               />
             </div>
-            <div className="ninjadash-datatable-filter__action" style={{ marginRight: 10 }}>
+            <div className="invoice-datatable-filter__action" style={{ marginRight: 10 }}>
               <Button type="primary" size="small" onClick={handleSearch} transparented icon={<UilSearch />}>
                 {t('Tìm kiếm')}
               </Button>

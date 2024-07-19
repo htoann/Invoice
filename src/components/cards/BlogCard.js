@@ -23,46 +23,46 @@ const BlogCard = ({
   const { content, title, img } = item;
   return (
     <BlogCardStyleWrap>
-      <figure className={`ninjadash-blog ninjadash-blog-${theme}`}>
-        <div className="ninjadash-blog-thumb">
-          <img className="ninjadash-blog__image" src={require(`../../static/img/blogs/${img}`)} alt="ninjadash Blog" />
+      <figure className={`invoice-blog invoice-blog-${theme}`}>
+        <div className="invoice-blog-thumb">
+          <img className="invoice-blog__image" src={require(`../../static/img/blogs/${img}`)} alt="invoice Blog" />
         </div>
         <figcaption>
           {theme === 'style-1' ? (
-            <div className="ninjadash-blog-meta ninjadash-blog-meta-theme-1">
-              <span className="ninjadash-blog-meta__single ninjadash-date-meta">01 July 2020</span>
+            <div className="invoice-blog-meta invoice-blog-meta-theme-1">
+              <span className="invoice-blog-meta__single invoice-date-meta">01 July 2020</span>
             </div>
           ) : theme === 'style-2' ? (
-            <div className="ninjadash-blog-meta ninjadash-blog-meta-theme-2">
-              <span className="ninjadash-blog-meta__single ninjadash-category-meta">Web Development</span>
-              <span className="ninjadash-blog-meta__single ninjadash-date-meta">01 July 2020</span>
+            <div className="invoice-blog-meta invoice-blog-meta-theme-2">
+              <span className="invoice-blog-meta__single invoice-category-meta">Web Development</span>
+              <span className="invoice-blog-meta__single invoice-date-meta">01 July 2020</span>
             </div>
           ) : theme === 'style-3' ? (
-            <div className="ninjadash-blog-meta ninjadash-blog-meta-theme-3">
-              <span className="ninjadash-blog-meta__single ninjadash-date-meta">01 July 2020</span>
-              <span className="ninjadash-blog-meta__single ninjadash-category-meta">Web Development</span>
-              <span className="ninjadash-blog-meta__single ninjadash-time-meta">6 mins read</span>
+            <div className="invoice-blog-meta invoice-blog-meta-theme-3">
+              <span className="invoice-blog-meta__single invoice-date-meta">01 July 2020</span>
+              <span className="invoice-blog-meta__single invoice-category-meta">Web Development</span>
+              <span className="invoice-blog-meta__single invoice-time-meta">6 mins read</span>
             </div>
           ) : (
             ''
           )}
-          <h2 className="ninjadash-blog__title">
+          <h2 className="invoice-blog__title">
             <Link to="#">{title}</Link>
           </h2>
-          <p className="ninjadash-blog__text">{content}</p>
-          <div className="ninjadash-blog__bottom">
-            <div className="ninjadash-blog__author">
-              <img className="ninjadash-blog__author-img" src={require('../../static/img/chat-author/t1.jpg')} alt="" />
-              <span className="ninjadash-blog__author-name">Burns Marks</span>
+          <p className="invoice-blog__text">{content}</p>
+          <div className="invoice-blog__bottom">
+            <div className="invoice-blog__author">
+              <img className="invoice-blog__author-img" src={require('../../static/img/chat-author/t1.jpg')} alt="" />
+              <span className="invoice-blog__author-name">Burns Marks</span>
             </div>
-            <ul className="ninjadash-blog__meta">
-              <li className="ninjadash-blog__meta--item">
+            <ul className="invoice-blog__meta">
+              <li className="invoice-blog__meta--item">
                 <span className="like">
                   <UilHeart />
                   <span>70</span>
                 </span>
               </li>
-              <li className="ninjadash-blog__meta--item">
+              <li className="invoice-blog__meta--item">
                 <span className="view">
                   <UilFile />
                   <span>120</span>

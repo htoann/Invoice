@@ -31,7 +31,7 @@ function Banners() {
   ];
   return (
     <>
-      <PageHeader className="ninjadash-page-header-main" title="Banners" routes={PageRoutes} />
+      <PageHeader className="invoice-page-header-main" title="Banners" routes={PageRoutes} />
       <Main>
         <Row gutter={25}>
           <Col xxl={6} xl={12} lg={12} sm={24} xs={24}>

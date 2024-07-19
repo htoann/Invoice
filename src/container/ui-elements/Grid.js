@@ -1,9 +1,8 @@
-import React from 'react';
-import { Row, Col } from 'antd';
-import { GridStyle, GridStyleGutter, GridStyleOffset } from './GridStyled';
+import { Col, Row } from 'antd';
+import { Cards } from '../../components/cards/frame/cards-frame';
 import { PageHeader } from '../../components/page-headers/page-headers';
 import { Main } from '../styled';
-import { Cards } from '../../components/cards/frame/cards-frame';
+import { GridStyle, GridStyleGutter, GridStyleOffset } from './GridStyled';
 
 function Grid() {
   const PageRoutes = [
@@ -18,7 +17,7 @@ function Grid() {
   ];
   return (
     <>
-      <PageHeader className="ninjadash-page-header-main" title="Grid" routes={PageRoutes} />
+      <PageHeader className="invoice-page-header-main" title="Grid" routes={PageRoutes} />
       <Main>
         <Row gutter={15}>
           <Col xs={24}>

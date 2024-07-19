@@ -1,13 +1,13 @@
 import Styled from 'styled-components';
 
 const TaskListStyle = Styled.div`
-    .ninjadash-tassklist-wrap{
+    .invoice-tassklist-wrap{
         background-color: ${({ theme }) => theme[theme.mainContent]['white-background']};
         border-radius: 10px;
         min-height: 220px;
     }
-    .ninjadash-tasklist-head{
-        .ninjadash-tasklist-head__title{
+    .invoice-tasklist-head{
+        .invoice-tasklist-head__title{
             font-size: 16px;
             font-weight: 500;
             padding: 15px 30px;
@@ -15,9 +15,9 @@ const TaskListStyle = Styled.div`
             border-bottom: 1px solid ${({ theme }) => theme[theme.mainContent]['border-color-default']};
         }
     }
-    .ninjadash-tasklist-body{
-        .ninjadash-tasklist{
-            .ninjadash-tasklist-item{
+    .invoice-tasklist-body{
+        .invoice-tasklist{
+            .invoice-tasklist-item{
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
@@ -27,11 +27,11 @@ const TaskListStyle = Styled.div`
                     align-items: flex-start;
                     padding: 7.5px 0 20px;
                 }
-                .ninjadash-tasklist-item__content{
+                .invoice-tasklist-item__content{
                     margin-right: 10px;
                 }
             }
-            .ninjadash-tasklist-item__title{
+            .invoice-tasklist-item__title{
                 font-size: 16px;
                 color: ${({ theme }) => theme[theme.mainContent]['dark-text']};
                 .ant-checkbox + span{
@@ -79,7 +79,7 @@ const TaskListStyle = Styled.div`
                     }
                 }
             }
-            .ninjadash-tasklist-item__text{
+            .invoice-tasklist-item__text{
                 padding-left: 30px;
                 p{
                     font-size: 14px;
@@ -90,7 +90,7 @@ const TaskListStyle = Styled.div`
                     }
                 }
             }
-            .ninjadash-tasklist-item__action{
+            .invoice-tasklist-item__action{
                 display: flex;
                 align-items: center;
                 justify-content: center;
@@ -133,7 +133,7 @@ const TaskListStyle = Styled.div`
                     align-items: center;
                     margin: 0 10px;
                 }
-                .ninjadash-edit{
+                .invoice-edit{
                     &:hover{
                         svg,
                         i{
@@ -141,7 +141,7 @@ const TaskListStyle = Styled.div`
                         }
                     }
                 }
-                .ninjadash-delete{
+                .invoice-delete{
                     &:hover{
                         svg,
                         i{
@@ -151,7 +151,7 @@ const TaskListStyle = Styled.div`
                 }
             }
         }
-        .ninjadash-tasklist-empty{
+        .invoice-tasklist-empty{
             min-height: 215px;
             display: flex;
             align-items: center;
@@ -163,7 +163,7 @@ const TaskListStyle = Styled.div`
             }
         }
     }
-    .ninjadash-modal-actions{
+    .invoice-modal-actions{
         display: flex;
         justify-content: flex-end;
         button{

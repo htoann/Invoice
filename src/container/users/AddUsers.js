@@ -1,12 +1,12 @@
-import React, { lazy, Suspense } from 'react';
-import { Row, Col, Spin } from 'antd';
-import { Routes, Route, NavLink } from 'react-router-dom';
-import UilUser from '@iconscout/react-unicons/icons/uil-user';
-import UilShareAlt from '@iconscout/react-unicons/icons/uil-share-alt';
 import UilBriefcaseAlt from '@iconscout/react-unicons/icons/uil-briefcase-alt';
-import { AddUser } from '../pages/style';
-import { PageHeader } from '../../components/page-headers/page-headers';
+import UilShareAlt from '@iconscout/react-unicons/icons/uil-share-alt';
+import UilUser from '@iconscout/react-unicons/icons/uil-user';
+import { Col, Row, Spin } from 'antd';
+import { lazy, Suspense } from 'react';
+import { NavLink, Route, Routes } from 'react-router-dom';
 import { Cards } from '../../components/cards/frame/cards-frame';
+import { PageHeader } from '../../components/page-headers/page-headers';
+import { AddUser } from '../pages/style';
 import { Main } from '../styled';
 
 const Info = lazy(() => import('../pages/overview/info'));
@@ -16,7 +16,7 @@ const Social = lazy(() => import('../pages/overview/Social'));
 function AddNew() {
   return (
     <>
-      <PageHeader className="ninjadash-page-header-main" ghost title="Add User" />
+      <PageHeader className="invoice-page-header-main" ghost title="Add User" />
       <Main>
         <Row gutter={15}>
           <Col xs={24}>

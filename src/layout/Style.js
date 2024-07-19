@@ -27,7 +27,7 @@ const LayoutContainer = Styled.div`
         background-color: ${({ theme }) => theme[theme.mainContent]['main-background']};
     }
 
-    .ninjadash-nav-actions__searchbar{
+    .invoice-nav-actions__searchbar{
         display: flex;
         align-items: center;
         svg,
@@ -36,7 +36,7 @@ const LayoutContainer = Styled.div`
             height: 16px;
             color: ${({ theme }) => theme[theme.mainContent]['gray-light-text']};
         }
-        .ninjadash-searchbar{
+        .invoice-searchbar{
             opacity: 0;
             visibility: hidden;
             transition: .35s;
@@ -61,7 +61,7 @@ const LayoutContainer = Styled.div`
             }
         }
         &.show{
-            .ninjadash-searchbar{
+            .invoice-searchbar{
                 opacity: 1;
                 visibility: visible;
                 input{
@@ -69,10 +69,10 @@ const LayoutContainer = Styled.div`
                     pointer-events: all;
                 }
             }
-            .ninjadash-search-icon{
+            .invoice-search-icon{
                 display: none;
             }
-            .ninjadash-close-icon{
+            .invoice-close-icon{
                 display: block !important;
                 top: 2px;
                 svg{
@@ -80,7 +80,7 @@ const LayoutContainer = Styled.div`
                 }
             }
         }
-        .ninjadash-close-icon{
+        .invoice-close-icon{
             display: none !important;
         }
         a{
@@ -93,10 +93,10 @@ const LayoutContainer = Styled.div`
         }
     }
 
-    /* ninjadash Header Style */
-    .ninjadash-header-content{
+    /* invoice Header Style */
+    .invoice-header-content{
         height: 100%;
-        .ninjadash-header-content__left{
+        .invoice-header-content__left{
             min-width: 280px;
             padding: 0 20px 0 30px;
             background-color: ${({ theme }) => theme[theme.mainContent]['brand-background']};
@@ -126,7 +126,7 @@ const LayoutContainer = Styled.div`
                     }
                 }
             }
-            .ninjadash-logo{
+            .invoice-logo{
                 @media only screen and (max-width: 875px){
                     ${({ theme }) => (theme.rtl ? 'margin-left' : 'margin-right')}: 4px;
                 }
@@ -142,9 +142,9 @@ const LayoutContainer = Styled.div`
                 }
             }
         }
-        .ninjadash-header-content__right{
+        .invoice-header-content__right{
             flex: auto;
-            .ninjadash-nav-actions{
+            .invoice-nav-actions{
                 display: flex;
                 justify-content: flex-end;
                 align-items: center;
@@ -153,17 +153,17 @@ const LayoutContainer = Styled.div`
                 @media only screen and (max-width: 767px){
                     display: none;
                 }
-                .ninjadash-nav-actions__language,
-                .ninjadash-nav-actions__author{
+                .invoice-nav-actions__language,
+                .invoice-nav-actions__author{
                     line-height: 1;
                 }
-                .ninjadash-nav-actions__searchbar{
+                .invoice-nav-actions__searchbar{
                     margin-right: 10px;
                     margin-top: -1px;
                 }
-                .ninjadash-nav-actions__author{
+                .invoice-nav-actions__author{
                     margin: 0 3px;
-                    .ninjadash-nav-action-link{
+                    .invoice-nav-action-link{
                         display: flex;
                         align-items: center;
                         i,
@@ -187,7 +187,7 @@ const LayoutContainer = Styled.div`
                         }
                     }
                 }
-                .ninjadash-nav-actions__author--name{
+                .invoice-nav-actions__author--name{
                     font-size: 14px;
                     display: inline-block;
                     font-weight: 500;
@@ -199,12 +199,12 @@ const LayoutContainer = Styled.div`
                 }
             }      
         }
-        .ninjadash-header-content__mobile{
+        .invoice-header-content__mobile{
             display: none;
             @media only screen and (max-width: 767px){
                 display: block;
             }
-            .ninjadash-mobile-action{
+            .invoice-mobile-action{
                 position: absolute;
                 ${({ theme }) => (theme.rtl ? 'left' : 'right')}: 20px;
                 top: 50%;
@@ -229,7 +229,7 @@ const LayoutContainer = Styled.div`
                         height: 18px;
                     }
                 }
-                .ninjadash-searchbar{
+                .invoice-searchbar{
                     .ant-input{
                         border: 0 none;
                     }
@@ -240,12 +240,12 @@ const LayoutContainer = Styled.div`
             }
         }
     }
-    .ninjadash-header-more{
-        .ninjadash-nav-actions__author{
-            .ninjadash-nav-actions__author--name{
+    .invoice-header-more{
+        .invoice-nav-actions__author{
+            .invoice-nav-actions__author--name{
                 display: none;
             }
-            .ninjadash-nav-action-link{
+            .invoice-nav-action-link{
                 display: flex;
                 align-items: center;
                 .ant-avatar-image{
@@ -258,13 +258,13 @@ const LayoutContainer = Styled.div`
                 }
             }
         }
-        .ninjadash-nav-actions__message,
-        .ninjadash-nav-actions__notification,
-        .ninjadash-nav-actions__settings{
+        .invoice-nav-actions__message,
+        .invoice-nav-actions__notification,
+        .invoice-nav-actions__settings{
             position: relative;
             top: 4px;
         }
-        .ninjadash-nav-actions__message{
+        .invoice-nav-actions__message{
             .ant-badge-dot{
                 background-color: ${({ theme }) => theme['success-color']}};
             }
@@ -337,7 +337,7 @@ const LayoutContainer = Styled.div`
         }
 
         .custom-scrollbar{
-            .ninjadash-track-vertical{
+            .invoice-track-vertical{
                 position: absolute;
                 width: 6px;
                 transition: opacity 200ms ease 0s;
@@ -359,7 +359,7 @@ const LayoutContainer = Styled.div`
         &.ant-layout-sider-collapsed{
             padding: 15px 0px 55px !important;
             .ant-layout-sider-children{
-                .ninjadash-sidebar-nav-title{
+                .invoice-sidebar-nav-title{
                     display: none;
                 }
             }
@@ -405,7 +405,7 @@ const LayoutContainer = Styled.div`
         .ant-layout-sider-children{
             padding-bottom: 15px;
             
-            .ninjadash-sidebar-nav-title {
+            .invoice-sidebar-nav-title {
                 display: flex;
                 font-size: 12px;
                 font-weight: 500;
@@ -416,8 +416,8 @@ const LayoutContainer = Styled.div`
                 margin: 20px 0 0 0;
             }
 
-            .ninjadash-sidebar-nav-title{
-                &.ninjadash-sidebar-nav-title-top{
+            .invoice-sidebar-nav-title{
+                &.invoice-sidebar-nav-title-top{
                     margin: 8px 0 0;
                 }
             }
@@ -758,7 +758,7 @@ const LayoutContainer = Styled.div`
             }
         }
     }
-    .ninjadash-shade{
+    .invoice-shade{
         position: fixed;
         top: 0;
         left: 0;
@@ -788,7 +788,7 @@ const SmallScreenAuthInfo = Styled.div`
     @media only screen and (max-width: 767px){
         padding: 10px 15px;
     }
-    .ninjadash-nav-actions__searchbar{
+    .invoice-nav-actions__searchbar{
         display: none !important;
     }
 `;
@@ -906,7 +906,7 @@ const TopMenuSearch = Styled.div`
 `;
 
 const TopMenuStyle = Styled.div`
-    .ninjadash-top-menu{
+    .invoice-top-menu{
         ul{
             margin-bottom: 0;
             li{
@@ -1066,14 +1066,14 @@ const TopMenuStyle = Styled.div`
             }
         }
     }
-    .ninjadash-top-menu{
+    .invoice-top-menu{
         >ul{
             display: flex;
             flex-wrap: wrap;
         }
     }
     // Mega Menu
-    .ninjadash-top-menu{
+    .invoice-top-menu{
         >ul{
             >li{
                 &:hover{

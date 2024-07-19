@@ -37,16 +37,16 @@ const InvoicesChange = React.memo(() => {
       return newProductData.push({
         key,
         pName: (
-          <div className="ninjadash-info-element align-center-v">
-            <div className="ninjadash-info-element__media">
-              <img src={require(`../../../static/img/products/electronics/${img}`)} alt="ninjadash Product" />
+          <div className="invoice-info-element align-center-v">
+            <div className="invoice-info-element__media">
+              <img src={require(`../../../static/img/products/electronics/${img}`)} alt="invoice Product" />
             </div>
-            <div className="ninjadash-info-element__content">
-              <span className="ninjadash-info-element__text">{name}</span>
+            <div className="invoice-info-element__content">
+              <span className="invoice-info-element__text">{name}</span>
             </div>
           </div>
         ),
-        price: <span className="ninjadash-product-price">{price}</span>,
+        price: <span className="invoice-product-price">{price}</span>,
       });
     });
   }
@@ -64,19 +64,19 @@ const InvoicesChange = React.memo(() => {
       <BorderLessHeading>
         <Cards
           isbutton={
-            <div className="ninjadash-card-nav">
+            <div className="invoice-card-nav">
               <ul>
-                <li className={productTab === 'today' ? 'ninjadash-active' : 'ninjadash-today'}>
+                <li className={productTab === 'today' ? 'invoice-active' : 'invoice-today'}>
                   <Link onClick={(e) => handleTabActivation('today', e)} to="#">
                     Today
                   </Link>
                 </li>
-                <li className={productTab === 'week' ? 'ninjadash-active' : 'ninjadash-week'}>
+                <li className={productTab === 'week' ? 'invoice-active' : 'invoice-week'}>
                   <Link onClick={(e) => handleTabActivation('week', e)} to="#">
                     Week
                   </Link>
                 </li>
-                <li className={productTab === 'month' ? 'ninjadash-active' : 'ninjadash-month'}>
+                <li className={productTab === 'month' ? 'invoice-active' : 'invoice-month'}>
                   <Link onClick={(e) => handleTabActivation('month', e)} to="#">
                     Month
                   </Link>
@@ -87,7 +87,7 @@ const InvoicesChange = React.memo(() => {
           title="Hóa đơn bị thay đổi bởi người bán - Nhà cung cấp"
           size="large"
         >
-          <TableDefaultStyle className="ninjadash-having-header-bg">
+          <TableDefaultStyle className="invoice-having-header-bg">
             <NewProductWrapper>
               <div className="table-responsive">
                 <Table columns={productColumns} dataSource={newProductData} pagination={false} />

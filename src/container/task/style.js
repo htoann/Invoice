@@ -1,13 +1,13 @@
 import Styled from 'styled-components';
 
 const SidebarWrap = Styled.div`
-    .ninjadash-taskApp-sidebar{
+    .invoice-taskApp-sidebar{
         background-color: ${({ theme }) => theme[theme.mainContent]['white-background']};
         padding: 30px;
         border-radius: 10px;
         box-shadow: 0 5px 20px ${({ theme }) => theme[theme.mainContent]['gray-text']}03;
         min-height: 300px;
-        .ninjadash-btn-add{
+        .invoice-btn-add{
             width: 100%;
             font-size: 14px;
             font-weight: 500;
@@ -16,13 +16,13 @@ const SidebarWrap = Styled.div`
             margin-bottom: 20px;
         }
     }
-    .ninjadash-taskApp-sidebar__nav{
+    .invoice-taskApp-sidebar__nav{
         width: calc(100% + 30px);
         position: relative;
         ${({ theme }) => (theme.rtl ? 'right' : 'left')}: -15px;
-        .ninjadash-taskApp-sidebar__nav--item{
+        .invoice-taskApp-sidebar__nav--item{
             display: block;
-            .ninjadash-taskApp-sidebar__nav--link{
+            .invoice-taskApp-sidebar__nav--link{
                 display: flex;
                 align-items: center;
                 font-size: 14px;
@@ -63,13 +63,13 @@ const SidebarWrap = Styled.div`
     }
 `;
 const TaskListWrap = Styled.div`
-    .ninjadash-tasklist-wrap{
+    .invoice-tasklist-wrap{
         background-color: #fff;
         border-radius: 10px;
         box-shadow: 0 5px 20px rgba(#9299B8,.03);
     }
-    .ninjadash-tasklist-head{
-        .ninjadash-tasklist-head__title{
+    .invoice-tasklist-head{
+        .invoice-tasklist-head__title{
             font-size: 16px;
             font-weight: 500;
             padding: 15px 30px;
@@ -78,10 +78,10 @@ const TaskListWrap = Styled.div`
             border-bottom: 1px solid ${({ theme }) => theme[theme.mainContent]['border-color-default']};
         }
     }
-    .ninjadash-tasklist-body{
-        .ninjadash-tasklist{
+    .invoice-tasklist-body{
+        .invoice-tasklist{
             padding: 15px 30px;
-            .ninjadash-tasklist-item__title{
+            .invoice-tasklist-item__title{
                 margin-bottom: 10px;
             }
         }
@@ -112,7 +112,7 @@ const FixedSidebar = Styled.div`
             color: ${({ theme }) => theme['danger-color']}; 
         }
     }
-    .ninjadash-taskApp-sidebar{
+    .invoice-taskApp-sidebar{
         padding-top: 60px;
     }
 `;

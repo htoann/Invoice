@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
-import { Row, Col, Progress, Button, Tooltip } from 'antd';
-import { useSelector } from 'react-redux';
 import { MinusOutlined, PlusOutlined } from '@ant-design/icons';
+import { Button, Col, Progress, Row, Tooltip } from 'antd';
+import { useState } from 'react';
+import { useSelector } from 'react-redux';
+import { Cards } from '../../components/cards/frame/cards-frame';
 import { PageHeader } from '../../components/page-headers/page-headers';
 import { Main } from '../styled';
-import { Cards } from '../../components/cards/frame/cards-frame';
 
 const ButtonGroup = Button.Group;
 
@@ -42,7 +42,7 @@ function ProgressBar() {
 
   return (
     <>
-      <PageHeader className="ninjadash-page-header-main" title="Progress Bar" routes={PageRoutes} />
+      <PageHeader className="invoice-page-header-main" title="Progress Bar" routes={PageRoutes} />
       <Main>
         <Row gutter={25}>
           <Col lg={12} md={12} xs={24}>

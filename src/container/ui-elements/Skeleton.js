@@ -1,8 +1,7 @@
-import React from 'react';
-import { Row, Col, Skeleton } from 'antd';
+import { Col, Row, Skeleton } from 'antd';
+import { Cards } from '../../components/cards/frame/cards-frame';
 import { PageHeader } from '../../components/page-headers/page-headers';
 import { Main } from '../styled';
-import { Cards } from '../../components/cards/frame/cards-frame';
 
 function Skeletons() {
   const PageRoutes = [
@@ -17,7 +16,7 @@ function Skeletons() {
   ];
   return (
     <>
-      <PageHeader className="ninjadash-page-header-main" title="Skeleton" routes={PageRoutes} />
+      <PageHeader className="invoice-page-header-main" title="Skeleton" routes={PageRoutes} />
       <Main>
         <Row gutter={25}>
           <Col md={12} sm={12} xs={24}>

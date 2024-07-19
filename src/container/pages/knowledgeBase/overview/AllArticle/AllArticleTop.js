@@ -5,10 +5,10 @@ import { KnowledgebaseTopWrap } from '../../style';
 function AllArticleTop() {
   return (
     <KnowledgebaseTopWrap>
-      <div className="ninjadash-knowledgetop">
-        <div className="ninjadash-knowledgetop__search--form">
+      <div className="invoice-knowledgetop">
+        <div className="invoice-knowledgetop__search--form">
           <Form name="login" layout="vertical">
-            <div className="ninjadash-knowledgetop__formInner">
+            <div className="invoice-knowledgetop__formInner">
               <Form.Item>
                 <Select defaultValue="All Products">
                   <Select.Option value="email">Email</Select.Option>
@@ -16,7 +16,7 @@ function AllArticleTop() {
                   <Select.Option value="event">Event</Select.Option>
                 </Select>
               </Form.Item>
-              <Form.Item className="ninjadash-search-input">
+              <Form.Item className="invoice-search-input">
                 <Input placeholder="Search anything" />
               </Form.Item>
               <Form.Item>

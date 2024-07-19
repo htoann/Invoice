@@ -176,7 +176,7 @@ function WizardsSix() {
 
   return (
     <div className="wizard-side-border">
-      <WizardWrapper className="ninjadash-wizard-page">
+      <WizardWrapper className="invoice-wizard-page">
         <WizardSix>
           <Steps
             isswitch

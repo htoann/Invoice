@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import { Row, Col, Form, Input, Checkbox } from 'antd';
 import UilCheck from '@iconscout/react-unicons/icons/uil-check';
+import { Checkbox, Col, Form, Input, Row } from 'antd';
+import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { WizardWrapper, WizardThree } from '../Style';
-import { Steps } from '../../../../components/steps/steps';
-import Heading from '../../../../components/heading/heading';
 import { Cards } from '../../../../components/cards/frame/cards-frame';
-import { BasicFormWrapper } from '../../../styled';
+import Heading from '../../../../components/heading/heading';
+import { Steps } from '../../../../components/steps/steps';
 import { cartGetData } from '../../../../redux/cart/actionCreator';
+import { BasicFormWrapper } from '../../../styled';
+import { WizardThree, WizardWrapper } from '../Style';
 
 function WizardsThree() {
   const dispatch = useDispatch();
@@ -71,7 +71,7 @@ function WizardsThree() {
     });
   };
   return (
-    <WizardWrapper className="ninjadash-wizard-page">
+    <WizardWrapper className="invoice-wizard-page">
       <WizardThree>
         <Steps
           isswitch

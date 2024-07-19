@@ -8,7 +8,7 @@ const ProjectHeader = Styled.div`
     @media (max-width: 767px){
         margin: 10px 0 10px;
     }
-    .ant-page-header.ninjadash-page-header-main{
+    .ant-page-header.invoice-page-header-main{
         padding: 18px 30px 15px;
     }
     .ant-page-header-heading{

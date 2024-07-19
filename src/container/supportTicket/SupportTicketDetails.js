@@ -123,7 +123,7 @@ function SupportTicketDetails() {
   return (
     <>
       <PageHeader
-        className="ninjadash-page-header-main"
+        className="invoice-page-header-main"
         title={
           <>
             <h4>Ticket Details</h4>
@@ -137,7 +137,7 @@ function SupportTicketDetails() {
             <Row gutter={15}>
               <Col xs={24}>
                 <Link
-                  className="ninjadash-back-btn"
+                  className="invoice-back-btn"
                   onClick={(e) => {
                     e.preventDefault();
                     window.history.back();
@@ -148,15 +148,15 @@ function SupportTicketDetails() {
                 </Link>
               </Col>
               <Col lg={16} xs={24}>
-                <div className="ninjadash-ticket-details">
+                <div className="invoice-ticket-details">
                   <Cards headless title={dataState[0].subject}>
                     <Row>
                       <Col md={8} xs={24}>
-                        <div className="ninjadash-ticket-author">
-                          <h4 className="ninjadash-ticket-details__top-title">Requested By:</h4>
-                          <div className="ninjadash-ticket-author__info">
+                        <div className="invoice-ticket-author">
+                          <h4 className="invoice-ticket-details__top-title">Requested By:</h4>
+                          <div className="invoice-ticket-author__info">
                             <img style={{ width: '30px' }} src={require(`../../${dataState[0].user.img}`)} alt="" />
-                            <span className="ninjadash-ticket-author__name">{dataState[0].user.name}</span>
+                            <span className="invoice-ticket-author__name">{dataState[0].user.name}</span>
                           </div>
                           <h4>Priority</h4>
                           <Select
@@ -171,9 +171,9 @@ function SupportTicketDetails() {
                         </div>
                       </Col>
                       <Col md={8} xs={24}>
-                        <div className="ninjadash-ticket-date-info">
-                          <div className="ninjadash-ticket-date-info__text">
-                            <h4 className="ninjadash-ticket-details__top-title">Created Date</h4>
+                        <div className="invoice-ticket-date-info">
+                          <div className="invoice-ticket-date-info__text">
+                            <h4 className="invoice-ticket-details__top-title">Created Date</h4>
                             <span>January 20, 2020</span>
                           </div>
                           <h4>Status</h4>
@@ -189,16 +189,16 @@ function SupportTicketDetails() {
                         </div>
                       </Col>
                       <Col md={8} xs={24}>
-                        <div className="ninjadash-ticket-date-info">
-                          <div className="ninjadash-ticket-date-info__text">
-                            <h4 className="ninjadash-ticket-details__top-title">Updated Date</h4>
+                        <div className="invoice-ticket-date-info">
+                          <div className="invoice-ticket-date-info__text">
+                            <h4 className="invoice-ticket-details__top-title">Updated Date</h4>
                             <span>February 02, 2020</span>
                           </div>
                         </div>
                       </Col>
                     </Row>
-                    <div className="ninjadash-ticket-overview">
-                      <h4 className="ninjadash-ticket-overview__title">Overview :</h4>
+                    <div className="invoice-ticket-overview">
+                      <h4 className="invoice-ticket-overview__title">Overview :</h4>
                       <p>{dataState[0].description}</p>
                     </div>
                   </Cards>
@@ -206,17 +206,17 @@ function SupportTicketDetails() {
                 <ClientConversation>
                   <Cards headless title="Conversation">
                     <List
-                      className="ninjadash-client-conversation-list"
+                      className="invoice-client-conversation-list"
                       dataSource={dataState[0].user.conversations}
                       renderItem={(item) => (
                         <List.Item key={item.email}>
                           <List.Item.Meta
-                            className="ninjadash-status-online"
+                            className="invoice-status-online"
                             avatar={<Avatar shape="square" src={require(`../../${item.img}`)} />}
                             title={<Link to="#">{item.name}</Link>}
                             description={item.chat}
                           />
-                          <span className="ninjadash-conversation-time">{item.time}</span>
+                          <span className="invoice-conversation-time">{item.time}</span>
                         </List.Item>
                       )}
                     />
@@ -250,62 +250,62 @@ function SupportTicketDetails() {
                 </ClientConversation>
               </Col>
               <Col lg={8} xs={24}>
-                <div className="ninjadash-ticket-file-system">
+                <div className="invoice-ticket-file-system">
                   <Cards bordered={false} title="File Attachment">
-                    <div className="ninjadash-ticket-file-list">
-                      <div className="ninjadash-ticket-file-item d-flex">
-                        <div className="ninjadash-ticket-file-item__info d-flex">
-                          <div className="ninjadash-ticket-file-item__logo">
+                    <div className="invoice-ticket-file-list">
+                      <div className="invoice-ticket-file-item d-flex">
+                        <div className="invoice-ticket-file-item__info d-flex">
+                          <div className="invoice-ticket-file-item__logo">
                             <img
                               style={{ width: '40px' }}
                               src={require(`../../static/img/files/zip.png`)}
                               alt="File Logo"
                             />
                           </div>
-                          <div className="ninjadash-file-item__content">
-                            <span className="ninjadash-ticket-file-name">Main-admin-design.zip</span>
-                            <span className="ninjadash-ticket-file-size">7.05 MB</span>
+                          <div className="invoice-file-item__content">
+                            <span className="invoice-ticket-file-name">Main-admin-design.zip</span>
+                            <span className="invoice-ticket-file-size">7.05 MB</span>
                           </div>
                         </div>
-                        <Link className="ninjadash-ticket-file-item__action" to="#">
+                        <Link className="invoice-ticket-file-item__action" to="#">
                           <UilUpload />
                         </Link>
                       </div>
                       {/* End of .file-list__single */}
-                      <div className="ninjadash-ticket-file-item d-flex">
-                        <div className="ninjadash-ticket-file-item__info d-flex">
-                          <div className="ninjadash-ticket-file-item__logo">
+                      <div className="invoice-ticket-file-item d-flex">
+                        <div className="invoice-ticket-file-item__info d-flex">
+                          <div className="invoice-ticket-file-item__logo">
                             <img
                               style={{ width: '40px' }}
                               src={require(`../../static/img/files/pdf.png`)}
                               alt="File Logo"
                             />
                           </div>
-                          <div className="ninjadash-file-item__content">
-                            <span className="ninjadash-ticket-file-name">Product-guidelines.pdf</span>
-                            <span className="ninjadash-ticket-file-size">522 KB</span>
+                          <div className="invoice-file-item__content">
+                            <span className="invoice-ticket-file-name">Product-guidelines.pdf</span>
+                            <span className="invoice-ticket-file-size">522 KB</span>
                           </div>
                         </div>
-                        <Link className="ninjadash-ticket-file-item__action" to="#">
+                        <Link className="invoice-ticket-file-item__action" to="#">
                           <UilUpload />
                         </Link>
                       </div>
                       {/* End of .file-list__single */}
-                      <div className="ninjadash-ticket-file-item d-flex">
-                        <div className="ninjadash-ticket-file-item__info d-flex">
-                          <div className="ninjadash-ticket-file-item__logo">
+                      <div className="invoice-ticket-file-item d-flex">
+                        <div className="invoice-ticket-file-item__info d-flex">
+                          <div className="invoice-ticket-file-item__logo">
                             <img
                               style={{ width: '40px' }}
                               src={require(`../../static/img/files/psd.png`)}
                               alt="File Logo"
                             />
                           </div>
-                          <div className="ninjadash-ticket-file-item__content">
-                            <span className="ninjadash-ticket-file-name">admin-wireframe.psd</span>
-                            <span className="ninjadash-ticket-file-size">2.05 MB</span>
+                          <div className="invoice-ticket-file-item__content">
+                            <span className="invoice-ticket-file-name">admin-wireframe.psd</span>
+                            <span className="invoice-ticket-file-size">2.05 MB</span>
                           </div>
                         </div>
-                        <Link className="ninjadash-ticket-file-item__action" to="#">
+                        <Link className="invoice-ticket-file-item__action" to="#">
                           <UilImport />
                         </Link>
                       </div>

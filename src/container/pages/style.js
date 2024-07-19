@@ -1068,7 +1068,7 @@ const ComingsoonStyleWrapper = Styled.div`
   @media only screen and (max-width: 575px){
     margin-top: 10px;
   }
-  .ninjaDash-logo{
+  .invoice-logo{
     margin-bottom: 35px;
     @media only screen and (max-width: 1150px){
       margin-bottom: 30px;
@@ -2128,7 +2128,7 @@ const SupportTopWrap = Styled.div`
   border-radius: 10px;
   box-shadow: 0 5px 20px #9299B810;
   margin-bottom: 50px;
-  .ninjadash-support-container{
+  .invoice-support-container{
     max-width: 1110px;
     margin: 0 auto;
     @media only screen and (max-width: 1599px){
@@ -2142,8 +2142,8 @@ const SupportTopWrap = Styled.div`
       padding: 30px
     }
   }
-  .ninjadash_support-content{
-    .ninjadash_support-content__title{
+  .invoice_support-content{
+    .invoice_support-content__title{
       font-size: 30px;
       font-weight: 600;
       margin-bottom: 10px;
@@ -2165,7 +2165,7 @@ const SupportTopWrap = Styled.div`
       }
     }
   }
-  .ninjadash_support-img{
+  .invoice_support-img{
     margin-top: 50px;
     @media only screen and (max-width: 1150px){
       margin-top: 0;
@@ -2190,7 +2190,7 @@ const SupportContentWrap = Styled.div`
   @media only screen and (max-width: 1199px){
     margin-bottom: 30px;
   }
-  .ninjadash-support-container{
+  .invoice-support-container{
     max-width: 1110px;
     margin: 0 auto;
     @media only screen and (max-width: 1599px){
@@ -2204,7 +2204,7 @@ const SupportContentWrap = Styled.div`
       padding: 30px
     }
   }
-  .ninjadash-support-link-item{
+  .invoice-support-link-item{
     max-width: 350px;
     margin: 0 auto 30px;
     padding: 30px;
@@ -2216,7 +2216,7 @@ const SupportContentWrap = Styled.div`
       box-shadow: 0 15px 25px #9299BB15;
       border-color: #fff;
     }
-    .ninjadash-support-link-item__icon{
+    .invoice-support-link-item__icon{
       height: 80px;
       width: 80px;
       margin: 0 auto 28px;
@@ -2234,12 +2234,12 @@ const SupportContentWrap = Styled.div`
         background-color: ${({ theme }) => theme['info-color']};
       }
     }
-    .ninjadash-support-link-item__title{
+    .invoice-support-link-item__title{
       font-size: 20px;
       font-weight: 500;
       color: ${({ theme }) => theme[theme.mainContent]['dark-text']};
     }
-    .ninjadash-support-link-item__content{
+    .invoice-support-link-item__content{
       .btn-link{
         display: flex;
         align-items: center;
@@ -2254,7 +2254,7 @@ const SupportContentWrap = Styled.div`
       }
     }
   }
-  .ninjadash_faq-block{
+  .invoice_faq-block{
     margin-top: 70px;
     @media only screen and (max-width: 1150px){
       margin-top: 20px;
@@ -2290,7 +2290,7 @@ const TermsConditionsStyle = Styled.div`
   @media only screen and (max-width: 575px){
     margin-top: 10px;
   }
-  .ninjadash-term-condition-top{
+  .invoice-term-condition-top{
     min-height: 330px;
     display: flex;
     justify-content: center;
@@ -2303,7 +2303,7 @@ const TermsConditionsStyle = Styled.div`
     @media only screen and (max-width: 475px){
       min-height: 140px;
     }
-    .ninjadash-term-condition-top__title{
+    .invoice-term-condition-top__title{
       font-size: 48px;
       font-weight: 600;
       margin-bottom: 110px;
@@ -2321,7 +2321,7 @@ const TermsConditionsStyle = Styled.div`
       }
     }
   }
-  .ninjadash-term-condition-content{
+  .invoice-term-condition-content{
     padding: 1px 50px 50px;
     background-color: ${({ theme }) => theme[theme.mainContent]['white-background']};
     box-shadow: 0 10px 30px rgba(173,181,217,.10);

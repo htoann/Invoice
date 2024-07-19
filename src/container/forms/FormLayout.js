@@ -21,7 +21,7 @@ function FormLayout() {
   ];
   return (
     <>
-      <PageHeader className="ninjadash-page-header-main" title="Form Layouts" routes={PageRoutes} />
+      <PageHeader className="invoice-page-header-main" title="Form Layouts" routes={PageRoutes} />
       <Main>
         <Row gutter={25}>
           <Col lg={12} xs={24}>

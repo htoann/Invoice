@@ -97,7 +97,7 @@ const SourceRevenueGenerated = React.memo(() => {
           <div className="ninjadsh-revenue-wrap">
             <div className="ninjadsh-revenue-chart-source">
               <div className="ninjadsh-revenue-chart-source__single">
-                <div className="ninjadsh-revenue-chart-source__icon ninjadash-twitter">
+                <div className="ninjadsh-revenue-chart-source__icon invoice-twitter">
                   <UilTwitter />
                 </div>
                 <div className="ninjadsh-revenue-chart-source__text">
@@ -106,7 +106,7 @@ const SourceRevenueGenerated = React.memo(() => {
                 </div>
               </div>
               <div className="ninjadsh-revenue-chart-source__single">
-                <div className="ninjadsh-revenue-chart-source__icon ninjadash-google">
+                <div className="ninjadsh-revenue-chart-source__icon invoice-google">
                   <ReactSVG src={GoogleIcon} />
                 </div>
                 <div className="ninjadsh-revenue-chart-source__text">
@@ -115,7 +115,7 @@ const SourceRevenueGenerated = React.memo(() => {
                 </div>
               </div>
               <div className="ninjadsh-revenue-chart-source__single">
-                <div className="ninjadsh-revenue-chart-source__icon ninjadash-facebook">
+                <div className="ninjadsh-revenue-chart-source__icon invoice-facebook">
                   <UilFacebook />
                 </div>
                 <div className="ninjadsh-revenue-chart-source__text">

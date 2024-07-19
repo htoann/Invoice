@@ -1,12 +1,9 @@
-import React from 'react';
-import { Row, Col, Statistic } from 'antd';
-import { LikeOutlined, ArrowUpOutlined, ArrowDownOutlined } from '@ant-design/icons';
+import { ArrowDownOutlined, ArrowUpOutlined, LikeOutlined } from '@ant-design/icons';
+import { Col, Row, Statistic } from 'antd';
+import { Button } from '../../components/buttons/buttons';
+import { Cards } from '../../components/cards/frame/cards-frame';
 import { PageHeader } from '../../components/page-headers/page-headers';
 import { Main } from '../styled';
-import { Cards } from '../../components/cards/frame/cards-frame';
-import { Button } from '../../components/buttons/buttons';
-
-const deadline = Date.now() + 1000 * 60 * 60 * 24 * 2 + 1000 * 30;
 
 function Statistics() {
   const PageRoutes = [
@@ -19,13 +16,10 @@ function Statistics() {
       breadcrumbName: 'Statistics',
     },
   ];
-  const onFinish = () => {
-    // console.log('finished!');
-  };
 
   return (
     <>
-      <PageHeader className="ninjadash-page-header-main" title="Statistics" routes={PageRoutes} />
+      <PageHeader className="invoice-page-header-main" title="Statistics" routes={PageRoutes} />
       <Main>
         <Row gutter={25}>
           <Col md={12} xs={24}>

@@ -1,31 +1,30 @@
-import React from 'react';
-import { Row, Col } from 'antd';
-import UilEye from '@iconscout/react-unicons/icons/uil-eye';
 import UilEdit from '@iconscout/react-unicons/icons/uil-edit';
+import UilEye from '@iconscout/react-unicons/icons/uil-eye';
 import UilTrashAlt from '@iconscout/react-unicons/icons/uil-trash-alt';
-import { Link } from 'react-router-dom';
+import { Col, Row } from 'antd';
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+import BannerCard from '../../components/cards/BannerCard';
+import BlogCard from '../../components/cards/BlogCard';
+import { Cards } from '../../components/cards/frame/cards-frame';
+import SampleCardFive from '../../components/cards/sampleCard/SampleCardFive';
+import SampleCardFour from '../../components/cards/sampleCard/SampleCardFour';
+import SampleCardOne from '../../components/cards/sampleCard/SampleCardOne';
+import SampleCardSeven from '../../components/cards/sampleCard/SampleCardSeven';
+import SampleCardSix from '../../components/cards/sampleCard/SampleCardSix';
+import SampleCardThree from '../../components/cards/sampleCard/SampleCardThree';
+import SampleCardTwo from '../../components/cards/sampleCard/SampleCardTwo';
+import { PageHeader } from '../../components/page-headers/page-headers';
+import cardData from '../../demoData/sampleCards.json';
+import ContactCard from '../contact/overview/ContactCard';
+import ProductCardsList from '../ecommerce/product/overview/ProductCardList';
+import ProductCards from '../ecommerce/product/overview/ProductCards';
+import GalleryCards from '../pages/overview/GalleryCard';
 import TeamCard from '../pages/overview/TeamCard';
 import UserCards from '../pages/overview/UserCard';
-import { PageHeader } from '../../components/page-headers/page-headers';
-import { Main, FileCardWrapper, BannerCardStyleWrap } from '../styled';
-import GridCard from '../project/overview/GridCard';
-import ProductCards from '../ecommerce/product/overview/ProductCards';
-import ProductCardsList from '../ecommerce/product/overview/ProductCardList';
-import GalleryCards from '../pages/overview/GalleryCard';
-import ContactCard from '../contact/overview/ContactCard';
-import { Cards } from '../../components/cards/frame/cards-frame';
-import BlogCard from '../../components/cards/BlogCard';
-import SampleCardTwo from '../../components/cards/sampleCard/SampleCardTwo';
-import SampleCardOne from '../../components/cards/sampleCard/SampleCardOne';
-import SampleCardThree from '../../components/cards/sampleCard/SampleCardThree';
-import SampleCardFour from '../../components/cards/sampleCard/SampleCardFour';
-import SampleCardFive from '../../components/cards/sampleCard/SampleCardFive';
-import SampleCardSix from '../../components/cards/sampleCard/SampleCardSix';
-import SampleCardSeven from '../../components/cards/sampleCard/SampleCardSeven';
-import cardData from '../../demoData/sampleCards.json';
-import BannerCard from '../../components/cards/BannerCard';
 import FileListCard from '../project/overview/FileListCard';
+import GridCard from '../project/overview/GridCard';
+import { BannerCardStyleWrap, FileCardWrapper, Main } from '../styled';
 
 const { cardOne, cardTwo, cardThree, cardFive, cardSix, cardSeven, BlogCardData } = cardData;
 const actions = (
@@ -68,7 +67,7 @@ function WidgetsCard() {
   });
   return (
     <>
-      <PageHeader className="ninjadash-page-header-main" title="Widgets Cards" routes={PageRoutes} />
+      <PageHeader className="invoice-page-header-main" title="Widgets Cards" routes={PageRoutes} />
       <Main>
         <Row gutter={25}>
           {projects.map((project) => {

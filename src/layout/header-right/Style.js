@@ -1,17 +1,17 @@
 import Styled from 'styled-components';
 
-const InfoWraper = Styled.div`
+const InfoWrapper = Styled.div`
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    .ninjadash-nav-action-link{
+    .invoice-nav-action-link{
         text-decoration: none;
         color: ${({ theme }) => theme[theme.mainContent].secondary};
         box-shadow: none;
         padding: 0px 8px;
     }
     
-    .ninjadash-nav-actions__searchbar{
+    .invoice-nav-actions__searchbar{
         display: flex;
         align-items: center;
         @media only screen and (max-width: 767px){
@@ -23,7 +23,7 @@ const InfoWraper = Styled.div`
             height: 16px;
             color: ${({ theme }) => theme[theme.mainContent]['gray-light-text']};
         }
-        .ninjadash-searchbar{
+        .invoice-searchbar{
             opacity: 0;
             visibility: visible;
             transition: .35s;
@@ -33,7 +33,7 @@ const InfoWraper = Styled.div`
             }
         }
         &.show{
-            .ninjadash-searchbar{
+            .invoice-searchbar{
                 opacity: 1;
                 visibility: visible;
                 input{
@@ -41,19 +41,19 @@ const InfoWraper = Styled.div`
                     pointer-events: all;
                 }
             }
-            .ninjadash-search-icon{
+            .invoice-search-icon{
                 display: none;
             }
-            .ninjadash-close-icon{
+            .invoice-close-icon{
                 display: block;
             }
         }
-        .ninjadash-search-icon{
+        .invoice-search-icon{
             svg{
                 color: 
             }
         }
-        .ninjadash-close-icon{
+        .invoice-close-icon{
             display: none;
         }
         a{
@@ -62,7 +62,7 @@ const InfoWraper = Styled.div`
             top: 4px;
         }
     }
-    .ninjadash-searchbar{
+    .invoice-searchbar{
         .ant-form-item{
             margin-bottom: 0;
             .ant-form-item-control-input{
@@ -78,14 +78,14 @@ const InfoWraper = Styled.div`
             }
         }
     }
-    .ninjadash-nav-actions__item{
+    .invoice-nav-actions__item{
         .ant-badge{
             .ant-badge-dot{
                 top: 4px;
                 ${({ theme }) => (theme.rtl ? 'left' : 'right')}: 11px !important;
             }
         }
-        &.ninjadash-nav-actions__message{
+        &.invoice-nav-actions__message{
             .ant-badge{
                 .ant-badge-dot{
                     background: ${({ theme }) => theme[theme.mainContent].success};
@@ -96,14 +96,14 @@ const InfoWraper = Styled.div`
             color: ${({ theme }) => theme[theme.mainContent]['gray-text']};
         }
     }
-    .ninjadash-nav-actions__message, 
-    .ninjadash-nav-actions__notification, 
-    .ninjadash-nav-actions__settings, 
-    .ninjadash-nav-actions__support, 
-    .ninjadash-nav-actions__flag-select,
-    .ninjadash-nav-actions__language,
-    .ninjadash-nav-actions__searchbar,
-    .ninjadash-nav-actions__nav-author{
+    .invoice-nav-actions__message, 
+    .invoice-nav-actions__notification, 
+    .invoice-nav-actions__settings, 
+    .invoice-nav-actions__support, 
+    .invoice-nav-actions__flag-select,
+    .invoice-nav-actions__language,
+    .invoice-nav-actions__searchbar,
+    .invoice-nav-actions__nav-author{
         display: flex;
         margin: 0 5px;
         span, a{
@@ -111,7 +111,7 @@ const InfoWraper = Styled.div`
             line-height: normal;
         }
     }
-    .ninjadash-nav-actions__nav-author{
+    .invoice-nav-actions__nav-author{
         a.ant-dropdown-trigger{
             img{
                 max-width: 20px;
@@ -188,11 +188,11 @@ const InfoWraper = Styled.div`
     }
 `;
 
-const SettingDropdwon = Styled.div`
-    .setting-dropdwon{
+const SettingDropdown = Styled.div`
+    .setting-dropdown{
         max-width: 700px;
         padding: 4px 0;
-        .setting-dropdwon__single{
+        .setting-dropdown__single{
             align-items: flex-start;
             padding: 16px 20px;
             margin-bottom: 0;
@@ -236,8 +236,8 @@ const SettingDropdwon = Styled.div`
     }
 `;
 
-const NestedDropdwon = Styled.div`
-    .support-dropdwon{
+const NestedDropdown = Styled.div`
+    .support-dropdown{
         padding: 10px 15px;
         text-align: ${({ theme }) => (!theme.rtl ? 'left' : 'right')};
         ul{
@@ -264,10 +264,10 @@ const NestedDropdwon = Styled.div`
     }
 `;
 
-const UserDropDwon = Styled.div`
-    .user-dropdwon{
+const UserDropDown = Styled.div`
+    .user-dropdown{
         max-width: 280px;
-        .user-dropdwon__info{
+        .user-dropdown__info{
             display: flex;
             align-items: flex-start;
             padding: 20px 25px;
@@ -290,7 +290,7 @@ const UserDropDwon = Styled.div`
                 }
             }
         }
-        .user-dropdwon__links{
+        .user-dropdown__links{
             a{
                 width: 100%;
                 left: 0;
@@ -313,7 +313,7 @@ const UserDropDwon = Styled.div`
                 }
             }
         }
-        .user-dropdwon__bottomAction{
+        .user-dropdown__bottomAction{
             display: inline-flex;
             align-items: center;
             justify-content: center;
@@ -347,12 +347,12 @@ const UserDropDwon = Styled.div`
 `;
 
 const UserActionDropDown = Styled.div`
-    .ninjadash-top-dropdown__title .title-text {        
+    .invoice-top-dropdown__title .title-text {        
         ${({ theme }) => (!theme.rtl ? 'margin-right' : 'margin-left')}: 10px;
     }
-    .ninjadash-top-dropdown__content {
+    .invoice-top-dropdown__content {
         figcaption{
-            .ninjadash-top-dropdownText{
+            .invoice-top-dropdownText{
                 min-width: 216px;
                 ${({ theme }) => (!theme.rtl ? 'margin-right' : 'margin-left')}: 15px;
             }
@@ -416,4 +416,4 @@ const NavAuth = Styled.span`
     }
 `;
 
-export { InfoWraper, SettingDropdwon, NestedDropdwon, UserDropDwon, UserActionDropDown, NavAuth };
+export { InfoWrapper, SettingDropdown, NestedDropdown, UserDropDown, UserActionDropDown, NavAuth };

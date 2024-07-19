@@ -45,7 +45,7 @@ function SearchResult() {
 
   return (
     <>
-      <PageHeader className="ninjadash-page-header-main" ghost title="Search Result" />
+      <PageHeader className="invoice-page-header-main" ghost title="Search Result" />
       <Main>
         <SearchResultWrapper>
           <Row gutter={25}>

@@ -42,7 +42,7 @@ function HorizontalForm() {
             </Row>
             <Row>
               <Col lg={{ span: 16, offset: 8 }} md={{ span: 15, offset: 9 }} xs={{ span: 24, offset: 0 }}>
-                <div className="ninjadash-form-action">
+                <div className="invoice-form-action">
                   <Button className="btn-signin" htmlType="submit" type="light" size="large">
                     Cancel
                   </Button>

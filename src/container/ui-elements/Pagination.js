@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import { Row, Col, Pagination } from 'antd';
+import { Col, Pagination, Row } from 'antd';
+import { useState } from 'react';
+import { Cards } from '../../components/cards/frame/cards-frame';
 import { PageHeader } from '../../components/page-headers/page-headers';
 import { Main } from '../styled';
-import { Cards } from '../../components/cards/frame/cards-frame';
 
 function Paginations() {
   const PageRoutes = [
@@ -30,7 +30,7 @@ function Paginations() {
 
   return (
     <>
-      <PageHeader className="ninjadash-page-header-main" title="Paginations" routes={PageRoutes} />
+      <PageHeader className="invoice-page-header-main" title="Paginations" routes={PageRoutes} />
       <Main>
         <Row gutter={25}>
           <Col md={12} sm={24} xs={24}>

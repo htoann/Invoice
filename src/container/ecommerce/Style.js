@@ -53,12 +53,12 @@ const SidebarSingle = Styled.div`
     .ant-slider{
         margin-bottom: 15px;
     }
-    .ninjadash-price-text{
+    .invoice-price-text{
         font-size: 14px;
         font-weight: 500;
         color: ${({ theme }) => theme[theme.mainContent]['dark-text']};
     }
-    .ninjadash-category-list{
+    .invoice-category-list{
         margin-bottom: 0;
         li{
             &:not(:last-child){
@@ -72,11 +72,11 @@ const SidebarSingle = Styled.div`
                 color: ${({ theme }) => theme[theme.mainContent]['gray-text']};
                 &:hover{
                     color: ${({ theme }) => theme[theme.mainContent]['menu-active']};
-                    .ninjadash-category-count{
+                    .invoice-category-count{
                         color: ${({ theme }) => theme[theme.mainContent]['menu-active']};
                     }
                 }
-                .ninjadash-category-count{
+                .invoice-category-count{
                     font-size: 12px;
                     color: ${({ theme }) => theme[theme.mainContent]['light-text']};
                 }
@@ -675,7 +675,7 @@ const TopToolBox = Styled.div`
             }
         }
     }
-    &.ninjadash-toolbox-seller{
+    &.invoice-toolbox-seller{
         .table-toolbox-actions{
             justify-content: flex-end !important;
             @media only screen and (max-width: 991px){

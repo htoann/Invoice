@@ -22,7 +22,7 @@ const Dropdown = ({
   action = ['hover'],
   children,
   style = {},
-  className = 'ninjadash-dropdown',
+  className = 'invoice-dropdown',
 }) => {
   return (
     <DropdownStyle

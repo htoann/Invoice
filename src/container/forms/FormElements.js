@@ -43,7 +43,7 @@ function FormElements() {
   function onChange() {}
   return (
     <>
-      <PageHeader className="ninjadash-page-header-main" title="Form Elements" routes={PageRoutes} />
+      <PageHeader className="invoice-page-header-main" title="Form Elements" routes={PageRoutes} />
       <Main>
         <Row gutter={25}>
           <Col xs={24}>
@@ -56,42 +56,42 @@ function FormElements() {
           <Col lg={12} xs={24}>
             <BasicFormWrapper>
               <Cards title="Text Input" className="mb-25">
-                <Form name="ninjadash-textarea" layout="vertical">
+                <Form name="invoice-textarea" layout="vertical">
                   <Form.Item name="basic-textarea" label="Basic Textarea">
                     <TextArea />
                   </Form.Item>
                   <Form.Item name="unresizable-textarea" label="Unresizable Textarea">
-                    <TextArea className="ninjadash-unresizable" />
+                    <TextArea className="invoice-unresizable" />
                   </Form.Item>
                 </Form>
               </Cards>
             </BasicFormWrapper>
             <BasicFormWrapper>
               <Cards title="Select" className="mb-25">
-                <Form name="ninjadash-select" layout="vertical">
+                <Form name="invoice-select" layout="vertical">
                   <Form.Item name="basic-select" label="Basic Select">
-                    <Select size="large" className="ninjadash-fullwidth-select">
+                    <Select size="large" className="invoice-fullwidth-select">
                       <Option value="1">1</Option>
                       <Option value="2">2</Option>
                       <Option value="3">3</Option>
                     </Select>
                   </Form.Item>
                   <Form.Item name="disabled-select" label="Disabled Basic Select">
-                    <Select size="large" className="ninjadash-fullwidth-select" disabled>
+                    <Select size="large" className="invoice-fullwidth-select" disabled>
                       <Option value="1">1</Option>
                       <Option value="2">2</Option>
                       <Option value="3">3</Option>
                     </Select>
                   </Form.Item>
                   <Form.Item name="multi-select" initialValue={['1', '2']} label="Multiple Select">
-                    <Select size="large" mode="multiple" className="ninjadash-fullwidth-select">
+                    <Select size="large" mode="multiple" className="invoice-fullwidth-select">
                       <Option value="1">1</Option>
                       <Option value="2">2</Option>
                       <Option value="3">3</Option>
                     </Select>
                   </Form.Item>
                   <Form.Item name="disabled-multi-select" initialValue={['1', '2']} label="Disabled Multiple Select">
-                    <Select size="large" mode="multiple" className="ninjadash-fullwidth-select" disabled>
+                    <Select size="large" mode="multiple" className="invoice-fullwidth-select" disabled>
                       <Option value="1">1</Option>
                       <Option value="2">2</Option>
                       <Option value="3">3</Option>
@@ -101,11 +101,11 @@ function FormElements() {
               </Cards>
             </BasicFormWrapper>
             <BasicFormWrapper>
-              <Cards title="File Browser" className="ninjadash-upload-form mb-25">
-                <Form name="ninjadash-upload" layout="vertical">
-                  <Upload className="ninjadash-upload-basic" {...props}>
-                    <span className="ninjadash-upload-text">Select File</span>
-                    <Link to="#" className="ninjadash-upload-browse">
+              <Cards title="File Browser" className="invoice-upload-form mb-25">
+                <Form name="invoice-upload" layout="vertical">
+                  <Upload className="invoice-upload-basic" {...props}>
+                    <span className="invoice-upload-text">Select File</span>
+                    <Link to="#" className="invoice-upload-browse">
                       Browse
                     </Link>
                   </Upload>
@@ -114,8 +114,8 @@ function FormElements() {
             </BasicFormWrapper>
             <CheckListWrap className="mb-25">
               <Cards title="Checkboxes and Radios">
-                <div className="ninjadash-check-list-wrap">
-                  <ul className="ninjadash-check-list ninjadash-check-list--left">
+                <div className="invoice-check-list-wrap">
+                  <ul className="invoice-check-list invoice-check-list--left">
                     <li>
                       <Checkbox onChange={onChange}>Checkbox</Checkbox>
                     </li>
@@ -135,7 +135,7 @@ function FormElements() {
                       </Checkbox>
                     </li>
                   </ul>
-                  <ul className="ninjadash-check-list ninjadash-check-list--right">
+                  <ul className="invoice-check-list invoice-check-list--right">
                     <li>
                       <Radio>Uncheck</Radio>
                     </li>

@@ -143,7 +143,7 @@ function Orders() {
 
   return (
     <>
-      <PageHeader className="ninjadash-page-header-main" title="Orders" routes={PageRoutes} />
+      <PageHeader className="invoice-page-header-main" title="Orders" routes={PageRoutes} />
       <Main>
         <Cards headless>
           <Row gutter={15}>

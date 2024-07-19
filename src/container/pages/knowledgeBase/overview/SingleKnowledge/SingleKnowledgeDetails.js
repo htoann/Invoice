@@ -202,8 +202,8 @@ function SingleKnowledgeDetails() {
           </li>
         </ul>
       </div>
-      <div className="ninjadash-comment-form">
-        <h4 className="ninjadash-comment-form__title">Leave comment</h4>
+      <div className="invoice-comment-form">
+        <h4 className="invoice-comment-form__title">Leave comment</h4>
         <Form name="comment" layout="vertical">
           <Row gutter="20">
             <Col sm={12} xs={24}>

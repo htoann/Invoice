@@ -159,7 +159,7 @@ function ContactTable() {
               <UilStar className={stared ? 'active' : 'deactivate'} />
             </Button>
             <Dropdown
-              className="wide-dropdwon"
+              className="wide-dropdown"
               content={
                 <>
                   <Link onClick={() => showEditModal(user, id)} to="#">

@@ -1,14 +1,12 @@
-/* eslint-disable react/jsx-no-bind */
-import React from 'react';
-import { Row, Col, message, Tooltip } from 'antd';
-import { EllipsisOutlined, UserOutlined, DownOutlined } from '@ant-design/icons';
+import { DownOutlined, EllipsisOutlined, UserOutlined } from '@ant-design/icons';
+import { Col, message, Row, Tooltip } from 'antd';
 import { Link } from 'react-router-dom';
-import { DropdownStyle, DropdownIconStyleWrapper } from './ui-elements-styled';
-import { PageHeader } from '../../components/page-headers/page-headers';
-import { Main } from '../styled';
+import { Button } from '../../components/buttons/buttons';
 import { Cards } from '../../components/cards/frame/cards-frame';
 import { Dropdown } from '../../components/dropdown/dropdown';
-import { Button } from '../../components/buttons/buttons';
+import { PageHeader } from '../../components/page-headers/page-headers';
+import { Main } from '../styled';
+import { DropdownIconStyleWrapper, DropdownStyle } from './ui-elements-styled';
 
 function Dropdowns() {
   const PageRoutes = [
@@ -27,7 +25,7 @@ function Dropdowns() {
 
   return (
     <DropdownStyle>
-      <PageHeader className="ninjadash-page-header-main" title="Dropdown" routes={PageRoutes} />
+      <PageHeader className="invoice-page-header-main" title="Dropdown" routes={PageRoutes} />
       <Main>
         <Row gutter={25}>
           <Col md={12} xs={24}>

@@ -145,7 +145,7 @@ function ViewPage() {
   return (
     <RecordViewWrapper>
       <PageHeader
-        className="ninjadash-page-header-main"
+        className="invoice-page-header-main"
         subTitle={
           <div>
             <Button className="btn-add_new" size="default" key="1" type="primary">

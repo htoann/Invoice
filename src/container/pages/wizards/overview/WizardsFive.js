@@ -192,7 +192,7 @@ function WizardsFive() {
 
   return (
     <div className="wizard-side-border">
-      <WizardWrapper className="ninjadash-wizard-page bordered-wizard">
+      <WizardWrapper className="invoice-wizard-page bordered-wizard">
         <WizardFive>
           <Steps
             isvertical

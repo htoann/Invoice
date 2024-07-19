@@ -152,7 +152,7 @@ const SampleCardSeven = ({
               <div className="more">
                 <Dropdown
                   action={['click']}
-                  className="wide-dropdwon"
+                  className="wide-dropdown"
                   content={
                     <>
                       <Link to="#">Edit</Link>
@@ -174,7 +174,7 @@ const SampleCardSeven = ({
               <div className="more">
                 <Dropdown
                   action={['click']}
-                  className="wide-dropdwon"
+                  className="wide-dropdown"
                   content={
                     <>
                       <Link to="#">Edit</Link>

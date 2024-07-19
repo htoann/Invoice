@@ -23,7 +23,7 @@ function UnIconsSvg() {
                       <Col xl={6} md={12} xs={24} key={icon}>
                         <div className="icon-single unicon align-center-v">
                           <IconTag />
-                          <span className="ninjadash-icon-text">{icon.substring(3)}</span>
+                          <span className="invoice-icon-text">{icon.substring(3)}</span>
                         </div>
                       </Col>
                     );

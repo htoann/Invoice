@@ -18,15 +18,15 @@ function TermsConditions() {
   ];
   return (
     <>
-      <PageHeader className="ninjadash-page-header-main" title="Terms & Conditions" routes={PageRoutes} />
+      <PageHeader className="invoice-page-header-main" title="Terms & Conditions" routes={PageRoutes} />
       <Main>
         <Row gutter={25}>
           <Col sm={24} xs={24}>
             <TermsConditionsStyle>
-              <div className="ninjadash-term-condition-top">
-                <h2 className="ninjadash-term-condition-top__title">Terms & Conditions</h2>
+              <div className="invoice-term-condition-top">
+                <h2 className="invoice-term-condition-top__title">Terms & Conditions</h2>
               </div>
-              <div className="ninjadash-term-condition-content">
+              <div className="invoice-term-condition-content">
                 <h3>Privacy Policy</h3>
                 <p>
                   Your privacy is important to us. Any information submitted by the buyer for completing the

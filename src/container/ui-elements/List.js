@@ -1,8 +1,7 @@
-import React from 'react';
-import { Row, Col, List } from 'antd';
+import { Col, List, Row } from 'antd';
+import { Cards } from '../../components/cards/frame/cards-frame';
 import { PageHeader } from '../../components/page-headers/page-headers';
 import { Main } from '../styled';
-import { Cards } from '../../components/cards/frame/cards-frame';
 
 function Lists() {
   const PageRoutes = [
@@ -25,7 +24,7 @@ function Lists() {
 
   return (
     <>
-      <PageHeader className="ninjadash-page-header-main" title="List" routes={PageRoutes} />
+      <PageHeader className="invoice-page-header-main" title="List" routes={PageRoutes} />
       <Main>
         <Row gutter={25}>
           <Col md={12} xs={24}>

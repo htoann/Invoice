@@ -145,7 +145,7 @@ const BannerCard = ({
             <div className="more">
               <Dropdown
                 action={['click']}
-                className="wide-dropdwon"
+                className="wide-dropdown"
                 content={
                   <>
                     <Link to="#">Edit</Link>

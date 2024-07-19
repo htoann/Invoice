@@ -51,12 +51,12 @@ const BusinessStatus = React.memo(() => {
       return bestSellerData.push({
         key,
         sellerName: (
-          <div className="ninjadash-info-element align-center-v">
-            <div className="ninjadash-info-element__media">
-              <img src={require(`../../../static/img/sellers/${img}`)} alt="ninjadash Product" />
+          <div className="invoice-info-element align-center-v">
+            <div className="invoice-info-element__media">
+              <img src={require(`../../../static/img/sellers/${img}`)} alt="invoice Product" />
             </div>
-            <div className="ninjadash-info-element__content">
-              <span className="ninjadash-info-element__text">{name}</span>
+            <div className="invoice-info-element__content">
+              <span className="invoice-info-element__text">{name}</span>
             </div>
           </div>
         ),
@@ -81,19 +81,19 @@ const BusinessStatus = React.memo(() => {
       <BorderLessHeading>
         <Cards
           isbutton={
-            <div className="ninjadash-card-nav">
+            <div className="invoice-card-nav">
               <ul>
-                <li className={sellerTab === 'today' ? 'ninjadash-active' : 'ninjadash-today'}>
+                <li className={sellerTab === 'today' ? 'invoice-active' : 'invoice-today'}>
                   <Link onClick={(e) => handleTabChange('today', e)} to="#">
                     Today
                   </Link>
                 </li>
-                <li className={sellerTab === 'week' ? 'ninjadash-active' : 'ninjadash-week'}>
+                <li className={sellerTab === 'week' ? 'invoice-active' : 'invoice-week'}>
                   <Link onClick={(e) => handleTabChange('week', e)} to="#">
                     Week
                   </Link>
                 </li>
-                <li className={sellerTab === 'month' ? 'ninjadash-active' : 'ninjadash-month'}>
+                <li className={sellerTab === 'month' ? 'invoice-active' : 'invoice-month'}>
                   <Link onClick={(e) => handleTabChange('month', e)} to="#">
                     Month
                   </Link>
@@ -104,7 +104,7 @@ const BusinessStatus = React.memo(() => {
           title="Trạng thái doanh nghiệp"
           size="large"
         >
-          <TableDefaultStyle className="ninjadash-having-header-bg">
+          <TableDefaultStyle className="invoice-having-header-bg">
             <div className="table-responsive">
               <Table columns={sellerColumns} dataSource={bestSellerData} pagination={false} />
             </div>

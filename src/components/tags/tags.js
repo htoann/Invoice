@@ -149,7 +149,7 @@ function AnimatedTags(props) {
       )}
 
       {!inputVisible && (
-        <TagStyle className="ninjadash-tag-new" onClick={showInput} style={{ borderStyle: 'dashed' }}>
+        <TagStyle className="invoice-tag-new" onClick={showInput} style={{ borderStyle: 'dashed' }}>
           <PlusOutlined /> New Tag
         </TagStyle>
       )}

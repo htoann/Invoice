@@ -4,19 +4,19 @@ const OverviewCardWrap = Styled.div`
     margin-bottom: 25px;
     .ant-card {
         background-color: ${({ theme }) => theme[theme.mainContent]['white-background']};
-        &.ninjadash-overview-halfCircle-card{
+        &.invoice-overview-halfCircle-card{
             overflow: hidden;
             .ant-card-body {
                 padding: 24px 25px 12px !important;
-                .ninjadash-overview-card {
-                    .ninjadash-overview-card__bottom {
+                .invoice-overview-card {
+                    .invoice-overview-card__bottom {
                         margin-top: 0;
-                        .ninjadash-overview-status{
+                        .invoice-overview-status{
                             background-color: transparent;
                             padding: 0;
                         }
                     }
-                    .ninjadash-overview-card__top--icon{
+                    .invoice-overview-card__top--icon{
                         position: absolute;
                         top: -9px;
                         right: -38%;
@@ -63,7 +63,7 @@ const OverviewCardWrap = Styled.div`
                             }
                         }
                     }
-                    .ninjadash-overview-card__top--content{
+                    .invoice-overview-card__top--content{
                         .ninjadahs-overview-label{
                             display: block;
                             margin-bottom: 4px;
@@ -82,12 +82,12 @@ const OverviewCardWrap = Styled.div`
         @media only screen and (max-width: 575px){
             padding: 15px !important;
         }
-        .ninjadash-overview-total {
+        .invoice-overview-total {
             color: ${({ theme }) => theme[theme.mainContent]['dark-text']};
         }
-        .ninjadash-overview-card{
-            .ninjadash-overview-card__top{
-                .ninjadash-overview-card__top--icon{
+        .invoice-overview-card{
+            .invoice-overview-card__top{
+                .invoice-overview-card__top--icon{
                     width: 58px;
                     height: 58px;
                     display: flex;
@@ -106,35 +106,35 @@ const OverviewCardWrap = Styled.div`
                         width: 24px;
                         height: 24px;
                     }
-                    &.ninjadash-primary{
+                    &.invoice-primary{
                         background-color: ${({ theme }) => theme['primary-color']}15;
                         svg path,
                         i{
                             fill: ${({ theme }) => theme['primary-color']};
                         }
                     }
-                    &.ninjadash-secondary{
+                    &.invoice-secondary{
                         background-color: ${({ theme }) => theme['secondary-color']}15;
                         svg path,
                         i{
                             fill: ${({ theme }) => theme['secondary-color']};
                         }
                     }
-                    &.ninjadash-success{
+                    &.invoice-success{
                         background-color: ${({ theme }) => theme['success-color']}15;
                         svg path,
                         i{
                             fill: ${({ theme }) => theme['success-color']};
                         }
                     }
-                    &.ninjadash-warning{
+                    &.invoice-warning{
                         background-color: ${({ theme }) => theme['warning-color']}15;
                         svg path,
                         i{
                             fill: ${({ theme }) => theme['warning-color']};
                         }
                     }
-                    &.ninjadash-info{
+                    &.invoice-info{
                         background-color: ${({ theme }) => theme['info-color']}15;
                         svg path,
                         i{
@@ -142,8 +142,8 @@ const OverviewCardWrap = Styled.div`
                         }
                     }
                 }
-                .ninjadash-overview-card__top--content{
-                    .ninjadash-overview-total{
+                .invoice-overview-card__top--content{
+                    .invoice-overview-total{
                         font-size: 30px;
                         line-height: 1.45;
                         font-weight: 600;
@@ -165,15 +165,15 @@ const OverviewCardWrap = Styled.div`
                         }
                     }
                 }
-                &.ninjadash-overview-card-theme-2{
-                    .ninjadash-overview-card__top--icon{
+                &.invoice-overview-card-theme-2{
+                    .invoice-overview-card__top--icon{
                         order: 2;
                     }
                 }
             }
-            .ninjadash-overview-card__bottom{
+            .invoice-overview-card__bottom{
                 margin-top: 12px;
-                .ninjadash-overview-status{
+                .invoice-overview-status{
                     display: inline-flex;
                     align-items: center;
                     width: 100%;
@@ -184,11 +184,11 @@ const OverviewCardWrap = Styled.div`
                     span{
                         font-size: 14px;
                     }
-                    .ninjadash-status-label{
+                    .invoice-status-label{
                         ${({ theme }) => (!theme.rtl ? 'margin-left' : 'margin-right')}: 0px;
                         color: ${({ theme }) => theme[theme.mainContent]['gray-light-text']};
                     }
-                    .ninjadash-status-rate{
+                    .invoice-status-rate{
                         display: flex;
                         align-items: center;
                         font-weight: 500;
@@ -198,13 +198,13 @@ const OverviewCardWrap = Styled.div`
                             ${({ theme }) => (!theme.rtl ? 'margin-right' : 'margin-left')}: -1px;
                         }
                     }
-                    &.ninjadash-status-growth{
-                        .ninjadash-status-rate{
+                    &.invoice-status-growth{
+                        .invoice-status-rate{
                             color: ${({ theme }) => theme['success-color']};
                         }
                     }
-                    &.ninjadash-status-down{
-                        .ninjadash-status-rate{
+                    &.invoice-status-down{
+                        .invoice-status-rate{
                             color: ${({ theme }) => theme['danger-color']}
                         }
                     }
@@ -212,7 +212,7 @@ const OverviewCardWrap = Styled.div`
             }
         }
     }
-    &.ninjadash-overview-card-support{
+    &.invoice-overview-card-support{
         .ant-card-body{
             padding: 40.5px 25px !important;
         }
@@ -220,7 +220,7 @@ const OverviewCardWrap = Styled.div`
 `;
 
 const OverviewCardMeshWrap = Styled.div`
-    &.ninjadash-overview-card-single{
+    &.invoice-overview-card-single{
         position: relative;
         margin-bottom: 25px;
         &:not(:last-child){
@@ -245,11 +245,11 @@ const OverviewCardMeshWrap = Styled.div`
                 }
             }
         }
-        &.ninjadash-icon-circle{
-            .ninjadash-overview-card__left{
-                .ninjadash-overview-card__left--icon{
+        &.invoice-icon-circle{
+            .invoice-overview-card__left{
+                .invoice-overview-card__left--icon{
                     border-radius: 50%;
-                    &.ninjadash-primary{
+                    &.invoice-primary{
                         background-color: ${({ theme }) => theme['primary-color']};
                         svg path,
                         i{
@@ -257,7 +257,7 @@ const OverviewCardMeshWrap = Styled.div`
                             color: ${({ theme }) => theme[theme.mainContent]['white-text']};
                         }
                     }
-                    &.ninjadash-secondary{
+                    &.invoice-secondary{
                         background-color: ${({ theme }) => theme['secondary-color']};
                         svg path,
                         i{
@@ -265,7 +265,7 @@ const OverviewCardMeshWrap = Styled.div`
                             color: ${({ theme }) => theme[theme.mainContent]['white-text']};
                         }
                     }
-                    &.ninjadash-info{
+                    &.invoice-info{
                         background-color: ${({ theme }) => theme['info-color']};
                         svg path,
                         i{
@@ -273,7 +273,7 @@ const OverviewCardMeshWrap = Styled.div`
                             color: ${({ theme }) => theme[theme.mainContent]['white-text']};
                         }
                     }
-                    &.ninjadash-success{
+                    &.invoice-success{
                         background-color: ${({ theme }) => theme['success-color']};
                         svg path,
                         i{
@@ -281,7 +281,7 @@ const OverviewCardMeshWrap = Styled.div`
                             color: ${({ theme }) => theme[theme.mainContent]['white-text']};
                         }
                     }
-                    &.ninjadash-warning{
+                    &.invoice-warning{
                         background-color: ${({ theme }) => theme['warning-color']};
                         svg path,
                         i{
@@ -320,7 +320,7 @@ const OverviewCardMeshWrap = Styled.div`
             }
         }
         &:not(:last-child){
-            .ninjadash-overview-card{
+            .invoice-overview-card{
                 position: relative;
                 &:after{
                     position: absolute;
@@ -335,10 +335,10 @@ const OverviewCardMeshWrap = Styled.div`
         }
     }
 
-    .ninjadash-overview-card{
+    .invoice-overview-card{
         display: flex;
-        .ninjadash-overview-card__left{
-            .ninjadash-overview-card__left--icon{
+        .invoice-overview-card__left{
+            .invoice-overview-card__left--icon{
                 display: flex;
                 align-items: center;
                 justify-content: center;
@@ -370,7 +370,7 @@ const OverviewCardMeshWrap = Styled.div`
                         height: 20px;
                     }
                 }
-                &.ninjadash-primary{
+                &.invoice-primary{
                     background-color: ${({ theme }) => theme['primary-color']}15;
                     svg path,
                     i{
@@ -378,7 +378,7 @@ const OverviewCardMeshWrap = Styled.div`
                         color: ${({ theme }) => theme['primary-color']};
                     }
                 }
-                &.ninjadash-secondary{
+                &.invoice-secondary{
                     background-color: ${({ theme }) => theme['secondary-color']}15;
                     svg path,
                     i{
@@ -386,7 +386,7 @@ const OverviewCardMeshWrap = Styled.div`
                         color: ${({ theme }) => theme['secondary-color']};
                     }
                 }
-                &.ninjadash-success{
+                &.invoice-success{
                     background-color: ${({ theme }) => theme['success-color']}15;
                     svg path,
                     i{
@@ -394,7 +394,7 @@ const OverviewCardMeshWrap = Styled.div`
                         color: ${({ theme }) => theme['success-color']};
                     }
                 }
-                &.ninjadash-warning{
+                &.invoice-warning{
                     background-color: ${({ theme }) => theme['warning-color']}15;
                     svg path,
                     i{
@@ -402,7 +402,7 @@ const OverviewCardMeshWrap = Styled.div`
                         color: ${({ theme }) => theme['warning-color']};
                     }
                 }
-                &.ninjadash-info{
+                &.invoice-info{
                     background-color: ${({ theme }) => theme['info-color']}15;
                     svg path,
                     i{
@@ -410,7 +410,7 @@ const OverviewCardMeshWrap = Styled.div`
                         color: ${({ theme }) => theme['info-color']};
                     }
                 }
-                &.ninjadash-danger{
+                &.invoice-danger{
                     background-color: ${({ theme }) => theme['danger-color']}15;
                     svg path,
                     i{
@@ -420,14 +420,14 @@ const OverviewCardMeshWrap = Styled.div`
                 }
             }
         }
-        .ninjadash-overview-card__right{
+        .invoice-overview-card__right{
             display: flex;
-            .ninjadash-overview-card__right--content{
+            .invoice-overview-card__right--content{
                 ${({ theme }) => (!theme.rtl ? 'margin-right' : 'margin-left')}: 25px;
                 @media only screen and (max-width: 1399px){
                     ${({ theme }) => (!theme.rtl ? 'margin-right' : 'margin-left')}: 15px;
                 }
-                .ninjadash-overview-total{
+                .invoice-overview-total{
                     font-size: 30px;
                     line-height: 1.2;
                     font-weight: 600;
@@ -448,19 +448,19 @@ const OverviewCardMeshWrap = Styled.div`
                     color: ${({ theme }) => theme[theme.mainContent]['gray-text']}
                 }
             }
-            .ninjadash-overview-status{
+            .invoice-overview-status{
                 margin-top: 6px;
-                &.ninjadash-status-growth{
-                    .ninjadash-status-rate{
+                &.invoice-status-growth{
+                    .invoice-status-rate{
                         color: ${({ theme }) => theme['success-color']};
                     }
                 }
-                &.ninjadash-status-down{
-                    .ninjadash-status-rate{
+                &.invoice-status-down{
+                    .invoice-status-rate{
                         color: ${({ theme }) => theme['danger-color']};
                     }
                 }
-                .ninjadash-status-rate{
+                .invoice-status-rate{
                     display: flex;
                     align-items: center;
                     font-size: 14px;
@@ -484,7 +484,7 @@ const InfoCardStyle = Styled.article`
         margin-bottom: 25px;
         box-shadow: 0px 5px 20px ${theme['extra-light-color']}05;
 
-        .ninjadash-infocard-icon {
+        .invoice-infocard-icon {
             width: 58px;
             height: 58px;
             background-color: ${theme[`${type}-color`]}20;
@@ -502,12 +502,12 @@ const InfoCardStyle = Styled.article`
 
         }
 
-        .ninjadash-infocard-text {
+        .invoice-infocard-text {
             font-size: 16px;
             margin-bottom: 0;
             color: ${theme[theme.mainContent]['gray-text']};
         }
-        .ninjadash-infocard-label {
+        .invoice-infocard-label {
             font-size: 30px;
             font-weight: 500;
             margin-bottom: 4px;
@@ -517,7 +517,7 @@ const InfoCardStyle = Styled.article`
 `;
 
 const NewsletterStyle = Styled.figure`
-    &.ninjadash-newsletter-theme-2{
+    &.invoice-newsletter-theme-2{
         min-height: 135px;
         padding: 15px 0 15px 25px;
         justify-content: flex-start;
@@ -591,7 +591,7 @@ const NewsletterStyle = Styled.figure`
 `;
 
 const CourseCardWrap = Styled.div`
-    &.ninjadash-course-card-single{
+    &.invoice-course-card-single{
         margin-bottom: 25px;
         .ant-card{
             background-color: ${({ theme }) => theme[theme.mainContent]['white-background']};
@@ -599,7 +599,7 @@ const CourseCardWrap = Styled.div`
         .ant-card-body{
             padding: 18px !important;
         }
-        .ninjadash-course-card-thumbnail{
+        .invoice-course-card-thumbnail{
             border-radius: 10px;
             margin-bottom: 15px;
             img{
@@ -610,7 +610,7 @@ const CourseCardWrap = Styled.div`
                 }
             }
         }
-        .ninjadash-course-card-title{
+        .invoice-course-card-title{
             font-size: 20px;
             margin-bottom: 12px;
             font-weight: 600;
@@ -624,7 +624,7 @@ const CourseCardWrap = Styled.div`
                 }
             }
         }
-        .ninjadash-course-card-author{
+        .invoice-course-card-author{
             display: flex;
             align-items: center;
             margin-bottom: 20px;
@@ -632,16 +632,16 @@ const CourseCardWrap = Styled.div`
                 max-width: 30px;
                 ${({ theme }) => (!theme.rtl ? 'margin-right' : 'margin-left')}: 10px;
             }
-            .ninjadash-course-card-author__name{
+            .invoice-course-card-author__name{
                 font-size: 15px;
                 color: ${({ theme }) => theme[theme.mainContent]['gray-light-text']};
             }
         }
-        .ninjadash-course-card-meta{
+        .invoice-course-card-meta{
             display: flex;
             justify-content: space-between;
             align-items: center;
-            .ninjadash-course-card-meta__pricing{
+            .invoice-course-card-meta__pricing{
                 font-size: 20px;
                 font-weight: 600;
                 color: ${({ theme }) => theme['success-color']};
@@ -650,7 +650,7 @@ const CourseCardWrap = Styled.div`
                 }
             }
         }
-        .ninjadash-course-card-meta__right{
+        .invoice-course-card-meta__right{
             display: flex;
             align-items: center;
             margin: -5px;
@@ -706,16 +706,16 @@ const ProfileCardWrapper = Styled.figure`
     }
 
     figcaption {
-        .ninjadash-profile-top-img {
+        .invoice-profile-top-img {
             position: static;
             width: 100%;
         }
     }
 
-    .ninjadash-profile-content{
+    .invoice-profile-content{
         padding: 0 0 45px;
         margin-top: -75px;
-        .ninjadash-profile-content__img{
+        .invoice-profile-content__img{
             margin-bottom: 10px;
             img{
                 padding: 5px;
@@ -724,18 +724,18 @@ const ProfileCardWrapper = Styled.figure`
                 background-color: ${theme[theme.mainContent]['white-background']};
             }
         }
-        .ninjadash-profile-name{
+        .invoice-profile-name{
             font-size: 18px;
             font-weight: 600;
             margin-bottom: 2px;
             color: ${theme[theme.mainContent]['dark-text']};
         }
-        .ninjadash-profile-text{
+        .invoice-profile-text{
             margin-bottom: 18px;
             color: ${theme[theme.mainContent]['gray-light-text']};
         }
     }
-    .ninjadash-profile-socials{
+    .invoice-profile-socials{
         display: flex;
         align-items: center;
         justify-content: center !important;
@@ -747,18 +747,18 @@ const ProfileCardWrapper = Styled.figure`
                 color: #fff;
                 fill: #fff;
             }
-            &.ninjadash-facebook{
+            &.invoice-facebook{
                 a{
                     background-color: ${theme['primary-color']};
                 }
                 
             }
-            &.ninjadash-twitter{
+            &.invoice-twitter{
                 a{
                     background-color: ${theme['secondary-color']};
                 }
             }
-            &.ninjadash-dribble{
+            &.invoice-dribble{
                 a{
                     background-color: ${theme['info-color']};
                 }
@@ -779,20 +779,20 @@ const ProfileCardWrapper = Styled.figure`
 `;
 
 const BlogCardStyleWrap = Styled.figure`
-    .ninjadash-blog{
+    .invoice-blog{
         padding: 25px;
         border-radius: 10px;
         box-shadow: 0 5px 20px rgba(173,181,217,.05);
         margin-bottom: 25px;
         background-color: ${({ theme }) => theme[theme.mainContent]['white-background']};
         &:hover{
-            .ninjadash-blog-thumb{
+            .invoice-blog-thumb{
                 &:after{
                     height: 100%;
                 }
             }
         }
-        .ninjadash-blog-thumb{
+        .invoice-blog-thumb{
             position: relative;
             &:after{
                 position:  absolute;
@@ -806,37 +806,37 @@ const BlogCardStyleWrap = Styled.figure`
                 background-color: ${({ theme }) => theme['dark-color']}15;
             }
         }
-        &.ninjadash-blog-style-3,
-        &.ninjadash-blog-style-2{
+        &.invoice-blog-style-3,
+        &.invoice-blog-style-2{
             padding: 0px;
-            .ninjadash-blog__title{
+            .invoice-blog__title{
                 margin: 15px 0 12px;
             }
             figcaption{
                 padding: 0 25px 25px;
             }
-            .ninjadash-blog-thumb{
+            .invoice-blog-thumb{
                 &:after{
                     border-radius: 10px 10px 0 0;
                 }
             }
-            .ninjadash-blog__image{
+            .invoice-blog__image{
                 border-radius: 10px 10px 0 0;
             }
         }
-        .ninjadash-blog__image{
+        .invoice-blog__image{
             width: 100%;
             border-radius: 10px;
         }
-        .ninjadash-blog-meta{
+        .invoice-blog-meta{
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-top: 10px;
-            &.ninjadash-blog-meta-theme-3{
+            &.invoice-blog-meta-theme-3{
                 justify-content: flex-start;
                 margin: 7px -3px -3px;
-                .ninjadash-blog-meta__single{
+                .invoice-blog-meta__single{
                     position: relative;
                     margin: 3px;
                     &:before{
@@ -857,12 +857,12 @@ const BlogCardStyleWrap = Styled.figure`
                 }
             }
         }
-        .ninjadash-blog-meta__single{
+        .invoice-blog-meta__single{
             display: inline-block;
             font-size: 15px;
             color: ${({ theme }) => theme[theme.mainContent]['light-text']};
         }
-        .ninjadash-blog__title{
+        .invoice-blog__title{
             font-size: 20px;
             font-weight: 600;
             margin: 10px 0 5px;
@@ -873,33 +873,33 @@ const BlogCardStyleWrap = Styled.figure`
                 }
             }
         }
-        .ninjadash-blog__text{
+        .invoice-blog__text{
             font-size: 16px;
             margin-bottom: 15px;
             color: ${({ theme }) => theme[theme.mainContent]['gray-text']};
         }
-        .ninjadash-blog__bottom{
+        .invoice-blog__bottom{
             display: flex;
             justify-content: space-between;
         }
-        .ninjadash-blog__author{
-            .ninjadash-blog__author-img{
+        .invoice-blog__author{
+            .invoice-blog__author-img{
                 max-width: 32px;
                 border-radius: 50%;
             }
-            .ninjadash-blog__author-name{
+            .invoice-blog__author-name{
                 font-size: 15px;
                 ${({ theme }) => (!theme.rtl ? 'margin-left' : 'margin-right')}: 10px;
                 color: ${({ theme }) => theme[theme.mainContent]['gray-light-text']};
             }
         }
-        .ninjadash-blog__meta{
+        .invoice-blog__meta{
             margin: 0;
             padding: 0;
             display: flex;
             align-items: center;
             margin: -9px;
-            .ninjadash-blog__meta--item{
+            .invoice-blog__meta--item{
                 margin: 9px;
                 span{
                     font-size: 13px;

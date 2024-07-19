@@ -225,7 +225,7 @@ const BannerWrapper = Styled.figure`
             color: #fff;
         }
     }
-    &.ninjadash-congratulation-banner{
+    &.invoice-congratulation-banner{
         
         figcaption {
             h2{
@@ -247,11 +247,11 @@ const BannerWrapper = Styled.figure`
         }
     }
 
-    &.ninjadash-card-banner{
+    &.invoice-card-banner{
         .ant-card{
             margin-bottom: 0 !important;
             background-image: linear-gradient(to right top,#5840ff,#0082ff,#0af,#00caff,#00e4ec);
-            .ninjadash-card-banner-content{
+            .invoice-card-banner-content{
                 min-height: 300px;
                 figcaption{
                     h2{
@@ -269,9 +269,9 @@ const BannerWrapper = Styled.figure`
             }
         }
     }
-    &.ninjadash-top-banner{
+    &.invoice-top-banner{
         margin-top: 38px;
-        &.ninjadash-top-banner-corporate{
+        &.invoice-top-banner-corporate{
             .ant-card{
                 background-color: ${({ theme }) => theme[theme.mainContent]['white-background']};
                 .ant-card-body{
@@ -304,10 +304,10 @@ const BannerWrapper = Styled.figure`
                     }
                 }
             }
-            .ninjadash-top-banner__title{
+            .invoice-top-banner__title{
                 color: ${({ theme }) => theme[theme.mainContent]['dark-text']};
             }
-            .ninjadash-top-banner__text{
+            .invoice-top-banner__text{
                 font-size: 16px;
                 color: ${({ theme }) => theme[theme.mainContent]['dark-text']};
             }
@@ -335,7 +335,7 @@ const BannerWrapper = Styled.figure`
             }
         }
         
-        .ninjadash-top-banner__title{
+        .invoice-top-banner__title{
             font-size: 30px;
             font-weight: 600;
             color: ${({ theme }) => theme['white-color']};
@@ -343,7 +343,7 @@ const BannerWrapper = Styled.figure`
                 font-size: 24px;
             }
         }
-        .ninjadash-top-banner__text{
+        .invoice-top-banner__text{
             font-size: 15px;
             max-width: 610px;
             opacity: 1;
@@ -356,7 +356,7 @@ const BannerWrapper = Styled.figure`
                 max-width: 100%;
             }
         }
-        .ninjadash-top-banner__action{
+        .invoice-top-banner__action{
             border-radius: 4px;
         }
     }

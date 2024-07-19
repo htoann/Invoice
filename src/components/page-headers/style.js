@@ -6,7 +6,7 @@ const PageHeaderStyle = Styled(PageHeader)`
   &.ant-page-header {  
     padding: 16px 24px 25px;  
     background-color: ${({ theme }) => theme[theme.mainContent]['main-background-light']};
-    &.ninjadash-page-header-main{
+    &.invoice-page-header-main{
       background-color: ${({ theme }) => theme[theme.mainContent]['main-background']};
     }
     &.ant-page-header-ghost{
@@ -43,7 +43,7 @@ const PageHeaderStyle = Styled(PageHeader)`
         .ant-breadcrumb-separator{
           display: flex;
           align-items: center;
-          .ninjadash-seperator{
+          .invoice-seperator{
             display: block;
             width: 4px;
             height: 4px;
@@ -81,8 +81,8 @@ const PageHeaderStyle = Styled(PageHeader)`
   }
 
   /* Main Page Header Style */
-  &.ninjadash-pageheader-with-back{
-    &.ninjadash-page-header-main{
+  &.invoice-pageheader-with-back{
+    &.invoice-page-header-main{
       padding: 32px 30px 25px;
     }
     .ant-page-header-heading-title{
@@ -102,7 +102,7 @@ const PageHeaderStyle = Styled(PageHeader)`
       }
     }
   }
-  &.ninjadash-page-header-main{
+  &.invoice-page-header-main{
     display: flex;
     justify-content: space-between;
     align-items: flex-start;

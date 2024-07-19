@@ -118,7 +118,7 @@ function Banner5() {
 
 function Banner8() {
   return (
-    <BannerWrapper className="ninjadash-congratulation-banner">
+    <BannerWrapper className="invoice-congratulation-banner">
       <Cards
         bodyStyle={{
           borderRadius: '10px',
@@ -128,7 +128,7 @@ function Banner8() {
         }}
         headless
       >
-        <Figure8 className="ninjadash-congratulation-banner-content theme-wide">
+        <Figure8 className="invoice-congratulation-banner-content theme-wide">
           <img src={require('../../static/img/trophy.png')} alt="" />
           <figcaption>
             <h2>Congratulations Jhon!</h2>
@@ -145,7 +145,7 @@ function Banner8() {
 
 function Banner9() {
   return (
-    <BannerWrapper className="ninjadash-card-banner">
+    <BannerWrapper className="invoice-card-banner">
       <Cards
         bodyStyle={{
           borderRadius: '10px',
@@ -155,7 +155,7 @@ function Banner9() {
         }}
         headless
       >
-        <Figure8 className="ninjadash-card-banner-content theme-wide">
+        <Figure8 className="invoice-card-banner-content theme-wide">
           <img src={require('../../static/img/trophy-2.png')} alt="" />
           <figcaption>
             <h2>Congratulations Jhon!</h2>
@@ -345,7 +345,7 @@ function PageHeaderBanner({
 }) {
   return (
     <BannerWrapper
-      className={type === 'corporate' ? 'ninjadash-top-banner ninjadash-top-banner-corporate' : 'ninjadash-top-banner'}
+      className={type === 'corporate' ? 'invoice-top-banner invoice-top-banner-corporate' : 'invoice-top-banner'}
     >
       <Cards headless>
         <PageHeader className="theme-wide">
@@ -356,9 +356,9 @@ function PageHeaderBanner({
           )}
 
           <figcaption>
-            <h2 className="ninjadash-top-banner__title">{title}</h2>
-            <p className="ninjadash-top-banner__text">{subtitle}</p>
-            <Button className="ninjadash-top-banner__action" size="large" type="primary">
+            <h2 className="invoice-top-banner__title">{title}</h2>
+            <p className="invoice-top-banner__text">{subtitle}</p>
+            <Button className="invoice-top-banner__action" size="large" type="primary">
               Learn More
             </Button>
           </figcaption>

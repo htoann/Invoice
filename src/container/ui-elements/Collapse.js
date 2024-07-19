@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import { Row, Col, Collapse } from 'antd';
 import { RightOutlined } from '@ant-design/icons';
+import { Col, Collapse, Row } from 'antd';
+import { useState } from 'react';
+import { Cards } from '../../components/cards/frame/cards-frame';
 import { PageHeader } from '../../components/page-headers/page-headers';
 import { Main } from '../styled';
-import { Cards } from '../../components/cards/frame/cards-frame';
 
 const { Panel } = Collapse;
 function Collapses() {
@@ -32,7 +32,7 @@ function Collapses() {
 
   return (
     <>
-      <PageHeader className="ninjadash-page-header-main" title="Collapse" routes={PageRoutes} />
+      <PageHeader className="invoice-page-header-main" title="Collapse" routes={PageRoutes} />
       <Main>
         <Row gutter={25}>
           <Col md={12}>

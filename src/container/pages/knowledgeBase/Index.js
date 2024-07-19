@@ -25,13 +25,13 @@ function KnowledgeBase() {
   const path = '/knowledgebase';
   return (
     <>
-      <PageHeader className="ninjadash-page-header-main" title="Knowledgebase" routes={PageRoutes} />
+      <PageHeader className="invoice-page-header-main" title="Knowledgebase" routes={PageRoutes} />
       <Main>
         <KnowledgeBaseTop />
         <KnowledgebaseArticleWrap>
           <div className="knowledgebase-article-container">
-            <ArticleTabWrap className="ninjadash-article-tab">
-              <div className="ninjadash-article-tab__menu">
+            <ArticleTabWrap className="invoice-article-tab">
+              <div className="invoice-article-tab__menu">
                 <nav>
                   <ul>
                     <li>
@@ -65,13 +65,13 @@ function KnowledgeBase() {
               </div>
             </ArticleTabWrap>
             <PopularArticleWrap>
-              <div className="ninjadash-popular-article ninjadash-popular-article-container">
-                <h2 className="ninjadash-popular-article__title">Popular articles</h2>
+              <div className="invoice-popular-article invoice-popular-article-container">
+                <h2 className="invoice-popular-article__title">Popular articles</h2>
               </div>
             </PopularArticleWrap>
             <CtaWrap>
-              <div className="ninjadash-knowledgebase-cta">
-                <h2 className="ninjadash-knowledgebase-cta__title">Still no luck? We can help!</h2>
+              <div className="invoice-knowledgebase-cta">
+                <h2 className="invoice-knowledgebase-cta__title">Still no luck? We can help!</h2>
                 <p>Contact us and we’ll get back to you as soon as possible.</p>
                 <Button className="btn-rqSubmit" type="primary" size="large">
                   Submit a Request

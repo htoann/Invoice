@@ -25,68 +25,68 @@ function DashboardBase() {
   ];
   return (
     <>
-      <PageHeader className="ninjadash-page-header-main" title="Theme Configuration" routes={PageRoutes} />
+      <PageHeader className="invoice-page-header-main" title="Theme Configuration" routes={PageRoutes} />
       <Main>
         <Row gutter={15}>
           <Col xs={24}>
             <DashboardBaseStyleWrap>
               <Cards headless title="Theme Colors" size="large">
-                <div className="ninjadash-configuration-box align-center-v">
-                  <div className="ninjadash-configuration-box__item">
+                <div className="invoice-configuration-box align-center-v">
+                  <div className="invoice-configuration-box__item">
                     <Button size="default" type="primary">
                       Primary
                     </Button>
                     <span className="ninjadah-color-code">#FB3586</span>
                   </div>
-                  <div className="ninjadash-configuration-box__item">
+                  <div className="invoice-configuration-box__item">
                     <Button size="default" type="secondary">
                       Secondary
                     </Button>
                     <span className="ninjadah-color-code">#5840FF</span>
                   </div>
-                  <div className="ninjadash-configuration-box__item">
+                  <div className="invoice-configuration-box__item">
                     <Button size="default" type="success">
                       Success
                     </Button>
                     <span className="ninjadah-color-code">#01B81A</span>
                   </div>
-                  <div className="ninjadash-configuration-box__item">
+                  <div className="invoice-configuration-box__item">
                     <Button size="default" type="info">
                       Info
                     </Button>
                     <span className="ninjadah-color-code">#00AAFF</span>
                   </div>
-                  <div className="ninjadash-configuration-box__item">
+                  <div className="invoice-configuration-box__item">
                     <Button size="default" type="warning">
                       Warning
                     </Button>
                     <span className="ninjadah-color-code">#FA8B0C</span>
                   </div>
-                  <div className="ninjadash-configuration-box__item">
+                  <div className="invoice-configuration-box__item">
                     <Button size="default" type="danger">
                       Danger
                     </Button>
                     <span className="ninjadah-color-code">#FF0F0F</span>
                   </div>
-                  <div className="ninjadash-configuration-box__item">
+                  <div className="invoice-configuration-box__item">
                     <Button size="default" type="dark">
                       Dark
                     </Button>
                     <span className="ninjadah-color-code">#090E30</span>
                   </div>
-                  <div className="ninjadash-configuration-box__item">
+                  <div className="invoice-configuration-box__item">
                     <Button size="default" type="gray">
                       Gray
                     </Button>
                     <span className="ninjadah-color-code">#525768</span>
                   </div>
-                  <div className="ninjadash-configuration-box__item">
+                  <div className="invoice-configuration-box__item">
                     <Button size="default" type="light">
                       Light
                     </Button>
                     <span className="ninjadah-color-code">#8C90A4</span>
                   </div>
-                  <div className="ninjadash-configuration-box__item">
+                  <div className="invoice-configuration-box__item">
                     <Button size="default" type="extra-light">
                       Extra Light
                     </Button>
@@ -99,50 +99,50 @@ function DashboardBase() {
           <Col xs={24}>
             <DashboardBaseStyleWrap>
               <Cards headless title="Hover Colors" size="large">
-                <div className="ninjadash-configuration-box ninjadash-configuration-box-button-hover align-center-v">
-                  <div className="ninjadash-configuration-box__item">
+                <div className="invoice-configuration-box invoice-configuration-box-button-hover align-center-v">
+                  <div className="invoice-configuration-box__item">
                     <Button size="default" type="primary">
                       Primary
                     </Button>
                     <span className="ninjadah-color-code">#4347D9</span>
                   </div>
-                  <div className="ninjadash-configuration-box__item">
+                  <div className="invoice-configuration-box__item">
                     <Button size="default" type="secondary">
                       Secondary
                     </Button>
                     <span className="ninjadah-color-code">#E34A87</span>
                   </div>
-                  <div className="ninjadash-configuration-box__item">
+                  <div className="invoice-configuration-box__item">
                     <Button size="default" type="success">
                       Success
                     </Button>
                     <span className="ninjadah-color-code">#0CAB7C</span>
                   </div>
-                  <div className="ninjadash-configuration-box__item">
+                  <div className="invoice-configuration-box__item">
                     <Button size="default" type="info">
                       Info
                     </Button>
                     <span className="ninjadah-color-code">#0D79DF</span>
                   </div>
-                  <div className="ninjadash-configuration-box__item">
+                  <div className="invoice-configuration-box__item">
                     <Button size="default" type="warning">
                       Warning
                     </Button>
                     <span className="ninjadah-color-code">#D47407</span>
                   </div>
-                  <div className="ninjadash-configuration-box__item">
+                  <div className="invoice-configuration-box__item">
                     <Button size="default" type="danger">
                       Danger
                     </Button>
                     <span className="ninjadah-color-code">#E30D0F</span>
                   </div>
-                  <div className="ninjadash-configuration-box__item">
+                  <div className="invoice-configuration-box__item">
                     <Button size="default" type="dark">
                       Dark
                     </Button>
                     <span className="ninjadah-color-code">#131623</span>
                   </div>
-                  <div className="ninjadash-configuration-box__item">
+                  <div className="invoice-configuration-box__item">
                     <Button size="default" type="gray">
                       Gray
                     </Button>
@@ -304,7 +304,7 @@ function DashboardBase() {
                 }
                 size="large"
               >
-                <div className="ninjadash-heading-typography">
+                <div className="invoice-heading-typography">
                   <Row gutter={15}>
                     <Col xs={24}>
                       <Row align="middle">
@@ -410,16 +410,16 @@ function DashboardBase() {
           <Col xs={24}>
             <DashboardBaseStyleWrap>
               <Cards headless size="large">
-                <div className="ninjadash-body-typography">
-                  <div className="ninjadash-body-typography__top">
+                <div className="invoice-body-typography">
+                  <div className="invoice-body-typography__top">
                     <Heading as="h5">Body Text Normal</Heading>
-                    <ul className="ninjadash-typo-list">
+                    <ul className="invoice-typo-list">
                       <li>Font Size - 15px</li>
                       <li>Font weight - 400</li>
                       <li>Line height - 25px</li>
                     </ul>
                   </div>
-                  <div className="ninjadash-body-typography__text">
+                  <div className="invoice-body-typography__text">
                     <p>
                       Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
                       labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo
@@ -428,16 +428,16 @@ function DashboardBase() {
                     </p>
                   </div>
                 </div>
-                <div className="ninjadash-body-typography typo-small">
-                  <div className="ninjadash-body-typography__top">
+                <div className="invoice-body-typography typo-small">
+                  <div className="invoice-body-typography__top">
                     <Heading as="h5">Body Text Small</Heading>
-                    <ul className="ninjadash-typo-list">
+                    <ul className="invoice-typo-list">
                       <li>Font Size - 14px</li>
                       <li>Font weight - 400</li>
                       <li>Line height - 22px</li>
                     </ul>
                   </div>
-                  <div className="ninjadash-body-typography__text">
+                  <div className="invoice-body-typography__text">
                     <p>
                       Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
                       labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo
@@ -446,16 +446,16 @@ function DashboardBase() {
                     </p>
                   </div>
                 </div>
-                <div className="ninjadash-body-typography typo-big">
-                  <div className="ninjadash-body-typography__top">
+                <div className="invoice-body-typography typo-big">
+                  <div className="invoice-body-typography__top">
                     <Heading as="h5">Body Text Big</Heading>
-                    <ul className="ninjadash-typo-list">
+                    <ul className="invoice-typo-list">
                       <li>Font Size - 16px</li>
                       <li>Font weight - 400</li>
                       <li>Line height - 27px</li>
                     </ul>
                   </div>
-                  <div className="ninjadash-body-typography__text">
+                  <div className="invoice-body-typography__text">
                     <p>
                       Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
                       labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo

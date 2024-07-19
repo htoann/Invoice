@@ -86,29 +86,29 @@ function TaskList({ taskStatus, header, description, taskLimit }) {
 
   return (
     <TaskListStyle>
-      <div className="ninjadash-tassklist-wrap">
+      <div className="invoice-tassklist-wrap">
         {header === '' ? (
           ''
         ) : (
-          <div className="ninjadash-tasklist-head">
-            <h2 className="ninjadash-tasklist-head__title">{header}</h2>
+          <div className="invoice-tasklist-head">
+            <h2 className="invoice-tasklist-head__title">{header}</h2>
           </div>
         )}
 
-        <div className="ninjadash-tasklist-body">
+        <div className="invoice-tasklist-body">
           {/* Favourite Task */}
           {taskStatus === 'favourite' ? (
             task.filter((item) => item.favourite).length > 0 ? (
-              <ul className="ninjadash-tasklist">
+              <ul className="invoice-tasklist">
                 {task
                   .slice(0, taskLimit || task.length)
                   .sort((a, b) => b.id - a.id)
                   .filter((item) => item.favourite)
                   .map((item, i) => {
                     return (
-                      <li className="ninjadash-tasklist-item" key={i}>
-                        <div className="ninjadash-tasklist-item__content">
-                          <div className="ninjadash-tasklist-item__title">
+                      <li className="invoice-tasklist-item" key={i}>
+                        <div className="invoice-tasklist-item__content">
+                          <div className="invoice-tasklist-item__title">
                             <Checkbox
                               checked={!!item.completed}
                               onChange={() => dispatch(onCompleteUpdate(task, item.id))}
@@ -117,15 +117,15 @@ function TaskList({ taskStatus, header, description, taskLimit }) {
                             </Checkbox>
                           </div>
                           {description ? (
-                            <div className="ninjadash-tasklist-item__text">
+                            <div className="invoice-tasklist-item__text">
                               <p>{item.description}</p>
                             </div>
                           ) : (
                             ''
                           )}
                         </div>
-                        <div className="ninjadash-tasklist-item__action">
-                          <Link className="ninjadash-edit" to="#" onClick={() => showModal(item.id, item)}>
+                        <div className="invoice-tasklist-item__action">
+                          <Link className="invoice-edit" to="#" onClick={() => showModal(item.id, item)}>
                             <UilEdit />
                           </Link>
                           <Link
@@ -142,7 +142,7 @@ function TaskList({ taskStatus, header, description, taskLimit }) {
                             okText="Có"
                             cancelText="Không"
                           >
-                            <Link className="ninjadash-delete" to="#">
+                            <Link className="invoice-delete" to="#">
                               <UilTimes />
                             </Link>
                           </Popconfirm>
@@ -152,23 +152,23 @@ function TaskList({ taskStatus, header, description, taskLimit }) {
                   })}
               </ul>
             ) : (
-              <div className="ninjadash-tasklist-empty">
+              <div className="invoice-tasklist-empty">
                 <span>Sorry !! No Favourite Task Found :(</span>
               </div>
             )
           ) : /* Completed Task */
           taskStatus === 'completed' ? (
             task.filter((item) => item.completed).length > 0 ? (
-              <ul className="ninjadash-tasklist">
+              <ul className="invoice-tasklist">
                 {task
                   .slice(0, taskLimit || task.length)
                   .sort((a, b) => b.id - a.id)
                   .filter((item) => item.completed)
                   .map((item, i) => {
                     return (
-                      <li className="ninjadash-tasklist-item" key={i}>
-                        <div className="ninjadash-tasklist-item__content">
-                          <div className="ninjadash-tasklist-item__title">
+                      <li className="invoice-tasklist-item" key={i}>
+                        <div className="invoice-tasklist-item__content">
+                          <div className="invoice-tasklist-item__title">
                             <Checkbox
                               checked={!!item.completed}
                               onChange={() => dispatch(onCompleteUpdate(task, item.id))}
@@ -177,15 +177,15 @@ function TaskList({ taskStatus, header, description, taskLimit }) {
                             </Checkbox>
                           </div>
                           {description ? (
-                            <div className="ninjadash-tasklist-item__text">
+                            <div className="invoice-tasklist-item__text">
                               <p>{item.description}</p>
                             </div>
                           ) : (
                             ''
                           )}
                         </div>
-                        <div className="ninjadash-tasklist-item__action">
-                          <Link className="ninjadash-edit" to="#" onClick={() => showModal(item.id, item)}>
+                        <div className="invoice-tasklist-item__action">
+                          <Link className="invoice-edit" to="#" onClick={() => showModal(item.id, item)}>
                             <UilEdit />
                           </Link>
                           <Link
@@ -201,7 +201,7 @@ function TaskList({ taskStatus, header, description, taskLimit }) {
                             okText="Có"
                             cancelText="Không"
                           >
-                            <Link className="ninjadash-delete" to="#">
+                            <Link className="invoice-delete" to="#">
                               <UilTimes />
                             </Link>
                           </Popconfirm>
@@ -211,20 +211,20 @@ function TaskList({ taskStatus, header, description, taskLimit }) {
                   })}
               </ul>
             ) : (
-              <div className="ninjadash-tasklist-empty">
+              <div className="invoice-tasklist-empty">
                 <span>Sorry !! No Completed Task Found :(</span>
               </div>
             ) /* All Task */
           ) : task.length > 0 ? (
-            <ul className="ninjadash-tasklist">
+            <ul className="invoice-tasklist">
               {task
                 .slice(0, taskLimit || task.length)
                 .sort((a, b) => b.id - a.id)
                 .map((item, i) => {
                   return (
-                    <li className="ninjadash-tasklist-item" key={i}>
-                      <div className="ninjadash-tasklist-item__content">
-                        <div className="ninjadash-tasklist-item__title">
+                    <li className="invoice-tasklist-item" key={i}>
+                      <div className="invoice-tasklist-item__content">
+                        <div className="invoice-tasklist-item__title">
                           <Checkbox
                             checked={!!item.completed}
                             onChange={() => dispatch(onCompleteUpdate(task, item.id))}
@@ -233,15 +233,15 @@ function TaskList({ taskStatus, header, description, taskLimit }) {
                           </Checkbox>
                         </div>
                         {description ? (
-                          <div className="ninjadash-tasklist-item__text">
+                          <div className="invoice-tasklist-item__text">
                             <p>{item.description}</p>
                           </div>
                         ) : (
                           ''
                         )}
                       </div>
-                      <div className="ninjadash-tasklist-item__action">
-                        <Link className="ninjadash-edit" to="#" onClick={() => showModal(item.id, item)}>
+                      <div className="invoice-tasklist-item__action">
+                        <Link className="invoice-edit" to="#" onClick={() => showModal(item.id, item)}>
                           <UilEdit />
                         </Link>
                         <Link
@@ -257,7 +257,7 @@ function TaskList({ taskStatus, header, description, taskLimit }) {
                           okText="Có"
                           cancelText="Không"
                         >
-                          <Link className="ninjadash-delete" to="#">
+                          <Link className="invoice-delete" to="#">
                             <UilTimes />
                           </Link>
                         </Popconfirm>
@@ -267,7 +267,7 @@ function TaskList({ taskStatus, header, description, taskLimit }) {
                 })}
             </ul>
           ) : (
-            <div className="ninjadash-tasklist-empty">
+            <div className="invoice-tasklist-empty">
               <span>Sorry !! No Task Found :(</span>
             </div>
           )}
@@ -275,14 +275,14 @@ function TaskList({ taskStatus, header, description, taskLimit }) {
       </div>
       <Modal
         title="Edit Task"
-        className="ninjadash-addTask-modal"
+        className="invoice-addTask-modal"
         type={state.modalType}
         open={state.visible}
         footer={null}
         onCancel={handleCancel}
         forceRender
       >
-        <div className="ninjadash-addTask-modal-inner">
+        <div className="invoice-addTask-modal-inner">
           {task
             .sort((a, b) => b.id - a.id)
             .filter((item) => item.id === taskEditId)
@@ -306,7 +306,7 @@ function TaskList({ taskStatus, header, description, taskLimit }) {
                     <Form.Item hidden="true" name="completed" initialValue={value.completed}>
                       <Input />
                     </Form.Item>
-                    <div className="ninjadash-modal-actions">
+                    <div className="invoice-modal-actions">
                       <Button size="small" type="white" key="cancel" outlined onClick={handleCancel}>
                         Cancel
                       </Button>

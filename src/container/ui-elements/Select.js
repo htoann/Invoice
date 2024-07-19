@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import { Row, Col, Select, Radio } from 'antd';
-import { SelectWrapperStyle, SelectRadioStyle } from './ui-elements-styled';
+import { Col, Radio, Row, Select } from 'antd';
+import { useState } from 'react';
+import { Cards } from '../../components/cards/frame/cards-frame';
 import { PageHeader } from '../../components/page-headers/page-headers';
 import { Main } from '../styled';
-import { Cards } from '../../components/cards/frame/cards-frame';
+import { SelectRadioStyle, SelectWrapperStyle } from './ui-elements-styled';
 
 const { Option, OptGroup } = Select;
 const provinceData = ['Zhejiang', 'Jiangsu'];
@@ -63,7 +63,7 @@ function Selects() {
 
   return (
     <>
-      <PageHeader className="ninjadash-page-header-main" title="Select" routes={PageRoutes} />
+      <PageHeader className="invoice-page-header-main" title="Select" routes={PageRoutes} />
       <Main>
         <Row gutter={25}>
           <Col md={12} xs={24}>

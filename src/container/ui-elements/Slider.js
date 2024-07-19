@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import { Row, Col } from 'antd';
-import { PageHeader } from '../../components/page-headers/page-headers';
-import { Main } from '../styled';
+import { Col, Row } from 'antd';
+import { useState } from 'react';
 import { Cards } from '../../components/cards/frame/cards-frame';
+import { PageHeader } from '../../components/page-headers/page-headers';
 import { Slider } from '../../components/slider/slider';
+import { Main } from '../styled';
 
 function Sliders() {
   const PageRoutes = [
@@ -48,7 +48,7 @@ function Sliders() {
 
   return (
     <>
-      <PageHeader className="ninjadash-page-header-main" title="Sliders" routes={PageRoutes} />
+      <PageHeader className="invoice-page-header-main" title="Sliders" routes={PageRoutes} />
       <Main>
         <Row gutter={25}>
           <Col md={12} sm={24} xs={24}>

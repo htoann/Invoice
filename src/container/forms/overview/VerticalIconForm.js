@@ -22,7 +22,7 @@ function VerticalIconForm() {
             <Form.Item name="password" initialValue="1234567" label="Password">
               <Input.Password prefix={<UilLock />} />
             </Form.Item>
-            <div className="ninjadash-form-action">
+            <div className="invoice-form-action">
               <Button className="btn-signin" htmlType="submit" type="light" size="large">
                 Cancel
               </Button>

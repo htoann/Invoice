@@ -1,15 +1,15 @@
 import styled from 'styled-components';
 
 export const TicketBox = styled.div`
-  .ninjadash-support-content-top,
-  .ninjadash-support-content-filter {
+  .invoice-support-content-top,
+  .invoice-support-content-filter {
     display: flex;
     width: 100%;
     align-items: center;
     justify-content: space-between;
   }
 
-  .ninjadash-support-content-top {
+  .invoice-support-content-top {
     @media only screen and (max-width: 475px) {
       flex-direction: column;
       align-items: center;
@@ -26,13 +26,13 @@ export const TicketBox = styled.div`
     }
   }
 
-  .ninjadash-support-content-filter {
+  .invoice-support-content-filter {
     margin: 20px 0 25px 0;
     @media only screen and (max-width: 767px) {
       flex-direction: column;
       align-items: center;
     }
-    .ninjadash-support-content-filter__left {
+    .invoice-support-content-filter__left {
       display: inline-flex;
       width: 100%;
       align-items: center;
@@ -46,7 +46,7 @@ export const TicketBox = styled.div`
         margin-bottom: 0;
       }
 
-      .ninjadash-support-content-filter__input {
+      .invoice-support-content-filter__input {
         display: flex;
         align-items: center;
         ${({ theme }) => (!theme.rtl ? 'padding-right' : 'padding-left')}: 20px;
@@ -76,7 +76,7 @@ export const TicketBox = styled.div`
         }
       }
     }
-    .ninjadash-support-content-filter__right {
+    .invoice-support-content-filter__right {
       min-width: 280px;
       .ant-input-affix-wrapper {
         background-color: ${({ theme }) => theme[theme.mainContent]['input-bg']};
@@ -105,26 +105,26 @@ export const TicketBox = styled.div`
     }
   }
 
-  .ninjadash-support-content-table {
-    .ninjadash-info-element {
-      .ninjadash-info-element__media {
+  .invoice-support-content-table {
+    .invoice-info-element {
+      .invoice-info-element__media {
         ${({ theme }) => (!theme.rtl ? 'margin-right' : 'margin-left')}: 20px;
         img {
           max-width: 30px;
           border-radius: 50%;
         }
       }
-      .ninjadash-info-element__content {
+      .invoice-info-element__content {
         p {
           font-size: 15px;
           margin-bottom: 0;
         }
       }
     }
-    .ninjadash-ticket-subject {
+    .invoice-ticket-subject {
       font-size: 15px;
     }
-    .ninjadash-support-status {
+    .invoice-support-status {
       display: inline-flex;
       align-items: center;
       justify-content: center;
@@ -134,15 +134,15 @@ export const TicketBox = styled.div`
       min-height: 24px;
       border-radius: 4px;
       text-transform: capitalize;
-      &.ninjadash-support-status-open {
+      &.invoice-support-status-open {
         color: ${({ theme }) => theme['success-color']};
         background-color: ${({ theme }) => theme['success-color']}15;
       }
-      &.ninjadash-support-status-close {
+      &.invoice-support-status-close {
         color: ${({ theme }) => theme['primary-color']};
         background-color: ${({ theme }) => theme['primary-color']}15;
       }
-      &.ninjadash-support-status-pending {
+      &.invoice-support-status-pending {
         color: ${({ theme }) => theme['warning-color']};
 
         background-color: ${({ theme }) => theme['warning-color']}15;
@@ -163,7 +163,7 @@ export const TicketBox = styled.div`
 `;
 
 export const TicketDetailsBox = styled.div`
-  .ninjadash-back-btn {
+  .invoice-back-btn {
     display: inline-flex;
     align-items: center;
     font-size: 14px;
@@ -181,7 +181,7 @@ export const TicketDetailsBox = styled.div`
       color: ${({ theme }) => theme['primary-color']};
     }
   }
-  .ninjadash-ticket-details {
+  .invoice-ticket-details {
     .ant-card {
       h1 {
         font-size: 20px;
@@ -190,18 +190,18 @@ export const TicketDetailsBox = styled.div`
         color: ${({ theme }) => theme[theme.mainContent]['dark-text']};
       }
     }
-    .ninjadash-ticket-details__top-title {
+    .invoice-ticket-details__top-title {
       font-size: 14px;
       color: ${({ theme }) => theme[theme.mainContent]['gray-light-text']};
     }
     h4 {
       margin-bottom: 12px;
     }
-    .ninjadash-ticket-author {
+    .invoice-ticket-author {
       @media only screen and (max-width: 767px) {
         margin-bottom: 20px;
       }
-      .ninjadash-ticket-author__info {
+      .invoice-ticket-author__info {
         display: flex;
         align-items: center;
         margin-bottom: 30px;
@@ -209,7 +209,7 @@ export const TicketDetailsBox = styled.div`
           margin-right: 15px;
           ${({ theme }) => (!theme.rtl ? 'margin-right' : 'margin-left')}: 15px;
         }
-        .ninjadash-ticket-author__name {
+        .invoice-ticket-author__name {
           font-size: 14px;
           font-weight: 500;
           color: ${({ theme }) => theme[theme.mainContent]['gray-text']};
@@ -224,13 +224,13 @@ export const TicketDetailsBox = styled.div`
         }
       }
     }
-    .ninjadash-ticket-date-info {
+    .invoice-ticket-date-info {
       @media only screen and (max-width: 767px) {
         margin-bottom: 20px;
       }
-      .ninjadash-ticket-date-info__text {
+      .invoice-ticket-date-info__text {
         margin-bottom: 34px;
-        .ninjadash-ticket-details__top-title {
+        .invoice-ticket-details__top-title {
           margin-bottom: 12px;
         }
         span {
@@ -249,12 +249,12 @@ export const TicketDetailsBox = styled.div`
       }
     }
   }
-  .ninjadash-ticket-overview {
+  .invoice-ticket-overview {
     margin-top: 30px;
     @media only screen and (max-width: 767px) {
       margin-top: 0;
     }
-    .ninjadash-ticket-overview__title {
+    .invoice-ticket-overview__title {
       font-size: 20px;
       font-weight: 600;
       line-height: 1;
@@ -266,7 +266,7 @@ export const TicketDetailsBox = styled.div`
       color: ${({ theme }) => theme[theme.mainContent]['gray-text']};
     }
   }
-  .ninjadash-ticket-file-system {
+  .invoice-ticket-file-system {
     .ant-card-head {
       border-bottom: 0 none;
       .ant-card-head-title {
@@ -277,7 +277,7 @@ export const TicketDetailsBox = styled.div`
       padding: 0 25px 30px 25px !important;
     }
   }
-  .ninjadash-ticket-file-item {
+  .invoice-ticket-file-item {
     align-items: flex-start;
     justify-content: space-between;
     &:not(:last-child) {
@@ -286,23 +286,23 @@ export const TicketDetailsBox = styled.div`
     span {
       color: ${({ theme }) => theme[theme.mainContent]['gray-text']};
     }
-    .ninjadash-ticket-file-item__logo {
+    .invoice-ticket-file-item__logo {
       ${({ theme }) => (!theme.rtl ? 'margin-right' : 'margin-left')}: 10px;
     }
-    .ninjadash-file-item__content {
-      .ninjadash-ticket-file-name {
+    .invoice-file-item__content {
+      .invoice-ticket-file-name {
         font-size: 15px;
         font-weight: 500;
         color: ${({ theme }) => theme[theme.mainContent]['gray-text']};
       }
-      .ninjadash-ticket-file-size {
+      .invoice-ticket-file-size {
         display: block;
         font-size: 15px;
         font-weight: 400;
         color: ${({ theme }) => theme[theme.mainContent]['gray-light-text']};
       }
     }
-    .ninjadash-ticket-file-item__action {
+    .invoice-ticket-file-item__action {
       svg {
         width: 16px;
         height: 16px;
@@ -317,7 +317,7 @@ export const ClientConversation = styled.div`
       margin-top: 30px;
     }
   }
-  .ninjadash-client-conversation-list {
+  .invoice-client-conversation-list {
     .ant-list-items {
       padding-top: 12px;
     }
@@ -348,7 +348,7 @@ export const ClientConversation = styled.div`
         color: ${({ theme }) => theme[theme.mainContent]['gray-text']};
       }
     }
-    .ninjadash-conversation-time {
+    .invoice-conversation-time {
       font-size: 14px;
       color: ${({ theme }) => theme[theme.mainContent]['gray-text']};
     }

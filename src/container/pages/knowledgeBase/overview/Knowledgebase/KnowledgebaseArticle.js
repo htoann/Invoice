@@ -4,8 +4,8 @@ import { KnowledgebaseArticleWrap, ArticleTabWrap } from '../../style';
 function KnowledgebaseArticle() {
   return (
     <KnowledgebaseArticleWrap>
-      <ArticleTabWrap className="ninjadash-article-tab">
-        <div className="ninjadash-article-tab__menu">
+      <ArticleTabWrap className="invoice-article-tab">
+        <div className="invoice-article-tab__menu">
           <p>lorem</p>
         </div>
       </ArticleTabWrap>

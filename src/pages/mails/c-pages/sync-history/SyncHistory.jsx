@@ -173,7 +173,7 @@ export const SyncHistory = () => {
 
   return (
     <>
-      <PageHeader className="ninjadash-page-header-main" title="Danh sách email" />
+      <PageHeader className="invoice-page-header-main" title="Danh sách email" />
       <Main>
         <Row gutter={15}>
           <Col xs={24}>

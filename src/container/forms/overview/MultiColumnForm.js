@@ -34,7 +34,7 @@ function MultiColumnForm() {
           </Row>
           <Row>
             <Col sm={12} xs={24}>
-              <div className="ninjadash-form-action">
+              <div className="invoice-form-action">
                 <Button className="btn-signin" htmlType="submit" type="light" size="large">
                   Cancel
                 </Button>

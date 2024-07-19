@@ -128,17 +128,17 @@ function SupportTicket() {
         key: `${id}`,
         id: `#${id}`,
         requested: (
-          <div className="ninjadash-info-element align-center-v">
-            <div className="ninjadash-info-element__media">
+          <div className="invoice-info-element align-center-v">
+            <div className="invoice-info-element__media">
               <img src={require(`../../${user.img}`)} alt="" />
             </div>
-            <div className="ninjadash-info-element__content">
+            <div className="invoice-info-element__content">
               <p>{user.name}</p>
             </div>
           </div>
         ),
-        status: <span className={`ninjadash-support-status ninjadash-support-status-${status}`}>{status}</span>,
-        subject: <span className="ninjadash-ticket-subject">{subject}</span>,
+        status: <span className={`invoice-support-status invoice-support-status-${status}`}>{status}</span>,
+        subject: <span className="invoice-ticket-subject">{subject}</span>,
         priority,
         createAt,
         action: (
@@ -228,7 +228,7 @@ function SupportTicket() {
 
   return (
     <>
-      <PageHeader className="ninjadash-page-header-main" title="Support Ticket" routes={PageRoutes} />
+      <PageHeader className="invoice-page-header-main" title="Support Ticket" routes={PageRoutes} />
       <Main>
         <TicketBox>
           <Row justify="center">
@@ -247,19 +247,19 @@ function SupportTicket() {
           <Row gutter={25}>
             <Col sm={24} xs={24}>
               <Cards headless>
-                <div className="ninjadash-support-content-top">
+                <div className="invoice-support-content-top">
                   <Heading as="h4">All Support Ticket</Heading>
                   <Button onClick={showModal} size="default" type="primary">
                     <UilPlus /> Add Ticket
                   </Button>
                 </div>
-                <div className="ninjadash-support-content-filter">
-                  <div className="ninjadash-support-content-filter__left">
-                    <div className="ninjadash-support-content-filter__input">
+                <div className="invoice-support-content-filter">
+                  <div className="invoice-support-content-filter__left">
+                    <div className="invoice-support-content-filter__input">
                       <span className="label">Id:</span>
                       <Input onChange={handleIdSearch} placeholder="Search with Id" />
                     </div>
-                    <div className="ninjadash-support-content-filter__input">
+                    <div className="invoice-support-content-filter__input">
                       <span className="label">Status:</span>
                       <Select onChange={handleStatusSearch} style={{ width: 200 }} defaultValue="">
                         <Select.Option value="">All</Select.Option>
@@ -269,11 +269,11 @@ function SupportTicket() {
                       </Select>
                     </div>
                   </div>
-                  <div className="ninjadash-support-content-filter__right">
+                  <div className="invoice-support-content-filter__right">
                     <Input onChange={handleSubjectSearch} size="default" placeholder="Search" prefix={prefix} />
                   </div>
                 </div>
-                <div className="ninjadash-support-content-table">
+                <div className="invoice-support-content-table">
                   <TableWrapper className="table-data-view table-responsive">
                     <Table
                       pagination={{ pageSize: 10, showSizeChanger: true }}

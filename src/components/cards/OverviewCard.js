@@ -1,13 +1,13 @@
 import { Card } from 'antd';
 import propTypes from 'prop-types';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { ReactSVG } from 'react-svg';
 import { OverviewCardWrap } from './Style';
 
 const OverviewCard = ({
   data = {},
-  className = 'ninjadash-overview-card-box',
+  className = 'invoice-overview-card-box',
   bottomStatus = true,
   contentFirst = false,
   halfCircleIcon = false,
@@ -23,23 +23,21 @@ const OverviewCard = ({
   const totalNumber = Number(total);
   return (
     <OverviewCardWrap className={className}>
-      <Card bordered={false} className={halfCircleIcon ? 'ninjadash-overview-halfCircle-card' : null}>
-        <div className={`ninjadash-overview-card ninjadash-overview-card-${type}`}>
+      <Card bordered={false} className={halfCircleIcon ? 'invoice-overview-halfCircle-card' : null}>
+        <div className={`invoice-overview-card invoice-overview-card-${type}`}>
           <div
             className={
               contentFirst
-                ? 'ninjadash-overview-card__top d-flex justify-content-between ninjadash-overview-card-theme-2'
-                : 'ninjadash-overview-card__top d-flex justify-content-between'
+                ? 'invoice-overview-card__top d-flex justify-content-between invoice-overview-card-theme-2'
+                : 'invoice-overview-card__top d-flex justify-content-between'
             }
           >
-            <div className={`ninjadash-overview-card__top--icon ninjadash-${type}`}>
+            <div className={`invoice-overview-card__top--icon invoice-${type}`}>
               <ReactSVG src={require(`../../static/img/icon/${icon}`)} />
             </div>
             <div
               className={
-                contentFirst
-                  ? 'ninjadash-overview-card__top--content'
-                  : 'ninjadash-overview-card__top--content text-right'
+                contentFirst ? 'invoice-overview-card__top--content' : 'invoice-overview-card__top--content text-right'
               }
             >
               {halfCircleIcon ? (
@@ -54,9 +52,9 @@ const OverviewCard = ({
             </div>
           </div>
           {bottomStatus ? (
-            <div className="ninjadash-overview-card__bottom">
-              <span className={`ninjadash-overview-status ninjadash-status-${status}`}>
-                <span className="ninjadash-status-label">{dataPeriod}</span>
+            <div className="invoice-overview-card__bottom">
+              <span className={`invoice-overview-status invoice-status-${status}`}>
+                <span className="invoice-status-label">{dataPeriod}</span>
               </span>
             </div>
           ) : (

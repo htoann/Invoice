@@ -71,7 +71,7 @@ function EditProduct() {
 
   return (
     <>
-      <PageHeader className="ninjadash-page-header-main" title="Edit Product" routes={PageRoutes} />
+      <PageHeader className="invoice-page-header-main" title="Edit Product" routes={PageRoutes} />
       <Main>
         <Row gutter={15}>
           <Col xs={24}>

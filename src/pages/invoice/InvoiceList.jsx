@@ -88,7 +88,7 @@ function InvoiceList() {
   return (
     <>
       <PageHeader
-        className="ninjadash-page-header-main"
+        className="invoice-page-header-main"
         title={`${t('Danh sách hóa đơn')} ${loaiHoaDon === 'purchase' ? t('mua vào') : t('bán ra')}`}
         routes={pageRoutes}
       />

@@ -49,12 +49,12 @@ function SingleKnowledge() {
 
   return (
     <>
-      <PageHeader className="ninjadash-page-header-main" title="Knowledgebase" routes={PageRoutes} />
+      <PageHeader className="invoice-page-header-main" title="Knowledgebase" routes={PageRoutes} />
       <Main>
         <GeneralKnowledgeTop />
         <KnowledgebaseArticleWrap>
           <div className="knowledgebase-article-container">
-            <div className="ninjadash-paginaion">
+            <div className="invoice-paginaion">
               <ul>
                 <li>
                   <Link className="active" to="/knowledgebase/plugins">

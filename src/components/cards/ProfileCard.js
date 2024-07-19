@@ -13,25 +13,25 @@ const ProfileCard = ({
   return (
     <ProfileCardWrapper>
       <figcaption>
-        <img className="ninjadash-profile-top-img" src={require(`../../${bgImage}`)} alt="banner" />
-        <div className="ninjadash-profile-content">
-          <div className="ninjadash-profile-content__img">
+        <img className="invoice-profile-top-img" src={require(`../../${bgImage}`)} alt="banner" />
+        <div className="invoice-profile-content">
+          <div className="invoice-profile-content__img">
             <img className="profile" src={require(`../../${image}`)} alt="profile" />
           </div>
-          <h4 className="ninjadash-profile-name">{title}</h4>
-          <p className="ninjadash-profile-text">{tag}</p>
-          <ul className="ninjadash-profile-socials">
-            <li className="ninjadash-facebook">
+          <h4 className="invoice-profile-name">{title}</h4>
+          <p className="invoice-profile-text">{tag}</p>
+          <ul className="invoice-profile-socials">
+            <li className="invoice-facebook">
               <Link to="#">
                 <FontAwesome name="facebook" />
               </Link>
             </li>
-            <li className="ninjadash-twitter">
+            <li className="invoice-twitter">
               <Link to="#">
                 <FontAwesome name="twitter" />
               </Link>
             </li>
-            <li className="ninjadash-dribble">
+            <li className="invoice-dribble">
               <Link to="#">
                 <FontAwesome name="dribbble" />
               </Link>

@@ -9,7 +9,7 @@ function Tab(props) {
 
   return (
     <TabBasic
-      className={`ninjadash-tab-${type}`}
+      className={`invoice-tab-${type}`}
       color={color && color}
       defaultActiveKey="1"
       tabPosition={tabPosition !== undefined ? tabPosition : 'top'}

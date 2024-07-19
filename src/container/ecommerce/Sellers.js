@@ -125,12 +125,12 @@ function Sellers() {
 
   return (
     <>
-      <PageHeader className="ninjadash-page-header-main" title="Sellers" routes={PageRoutes} />
+      <PageHeader className="invoice-page-header-main" title="Sellers" routes={PageRoutes} />
       <Main>
         <Cards headless>
           <Row gutter={15}>
             <Col xs={24}>
-              <TopToolBox className="ninjadash-toolbox-seller">
+              <TopToolBox className="invoice-toolbox-seller">
                 <Row gutter={15}>
                   <Col xxl={5} lg={10} xs={24}>
                     <div className="table-search-box">

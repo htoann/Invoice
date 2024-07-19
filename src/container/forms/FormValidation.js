@@ -29,7 +29,7 @@ function FormValidation() {
   const [form] = Form.useForm();
   return (
     <>
-      <PageHeader className="ninjadash-page-header-main" title="Form Validation" routes={PageRoutes} />
+      <PageHeader className="invoice-page-header-main" title="Form Validation" routes={PageRoutes} />
       <Main>
         <Row gutter={25}>
           <Col xs={24}>
@@ -86,7 +86,7 @@ function FormValidation() {
                         <Checkbox onChange={onChange}>Agree to terms and conditions</Checkbox>
                       </Form.Item>
                     </div>
-                    <div className="ninjadash-form-action mt-20">
+                    <div className="invoice-form-action mt-20">
                       <Button htmlType="submit" type="primary" size="large">
                         Submit Form
                       </Button>
@@ -101,7 +101,7 @@ function FormValidation() {
             <FormValidationWrap>
               <VerticalFormStyleWrap>
                 <Cards title="Server Side">
-                  <Form name="ninjadash-vertical-form" layout="vertical">
+                  <Form name="invoice-vertical-form" layout="vertical">
                     <Row gutter={30}>
                       <Col md={8} xs={24} className="mb-20">
                         <Form.Item
@@ -168,7 +168,7 @@ function FormValidation() {
                         </Form.Item>
                       </Col>
                     </Row>
-                    <div className="ninjadash-form-action">
+                    <div className="invoice-form-action">
                       <Button type="primary" size="large">
                         Submit Form
                       </Button>

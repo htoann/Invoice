@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import { Row, Col, Table, Progress, Pagination, Tag } from 'antd';
+import UilEllipsisH from '@iconscout/react-unicons/icons/uil-ellipsis-h';
+import { Col, Pagination, Progress, Row, Table, Tag } from 'antd';
+import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import UilEllipsisH from '@iconscout/react-unicons/icons/uil-ellipsis-h';
-import Heading from '../../../components/heading/heading';
 import { Cards } from '../../../components/cards/frame/cards-frame';
-import { ProjectPagination, ProjectListTitle, ProjectListAssignees, ProjectList } from '../style';
 import { Dropdown } from '../../../components/dropdown/dropdown';
+import Heading from '../../../components/heading/heading';
+import { ProjectList, ProjectListAssignees, ProjectListTitle, ProjectPagination } from '../style';
 
 function ProjectLists() {
   const project = useSelector((state) => state.projects.data);
@@ -88,7 +88,7 @@ function ProjectLists() {
         ),
         action: (
           <Dropdown
-            className="wide-dropdwon"
+            className="wide-dropdown"
             content={
               <>
                 <Link to="#">View</Link>

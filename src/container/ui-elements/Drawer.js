@@ -1,9 +1,8 @@
-import React from 'react';
-import { Form, Col, Row, Input, Select, DatePicker } from 'antd';
-import { PageHeader } from '../../components/page-headers/page-headers';
-import { Main } from '../styled';
+import { Col, DatePicker, Form, Input, Row, Select } from 'antd';
 import { Cards } from '../../components/cards/frame/cards-frame';
 import { Drawer } from '../../components/drawer/drawer';
+import { PageHeader } from '../../components/page-headers/page-headers';
+import { Main } from '../styled';
 
 const { Option } = Select;
 function Drawers() {
@@ -19,7 +18,7 @@ function Drawers() {
   ];
   return (
     <>
-      <PageHeader className="ninjadash-page-header-main" title="Drawer" routes={PageRoutes} />
+      <PageHeader className="invoice-page-header-main" title="Drawer" routes={PageRoutes} />
       <Main>
         <Row gutter={25}>
           <Col lg={12} xs={24}>

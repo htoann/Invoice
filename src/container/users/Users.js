@@ -140,7 +140,7 @@ function Users() {
       <CardToolbox>
         <UserCarrdTop>
           <PageHeader
-            className="ninjadash-page-header-main"
+            className="invoice-page-header-main"
             ghost
             title="Users Card"
             subTitle={

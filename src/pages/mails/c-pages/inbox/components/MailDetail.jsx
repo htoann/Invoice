@@ -77,14 +77,14 @@ function MailDetail({ selectedInbox: email }) {
 
               <div style={{ display: 'flex', gap: 10, padding: '10px 0px', flexWrap: 'wrap' }}>
                 <div className="message-attachments">
-                  <div className="ninjadash-ticket-file-item d-flex">
-                    <div className="ninjadash-ticket-file-item__info d-flex">
-                      <div className="ninjadash-ticket-file-item__logo">
+                  <div className="invoice-ticket-file-item d-flex">
+                    <div className="invoice-ticket-file-item__info d-flex">
+                      <div className="invoice-ticket-file-item__logo">
                         <img style={{ width: '40px' }} src={pdfImg} alt="File Logo" />
                       </div>
-                      <div className="ninjadash-file-item__content">
-                        <span className="ninjadash-ticket-file-name">Product-guidelines.pdf</span>
-                        <span className="ninjadash-ticket-file-size">522 KB</span>
+                      <div className="invoice-file-item__content">
+                        <span className="invoice-ticket-file-name">Product-guidelines.pdf</span>
+                        <span className="invoice-ticket-file-size">522 KB</span>
                       </div>
                       <Link className="btn-link" to="#" style={{ marginLeft: 10 }}>
                         <UilImport />
@@ -94,14 +94,14 @@ function MailDetail({ selectedInbox: email }) {
                 </div>
 
                 <div className="message-attachments">
-                  <div className="ninjadash-ticket-file-item d-flex">
-                    <div className="ninjadash-ticket-file-item__info d-flex">
-                      <div className="ninjadash-ticket-file-item__logo">
+                  <div className="invoice-ticket-file-item d-flex">
+                    <div className="invoice-ticket-file-item__info d-flex">
+                      <div className="invoice-ticket-file-item__logo">
                         <img style={{ width: '40px' }} src={csvImg} alt="File Logo" />
                       </div>
-                      <div className="ninjadash-file-item__content">
-                        <span className="ninjadash-ticket-file-name">Product-guidelines.pdf</span>
-                        <span className="ninjadash-ticket-file-size">522 KB</span>
+                      <div className="invoice-file-item__content">
+                        <span className="invoice-ticket-file-name">Product-guidelines.pdf</span>
+                        <span className="invoice-ticket-file-size">522 KB</span>
                       </div>
                       <Link className="btn-link" to="#" style={{ marginLeft: 10 }}>
                         <UilImport />

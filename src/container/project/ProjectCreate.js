@@ -1,17 +1,17 @@
-import React, { lazy, useState, Suspense } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { Row, Col, Spin, Select } from 'antd';
-import { Routes, NavLink, Route, Link } from 'react-router-dom';
-import UilPlus from '@iconscout/react-unicons/icons/uil-plus';
 import UilApps from '@iconscout/react-unicons/icons/uil-apps';
 import UilListUl from '@iconscout/react-unicons/icons/uil-list-ul';
-import CreateProject from './overview/CreateProject';
-import { ProjectHeader, ProjectSorting } from './style';
+import UilPlus from '@iconscout/react-unicons/icons/uil-plus';
+import { Col, Row, Select, Spin } from 'antd';
+import { lazy, Suspense, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, NavLink, Route, Routes } from 'react-router-dom';
 import { AutoComplete } from '../../components/autoComplete/autoComplete';
 import { Button } from '../../components/buttons/buttons';
+import { PageHeader } from '../../components/page-headers/page-headers';
 import { filterProjectByStatus, sortingProjectByCategory } from '../../redux/project/actionCreator';
 import { Main } from '../styled';
-import { PageHeader } from '../../components/page-headers/page-headers';
+import CreateProject from './overview/CreateProject';
+import { ProjectHeader, ProjectSorting } from './style';
 
 const Grid = lazy(() => import('./overview/Grid'));
 const List = lazy(() => import('./overview/List'));
@@ -65,7 +65,7 @@ function Project() {
     <>
       <ProjectHeader>
         <PageHeader
-          className="ninjadash-page-header-main"
+          className="invoice-page-header-main"
           ghost
           title="Projects"
           subTitle={<>12 Running Projects</>}

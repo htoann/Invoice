@@ -1,12 +1,11 @@
-import React from 'react';
-import { Row, Col } from 'antd';
 import { DownOutlined, LeftOutlined, RightOutlined } from '@ant-design/icons';
 import UilLayers from '@iconscout/react-unicons/icons/uil-layers';
-import { PageHeader } from '../../components/page-headers/page-headers';
-import { Main, ButtonsGroupWrapper, BlockButtonsWrapper, ButtonSizeWrapper, BtnWithIcon } from '../styled';
+import { Col, Row } from 'antd';
+import { BtnGroup, Button } from '../../components/buttons/buttons';
 import { Cards } from '../../components/cards/frame/cards-frame';
-import { Button, BtnGroup } from '../../components/buttons/buttons';
 import { Dropdown } from '../../components/dropdown/dropdown';
+import { PageHeader } from '../../components/page-headers/page-headers';
+import { BlockButtonsWrapper, BtnWithIcon, ButtonsGroupWrapper, ButtonSizeWrapper, Main } from '../styled';
 
 function Buttons() {
   const PageRoutes = [
@@ -21,7 +20,7 @@ function Buttons() {
   ];
   return (
     <>
-      <PageHeader className="ninjadash-page-header-main" title="Button" routes={PageRoutes} />
+      <PageHeader className="invoice-page-header-main" title="Button" routes={PageRoutes} />
       <Main className="button-example">
         <Row gutter={25}>
           <Col md={12}>
@@ -453,7 +452,7 @@ function Buttons() {
               bodyStyle={{
                 borderRadius: `0 0 10px 10px`,
               }}
-              className="ninjadash-ghost-card"
+              className="invoice-ghost-card"
               title="Ghost"
               size="large"
             >

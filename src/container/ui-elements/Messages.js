@@ -1,9 +1,8 @@
-import React from 'react';
-import { Row, Col, message, Space } from 'antd';
+import { Col, message, Row, Space } from 'antd';
+import { Button } from '../../components/buttons/buttons';
+import { Cards } from '../../components/cards/frame/cards-frame';
 import { PageHeader } from '../../components/page-headers/page-headers';
 import { Main, MessageStyleWrapper } from '../styled';
-import { Cards } from '../../components/cards/frame/cards-frame';
-import { Button } from '../../components/buttons/buttons';
 
 function Messages() {
   const PageRoutes = [
@@ -44,7 +43,7 @@ function Messages() {
 
   return (
     <>
-      <PageHeader className="ninjadash-page-header-main" title="Message" routes={PageRoutes} />
+      <PageHeader className="invoice-page-header-main" title="Message" routes={PageRoutes} />
       <Main>
         <Row gutter={25}>
           <Col md={12} sm={24} xs={24}>

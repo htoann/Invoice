@@ -1,16 +1,16 @@
-import React, { useState, lazy, Suspense, useLayoutEffect } from 'react';
-import { Row, Col, Spin } from 'antd';
-import { Routes, Route } from 'react-router-dom';
-import UilPlus from '@iconscout/react-unicons/icons/uil-plus';
-import UilTimes from '@iconscout/react-unicons/icons/uil-times';
 import UilAlignLeft from '@iconscout/react-unicons/icons/uil-align-left';
 import UilAlignRight from '@iconscout/react-unicons/icons/uil-align-right';
+import UilPlus from '@iconscout/react-unicons/icons/uil-plus';
+import UilTimes from '@iconscout/react-unicons/icons/uil-times';
+import { Col, Row, Spin } from 'antd';
+import { lazy, Suspense, useLayoutEffect, useState } from 'react';
+import { Route, Routes } from 'react-router-dom';
+import { Button } from '../../components/buttons/buttons';
+import { Cards } from '../../components/cards/frame/cards-frame';
+import { PageHeader } from '../../components/page-headers/page-headers';
+import { Main } from '../styled';
 import EmailNavbar from './overview/Navbar';
 import { EmailWrapper, MailSideBar } from './overview/style';
-import { PageHeader } from '../../components/page-headers/page-headers';
-import { Cards } from '../../components/cards/frame/cards-frame';
-import { Main } from '../styled';
-import { Button } from '../../components/buttons/buttons';
 
 const Inbox = lazy(() => import('./overview/Inbox'));
 const Sent = lazy(() => import('./overview/Sent'));
@@ -61,13 +61,9 @@ function Email() {
     setMailEditorStatus(!isMailEditorOpen);
   };
 
-  const closeMailComposr = () => {
-    setMailEditorStatus(false);
-  };
-
   return (
     <>
-      <PageHeader className="ninjadash-page-header-main" title="Dashboard" routes={PageRoutes} />
+      <PageHeader className="invoice-page-header-main" title="Dashboard" routes={PageRoutes} />
 
       <Main>
         <EmailWrapper>

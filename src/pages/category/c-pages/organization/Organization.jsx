@@ -20,7 +20,7 @@ export const Organization = () => {
 
   return (
     <>
-      <PageHeader className="ninjadash-page-header-main" title="Cơ cấu tổ chức" />
+      <PageHeader className="invoice-page-header-main" title="Cơ cấu tổ chức" />
       <Main>
         <Row gutter={15}>
           <BranchList

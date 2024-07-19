@@ -38,7 +38,7 @@ const OverviewDataStyleWrap = Styled.div`
         @media only screen and (max-width: 991px){
             flex-wrap: wrap;
         }
-        .ninjadash-overview-card-single{
+        .invoice-overview-card-single{
             flex: 0 0 auto;
             margin-bottom: 0;
             @media only screen and (max-width: 991px){
@@ -54,14 +54,14 @@ const OverviewDataStyleWrap = Styled.div`
 
 const NewProductWrapper = Styled.div`
     .ant-table-content{
-        .ninjadash-product-price{
+        .invoice-product-price{
             font-weight: 500;
         }
     }
 `;
 
 const DemoFourStyle = Styled.div`
-    .ninjadash-congratulation-banner{
+    .invoice-congratulation-banner{
         @media only screen and (max-width: 991px){
             margin-bottom: 25px;
         }
@@ -74,7 +74,7 @@ const DemoFourStyle = Styled.div`
         .ant-card-body{
             min-height: 360px !important;
         }
-        .ninjadash-congratulation-banner-content{
+        .invoice-congratulation-banner-content{
             img{
                 bottom: -155px;
             }
@@ -101,7 +101,7 @@ const TotalChartStyleWrap = Styled.div`
             padding-bottom: 0;
         }
     }
-    .ninjadash-total-earning{
+    .invoice-total-earning{
         .ant-card{
             min-height: 396px;
             @media only screen and (max-width: 1599px){
@@ -129,13 +129,13 @@ const TotalChartStyleWrap = Styled.div`
 `;
 
 const SalesOverviewStyleWrap = Styled.div`
-    .ninjadash-sales-inner{
+    .invoice-sales-inner{
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
     }
-    .ninjadash-sales-content{
+    .invoice-sales-content{
         justify-content: center;
         text-align: center;
         margin-top: 20px;
@@ -151,19 +151,19 @@ const SalesOverviewStyleWrap = Styled.div`
         }
     }
 
-    .ninjadash-sales-content__item{
+    .invoice-sales-content__item{
         min-width: 200px;
         @media only screen and (max-width: 575px) {
             min-width: auto;
             margin: 0 20px;
         }
-        .ninjadash-sales-content__item--label{
+        .invoice-sales-content__item--label{
             display: inline-block;
             font-size: 16px;
             margin-bottom: 6px;
             color: ${({ theme }) => theme[theme.mainContent]['gray-text']};
         }
-        .ninjadash-sales-content__item--total{
+        .invoice-sales-content__item--total{
             font-size: 24px;
             font-weight: 600;
             margin: 0;
@@ -174,11 +174,11 @@ const SalesOverviewStyleWrap = Styled.div`
 `;
 
 const DashboardBaseStyleWrap = Styled.div`
-    .ninjadash-configuration-box{
+    .invoice-configuration-box{
         display: flex;
         flex-wrap: wrap;
         margin: -5px;
-        .ninjadash-configuration-box__item{
+        .invoice-configuration-box__item{
             margin: 5px;
             text-align: center;
             flex-wrap: wrap;
@@ -190,9 +190,9 @@ const DashboardBaseStyleWrap = Styled.div`
         }
     }
     /* Button Hover Color Style */
-    .ninjadash-configuration-box {
-        &.ninjadash-configuration-box-button-hover{
-            .ninjadash-configuration-box__item{
+    .invoice-configuration-box {
+        &.invoice-configuration-box-button-hover{
+            .invoice-configuration-box__item{
                 .ant-btn-primary{
                     background-color: ${({ theme }) => theme['primary-hover']};
                 }
@@ -220,17 +220,17 @@ const DashboardBaseStyleWrap = Styled.div`
             }
         }
     }
-    .ninjadash-heading-typography{
+    .invoice-heading-typography{
         p{
             margin-bottom: 0;
         }
     }
-    .ninjadash-body-typography{
+    .invoice-body-typography{
         margin-bottom: 20px;
         h1{
             margin-bottom: 0;
         }
-        .ninjadash-typo-list{
+        .invoice-typo-list{
             display: flex;
             align-items: center;
             margin: -10px;
@@ -239,7 +239,7 @@ const DashboardBaseStyleWrap = Styled.div`
                 margin: 10px;
             }
         }
-        .ninjadash-body-typography__text{
+        .invoice-body-typography__text{
             margin-top: 14px;
         }
         &.typo-small{
@@ -277,7 +277,7 @@ const DashboardBaseStyleWrap = Styled.div`
 `;
 
 const CardBarChart = Styled.div`
-    .ninjadash-chart-top{
+    .invoice-chart-top{
         display: flex;
         justify-content: center;
         align-items: center;
@@ -288,7 +288,7 @@ const CardBarChart = Styled.div`
             margin: -6px;
         }
     }
-    .ninjadash-chart-top__item{
+    .invoice-chart-top__item{
         position: relative;
         display: flex;
         align-items: center;
@@ -296,11 +296,11 @@ const CardBarChart = Styled.div`
         @media only screen and (max-width: 767px) {
             margin: 6px;
         }
-        .ninjadash-chart-top__item--label{
+        .invoice-chart-top__item--label{
             position: relative;
             padding-left: 14px;
         }
-        .ninjadash-chart-top__item--tika{
+        .invoice-chart-top__item--tika{
             position: absolute;
             left: 0;
             top: 50%;
@@ -310,7 +310,7 @@ const CardBarChart = Styled.div`
             border-radius: 50%;
             transform: translateY(-50%);
         }
-        .ninjadash-chart-top__item--amount{
+        .invoice-chart-top__item--amount{
             display: inline-block;
             font-size: 18px;
             font-weight: 600;
@@ -318,7 +318,7 @@ const CardBarChart = Styled.div`
             margin: 0 5px 0 0;
             color: ${({ theme }) => theme[theme.mainContent]['dark-text']};
         }
-        .ninjadash-chart-top__item--status{
+        .invoice-chart-top__item--status{
             display: flex;
             align-items: center;
             font-size: 14px;
@@ -345,21 +345,21 @@ const CardBarChart = Styled.div`
             }
         }
     }
-    &.ninjadash-chart-container-overview{
-        .ninjadash-chart-top{
+    &.invoice-chart-container-overview{
+        .invoice-chart-top{
             margin-top: -35px;
             @media only screen and (max-width: 767px) {
                 margin-top: 0;
             }
         }
-        .ninjadash-chart-top__item{
-            .ninjadash-chart-top__item--label{
+        .invoice-chart-top__item{
+            .invoice-chart-top__item--label{
                 font-size: 14px;
                 ${({ theme }) => (theme.rtl ? 'margin-left' : 'margin-right')}: 8px;
             }
         }
     }
-    &.ninjadash-profitGroth-barCHar-wrap{
+    &.invoice-profitGroth-barCHar-wrap{
         min-height: 310px;
         @media only screen and (max-width: 1499px) {
             min-height: 348px;
@@ -422,7 +422,7 @@ const CardBarChart = Styled.div`
             }
         }
     }
-    .ninjadash-chartdata-list{
+    .invoice-chartdata-list{
         display: flex;
         align-items: center;
         justify-content: center;
@@ -561,7 +561,7 @@ const LocationTableWrap = Styled.div`
             }
         }
     }
-    .ninjadash-track-vertical{
+    .invoice-track-vertical{
         position: absolute;
         width: 6px;
         transition: opacity 200ms ease 0s;
@@ -703,10 +703,10 @@ const CardBarChart2 = Styled.div`
 `;
 
 const SalesRevenueWrapper = Styled.div`
-    .ninjadash-sales-revenue-lineChart{
+    .invoice-sales-revenue-lineChart{
         margin: ${({ theme }) => (!theme.rtl ? '0 -4px 0 0' : '0 0 0 -4px')};
     }
-    .ninjadash-chart-top{
+    .invoice-chart-top{
         display: flex;
         justify-content: center;
         align-items: center;
@@ -716,10 +716,10 @@ const SalesRevenueWrapper = Styled.div`
             margin: -6px;
         }
     }
-    #ninjadash-sales-revenue{
+    #invoice-sales-revenue{
         margin-top: 12px;
     }
-    .ninjadash-chart-top__item{
+    .invoice-chart-top__item{
         position: relative;
         display: flex;
         align-items: center;
@@ -738,24 +738,24 @@ const SalesRevenueWrapper = Styled.div`
             content: '';
             transform: translateY(-50%);
         }
-        &.ninjadash-chart-top__item-order{
+        &.invoice-chart-top__item-order{
             &:before{
                 background-color: ${({ theme }) => theme['primary-color']};
             }
             
         }
-        &.ninjadash-chart-top__item-sale{
+        &.invoice-chart-top__item-sale{
             &:before{
                 background-color: ${({ theme }) => theme['info-color']};
             }
            
         }
-        .ninjadash-chart-top__item--text{
+        .invoice-chart-top__item--text{
             font-size: 14px;
             font-weight: 400;
             color: ${({ theme }) => theme[theme.mainContent]['gray-text']};
         }
-        .ninjadash-chart-top__item--amount{
+        .invoice-chart-top__item--amount{
             display: inline-block;
             font-size: 22px;
             font-weight: 600;
@@ -765,7 +765,7 @@ const SalesRevenueWrapper = Styled.div`
                 font-size: 18px;
             }
         }
-        .ninjadash-chart-top__item--status{
+        .invoice-chart-top__item--status{
             display: flex;
             align-items: center;
             font-size: 14px;
@@ -796,8 +796,8 @@ const SalesRevenueWrapper = Styled.div`
 
 const RevenueGeneratedWrapper = Styled.div`
     ${({ theme }) => (theme.topMenu ? 'min-height: 355px' : 'min-height: 336px')};
-    .ninjadash-revenue-company{
-        .ninjadash-revenue-company__icon{
+    .invoice-revenue-company{
+        .invoice-revenue-company__icon{
             display: flex;
             align-items: center;
             justify-content: center;
@@ -805,28 +805,28 @@ const RevenueGeneratedWrapper = Styled.div`
             ${({ theme }) => (!theme.rtl ? 'margin-right' : 'margin-left')}: 12px;
             height: 32px;
             width: 32px;
-            &.ninjadash-revenue-company__icon-google{
+            &.invoice-revenue-company__icon-google{
                 background-color: #F1433610;
                 color: #F14336
             }
-            &.ninjadash-revenue-company__icon-facebook{
+            &.invoice-revenue-company__icon-facebook{
                 background-color: #1976D210;
                 color: #1976D2;
             }
-            &.ninjadash-revenue-company__icon-twitter{
+            &.invoice-revenue-company__icon-twitter{
                 background-color: #03A9F410;
                 color: #03A9F4;
             }
-            &.ninjadash-revenue-company__icon-linkedin{
+            &.invoice-revenue-company__icon-linkedin{
                 background-color: #007AB910;
                 color: #007AB9;
             }
-            &.ninjadash-revenue-company__icon-instagram{
+            &.invoice-revenue-company__icon-instagram{
                 background-color: #D1208F10;
                 color: #D1208F;
             }
         }
-        .ninjadash-revenue-company__content{
+        .invoice-revenue-company__content{
             span{
                 font-size: 15px;
                 font-weight: 500;
@@ -900,7 +900,7 @@ const RevenueGeneratedWrapper = Styled.div`
                 width: 55px;
                 height: 55px;
             }
-            &.ninjadash-facebook{
+            &.invoice-facebook{
                 background-color: #E6D5F6;
                 svg{
                     path{
@@ -908,7 +908,7 @@ const RevenueGeneratedWrapper = Styled.div`
                     }
                 }
             }
-            &.ninjadash-twitter{
+            &.invoice-twitter{
                 background-color: #CCEEFF;
                 svg{
                     path{
@@ -916,7 +916,7 @@ const RevenueGeneratedWrapper = Styled.div`
                     }
                 }
             }
-            &.ninjadash-google{
+            &.invoice-google{
                 background-color: #DDD9FF;
             }
         }
@@ -959,13 +959,13 @@ const RevenueGeneratedWrapper = Styled.div`
                     &:last-child{
                         ${({ theme }) => (!theme.rtl ? 'padding-right' : 'padding-left')}: 0 !important;
                     }
-                    .ninjadash-revenue{
+                    .invoice-revenue{
                         display: inline-block;
                         min-width: 60px;
                     }
-                    .ninjadash-trend-progress{
+                    .invoice-trend-progress{
                         min-width: 60px;
-                        .ninjadash-trend-percentage{
+                        .invoice-trend-percentage{
                             font-size: 14px;
                             font-weight: 400;
                             ${({ theme }) => (!theme.rtl ? 'margin-right' : 'margin-left')}: 14px;
@@ -977,52 +977,52 @@ const RevenueGeneratedWrapper = Styled.div`
                         .ant-progress-bg{
                             border-radius: 30px;
                         }
-                        &.ninjadash-trend-progress-primary{
+                        &.invoice-trend-progress-primary{
                             .ant-progress-bg{
                                 background-color: ${({ theme }) => theme['primary-color']};
                             }
                         }
-                        &.ninjadash-trend-progress-info{
+                        &.invoice-trend-progress-info{
                             .ant-progress-bg{
                                 background-color: ${({ theme }) => theme['info-color']};
                             }
                         }
-                        &.ninjadash-trend-progress-success{
+                        &.invoice-trend-progress-success{
                             .ant-progress-bg{
                                 background-color: ${({ theme }) => theme['success-color']};
                             }
                         }
-                        &.ninjadash-trend-progress-violet{
+                        &.invoice-trend-progress-violet{
                             .ant-progress-bg{
                                 background-color: #5840FF;
                             }
                         }
-                        &.ninjadash-trend-progress-warning{
+                        &.invoice-trend-progress-warning{
                             .ant-progress-bg{
                                 background-color: ${({ theme }) => theme['warning-color']};
                             }
                         }
-                        &.ninjadash-trend-progress-google{
+                        &.invoice-trend-progress-google{
                             .ant-progress-bg{
                                 background-color: ${({ theme }) => theme['primary-color']};
                             }
                         }
-                        &.ninjadash-trend-progress-facebook{
+                        &.invoice-trend-progress-facebook{
                             .ant-progress-bg{
                                 background-color: ${({ theme }) => theme[theme.mainContent].info};
                             }
                         }
-                        &.ninjadash-trend-progress-twitter{
+                        &.invoice-trend-progress-twitter{
                             .ant-progress-bg{
                                 background-color: ${({ theme }) => theme[theme.mainContent].success};
                             }
                         }
-                        &.ninjadash-trend-progress-linkedin{
+                        &.invoice-trend-progress-linkedin{
                             .ant-progress-bg{
                                 background-color: ${({ theme }) => theme[theme.mainContent].secondary};
                             }
                         }
-                        &.ninjadash-trend-progress-instagram{
+                        &.invoice-trend-progress-instagram{
                             .ant-progress-bg{
                                 background-color: ${({ theme }) => theme[theme.mainContent].warning};
                             }
@@ -1049,7 +1049,7 @@ const RevenueGeneratedWrapper = Styled.div`
 const ChartContainer = Styled.div`
     display: block;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    &.ninjadash-chart-pie{
+    &.invoice-chart-pie{
         .chartjs-tooltip {
             padding: 4px !important;
             table tbody td{
@@ -1137,17 +1137,17 @@ const ChartContainer = Styled.div`
 `;
 
 const SalesOverviewStyleWrap2 = Styled.div`
-    .ninjadash-overview-percentage{
+    .invoice-overview-percentage{
         display: flex;
         align-items: center;
         justify-content: center;
         margin-top: 12px;
-        .ninjadash-overview-percentage__item{
+        .invoice-overview-percentage__item{
             display: flex;
             align-items: center;
             margin: 15px;
         }
-        .ninjadash-overview-percentage__point{
+        .invoice-overview-percentage__point{
             display: block;
             width: 10px;
             height: 10px;
@@ -1155,7 +1155,7 @@ const SalesOverviewStyleWrap2 = Styled.div`
             ${({ theme }) => (!theme.rtl ? 'margin-right' : 'margin-left')}: 5px;
             background-color: ${({ theme }) => theme['primary-color']};
         }
-        .ninjadash-overview-percentage__text{
+        .invoice-overview-percentage__text{
             font-size: 15px;
             font-weight: 500;
             color: ${({ theme }) => theme[theme.mainContent]['dark-text']};
@@ -1164,7 +1164,7 @@ const SalesOverviewStyleWrap2 = Styled.div`
     .ant-card-body{
         padding: 30px 25px !important;
     }
-    .ninjadash-overview-wrap{
+    .invoice-overview-wrap{
         color: #333;
         canvas{
             margin: 0 auto;
@@ -1172,12 +1172,12 @@ const SalesOverviewStyleWrap2 = Styled.div`
             z-index: 10;
         }
     }
-    .ninjadash-overview-box{
+    .invoice-overview-box{
         margin-top: 10px;
         padding: 16.65px 32px;
         border-radius: 8px;
         background: ${({ theme }) => theme[theme.mainContent]['light-background']};
-        .ninjadash-overview-box-item{
+        .invoice-overview-box-item{
             text-align: center;
             h4{
                 font-size: 18px;
@@ -1251,11 +1251,11 @@ const SalesOverviewStyleWrap2 = Styled.div`
 `;
 
 const UpcomingEventsStyleWrap = Styled.div`
-    .ninjadash-event-details{
+    .invoice-event-details{
         @media only screen and (max-width: 575px){
             align-items: flex-start;
         }
-        .ninjadash-event-details__date{
+        .invoice-event-details__date{
             display: flex;
             align-items: center;
             justify-content: center;
@@ -1265,16 +1265,16 @@ const UpcomingEventsStyleWrap = Styled.div`
             min-height: 60px;
             padding: 0 10px;
             border-radius: 6px;
-            &.ninjadash-event-primary{
+            &.invoice-event-primary{
                 background-color: ${({ theme }) => theme['primary-color']};
             }
-            &.ninjadash-event-info{
+            &.invoice-event-info{
                 background-color: ${({ theme }) => theme['info-color']};
             }
-            &.ninjadash-event-secondary{
+            &.invoice-event-secondary{
                 background-color: ${({ theme }) => theme['secondary-color']};
             }
-            &.ninjadash-event-warning{
+            &.invoice-event-warning{
                 background-color: ${({ theme }) => theme['warning-color']};
             }
             span{
@@ -1283,19 +1283,19 @@ const UpcomingEventsStyleWrap = Styled.div`
 
             }
         }
-        .ninjadash-event-details__content{
+        .invoice-event-details__content{
             margin: ${({ theme }) => (!theme.rtl ? '-1px 0 0 15px' : '-1px 15px 0 0')};
             @media only screen and (max-width: 575px){
                 margin: ${({ theme }) => (!theme.rtl ? '-3px 0 0 15px' : '-3px 15px 0 0')};
             }
-            .ninjadash-event-details__title{
+            .invoice-event-details__title{
                 font-size: 15px;
                 line-height: 1.2;
                 font-weight: 400;
                 margin-bottom: 2px;
                 color: ${({ theme }) => theme[theme.mainContent]['dark-text']};
             }
-            .ninjadash-event-details__time{
+            .invoice-event-details__time{
                 line-height: 1;
                 margin-bottom: 0;
                 color: ${({ theme }) => theme[theme.mainContent]['gray-light-text']};
@@ -1316,7 +1316,7 @@ const UpcomingEventsStyleWrap = Styled.div`
             }
         }
     }
-    .ninjadash-event-details-action{
+    .invoice-event-details-action{
         display: flex;
         align-items: center;
         justify-content: flex-end;
@@ -1330,7 +1330,7 @@ const UpcomingEventsStyleWrap = Styled.div`
                 color: ${({ theme }) => theme[theme.mainContent]['gray-light-text']};
             }
         }
-        .ninjadash-event-details-action__edit{
+        .invoice-event-details-action__edit{
             &:hover{
                 svg{
                     color: ${({ theme }) => theme['info-color']};
@@ -1338,7 +1338,7 @@ const UpcomingEventsStyleWrap = Styled.div`
             }
             
         }
-        .ninjadash-event-details-action__delete{
+        .invoice-event-details-action__delete{
             &:hover{
                 svg{
                     color: ${({ theme }) => theme['danger-color']};
@@ -1359,7 +1359,7 @@ const KnowledgeBaseCardWrap = Styled.div`
     @media only screen and (max-width: 991px){
         min-height: auto;
     }
-    .ninjadash-knowledgebase-card{
+    .invoice-knowledgebase-card{
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -1372,11 +1372,11 @@ const KnowledgeBaseCardWrap = Styled.div`
         @media only screen and (max-width: 575px){
             padding-top: 5px;
         }
-        .ninjadash-knowledgebase-card__text{
+        .invoice-knowledgebase-card__text{
             text-align: center;
             margin-top: 18px;
         }
-        .ninjadash-knowledgebase-card__title{
+        .invoice-knowledgebase-card__title{
             font-size: 30px;
             font-weight: 600;
             margin-bottom: 8px;
@@ -1389,7 +1389,7 @@ const KnowledgeBaseCardWrap = Styled.div`
             color: ${({ theme }) => theme[theme.mainContent]['gray-text']};
         }
     }
-    .ninjadash-knowledgebase-card__action{
+    .invoice-knowledgebase-card__action{
         font-weight: 500;
         height: 38px;
     }
@@ -1405,7 +1405,7 @@ const TimelineStyleWrap = Styled.div`
                 justify-content: space-between;
                 font-weight: 500;
                 color: ${({ theme }) => theme[theme.mainContent]['gray-lighter-text']};
-                .ninjadash-time{
+                .invoice-time{
                     font-size: 13px;
                     font-weight: 400;
                     color: ${({ theme }) => theme[theme.mainContent]['gray-light-text']};
@@ -1443,7 +1443,7 @@ const InboxListStyleWrap = Styled.div`
                     padding: 0;
                     border: 0 none;
                 }
-                .ninjadash-mail-time{
+                .invoice-mail-time{
                     font-size: 13px;
                     color: ${({ theme }) => theme[theme.mainContent]['gray-light-text']};
                 }
@@ -1537,14 +1537,14 @@ const BrowserStateWrap = Styled.div`
             }
         }
     }
-    .ninjadash-product-info{
-        .ninjadash-product-img{
+    .invoice-product-info{
+        .invoice-product-img{
             ${({ theme }) => (!theme.rtl ? 'margin-right' : 'margin-left')}: 12px;
             img{
                 max-width: 31px;
             }
         }
-        .ninjadash-product-name{
+        .invoice-product-name{
             font-size: 15px;
             text-transform: capitalize;
             font-weight: 500;
@@ -1555,7 +1555,7 @@ const BrowserStateWrap = Styled.div`
 
 const PerfomanceOverviewStyle = Styled.div`
     margin-top: 26px;
-    &.ninjadash-chartpoint-vertical{
+    &.invoice-chartpoint-vertical{
         display: flex;
         align-items: center;
         margin: 0;
@@ -1568,15 +1568,15 @@ const PerfomanceOverviewStyle = Styled.div`
                 margin-left: -55px;
             }
         }
-        .ninjadash-chartpoint{
+        .invoice-chartpoint{
             margin: 0 0 0 -10px;
-            .ninjadash-chartpoint__item{
+            .invoice-chartpoint__item{
                 position: relative;
                 padding-left: 14px;
                 &:not(:last-child){
                     margin-bottom: 10px;
                 }
-               .ninjadash-chartpoint__tika{
+               .invoice-chartpoint__tika{
                     position: absolute;
                     width: 7px;
                     height: 7px;
@@ -1585,7 +1585,7 @@ const PerfomanceOverviewStyle = Styled.div`
                     border-radius: 50%;
                     transform: translateY(-50%);
                 }
-                .ninjadash-chartpoint__label{
+                .invoice-chartpoint__label{
                     font-size: 15px;
                     font-weight: 400;
                     color: ${({ theme }) => theme[theme.mainContent]['gray-text']};
@@ -1598,7 +1598,7 @@ const PerfomanceOverviewStyle = Styled.div`
         margin-top: 6px;
         color: ${({ theme }) => theme[theme.mainContent]['gray-text']};
     }
-    .ninjadash-chartpoint{
+    .invoice-chartpoint{
         margin-top: 34px;
         margin-bottom: 10px;
     }

@@ -1,21 +1,20 @@
-import React from 'react';
-import { Row, Col, Timeline } from 'antd';
 import { ClockCircleOutlined } from '@ant-design/icons';
-import { TimeLinePointerIconWrap, TimelineNormalWrap, TimelineBoxWrap } from './ui-elements-styled';
-import { PageHeader } from '../../components/page-headers/page-headers';
-import { Main } from '../styled';
+import { Col, Row, Timeline } from 'antd';
 import { Cards } from '../../components/cards/frame/cards-frame';
+import { PageHeader } from '../../components/page-headers/page-headers';
 import {
-  SwRocket,
-  SwShieldCheck,
-  SwPenTool,
-  SwNotification,
-  SwUsers,
-  SwLayers,
-  SwPicture,
   SwClock,
   SwEllipse,
+  SwLayers,
+  SwNotification,
+  SwPenTool,
+  SwPicture,
+  SwRocket,
+  SwShieldCheck,
+  SwUsers,
 } from '../../components/utilities/icons';
+import { Main } from '../styled';
+import { TimeLinePointerIconWrap, TimelineBoxWrap, TimelineNormalWrap } from './ui-elements-styled';
 
 function Timelines() {
   const PageRoutes = [
@@ -30,7 +29,7 @@ function Timelines() {
   ];
   return (
     <>
-      <PageHeader className="ninjadash-page-header-main" title="Timelines" routes={PageRoutes} />
+      <PageHeader className="invoice-page-header-main" title="Timelines" routes={PageRoutes} />
       <Main>
         <Row gutter={25}>
           <Col lg={12} xs={24}>

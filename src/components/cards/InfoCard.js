@@ -7,11 +7,11 @@ const InfoCard = ({ icon = 'briefcase', text = 'Total Products', counter = '21k'
   const IconTag = Unicons[icon];
   return (
     <InfoCardStyle type={type}>
-      <span className="ninjadash-infocard-icon">
+      <span className="invoice-infocard-icon">
         <IconTag />
       </span>
-      <p className="ninjadash-infocard-text">{text}</p>
-      <h2 className="ninjadash-infocard-label">{counter}</h2>
+      <p className="invoice-infocard-text">{text}</p>
+      <h2 className="invoice-infocard-label">{counter}</h2>
     </InfoCardStyle>
   );
 };

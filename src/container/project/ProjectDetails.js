@@ -39,7 +39,7 @@ function ProjectDetails() {
   return (
     <ProjectDetailsWrapper>
       <PageHeader
-        className="ninjadash-page-header-main"
+        className="invoice-page-header-main"
         ghost
         title={
           <div key="1" className="project-header">

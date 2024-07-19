@@ -56,8 +56,8 @@ const MessageBox = React.memo(() => {
   };
 
   const content = (
-    <UserActionDropDown className="ninjadash-top-dropdown">
-      <Heading className="ninjadash-top-dropdown__title" as="h5">
+    <UserActionDropDown className="invoice-top-dropdown">
+      <Heading className="invoice-top-dropdown__title" as="h5">
         <span className="title-text">Messages</span>
         <Badge className="badge-success" count={3} />
       </Heading>
@@ -69,18 +69,18 @@ const MessageBox = React.memo(() => {
         renderTrackVertical={renderTrackVertical}
         renderTrackHorizontal={(props) => <div {...props} style={{ display: 'none' }} className="track-horizontal" />}
       >
-        <div className="ninjadash-top-dropdown-menu">
-          <ul className="ninjadash-top-dropdown__nav">
+        <div className="invoice-top-dropdown-menu">
+          <ul className="invoice-top-dropdown__nav">
             <li>
               <Link to="#">
-                <figure className="ninjadash-top-dropdown__content">
+                <figure className="invoice-top-dropdown__content">
                   <img src={require('../../static/img/avatar/NoPath.png')} alt="" />
                   <figcaption>
                     <Heading as="h5">
                       Software <span className="color-success">3 hrs ago</span>
                     </Heading>
                     <div>
-                      <span className="ninjadash-top-dropdownText">Lorem ipsum dolor amet cosec...</span>
+                      <span className="invoice-top-dropdownText">Lorem ipsum dolor amet cosec...</span>
                       <span>
                         <Badge className="badge-success" count={3} />
                       </span>
@@ -91,14 +91,14 @@ const MessageBox = React.memo(() => {
             </li>
             <li>
               <Link to="#">
-                <figure className="ninjadash-top-dropdown__content">
+                <figure className="invoice-top-dropdown__content">
                   <img src={require('../../static/img/avatar/NoPath.png')} alt="" />
                   <figcaption>
                     <Heading as="h5">
                       Software <span className="color-success">3 hrs ago</span>
                     </Heading>
                     <div>
-                      <span className="ninjadash-top-dropdownText">Lorem ipsum dolor amet cosec...</span>
+                      <span className="invoice-top-dropdownText">Lorem ipsum dolor amet cosec...</span>
                       <span>
                         <Badge className="badge-success" count={3} />
                       </span>
@@ -109,14 +109,14 @@ const MessageBox = React.memo(() => {
             </li>
             <li>
               <Link to="#">
-                <figure className="ninjadash-top-dropdown__content">
+                <figure className="invoice-top-dropdown__content">
                   <img src={require('../../static/img/avatar/NoPath.png')} alt="" />
                   <figcaption>
                     <Heading as="h5">
                       Software <span className="color-success">3 hrs ago</span>
                     </Heading>
                     <div>
-                      <span className="ninjadash-top-dropdownText">Lorem ipsum dolor amet cosec...</span>
+                      <span className="invoice-top-dropdownText">Lorem ipsum dolor amet cosec...</span>
                       <span>
                         <Badge className="badge-success" count={3} />
                       </span>
@@ -127,14 +127,14 @@ const MessageBox = React.memo(() => {
             </li>
             <li>
               <Link to="#">
-                <figure className="ninjadash-top-dropdown__content">
+                <figure className="invoice-top-dropdown__content">
                   <img src={require('../../static/img/avatar/NoPath.png')} alt="" />
                   <figcaption>
                     <Heading as="h5">
                       Software <span className="color-success">3 hrs ago</span>
                     </Heading>
                     <div>
-                      <span className="ninjadash-top-dropdownText">Lorem ipsum dolor amet cosec...</span>
+                      <span className="invoice-top-dropdownText">Lorem ipsum dolor amet cosec...</span>
                       <span>
                         <Badge className="badge-success" count={3} />
                       </span>
@@ -145,14 +145,14 @@ const MessageBox = React.memo(() => {
             </li>
             <li>
               <Link to="#">
-                <figure className="ninjadash-top-dropdown__content">
+                <figure className="invoice-top-dropdown__content">
                   <img src={require('../../static/img/avatar/NoPath.png')} alt="" />
                   <figcaption>
                     <Heading as="h5">
                       Software <span className="color-success">3 hrs ago</span>
                     </Heading>
                     <div>
-                      <span className="ninjadash-top-dropdownText">Lorem ipsum dolor amet cosec...</span>
+                      <span className="invoice-top-dropdownText">Lorem ipsum dolor amet cosec...</span>
                       <span>
                         <Badge className="badge-success" count={3} />
                       </span>
@@ -172,10 +172,10 @@ const MessageBox = React.memo(() => {
   );
 
   return (
-    <div className="ninjadash-nav-actions__item ninjadash-nav-actions__message">
+    <div className="invoice-nav-actions__item invoice-nav-actions__message">
       <Popover placement="bottomLeft" content={content} action="click">
         <Badge dot offset={[-8, -5]}>
-          <Link to="#" className="ninjadash-nav-action-link">
+          <Link to="#" className="invoice-nav-action-link">
             <ReactSVG src={require('../../static/img/icon/envelope.svg').default} />
           </Link>
         </Badge>

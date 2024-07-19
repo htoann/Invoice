@@ -34,11 +34,11 @@ function SignIn() {
     <Row justify="center">
       <Col xxl={6} xl={8} md={12} sm={18} xs={24}>
         <AuthFormWrap>
-          <div className="ninjadash-authentication-top">
-            <h2 className="ninjadash-authentication-top__title">Đăng nhập vào hệ thống hoá đơn</h2>
+          <div className="invoice-authentication-top">
+            <h2 className="invoice-authentication-top__title">Đăng nhập vào hệ thống hoá đơn</h2>
           </div>
 
-          <div className="ninjadash-authentication-content">
+          <div className="invoice-authentication-content">
             <Form name="login" form={form} onFinish={handleSubmit} layout="vertical">
               <Form.Item
                 name="username"

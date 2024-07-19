@@ -10,7 +10,7 @@ import OverviewDataList from './overview/OverviewDataList';
 function Dashboard() {
   return (
     <>
-      <PageHeader className="ninjadash-page-header-main" title="Tổng quan" />
+      <PageHeader className="invoice-page-header-main" title="Tổng quan" />
 
       <Main>
         <Row justify="center">

@@ -44,7 +44,7 @@ function CreateTaiKhoanThue({ state, setState }) {
                 <Form.Item
                   name="name"
                   rules={[{ message: 'Vui lòng nhập tên đăng nhập', required: true }]}
-                  initialValue="ninjadash@dm.com"
+                  initialValue="invoice@dm.com"
                   label="Tên đăng nhập"
                 >
                   <Input placeholder="name@example.com" />

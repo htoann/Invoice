@@ -1,9 +1,8 @@
-import React from 'react';
-import { Row, Col } from 'antd';
+import { Col, Row } from 'antd';
 import { PageHeader } from '../../components/page-headers/page-headers';
-import { Main } from '../styled';
 import { Tab } from '../../components/tabs/tabs';
 import tabData from '../../demoData/tab-data.json';
+import { Main } from '../styled';
 
 const { data, dataIcon, icon } = tabData;
 
@@ -20,7 +19,7 @@ function Tabs() {
   ];
   return (
     <>
-      <PageHeader className="ninjadash-page-header-main" title="Tabs" routes={PageRoutes} />
+      <PageHeader className="invoice-page-header-main" title="Tabs" routes={PageRoutes} />
       <Main>
         <Row gutter={25}>
           <Col md={12} xs={24}>

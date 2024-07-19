@@ -55,9 +55,9 @@ export const LeftMenu = ({ toggleCollapsed }) => {
   // const changeNavbar = (topMode) => {
   //   const html = document.querySelector('html');
   //   if (topMode) {
-  //     html.classList.add('ninjadash-topmenu');
+  //     html.classList.add('invoice-topmenu');
   //   } else {
-  //     html.classList.remove('ninjadash-topmenu');
+  //     html.classList.remove('invoice-topmenu');
   //   }
   //   dispatch(changeMenuMode(topMode));
   // };

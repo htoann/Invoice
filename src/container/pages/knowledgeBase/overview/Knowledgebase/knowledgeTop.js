@@ -6,11 +6,11 @@ import { KnowledgebaseTopWrap } from '../../style';
 function KnowledgeBaseTop() {
   return (
     <KnowledgebaseTopWrap>
-      <div className="ninjadash-knowledgetop">
-        <h2 className="ninjadash-knowledgetop__title">Hi, How can we help?</h2>
-        <div className="ninjadash-knowledgetop__search--form">
+      <div className="invoice-knowledgetop">
+        <h2 className="invoice-knowledgetop__title">Hi, How can we help?</h2>
+        <div className="invoice-knowledgetop__search--form">
           <Form name="login" layout="vertical">
-            <div className="ninjadash-knowledgetop__formInner">
+            <div className="invoice-knowledgetop__formInner">
               <Form.Item>
                 <Select defaultValue="All Products">
                   <Select.Option value="email">Email</Select.Option>
@@ -18,7 +18,7 @@ function KnowledgeBaseTop() {
                   <Select.Option value="event">Event</Select.Option>
                 </Select>
               </Form.Item>
-              <Form.Item className="ninjadash-search-input">
+              <Form.Item className="invoice-search-input">
                 <Input placeholder="Search anything" />
               </Form.Item>
               <Form.Item>
@@ -29,7 +29,7 @@ function KnowledgeBaseTop() {
             </div>
           </Form>
         </div>
-        <div className="ninjadash-knowledgetop__popular--topics">
+        <div className="invoice-knowledgetop__popular--topics">
           <ul>
             <li>
               <span className="popular-topics-title">Popular topics:</span>

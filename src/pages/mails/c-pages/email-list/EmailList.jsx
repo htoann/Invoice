@@ -142,7 +142,7 @@ export const EmailList = () => {
               okText="Có"
               cancelText="Không"
             >
-              <Link className="ninjadash-delete" to="#">
+              <Link className="invoice-delete" to="#">
                 <UilTrash />
               </Link>
             </Popconfirm>
@@ -211,7 +211,7 @@ export const EmailList = () => {
 
   return (
     <>
-      <PageHeader className="ninjadash-page-header-main" title="Danh sách email" />
+      <PageHeader className="invoice-page-header-main" title="Danh sách email" />
       <Main>
         <Row gutter={15}>
           <Col xs={24}>

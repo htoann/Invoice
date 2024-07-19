@@ -1,10 +1,10 @@
-import React, { lazy, Suspense } from 'react';
-import { Row, Col, Skeleton } from 'antd';
-import { Routes, Route } from 'react-router-dom';
-import { SettingWrapper } from './overview/style';
+import { Col, Row, Skeleton } from 'antd';
+import { lazy, Suspense } from 'react';
+import { Route, Routes } from 'react-router-dom';
+import { Cards } from '../../../components/cards/frame/cards-frame';
 import { PageHeader } from '../../../components/page-headers/page-headers';
 import { Main } from '../../styled';
-import { Cards } from '../../../components/cards/frame/cards-frame';
+import { SettingWrapper } from './overview/style';
 
 const Profile = lazy(() => import('./overview/Profile'));
 const Account = lazy(() => import('./overview/Account'));
@@ -27,7 +27,7 @@ function Settings() {
   ];
   return (
     <>
-      <PageHeader className="ninjadash-page-header-main" title="My Profile" routes={PageRoutes} />
+      <PageHeader className="invoice-page-header-main" title="My Profile" routes={PageRoutes} />
 
       <Main>
         <Row gutter={25}>

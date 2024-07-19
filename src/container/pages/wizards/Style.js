@@ -673,7 +673,7 @@ const InvoiceAction = Styled.div`
 
 const WizardWrapper = Styled.div`
     color:#eee;
-    &.ninjadash-wizard-page{
+    &.invoice-wizard-page{
         padding: 25px 0;
     }
     &.bordered-wizard{

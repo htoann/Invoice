@@ -1,15 +1,14 @@
-import React from 'react';
-import { Row, Col, Card } from 'antd';
-import UilTimes from '@iconscout/react-unicons/icons/uil-times';
-import UilPrint from '@iconscout/react-unicons/icons/uil-print';
 import UilBookOpen from '@iconscout/react-unicons/icons/uil-book-open';
-import UilFileAlt from '@iconscout/react-unicons/icons/uil-file-alt';
 import UilFile from '@iconscout/react-unicons/icons/uil-file';
+import UilFileAlt from '@iconscout/react-unicons/icons/uil-file-alt';
+import UilPrint from '@iconscout/react-unicons/icons/uil-print';
+import UilTimes from '@iconscout/react-unicons/icons/uil-times';
+import { Card, Col, Row } from 'antd';
 import { NavLink } from 'react-router-dom';
-import { CardStyleWrapper } from './ui-elements-styled';
+import { Cards } from '../../components/cards/frame/cards-frame';
 import { PageHeader } from '../../components/page-headers/page-headers';
 import { Main } from '../styled';
-import { Cards } from '../../components/cards/frame/cards-frame';
+import { CardStyleWrapper } from './ui-elements-styled';
 
 const content = (
   <>
@@ -49,7 +48,7 @@ function CardContainer() {
   ];
   return (
     <>
-      <PageHeader className="ninjadash-page-header-main" title="Cards" routes={PageRoutes} />
+      <PageHeader className="invoice-page-header-main" title="Cards" routes={PageRoutes} />
       <Main>
         <Row gutter={25}>
           <Col xs={24}>

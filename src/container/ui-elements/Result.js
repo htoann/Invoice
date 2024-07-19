@@ -1,10 +1,9 @@
-import React from 'react';
-import { Row, Col, Result, Button, Typography } from 'antd';
-import { NavLink } from 'react-router-dom';
 import { CloseCircleOutlined } from '@ant-design/icons';
+import { Button, Col, Result, Row, Typography } from 'antd';
+import { NavLink } from 'react-router-dom';
+import { Cards } from '../../components/cards/frame/cards-frame';
 import { PageHeader } from '../../components/page-headers/page-headers';
 import { Main } from '../styled';
-import { Cards } from '../../components/cards/frame/cards-frame';
 
 const { Paragraph, Text } = Typography;
 function Results() {
@@ -20,7 +19,7 @@ function Results() {
   ];
   return (
     <>
-      <PageHeader className="ninjadash-page-header-main" title="Results" routes={PageRoutes} />
+      <PageHeader className="invoice-page-header-main" title="Results" routes={PageRoutes} />
       <Main>
         <Row gutter={25}>
           <Col md={12} xs={24}>

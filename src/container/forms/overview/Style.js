@@ -25,7 +25,7 @@ const HorizontalFormStyleWrap = Styled.div`
             height: 16px;
             color: ${({ theme }) => theme[theme.mainContent]['extra-light-text']};
         }
-        .ninjadash-form-action{
+        .invoice-form-action{
             margin: -7.5px;
             button{
                 font-size: 14px;
@@ -74,7 +74,7 @@ const VerticalFormStyleWrap = Styled.div`
         height: 16px;
         color: ${({ theme }) => theme['gray-color']};
     }
-    .ninjadash-form-action{
+    .invoice-form-action{
         margin: -7.5px;
         button{
             font-size: 14px;
@@ -113,7 +113,7 @@ const CheckListWrap = Styled.div`
 `;
 
 const DropDownListComponents = Styled.div`
-    .ninjadash_dropdown-list{
+    .invoice_dropdown-list{
         .ant-dropdown-trigger{
             font-size: 14px;
             font-weight: 400;
@@ -215,7 +215,7 @@ const FormValidationWrap = Styled.div`
             font-size: 13px;
         }
     }
-    .ninjadash-form-action{
+    .invoice-form-action{
         button{
             border-radius: 4px;
             padding: 6.4px 29.2px;

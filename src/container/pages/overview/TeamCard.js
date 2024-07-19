@@ -19,7 +19,7 @@ function TeamCard({ user, actions }) {
             <img src={require(`../../../${img}`)} alt="" />
             <figcaption>
               <div className="edit">
-                <Dropdown content={actions} action={['click']} className="wide-dropdwon">
+                <Dropdown content={actions} action={['click']} className="wide-dropdown">
                   <Link className="card__more_actions" to="#">
                     <UilEllipsisH />
                   </Link>

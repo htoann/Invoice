@@ -1,10 +1,9 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import UilEye from '@iconscout/react-unicons/icons/uil-eye';
 import UilEdit from '@iconscout/react-unicons/icons/uil-edit';
-import UilTrashAlt from '@iconscout/react-unicons/icons/uil-trash-alt';
 import UilEllipsisH from '@iconscout/react-unicons/icons/uil-ellipsis-h';
+import UilEye from '@iconscout/react-unicons/icons/uil-eye';
+import UilTrashAlt from '@iconscout/react-unicons/icons/uil-trash-alt';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import { Cards } from '../../../components/cards/frame/cards-frame';
 import { Dropdown } from '../../../components/dropdown/dropdown';
 
@@ -27,7 +26,7 @@ function FileListCard({ title = 'File' }) {
           </div>
           <div className="file-single-action">
             <Dropdown
-              className="wide-dropdwon"
+              className="wide-dropdown"
               content={
                 <>
                   <Link to="#">
@@ -68,7 +67,7 @@ function FileListCard({ title = 'File' }) {
           </div>
           <div className="file-single-action">
             <Dropdown
-              className="wide-dropdwon"
+              className="wide-dropdown"
               content={
                 <>
                   <Link to="#">
@@ -108,7 +107,7 @@ function FileListCard({ title = 'File' }) {
           </div>
           <div className="file-single-action">
             <Dropdown
-              className="wide-dropdwon"
+              className="wide-dropdown"
               content={
                 <>
                   <Link to="#">
@@ -149,7 +148,7 @@ function FileListCard({ title = 'File' }) {
           </div>
           <div className="file-single-action">
             <Dropdown
-              className="wide-dropdwon"
+              className="wide-dropdown"
               content={
                 <>
                   <Link to="#">
@@ -190,7 +189,7 @@ function FileListCard({ title = 'File' }) {
           </div>
           <div className="file-single-action">
             <Dropdown
-              className="wide-dropdwon"
+              className="wide-dropdown"
               content={
                 <div className="dropdown-more">
                   <>

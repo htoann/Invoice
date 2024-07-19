@@ -55,7 +55,7 @@ function Email() {
 
   return (
     <>
-      <PageHeader className="ninjadash-page-header-main" title="Hộp thư đến" routes={pageRoutes} />
+      <PageHeader className="invoice-page-header-main" title="Hộp thư đến" routes={pageRoutes} />
 
       <Main>
         <EmailWrapper>

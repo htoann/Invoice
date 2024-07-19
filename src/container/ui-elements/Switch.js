@@ -1,10 +1,9 @@
-import React from 'react';
-import { Row, Col, Switch } from 'antd';
 import { CheckOutlined, CloseOutlined } from '@ant-design/icons';
-import { SwitchStyleWrap } from './ui-elements-styled';
+import { Col, Row, Switch } from 'antd';
+import { Cards } from '../../components/cards/frame/cards-frame';
 import { PageHeader } from '../../components/page-headers/page-headers';
 import { Main } from '../styled';
-import { Cards } from '../../components/cards/frame/cards-frame';
+import { SwitchStyleWrap } from './ui-elements-styled';
 
 function Switches() {
   const PageRoutes = [
@@ -19,7 +18,7 @@ function Switches() {
   ];
   return (
     <>
-      <PageHeader className="ninjadash-page-header-main" title="Switch" routes={PageRoutes} />
+      <PageHeader className="invoice-page-header-main" title="Switch" routes={PageRoutes} />
       <Main>
         <Row gutter={25}>
           <Col md={12} sm={12} xs={24}>

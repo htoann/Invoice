@@ -1,7 +1,7 @@
 import Styled from 'styled-components';
 
 const KnowledgebaseTopWrap = Styled.div`
-    .ninjadash-knowledgetop{
+    .invoice-knowledgetop{
         text-align: center;
         padding: 65px;
         border-radius: 10px;
@@ -10,7 +10,7 @@ const KnowledgebaseTopWrap = Styled.div`
         @media only screen and (max-width: 575px){
             padding: 30px;
         }
-        .ninjadash-knowledgetop__title{
+        .invoice-knowledgetop__title{
             font-size: 30px;
             font-weight: 600;
             margin-bottom: 25px;
@@ -19,7 +19,7 @@ const KnowledgebaseTopWrap = Styled.div`
                 font-size: 24px;
             }
         }
-        .ninjadash-knowledgetop__formInner{
+        .invoice-knowledgetop__formInner{
             display: flex;
             justify-content: center;
             align-items: center;
@@ -84,7 +84,7 @@ const KnowledgebaseTopWrap = Styled.div`
                     }
                 }
             }
-            .ninjadash-search-input{
+            .invoice-search-input{
                 width: 100%;
                 .ant-form-item-control{
                     @media only screen and (max-width: 575px){
@@ -131,7 +131,7 @@ const KnowledgebaseTopWrap = Styled.div`
             }
         }
     }
-    .ninjadash-knowledgetop__popular--topics{
+    .invoice-knowledgetop__popular--topics{
         margin-top: 22px;
         ul{
             display: flex;
@@ -192,7 +192,7 @@ const KnowledgebaseArticleWrap = Styled.div`
             max-width: 930px;
         }
     }
-    .ninjadash-paginaion{
+    .invoice-paginaion{
         margin: 18px 0 40px;
         display: flex;
         justify-content: space-between;
@@ -254,8 +254,8 @@ const KnowledgebaseArticleWrap = Styled.div`
 
 const ArticleTabWrap = Styled.div`
     margin-bottom: 10px;
-    &.ninjadash-article-tab{
-        .ninjadash-article-tab__menu{
+    &.invoice-article-tab{
+        .invoice-article-tab__menu{
             margin-bottom: 35px;
             ul{
                 display: flex;
@@ -302,14 +302,14 @@ const ArticleTabWrap = Styled.div`
 `;
 
 const ArticleTabContentWrap = Styled.div`
-    .ninjadash-article-tab-signle{
+    .invoice-article-tab-signle{
         margin-bottom: 70px;
-        .ninjadash-article-tab-signle__title{
+        .invoice-article-tab-signle__title{
             font-size: 22px;
             font-weight: 600;
             color: ${({ theme }) => theme[theme.mainContent]['dark-text']};
         }
-        .ninjadash-article-tab-signle__list{
+        .invoice-article-tab-signle__list{
             li{
                 a{
                     display: block;
@@ -364,14 +364,14 @@ const ArticleTabContentWrap = Styled.div`
 const PopularArticleWrap = Styled.div`
     padding-top: 65px;
     border-top: 1px solid ${({ theme }) => theme[theme.mainContent]['border-color-secondary']};
-    .ninjadash-popular-article{
-        .ninjadash-popular-article__title{
+    .invoice-popular-article{
+        .invoice-popular-article__title{
             font-size: 24px;
             font-weight: 600;
             margin-bottom: 30px;
             color: ${({ theme }) => theme[theme.mainContent]['dark-text']};
         }
-        .ninjadash-popular-article__single{
+        .invoice-popular-article__single{
             border-radius: 10px;
             padding: 28px 33px 30px 33px;
             margin-bottom: 30px;
@@ -440,13 +440,13 @@ const PopularArticleWrap = Styled.div`
                 }
             }
         }
-        .ninjadash-popular-article__box{
+        .invoice-popular-article__box{
             direction: ltr;
             margin: 0 0 0px 0;
             @media only screen and (max-width: 899px){
                 margin: 0;
             }
-            .ninjadash-popular-article__single {
+            .invoice-popular-article__single {
                 margin: 0 0 15px 0;
                 direction: ${({ theme }) => (theme.rtl ? 'rtl' : 'ltr')};
                 @media only screen and (max-width: 899px){
@@ -459,9 +459,9 @@ const PopularArticleWrap = Styled.div`
 
 const CtaWrap = Styled.div`
     margin-top: 15px;
-    .ninjadash-knowledgebase-cta{
+    .invoice-knowledgebase-cta{
         text-align: center;
-        .ninjadash-knowledgebase-cta__title{
+        .invoice-knowledgebase-cta__title{
             font-size: 22px;
             font-weight: 600;
             color: ${({ theme }) => theme[theme.mainContent]['dark-text']};
@@ -480,12 +480,12 @@ const CtaWrap = Styled.div`
 `;
 
 const ArticleListWrap = Styled.div`
-    .ninjadash-articlelist{
+    .invoice-articlelist{
         border-bottom: 1px solid ${({ theme }) => theme[theme.mainContent]['border-color-secondary']};
         padding-bottom: 65px;
         margin-bottom: 45px;
     }
-    .ninjadash-articlelist__single{
+    .invoice-articlelist__single{
         display: flex;
         @media only screen and (max-width: 991px){
             flex-flow: column;
@@ -496,7 +496,7 @@ const ArticleListWrap = Styled.div`
                 margin-bottom: 30px
             }
         }
-        .ninjadash-articlelist__single--left{
+        .invoice-articlelist__single--left{
             ${({ theme }) => (theme.rtl ? 'margin-left' : 'margin-right')}: 100px;
             min-width: 260px;
             @media only screen and (max-width: 1199px){
@@ -506,7 +506,7 @@ const ArticleListWrap = Styled.div`
                 margin-bottom: 12px;
                 margin-right: 0;
             }
-            .ninjadash-article-category-title{
+            .invoice-article-category-title{
                 color: ${({ theme }) => theme[theme.mainContent]['dark-text']};
                 @media only screen and (max-width: 1199px){
                     font-size: 1.2rem;
@@ -514,7 +514,7 @@ const ArticleListWrap = Styled.div`
             }
         }
     }
-    .ninjadash-article-category-links{
+    .invoice-article-category-links{
         ul{
             display:  flex;
             justify-content: between;
@@ -1011,11 +1011,11 @@ const KnowledgeDetailsWrap = Styled.div`
             }
         }
     }
-    .ninjadash-comment-form{
+    .invoice-comment-form{
         border-radius: 5px;
         padding: 20px 30px 30px;
         border: 1px solid ${({ theme }) => theme[theme.mainContent]['border-color-secondary']};
-        .ninjadash-comment-form__title{
+        .invoice-comment-form__title{
             font-size: 20px;
             font-weight: 500;
             margin-bottom: 20px;

@@ -19,9 +19,9 @@ function DataTable({ rowSelection, tableData, columns, pagination, setState, sta
 
   return (
     <DataTableStyleWrap>
-      <div className="ninjadash-datatable-filter">
-        <div className="ninjadash-datatable-filter__left">
-          <div className="ninjadash-datatable-filter__input">
+      <div className="invoice-datatable-filter">
+        <div className="invoice-datatable-filter__left">
+          <div className="invoice-datatable-filter__input">
             <span className="label">Tài khoản thuế (2 tài khoản)</span>
             <Select onChange={handleLoaiHoaDonSearch} style={{ width: 200 }} defaultValue="purchase">
               <Select.Option value="purchase">Mua vào</Select.Option>

@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
-import { Row, Col, DatePicker } from 'antd';
+import { Col, DatePicker, Row } from 'antd';
 import moment from 'moment';
-import { PageHeader } from '../../components/page-headers/page-headers';
-import { Main, DatePickerWrapper } from '../styled';
+import { useState } from 'react';
 import { Cards } from '../../components/cards/frame/cards-frame';
-import { DateRangePickerOne, CustomDateRange } from '../../components/datePicker/datePicker';
+import { CustomDateRange, DateRangePickerOne } from '../../components/datePicker/datePicker';
+import { PageHeader } from '../../components/page-headers/page-headers';
+import { DatePickerWrapper, Main } from '../styled';
 
 const { MonthPicker, RangePicker, WeekPicker } = DatePicker;
 const dateFormat = 'YYYY/MM/DD';
@@ -32,7 +32,7 @@ function DatePickers() {
 
   return (
     <>
-      <PageHeader className="ninjadash-page-header-main" title="Date Picker" routes={PageRoutes} />
+      <PageHeader className="invoice-page-header-main" title="Date Picker" routes={PageRoutes} />
       <Main>
         <Row gutter={25}>
           <Col md={12} xs={24}>

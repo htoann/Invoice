@@ -57,8 +57,8 @@ const NotificationBox = React.memo(() => {
   };
 
   const content = (
-    <UserActionDropDown className="ninjadash-top-dropdown">
-      <Heading as="h5" className="ninjadash-top-dropdown__title">
+    <UserActionDropDown className="invoice-top-dropdown">
+      <Heading as="h5" className="invoice-top-dropdown__title">
         <span className="title-text">Notifications</span>
         <Badge className="badge-success" count={3} />
       </Heading>
@@ -70,10 +70,10 @@ const NotificationBox = React.memo(() => {
         renderTrackVertical={renderTrackVertical}
         renderTrackHorizontal={(props) => <div {...props} style={{ display: 'none' }} className="track-horizontal" />}
       >
-        <ul className="ninjadash-top-dropdown__nav notification-list">
+        <ul className="invoice-top-dropdown__nav notification-list">
           <li>
             <Link to="#">
-              <div className="ninjadash-top-dropdown__content notifications">
+              <div className="invoice-top-dropdown__content notifications">
                 <div className="notification-icon bg-primary">
                   <UilHdd />
                 </div>
@@ -93,7 +93,7 @@ const NotificationBox = React.memo(() => {
           </li>
           <li>
             <Link to="#">
-              <div className="ninjadash-top-dropdown__content notifications">
+              <div className="invoice-top-dropdown__content notifications">
                 <div className="notification-icon bg-secondary">
                   <UilUpload />
                 </div>
@@ -114,7 +114,7 @@ const NotificationBox = React.memo(() => {
           </li>
           <li>
             <Link to="#">
-              <div className="ninjadash-top-dropdown__content notifications">
+              <div className="invoice-top-dropdown__content notifications">
                 <div className="notification-icon bg-secondary">
                   <UilUpload />
                 </div>
@@ -135,7 +135,7 @@ const NotificationBox = React.memo(() => {
           </li>
           <li>
             <Link to="#">
-              <div className="ninjadash-top-dropdown__content notifications">
+              <div className="invoice-top-dropdown__content notifications">
                 <div className="notification-icon bg-secondary">
                   <UilUpload />
                 </div>
@@ -156,7 +156,7 @@ const NotificationBox = React.memo(() => {
           </li>
           <li>
             <Link to="#">
-              <div className="ninjadash-top-dropdown__content notifications">
+              <div className="invoice-top-dropdown__content notifications">
                 <div className="notification-icon bg-secondary">
                   <UilUpload />
                 </div>
@@ -184,10 +184,10 @@ const NotificationBox = React.memo(() => {
   );
 
   return (
-    <div className="ninjadash-nav-actions__item ninjadash-nav-actions__notification">
+    <div className="invoice-nav-actions__item invoice-nav-actions__notification">
       <Popover placement="bottomLeft" content={content} action="click">
         <Badge dot offset={[-8, -5]}>
-          <Link to="#" className="ninjadash-nav-action-link">
+          <Link to="#" className="invoice-nav-action-link">
             <ReactSVG src={require('../../static/img/icon/bell.svg').default} />
           </Link>
         </Badge>

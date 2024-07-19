@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
-import { Row, Col, Upload, message } from 'antd';
-import { UploadOutlined, LoadingOutlined, PlusOutlined } from '@ant-design/icons';
+import { LoadingOutlined, PlusOutlined, UploadOutlined } from '@ant-design/icons';
+import { Col, Row, Upload, message } from 'antd';
+import { useState } from 'react';
+import { Button } from '../../components/buttons/buttons';
+import { Cards } from '../../components/cards/frame/cards-frame';
 import { PageHeader } from '../../components/page-headers/page-headers';
 import { Main } from '../styled';
-import { Cards } from '../../components/cards/frame/cards-frame';
-import { Button } from '../../components/buttons/buttons';
 
 const uploadProps = {
   name: 'file',
@@ -137,7 +137,7 @@ function Uploads() {
 
   return (
     <>
-      <PageHeader className="ninjadash-page-header-main" title="Upload" routes={PageRoutes} />
+      <PageHeader className="invoice-page-header-main" title="Upload" routes={PageRoutes} />
       <Main>
         <Row gutter={15}>
           <Col sm={12} xs={24}>

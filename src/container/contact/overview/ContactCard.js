@@ -54,7 +54,7 @@ function ContactCard({ user, showEditModal }) {
         </div>
       </div>
       <Dropdown
-        className="wide-dropdwon"
+        className="wide-dropdown"
         content={
           <>
             <Link onClick={() => showEditModal(user, id)} to="#">

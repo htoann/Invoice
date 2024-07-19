@@ -152,7 +152,7 @@ export const Product = () => {
               okText="Có"
               cancelText="Không"
             >
-              <Link className="ninjadash-delete" to="#">
+              <Link className="invoice-delete" to="#">
                 <UilTrash />
               </Link>
             </Popconfirm>
@@ -223,7 +223,7 @@ export const Product = () => {
 
   return (
     <>
-      <PageHeader className="ninjadash-page-header-main" title="Danh sách hàng hóa" />
+      <PageHeader className="invoice-page-header-main" title="Danh sách hàng hóa" />
       <Main>
         <Row gutter={15}>
           <Col xs={24}>

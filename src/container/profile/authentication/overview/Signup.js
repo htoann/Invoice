@@ -1,5 +1,5 @@
 import { Button, Col, Form, Input, Row } from 'antd';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import { useDispatch } from 'react-redux';
@@ -26,10 +26,10 @@ function SignUp() {
     <Row justify="center">
       <Col xxl={6} xl={8} md={12} sm={18} xs={24}>
         <AuthFormWrap>
-          <div className="ninjadash-authentication-top">
-            <h2 className="ninjadash-authentication-top__title">Đăng ký vào hệ thống hoá đơn</h2>
+          <div className="invoice-authentication-top">
+            <h2 className="invoice-authentication-top__title">Đăng ký vào hệ thống hoá đơn</h2>
           </div>
-          <div className="ninjadash-authentication-content">
+          <div className="invoice-authentication-content">
             <Form name="register" onFinish={handleSubmit} layout="vertical">
               <Form.Item
                 label="Tên đăng nhập"
@@ -45,7 +45,7 @@ function SignUp() {
               >
                 <Input.Password placeholder="Mật khẩu" />
               </Form.Item>
-              <div className="ninjadash-auth-extra-links">
+              <div className="invoice-auth-extra-links">
                 <Checkbox onChange={onChange} checked={state.checked}>
                   Tạo tài khoản nghĩa là bạn đồng ý với Điều khoản dịch vụ và Chính sách quyền riêng tư của chúng tôi
                 </Checkbox>
@@ -57,7 +57,7 @@ function SignUp() {
               </Form.Item>
             </Form>
           </div>
-          <div className="ninjadash-authentication-bottom">
+          <div className="invoice-authentication-bottom">
             <p>
               Đã có tài khoản?<Link to="/">Đăng nhập</Link>
             </p>

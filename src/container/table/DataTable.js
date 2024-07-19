@@ -214,7 +214,7 @@ function DataTables() {
         company: <span>{company}</span>,
         position,
         date,
-        status: <span className={`ninjadash-status ninjadash-status-${status}`}>{status}</span>,
+        status: <span className={`invoice-status invoice-status-${status}`}>{status}</span>,
         action: (
           <div className="table-actions">
             <Link className="view" to="#">
@@ -282,7 +282,7 @@ function DataTables() {
 
   return (
     <>
-      <PageHeader className="ninjadash-page-header-main" title="Table" routes={PageRoutes} />
+      <PageHeader className="invoice-page-header-main" title="Table" routes={PageRoutes} />
       <Main>
         <Row gutter={15}>
           <Col xs={24}>

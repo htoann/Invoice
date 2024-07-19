@@ -64,13 +64,13 @@ function ComingSoon() {
 
   return (
     <>
-      <PageHeader className="ninjadash-page-header-main" title="Coming Soon" routes={PageRoutes} />
+      <PageHeader className="invoice-page-header-main" title="Coming Soon" routes={PageRoutes} />
       <Main>
         <Row gutter={25}>
           <Col sm={24} xs={24}>
             <ComingsoonStyleWrapper>
               <Cards headless>
-                <div className="ninjaDash-logo">
+                <div className="invoice-logo">
                   {mainContent === 'lightMode' ? (
                     <img src={require('../../static/img/logo_dark.png')} alt="" />
                   ) : (

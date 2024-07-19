@@ -204,31 +204,31 @@ ul {
   margin-left: 20px;
 }
 
-.ninjadash-unresizable {
+.invoice-unresizable {
   resize: none;
 }
 
-/* ninjaDash Delete Modal */
+/* invoice Delete Modal */
 
-.ninjaDash-delete-modal .ant-modal-header {
+.invoice-delete-modal .ant-modal-header {
   text-align: center;
   padding: 22px 24px;
 }
 
-.ninjaDash-delete-modal .ant-modal-header .ant-modal-title {
+.invoice-delete-modal .ant-modal-header .ant-modal-title {
   font-size: 20px;
   color: #ff0f0f;
 }
 
-.ninjaDash-delete-modal .ant-modal-body {
+.invoice-delete-modal .ant-modal-body {
   padding: 20px 24px;
 }
 
-.ninjaDash-delete-modal .ninjadash-delete-confirm {
+.invoice-delete-modal .invoice-delete-confirm {
   text-align: center;
 }
 
-.ninjaDash-delete-modal .ninjadash-delete-confirm__action a {
+.invoice-delete-modal .invoice-delete-confirm__action a {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -239,24 +239,24 @@ ul {
   background-color: #01b81a;
 }
 
-/* NinjaDash Export Modal */
-.ninjadash_export-wrap .ninjadash-button-grp {
+/* invoice Export Modal */
+.invoice_export-wrap .invoice-button-grp {
   margin: -5px;
 }
 
-.ninjadash_export-wrap .ant-select-single:not(.ant-select-customize-input) .ant-select-selector {
+.invoice_export-wrap .ant-select-single:not(.ant-select-customize-input) .ant-select-selector {
   height: 50px !important;
 }
 
-.ninjadash_export-wrap .ant-select-single:not(.ant-select-customize-input) .ant-select-selection-item {
+.invoice_export-wrap .ant-select-single:not(.ant-select-customize-input) .ant-select-selection-item {
   line-height: 50px !important;
 }
 
-.ninjadash_export-wrap .ninjadash-button-grp button {
+.invoice_export-wrap .invoice-button-grp button {
   min-height: 44px;
 }
 
-.ninjadash_export-wrap .ninjadash-button-grp .ant-btn {
+.invoice_export-wrap .invoice-button-grp .ant-btn {
   margin: 5px;
 }
 
@@ -823,7 +823,7 @@ ul {
   padding-bottom: 2px !important;
 }
 
-.ninjadash-fullwidth-select {
+.invoice-fullwidth-select {
   width: 100%;
 }
 
@@ -918,56 +918,56 @@ ul {
   text-align: left !important;
 }
 
-.ninjadash-addTask-modal {
+.invoice-addTask-modal {
   max-width: 390px;
 }
 
-.ninjadash-addTask-modal .ant-modal-header {
+.invoice-addTask-modal .ant-modal-header {
   border-bottom: 0 none;
   padding-bottom: 0 !important;
 }
 
-.ninjadash-addTask-modal .ant-modal-header .ant-modal-title {
+.invoice-addTask-modal .ant-modal-header .ant-modal-title {
   font-size: 16px;
   font-weight: 500;
   color: #0a0a0a;
 }
 
-.ninjadash-addTask-modal .ninjadash-addTask-modal-inner .ant-form-item {
+.invoice-addTask-modal .invoice-addTask-modal-inner .ant-form-item {
   margin-bottom: 15px;
 }
 
-.ninjadash-addTask-modal .ant-modal-header .ant-modal-close-x svg {
+.invoice-addTask-modal .ant-modal-header .ant-modal-close-x svg {
   color: #9299b8;
 }
 
-.ninjadash-addTask-modal .ant-form-item-control-input {
+.invoice-addTask-modal .ant-form-item-control-input {
   min-height: 36px;
 }
 
-.ninjadash-addTask-modal input::placeholder,
-.ninjadash-addTask-modal textarea::placeholder {
+.invoice-addTask-modal input::placeholder,
+.invoice-addTask-modal textarea::placeholder {
   color: #9299b8;
 }
 
-.ninjadash-addTask-modal input,
-.ninjadash-addTask-modal textarea {
+.invoice-addTask-modal input,
+.invoice-addTask-modal textarea {
   padding: 6px 20px;
   border-radius: 5px;
 }
 
-.ninjadash-addTask-modal textarea {
+.invoice-addTask-modal textarea {
   resize: none;
   min-height: 125px;
 }
 
-.ninjadash-addTask-modal .ninjadash-modal-actions {
+.invoice-addTask-modal .invoice-modal-actions {
   display: flex;
   justify-content: flex-end;
   margin: -6px;
 }
 
-.ninjadash-addTask-modal .ninjadash-modal-actions button {
+.invoice-addTask-modal .invoice-modal-actions button {
   font-size: 14px;
   margin: 6px;
   height: 38px;
@@ -1031,7 +1031,7 @@ ul {
   z-index: 99999;
 }
 
-/* Select Dropdwon */
+/* Select Dropdown */
 
 .ant-select-dropdown {
   padding: 18px 0 !important;
@@ -1103,22 +1103,22 @@ ul {
   color: #9299b8;
 }
 
-/* Basic Dropdwon */
+/* Basic Dropdown */
 
 .ant-dropdown {
   box-shadow: 0 5px 30px #9299b820 !important;
 }
 
-.ant-dropdown.wide-dropdwon {
+.ant-dropdown.wide-dropdown {
   min-width: 140px !important;
 }
 
-.ant-dropdown.wide-dropdwon.kanbanCard-more {
+.ant-dropdown.wide-dropdown.kanbanCard-more {
   min-width: 220px !important;
   box-shadow: 0 17px 20px #9299b820;
 }
 
-.ant-dropdown.wide-dropdwon.kanbanCard-more a {
+.ant-dropdown.wide-dropdown.kanbanCard-more a {
   padding: 10px 24px;
 }
 
@@ -1137,7 +1137,7 @@ ul {
   background-color: #8231d305;
 }
 
-.ninjadash-top-dropdown .ninjadash-top-dropdown__title {
+.invoice-top-dropdown .invoice-top-dropdown__title {
   background: #f4f5f7;
   width: 100%;
   margin-bottom: 12px;
@@ -1150,33 +1150,33 @@ ul {
   align-items: center;
 }
 
-.ninjadash-top-dropdown {
+.invoice-top-dropdown {
   width: 340px;
 }
 
-.ninjadash-top-dropdown .ninjadash-top-dropdown__nav {
+.invoice-top-dropdown .invoice-top-dropdown__nav {
   height: 260px;
 }
 
-.ninjadash-top-dropdown .ninjadash-top-dropdown__nav.notification-list {
+.invoice-top-dropdown .invoice-top-dropdown__nav.notification-list {
   padding: 0 10px;
 }
 
-.ninjadash-top-dropdown .ninjadash-top-dropdown__nav li {
+.invoice-top-dropdown .invoice-top-dropdown__nav li {
   width: 100%;
 }
 
-.ninjadash-top-dropdown .ninjadash-top-dropdown__nav li a {
+.invoice-top-dropdown .invoice-top-dropdown__nav li a {
   padding: 13px 10px;
   position: relative;
   width: 100%;
 }
 
-.ninjadash-top-dropdown .ninjadash-top-dropdown__nav li:last-child {
+.invoice-top-dropdown .invoice-top-dropdown__nav li:last-child {
   margin: 0;
 }
 
-.ninjadash-top-dropdown a.btn-seeAll {
+.invoice-top-dropdown a.btn-seeAll {
   position: relative;
   width: calc(100% + 30px);
   left: -15px;
@@ -1194,7 +1194,7 @@ ul {
   transition: 0.3s;
 }
 
-.ninjadash-top-dropdown a.btn-seeAll:before {
+.invoice-top-dropdown a.btn-seeAll:before {
   position: absolute;
   left: 0;
   top: 0;
@@ -1205,24 +1205,24 @@ ul {
   content: '';
 }
 
-.ninjadash-top-dropdown .ninjadash-top-dropdown__nav li a.btn-seeAll:hover:after {
+.invoice-top-dropdown .invoice-top-dropdown__nav li a.btn-seeAll:hover:after {
   box-shadow: 0 0;
 }
 
-.ninjadash-top-dropdown .ninjadash-top-dropdown__nav li a:hover {
+.invoice-top-dropdown .invoice-top-dropdown__nav li a:hover {
   background: #fff;
 }
 
-.ninjadash-top-dropdown .ninjadash-top-dropdown__nav li a:hover:after {
+.invoice-top-dropdown .invoice-top-dropdown__nav li a:hover:after {
   opacity: 1;
   visibility: visible;
 }
 
-.ninjadash-top-dropdown .ninjadash-top-dropdown__nav li a:hover figcaption h1 {
+.invoice-top-dropdown .invoice-top-dropdown__nav li a:hover figcaption h1 {
   color: #8231d3;
 }
 
-.ninjadash-top-dropdown .ninjadash-top-dropdown__nav li a:after {
+.invoice-top-dropdown .invoice-top-dropdown__nav li a:after {
   position: absolute;
   left: -15px;
   right: -15px;
@@ -1236,14 +1236,14 @@ ul {
   visibility: hidden;
 }
 
-.ninjadash-top-dropdown .ninjadash-top-dropdown__content {
+.invoice-top-dropdown .invoice-top-dropdown__content {
   display: flex;
   align-items: flex-start;
   width: 100%;
   margin-bottom: 0;
 }
 
-.ninjadash-top-dropdown .ninjadash-top-dropdown__content .notification-icon {
+.invoice-top-dropdown .invoice-top-dropdown__content .notification-icon {
   width: 39.2px;
   height: 32px;
   margin-right: 15px;
@@ -1253,56 +1253,56 @@ ul {
   justify-content: center;
 }
 
-.ninjadash-top-dropdown .ninjadash-top-dropdown__content .notification-icon.bg-primary {
+.invoice-top-dropdown .invoice-top-dropdown__content .notification-icon.bg-primary {
   background: #8231d315;
   color: #8231d3;
 }
 
-.ninjadash-top-dropdown .ninjadash-top-dropdown__content .notification-icon.bg-secondary {
+.invoice-top-dropdown .invoice-top-dropdown__content .notification-icon.bg-secondary {
   background: #5840ff15;
   color: #5840ff;
 }
 
-.ninjadash-top-dropdown .ninjadash-top-dropdown__content .notification-icon svg {
+.invoice-top-dropdown .invoice-top-dropdown__content .notification-icon svg {
   width: 18px;
   height: 18px;
 }
 
-.ninjadash-top-dropdown .ninjadash-top-dropdown__content .notification-content {
+.invoice-top-dropdown .invoice-top-dropdown__content .notification-content {
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.ninjadash-top-dropdown .notification-text h1 {
+.invoice-top-dropdown .notification-text h1 {
   font-size: 14px;
   font-weight: 400;
   color: #404040;
   margin-bottom: 4px;
 }
 
-.ninjadash-top-dropdown .notification-text h1 span {
+.invoice-top-dropdown .notification-text h1 span {
   color: #8231d3;
   font-weight: 500;
   padding-left: 0;
 }
 
-.ninjadash-top-dropdown .notification-text p {
+.invoice-top-dropdown .notification-text p {
   font-size: 12px;
   color: #adb4d2;
   margin-bottom: 0;
 }
 
-.ninjadash-top-dropdown .ninjadash-top-dropdown__content img {
+.invoice-top-dropdown .invoice-top-dropdown__content img {
   max-width: 40px;
 }
 
-.ninjadash-top-dropdown .ninjadash-top-dropdown__content figcaption {
+.invoice-top-dropdown .invoice-top-dropdown__content figcaption {
   margin: -4px 15px 0;
 }
 
-.ninjadash-top-dropdown .ninjadash-top-dropdown__content figcaption .ant-badge-count {
+.invoice-top-dropdown .invoice-top-dropdown__content figcaption .ant-badge-count {
   font-size: 8px;
   min-width: 16px;
   width: 16px;
@@ -1311,11 +1311,11 @@ ul {
   border-radius: 8px;
 }
 
-.ninjadash-top-dropdown .ninjadash-top-dropdown__content figcaption p.ant-scroll-number-only-unit.current {
+.invoice-top-dropdown .invoice-top-dropdown__content figcaption p.ant-scroll-number-only-unit.current {
   height: 15px;
 }
 
-.ninjadash-top-dropdown .ninjadash-top-dropdown__content figcaption h1 {
+.invoice-top-dropdown .invoice-top-dropdown__content figcaption h1 {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -1324,12 +1324,12 @@ ul {
   margin-bottom: 2px;
 }
 
-.ninjadash-top-dropdown .ninjadash-top-dropdown__content figcaption h1 span {
+.invoice-top-dropdown .invoice-top-dropdown__content figcaption h1 span {
   font-size: 12px;
   font-weight: 400;
 }
 
-.ninjadash-top-dropdown .ninjadash-top-dropdown__content figcaption p {
+.invoice-top-dropdown .invoice-top-dropdown__content figcaption p {
   display: flex;
   align-items: center;
   margin-bottom: 0;
@@ -1517,30 +1517,30 @@ ul {
   margin-top: 10px !important;
 }
 
-.ninjadash-upload-basic .ant-upload.ant-upload-select {
+.invoice-upload-basic .ant-upload.ant-upload-select {
   width: 100%;
   border: 1px solid #e3e6ef;
   border-radius: 4px;
 }
 
-.ninjadash-upload-basic .ant-upload.ant-upload-select .ant-upload {
+.invoice-upload-basic .ant-upload.ant-upload-select .ant-upload {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.ninjadash-upload-basic .ninjadash-upload-text {
+.invoice-upload-basic .invoice-upload-text {
   font-size: 14px;
   color: #9299b8;
   padding-left: 15px;
 }
 
-html[dir='rtl'] .ninjadash-upload-basic .ninjadash-upload-text {
+html[dir='rtl'] .invoice-upload-basic .invoice-upload-text {
   padding-left: 0px;
   padding-right: 15px;
 }
 
-.ninjadash-upload-basic .ninjadash-upload-browse {
+.invoice-upload-basic .invoice-upload-browse {
   font-size: 14px;
   color: #9299b8;
   display: inline-block;
@@ -1548,16 +1548,16 @@ html[dir='rtl'] .ninjadash-upload-basic .ninjadash-upload-text {
   border-left: 1px solid #e3e6ef;
 }
 
-html[dir='rtl'] .ninjadash-upload-basic .ninjadash-upload-browse {
+html[dir='rtl'] .invoice-upload-basic .invoice-upload-browse {
   border-left: 0 none;
   border-right: 1px solid #e3e6ef;
 }
 
-.ant-modal-wrap-rtl .ninjadash-event-details-modal .ant-modal-close {
+.ant-modal-wrap-rtl .invoice-event-details-modal .ant-modal-close {
   left: 10px;
 }
 
-.ant-card.ninjadash-upload-form .ant-card-body {
+.ant-card.invoice-upload-form .ant-card-body {
   padding-bottom: 15px !important;
 }
 
@@ -1674,7 +1674,7 @@ html[dir='rtl'] .ninjadash-upload-basic .ninjadash-upload-browse {
   border: 0 none;
 }
 
-/* ChatBox Dropdwon */
+/* ChatBox Dropdown */
 
 .atbd-chatbox__messageControl {
   min-width: 210px;
@@ -1761,8 +1761,8 @@ html[dir='rtl'] .ninjadash-upload-basic .ninjadash-upload-browse {
   color: #404040;
 }
 
-/* Ninjadash Header More */
-.ninjadash-header-more .ninjadash-nav-actions__searchbar {
+/* invoice Header More */
+.invoice-header-more .invoice-nav-actions__searchbar {
   display: none;
 }
 
@@ -1847,23 +1847,23 @@ html[dir='rtl'] .ninjadash-upload-basic .ninjadash-upload-browse {
   visibility: visible;
 }
 
-/* Ninjadash Event Details Modal */
-.ninjadash-event-details-modal .ant-modal-content {
+/* invoice Event Details Modal */
+.invoice-event-details-modal .ant-modal-content {
   border-radius: 8px;
 }
 
-.ninjadash-event-details-modal .ant-modal-close {
+.invoice-event-details-modal .ant-modal-close {
   top: 12px;
   right: 10px;
 }
 
-.ninjadash-event-details-modal .ant-modal-close-x svg {
+.invoice-event-details-modal .ant-modal-close-x svg {
   width: 14px;
   height: 14px;
   color: #ffffff75;
 }
 
-.ninjadash-event-details-modal .ant-modal-close-x {
+.invoice-event-details-modal .ant-modal-close-x {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -1874,76 +1874,76 @@ html[dir='rtl'] .ninjadash-upload-basic .ninjadash-upload-browse {
   background-color: transparent;
 }
 
-.ninjadash-event-details-modal .ant-modal-close-x:hover {
+.invoice-event-details-modal .ant-modal-close-x:hover {
   background-color: #ffffff15;
 }
 
-.ninjadash-event-details-modal .ant-modal-close-x:hover svg {
+.invoice-event-details-modal .ant-modal-close-x:hover svg {
   color: #ffffff;
 }
 
-.ninjadash-event-details-modal.ninjadash-event-details-modal-primary .ant-modal-header {
+.invoice-event-details-modal.invoice-event-details-modal-primary .ant-modal-header {
   background-color: #8231d3;
 }
 
-.ninjadash-event-details-modal.ninjadash-event-details-modal-secondary .ant-modal-header {
+.invoice-event-details-modal.invoice-event-details-modal-secondary .ant-modal-header {
   background-color: #5840ff;
 }
 
-.ninjadash-event-details-modal.ninjadash-event-details-modal-success .ant-modal-header {
+.invoice-event-details-modal.invoice-event-details-modal-success .ant-modal-header {
   background-color: #01b81a;
 }
 
-.ninjadash-event-details-modal.ninjadash-event-details-modal-info .ant-modal-header {
+.invoice-event-details-modal.invoice-event-details-modal-info .ant-modal-header {
   background-color: #00aaff;
 }
 
-.ninjadash-event-details-modal.ninjadash-event-details-modal-warning .ant-modal-header {
+.invoice-event-details-modal.invoice-event-details-modal-warning .ant-modal-header {
   background-color: #fa8b0c;
 }
 
-.ninjadash-event-details-modal.ninjadash-event-details-modal-danger .ant-modal-header {
+.invoice-event-details-modal.invoice-event-details-modal-danger .ant-modal-header {
   background-color: #ff0f0f;
 }
 
-.ninjadash-event-details-modal.ninjadash-event-details-modal-dark .ant-modal-header {
+.invoice-event-details-modal.invoice-event-details-modal-dark .ant-modal-header {
   background-color: #090e30;
 }
 
-.ninjadash-event-details-modal .ant-modal-header {
+.invoice-event-details-modal .ant-modal-header {
   padding: 19px 24px;
   border-radius: 8px 8px 0 0;
 }
 
-.ninjadash-event-details-modal .ant-modal-header .ant-modal-title {
+.invoice-event-details-modal .ant-modal-header .ant-modal-title {
   color: #fff;
   font-size: 16px;
   font-weight: 500;
 }
 
 /* File Export Import Modal */
-.ninjadash-export-wrap .ant-modal {
+.invoice-export-wrap .ant-modal {
   width: 390px !important;
 }
 
-.ninjadash-export-wrap .ant-modal .ant-modal-header {
+.invoice-export-wrap .ant-modal .ant-modal-header {
   border-bottom: 0 none;
   padding: 18px 30px 0 30px;
 }
 
-.ninjadash-export-wrap .ant-modal .ant-modal-body {
+.invoice-export-wrap .ant-modal .ant-modal-body {
   padding: 25px 30px 30px 30px;
 }
 
-.ninjadash-export-wrap .ant-modal .ninjadash-button-grp {
+.invoice-export-wrap .ant-modal .invoice-button-grp {
   text-align: right;
 }
 
-.ninjadash-export-wrap .ant-modal .ninjadash-button-grp {
+.invoice-export-wrap .ant-modal .invoice-button-grp {
   margin: 20px -8px -8px -8px;
 }
 
-.ninjadash-export-wrap .ant-modal .ninjadash-button-grp button {
+.invoice-export-wrap .ant-modal .invoice-button-grp button {
   font-size: 14px;
   font-weight: 500;
   text-align: right;
@@ -1952,15 +1952,15 @@ html[dir='rtl'] .ninjadash-upload-basic .ninjadash-upload-browse {
   margin: 8px;
 }
 
-.ninjadash-export-wrap .ant-modal .ninjadash-button-grp button.ant-btn-white {
+.invoice-export-wrap .ant-modal .invoice-button-grp button.ant-btn-white {
   color: #9299b8 !important;
 }
 
-.ninjadash-export-wrap .ant-form-item-control-input {
+.invoice-export-wrap .ant-form-item-control-input {
   min-height: 36px;
 }
 
-.ninjadash-export-wrap .ant-form-item-control-input input {
+.invoice-export-wrap .ant-form-item-control-input input {
   font-size: 14px;
   font-weight: 400;
   padding: 6px 20px;
@@ -1968,84 +1968,84 @@ html[dir='rtl'] .ninjadash-upload-basic .ninjadash-upload-browse {
   color: #9299b8;
 }
 
-.ninjadash-export-wrap .ant-select-single {
+.invoice-export-wrap .ant-select-single {
   width: 100% !important;
 }
 
-.ninjadash-export-wrap .ant-form .ant-form-item {
+.invoice-export-wrap .ant-form .ant-form-item {
   margin-bottom: 15px;
 }
 
-.ninjadash-export-wrap .ant-select-single .ant-select-selector {
+.invoice-export-wrap .ant-select-single .ant-select-selector {
   padding: 0 20px;
   border-color: #e3e6ef !important;
 }
 
-.ninjadash-create-file .ninjadash-button-grp {
+.invoice-create-file .invoice-button-grp {
   text-align: right;
 }
 
-.ninjadash-create-file .ant-modal {
+.invoice-create-file .ant-modal {
   width: 390px !important;
 }
 
-.ninjadash-create-file .ant-modal .ant-form-item {
+.invoice-create-file .ant-modal .ant-form-item {
   margin-bottom: 20px;
 }
 
-.ninjadash-create-file .ant-modal-header {
+.invoice-create-file .ant-modal-header {
   border-bottom: 0 none;
   padding-bottom: 6px;
 }
 
-.ninjadash-create-file .ninjadash-button-grp button {
+.invoice-create-file .invoice-button-grp button {
   height: 40px;
   border-radius: 5px;
   margin: 5px;
 }
 
-.ninjadash-create-file .ant-form-item-control-input {
+.invoice-create-file .ant-form-item-control-input {
   border-radius: 5px;
 }
 
-.ninjadash-create-file .ant-form-item-control-input input {
+.invoice-create-file .ant-form-item-control-input input {
   border: 1px solid #e3e6ef;
 }
 
 /* Task Modal */
-.ninjadash-task-details .ant-modal-content .ant-modal-close {
+.invoice-task-details .ant-modal-content .ant-modal-close {
   top: 10px;
 }
 
-.ninjadash-task-details .ant-modal-header {
+.invoice-task-details .ant-modal-header {
   border-bottom: 0 none;
   padding: 30px 30px 0;
 }
 
-.ninjadash-task-details .ant-modal {
+.invoice-task-details .ant-modal {
   width: 600px !important;
 }
 
-.ninjadash-task-details .ant-modal-header .ant-modal-title h4 {
+.invoice-task-details .ant-modal-header .ant-modal-title h4 {
   font-size: 20px;
   font-weight: 500;
   color: #0a0a0a;
   margin-bottom: 4px;
 }
 
-.ninjadash-task-details .ant-modal-header .ant-modal-title .sub-text {
+.invoice-task-details .ant-modal-header .ant-modal-title .sub-text {
   font-size: 14px;
   font-weight: 400;
   color: #868eae;
 }
 
-.ninjadash-task-details .ninjadash-task-details-modal .ninjadash-task-details__label {
+.invoice-task-details .invoice-task-details-modal .invoice-task-details__label {
   font-size: 16px;
   display: block;
   margin-bottom: 8px;
 }
 
-.ninjadash-task-details .ninjadash-task-details-modal .ninjadash-task-details-modal__description textarea {
+.invoice-task-details .invoice-task-details-modal .invoice-task-details-modal__description textarea {
   padding: 10px 20px;
   min-height: 88px;
   width: 100%;
@@ -2055,28 +2055,28 @@ html[dir='rtl'] .ninjadash-upload-basic .ninjadash-upload-browse {
   resize: none;
 }
 
-.ninjadash-task-details .ninjadash-task-details-modal .ninjadash-task-details-modal__description textarea:focus {
+.invoice-task-details .invoice-task-details-modal .invoice-task-details-modal__description textarea:focus {
   outline: none;
 }
 
-.ninjadash-task-details .ninjadash-task-details-modal .ninjadash-task-details-modal__description textarea::placeholder {
+.invoice-task-details .invoice-task-details-modal .invoice-task-details-modal__description textarea::placeholder {
   color: #404040;
   font-size: 15px;
 }
 
-.ninjadash-task-details .ant-modal-body {
+.invoice-task-details .ant-modal-body {
   padding: 14px 30px 30px 30px;
 }
 
-.ninjadash-task-details .ant-modal-body .ninjadash-checklist-block {
+.invoice-task-details .ant-modal-body .invoice-checklist-block {
   margin-top: 26px;
 }
 
-.ninjadash-task-details .ant-modal-body .ninjadash-checklist-block .addChecklist-wrap {
+.invoice-task-details .ant-modal-body .invoice-checklist-block .addChecklist-wrap {
   position: relative;
 }
 
-.ninjadash-task-details .ant-modal-body .ninjadash-checklist-block .addChecklist-form {
+.invoice-task-details .ant-modal-body .invoice-checklist-block .addChecklist-form {
   position: absolute;
   width: 240px;
   padding: 18px;
@@ -2089,12 +2089,12 @@ html[dir='rtl'] .ninjadash-upload-basic .ninjadash-upload-browse {
   z-index: 222;
 }
 
-html[dir='rtl'] .ninjadash-task-details .ant-modal-body .ninjadash-checklist-block .addChecklist-form {
+html[dir='rtl'] .invoice-task-details .ant-modal-body .invoice-checklist-block .addChecklist-form {
   left: auto;
   right: 0;
 }
 
-.ninjadash-task-details .ant-modal-body .ninjadash-checklist-block .addChecklist-form .add-checklist {
+.invoice-task-details .ant-modal-body .invoice-checklist-block .addChecklist-form .add-checklist {
   padding: 10px;
   border-radius: 4px;
   background-color: #fff;
@@ -2103,11 +2103,11 @@ html[dir='rtl'] .ninjadash-task-details .ant-modal-body .ninjadash-checklist-blo
   border: 1px solid #e3e6ef;
 }
 
-.ninjadash-task-details .ant-modal-body .ninjadash-checklist-block .addChecklist-form .addChecklist-form-action {
+.invoice-task-details .ant-modal-body .invoice-checklist-block .addChecklist-form .addChecklist-form-action {
   margin-top: 15px;
 }
 
-.ninjadash-task-details .ant-modal-body .ninjadash-checklist-block .addChecklist-form .addChecklist-form-action a {
+.invoice-task-details .ant-modal-body .invoice-checklist-block .addChecklist-form .addChecklist-form-action a {
   position: relative;
   top: 3px;
   display: inline-flex;
@@ -2115,23 +2115,18 @@ html[dir='rtl'] .ninjadash-task-details .ant-modal-body .ninjadash-checklist-blo
   line-height: 1;
 }
 
-.ninjadash-task-details .ant-modal-body .ninjadash-checklist-block .addChecklist-form .addChecklist-form-action a svg {
+.invoice-task-details .ant-modal-body .invoice-checklist-block .addChecklist-form .addChecklist-form-action a svg {
   color: #9299bb;
 }
 
-.ninjadash-task-details
-  .ant-modal-body
-  .ninjadash-checklist-block
-  .addChecklist-form
-  .addChecklist-form-action
-  .btn-add {
+.invoice-task-details .ant-modal-body .invoice-checklist-block .addChecklist-form .addChecklist-form-action .btn-add {
   margin-right: 15px;
 }
 
 html[dir='rtl']
-  .ninjadash-task-details
+  .invoice-task-details
   .ant-modal-body
-  .ninjadash-checklist-block
+  .invoice-checklist-block
   .addChecklist-form
   .addChecklist-form-action
   .btn-add {
@@ -2139,53 +2134,53 @@ html[dir='rtl']
   margin-right: 0;
 }
 
-.ninjadash-task-details .ant-modal-body .ninjadash-checklist-block button {
+.invoice-task-details .ant-modal-body .invoice-checklist-block button {
   height: 38px;
   padding: 0px 18.37px;
 }
 
-.ninjadash-task-details .ant-modal-body .ninjadash-checklist-row {
+.invoice-task-details .ant-modal-body .invoice-checklist-row {
   margin-top: 26px;
 }
 
-.ninjadash-task-details .ant-modal-body .ninjadash-checklist-row .ninjadash-checklist-item:not(:last-child) {
+.invoice-task-details .ant-modal-body .invoice-checklist-row .invoice-checklist-item:not(:last-child) {
   margin-bottom: 30px;
 }
 
-.ninjadash-task-details .ant-modal-body .ninjadash-checklist-row .ninjadash-checklist-item__top {
+.invoice-task-details .ant-modal-body .invoice-checklist-row .invoice-checklist-item__top {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 10px;
 }
 
-.ninjadash-task-details .ant-modal-body .ninjadash-checklist-row .ninjadash-checklist-item__top button {
+.invoice-task-details .ant-modal-body .invoice-checklist-row .invoice-checklist-item__top button {
   padding: 0px 16.32px;
   color: #525768;
   background-color: #f4f5f7;
 }
 
-.ninjadash-task-details .ant-modal-body .ninjadash-checklist-row .ninjadash-checklist-item__title {
+.invoice-task-details .ant-modal-body .invoice-checklist-row .invoice-checklist-item__title {
   font-size: 16px;
   font-weight: 500;
   color: #090e30;
   margin-bottom: 0;
 }
 
-.ninjadash-task-details
+.invoice-task-details
   .ant-modal-body
-  .ninjadash-checklist-row
-  .ninjadash-checklist__progress
+  .invoice-checklist-row
+  .invoice-checklist__progress
   .ant-progress-inner
   .ant-progress-bg {
   height: 5px !important;
   background-color: #01b81a;
 }
 
-.ninjadash-task-details
+.invoice-task-details
   .ant-modal-body
-  .ninjadash-checklist-row
-  .ninjadash-checklist__progress
+  .invoice-checklist-row
+  .invoice-checklist__progress
   .ant-progress
   .ant-progress-text {
   font-size: 12px;
@@ -2195,45 +2190,45 @@ html[dir='rtl']
 }
 
 html[dir='rtl']
-  .ninjadash-task-details
+  .invoice-task-details
   .ant-modal-body
-  .ninjadash-checklist-row
-  .ninjadash-checklist__progress
+  .invoice-checklist-row
+  .invoice-checklist__progress
   .ant-progress
   .ant-progress-text {
   margin: 0 0 0 10px;
 }
 
-.ninjadash-task-details .ant-modal-body .ninjadash-checklist-tasks {
+.invoice-task-details .ant-modal-body .invoice-checklist-tasks {
   margin: 5px 0 5px 0;
 }
 
-.ninjadash-task-details .ant-modal-body .ninjadash-checklist-tasks .ant-checkbox-wrapper .ant-checkbox-inner {
+.invoice-task-details .ant-modal-body .invoice-checklist-tasks .ant-checkbox-wrapper .ant-checkbox-inner {
   width: 18px;
   height: 18px;
   border-color: #c6d0dc;
 }
 
-.ninjadash-task-details
+.invoice-task-details
   .ant-modal-body
-  .ninjadash-checklist-tasks
+  .invoice-checklist-tasks
   .ant-checkbox-wrapper
   .ant-checkbox-checked
   .ant-checkbox-inner {
   background-color: #01b81a;
 }
 
-.ninjadash-task-details .ant-modal-body .ninjadash-checklist-tasks .ant-checkbox-wrapper .ant-checkbox-checked:after {
+.invoice-task-details .ant-modal-body .invoice-checklist-tasks .ant-checkbox-wrapper .ant-checkbox-checked:after {
   border-color: #01b81a;
 }
 
-.ninjadash-task-details .ant-modal-body .ninjadash-checklist-item .ninjadash-checklist-tasks-wrap button {
+.invoice-task-details .ant-modal-body .invoice-checklist-item .invoice-checklist-tasks-wrap button {
   padding: 0px 35px;
   color: #525768;
   background-color: #f4f5f7;
 }
 
-.ninjadash-task-details .ant-modal-body {
+.invoice-task-details .ant-modal-body {
   max-height: 800px;
   overflow-y: auto;
 }
@@ -2723,32 +2718,32 @@ html[dir='rtl']
     flex-wrap: wrap;
   }
 
-  .ninjadash-top-dropdown {
+  .invoice-top-dropdown {
     width: 280px;
     min-width: 180px;
   }
 
-  .ninjadash-top-dropdown .ninjadash-top-dropdown__title {
+  .invoice-top-dropdown .invoice-top-dropdown__title {
     min-height: 40px;
   }
 
-  .ninjadash-top-dropdown .ninjadash-top-dropdown__nav li:not(:last-child) {
+  .invoice-top-dropdown .invoice-top-dropdown__nav li:not(:last-child) {
     margin-bottom: 10px;
   }
 
-  .ninjadash-top-dropdown .ninjadash-top-dropdown__nav li a {
+  .invoice-top-dropdown .invoice-top-dropdown__nav li a {
     padding: 10px 0px;
   }
 
-  .ninjadash-top-dropdown .ninjadash-top-dropdown__content img {
+  .invoice-top-dropdown .invoice-top-dropdown__content img {
     margin-right: 15px;
   }
 
-  .ninjadash-top-dropdown .ninjadash-top-dropdown__content figcaption {
+  .invoice-top-dropdown .invoice-top-dropdown__content figcaption {
     margin-left: 0;
   }
 
-  .ninjadash-top-dropdown .ninjadash-top-dropdown__content figcaption .ninjadash-top-dropdownText {
+  .invoice-top-dropdown .invoice-top-dropdown__content figcaption .invoice-top-dropdownText {
     min-width: 155px;
   }
 
@@ -2976,7 +2971,7 @@ html[dir='rtl'] .ant-card-extra .ant-dropdown-trigger {
   margin-left: 0 !important;
 }
 
-html[dir='rtl'] .dark-mode .ninjadash-navbar-menu {
+html[dir='rtl'] .dark-mode .invoice-navbar-menu {
   margin-right: 20px;
 }
 
@@ -2989,15 +2984,15 @@ html[dir='rtl'] .dark-mode .ninjadash-navbar-menu {
   background: #a4a5aa;
 }
 
-.dark-mode .ninjadash-top-dropdown a.btn-seeAll,
-.dark-mode .ninjadash-top-dropdown .ninjadash-top-dropdown__nav li a:hover,
+.dark-mode .invoice-top-dropdown a.btn-seeAll,
+.dark-mode .invoice-top-dropdown .invoice-top-dropdown__nav li a:hover,
 .dark-mode .ant-picker-panel-container,
 .dark-mode .editor-compose .ant-input,
 .dark-mode .ant-drawer-content,
 .dark-mode .ant-dropdown,
 .dark-mode .mail-props,
 .dark-mode .ant-popover-inner,
-.dark-mode .ninjadash-searchbar .ant-input,
+.dark-mode .invoice-searchbar .ant-input,
 .dark-mode .ant-input-group-addon,
 .dark-mode .ant-popover-arrow-content,
 .dark-mode .ant-drawer-header,
@@ -3025,9 +3020,9 @@ html[dir='rtl'] .dark-mode .ninjadash-navbar-menu {
   background-color: #282b37;
 }
 
-.dark-mode .ninjadash-task-details .ninjadash-task-details-modal .ninjadash-task-details-modal__description textarea,
+.dark-mode .invoice-task-details .invoice-task-details-modal .invoice-task-details-modal__description textarea,
 .dark-mode .ant-picker-range-arrow::before,
-.dark-mode .ninjadash-top-dropdown .ninjadash-top-dropdown__title {
+.dark-mode .invoice-top-dropdown .invoice-top-dropdown__title {
   background-color: #323541;
 }
 
@@ -3054,9 +3049,9 @@ html[dir='rtl'] .dark-mode .ninjadash-navbar-menu {
 .dark-mode .ant-select-arrow svg,
 .dark-mode .ant-picker-range-separator svg,
 .dark-mode .ant-picker-suffix svg,
-.dark-mode .ninjadash-searchbar .ant-input,
+.dark-mode .invoice-searchbar .ant-input,
 .dark-mode .ant-picker-cell.ant-picker-cell-in-view,
-.dark-mode .ninjadash-task-details .ant-modal-header .ant-modal-title .sub-text,
+.dark-mode .invoice-task-details .ant-modal-header .ant-modal-title .sub-text,
 .dark-mode .ant-popover-message-title {
   color: #a4a5aa;
 }
@@ -3065,11 +3060,11 @@ html[dir='rtl'] .dark-mode .ninjadash-navbar-menu {
   color: #a4a5aa25;
 }
 
-.dark-mode .ninjadash-top-dropdown__title,
-.ninjadash-task-details .ant-modal-body .ninjadash-checklist-row .ninjadash-checklist-item__title,
-.dark-mode .ninjadash-top-dropdown .ninjadash-top-dropdown__content figcaption h1,
-.dark-mode .ninjadash-top-dropdown .ninjadash-top-dropdown__nav li a:hover figcaption h1,
-.dark-mode .ninjadash-task-details .ant-modal-header .ant-modal-title h4,
+.dark-mode .invoice-top-dropdown__title,
+.invoice-task-details .ant-modal-body .invoice-checklist-row .invoice-checklist-item__title,
+.dark-mode .invoice-top-dropdown .invoice-top-dropdown__content figcaption h1,
+.dark-mode .invoice-top-dropdown .invoice-top-dropdown__nav li a:hover figcaption h1,
+.dark-mode .invoice-task-details .ant-modal-header .ant-modal-title h4,
 .dark-mode .ant-modal-title,
 .dark-mode .ant-modal-confirm-body .ant-modal-confirm-title,
 .dark-mode .ant-drawer-title,
@@ -3083,7 +3078,7 @@ html[dir='rtl'] .dark-mode .ninjadash-navbar-menu {
   color: #8231d3;
 }
 
-.dark-mode .ninjadash-task-details .ant-modal-body .ninjadash-checklist-tasks .ant-checkbox-wrapper .ant-checkbox-inner,
+.dark-mode .invoice-task-details .ant-modal-body .invoice-checklist-tasks .ant-checkbox-wrapper .ant-checkbox-inner,
 .dark-mode .ant-btn.ant-btn-dark,
 .dark-mode .ant-btn.ant-btn-white.btn-outlined,
 .dark-mode .pop-confirm .ant-btn,
@@ -3126,13 +3121,13 @@ html[dir='rtl'] .dark-mode .ninjadash-navbar-menu {
   border-color: #494b55;
 }
 
-.dark-mode .ninjadash-navbar-menu {
+.dark-mode .invoice-navbar-menu {
   margin-left: 20px;
 }
 
 /* Top Menu */
 
-.ninjadash-topmenu .ninjadash-blog-details .ninjadash-share-links {
+.invoice-topmenu .invoice-blog-details .invoice-share-links {
   margin-left: 1000px !important;
 }
 
@@ -3192,7 +3187,7 @@ tr[data-row-key='searchInput'] {
   }
 }
 
-.ninjadash-top-menu ul li a {
+.invoice-top-menu ul li a {
   color: #404040 !important;
 
   &:hover {

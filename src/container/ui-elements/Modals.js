@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
-import { Row, Col } from 'antd';
+import { Col, Row } from 'antd';
+import { useState } from 'react';
+import { Button } from '../../components/buttons/buttons';
+import { Cards } from '../../components/cards/frame/cards-frame';
+import { Modal, alertModal } from '../../components/modals/antd-modals';
 import { PageHeader } from '../../components/page-headers/page-headers';
 import { Main } from '../styled';
-import { Cards } from '../../components/cards/frame/cards-frame';
-import { Button } from '../../components/buttons/buttons';
-import { Modal, alertModal } from '../../components/modals/antd-modals';
 
 const info = () => {
   alertModal.info({
@@ -115,7 +115,7 @@ function Modals() {
 
   return (
     <>
-      <PageHeader className="ninjadash-page-header-main" title="Modals" routes={PageRoutes} />
+      <PageHeader className="invoice-page-header-main" title="Modals" routes={PageRoutes} />
       <Main>
         <Row gutter={15}>
           <Col md={12}>

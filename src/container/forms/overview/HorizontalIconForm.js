@@ -18,7 +18,7 @@ function HorizontalIconForm() {
                 <label htmlFor="name">Name</label>
               </Col>
               <Col lg={16} md={15} xs={24}>
-                <Form.Item className="ninjadash-icon-left" name="name" initialValue="Duran Clayton">
+                <Form.Item className="invoice-icon-left" name="name" initialValue="Duran Clayton">
                   <Input prefix={<UilUser />} placeholder="Enter Name" />
                 </Form.Item>
               </Col>
@@ -28,7 +28,7 @@ function HorizontalIconForm() {
                 <label htmlFor="email">Email Address</label>
               </Col>
               <Col lg={16} md={15} xs={24}>
-                <Form.Item className="ninjadash-icon-left" name="email" initialValue="username@email.com">
+                <Form.Item className="invoice-icon-left" name="email" initialValue="username@email.com">
                   <Input prefix={<UilEnvelope />} placeholder="Enter Email" />
                 </Form.Item>
               </Col>
@@ -45,7 +45,7 @@ function HorizontalIconForm() {
             </Row>
             <Row>
               <Col lg={{ span: 16, offset: 8 }} md={{ span: 15, offset: 9 }} xs={{ span: 24, offset: 0 }}>
-                <div className="ninjadash-form-action">
+                <div className="invoice-form-action">
                   <Button className="btn-signin" htmlType="submit" type="light" size="large">
                     Cancel
                   </Button>

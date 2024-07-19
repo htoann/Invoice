@@ -51,7 +51,7 @@ function Product() {
 
   return (
     <>
-      <PageHeader className="ninjadash-page-header-main" title="Shop" routes={PageRoutes} />
+      <PageHeader className="invoice-page-header-main" title="Shop" routes={PageRoutes} />
       <Main>
         <Row gutter={30}>
           <Col className="product-sidebar-col" xxl={5} xl={7} lg={7} md={10} xs={24}>

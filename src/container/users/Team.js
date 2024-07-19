@@ -1,15 +1,15 @@
-import React, { lazy, useState, Suspense } from 'react';
-import { useSelector } from 'react-redux';
-import { Row, Col, Skeleton } from 'antd';
-import UilPlus from '@iconscout/react-unicons/icons/uil-plus';
-import UilEye from '@iconscout/react-unicons/icons/uil-eye';
 import UilEdit from '@iconscout/react-unicons/icons/uil-edit';
+import UilEye from '@iconscout/react-unicons/icons/uil-eye';
+import UilPlus from '@iconscout/react-unicons/icons/uil-plus';
 import UilTrashAlt from '@iconscout/react-unicons/icons/uil-trash-alt';
+import { Col, Row, Skeleton } from 'antd';
+import { lazy, Suspense, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { PageHeader } from '../../components/page-headers/page-headers';
-import { Main, CardToolbox } from '../styled';
 import { AutoComplete } from '../../components/autoComplete/autoComplete';
 import { Cards } from '../../components/cards/frame/cards-frame';
+import { PageHeader } from '../../components/page-headers/page-headers';
+import { CardToolbox, Main } from '../styled';
 
 function Team() {
   const { searchData, team } = useSelector((state) => {
@@ -53,7 +53,7 @@ function Team() {
     <>
       <CardToolbox>
         <PageHeader
-          className="ninjadash-page-header-main"
+          className="invoice-page-header-main"
           backIcon={false}
           title="Team Members"
           subTitle={

@@ -9,7 +9,7 @@ function VerticalForm() {
     <BasicFormWrapper>
       <VerticalFormStyleWrap>
         <Cards title="Vertical Form">
-          <Form name="ninjadash-vertical-form" layout="vertical">
+          <Form name="invoice-vertical-form" layout="vertical">
             <Form.Item name="name" initialValue="Duran Clayton" label="Name">
               <Input />
             </Form.Item>
@@ -19,7 +19,7 @@ function VerticalForm() {
             <Form.Item name="password" initialValue="1234567" label="Password">
               <Input.Password />
             </Form.Item>
-            <div className="ninjadash-form-action">
+            <div className="invoice-form-action">
               <Button className="btn-signin" htmlType="submit" type="light" size="large">
                 Cancel
               </Button>

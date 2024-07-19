@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
-import { Row, Col, Menu } from 'antd';
+import { AppstoreOutlined, MailOutlined, SettingOutlined } from '@ant-design/icons';
+import { Col, Menu, Row } from 'antd';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { MailOutlined, AppstoreOutlined, SettingOutlined } from '@ant-design/icons';
+import { Cards } from '../../components/cards/frame/cards-frame';
 import { PageHeader } from '../../components/page-headers/page-headers';
 import { Main } from '../styled';
-import { Cards } from '../../components/cards/frame/cards-frame';
 
 const { SubMenu } = Menu;
 function Menus() {
@@ -34,7 +34,7 @@ function Menus() {
 
   return (
     <>
-      <PageHeader className="ninjadash-page-header-main" title="Menu" routes={PageRoutes} />
+      <PageHeader className="invoice-page-header-main" title="Menu" routes={PageRoutes} />
       <Main>
         <Row gutter={25}>
           <Col md={24} sm={24} xs={24}>

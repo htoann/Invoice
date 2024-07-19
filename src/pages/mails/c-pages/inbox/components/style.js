@@ -1071,7 +1071,7 @@ const MessageDetails = Styled.div`
       }
     }
 
-    .ninjadash-ticket-file-item {
+    .invoice-ticket-file-item {
     align-items: flex-start;
     justify-content: space-between;
     &:not(:last-child) {
@@ -1080,16 +1080,16 @@ const MessageDetails = Styled.div`
     span {
       color: ${({ theme }) => theme[theme.mainContent]['gray-text']};
     }
-    .ninjadash-ticket-file-item__logo {
+    .invoice-ticket-file-item__logo {
       ${({ theme }) => (!theme.rtl ? 'margin-right' : 'margin-left')}: 10px;
     }
-    .ninjadash-file-item__content {
-      .ninjadash-ticket-file-name {
+    .invoice-file-item__content {
+      .invoice-ticket-file-name {
         font-size: 15px;
         font-weight: 500;
         color: ${({ theme }) => theme[theme.mainContent]['gray-text']};
       }
-      .ninjadash-ticket-file-size {
+      .invoice-ticket-file-size {
         display: block;
         font-size: 15px;
         font-weight: 400;

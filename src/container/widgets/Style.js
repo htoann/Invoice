@@ -17,7 +17,7 @@ const CardChartStyle = Styled.div`
           min-height: 470px;
       }
   }
-  .ninjadash-sales-inner{
+  .invoice-sales-inner{
     padding-bottom: 48px;
   }
 `;

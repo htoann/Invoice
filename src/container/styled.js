@@ -78,7 +78,7 @@ const Main = Styled.div`
         }
     }
     .ant-card{
-        &.ninjadash-ghost-card{
+        &.invoice-ghost-card{
             .ant-card-body{
                 background: linear-gradient(90deg, rgb(95, 99, 242), rgb(255, 105, 165));
             }
@@ -95,28 +95,28 @@ const Main = Styled.div`
     .ant-card-head{
         border-bottom-color: ${({ theme }) => theme[theme.mainContent]['border-color-default']};
         background-color: ${({ theme }) => theme[theme.mainContent]['white-background']};
-        .ninjadash-card-title-wrap{
+        .invoice-card-title-wrap{
             display: flex;
             justify-content: space-between;
             align-items: center;
-            .ninjadash-card-title-text{
+            .invoice-card-title-text{
                 font-size: 18px;
                 font-weight: 600;
                 display: inline-block;
                 ${({ theme }) => (!theme.rtl ? 'margin-left' : 'margin-right')}: 0;
                 color: ${({ theme }) => theme[theme.mainContent]['dark-text']};
-                .ninjadash-card-subtitile{
+                .invoice-card-subtitile{
                     font-size: 12px;
                     ${({ theme }) => (!theme.rtl ? 'margin-left' : 'margin-right')}: 6px;
                     color: ${({ theme }) => theme[theme.mainContent]['gray-text']};
                 }
             }
-            .ninjadash-card-title-extra-text{
+            .invoice-card-title-extra-text{
                 display: flex;
                 align-items: center;
                 position: relative;
                 top: 3px;
-                .ninjadash-total-chart-total{
+                .invoice-total-chart-total{
                     font-size: 18px;
                     font-weight: 600;
                     color: ${({ theme }) => theme[theme.mainContent]['dark-text']};
@@ -124,7 +124,7 @@ const Main = Styled.div`
                         font-size: 15px;
                     }
                 }
-                .ninjadash-total-chart-status{
+                .invoice-total-chart-status{
                     display: flex;
                     align-items: center;
                     font-size: 14px;
@@ -144,10 +144,10 @@ const Main = Styled.div`
                             height: 18px;
                         }
                     }
-                    &.ninjadash-total-chart-status-growth{
+                    &.invoice-total-chart-status-growth{
                         color: ${({ theme }) => theme['success-color']};
                     }
-                    &.ninjadash-total-chart-status-down{
+                    &.invoice-total-chart-status-down{
                         color: ${({ theme }) => theme['danger-color']};
                     }
                 }
@@ -161,7 +161,7 @@ const Main = Styled.div`
         }
     }
 
-    .ninjadash-card-nav{
+    .invoice-card-nav{
         ul{
             display: flex;
             align-items: center;
@@ -183,7 +183,7 @@ const Main = Styled.div`
                         color: ${({ theme }) => theme[theme.mainContent]['menu-active']};
                     }
                 }
-                &.ninjadash-active{
+                &.invoice-active{
                     a{
                         background-color: ${({ theme }) => theme[theme.mainContent]['menu-active-bg']};
                         color: ${({ theme }) => theme['primary-color']};
@@ -1555,7 +1555,7 @@ const Main = Styled.div`
         align-items: center;
         min-height: 100px;
         border-color: #C6D0DC;
-        &.ninjadash-uploader-large{
+        &.invoice-uploader-large{
             min-height: 180px;
         }
         .ant-upload-drag-container{
@@ -1612,7 +1612,7 @@ const Main = Styled.div`
         }
     }
     /* Order Summery */
-    .ninjadash-order-summery{
+    .invoice-order-summery{
         background-color: ${({ theme }) => theme[theme.mainContent]['main-background-light']};
     }
 
@@ -1659,7 +1659,7 @@ const Main = Styled.div`
         }
     }
 
-    .ninjadash-action-count{
+    .invoice-action-count{
         ${({ theme }) => (!theme.rtl ? 'padding-left' : 'padding-right')}: 8px;
     }
 `;
@@ -1676,23 +1676,23 @@ const BorderLessHeading = Styled.div`
     }
 `;
 const ChartPointHorizontal = Styled.div`
-    .ninjadash-chartpoint{
+    .invoice-chartpoint{
         display: flex;
         align-items: center;
         justify-content: space-between;
         max-width: 330px;
         margin: 20px auto 0;
-        .ninjadash-chartpoint__item{
+        .invoice-chartpoint__item{
             display: flex;
             align-items: center;
-            .ninjadash-chartpoint__tika{
+            .invoice-chartpoint__tika{
                 display: block;
                 width: 7px;
                 height: 7px;
                 ${({ theme }) => (!theme.rtl ? 'margin-right' : 'margin-left')}: 6px;
                 border-radius: 50%;
             }
-            .ninjadash-chartpoint__label{
+            .invoice-chartpoint__label{
                 font-size: 14px;
                 color: ${({ theme }) => theme[theme.mainContent]['gray-light-text']};
             }
@@ -1700,7 +1700,7 @@ const ChartPointHorizontal = Styled.div`
     }
 `;
 const TableDefaultStyle = Styled.div`
-    &.ninjadash-having-header-bg{
+    &.invoice-having-header-bg{
         .ant-table-content{
             table{
                 tr{
@@ -1795,14 +1795,14 @@ const TableDefaultStyle = Styled.div`
         tr{
             .ant-table-cell{
                 padding: 10px 15px;
-                .ninjadash-info-element{
+                .invoice-info-element{
                     img{
                         max-width: 32px;
                         ${({ theme }) => (!theme.rtl ? 'margin-right' : 'margin-left')}: 12px;
                         
                     }
                 
-                    .ninjadash-info-element__text{
+                    .invoice-info-element__text{
                         font-size: 15px;
                         font-weight: 500;
                         text-transform: capitalize;
@@ -1813,12 +1813,12 @@ const TableDefaultStyle = Styled.div`
             }
         }
     }
-    .ninjadash-recent-deals,
-    .ninjadash-top-product{
+    .invoice-recent-deals,
+    .invoice-top-product{
         min-height: 385px;
     }
 
-    .ninjadash-member-progress-table{
+    .invoice-member-progress-table{
         .ant-progress{
             min-width: 120px;
         }
@@ -2282,7 +2282,7 @@ const BasicFormWrapper = Styled.div`
         }
     }
 
-    .ninjadash-form-action{
+    .invoice-form-action{
         margin: -7.5px;
         button{
             font-size: 14px;
@@ -2304,7 +2304,7 @@ const BasicFormWrapper = Styled.div`
             background-color: ${({ theme }) => theme[theme.mainContent]['main-background']};
         }
     }
-    .ninjadash_color-picker{
+    .invoice_color-picker{
         border: 1px solid ${({ theme }) => theme[theme.mainContent]['border-color-secondary']};
         border-radius: 4px;
         padding: 11px 14px;
@@ -2333,7 +2333,7 @@ const CardToolbox = Styled.div`
     @media only screen and (max-width: 575px){
         margin: 2px 0 2px;
     }
-    .ant-page-header.ninjadash-page-header-main{
+    .ant-page-header.invoice-page-header-main{
         padding: 18px 30px 15px;
         @media only screen and (max-width: 767px){
             padding: 18px 15px 15px;
@@ -2819,7 +2819,7 @@ const TableWrapper = Styled.div`
             margin: 8px;
         }
     }
-    .ninjadash-status{
+    .invoice-status{
         display: inline-flex;
         align-items: center;
         justify-content: center;
@@ -2829,15 +2829,15 @@ const TableWrapper = Styled.div`
         padding: 0 8px;
         min-height: 24px;
         border-radius: 15px;
-        &.ninjadash-status-active{
+        &.invoice-status-active{
             color: ${({ theme }) => theme['success-color']};
             background-color: ${({ theme }) => theme['success-color']}15;
         }
-        &.ninjadash-status-deactiveted{
+        &.invoice-status-deactiveted{
             color: ${({ theme }) => theme['warning-color']};
             background-color: ${({ theme }) => theme['warning-color']}15;
         }
-        &.ninjadash-status-blocked{
+        &.invoice-status-blocked{
             color: ${({ theme }) => theme['danger-color']};
             background-color: ${({ theme }) => theme['danger-color']}15;
         }
@@ -2916,7 +2916,7 @@ const ImportStyleWrap = Styled.div`
             }
         }
     }
-    .ninjadash_import-inner{
+    .invoice_import-inner{
         .ant-upload-text{
             font-size: 20px;
             font-weight: 500;
@@ -2941,7 +2941,7 @@ const ImportStyleWrap = Styled.div`
 `;
 
 const ExportStyleWrap = Styled.div`
-    .ninjadash_export-box{
+    .invoice_export-box{
         display: flex;
         justify-content: space-between;
         margin-bottom: 30px;
@@ -2969,7 +2969,7 @@ const ExportStyleWrap = Styled.div`
             }
         }
     }
-    .ninjadash_export-file-table{
+    .invoice_export-file-table{
         .ant-table{
             border-radius: 10px 10px 0 0;
             background-color: transparent;
@@ -3011,7 +3011,7 @@ const ExportStyleWrap = Styled.div`
             }
         }
     }
-    .ninjadash-button-grp{
+    .invoice-button-grp{
         button{
             min-height: 44px;
         }
@@ -3064,7 +3064,7 @@ const CollapseStyleWrap = Styled.div`
 
 const TopToolBox = Styled.div`
     margin-bottom: 30px;
-    .ninjadash-showcase-top{
+    .invoice-showcase-top{
         .ant-select {
             .ant-select-selection-search {
                 .ant-select-selection-search-input{
@@ -3072,17 +3072,17 @@ const TopToolBox = Styled.div`
                 }
             }
         }
-        .ninjadash-showcase-top__text{
+        .invoice-showcase-top__text{
             p{
                 font-size: 14px;
                 ${({ theme }) => (!theme.rtl ? 'margin-left' : 'margin-right')}: 0;
                 color: ${({ theme }) => theme[theme.mainContent]['gray-text']};
             }
         }
-        .ninjadash-showcase-top__action{
+        .invoice-showcase-top__action{
             display: flex;
             align-items: center;
-            .ninjadash-showcase-top__action--filter{
+            .invoice-showcase-top__action--filter{
                 ${({ theme }) => (!theme.rtl ? 'margin-right' : 'margin-left')}: 50px;
                 .toolbox-menu-title{
                     display: inline-block;
@@ -3105,7 +3105,7 @@ const TopToolBox = Styled.div`
                     }
                 }
             }
-            .ninjadash-showcase-top__action--viewmode{
+            .invoice-showcase-top__action--viewmode{
                 display: flex;
                 align-items: center;
                 a{

@@ -1,24 +1,24 @@
-import React, { useState, useEffect, useLayoutEffect } from 'react';
-import { Row, Col, Form, Input, Select, Radio, Table } from 'antd';
-import { Link } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import UilPlus from '@iconscout/react-unicons/icons/uil-plus';
-import UilMinus from '@iconscout/react-unicons/icons/uil-minus';
-import UilEdit from '@iconscout/react-unicons/icons/uil-edit';
 import UilCheck from '@iconscout/react-unicons/icons/uil-check';
+import UilCredit from '@iconscout/react-unicons/icons/uil-credit-card';
+import UilEdit from '@iconscout/react-unicons/icons/uil-edit';
+import UilMap from '@iconscout/react-unicons/icons/uil-map-marker';
+import UilMinus from '@iconscout/react-unicons/icons/uil-minus';
+import UilPlus from '@iconscout/react-unicons/icons/uil-plus';
+import UilThumbsUp from '@iconscout/react-unicons/icons/uil-thumbs-up';
 import UilTrashAlt from '@iconscout/react-unicons/icons/uil-trash-alt';
 import UilUser from '@iconscout/react-unicons/icons/uil-user';
-import UilMap from '@iconscout/react-unicons/icons/uil-map-marker';
-import UilCredit from '@iconscout/react-unicons/icons/uil-credit-card';
-import UilThumbsUp from '@iconscout/react-unicons/icons/uil-thumbs-up';
-import { FigureWizards, WizardWrapper, OrderSummary, WizardTwo } from '../Style';
-import { ProductTable } from '../../../ecommerce/Style';
-import { Steps } from '../../../../components/steps/steps';
-import Heading from '../../../../components/heading/heading';
-import { Cards } from '../../../../components/cards/frame/cards-frame';
+import { Col, Form, Input, Radio, Row, Select, Table } from 'antd';
+import { useEffect, useLayoutEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { Button } from '../../../../components/buttons/buttons';
+import { Cards } from '../../../../components/cards/frame/cards-frame';
+import Heading from '../../../../components/heading/heading';
+import { Steps } from '../../../../components/steps/steps';
+import { cartDelete, cartGetData, cartUpdateQuantity } from '../../../../redux/cart/actionCreator';
+import { ProductTable } from '../../../ecommerce/Style';
 import { BasicFormWrapper } from '../../../styled';
-import { cartGetData, cartUpdateQuantity, cartDelete } from '../../../../redux/cart/actionCreator';
+import { FigureWizards, OrderSummary, WizardTwo, WizardWrapper } from '../Style';
 
 const { Option } = Select;
 function WizardsTwo() {
@@ -204,7 +204,7 @@ function WizardsTwo() {
   ];
 
   return (
-    <WizardWrapper className="ninjadash-wizard-page">
+    <WizardWrapper className="invoice-wizard-page">
       <WizardTwo>
         <Steps
           isswitch

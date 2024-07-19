@@ -3,7 +3,7 @@ import { NewsletterStyle } from './Style';
 
 function Newsletter() {
   return (
-    <NewsletterStyle className="ninjadash-newsletter-theme-2">
+    <NewsletterStyle className="invoice-newsletter-theme-2">
       <img src={require('../../static/img/icon/message.svg').default} alt="" />
       <figcaption>
         <h2>Subscribe To Our Newsletter</h2>

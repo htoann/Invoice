@@ -12,7 +12,7 @@ const OverviewDataList = React.memo(() => {
         {SupportOverview.map((item, i) => {
           return (
             <Col xxl={6} sm={12} xs={24} key={i}>
-              <OverviewCard className="ninjadash-overview-card-support" data={item} bottomStatus={false} contentFirst />
+              <OverviewCard className="invoice-overview-card-support" data={item} bottomStatus={false} contentFirst />
             </Col>
           );
         })}

@@ -25,8 +25,8 @@ function DataTable({ filterOption, filterOnchange, rowSelection, tableData, colu
   };
 
   const handleSearch = () => {
-    const id = document.querySelector('.ninjadash-data-id').value;
-    const status = document.querySelector('.ninjadash-data-status .ant-select-selection-item').title;
+    const id = document.querySelector('.invoice-data-id').value;
+    const status = document.querySelector('.invoice-data-status .ant-select-selection-item').title;
     dispatch(filterWithSubmit(id, status));
   };
 
@@ -35,34 +35,34 @@ function DataTable({ filterOption, filterOnchange, rowSelection, tableData, colu
   return (
     <DataTableStyleWrap>
       {filterOption ? (
-        <div className="ninjadash-datatable-filter">
+        <div className="invoice-datatable-filter">
           {!filterOnchange ? (
-            <div className="ninjadash-datatable-filter__left">
-              <div className="ninjadash-datatable-filter__input">
+            <div className="invoice-datatable-filter__left">
+              <div className="invoice-datatable-filter__input">
                 <span className="label">Id:</span>
-                <Input className="ninjadash-data-id" placeholder="Search with Id" />
+                <Input className="invoice-data-id" placeholder="Search with Id" />
               </div>
-              <div className="ninjadash-datatable-filter__input">
+              <div className="invoice-datatable-filter__input">
                 <span className="label">Status:</span>
-                <Select style={{ width: 200 }} className="ninjadash-data-status" defaultValue="active">
+                <Select style={{ width: 200 }} className="invoice-data-status" defaultValue="active">
                   <Select.Option value="active">Active</Select.Option>
                   <Select.Option value="deactiveted">Deactivated</Select.Option>
                   <Select.Option value="blocked">Blocked</Select.Option>
                 </Select>
               </div>
-              <div className="ninjadash-datatable-filter__action">
+              <div className="invoice-datatable-filter__action">
                 <Button type="primary" size="small" onClick={handleSearch} transparented>
                   Submit
                 </Button>
               </div>
             </div>
           ) : (
-            <div className="ninjadash-datatable-filter__left">
-              <div className="ninjadash-datatable-filter__input">
+            <div className="invoice-datatable-filter__left">
+              <div className="invoice-datatable-filter__input">
                 <span className="label">Id:</span>
                 <Input onChange={handleIdSearch} placeholder="Search with Id" />
               </div>
-              <div className="ninjadash-datatable-filter__input">
+              <div className="invoice-datatable-filter__input">
                 <span className="label">Status:</span>
                 <Select onChange={handleStatusSearch} style={{ width: 200 }} defaultValue="active">
                   <Select.Option value="active">Active</Select.Option>
@@ -72,7 +72,7 @@ function DataTable({ filterOption, filterOnchange, rowSelection, tableData, colu
               </div>
             </div>
           )}
-          <div className="ninjadash-datatable-filter__right">
+          <div className="invoice-datatable-filter__right">
             <Input onChange={handleDataUser} size="default" placeholder="Search" prefix={prefix} />
           </div>
         </div>

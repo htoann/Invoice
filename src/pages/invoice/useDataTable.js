@@ -1,7 +1,7 @@
-import { useTransition } from 'react';
+import { useTranslation } from 'react-i18next';
 
 export const useInvoiceDataTable = () => {
-  const { t } = useTransition();
+  const { t } = useTranslation();
 
   return [
     {

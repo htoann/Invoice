@@ -115,11 +115,11 @@ const ThemeLayout = (WrappedComponent) => {
                 [!rtl ? 'left' : 'right']: 0,
               }}
             >
-              <div className="ninjadash-header-content d-flex">
-                <div className="ninjadash-header-content__left">
+              <div className="invoice-header-content d-flex">
+                <div className="invoice-header-content__left">
                   <div className="navbar-brand align-cener-v">
                     <Link
-                      className={topMenu && window.innerWidth > 991 ? 'ninjadash-logo top-menu' : 'ninjadash-logo'}
+                      className={topMenu && window.innerWidth > 991 ? 'invoice-logo top-menu' : 'invoice-logo'}
                       to="/"
                     >
                       <img
@@ -141,11 +141,11 @@ const ThemeLayout = (WrappedComponent) => {
                     ) : null}
                   </div>
                 </div>
-                <div className="ninjadash-header-content__right d-flex">
-                  <div className="ninjadash-navbar-menu d-flex align-center-v">
+                <div className="invoice-header-content__right d-flex">
+                  <div className="invoice-navbar-menu d-flex align-center-v">
                     {topMenu && window.innerWidth > 991 ? <TopMenu /> : ''}
                   </div>
-                  <div className="ninjadash-nav-actions">
+                  <div className="invoice-nav-actions">
                     {topMenu && window.innerWidth > 991 ? (
                       <TopMenuSearch>
                         <div className="top-right-wrap d-flex">
@@ -157,8 +157,8 @@ const ThemeLayout = (WrappedComponent) => {
                     )}
                   </div>
                 </div>
-                <div className="ninjadash-header-content__mobile">
-                  <div className="ninjadash-mobile-action">
+                <div className="invoice-header-content__mobile">
+                  <div className="invoice-mobile-action">
                     <div className="btn-search" to="#">
                       <SearchBar />
                     </div>
@@ -170,10 +170,10 @@ const ThemeLayout = (WrappedComponent) => {
                 </div>
               </div>
             </Header>
-            <div className="ninjadash-header-more">
+            <div className="invoice-header-more">
               <Row>
                 <Col md={0} sm={24} xs={24}>
-                  <div className="ninjadash-header-more-inner">
+                  <div className="invoice-header-more-inner">
                     <SmallScreenAuthInfo hide={hide}>
                       <AuthInfo rtl={rtl} />
                     </SmallScreenAuthInfo>
@@ -198,7 +198,7 @@ const ThemeLayout = (WrappedComponent) => {
                       renderThumbHorizontal={renderThumbHorizontal}
                       renderThumbVertical={renderThumbVertical}
                       renderView={renderView}
-                      renderTrackVertical={(props) => <div {...props} className="ninjadash-track-vertical" />}
+                      renderTrackVertical={(props) => <div {...props} className="invoice-track-vertical" />}
                     >
                       <LeftMenu topMenu={topMenu} toggleCollapsed={toggleCollapsedMobile} />
                     </Scrollbars>
@@ -229,7 +229,7 @@ const ThemeLayout = (WrappedComponent) => {
             </Layout>
           </Layout>
           {window.innerWidth <= 991 ? (
-            <span className={collapsed ? 'ninjadash-shade' : 'ninjadash-shade show'} onClick={toggleCollapsed} />
+            <span className={collapsed ? 'invoice-shade' : 'invoice-shade show'} onClick={toggleCollapsed} />
           ) : (
             ''
           )}

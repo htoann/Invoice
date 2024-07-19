@@ -151,7 +151,7 @@ const Filters = React.memo(() => {
         <SidebarSingle style={{ marginBottom: 32 }}>
           <Heading as="h5">Price Range</Heading>
           <Slider max={1500} onChange={onChange} range defaultValues={[min, max]} />
-          <p className="ninjadash-price-text">
+          <p className="invoice-price-text">
             ${min} - ${max}
           </p>
         </SidebarSingle>
@@ -159,53 +159,53 @@ const Filters = React.memo(() => {
           <Heading as="h5">Category</Heading>
 
           <nav>
-            <ul className="ninjadash-category-list">
+            <ul className="invoice-category-list">
               <li>
                 <Link onClick={() => onChangeCategory('all')} to="#">
                   <span>All</span>
-                  <span className="ninjadash-category-count">25</span>
+                  <span className="invoice-category-count">25</span>
                 </Link>
               </li>
               <li>
                 <Link onClick={() => onChangeCategory('accessories')} to="#">
                   <span>Accessories</span>
-                  <span className="ninjadash-category-count">25</span>
+                  <span className="invoice-category-count">25</span>
                 </Link>
               </li>
               <li>
                 <Link onClick={() => onChangeCategory('appliance')} to="#">
                   <span>Appliances</span>
-                  <span className="ninjadash-category-count">25</span>
+                  <span className="invoice-category-count">25</span>
                 </Link>
               </li>
               <li>
                 <Link onClick={() => onChangeCategory('bags')} to="#">
                   <span>Bags</span>
-                  <span className="ninjadash-category-count">25</span>
+                  <span className="invoice-category-count">25</span>
                 </Link>
               </li>
               <li>
                 <Link onClick={() => onChangeCategory('electronic')} to="#">
                   <span>Electronic</span>
-                  <span className="ninjadash-category-count">25</span>
+                  <span className="invoice-category-count">25</span>
                 </Link>
               </li>
               <li>
                 <Link onClick={() => onChangeCategory('entertainment')} to="#">
                   <span>Entertainment</span>
-                  <span className="ninjadash-category-count">25</span>
+                  <span className="invoice-category-count">25</span>
                 </Link>
               </li>
               <li>
                 <Link onClick={() => onChangeCategory('induction')} to="#">
                   <span>Induction</span>
-                  <span className="ninjadash-category-count">25</span>
+                  <span className="invoice-category-count">25</span>
                 </Link>
               </li>
               <li>
                 <Link onClick={() => onChangeCategory('mobile')} to="#">
                   <span>Mobile Phone</span>
-                  <span className="ninjadash-category-count">25</span>
+                  <span className="invoice-category-count">25</span>
                 </Link>
               </li>
             </ul>

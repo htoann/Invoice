@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import { Row, Col } from 'antd';
-import { PageHeader } from '../../components/page-headers/page-headers';
-import { Main } from '../styled';
+import { Col, Row } from 'antd';
+import { useState } from 'react';
 import { Cards } from '../../components/cards/frame/cards-frame';
 import { Checkbox } from '../../components/checkbox/checkbox';
+import { PageHeader } from '../../components/page-headers/page-headers';
+import { Main } from '../styled';
 
 function Checkboxs() {
   const PageRoutes = [
@@ -31,7 +31,7 @@ function Checkboxs() {
 
   return (
     <>
-      <PageHeader className="ninjadash-page-header-main" title="Checkbox" routes={PageRoutes} />
+      <PageHeader className="invoice-page-header-main" title="Checkbox" routes={PageRoutes} />
       <Main>
         <Row gutter={25}>
           <Col md={12} xs={24}>

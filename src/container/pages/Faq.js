@@ -38,7 +38,7 @@ function Faq() {
 
   return (
     <>
-      <PageHeader className="ninjadash-page-header-main" title="Faqs" routes={PageRoutes} />
+      <PageHeader className="invoice-page-header-main" title="Faqs" routes={PageRoutes} />
       <Main>
         <Row gutter={25}>
           <Col xxl={6} lg={8} md={10} sm={11}>

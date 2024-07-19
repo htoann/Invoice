@@ -2,7 +2,7 @@ import { Tag } from 'antd';
 import Styled from 'styled-components';
 
 const TagStyle = Styled(Tag)`
-    &.ninjadash-tag-new{
+    &.invoice-tag-new{
         .ant-tag{
             background-color: ${({ theme }) => theme[theme.mainContent]['white-background']};
         }

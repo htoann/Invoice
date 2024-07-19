@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-import { Row, Col, Divider } from 'antd';
-import { UserOutlined, SolutionOutlined, CreditCardOutlined, SmileOutlined } from '@ant-design/icons';
-import { PageHeader } from '../../components/page-headers/page-headers';
-import { Main } from '../styled';
+import { CreditCardOutlined, SmileOutlined, SolutionOutlined, UserOutlined } from '@ant-design/icons';
+import { Col, Divider, Row } from 'antd';
+import { useState } from 'react';
 import { Cards } from '../../components/cards/frame/cards-frame';
+import { PageHeader } from '../../components/page-headers/page-headers';
 import { Popover } from '../../components/popup/popup';
-import { Steps, Step } from '../../components/steps/steps';
+import { Step, Steps } from '../../components/steps/steps';
+import { Main } from '../styled';
 
 const customDot = (dot, { status, index }) => (
   <Popover
@@ -53,7 +53,7 @@ function Stepess() {
 
   return (
     <>
-      <PageHeader className="ninjadash-page-header-main" title="Steps" routes={PageRoutes} />
+      <PageHeader className="invoice-page-header-main" title="Steps" routes={PageRoutes} />
       <Main>
         <Row gutter={25}>
           <Col md={24} sm={24} xs={24}>

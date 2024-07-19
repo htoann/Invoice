@@ -21,7 +21,7 @@ function PricingTable() {
   ];
   return (
     <>
-      <PageHeader className="ninjadash-page-header-main" title="Pricing Table" routes={PageRoutes} />
+      <PageHeader className="invoice-page-header-main" title="Pricing Table" routes={PageRoutes} />
       <Main>
         <Row gutter={25}>
           <Col xxl={6} lg={8} sm={12} xs={24}>

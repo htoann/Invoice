@@ -1,12 +1,11 @@
-import React from 'react';
-import { Row, Col } from 'antd';
+import { Col, Row } from 'antd';
 import { NavLink } from 'react-router-dom';
-import { DropdownStyle } from './ui-elements-styled';
-import { PageHeader } from '../../components/page-headers/page-headers';
-import { Main } from '../styled';
-import { Cards } from '../../components/cards/frame/cards-frame';
 import { Button } from '../../components/buttons/buttons';
+import { Cards } from '../../components/cards/frame/cards-frame';
+import { PageHeader } from '../../components/page-headers/page-headers';
 import { Popover } from '../../components/popup/popup';
+import { Main } from '../styled';
+import { DropdownStyle } from './ui-elements-styled';
 
 function Popovers() {
   const PageRoutes = [
@@ -21,7 +20,7 @@ function Popovers() {
   ];
   return (
     <DropdownStyle>
-      <PageHeader className="ninjadash-page-header-main" title="Popovers" routes={PageRoutes} />
+      <PageHeader className="invoice-page-header-main" title="Popovers" routes={PageRoutes} />
       <Main>
         <Row gutter={25}>
           <Col md={12} sm={12} xs={24}>

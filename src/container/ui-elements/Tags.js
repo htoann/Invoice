@@ -33,7 +33,7 @@ function Tags() {
 
   return (
     <>
-      <PageHeader className="ninjadash-page-header-main" title="Tags" routes={PageRoutes} />
+      <PageHeader className="invoice-page-header-main" title="Tags" routes={PageRoutes} />
       <Main>
         <Row gutter={25}>
           <Col md={12} xs={24}>
@@ -41,7 +41,7 @@ function Tags() {
               <div className="taglist-wrap">
                 <Tag>Tag 1</Tag>
                 <Tag>
-                  <a href="https://demo.dashboardmarket.com/ninjadash-react">Link</a>
+                  <a href="https://demo.dashboardmarket.com/invoice-react">Link</a>
                 </Tag>
                 <Tag closable onClose={log}>
                   Tag 2

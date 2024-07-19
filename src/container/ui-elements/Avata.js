@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
-import { Row, Col, Avatar, Badge } from 'antd';
+import { Avatar, Badge, Col, Row } from 'antd';
+import { useState } from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { UserOutlined } from '@ant-design/icons';
 import { useSelector } from 'react-redux';
-import { AvatarWraperStyle } from './ui-elements-styled';
+import { Button } from '../../components/buttons/buttons';
+import { Cards } from '../../components/cards/frame/cards-frame';
 import { PageHeader } from '../../components/page-headers/page-headers';
 import { Main } from '../styled';
-import { Cards } from '../../components/cards/frame/cards-frame';
-import { Button } from '../../components/buttons/buttons';
+import { AvatarWraperStyle } from './ui-elements-styled';
 
 const UserList = ['U', 'Lucy', 'Tom', 'Edward'];
 const ColorList = ['#f56a00', '#7265e6', '#ffbf00', '#00a2ae'];
@@ -34,7 +34,7 @@ function Avatars() {
 
   return (
     <>
-      <PageHeader className="ninjadash-page-header-main" title="Avatar" routes={PageRoutes} />
+      <PageHeader className="invoice-page-header-main" title="Avatar" routes={PageRoutes} />
       <Main>
         <Row gutter={25}>
           <Col md={12} sm={12} xs={24}>

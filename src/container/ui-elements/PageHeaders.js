@@ -1,14 +1,13 @@
-import React from 'react';
-import { Row, Col } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
-import { Main, PageHeaderWrapper } from '../styled';
+import { Col, Row } from 'antd';
+import { Button } from '../../components/buttons/buttons';
 import { Cards } from '../../components/cards/frame/cards-frame';
 import { PageHeader } from '../../components/page-headers/page-headers';
-import { Button } from '../../components/buttons/buttons';
+import { Main, PageHeaderWrapper } from '../styled';
 
-import { ShareButtonPageHeader } from '../../components/buttons/share-button/share-button';
-import { ExportButtonPageHeader } from '../../components/buttons/export-button/export-button';
 import { CalendarButtonPageHeader } from '../../components/buttons/calendar-button/calendar-button';
+import { ExportButtonPageHeader } from '../../components/buttons/export-button/export-button';
+import { ShareButtonPageHeader } from '../../components/buttons/share-button/share-button';
 
 const routes = [
   {
@@ -38,7 +37,7 @@ function PageHeaders() {
   ];
   return (
     <>
-      <PageHeader className="ninjadash-page-header-main" title="Notifications" routes={PageRoutes} />
+      <PageHeader className="invoice-page-header-main" title="Notifications" routes={PageRoutes} />
       <Main>
         <Row gutter={25}>
           <Col md={24} sm={24} xs={24}>

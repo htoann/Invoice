@@ -5,7 +5,7 @@ const Checkout = lazy(() => import('../../../ecommerce/overview/CheckoutWizard')
 
 function WizardsOne() {
   return (
-    <WizardWrapper className="ninjadash-wizard-page">
+    <WizardWrapper className="invoice-wizard-page">
       <Checkout />
     </WizardWrapper>
   );

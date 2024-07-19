@@ -1,7 +1,7 @@
 import Styled from 'styled-components';
 
 const DataTableStyleWrap = Styled.div`
-    .ninjadash-datatable-filter{
+    .invoice-datatable-filter{
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -11,7 +11,7 @@ const DataTableStyleWrap = Styled.div`
             flex-direction: column;
             align-items: flex-start;
         }
-        .ninjadash-datatable-filter__left{
+        .invoice-datatable-filter__left{
             display: inline-flex;
             width: 100%;
             align-items: center;
@@ -31,7 +31,7 @@ const DataTableStyleWrap = Styled.div`
                 margin-right: 8px;
                 color: ${({ theme }) => theme[theme.mainContent]['gray-text']};
             }
-            .ninjadash-datatable-filter__input{
+            .invoice-datatable-filter__input{
                 display: flex;
                 align-items: center;
                 padding-right: 20px;
@@ -50,7 +50,7 @@ const DataTableStyleWrap = Styled.div`
                 }
             }
         }
-        .ninjadash-datatable-filter__right{
+        .invoice-datatable-filter__right{
             min-width: 280px;
             @media only screen and (max-width: 475px){
                 min-width: 100%;

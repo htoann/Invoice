@@ -8,7 +8,7 @@ export const TopMenu = () => {
   const { t } = useTranslation();
 
   useLayoutEffect(() => {
-    const active = document.querySelector('.ninjadash-top-menu a.active');
+    const active = document.querySelector('.invoice-top-menu a.active');
     const activeDefault = () => {
       const megaMenu = active.closest('.megaMenu-wrapper');
       const hasSubMenuLeft = active.closest('.has-subMenu-left');
@@ -40,7 +40,7 @@ export const TopMenu = () => {
 
   return (
     <TopMenuStyle>
-      <div className="ninjadash-top-menu">
+      <div className="invoice-top-menu">
         <ul>
           <li>
             <Link to="/" className="parent">

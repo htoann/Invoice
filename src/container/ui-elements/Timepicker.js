@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import { Row, Col, TimePicker, Button } from 'antd';
+import { Button, Col, Row, TimePicker } from 'antd';
 import moment from 'moment';
+import { useState } from 'react';
+import { Cards } from '../../components/cards/frame/cards-frame';
 import { PageHeader } from '../../components/page-headers/page-headers';
 import { Main } from '../styled';
-import { Cards } from '../../components/cards/frame/cards-frame';
 
 const format = 'HH:mm';
 function TimePickers() {
@@ -27,7 +27,7 @@ function TimePickers() {
 
   return (
     <>
-      <PageHeader className="ninjadash-page-header-main" title="Time Picker" routes={PageRoutes} />
+      <PageHeader className="invoice-page-header-main" title="Time Picker" routes={PageRoutes} />
       <Main>
         <Row gutter={25}>
           <Col sm={12} xs={24}>

@@ -17,7 +17,7 @@ function EmptyData() {
   ];
   return (
     <>
-      <PageHeader className="ninjadash-page-header-main" title="Empty" routes={PageRoutes} />
+      <PageHeader className="invoice-page-header-main" title="Empty" routes={PageRoutes} />
       <Main>
         <Row gutter={25}>
           <Col md={12} sm={12} xs={24}>

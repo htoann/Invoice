@@ -1,10 +1,9 @@
-import React from 'react';
-import { Row, Col, Spin } from 'antd';
 import { LoadingOutlined } from '@ant-design/icons';
-import { SpinerWraperStyle } from './ui-elements-styled';
+import { Col, Row, Spin } from 'antd';
+import { Cards } from '../../components/cards/frame/cards-frame';
 import { PageHeader } from '../../components/page-headers/page-headers';
 import { Main } from '../styled';
-import { Cards } from '../../components/cards/frame/cards-frame';
+import { SpinerWraperStyle } from './ui-elements-styled';
 
 const antIcon = <LoadingOutlined style={{ fontSize: 24 }} />;
 
@@ -21,7 +20,7 @@ function Spiner() {
   ];
   return (
     <>
-      <PageHeader className="ninjadash-page-header-main" title="Spin" routes={PageRoutes} />
+      <PageHeader className="invoice-page-header-main" title="Spin" routes={PageRoutes} />
       <Main>
         <Row gutter={25}>
           <Col sm={12} xs={24}>

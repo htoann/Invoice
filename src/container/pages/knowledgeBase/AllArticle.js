@@ -27,12 +27,12 @@ function AllArticle() {
   };
   return (
     <>
-      <PageHeader className="ninjadash-page-header-main" title="All Article" routes={PageRoutes} />
+      <PageHeader className="invoice-page-header-main" title="All Article" routes={PageRoutes} />
       <Main>
         <GeneralKnowledgeTop />
         <KnowledgebaseArticleWrap>
           <div className="knowledgebase-article-container theme-2">
-            <div className="ninjadash-paginaion">
+            <div className="invoice-paginaion">
               <ul>
                 <li>
                   <Link className="active" to="/knowledgebase/plugins">
@@ -45,13 +45,13 @@ function AllArticle() {
               </ul>
             </div>
             <ArticleListWrap>
-              <div className="ninjadash-articlelist">
-                <div className="ninjadash-articlelist__single">
-                  <div className="ninjadash-articlelist__single--left">
-                    <h2 className="ninjadash-article-category-title">Introduction to Plugin</h2>
+              <div className="invoice-articlelist">
+                <div className="invoice-articlelist__single">
+                  <div className="invoice-articlelist__single--left">
+                    <h2 className="invoice-article-category-title">Introduction to Plugin</h2>
                   </div>
-                  <div className="ninjadash-articlelist__single--right">
-                    <div className="ninjadash-article-category-links">
+                  <div className="invoice-articlelist__single--right">
+                    <div className="invoice-article-category-links">
                       <ul>
                         <li>
                           <Link to="/knowledgebaseSingle/1">
@@ -91,12 +91,12 @@ function AllArticle() {
                     </div>
                   </div>
                 </div>
-                <div className="ninjadash-articlelist__single">
-                  <div className="ninjadash-articlelist__single--left">
-                    <h2 className="ninjadash-article-category-title">Productivity tools for your Plugin admin</h2>
+                <div className="invoice-articlelist__single">
+                  <div className="invoice-articlelist__single--left">
+                    <h2 className="invoice-article-category-title">Productivity tools for your Plugin admin</h2>
                   </div>
-                  <div className="ninjadash-articlelist__single--right">
-                    <div className="ninjadash-article-category-links">
+                  <div className="invoice-articlelist__single--right">
+                    <div className="invoice-article-category-links">
                       <ul>
                         <li>
                           <Link to="/knowledgebaseSingle/1">
@@ -136,12 +136,12 @@ function AllArticle() {
                     </div>
                   </div>
                 </div>
-                <div className="ninjadash-articlelist__single">
-                  <div className="ninjadash-articlelist__single--left">
-                    <h2 className="ninjadash-article-category-title">Manage your account</h2>
+                <div className="invoice-articlelist__single">
+                  <div className="invoice-articlelist__single--left">
+                    <h2 className="invoice-article-category-title">Manage your account</h2>
                   </div>
-                  <div className="ninjadash-articlelist__single--right">
-                    <div className="ninjadash-article-category-links">
+                  <div className="invoice-articlelist__single--right">
+                    <div className="invoice-article-category-links">
                       <ul>
                         <li>
                           <Link to="/knowledgebaseSingle/1">
@@ -181,12 +181,12 @@ function AllArticle() {
                     </div>
                   </div>
                 </div>
-                <div className="ninjadash-articlelist__single">
-                  <div className="ninjadash-articlelist__single--left">
-                    <h2 className="ninjadash-article-category-title">Manage your account</h2>
+                <div className="invoice-articlelist__single">
+                  <div className="invoice-articlelist__single--left">
+                    <h2 className="invoice-article-category-title">Manage your account</h2>
                   </div>
-                  <div className="ninjadash-articlelist__single--right">
-                    <div className="ninjadash-article-category-links">
+                  <div className="invoice-articlelist__single--right">
+                    <div className="invoice-article-category-links">
                       <ul>
                         <li>
                           <Link to="/knowledgebaseSingle/1">
@@ -229,8 +229,8 @@ function AllArticle() {
               </div>
 
               <CtaWrap>
-                <div className="ninjadash-knowledgebase-cta">
-                  <h2 className="ninjadash-knowledgebase-cta__title">Still no luck? We can help!</h2>
+                <div className="invoice-knowledgebase-cta">
+                  <h2 className="invoice-knowledgebase-cta__title">Still no luck? We can help!</h2>
                   <p>Contact us and we’ll get back to you as soon as possible.</p>
                   <Button className="btn-rqSubmit" type="primary" size="large">
                     Submit a Request

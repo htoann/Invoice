@@ -73,7 +73,7 @@ function AddNew() {
   return (
     <>
       <PageHeader
-        className="ninjadash-page-header-main"
+        className="invoice-page-header-main"
         buttons={[
           <Button className="btn-add_new" size="default" key="1" type="primary">
             <Link to="/axios/crud/axios-view">View All</Link>

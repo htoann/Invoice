@@ -7,13 +7,13 @@ const textRefactor = (text, size) => {
 const customTooltips = function (context) {
   // Tooltip Element
   let tooltipEl = document.querySelector('.chartjs-tooltip');
-  const container = this._chart.canvas.closest('.ninjadash-chart-container');
+  const container = this._chart.canvas.closest('.invoice-chart-container');
   if (container && !container.contains(tooltipEl)) {
     tooltipEl = document.createElement('div');
     tooltipEl.className = 'chartjs-tooltip';
     tooltipEl.innerHTML = '<table></table>';
 
-    document.querySelectorAll('.ninjadash-chart-container').forEach((el) => {
+    document.querySelectorAll('.invoice-chart-container').forEach((el) => {
       if (el.contains(tooltipEl)) {
         tooltipEl.remove();
       }

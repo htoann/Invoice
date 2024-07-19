@@ -36,7 +36,7 @@ const TabBasic = Styled(Tabs)`
       color: ${({ theme }) => theme[theme.mainContent]['gray-text']};
     }
   }
-  &.ninjadash-tab-primary{
+  &.invoice-tab-primary{
     .ant-tabs-nav{
       .ant-tabs-tab{
         &.ant-tabs-tab-active{
@@ -63,7 +63,7 @@ const TabBasic = Styled(Tabs)`
       }
     }
   }
-  &.ninjadash-tab-white{
+  &.invoice-tab-white{
     .ant-tabs-nav{
       .ant-tabs-tab{
         &.ant-tabs-tab-active{

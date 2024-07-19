@@ -1,16 +1,16 @@
-import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
-import { Row, Col } from 'antd';
-import UilEye from '@iconscout/react-unicons/icons/uil-eye';
 import UilEdit from '@iconscout/react-unicons/icons/uil-edit';
+import UilEye from '@iconscout/react-unicons/icons/uil-eye';
 import UilTrashAlt from '@iconscout/react-unicons/icons/uil-trash-alt';
+import { Col, Row } from 'antd';
+import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import UserListTable from '../pages/overview/UserTable';
-import { PageHeader } from '../../components/page-headers/page-headers';
-import { Main, CardToolbox } from '../styled';
-import Heading from '../../components/heading/heading';
 import { AutoComplete } from '../../components/autoComplete/autoComplete';
 import { Button } from '../../components/buttons/buttons';
+import Heading from '../../components/heading/heading';
+import { PageHeader } from '../../components/page-headers/page-headers';
+import UserListTable from '../pages/overview/UserTable';
+import { CardToolbox, Main } from '../styled';
 
 function UserList() {
   const { searchData, users } = useSelector((state) => {
@@ -81,7 +81,7 @@ function UserList() {
     <>
       <CardToolbox>
         <PageHeader
-          className="ninjadash-page-header-main"
+          className="invoice-page-header-main"
           ghost
           title="User List Data Table"
           subTitle={

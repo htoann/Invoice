@@ -41,7 +41,7 @@ function ProductDetails() {
 
   return (
     <>
-      <PageHeader className="ninjadash-page-header-main" title="Product Details" routes={PageRoutes} />
+      <PageHeader className="invoice-page-header-main" title="Product Details" routes={PageRoutes} />
       <Main>
         <Cards headless>
           <ProductDetailsWrapper>

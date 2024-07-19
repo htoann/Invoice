@@ -7,12 +7,12 @@ import { ArticleTabContentWrap } from '../style';
 function ArticleExtension() {
   return (
     <ArticleTabContentWrap>
-      <div className="ninjadash-article-tab-content">
+      <div className="invoice-article-tab-content">
         <Row>
           <Col md={8} sm={12} xs={24}>
-            <div className="ninjadash-article-tab-signle">
-              <h2 className="ninjadash-article-tab-signle__title">Introduction to Extension</h2>
-              <ul className="ninjadash-article-tab-signle__list">
+            <div className="invoice-article-tab-signle">
+              <h2 className="invoice-article-tab-signle__title">Introduction to Extension</h2>
+              <ul className="invoice-article-tab-signle__list">
                 <li>
                   <NavLink to="/knowledgebaseSingle/1">Log in and out of Extensions</NavLink>
                 </li>
@@ -32,9 +32,9 @@ function ArticleExtension() {
             </div>
           </Col>
           <Col md={8} sm={12} xs={24}>
-            <div className="ninjadash-article-tab-signle">
-              <h2 className="ninjadash-article-tab-signle__title">Introduction to Extension</h2>
-              <ul className="ninjadash-article-tab-signle__list">
+            <div className="invoice-article-tab-signle">
+              <h2 className="invoice-article-tab-signle__title">Introduction to Extension</h2>
+              <ul className="invoice-article-tab-signle__list">
                 <li>
                   <NavLink to="/knowledgebaseSingle/1">Log in and out of Extensions</NavLink>
                 </li>
@@ -54,9 +54,9 @@ function ArticleExtension() {
             </div>
           </Col>
           <Col md={8} sm={12} xs={24}>
-            <div className="ninjadash-article-tab-signle">
-              <h2 className="ninjadash-article-tab-signle__title">Introduction to Extension</h2>
-              <ul className="ninjadash-article-tab-signle__list">
+            <div className="invoice-article-tab-signle">
+              <h2 className="invoice-article-tab-signle__title">Introduction to Extension</h2>
+              <ul className="invoice-article-tab-signle__list">
                 <li>
                   <NavLink to="/knowledgebaseSingle/1">Log in and out of Extensions</NavLink>
                 </li>
@@ -76,9 +76,9 @@ function ArticleExtension() {
             </div>
           </Col>
           <Col md={8} sm={12} xs={24}>
-            <div className="ninjadash-article-tab-signle">
-              <h2 className="ninjadash-article-tab-signle__title">Introduction to Extension</h2>
-              <ul className="ninjadash-article-tab-signle__list">
+            <div className="invoice-article-tab-signle">
+              <h2 className="invoice-article-tab-signle__title">Introduction to Extension</h2>
+              <ul className="invoice-article-tab-signle__list">
                 <li>
                   <NavLink to="/knowledgebaseSingle/1">Log in and out of Extensions</NavLink>
                 </li>
@@ -98,9 +98,9 @@ function ArticleExtension() {
             </div>
           </Col>
           <Col md={8} sm={12} xs={24}>
-            <div className="ninjadash-article-tab-signle">
-              <h2 className="ninjadash-article-tab-signle__title">Introduction to Extension</h2>
-              <ul className="ninjadash-article-tab-signle__list">
+            <div className="invoice-article-tab-signle">
+              <h2 className="invoice-article-tab-signle__title">Introduction to Extension</h2>
+              <ul className="invoice-article-tab-signle__list">
                 <li>
                   <NavLink to="/knowledgebaseSingle/1">Log in and out of Extensions</NavLink>
                 </li>
@@ -120,9 +120,9 @@ function ArticleExtension() {
             </div>
           </Col>
           <Col md={8} sm={12} xs={24}>
-            <div className="ninjadash-article-tab-signle">
-              <h2 className="ninjadash-article-tab-signle__title">Introduction to Extension</h2>
-              <ul className="ninjadash-article-tab-signle__list">
+            <div className="invoice-article-tab-signle">
+              <h2 className="invoice-article-tab-signle__title">Introduction to Extension</h2>
+              <ul className="invoice-article-tab-signle__list">
                 <li>
                   <NavLink to="/knowledgebaseSingle/1">Log in and out of Extensions</NavLink>
                 </li>

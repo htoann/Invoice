@@ -53,27 +53,27 @@ const RevenueGenerated = React.memo(() => {
       return revenueData.push({
         key,
         source: (
-          <div className="ninjadash-revenue-company align-center-v">
-            <div className={`ninjadash-revenue-company__icon ninjadash-revenue-company__icon-${icon}`}>
+          <div className="invoice-revenue-company align-center-v">
+            <div className={`invoice-revenue-company__icon invoice-revenue-company__icon-${icon}`}>
               <i className={`fa fa-${icon}`} />
             </div>
-            <div className="ninjadash-revenue-company__content">
-              <span className="ninjadash-revenue-company__text">{name}</span>
+            <div className="invoice-revenue-company__content">
+              <span className="invoice-revenue-company__text">{name}</span>
             </div>
           </div>
         ),
         visitors,
         pageView,
-        revenue: <span className="ninjadash-revenue">{revenue}</span>,
+        revenue: <span className="invoice-revenue">{revenue}</span>,
         trend: (
-          <div className={`ninjadash-trend-progress align-center-v ninjadash-trend-progress-${icon}`}>
-            <span className="ninjadash-trend-percentage">{trend}%</span>
+          <div className={`invoice-trend-progress align-center-v invoice-trend-progress-${icon}`}>
+            <span className="invoice-trend-percentage">{trend}%</span>
             <Progress
               percent={trend}
               strokeWidth={4}
               status="active"
               showInfo={false}
-              className={`ninjadash-trend-progress ninjadash-trend-progress-${type}`}
+              className={`invoice-trend-progress invoice-trend-progress-${type}`}
             />
           </div>
         ),
@@ -94,19 +94,19 @@ const RevenueGenerated = React.memo(() => {
       <BorderLessHeading>
         <Cards
           isbutton={
-            <div className="ninjadash-card-nav">
+            <div className="invoice-card-nav">
               <ul>
-                <li className={revenueTab === 'today' ? 'ninjadash-active' : 'ninjadash-today'}>
+                <li className={revenueTab === 'today' ? 'invoice-active' : 'invoice-today'}>
                   <Link onClick={(e) => handleTabActivation('today', e)} to="#">
                     Today
                   </Link>
                 </li>
-                <li className={revenueTab === 'week' ? 'ninjadash-active' : 'ninjadash-week'}>
+                <li className={revenueTab === 'week' ? 'invoice-active' : 'invoice-week'}>
                   <Link onClick={(e) => handleTabActivation('week', e)} to="#">
                     Week
                   </Link>
                 </li>
-                <li className={revenueTab === 'month' ? 'ninjadash-active' : 'ninjadash-month'}>
+                <li className={revenueTab === 'month' ? 'invoice-active' : 'invoice-month'}>
                   <Link onClick={(e) => handleTabActivation('month', e)} to="#">
                     Month
                   </Link>
@@ -117,7 +117,7 @@ const RevenueGenerated = React.memo(() => {
           title="Source Of Revenue Generated"
           size="large"
         >
-          <TableDefaultStyle className="ninjadash-having-header-bg">
+          <TableDefaultStyle className="invoice-having-header-bg">
             <RevenueGeneratedWrapper>
               <div className="table-responsive">
                 <Table columns={locationColumns} dataSource={revenueData} pagination={false} />

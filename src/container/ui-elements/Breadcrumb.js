@@ -1,12 +1,10 @@
-import React from 'react';
-import { Row, Col, Breadcrumb, Menu } from 'antd';
-import { NavLink } from 'react-router-dom';
 import { HomeOutlined } from '@ant-design/icons';
-import { BreadcrumbWrapperStyle } from './ui-elements-styled';
+import { Breadcrumb, Col, Menu, Row } from 'antd';
+import { NavLink } from 'react-router-dom';
+import { Cards } from '../../components/cards/frame/cards-frame';
 import { PageHeader } from '../../components/page-headers/page-headers';
 import { Main } from '../styled';
-import { Cards } from '../../components/cards/frame/cards-frame';
-// import withRouter from '../../HOC/withRouter';
+import { BreadcrumbWrapperStyle } from './ui-elements-styled';
 
 const menu = (
   <Menu>
@@ -41,7 +39,7 @@ function Breadcrumbs() {
   ];
   return (
     <>
-      <PageHeader className="ninjadash-page-header-main" title="Breadcrumb" routes={PageRoutes} />
+      <PageHeader className="invoice-page-header-main" title="Breadcrumb" routes={PageRoutes} />
       <Main>
         <Row gutter={25}>
           <Col md={12} sm={24} xs={24}>

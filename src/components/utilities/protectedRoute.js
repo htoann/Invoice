@@ -14,7 +14,7 @@ function ProtectedRoute({ Component, path }) {
   ) : (
     <Routes>
       {' '}
-      <Route path="/ninjadash-react" element={<Navigate to="/" />} />
+      <Route path="/invoice-react" element={<Navigate to="/" />} />
     </Routes>
   );
 }

@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import { Row, Col, TreeSelect } from 'antd';
+import { Col, Row, TreeSelect } from 'antd';
+import { useState } from 'react';
+import { Cards } from '../../components/cards/frame/cards-frame';
 import { PageHeader } from '../../components/page-headers/page-headers';
 import { Main } from '../styled';
-import { Cards } from '../../components/cards/frame/cards-frame';
 
 const { TreeNode, SHOW_PARENT } = TreeSelect;
 
@@ -109,7 +109,7 @@ function TreeSelects() {
 
   return (
     <>
-      <PageHeader className="ninjadash-page-header-main" title="Tree Select" routes={PageRoutes} />
+      <PageHeader className="invoice-page-header-main" title="Tree Select" routes={PageRoutes} />
       <Main>
         <Row gutter={25}>
           <Col md={12} xs={24}>

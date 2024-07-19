@@ -51,7 +51,7 @@ function Ordersummary({ subtotal, checkout }) {
       bodyStyle={{
         borderRadius: '20px',
       }}
-      className="ninjadash-order-summery"
+      className="invoice-order-summery"
       headless
     >
       <OrderSummary>

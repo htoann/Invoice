@@ -1,19 +1,19 @@
-import React, { useState, lazy, Suspense, useLayoutEffect } from 'react';
-import { NavLink, Link, Routes, Route } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
-import { Row, Col, Spin, Input, Form, Modal } from 'antd';
 import UilAngleLeft from '@iconscout/react-unicons/icons/uil-angle-left';
 import UilAngleRight from '@iconscout/react-unicons/icons/uil-angle-right';
+import UilCheck from '@iconscout/react-unicons/icons/uil-check';
+import UilEdit from '@iconscout/react-unicons/icons/uil-edit';
 import UilPlus from '@iconscout/react-unicons/icons/uil-plus';
 import UilStar from '@iconscout/react-unicons/icons/uil-star';
-import UilEdit from '@iconscout/react-unicons/icons/uil-edit';
-import UilCheck from '@iconscout/react-unicons/icons/uil-check';
 import UilTimes from '@iconscout/react-unicons/icons/uil-times';
-import { FixedSidebar, SidebarWrap } from './style';
-import { Main, BasicFormWrapper } from '../styled';
-import { PageHeader } from '../../components/page-headers/page-headers';
+import { Col, Form, Input, Modal, Row, Spin } from 'antd';
+import { lazy, Suspense, useLayoutEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, NavLink, Route, Routes } from 'react-router-dom';
 import { Button } from '../../components/buttons/buttons';
+import { PageHeader } from '../../components/page-headers/page-headers';
 import { taskAddData } from '../../redux/task/actionCreator';
+import { BasicFormWrapper, Main } from '../styled';
+import { FixedSidebar, SidebarWrap } from './style';
 
 const All = lazy(() => import('./overview/all'));
 const Favourites = lazy(() => import('./overview/favourites'));
@@ -104,37 +104,37 @@ function Task() {
   const path = '/app/task';
   return (
     <>
-      <PageHeader className="ninjadash-page-header-main" title="Task" routes={PageRoutes} />
+      <PageHeader className="invoice-page-header-main" title="Task" routes={PageRoutes} />
       <Main>
         <Row gutter={25}>
           <Col xxl={5} lg={6} md={7} xs={24}>
             {responsive > 767 ? (
               <>
                 <SidebarWrap className="mb-30">
-                  <div className="ninjadash-taskApp-sidebar">
-                    <Button className="ninjadash-btn-add" size="large" type="primary" raised onClick={showModal}>
+                  <div className="invoice-taskApp-sidebar">
+                    <Button className="invoice-btn-add" size="large" type="primary" raised onClick={showModal}>
                       <UilPlus />
                       Add Task
                     </Button>
-                    <ul className="ninjadash-taskApp-sidebar__nav">
-                      <li className="ninjadash-taskApp-sidebar__nav--item">
-                        <NavLink className="ninjadash-taskApp-sidebar__nav--link" to={`${path}/all`}>
+                    <ul className="invoice-taskApp-sidebar__nav">
+                      <li className="invoice-taskApp-sidebar__nav--item">
+                        <NavLink className="invoice-taskApp-sidebar__nav--link" to={`${path}/all`}>
                           <span className="nav-item-icon">
                             <UilEdit />
                           </span>
                           <span className="nav-item-text">All</span>
                         </NavLink>
                       </li>
-                      <li className="ninjadash-taskApp-sidebar__nav--item">
-                        <NavLink className="ninjadash-taskApp-sidebar__nav--link" to={`${path}/favourites`}>
+                      <li className="invoice-taskApp-sidebar__nav--item">
+                        <NavLink className="invoice-taskApp-sidebar__nav--link" to={`${path}/favourites`}>
                           <span className="nav-item-icon">
                             <UilStar />
                           </span>
                           <span className="nav-item-text">Favourite</span>
                         </NavLink>
                       </li>
-                      <li className="ninjadash-taskApp-sidebar__nav--item">
-                        <NavLink className="ninjadash-taskApp-sidebar__nav--link" to={`${path}/completed`}>
+                      <li className="invoice-taskApp-sidebar__nav--item">
+                        <NavLink className="invoice-taskApp-sidebar__nav--link" to={`${path}/completed`}>
                           <span className="nav-item-icon">
                             <UilCheck />
                           </span>
@@ -146,13 +146,13 @@ function Task() {
                 </SidebarWrap>
                 <Modal
                   title="Add Task"
-                  className="ninjadash-addTask-modal"
+                  className="invoice-addTask-modal"
                   type={state.modalType}
                   open={state.visible}
                   footer={null}
                   onCancel={handleCancel}
                 >
-                  <div className="ninjadash-addTask-modal-inner">
+                  <div className="invoice-addTask-modal-inner">
                     <BasicFormWrapper>
                       <Form form={form} name="add-task" onFinish={handleAddTask}>
                         <Form.Item rules={[{ required: true, message: 'Please add a Title' }]} name="title">
@@ -162,7 +162,7 @@ function Task() {
                         <Form.Item name="description">
                           <Input.TextArea rows={4} placeholder="Add Description" />
                         </Form.Item>
-                        <div className="ninjadash-modal-actions">
+                        <div className="invoice-modal-actions">
                           <Button size="small" type="white" key="cancel" outlined onClick={handleCancel}>
                             Cancel
                           </Button>
@@ -181,30 +181,30 @@ function Task() {
                   <UilTimes />
                 </Link>
                 <SidebarWrap className="mb-30">
-                  <div className="ninjadash-taskApp-sidebar">
-                    <Button className="ninjadash-btn-add" size="large" type="primary" raised onClick={showModal}>
+                  <div className="invoice-taskApp-sidebar">
+                    <Button className="invoice-btn-add" size="large" type="primary" raised onClick={showModal}>
                       <UilPlus />
                       Add Task
                     </Button>
-                    <ul className="ninjadash-taskApp-sidebar__nav">
-                      <li className="ninjadash-taskApp-sidebar__nav--item">
-                        <NavLink className="ninjadash-taskApp-sidebar__nav--link" to={`${path}/all`}>
+                    <ul className="invoice-taskApp-sidebar__nav">
+                      <li className="invoice-taskApp-sidebar__nav--item">
+                        <NavLink className="invoice-taskApp-sidebar__nav--link" to={`${path}/all`}>
                           <span className="nav-item-icon">
                             <UilEdit />
                           </span>
                           <span className="nav-item-text">All</span>
                         </NavLink>
                       </li>
-                      <li className="ninjadash-taskApp-sidebar__nav--item">
-                        <NavLink className="ninjadash-taskApp-sidebar__nav--link" to={`${path}/favourites`}>
+                      <li className="invoice-taskApp-sidebar__nav--item">
+                        <NavLink className="invoice-taskApp-sidebar__nav--link" to={`${path}/favourites`}>
                           <span className="nav-item-icon">
                             <UilStar />
                           </span>
                           <span className="nav-item-text">Favourite</span>
                         </NavLink>
                       </li>
-                      <li className="ninjadash-taskApp-sidebar__nav--item">
-                        <NavLink className="ninjadash-taskApp-sidebar__nav--link" to={`${path}/completed`}>
+                      <li className="invoice-taskApp-sidebar__nav--item">
+                        <NavLink className="invoice-taskApp-sidebar__nav--link" to={`${path}/completed`}>
                           <span className="nav-item-icon">
                             <UilCheck />
                           </span>
@@ -216,13 +216,13 @@ function Task() {
                 </SidebarWrap>
                 <Modal
                   title="Add Task"
-                  className="ninjadash-addTask-modal"
+                  className="invoice-addTask-modal"
                   type={state.modalType}
                   open={state.visible}
                   footer={null}
                   onCancel={handleCancel}
                 >
-                  <div className="ninjadash-addTask-modal-inner">
+                  <div className="invoice-addTask-modal-inner">
                     <BasicFormWrapper>
                       <Form form={form} name="add-task" onFinish={handleAddTask}>
                         <Form.Item rules={[{ required: true, message: 'Please add a Title' }]} name="title">
@@ -232,7 +232,7 @@ function Task() {
                         <Form.Item name="description">
                           <Input.TextArea rows={4} placeholder="Add Description" />
                         </Form.Item>
-                        <div className="ninjadash-modal-actions">
+                        <div className="invoice-modal-actions">
                           <Button size="small" type="white" key="cancel" outlined onClick={handleCancel}>
                             Cancel
                           </Button>

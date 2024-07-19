@@ -9,12 +9,12 @@ const AuthenticationWrap = Styled.div`
   @media only screen and (max-width: 1399px){
     padding: 80px 0;
   }
-  .ninjadash-authentication-wrap{
+  .invoice-authentication-wrap{
     @media only screen and (max-width: 767px){
       padding: 0 15px;
     }
   }
-  .ninjadash-authentication-brand{
+  .invoice-authentication-brand{
     text-align: center;
   }
 `;
@@ -45,11 +45,11 @@ const AuthFormWrap = Styled.div`
   margin-top: 25px;
   box-shadow: 0 5px 20px rgba(140,144,164,.08);
   background-color: ${({ theme }) => theme[theme.mainContent]['white-background']};
-  .ninjadash-authentication-top{
+  .invoice-authentication-top{
     padding: 20px;
     text-align: center;
     border-bottom: 1px solid ${({ theme }) => theme[theme.mainContent]['border-color-secondary']};
-    .ninjadash-authentication-top__title{
+    .invoice-authentication-top__title{
       font-size: 20px;
       font-weight: 600;
       line-height: 1;
@@ -58,7 +58,7 @@ const AuthFormWrap = Styled.div`
       color: ${({ theme }) => theme[theme.mainContent]['dark-text']};
     }
   }
-  .ninjadash-authentication-content{
+  .invoice-authentication-content{
     // padding: 30px 40px 0 30px; // change after has register
     padding: 30px 40px;
     @media only screen and (max-width: 1599px){
@@ -86,7 +86,7 @@ const AuthFormWrap = Styled.div`
       font-size: 13px;
       margin-top: 2px;
     }
-    .ninjadash-auth-extra-links{
+    .invoice-auth-extra-links{
       display: flex;
       justify-content: space-between;
       margin-top: -5px;
@@ -120,7 +120,7 @@ const AuthFormWrap = Styled.div`
     .btn-reset{
       margin-top: 0;
     }
-    .ninjadash-form-divider{
+    .invoice-form-divider{
       font-size: 13px;
       color: ${({ theme }) => theme[theme.mainContent]['border-color-default']};
       text-align: center;
@@ -154,7 +154,7 @@ const AuthFormWrap = Styled.div`
         }
       }
     }
-    .ninjadash-social-login{
+    .invoice-social-login{
       display: flex;
       align-items: center;
       justify-content: center;
@@ -244,7 +244,7 @@ const AuthFormWrap = Styled.div`
       padding: 12px 20px;
     }
   }
-  .ninjadash-authentication-bottom{
+  .invoice-authentication-bottom{
     text-align: center;
     padding: 25px;
     border-radius: 0 0 6px 6px;

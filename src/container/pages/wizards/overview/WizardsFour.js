@@ -71,7 +71,7 @@ function WizardsFour() {
     });
   };
   return (
-    <WizardWrapper className="ninjadash-wizard-page">
+    <WizardWrapper className="invoice-wizard-page">
       <WizardFour>
         <Steps
           isvertical

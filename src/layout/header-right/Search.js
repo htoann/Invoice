@@ -32,21 +32,21 @@ const SearchBar = React.memo(() => {
     <div
       className={
         openSearch
-          ? 'ninjadash-nav-actions__item ninjadash-nav-actions__searchbar show'
-          : 'ninjadash-nav-actions__item ninjadash-nav-actions__searchbar'
+          ? 'invoice-nav-actions__item invoice-nav-actions__searchbar show'
+          : 'invoice-nav-actions__item invoice-nav-actions__searchbar'
       }
     >
-      <div className="ninjadash-searchbar">
-        <Form form={form} name="ninjadash-search">
+      <div className="invoice-searchbar">
+        <Form form={form} name="invoice-search">
           <Form.Item name="search-input">
             <Input placeholder="Search Here" />
           </Form.Item>
         </Form>
       </div>
-      <Link to="/" onClick={(e) => openSearchbar(e)} className="ninjadash-search-icon">
+      <Link to="/" onClick={(e) => openSearchbar(e)} className="invoice-search-icon">
         <UilSearch />
       </Link>
-      <Link to="/" onClick={(e) => closeSearchbar(e)} className="ninjadash-close-icon">
+      <Link to="/" onClick={(e) => closeSearchbar(e)} className="invoice-close-icon">
         <UilTimes />
       </Link>
     </div>

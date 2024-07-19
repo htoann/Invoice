@@ -20,21 +20,21 @@ function OverviewCardMesh({ data, circleIcon }) {
   const totalNumber = Number(total);
   return (
     <OverviewCardMeshWrap
-      className={circleIcon ? 'ninjadash-overview-card-single ninjadash-icon-circle' : 'ninjadash-overview-card-single'}
+      className={circleIcon ? 'invoice-overview-card-single invoice-icon-circle' : 'invoice-overview-card-single'}
     >
       <Card bordered={false}>
-        <div className={`ninjadash-overview-card ninjadash-overview-card-${type}`}>
-          <div className="ninjadash-overview-card__left d-flex justify-content-between">
-            <div className={`ninjadash-overview-card__left--icon ninjadash-${type}`}>
+        <div className={`invoice-overview-card invoice-overview-card-${type}`}>
+          <div className="invoice-overview-card__left d-flex justify-content-between">
+            <div className={`invoice-overview-card__left--icon invoice-${type}`}>
               <ReactSVG src={require(`../../static/img/icon/${icon}`)} />
             </div>
           </div>
-          <div className="ninjadash-overview-card__right">
-            <div className="ninjadash-overview-card__right--content">
+          <div className="invoice-overview-card__right">
+            <div className="invoice-overview-card__right--content">
               <span className="ninjadahs-overview-label">{label}</span>
             </div>
-            <span className={`ninjadash-overview-status ninjadash-status-${status}`}>
-              <span className="ninjadash-status-rate">
+            <span className={`invoice-overview-status invoice-status-${status}`}>
+              <span className="invoice-status-rate">
                 {status === 'growth' ? <UilUp /> : <UilDown />} {statusRate}%
               </span>
             </span>

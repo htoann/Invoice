@@ -1,5 +1,5 @@
 import { Spin } from 'antd';
-import React, { Suspense } from 'react';
+import { Suspense } from 'react';
 import { AuthenticationWrap } from './overview/style';
 
 const AuthLayout = (WraperContent) => {
@@ -13,8 +13,8 @@ const AuthLayout = (WraperContent) => {
         }
       >
         <AuthenticationWrap style={{ backgroundImage: `url("${require('../../../static/img/admin-bg-light.png')}")` }}>
-          <div className="ninjadash-authentication-wrap">
-            <div className="ninjadash-authentication-brand">
+          <div className="invoice-authentication-wrap">
+            <div className="invoice-authentication-brand">
               <img src={require(`../../../static/img/logo_dark.png`)} alt="" />
             </div>
             <WraperContent />
