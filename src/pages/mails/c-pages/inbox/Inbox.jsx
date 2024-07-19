@@ -68,7 +68,7 @@ function Email() {
               )}
 
               <div
-                className={`mail-sideabr ${selectedInbox && responsive <= 991 ? (collapsed ? 'show' : 'hide') : ''}`}
+                className={`mail-sidebar ${selectedInbox && responsive <= 991 ? (collapsed ? 'show' : 'hide') : ''}`}
               >
                 <Cards headless>
                   <div className="mail-sidebar-bottom">

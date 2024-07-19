@@ -1277,7 +1277,7 @@ const EmailWrapper = Styled.div`
       color: ${({ theme }) => theme['primary-color']} !important;
     }
   }
-  .mail-sideabr{
+  .mail-sidebar{
     &.hide{
       transform: translateX(${({ theme }) => (theme.rtl ? '100%' : '-100%')});
       transition: .35s ease-in;

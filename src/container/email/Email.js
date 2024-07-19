@@ -76,7 +76,7 @@ function Email() {
               )}
 
               {responsive > 991 ? (
-                <div className="mail-sideabr">
+                <div className="mail-sidebar">
                   <Cards headless>
                     <div className="mail-sidebar-top">
                       <Button onClick={toggleMailComposer} shape="round" type="primary" size="default" block>
@@ -90,7 +90,7 @@ function Email() {
                   </Cards>
                 </div>
               ) : (
-                <MailSideBar className={collapsed ? 'mail-sideabr show' : 'mail-sideabr hide'}>
+                <MailSideBar className={collapsed ? 'mail-sidebar show' : 'mail-sidebar hide'}>
                   <Cards headless>
                     <Button
                       type="link"

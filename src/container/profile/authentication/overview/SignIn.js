@@ -13,21 +13,21 @@ function SignIn() {
   const isLoading = useSelector((state) => state.auth.loading);
   const [form] = Form.useForm();
 
-  const [imgCapcha, setImgCapcha] = useState();
-  const [keyCapcha, setKeyCapcha] = useState();
+  const [imgCaptcha, setImgCaptcha] = useState();
+  const [keyCaptcha, setKeyCaptcha] = useState();
 
   const handleSubmit = (values) => {
-    dispatch(login({ ...values, ckey: keyCapcha }, () => navigate('/')));
+    dispatch(login({ ...values, ckey: keyCaptcha }, () => navigate('/')));
   };
 
-  const getCapcha = async () => {
+  const getCaptcha = async () => {
     const data = await axios.get(process.env.REACT_APP_HDDT_CAPTCHA);
-    setImgCapcha(data?.data?.content || null);
-    setKeyCapcha(data?.data?.key || null);
+    setImgCaptcha(data?.data?.content || null);
+    setKeyCaptcha(data?.data?.key || null);
   };
 
   useEffect(() => {
-    getCapcha();
+    getCaptcha();
   }, []);
 
   return (
@@ -66,11 +66,11 @@ function SignIn() {
                   </Form.Item>
                 </Col>
                 <Col xl={12} xs={24}>
-                  {imgCapcha && (
+                  {imgCaptcha && (
                     <img
                       style={{ margin: 'auto', display: 'flex' }}
-                      alt="Capcha image"
-                      src={`data:image/svg+xml;utf8,${encodeURIComponent(imgCapcha)}`}
+                      alt="Captcha image"
+                      src={`data:image/svg+xml;utf8,${encodeURIComponent(imgCaptcha)}`}
                     />
                   )}
                 </Col>

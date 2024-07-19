@@ -74,13 +74,13 @@ export const SyncHistory = () => {
     e.stopPropagation();
   };
 
-  const tableDataScource = [];
+  const tableDataSource = [];
 
   if (list?.length > 0) {
     list.map((item, index) => {
       const { id, time, query, status, note, totalInvoice, newInvoice } = item;
 
-      return tableDataScource.push({
+      return tableDataSource.push({
         key: id,
         stt: (current - 1) * pageSize + index + 1,
         id,
@@ -204,7 +204,7 @@ export const SyncHistory = () => {
                   <Skeleton active style={{ marginTop: 30 }} />
                 ) : (
                   <DataTable
-                    tableData={tableDataScource}
+                    tableData={tableDataSource}
                     columns={dataTableColumn}
                     pagination={pagination}
                     setState={setState}

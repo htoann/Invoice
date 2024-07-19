@@ -119,13 +119,13 @@ export const EmailList = () => {
     e.stopPropagation();
   };
 
-  const tableDataScource = [];
+  const tableDataSource = [];
 
   if (accounts?.length > 0) {
     accounts.map((item, index) => {
       const { id, username, email } = item;
 
-      return tableDataScource.push({
+      return tableDataSource.push({
         key: id,
         stt: (current - 1) * pageSize + index + 1,
         id,
@@ -245,7 +245,7 @@ export const EmailList = () => {
                   <Skeleton active style={{ marginTop: 30 }} />
                 ) : (
                   <DataTable
-                    tableData={tableDataScource}
+                    tableData={tableDataSource}
                     columns={dataTableColumn}
                     pagination={pagination}
                     setState={setState}

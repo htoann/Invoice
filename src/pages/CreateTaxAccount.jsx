@@ -6,22 +6,22 @@ import { Checkbox, Col, DatePicker, Form, Input, Row } from 'antd';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 
-function CreateTaiKhoanThue({ state, setState }) {
+function CreateTaxAccount({ state, setState }) {
   const [form] = Form.useForm();
 
-  const [imgCapcha, setImgCapcha] = useState();
+  const [imgCaptcha, setImgCaptcha] = useState();
 
-  const getCapcha = async () => {
+  const getCaptcha = async () => {
     try {
       const data = await axios.get(process.env.REACT_APP_HDDT_CAPTCHA);
-      setImgCapcha(data?.data?.content || null);
+      setImgCaptcha(data?.data?.content || null);
     } catch (error) {
       console.error(error);
     }
   };
 
   useEffect(() => {
-    getCapcha();
+    getCaptcha();
   }, []);
 
   const onCancel = () => {
@@ -62,7 +62,7 @@ function CreateTaiKhoanThue({ state, setState }) {
                 <Row justify="center" align="middle">
                   <Col xl={12} xs={24}>
                     <Form.Item
-                      name="capcha"
+                      name="captcha"
                       initialValue=""
                       label="Mã xác nhận"
                       rules={[{ message: 'Vui lòng nhập mã xác nhận', required: true }]}
@@ -71,11 +71,11 @@ function CreateTaiKhoanThue({ state, setState }) {
                     </Form.Item>
                   </Col>
                   <Col xl={12} xs={24}>
-                    {imgCapcha && (
+                    {imgCaptcha && (
                       <img
                         style={{ margin: 'auto', display: 'flex' }}
-                        alt="Capcha image"
-                        src={`data:image/svg+xml;utf8,${encodeURIComponent(imgCapcha)}`}
+                        alt="Captcha image"
+                        src={`data:image/svg+xml;utf8,${encodeURIComponent(imgCaptcha)}`}
                       />
                     )}
                   </Col>
@@ -134,4 +134,4 @@ function CreateTaiKhoanThue({ state, setState }) {
   );
 }
 
-export default CreateTaiKhoanThue;
+export default CreateTaxAccount;
