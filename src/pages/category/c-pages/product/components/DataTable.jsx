@@ -94,7 +94,7 @@ function DataTable({ rowSelection, tableData, columns, pagination, setState, sta
         </div>
       </div>
 
-      <div className="ninjadasj-datatable">
+      <div className="invoice-datatable">
         <TableWrapper className="table-data-view table-responsive">
           <Table
             className="table-search-selection"

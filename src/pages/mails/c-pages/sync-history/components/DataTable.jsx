@@ -6,7 +6,7 @@ import { DataTableStyleWrap } from '../style';
 function DataTable({ tableData, columns, pagination, setState, loading }) {
   return (
     <DataTableStyleWrap>
-      <div className="ninjadasj-datatable" style={{ marginTop: 30 }}>
+      <div className="invoice-datatable" style={{ marginTop: 30 }}>
         <TableWrapper className="table-data-view table-responsive">
           <Table
             className="table-search"

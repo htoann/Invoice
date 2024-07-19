@@ -80,7 +80,7 @@ function DataTable({ filterOption, filterOnchange, rowSelection, tableData, colu
         ''
       )}
 
-      <div className="ninjadasj-datatable">
+      <div className="invoice-datatable">
         <TableWrapper className="table-data-view table-responsive">
           {rowSelection ? (
             <Table

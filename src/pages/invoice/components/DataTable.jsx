@@ -127,7 +127,7 @@ function DataTable({ loading, tableData, columns, state, setState, getInvoiceLis
         </div>
       </div>
 
-      <div className="ninjadasj-datatable">
+      <div className="invoice-datatable">
         <TableWrapper className="table-data-view table-responsive">
           <Table
             pagination={{ pageSize: 20, showSizeChanger: true, ...pagination }}
