@@ -130,7 +130,7 @@ export const TopMenu = () => {
 
           {/* <li className="has-subMenu">
             <Link to="#" className="parent">
-              {t('connect_tax_authorities')}
+              {t('Connect_Tax_Authorities')}
             </Link>
             <ul className="subMenu">
               <li>

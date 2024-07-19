@@ -6,12 +6,15 @@ import UilEdit from '@iconscout/react-unicons/icons/uil-edit';
 import UilTrash from '@iconscout/react-unicons/icons/uil-trash-alt';
 import { Col, Input, Popconfirm, Row, Skeleton, notification } from 'antd';
 import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import CreateProduct from './components/CreateProduct';
 import DataTable from './components/DataTable';
 import EditProduct from './components/EditProduct';
 
 export const Product = () => {
+  const { t } = useTranslation();
+
   const [state, setState] = useState({
     selectedRowKeys: 0,
     selectedRows: 0,
@@ -223,7 +226,7 @@ export const Product = () => {
 
   return (
     <>
-      <PageHeader className="invoice-page-header-main" title="Danh sách hàng hóa" />
+      <PageHeader className="invoice-page-header-main" title={t('List_Products')} />
       <Main>
         <Row gutter={15}>
           <Col xs={24}>
