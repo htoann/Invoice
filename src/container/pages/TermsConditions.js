@@ -1,9 +1,8 @@
-import React from 'react';
-import { Row, Col } from 'antd';
+import { Col, Row } from 'antd';
 import { Link } from 'react-router-dom';
-import { TermsConditionsStyle } from './style';
 import { PageHeader } from '../../components/page-headers/page-headers';
 import { Main } from '../styled';
+import { TermsConditionsStyle } from './style';
 
 function TermsConditions() {
   const PageRoutes = [

@@ -7,7 +7,7 @@ const Maintenance = lazy(() => import('../../container/pages/Maintenance'));
 const Faq = lazy(() => import('../../container/pages/Faq'));
 const Search = lazy(() => import('../../container/pages/SearchResult'));
 const ComingSoon = lazy(() => import('../../container/pages/ComingSoon'));
-const TermsCondition = lazy(() => import('../../container/pages/TermsComditions'));
+const TermsCondition = lazy(() => import('../../container/pages/TermsConditions'));
 const BlankPage = lazy(() => import('../../container/pages/BlankPage'));
 const Settings = lazy(() => import('../../container/profile/settings/Settings'));
 const Banners = lazy(() => import('../../container/pages/Banners'));

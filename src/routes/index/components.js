@@ -23,7 +23,6 @@ const Drawer = lazy(() => import('../../container/ui-elements/Drawer'));
 const Result = lazy(() => import('../../container/ui-elements/Result'));
 const Spinner = lazy(() => import('../../container/ui-elements/Spin'));
 const Collapse = lazy(() => import('../../container/ui-elements/Collapse'));
-const Avatar = lazy(() => import('../../container/ui-elements/Avata'));
 const Badge = lazy(() => import('../../container/ui-elements/Badge'));
 const AutoComplete = lazy(() => import('../../container/ui-elements/AutoComplete'));
 const Checkbox = lazy(() => import('../../container/ui-elements/Checkbox'));
@@ -76,7 +75,6 @@ function ComponentRoute() {
       <Route path="form" element={<Form />} />
       <Route path="dropdown" element={<Dropdown />} />
       <Route path="result" element={<Result />} />
-      <Route path="avatar" element={<Avatar />} />
       <Route path="badge" element={<Badge />} />
       <Route path="radio" element={<Radio />} />
       <Route path="skeleton" element={<Skeleton />} />
