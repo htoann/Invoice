@@ -7,9 +7,11 @@ import axios from '@/mock/index';
 import { RightOutlined } from '@ant-design/icons';
 import { Col, Empty, Form, Input, Menu, notification, Skeleton } from 'antd';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import MenuItem from '../components/MenuItem';
 
 const DepartmentList = ({ list, setList, loadingList, selectedItem, setSelectedItem }) => {
+  const { t } = useTranslation();
   const [showCreate, setShowCreate] = useState(false);
   const [showEdit, setShowEdit] = useState(false);
   const [editItem, setEditItem] = useState(null);
@@ -39,13 +41,13 @@ const DepartmentList = ({ list, setList, loadingList, selectedItem, setSelectedI
       form.resetFields();
 
       notification.success({
-        message: 'Thêm phòng ban',
-        description: 'Phòng ban đã được thêm thành công.',
+        message: t('Department_Create_Success_Title'),
+        description: t('Department_Create_Success_Description'),
       });
     } catch (error) {
       notification.error({
-        message: 'Lỗi',
-        description: 'Có lỗi xảy ra khi thêm phòng ban.',
+        message: t('Common_Error'),
+        description: t('Department_Create_Error_Description'),
       });
     } finally {
       setLoading(false);
@@ -64,13 +66,13 @@ const DepartmentList = ({ list, setList, loadingList, selectedItem, setSelectedI
       form.resetFields();
       setShowEdit(false);
       notification.success({
-        message: 'Chỉnh sửa phòng ban',
-        description: 'Phòng ban đã được chỉnh sửa thành công.',
+        message: t('Department_Edit_Success_Title'),
+        description: t('Department_Edit_Success_Description'),
       });
     } catch (error) {
       notification.error({
-        message: 'Lỗi',
-        description: 'Có lỗi xảy ra khi chỉnh sửa phòng ban.',
+        message: t('Common_Error'),
+        description: t('Department_Edit_Error_Description'),
       });
     } finally {
       setLoading(false);
@@ -82,15 +84,15 @@ const DepartmentList = ({ list, setList, loadingList, selectedItem, setSelectedI
       setLoading(true);
       await axios.delete(`/departments/${id}`);
       notification.success({
-        message: 'Xóa phòng ban',
-        description: 'Phòng ban đã được xóa thành công.',
+        message: t('Department_Delete_Success_Title'),
+        description: t('Department_Delete_Success_Description'),
       });
       setList(list.filter((item) => item.id !== id));
       setSelectedItem(null);
     } catch (error) {
       notification.error({
-        message: 'Lỗi',
-        description: 'Có lỗi xảy ra khi xóa phòng ban.',
+        message: t('Common_Error'),
+        description: t('Department_Delete_Error_Description'),
       });
     } finally {
       setLoading(false);
@@ -107,21 +109,21 @@ const DepartmentList = ({ list, setList, loadingList, selectedItem, setSelectedI
     form.resetFields();
   };
 
-  const customModal = (textSubmit = 'Lưu', onSubmit, onCancel, loading) => (
+  const customModal = (textSubmit, onSubmit, onCancel, loading) => (
     <AddUser>
       <BasicFormWrapper>
         <Form form={form} onFinish={onSubmit}>
           <Form.Item
             name="name"
-            label="Tên phòng ban"
-            rules={[{ required: true, message: 'Vui lòng nhập tên phòng ban' }]}
+            label={t('Department_Name')}
+            rules={[{ required: true, message: t('Department_Name_Required') }]}
             initialValue={showEdit ? editItem?.name : ''}
           >
             <Input />
           </Form.Item>
           <div style={{ justifyContent: 'end', display: 'flex' }}>
             <Button size="default" type="white" outlined style={{ marginRight: 8 }} onClick={onCancel}>
-              Huỷ bỏ
+              {t('Common_Cancel')}
             </Button>
             <Button htmlType="submit" size="default" type="primary" key="submit" loading={loading}>
               {textSubmit}
@@ -135,7 +137,7 @@ const DepartmentList = ({ list, setList, loadingList, selectedItem, setSelectedI
   return (
     <Col xs={24} sm={12} md={8} lg={8}>
       <BorderLessHeading>
-        <Cards title="Phòng ban">
+        <Cards title={t('Department_List_Title')}>
           <Menu
             style={{ width: '100%', minHeight: 'calc(100vh - 290px)' }}
             mode="inline"
@@ -154,7 +156,7 @@ const DepartmentList = ({ list, setList, loadingList, selectedItem, setSelectedI
                   outlined
                   style={{ marginBottom: 10 }}
                 >
-                  + Thêm phòng ban
+                  + {t('Department_Add_Button')}
                 </Button>
                 {list.map((department) => (
                   <Menu.Item key={department.id}>
@@ -170,14 +172,14 @@ const DepartmentList = ({ list, setList, loadingList, selectedItem, setSelectedI
               </>
             ) : (
               <Empty
-                description="Không tìm thấy phòng ban nào"
+                description={t('Department_Empty_Description')}
                 className="common-center"
                 style={{
                   minHeight: 'calc(100vh - 290px)',
                 }}
               >
                 <Button size="small" type="primary" onClick={() => handleCreate()}>
-                  Tạo mới
+                  {t('Common_CreateNew')}
                 </Button>
               </Empty>
             )}
@@ -185,12 +187,12 @@ const DepartmentList = ({ list, setList, loadingList, selectedItem, setSelectedI
         </Cards>
       </BorderLessHeading>
 
-      <Modal title="Thêm phòng ban" open={showCreate} onCancel={cancelCreate} footer={null}>
-        {customModal('Thêm', handleCreateSubmit, cancelCreate, loading)}
+      <Modal title={t('Department_Create_Title')} open={showCreate} onCancel={cancelCreate} footer={null}>
+        {customModal(t('Common_Create'), handleCreateSubmit, cancelCreate, loading)}
       </Modal>
 
-      <Modal title="Chỉnh sửa phòng ban" open={showEdit} onCancel={cancelEdit} footer={null}>
-        {customModal('Lưu', handleEditSubmit, cancelEdit, loading)}
+      <Modal title={t('Department_Edit_Title')} open={showEdit} onCancel={cancelEdit} footer={null}>
+        {customModal(t('Common_Save'), handleEditSubmit, cancelEdit, loading)}
       </Modal>
     </Col>
   );
