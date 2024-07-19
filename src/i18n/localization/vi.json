@@ -176,6 +176,7 @@
   "connect_tax_authorities": "Kết nối cơ quan thuế",
 
   "Common_Success": "Thành công",
+  "Common_Failure": "Thất bại",
   "Common_Error": "Lỗi",
   "Common_Create": "Tạo",
   "Common_Save": "Lưu",
@@ -204,7 +205,6 @@
   "Common_Query": "Query",
   "Common_Status": "Trạng thái",
   "Common_Note": "Ghi chú",
-  "Common_Failure": "Thất bại",
   "Common_Username": "Tên đăng nhập",
   "Common_Username_PleaseEnter": "Vui lòng nhập tên đăng nhập",
   "Common_Password_PleaseEnter": "Vui lòng nhập mật khẩu",
@@ -334,5 +334,8 @@
   "Product_Create_Error": "Đã xảy ra lỗi khi tạo hàng hoá",
   "Product_AddNew": "Thêm mã hàng",
   "Product_AssignProductCode": "Gán mã hàng",
-  "Product_AssignAccount": "Gán tài khoản"
+  "Product_AssignAccount": "Gán tài khoản",
+  "Product_UpdateTitle": "Cập nhật hàng hoá",
+  "Product_UpdateSuccessDescription": "Thông tin hàng hoá đã được cập nhật thành công.",
+  "Product_UpdateErrorDescription": "Không thể cập nhật thông tin hàng hoá. Vui lòng thử lại."
 }

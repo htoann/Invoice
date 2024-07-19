@@ -2,9 +2,11 @@ import { Modal } from '@/components/modals/antd-modals';
 import axios from '@/mock/index';
 import { Form, notification } from 'antd';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import ModalAccount from './Modal';
 
 const UpdateProduct = ({ state, setState, list, setList }) => {
+  const { t } = useTranslation();
   const [form] = Form.useForm();
   const [loading, setLoading] = useState(false);
 
@@ -30,14 +32,14 @@ const UpdateProduct = ({ state, setState, list, setList }) => {
       onCancel();
 
       notification.success({
-        message: 'Cập nhật thành công',
-        description: 'Thông tin hàng hoá đã được cập nhật thành công.',
+        message: t('Common_Success'),
+        description: t('Product_UpdateSuccessDescription'),
       });
     } catch (error) {
       console.log(error);
       notification.error({
-        message: 'Cập nhật thất bại',
-        description: 'Không thể cập nhật thông tin hàng hoá. Vui lòng thử lại.',
+        message: t('Common_Failure'),
+        description: t('Product_UpdateErrorDescription'),
       });
     } finally {
       setLoading(false);
@@ -45,14 +47,20 @@ const UpdateProduct = ({ state, setState, list, setList }) => {
   };
 
   return (
-    <Modal type={state.modalType} title="Cập nhật hàng hoá" open={state.editVisible} footer={null} onCancel={onCancel}>
+    <Modal
+      type={state.modalType}
+      title={t('Product_UpdateTitle')}
+      open={state.editVisible}
+      footer={null}
+      onCancel={onCancel}
+    >
       <ModalAccount
         form={form}
         handleOk={handleOk}
         state={state}
         onCancel={onCancel}
         loading={loading}
-        textSubmit="Lưu"
+        textSubmit={t('Common_Save')}
       />
     </Modal>
   );
