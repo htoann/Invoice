@@ -5,9 +5,12 @@ import axios from '@/mock/index';
 import { Col, Input, Row, Select, Skeleton } from 'antd';
 import useAccounts from 'hooks/useAccounts';
 import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import DataTable from './components/DataTable';
 
 export const SyncHistory = () => {
+  const { t } = useTranslation();
+
   const [state, setState] = useState({
     pagination: { pageSize: 20, showSizeChanger: true, current: 1, total: 0 },
   });
@@ -74,25 +77,20 @@ export const SyncHistory = () => {
     e.stopPropagation();
   };
 
-  const tableDataSource = [];
-
-  if (list?.length > 0) {
-    list.map((item, index) => {
-      const { id, time, query, status, note, totalInvoice, newInvoice } = item;
-
-      return tableDataSource.push({
-        key: id,
-        stt: (current - 1) * pageSize + index + 1,
-        id,
-        time: <span>{time}</span>,
-        query: <span>{query}</span>,
-        status: <span>{status === 1 ? 'Thành công' : 'Thất bại'}</span>,
-        note: <span>{note}</span>,
-        totalInvoice: <span>{totalInvoice}</span>,
-        newInvoice: <span>{newInvoice}</span>,
-      });
-    });
-  }
+  const tableDataSource = list.map((item, index) => {
+    const { id, time, query, status, note, totalInvoice, newInvoice } = item;
+    return {
+      key: id,
+      stt: (current - 1) * pageSize + index + 1,
+      id,
+      time: <span>{time}</span>,
+      query: <span>{query}</span>,
+      status: <span>{status === 1 ? t('Common_Success') : t('Common_Failure')}</span>,
+      note: <span>{note}</span>,
+      totalInvoice: <span>{totalInvoice}</span>,
+      newInvoice: <span>{newInvoice}</span>,
+    };
+  });
 
   const customHeader = (title, name) => (
     <>
@@ -122,44 +120,44 @@ export const SyncHistory = () => {
 
   const dataTableColumn = [
     {
-      title: 'STT',
+      title: t('Common_STT'),
       dataIndex: 'stt',
       key: 'stt',
     },
     {
-      title: 'Thời gian',
+      title: t('Common_Time'),
       dataIndex: 'time',
       key: 'time',
       sorter: (a, b) => a.time.props.children.localeCompare(b.time.props.children),
     },
     {
-      title: 'Query',
+      title: t('Common_Query'),
       dataIndex: 'query',
       key: 'query',
       sorter: (a, b) => a.query.props.children.localeCompare(b.query.props.children),
     },
     {
-      title: <>{customHeader('Trạng thái', 'status')}</>,
+      title: <>{customHeader(t('Common_Status'), 'status')}</>,
       dataIndex: 'status',
       key: 'status',
       sorter: (a, b) => a.status.props.children > b.status.props.children,
       className: 'searchInput',
     },
     {
-      title: <>{customHeader('Ghi chú', 'note')}</>,
+      title: <>{customHeader(t('Common_Note'), 'note')}</>,
       dataIndex: 'note',
       key: 'note',
       sorter: (a, b) => a.note.props.children.localeCompare(b.note.props.children),
       className: 'searchInput',
     },
     {
-      title: 'Tổng số hoá đơn',
+      title: t('SyncHistory_TotalInvoice'),
       dataIndex: 'totalInvoice',
       key: 'totalInvoice',
       sorter: (a, b) => a.totalInvoice.props.children > b.totalInvoice.props.children,
     },
     {
-      title: 'Hoá đơn mới',
+      title: t('SyncHistory_NewInvoice'),
       dataIndex: 'newInvoice',
       key: 'newInvoice',
       sorter: (a, b) => a.newInvoice.props.children > b.newInvoice.props.children,
@@ -173,7 +171,7 @@ export const SyncHistory = () => {
 
   return (
     <>
-      <PageHeader className="invoice-page-header-main" title="Danh sách email" />
+      <PageHeader className="invoice-page-header-main" title={t('SyncHistory_PageHeader')} />
       <Main>
         <Row gutter={15}>
           <Col xs={24}>
@@ -181,7 +179,7 @@ export const SyncHistory = () => {
               <Cards>
                 <div style={{ display: 'flex', gap: 20, flexWrap: 'auto' }}>
                   <div style={{ display: 'flex', gap: 2, flexWrap: 'auto', alignItems: 'center' }}>
-                    <span className="label">Chọn tài khoản</span>
+                    <span className="label">{t('Common_SelectAccount')}</span>
                     <Select
                       popupClassName="dropdown-select"
                       loading={loadingUsers}
@@ -190,7 +188,7 @@ export const SyncHistory = () => {
                       style={{ width: 200, marginLeft: 10 }}
                       defaultValue=""
                     >
-                      <Select.Option value="">Tất cả</Select.Option>
+                      <Select.Option value="">{t('Common_All')}</Select.Option>
                       {accountList?.length > 0 &&
                         accountList.map((item) => (
                           <Select.Option key={item.id} value={item.id}>

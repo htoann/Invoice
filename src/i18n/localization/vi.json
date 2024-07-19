@@ -200,6 +200,11 @@
   "Common_Date": "Ngày",
   "Common_Mail": "Hộp thư",
   "Common_Inbox": "Hộp thư đến",
+  "Common_Time": "Thời gian",
+  "Common_Query": "Query",
+  "Common_Status": "Trạng thái",
+  "Common_Note": "Ghi chú",
+  "Common_Failure": "Thất bại",
 
   "Invoice_ModelCode": "Ký hiệu mẫu số",
   "Invoice_InvoiceCode": "Ký hiệu hóa đơn",
@@ -256,7 +261,9 @@
   "Mail_UpdateAccount_Error": "Không thể cập nhật tài khoản. Vui lòng thử lại.",
 
   "Mail_SearchBySender": "Tìm kiếm theo người gửi",
-  "Common_NoEmailsFound": "Không tìm thấy email nào"
+  "Common_NoEmailsFound": "Không tìm thấy email nào",
 
-  
+  "SyncHistory_PageHeader": "Danh sách đồng bộ",
+  "SyncHistory_TotalInvoice": "Tổng số hóa đơn",
+  "SyncHistory_NewInvoice": "Hóa đơn mới"
 }
