@@ -112,13 +112,13 @@ export const Product = () => {
       setList(list.filter((account) => account.id !== id));
 
       notification.success({
-        message: 'Xóa thành công',
-        description: 'Hàng hoá đã được xóa thành công.',
+        message: t('Common_Success'),
+        description: t('Product_DeleteSuccess'),
       });
     } catch (error) {
       notification.error({
-        message: 'Xóa thất bại',
-        description: 'Không thể xóa hàng hoá. Vui lòng thử lại sau.',
+        message: t('Common_Failure'),
+        description: t('Product_DeleteError'),
       });
     }
   };
@@ -150,10 +150,10 @@ export const Product = () => {
               <UilEdit />
             </Link>
             <Popconfirm
-              title="Bạn có chắc chắn muốn xoá?"
+              title={t('Common_AreYouSureWantToDelete')}
               onConfirm={() => handleDelete(id)}
-              okText="Có"
-              cancelText="Không"
+              okText={t('Common_Yes')}
+              cancelText={t('Common_No')}
             >
               <Link className="invoice-delete" to="#">
                 <UilTrash />
@@ -167,7 +167,7 @@ export const Product = () => {
 
   const customHeader = (title, name) => (
     <>
-      <div>{title}</div>
+      <div>{t(title)}</div>
       <Input
         style={{ width: 'auto', height: 35, marginTop: 10 }}
         onClick={stopPropagation}
@@ -192,19 +192,19 @@ export const Product = () => {
   );
 
   const columnData = [
-    { title: 'STT', dataIndex: 'stt', key: 'stt' },
-    { title: 'Mã hàng', dataIndex: 'mahang', key: 'mahang' },
-    { title: 'Tên hàng bán ra', dataIndex: 'tenHangBan', key: 'tenHangBan' },
-    { title: 'Tên hàng mua vào', dataIndex: 'tenHangMua', key: 'tenHangMua' },
-    { title: 'Đơn vị tính', dataIndex: 'donViTinh', key: 'donViTinh' },
-    { title: 'Tài khoản hàng hóa', dataIndex: 'taiKhoanHang', key: 'taiKhoanHang' },
-    { title: 'Tài khoản giá vốn', dataIndex: 'taiKhoanGiaVon', key: 'taiKhoanGiaVon' },
-    { title: 'Tài khoản doanh thu', dataIndex: 'taiKhoanDoanhThu', key: 'taiKhoanDoanhThu' },
-    { title: 'Chức năng', dataIndex: 'action', key: 'action', fixed: 'right' },
+    { title: 'Common_STT', dataIndex: 'stt', key: 'stt' },
+    { title: 'Product_Code', dataIndex: 'mahang', key: 'mahang' },
+    { title: 'Product_SellingName', dataIndex: 'tenHangBan', key: 'tenHangBan' },
+    { title: 'Product_PurchasingName', dataIndex: 'tenHangMua', key: 'tenHangMua' },
+    { title: 'Product_Unit', dataIndex: 'donViTinh', key: 'donViTinh' },
+    { title: 'Product_AccountGoods', dataIndex: 'taiKhoanHang', key: 'taiKhoanHang' },
+    { title: 'Product_AccountCost', dataIndex: 'taiKhoanGiaVon', key: 'taiKhoanGiaVon' },
+    { title: 'Product_AccountRevenue', dataIndex: 'taiKhoanDoanhThu', key: 'taiKhoanDoanhThu' },
+    { title: 'Common_Action', dataIndex: 'action', key: 'action', fixed: 'right' },
   ];
 
   const dataTableColumn = columnData.map((col) => ({
-    title: col.key === 'stt' || col.key === 'action' ? col.title : <>{customHeader(col.title, col.dataIndex)}</>,
+    title: col.key === 'stt' || col.key === 'action' ? t(col.title) : <>{customHeader(col.title, col.dataIndex)}</>,
     dataIndex: col.dataIndex,
     key: col.key,
     sorter:

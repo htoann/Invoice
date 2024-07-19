@@ -25,18 +25,26 @@ const ModalHangHoa = ({ form, handleOk, state, onCancel, loading, textSubmit }) 
             <Input />
           </Form.Item>
 
-          <Form.Item initialValue={state?.update.taiKhoanHang} name="taiKhoanHang" label={t('Product_AccountGoods')}>
+          <Form.Item
+            initialValue={state?.update.taiKhoanHang}
+            name="taiKhoanHang"
+            label={t('Product_AccountGoods') + ' (15_)'}
+          >
             <Input />
           </Form.Item>
 
-          <Form.Item initialValue={state?.update.taiKhoanGiaVon} name="taiKhoanGiaVon" label={t('Product_AccountCost')}>
+          <Form.Item
+            initialValue={state?.update.taiKhoanGiaVon}
+            name="taiKhoanGiaVon"
+            label={t('Product_AccountCost') + ' (63_)'}
+          >
             <Input />
           </Form.Item>
 
           <Form.Item
             initialValue={state?.update.taiKhoanDoanhThu}
             name="taiKhoanDoanhThu"
-            label={t('Product_AccountRevenue')}
+            label={t('Product_AccountRevenue' + ' (51_)')}
           >
             <Input />
           </Form.Item>

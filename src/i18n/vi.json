@@ -47,6 +47,7 @@
   "Common_NoEmailsFound": "Không tìm thấy email nào",
   "Common_InvoiceList": "Danh sách hoá đơn",
   "Common_SyncHistory": "Lịch sử đồng bộ",
+  "Common_AreYouSureWantToDelete": "Bạn có chắc chắn muốn xoá",
 
   "Connect_Tax_Authorities": "Kết nối cơ quan thuế",
   "List_Products": "Danh sách hàng hóa",
@@ -168,6 +169,7 @@
   "Project_Delete_Success": "Dự án đã được xóa thành công.",
   "Project_Delete_Error": "Có lỗi xảy ra khi xóa dự án.",
   "Project_Not_Found": "Không tìm thấy dự án nào",
+
   "Product_Create_Title": "Tạo hàng hoá",
   "Product_Create_Success": "Hàng hoá đã được tạo thành công",
   "Product_Create_Error": "Đã xảy ra lỗi khi tạo hàng hoá",
@@ -180,9 +182,11 @@
   "Product_Code": "Mã hàng",
   "Product_RequiredCode": "Vui lòng nhập mã hàng",
   "Product_Unit": "Đơn vị tính",
-  "Product_AccountGoods": "Tài khoản hàng hoá (15_)",
-  "Product_AccountCost": "Tài khoản giá vốn (63_)",
-  "Product_AccountRevenue": "Tài khoản doanh thu (51_)",
+  "Product_AccountGoods": "Tài khoản hàng hoá",
+  "Product_AccountCost": "Tài khoản giá vốn",
+  "Product_AccountRevenue": "Tài khoản doanh thu",
   "Product_SellingName": "Tên hàng bán ra",
-  "Product_PurchasingName": "Tên hàng mua vào"
+  "Product_PurchasingName": "Tên hàng mua vào",
+  "Product_DeleteSuccess": "Hàng hoá được xoá thành công",
+  "Product_DeleteError": "Không thể xóa hàng hoá. Vui lòng thử lại sau."
 }
