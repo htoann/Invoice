@@ -337,5 +337,14 @@
   "Product_AssignAccount": "Gán tài khoản",
   "Product_UpdateTitle": "Cập nhật hàng hoá",
   "Product_UpdateSuccessDescription": "Thông tin hàng hoá đã được cập nhật thành công.",
-  "Product_UpdateErrorDescription": "Không thể cập nhật thông tin hàng hoá. Vui lòng thử lại."
+  "Product_UpdateErrorDescription": "Không thể cập nhật thông tin hàng hoá. Vui lòng thử lại.",
+
+  "Product_Code": "Mã hàng",
+  "Product_RequiredCode": "Vui lòng nhập mã hàng",
+  "Product_Unit": "Đơn vị tính",
+  "Product_AccountGoods": "Tài khoản hàng hoá (15_)",
+  "Product_AccountCost": "Tài khoản giá vốn (63_)",
+  "Product_AccountRevenue": "Tài khoản doanh thu (51_)",
+  "Product_SellingName": "Tên hàng bán ra",
+  "Product_PurchasingName": "Tên hàng mua vào"
 }
