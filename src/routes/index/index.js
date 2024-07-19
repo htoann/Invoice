@@ -20,9 +20,11 @@ const NotFound = lazy(() => import('../../container/pages/404'));
 
 const Index = React.memo(() => {
   const { pathname } = useLocation();
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [pathname]);
+
   return (
     <Suspense
       fallback={
