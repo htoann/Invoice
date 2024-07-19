@@ -4,10 +4,13 @@ import { DownloadOutlined } from '@ant-design/icons';
 import { UilFileExport } from '@iconscout/react-unicons';
 import { Select, Table } from 'antd';
 import PropTypes from 'prop-types';
+import { useTranslation } from 'react-i18next';
 import { DataTableStyleWrap } from '../style';
 import { handleExport } from '../utils';
 
 function DataTable({ rowSelection, tableData, columns, pagination, setState, state, loading }) {
+  const { t } = useTranslation();
+
   const handleLoaiHoaDonSearch = (value) => {
     setState((prev) => ({
       ...prev,
@@ -22,10 +25,10 @@ function DataTable({ rowSelection, tableData, columns, pagination, setState, sta
       <div className="invoice-datatable-filter">
         <div className="invoice-datatable-filter__left">
           <div className="invoice-datatable-filter__input">
-            <span className="label">Tài khoản thuế (2 tài khoản)</span>
+            <span className="label">{t('Common_TaxAccount')}</span>
             <Select onChange={handleLoaiHoaDonSearch} style={{ width: 200 }} defaultValue="purchase">
-              <Select.Option value="purchase">Mua vào</Select.Option>
-              <Select.Option value="sold">Bán ra</Select.Option>
+              <Select.Option value="purchase">{t('Common_Purchase')}</Select.Option>
+              <Select.Option value="sold">{t('Common_Sold')}</Select.Option>
             </Select>
           </div>
         </div>
@@ -52,17 +55,17 @@ function DataTable({ rowSelection, tableData, columns, pagination, setState, sta
               type="success"
               key="1"
             >
-              + Thêm mã hàng
+              + {t('Product_AddNew')}
             </Button>
 
             <Button className="btn-add_new" size="small" type="primary" key="2">
               <UilFileExport />
-              Gán mã hàng
+              {t('Product_AssignProductCode')}
             </Button>
 
             <Button className="btn-add_new" size="small" type="primary" key="3">
               <UilFileExport />
-              Gán tài khoản
+              {t('Product_AssignAccount')}
             </Button>
           </div>
 
@@ -75,7 +78,7 @@ function DataTable({ rowSelection, tableData, columns, pagination, setState, sta
               disabled={!state.invoiceList?.length}
             >
               <div style={{ display: 'flex' }}>
-                <div>Đồng bộ</div>
+                <div>{t('Common_Sync')}</div>
               </div>
             </Button>
             <Button
@@ -87,7 +90,7 @@ function DataTable({ rowSelection, tableData, columns, pagination, setState, sta
             >
               <div style={{ display: 'flex' }}>
                 <DownloadOutlined style={{ marginRight: 8, height: 20 }} />
-                <div>Xuất Excel</div>
+                <div>{t('Common_ExportExcel')}</div>
               </div>
             </Button>
           </div>

@@ -212,6 +212,10 @@
   "Common_Captcha_Placeholder": "Vui lòng nhập mã xác nhận",
   "Common_CreateNew": "Tạo mới",
   "Common_Delete_Confirm": "Bạn có muốn xoá mục này không",
+  "Common_Purchase": "Mua vào",
+  "Common_Sold": "Bán ra",
+  "Common_TaxAccount": "Tài khoản thuế (2 tài khoản)",
+  "Common_Sync": "Đồng bộ",
 
   "Invoice_ModelCode": "Ký hiệu mẫu số",
   "Invoice_InvoiceCode": "Ký hiệu hóa đơn",
@@ -244,8 +248,7 @@
   "Invoice_PublicationDate": "NGÀY CÔNG BỐ",
 
   "Invoice_InvoiceType": "Loại hóa đơn",
-  "Invoice_Purchase": "Mua vào",
-  "Invoice_Sold": "Bán ra",
+
   "Invoice_StartDate": "Ngày bắt đầu",
   "Invoice_SelectStartDate": "Chọn ngày bắt đầu",
   "Invoice_EndDate": "Ngày kết thúc",
@@ -328,5 +331,8 @@
   "Project_Not_Found": "Không tìm thấy dự án nào",
   "Product_Create_Title": "Tạo hàng hoá",
   "Product_Create_Success": "Hàng hoá đã được tạo thành công",
-  "Product_Create_Error": "Đã xảy ra lỗi khi tạo hàng hoá"
+  "Product_Create_Error": "Đã xảy ra lỗi khi tạo hàng hoá",
+  "Product_AddNew": "Thêm mã hàng",
+  "Product_AssignProductCode": "Gán mã hàng",
+  "Product_AssignAccount": "Gán tài khoản"
 }

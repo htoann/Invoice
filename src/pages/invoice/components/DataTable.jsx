@@ -72,8 +72,8 @@ function DataTable({ loading, tableData, columns, state, setState, getInvoiceLis
                 style={{ width: 200 }}
                 defaultValue="purchase"
               >
-                <Select.Option value="purchase">{t('Invoice_Purchase')}</Select.Option>
-                <Select.Option value="sold">{t('Invoice_Sold')}</Select.Option>
+                <Select.Option value="purchase">{t('Common_Purchase')}</Select.Option>
+                <Select.Option value="sold">{t('Common_Sold')}</Select.Option>
               </Select>
             </div>
             <div className="invoice-datatable-filter__input">
