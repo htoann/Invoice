@@ -7,10 +7,13 @@ import UilAngleDown from '@iconscout/react-unicons/icons/uil-angle-down';
 import UilImport from '@iconscout/react-unicons/icons/uil-import';
 import { Col, Row } from 'antd';
 import moment from 'moment';
+import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { MailDetailsWrapper, MessageDetails } from './style';
 
 function MailDetail({ selectedInbox: email }) {
+  const { t } = useTranslation();
+
   return (
     <MailDetailsWrapper>
       <Cards headless>
@@ -40,22 +43,22 @@ function MailDetail({ selectedInbox: email }) {
                       content={
                         <ul className="mail-props">
                           <li>
-                            <span>From:</span> <span>{email?.sender.email}</span>{' '}
+                            <span>{t('Common_From')}:</span> <span>{email?.sender.email}</span>{' '}
                           </li>
                           <li>
-                            <span>To:</span> <span>{email?.receiver.email}</span>{' '}
+                            <span>{t('Common_To')}:</span> <span>{email?.receiver.email}</span>{' '}
                           </li>
                           <li>
-                            <span>CC:</span> <span>example@gamil.com</span>{' '}
+                            <span>{t('Common_CC')}:</span> <span>example@gmail.com</span>{' '}
                           </li>
                           <li>
-                            <span>Date:</span> <span>{moment(email?.created_at).format('LLL')}</span>
+                            <span>{t('Common_Date')}:</span> <span>{moment(email?.created_at).format('LLL')}</span>
                           </li>
                         </ul>
                       }
                     >
                       <Link to="#">
-                        To {email?.receiver?.name}
+                        {t('Common_To')} {email?.receiver?.name}
                         <UilAngleDown />
                       </Link>
                     </Dropdown>
@@ -63,16 +66,12 @@ function MailDetail({ selectedInbox: email }) {
                 </div>
 
                 <div className="message-excerpt">
-                  <span> {moment(email?.created_at).format('LLL')} </span>
+                  <span>{moment(email?.created_at).format('LLL')}</span>
                 </div>
               </div>
 
               <div className="message-body">
-                {/* <span className="welcome-text">Hello Adam,</span> */}
                 <p>{email?.body}</p>
-                {/* <Heading as="h6">
-                  Best Regards <br /> {email?.userName}
-                </Heading> */}
               </div>
 
               <div style={{ display: 'flex', gap: 10, padding: '10px 0px', flexWrap: 'wrap' }}>
@@ -97,7 +96,7 @@ function MailDetail({ selectedInbox: email }) {
                   <div className="invoice-ticket-file-item d-flex">
                     <div className="invoice-ticket-file-item__info d-flex">
                       <div className="invoice-ticket-file-item__logo">
-                        <img style={{ width: '40px' }} src={csvImg} alt="File Logo" />
+                        <img style={{ width: '40px' }} src={csvImg} alt={t('Mail_Detail_FileLogo')} />
                       </div>
                       <div className="invoice-file-item__content">
                         <span className="invoice-ticket-file-name">Product-guidelines.pdf</span>

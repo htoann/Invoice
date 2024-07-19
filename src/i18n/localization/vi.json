@@ -194,6 +194,10 @@
   "Common_Password_Placeholder": "Nhập mật khẩu",
   "Common_SelectDepartment": "Chọn phòng ban",
   "Common_SelectAccount": "Chọn tài khoản",
+  "Common_From": "Từ",
+  "Common_To": "Đến",
+  "Common_CC": "CC",
+  "Common_Date": "Ngày",
 
   "Invoice_ModelCode": "Ký hiệu mẫu số",
   "Invoice_InvoiceCode": "Ký hiệu hóa đơn",
@@ -251,4 +255,5 @@
 
   "Mail_SearchBySender": "Tìm kiếm theo người gửi",
   "Common_NoEmailsFound": "Không tìm thấy email nào"
+
 }
