@@ -19,6 +19,7 @@ import VieImg from '@/static/img/flag/vi.png';
 import { useTranslation } from 'react-i18next';
 import Heading from '../../components/heading/heading';
 import { Popover } from '../../components/popup/popup';
+import { setItem } from '@/utils/localStorageControl';
 
 const AuthInfo = React.memo(() => {
   const dispatch = useDispatch();
@@ -26,7 +27,7 @@ const AuthInfo = React.memo(() => {
   const { i18n, t } = useTranslation();
 
   const [state, setState] = useState({
-    flag: 'vi',
+    flag: i18n.language,
   });
   const { flag } = state;
 
@@ -85,15 +86,16 @@ const AuthInfo = React.memo(() => {
       flag: value,
     });
     i18n.changeLanguage(value);
+    setItem('lang', value);
   };
 
   const country = (
     <NavAuth>
-      <Link onClick={(e) => onFlagChangeHandle('vi', e)} to="#">
+      <Link onClick={(e) => onFlagChangeHandle('vi', e)} style={{ marginBottom: 5, borderRadius: 5 }}>
         <img width="20" src={VieImg} alt="" />
         <span>{t('Language_Vietnamese')}</span>
       </Link>
-      <Link onClick={(e) => onFlagChangeHandle('en', e)} to="#">
+      <Link onClick={(e) => onFlagChangeHandle('en', e)} style={{ borderRadius: 5 }}>
         <img src={EngImg} alt="" />
         <span>{t('Language_English')}</span>
       </Link>

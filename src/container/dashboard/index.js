@@ -6,11 +6,14 @@ import { Main } from '../styled';
 import BusinessStatus from './overview/BusinessStatus';
 import InvoicesChange from './overview/InvoicesChange';
 import OverviewDataList from './overview/OverviewDataList';
+import { useTranslation } from 'react-i18next';
 
 function Dashboard() {
+  const { t } = useTranslation();
+
   return (
     <>
-      <PageHeader className="invoice-page-header-main" title="Tổng quan" />
+      <PageHeader className="invoice-page-header-main" title={t('Common_Overview')} />
 
       <Main>
         <Row justify="center">
