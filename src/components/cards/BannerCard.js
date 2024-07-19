@@ -131,7 +131,7 @@ const BannerCard = ({
     authorImg: '10.png',
   },
 }) => {
-  const { content, icon, title, authorName, authorImg, type, bgImage } = item;
+  const { content, icon, title, authorName, type, bgImage } = item;
   return (
     <CardWrapper>
       <ImageUrl className={`banner-card banner-card-${type}`} bgUrl={bgImage}>
