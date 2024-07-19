@@ -187,8 +187,8 @@
   "Common_STT": "STT",
   "Common_Search": "Tìm kiếm",
   "Common_ExportExcel": "Xuất Excel",
-  "Common_Username": "Tên tài khoản",
-  "Common_Username_Placeholder": "Nhập tên đăng nhập",
+  "Common_Account": "Tên tài khoản",
+  "Common_Account_Placeholder": "Nhập tên tài khoản",
   "Common_Email": "Địa chỉ email",
   "Common_Password": "Mật khẩu",
   "Common_Password_Placeholder": "Nhập mật khẩu",
@@ -205,6 +205,11 @@
   "Common_Status": "Trạng thái",
   "Common_Note": "Ghi chú",
   "Common_Failure": "Thất bại",
+  "Common_Username": "Tên đăng nhập",
+  "Common_Username_PleaseEnter": "Vui lòng nhập tên đăng nhập",
+  "Common_Password_PleaseEnter": "Vui lòng nhập mật khẩu",
+  "Common_Captcha": "Mã xác nhận",
+  "Common_Captcha_Placeholder": "Vui lòng nhập mã xác nhận",
 
   "Invoice_ModelCode": "Ký hiệu mẫu số",
   "Invoice_InvoiceCode": "Ký hiệu hóa đơn",
@@ -265,5 +270,9 @@
 
   "SyncHistory_PageHeader": "Danh sách đồng bộ",
   "SyncHistory_TotalInvoice": "Tổng số hóa đơn",
-  "SyncHistory_NewInvoice": "Hóa đơn mới"
+  "SyncHistory_NewInvoice": "Hóa đơn mới",
+
+  "Auth_SignIn_Title": "Đăng nhập vào hệ thống hoá đơn",
+  "Auth_SigningIn": "Đang đăng nhập...",
+  "Auth_SignIn": "Đăng nhập"
 }

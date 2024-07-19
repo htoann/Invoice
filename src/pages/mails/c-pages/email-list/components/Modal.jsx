@@ -9,8 +9,8 @@ const ModalAccount = ({ form, handleOk, state, onCancel, loading, textSubmit = '
   return (
     <BasicFormWrapper>
       <Form form={form} name="edit_account" onFinish={handleOk}>
-        <Form.Item initialValue={state?.update?.username} label={t('Common_Username')} name="username">
-          <Input placeholder={t('Common_Username_Placeholder')} />
+        <Form.Item initialValue={state?.update?.username} label={t('Common_Account')} name="username">
+          <Input placeholder={t('Common_Account_Placeholder')} />
         </Form.Item>
 
         <Form.Item

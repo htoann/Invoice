@@ -107,7 +107,7 @@ const AuthFormWrap = Styled.div`
         color: ${({ theme }) => theme['primary-color']};
       }
     }
-    .btn-signin,
+    .btn-signIn,
     .btn-reset,
     .btn-create{
       font-size: 14px;

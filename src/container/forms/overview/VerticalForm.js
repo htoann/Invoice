@@ -20,10 +20,10 @@ function VerticalForm() {
               <Input.Password />
             </Form.Item>
             <div className="invoice-form-action">
-              <Button className="btn-signin" htmlType="submit" type="light" size="large">
+              <Button className="btn-signIn" htmlType="submit" type="light" size="large">
                 Cancel
               </Button>
-              <Button className="btn-signin" type="primary" size="large">
+              <Button className="btn-signIn" type="primary" size="large">
                 Save
               </Button>
             </div>
