@@ -1,8 +1,8 @@
+import SettingIcon from '@/static/img/icon/setting.svg';
 import { Radio } from 'antd';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ReactSVG } from 'react-svg';
 import { Button } from '../buttons/buttons';
 import { DrawerStyle } from './style';
 
@@ -81,13 +81,7 @@ const Drawer = ({
         </Button>
       ) : (
         <Link className="invoice-nav-action-link">
-          <ReactSVG
-            src={require('../../static/img/icon/setting.svg').default}
-            type={btnType}
-            size="default"
-            onClick={showDrawer}
-            {...btnProps}
-          />
+          <img src={SettingIcon} alt="My Icon" onClick={showDrawer} {...btnProps} />
         </Link>
       )}
       <DrawerStyle

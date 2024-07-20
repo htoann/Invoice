@@ -44,7 +44,7 @@ const ModalHangHoa = ({ form, handleOk, state, onCancel, loading, textSubmit }) 
           <Form.Item
             initialValue={state?.update.taiKhoanDoanhThu}
             name="taiKhoanDoanhThu"
-            label={t('Product_AccountRevenue' + ' (51_)')}
+            label={t('Product_AccountRevenue') + ' (51_)'}
           >
             <Input />
           </Form.Item>
