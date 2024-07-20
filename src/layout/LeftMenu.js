@@ -1,17 +1,10 @@
-import {
-  UilClipboardAlt,
-  UilCreateDashboard,
-  UilTable,
-  UilUsdCircle,
-  UilWindowSection,
-} from '@iconscout/react-unicons';
-import { Menu } from 'antd';
+import { UilClipboardAlt, UilCreateDashboard, UilInvoice, UilTable } from '@iconscout/react-unicons';
+import { Menu, Tooltip } from 'antd';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 
-import { changeDirectionMode, changeMenuMode } from '@/redux/themeLayout/actionCreator';
 import { routes } from '@/routes/const';
 import UilEllipsisV from '@iconscout/react-unicons/icons/uil-ellipsis-v';
 import UilEnvelope from '@iconscout/react-unicons/icons/uil-envelope';
@@ -36,8 +29,6 @@ export const LeftMenu = ({ toggleCollapsed }) => {
     };
   });
 
-  const dispatch = useDispatch();
-
   const path = '/';
   const pathName = window.location.pathname;
   const pathArray = pathName && pathName !== '/' ? pathName.split(path) : [];
@@ -56,44 +47,19 @@ export const LeftMenu = ({ toggleCollapsed }) => {
     if (item.keyPath.length === 1) setOpenKeys([]);
   };
 
-  // const changeLayout = (mode) => {
-  //   dispatch(changeLayoutMode(mode));
-  // };
-
-  const changeNavbar = (topMode) => {
-    const html = document.querySelector('html');
-    if (topMode) {
-      html.classList.add('invoice-topMenu');
-    } else {
-      html.classList.remove('invoice-topMenu');
-    }
-    dispatch(changeMenuMode(topMode));
-  };
-
-  const changeLayoutDirection = (rtlMode) => {
-    if (rtlMode) {
-      const html = document.querySelector('html');
-      html.setAttribute('dir', 'rtl');
-    } else {
-      const html = document.querySelector('html');
-      html.setAttribute('dir', 'ltr');
-    }
-    dispatch(changeDirectionMode(rtlMode));
-  };
-
-  // const darkModeActivated = () => {
-  //   document.body.classList.add('dark-mode');
-  // };
-
-  // const darkModeDeactivated = () => {
-  //   document.body.classList.remove('dark-mode');
-  // };
-
   const createNavLink = (pathLink, textKey) => {
+    const text = t(textKey);
+
     return (
-      <NavLink onClick={toggleCollapsed} to={pathLink}>
-        {t(textKey)}
-      </NavLink>
+      <span
+        onClick={toggleCollapsed}
+        to={pathLink}
+        style={{ display: 'block', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis' }}
+      >
+        <Tooltip title={text} placement="right" className="left-menu-navbar-title">
+          {text}
+        </Tooltip>
+      </span>
     );
   };
 
@@ -102,85 +68,9 @@ export const LeftMenu = ({ toggleCollapsed }) => {
   };
 
   const items = [
-    getItem(t('Common_Layouts'), 'layout', !topMenu && <UilWindowSection />, [
-      // getItem(
-      //   <NavLink
-      //     onClick={() => {
-      //       toggleCollapsed();
-      //       darkModeDeactivated();
-      //       changeLayout('lightMode');
-      //     }}
-      //   >
-      //     {t('Common_LightMode')}
-      //   </NavLink>,
-      //   'light',
-      //   null,
-      // ),
-      // getItem(
-      //   <NavLink
-      //     onClick={() => {
-      //       toggleCollapsed();
-      //       darkModeActivated();
-      //       changeLayout('darkMode');
-      //     }}
-      //   >
-      //     {t('Common_DarkMode')}
-      //   </NavLink>,
-      //   'dark',
-      //   null,
-      // ),
-      getItem(
-        <NavLink
-          onClick={() => {
-            toggleCollapsed();
-            changeNavbar(true);
-          }}
-        >
-          {t('Common_MenuTop')}
-        </NavLink>,
-        'topMenu',
-        null,
-      ),
-      getItem(
-        <NavLink
-          onClick={() => {
-            toggleCollapsed();
-            changeNavbar(false);
-          }}
-        >
-          {t('Common_MenuLeft')}
-        </NavLink>,
-        'sideMenu',
-        null,
-      ),
-      getItem(
-        <NavLink
-          onClick={() => {
-            toggleCollapsed();
-            changeLayoutDirection(true);
-          }}
-        >
-          RTL
-        </NavLink>,
-        'rtl',
-        null,
-      ),
-      getItem(
-        <NavLink
-          onClick={() => {
-            toggleCollapsed();
-            changeLayoutDirection(false);
-          }}
-        >
-          LTR
-        </NavLink>,
-        'ltr',
-        null,
-      ),
-    ]),
     getItem(
       <NavLink to="/">{t('Common_Overview')}</NavLink>,
-      'chat',
+      'overview',
       !topMenu && (
         <NavLink className="menuItem-icon" to="/">
           <UilCreateDashboard />
@@ -190,7 +80,7 @@ export const LeftMenu = ({ toggleCollapsed }) => {
     getItem(
       t('Invoice_Management'),
       'manage_invoices',
-      !topMenu && <UilUsdCircle />,
+      !topMenu && <UilInvoice />,
       createMenuItems([
         { path: routes.invoice, textKey: t('Common_InvoiceList'), key: 'invoice-list' },
         // { path: routes.invoice, textKey: 'Kiểm tra tình trạng MST', key: 'Kiểm tra tình trạng MST' },

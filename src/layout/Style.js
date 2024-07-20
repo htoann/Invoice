@@ -501,7 +501,7 @@ const LayoutContainer = Styled.div`
                     }
                 }
                 .ant-menu-item{
-                    .menuItem-iocn{
+                    .menuItem-icon{
                         width: auto;
                     }
                     &:not(:last-child){
