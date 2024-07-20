@@ -1,8 +1,10 @@
 import { Radio } from 'antd';
 import PropTypes from 'prop-types';
-import React, { useState } from 'react';
-import { DrawerStyle } from './style';
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { ReactSVG } from 'react-svg';
 import { Button } from '../buttons/buttons';
+import { DrawerStyle } from './style';
 
 const RadioGroup = Radio.Group;
 
@@ -16,6 +18,9 @@ const Drawer = ({
   childDrawer,
   childTitle,
   btnText = 'Open',
+  btnType = 'primary',
+  isBtn = true,
+  ...btnProps
 }) => {
   const [state, setState] = useState({
     open: false,
@@ -70,9 +75,21 @@ const Drawer = ({
       )}
 
       {render && <p>Render in this</p>}
-      <Button type="primary" size="default" onClick={showDrawer} raised>
-        {btnText}
-      </Button>
+      {isBtn ? (
+        <Button type={btnType} size="default" onClick={showDrawer} {...btnProps}>
+          {btnText}
+        </Button>
+      ) : (
+        <Link className="invoice-nav-action-link">
+          <ReactSVG
+            src={require('../../static/img/icon/setting.svg').default}
+            type={btnType}
+            size="default"
+            onClick={showDrawer}
+            {...btnProps}
+          />
+        </Link>
+      )}
       <DrawerStyle
         title={title}
         placement={state.placement}

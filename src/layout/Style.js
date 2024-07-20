@@ -363,7 +363,7 @@ const LayoutContainer = Styled.div`
                     display: none;
                 }
             }
-            & + .atbd-main-layout{
+            & + .antd-main-layout{
                 /* Comment for now */
                 /* ${({ theme }) => (!theme.rtl ? 'margin-left' : 'margin-right')}: 80px; */
                 ${({ theme }) => (!theme.rtl ? 'margin-left' : 'margin-right')}: 0;
@@ -706,7 +706,7 @@ const LayoutContainer = Styled.div`
 
     }
 
-    .atbd-main-layout{
+    .antd-main-layout{
         ${({ theme }) => (!theme.rtl ? 'margin-left' : 'margin-right')}: ${({ theme }) =>
   theme.topMenu ? 0 : '280px'};
         /* margin-top: 90px; */

@@ -117,7 +117,7 @@ const ThemeLayout = (WrappedComponent) => {
             >
               <div className="invoice-header-content d-flex">
                 <div className="invoice-header-content__left">
-                  <div className="navbar-brand align-cener-v">
+                  <div className="navbar-brand align-center-v">
                     <Link
                       className={topMenu && window.innerWidth > 991 ? 'invoice-logo top-menu' : 'invoice-logo'}
                       to="/"
@@ -185,7 +185,7 @@ const ThemeLayout = (WrappedComponent) => {
               {!topMenu || window.innerWidth <= 991 ? (
                 <ThemeProvider theme={theme}>
                   <Sider
-                    width={350}
+                    width={280}
                     style={SideBarStyle}
                     collapsed={collapsed}
                     theme={layoutMode === 'lightMode' ? 'light' : 'dark'}
@@ -205,25 +205,9 @@ const ThemeLayout = (WrappedComponent) => {
                   </Sider>
                 </ThemeProvider>
               ) : null}
-              <Layout className="atbd-main-layout">
+              <Layout className="antd-main-layout">
                 <Content>
                   <WrappedComponent {...this.props} />
-                  {/* <FooterStyle className="admin-footer">
-                    <Row>
-                      <Col md={12} xs={24}>
-                        <span className="admin-footer__copyright">
-                          © 2024<Link to="#">Invoice System</Link>
-                        </span>
-                      </Col>
-                      <Col md={12} xs={24}>
-                        <div className="admin-footer__links">
-                          <NavLink to="#">About</NavLink>
-                          <NavLink to="#">Team</NavLink>
-                          <NavLink to="#">Contact</NavLink>
-                        </div>
-                      </Col>
-                    </Row>
-                  </FooterStyle> */}
                 </Content>
               </Layout>
             </Layout>

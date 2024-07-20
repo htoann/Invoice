@@ -1,12 +1,20 @@
-import { UilAt, UilCreateDashboard } from '@iconscout/react-unicons';
+import {
+  UilClipboardAlt,
+  UilCreateDashboard,
+  UilTable,
+  UilUsdCircle,
+  UilWindowSection,
+} from '@iconscout/react-unicons';
 import { Menu } from 'antd';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 
+import { changeDirectionMode, changeMenuMode } from '@/redux/themeLayout/actionCreator';
 import { routes } from '@/routes/const';
 import UilEllipsisV from '@iconscout/react-unicons/icons/uil-ellipsis-v';
+import UilEnvelope from '@iconscout/react-unicons/icons/uil-envelope';
 import propTypes from 'prop-types';
 
 export const LeftMenu = ({ toggleCollapsed }) => {
@@ -28,7 +36,7 @@ export const LeftMenu = ({ toggleCollapsed }) => {
     };
   });
 
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   const path = '/';
   const pathName = window.location.pathname;
@@ -52,26 +60,26 @@ export const LeftMenu = ({ toggleCollapsed }) => {
   //   dispatch(changeLayoutMode(mode));
   // };
 
-  // const changeNavbar = (topMode) => {
-  //   const html = document.querySelector('html');
-  //   if (topMode) {
-  //     html.classList.add('invoice-topMenu');
-  //   } else {
-  //     html.classList.remove('invoice-topMenu');
-  //   }
-  //   dispatch(changeMenuMode(topMode));
-  // };
+  const changeNavbar = (topMode) => {
+    const html = document.querySelector('html');
+    if (topMode) {
+      html.classList.add('invoice-topMenu');
+    } else {
+      html.classList.remove('invoice-topMenu');
+    }
+    dispatch(changeMenuMode(topMode));
+  };
 
-  // const changeLayoutDirection = (rtlMode) => {
-  //   if (rtlMode) {
-  //     const html = document.querySelector('html');
-  //     html.setAttribute('dir', 'rtl');
-  //   } else {
-  //     const html = document.querySelector('html');
-  //     html.setAttribute('dir', 'ltr');
-  //   }
-  //   dispatch(changeDirectionMode(rtlMode));
-  // };
+  const changeLayoutDirection = (rtlMode) => {
+    if (rtlMode) {
+      const html = document.querySelector('html');
+      html.setAttribute('dir', 'rtl');
+    } else {
+      const html = document.querySelector('html');
+      html.setAttribute('dir', 'ltr');
+    }
+    dispatch(changeDirectionMode(rtlMode));
+  };
 
   // const darkModeActivated = () => {
   //   document.body.classList.add('dark-mode');
@@ -94,9 +102,85 @@ export const LeftMenu = ({ toggleCollapsed }) => {
   };
 
   const items = [
+    getItem(t('Common_Layouts'), 'layout', !topMenu && <UilWindowSection />, [
+      // getItem(
+      //   <NavLink
+      //     onClick={() => {
+      //       toggleCollapsed();
+      //       darkModeDeactivated();
+      //       changeLayout('lightMode');
+      //     }}
+      //   >
+      //     {t('Common_LightMode')}
+      //   </NavLink>,
+      //   'light',
+      //   null,
+      // ),
+      // getItem(
+      //   <NavLink
+      //     onClick={() => {
+      //       toggleCollapsed();
+      //       darkModeActivated();
+      //       changeLayout('darkMode');
+      //     }}
+      //   >
+      //     {t('Common_DarkMode')}
+      //   </NavLink>,
+      //   'dark',
+      //   null,
+      // ),
+      getItem(
+        <NavLink
+          onClick={() => {
+            toggleCollapsed();
+            changeNavbar(true);
+          }}
+        >
+          {t('Common_MenuTop')}
+        </NavLink>,
+        'topMenu',
+        null,
+      ),
+      getItem(
+        <NavLink
+          onClick={() => {
+            toggleCollapsed();
+            changeNavbar(false);
+          }}
+        >
+          {t('Common_MenuLeft')}
+        </NavLink>,
+        'sideMenu',
+        null,
+      ),
+      getItem(
+        <NavLink
+          onClick={() => {
+            toggleCollapsed();
+            changeLayoutDirection(true);
+          }}
+        >
+          RTL
+        </NavLink>,
+        'rtl',
+        null,
+      ),
+      getItem(
+        <NavLink
+          onClick={() => {
+            toggleCollapsed();
+            changeLayoutDirection(false);
+          }}
+        >
+          LTR
+        </NavLink>,
+        'ltr',
+        null,
+      ),
+    ]),
     getItem(
-      createNavLink('/', 'Common_Overview'),
-      '404',
+      <NavLink to="/">{t('Common_Overview')}</NavLink>,
+      'chat',
       !topMenu && (
         <NavLink className="menuItem-icon" to="/">
           <UilCreateDashboard />
@@ -104,9 +188,9 @@ export const LeftMenu = ({ toggleCollapsed }) => {
       ),
     ),
     getItem(
-      t('manage_invoices'),
+      t('Invoice_Management'),
       'manage_invoices',
-      !topMenu && <UilCreateDashboard />,
+      !topMenu && <UilUsdCircle />,
       createMenuItems([
         { path: routes.invoice, textKey: t('Common_InvoiceList'), key: 'invoice-list' },
         // { path: routes.invoice, textKey: 'Kiểm tra tình trạng MST', key: 'Kiểm tra tình trạng MST' },
@@ -115,7 +199,7 @@ export const LeftMenu = ({ toggleCollapsed }) => {
     getItem(
       t('Common_Mail'),
       'inbox',
-      !topMenu && <UilAt />,
+      !topMenu && <UilEnvelope />,
       createMenuItems([
         { path: routes.email, textKey: t('Mail_EmailList_Title'), key: 'Danh sách email' },
         { path: routes.emailInbox, textKey: t('Common_Inbox'), key: 'Hộp thư đến' },
@@ -125,7 +209,7 @@ export const LeftMenu = ({ toggleCollapsed }) => {
     getItem(
       t('Common_Category'),
       'category',
-      !topMenu && <UilAt />,
+      !topMenu && <UilTable />,
       createMenuItems([
         { path: routes.emailAccount, textKey: t('Org_Structure'), key: 'Cơ cấu tổ chức' },
         { path: routes.emailAccount, textKey: 'Nhà cung cấp', key: 'Nhà cung cấp' },
@@ -137,7 +221,7 @@ export const LeftMenu = ({ toggleCollapsed }) => {
     getItem(
       t('Common_Report'),
       'report',
-      !topMenu && <UilAt />,
+      !topMenu && <UilClipboardAlt />,
       createMenuItems([
         {
           path: routes.emailAccount,

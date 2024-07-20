@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import UilAngleDown from '@iconscout/react-unicons/icons/uil-angle-down';
 import UilBell from '@iconscout/react-unicons/icons/uil-bell';
 import UilDollarSign from '@iconscout/react-unicons/icons/uil-dollar-sign';
@@ -9,17 +10,17 @@ import { Avatar } from 'antd';
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
-
 import { InfoWrapper, NavAuth, UserDropDown } from './Style';
 
 import { logOut } from '@/redux/authentication/actionCreator';
 import ChatAuthImg from '@/static/img/avatar/chat-auth.png';
 import EngImg from '@/static/img/flag/en.png';
 import VieImg from '@/static/img/flag/vi.png';
+import { setItem } from '@/utils/localStorageControl';
 import { useTranslation } from 'react-i18next';
 import Heading from '../../components/heading/heading';
 import { Popover } from '../../components/popup/popup';
-import { setItem } from '@/utils/localStorageControl';
+import Customizer from './Customizer';
 
 const AuthInfo = React.memo(() => {
   const dispatch = useDispatch();
@@ -31,7 +32,7 @@ const AuthInfo = React.memo(() => {
   });
   const { flag } = state;
 
-  const SignOut = (e) => {
+  const signOut = (e) => {
     e.preventDefault();
     dispatch(logOut(() => navigate('/')));
   };
@@ -72,7 +73,7 @@ const AuthInfo = React.memo(() => {
             </Link>
           </li>
         </ul>
-        <Link className="user-dropdown__bottomAction" onClick={SignOut} to="#">
+        <Link className="user-dropdown__bottomAction" onClick={signOut}>
           <UilSignout /> {t('User_SignOut')}
         </Link>
       </div>
@@ -108,13 +109,14 @@ const AuthInfo = React.memo(() => {
       {/* <Message /> */}
       {/* <Notification /> */}
       {/* <Settings /> */}
-      <div className="invoice-nav-actions__item invoice-nav-actions__language">
+      <Customizer />
+      {/* <div className="invoice-nav-actions__item invoice-nav-actions__language">
         <Popover placement="bottomRight" content={country} trigger="click">
           <Link to="#" className="invoice-nav-action-link">
             <img width="25" src={require(`@/static/img/flag/${flag}.png`)} alt="" />
           </Link>
         </Popover>
-      </div>
+      </div> */}
       <div className="invoice-nav-actions__item invoice-nav-actions__author">
         <Popover placement="bottomRight" content={userContent} action="click">
           <Link to="#" className="invoice-nav-action-link">
