@@ -1,7 +1,8 @@
 import { Drawer } from '@/components/drawer/drawer';
 import { changeMenuMode } from '@/redux/themeLayout/actionCreator';
-import Left from '@/static/img/layouts/side.png';
-import Top from '@/static/img/layouts/top.png';
+// import Left from '@/static/img/layouts/side.png';
+// import Top from '@/static/img/layouts/top.png';
+import Left from '@/static/img/layouts/left.png';
 import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
 
@@ -77,21 +78,24 @@ const Customizer = () => {
           <ul className="customizer-list d-flex l_navbar">
             <li className="customizer-list__item active">
               <a
+                style={{ marginTop: 10 }}
                 onClick={() => {
                   changeNavbar(false);
                 }}
               >
-                <img src={Left} alt="" />
+                <img src={Left} alt="" width="100" />
               </a>
+              <span style={{ display: 'flex', justifyContent: 'center', fontWeight: 500 }}>{t('Common_MenuLeft')}</span>
             </li>
-            <li className="customizer-list__item">
+            <li className="customizer-list__item" style={{ marginLeft: 40 }}>
               <a
                 onClick={() => {
                   changeNavbar(true);
                 }}
               >
-                <img src={Top} alt="" />
+                <img src={Left} alt="" style={{ transform: 'rotate(90deg)' }} width="100" />
               </a>
+              <span style={{ display: 'flex', justifyContent: 'center', fontWeight: 500 }}>{t('Common_MenuTop')}</span>
             </li>
           </ul>
         </div>

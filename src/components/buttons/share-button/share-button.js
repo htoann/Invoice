@@ -4,7 +4,6 @@ import UilLinkedin from '@iconscout/react-unicons/icons/uil-linkedin';
 import UilRss from '@iconscout/react-unicons/icons/uil-rss';
 import UilShareAlt from '@iconscout/react-unicons/icons/uil-share-alt';
 import UilTwitter from '@iconscout/react-unicons/icons/uil-twitter';
-import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { Popover } from '../../popup/popup';
 import { Button } from '../buttons';
