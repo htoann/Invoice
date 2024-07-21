@@ -24,8 +24,8 @@ function Profile() {
     form.resetFields();
   };
 
-  const checked = (checke) => {
-    setState({ tags: checke });
+  const checked = (checked) => {
+    setState({ tags: checked });
   };
 
   return (
@@ -59,7 +59,6 @@ function Profile() {
                 <Select style={{ width: '100%' }}>
                   <Option value="">Please Select</Option>
                   <Option value="dhaka">Dhaka</Option>
-                  <Option value="mymensingh">Mymensingh</Option>
                   <Option value="khulna">Khulna</Option>
                 </Select>
               </Form.Item>
@@ -69,11 +68,7 @@ function Profile() {
               <Form.Item name="website" initialValue="www.example.com" label="Website">
                 <Input />
               </Form.Item>
-              <Form.Item
-                name="userBio"
-                initialValue="Nam malesuada dolor tellus pretium amet was hendrerit facilisi id vitae enim sed ornare there suspendisse sed orci neque ac sed aliquet risus faucibus in pretium molestee."
-                label="User Bio"
-              >
+              <Form.Item name="userBio" initialValue="Cristiano Ronaldo" label="User Bio">
                 <Input.TextArea rows={3} />
               </Form.Item>
               <Form.Item name="skills" label="Skills">

@@ -22,12 +22,12 @@ function DatePickers() {
       breadcrumbName: 'Date Picker',
     },
   ];
-  const [state, setstate] = useState({
+  const [state, setState] = useState({
     date: null,
     dateString: null,
   });
   const onChange = (date, dateString) => {
-    setstate({ ...state, date, dateString });
+    setState({ ...state, date, dateString });
   };
 
   return (

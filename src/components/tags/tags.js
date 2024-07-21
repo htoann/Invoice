@@ -12,22 +12,21 @@ function Tag(props) {
     selectedTags: [],
   });
 
-  const { closable, onClose, color, checked, onChange, data, hottags, animate, children } = props;
+  const { closable, onClose, color, checked, onChange, data, hotTags, animate, children } = props;
   const tagsFromServer = data;
 
   const log = (e) => {
     onClose(e);
   };
 
-  const handleChange = (checke) => {
-    setState({ ...state, checke });
-    if (onChange) onChange(checke);
+  const handleChange = (checked) => {
+    setState({ ...state, checked });
+    if (onChange) onChange(checked);
   };
 
-  const handleChangeHot = (tag, checke) => {
+  const handleChangeHot = (tag, checked) => {
     const { selectedTags } = state;
-    const nextSelectedTags = checke ? [...selectedTags, tag] : selectedTags.filter((t) => t !== tag);
-    // console.log('You are interested in: ', nextSelectedTags);
+    const nextSelectedTags = checked ? [...selectedTags, tag] : selectedTags.filter((t) => t !== tag);
     setState({
       ...state,
       selectedTags: nextSelectedTags,
@@ -39,14 +38,14 @@ function Tag(props) {
 
   return checked ? (
     <CheckableTag props={props} checked={state.checked} onChange={handleChange} />
-  ) : hottags ? (
+  ) : hotTags ? (
     <>
       <span style={{ marginRight: 8 }}>Categories:</span>
       {tagsFromServer.map((tag) => (
         <CheckableTag
           key={tag}
           checked={selectedTags.indexOf(tag) > -1}
-          onChange={(checke) => handleChangeHot(tag, checke)}
+          onChange={(checked) => handleChangeHot(tag, checked)}
         >
           {tag}
         </CheckableTag>
@@ -68,7 +67,7 @@ Tag.propTypes = {
   color: PropTypes.string,
   checked: PropTypes.bool,
   onChange: PropTypes.func,
-  hottags: PropTypes.bool,
+  hotTags: PropTypes.bool,
   animate: PropTypes.bool,
   children: PropTypes.oneOfType([PropTypes.object, PropTypes.string, PropTypes.node]),
 };
@@ -79,7 +78,6 @@ function AnimatedTags(props) {
 
   const handleClose = (removedTag) => {
     const tags = state.tags.filter((tag) => tag !== removedTag);
-    // console.log(tags);
     setState({ tags });
     if (onChange) onChange(tags);
   };

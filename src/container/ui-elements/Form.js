@@ -14,16 +14,12 @@ const { TextArea } = Input;
 
 function Forms() {
   const [form] = Form.useForm();
-  const [state, setstate] = useState({
+  const [state, setState] = useState({
     values: {},
     cascaderItem: [],
   });
   const handleSubmit = (values) => {
-    setstate({ ...state, values });
-  };
-
-  const onChangeCascader = (value) => {
-    setstate({ ...state, cascaderItem: value });
+    setState({ ...state, values });
   };
 
   return (

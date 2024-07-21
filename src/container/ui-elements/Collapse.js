@@ -17,11 +17,11 @@ function Collapses() {
       breadcrumbName: 'Collapse',
     },
   ];
-  const [state, setstate] = useState({
+  const [state, setState] = useState({
     key: 0,
   });
   const callback = (key) => {
-    setstate({ ...state, key });
+    setState({ ...state, key });
   };
 
   const customPanelStyle = {

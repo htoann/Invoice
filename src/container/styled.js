@@ -17,34 +17,6 @@ const Main = Styled.div`
         }
     }
 
-    .doughnutchart-inner{
-        position: relative;
-        .doughnutchart-inner-text{
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            text-align: center;
-            width: 200px;
-            line-height: 1;
-            margin-bottom: 0px;
-            display: inline-block;
-            transform: translate(-50%, -50%);
-            .doughnutchart-inner-content{
-                font-size: 30px;
-                font-weight: 600;
-                line-height: 1;
-                color: ${({ theme }) => theme[theme.mainContent]['dark-text']};
-                display: block;
-            }
-            .doughnutchart-inner-label{
-                font-size: 15px;
-                color: ${({ theme }) => theme[theme.mainContent]['gray-text']};
-            }
-        }
-        canvas{
-            margin: 0 auto;
-        }
-    }
     .ant-switch{
         .anticon svg{
             color: #fff;
@@ -807,7 +779,7 @@ const Main = Styled.div`
     .ant-tag{
         margin: 5px;
     }
-    .taglist-wrap{
+    .tagList-wrap{
         margin: -5px;
         .ant-tag {
             line-height: 22px;
