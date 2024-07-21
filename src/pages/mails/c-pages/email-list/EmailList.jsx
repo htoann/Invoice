@@ -242,7 +242,7 @@ const EmailList = () => {
                   </Select>
                 </div>
                 <Button onClick={showModal} type="primary" key="1">
-                  <Link to="#">{t('Mail_EmailList_Add')}</Link>
+                  <Link to="#">+ {t('Mail_EmailList_Add')}</Link>
                 </Button>
                 {isLoadingGetList ? (
                   <Skeleton active style={{ marginTop: 30 }} />

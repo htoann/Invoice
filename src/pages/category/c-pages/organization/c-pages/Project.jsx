@@ -8,6 +8,7 @@ import { RightOutlined } from '@ant-design/icons';
 import { Col, Empty, Form, Input, Menu, notification, Skeleton } from 'antd';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import styled from 'styled-components';
 import MenuItem from '../components/MenuItem';
 
 const ProjectList = ({ list, setList, loadingList }) => {
@@ -137,11 +138,9 @@ const ProjectList = ({ list, setList, loadingList }) => {
     <Col xs={24} sm={12} md={8} lg={8}>
       <BorderLessHeading>
         <Cards title={t('Project_Title')} style={{ height: 1000 }}>
-          <Menu
+          <StyledMenu
             style={{ width: '100%', minHeight: 'calc(100vh - 290px)' }}
             mode="inline"
-            // selectedKeys={[selectedItem]}
-            // onClick={({ key }) => setSelectedItem(key)}
             itemIcon={<RightOutlined />}
           >
             {loadingList ? (
@@ -155,7 +154,7 @@ const ProjectList = ({ list, setList, loadingList }) => {
                   outlined
                   style={{ marginBottom: 10 }}
                 >
-                  {t('Project_Add')}
+                  + {t('Project_Add')}
                 </Button>
                 {list.map((project) => (
                   <Menu.Item key={project.id}>
@@ -182,7 +181,7 @@ const ProjectList = ({ list, setList, loadingList }) => {
                 </Button>
               </Empty>
             )}
-          </Menu>
+          </StyledMenu>
         </Cards>
       </BorderLessHeading>
 
@@ -196,5 +195,11 @@ const ProjectList = ({ list, setList, loadingList }) => {
     </Col>
   );
 };
+
+const StyledMenu = styled(Menu)`
+  .anticon-right {
+    display: none;
+  }
+`;
 
 export default ProjectList;
