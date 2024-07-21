@@ -1,12 +1,12 @@
+import { Cards } from '@/components/cards/frame/cards-frame';
+import { PageHeader } from '@/components/page-headers/page-headers';
+import { Main } from '@/container/styled';
 import { Col, Row, Skeleton } from 'antd';
 import { Suspense } from 'react';
-import { Cards } from '../../components/cards/frame/cards-frame';
-import { PageHeader } from '../../components/page-headers/page-headers';
-import { Main } from '../styled';
+import { useTranslation } from 'react-i18next';
 import BusinessStatus from './overview/BusinessStatus';
 import InvoicesChange from './overview/InvoicesChange';
 import OverviewDataList from './overview/OverviewDataList';
-import { useTranslation } from 'react-i18next';
 
 function Dashboard() {
   const { t } = useTranslation();

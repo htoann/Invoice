@@ -1,5 +1,4 @@
 import propTypes from 'prop-types';
-import React from 'react';
 import { useSelector } from 'react-redux';
 import { Navigate, Route, Routes } from 'react-router-dom';
 
@@ -8,13 +7,11 @@ function ProtectedRoute({ Component, path }) {
 
   return isLoggedIn ? (
     <Routes>
-      {' '}
-      <Route element={<Component />} path={path} />{' '}
+      <Route element={<Component />} path={path} />
     </Routes>
   ) : (
     <Routes>
-      {' '}
-      <Route path="/invoice-react" element={<Navigate to="/" />} />
+      <Route path="/invoice" element={<Navigate to="/" />} />
     </Routes>
   );
 }

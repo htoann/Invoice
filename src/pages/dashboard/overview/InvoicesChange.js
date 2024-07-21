@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
 import { Table } from 'antd';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Cards } from '../../../components/cards/frame/cards-frame';
-import { NewProductWrapper } from '../Style';
-import { BorderLessHeading, TableDefaultStyle } from '../../styled';
 
+import { Cards } from '@/components/cards/frame/cards-frame';
+import { BorderLessHeading, TableDefaultStyle } from '@/container/styled';
 import tableData from '@/mock/demoData/table-data.json';
+import { NewProductWrapper } from '../Style';
 
 const { newProduct } = tableData;
 
@@ -27,7 +27,6 @@ const InvoicesChange = React.memo(() => {
     productTab: 'today',
   });
 
-  /* State destructuring */
   const { productTab } = state;
 
   const newProductData = [];

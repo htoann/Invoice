@@ -1,5 +1,4 @@
 import propTypes from 'prop-types';
-import React from 'react';
 
 const SwRocket = ({ size = 16, color = '#ADB4D2', stroke = 'none', strokeWidth = 'none' }) => {
   return (
@@ -558,15 +557,15 @@ SwGraph.propTypes = types;
 SwEllipse.propTypes = types;
 
 export {
+  SwClock,
   SwEllipse,
   SwGraph,
-  SwRocket,
-  SwShieldCheck,
-  SwPenTool,
-  SwNotification,
-  SwUsers,
   SwLayers,
+  SwNotification,
+  SwPenTool,
   SwPicture,
-  SwClock,
+  SwRocket,
   SwSend,
+  SwShieldCheck,
+  SwUsers,
 };

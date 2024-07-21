@@ -23,9 +23,6 @@ const EChartCard = Styled.div`
             }
         }
     }
-    .chartjs-tooltip {
-        min-width: 132px !important;
-    }
 `;
 
 const OverviewDataStyleWrap = Styled.div`

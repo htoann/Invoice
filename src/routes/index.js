@@ -4,7 +4,7 @@ import React, { lazy, Suspense, useEffect } from 'react';
 import { Route, Routes, useLocation } from 'react-router-dom';
 import { routes } from './const';
 
-const Dashboard = lazy(() => import('@/container/dashboard'));
+const Dashboard = lazy(() => import('@/pages/dashboard'));
 const InvoiceList = lazy(() => import('@/pages/invoice/InvoiceList'));
 const SyncHistory = lazy(() => import('@/pages/mails/c-pages/sync-history/SyncHistory'));
 const Email = lazy(() => import('@/pages/mails/c-pages/inbox/Inbox'));

@@ -1,10 +1,10 @@
 import { Table } from 'antd';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { BorderLessHeading, TableDefaultStyle } from '../../styled';
 
-import tableData from '@/mock/demoData/table-data.json';
 import { Cards } from '@/components/cards/frame/cards-frame';
+import { BorderLessHeading, TableDefaultStyle } from '@/container/styled';
+import tableData from '@/mock/demoData/table-data.json';
 
 const { bestSeller } = tableData;
 
@@ -53,7 +53,7 @@ const BusinessStatus = React.memo(() => {
         sellerName: (
           <div className="invoice-info-element align-center-v">
             <div className="invoice-info-element__media">
-              <img src={require(`../../../static/img/sellers/${img}`)} alt="invoice Product" />
+              <img src={require(`@/static/img/sellers/${img}`)} alt="invoice Product" />
             </div>
             <div className="invoice-info-element__content">
               <span className="invoice-info-element__text">{name}</span>

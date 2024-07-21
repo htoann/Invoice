@@ -1,9 +1,9 @@
+import { Col, Row } from 'antd';
 import React from 'react';
-import { Row, Col } from 'antd';
-import OverviewCard from '../../../components/cards/OverviewCard';
-import { OverviewDataStyleWrap } from '../Style';
 
+import OverviewCard from '@/components/cards/OverviewCard';
 import OverviewData from '@/mock/demoData/overviewData.json';
+import { OverviewDataStyleWrap } from '../Style';
 
 const OverviewDataList = React.memo(() => {
   const OverviewDataSorted = OverviewData.slice(Math.max(OverviewData.length - 4, 1));
