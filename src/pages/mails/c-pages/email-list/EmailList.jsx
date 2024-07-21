@@ -14,7 +14,7 @@ import DataTable from './components/DataTable';
 import UpdateAccount from './components/UpdateAccount';
 import { useTranslation } from 'react-i18next';
 
-export const EmailList = () => {
+const EmailList = () => {
   const { t } = useTranslation();
 
   const [state, setState] = useState({
@@ -273,3 +273,5 @@ export const EmailList = () => {
     </>
   );
 };
+
+export default EmailList;

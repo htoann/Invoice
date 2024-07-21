@@ -8,7 +8,7 @@ import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import DataTable from './components/DataTable';
 
-export const SyncHistory = () => {
+const SyncHistory = () => {
   const { t } = useTranslation();
 
   const [state, setState] = useState({
@@ -217,3 +217,5 @@ export const SyncHistory = () => {
     </>
   );
 };
+
+export default SyncHistory;

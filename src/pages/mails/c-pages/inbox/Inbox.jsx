@@ -17,7 +17,7 @@ function Email() {
 
   const pageRoutes = [
     {
-      path: routes.email,
+      path: routes.emailAccount,
       breadcrumbName: t('Common_Mail'),
     },
     {

@@ -6,7 +6,6 @@ export const routes = {
   emailInbox: '/hop-thu/hop-thu-den',
   emailSync: '/hop-thu/dong-bo',
 
-  category: '/danh-muc',
   categoryProduct: '/danh-muc/hang-hoa',
   categoryOrg: '/danh-muc/co-cau-to-chuc',
 };

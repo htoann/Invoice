@@ -63,12 +63,12 @@ export const TopMenu = () => {
           </li>
 
           <li className="has-subMenu">
-            <Link to={routes.email} className="parent">
+            <Link to={routes.emailAccount} className="parent">
               {t('Common_Inbox')}
             </Link>
             <ul className="subMenu">
               <li>
-                <Link to={routes.email}>{t('Mail_EmailList_Title')}</Link>
+                <Link to={routes.emailAccount}>{t('Mail_EmailList_Title')}</Link>
               </li>
               <li>
                 <Link to={routes.emailInbox}>{t('Common_Inbox')}</Link>

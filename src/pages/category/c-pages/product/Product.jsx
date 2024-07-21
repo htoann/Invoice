@@ -12,7 +12,7 @@ import CreateProduct from './components/CreateProduct';
 import DataTable from './components/DataTable';
 import EditProduct from './components/EditProduct';
 
-export const Product = () => {
+const Product = () => {
   const { t } = useTranslation();
 
   const [state, setState] = useState({
@@ -256,3 +256,5 @@ export const Product = () => {
     </>
   );
 };
+
+export default Product;

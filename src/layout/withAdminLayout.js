@@ -16,7 +16,7 @@ const { theme } = require('../config/theme/themeVariables');
 
 const { Header, Sider, Content } = Layout;
 
-const ThemeLayout = (WrappedComponent) => {
+const WithAdminLayout = (WrappedComponent) => {
   class LayoutComponent extends Component {
     constructor(props) {
       super(props);
@@ -239,4 +239,4 @@ const ThemeLayout = (WrappedComponent) => {
   return connect(mapStateToProps)(LayoutComponent);
 };
 
-export default ThemeLayout;
+export default WithAdminLayout;

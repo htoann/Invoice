@@ -2,7 +2,7 @@ import { Spin } from 'antd';
 import { Suspense } from 'react';
 import { AuthenticationWrap } from './overview/style';
 
-const AuthLayout = (WraperContent) => {
+const AuthLayout = (WrapperContent) => {
   return function () {
     return (
       <Suspense
@@ -17,7 +17,7 @@ const AuthLayout = (WraperContent) => {
             <div className="invoice-authentication-brand">
               <img src={require(`../../../static/img/logo_dark.png`)} alt="" />
             </div>
-            <WraperContent />
+            <WrapperContent />
           </div>
         </AuthenticationWrap>
       </Suspense>
