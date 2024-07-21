@@ -7,7 +7,6 @@
       "@/components/*": ["./components/*"],
       "@/config/*": ["./config/*"],
       "@/container/*": ["./container/*"],
-      "@/demoData/*": ["./demoData/*"],
       "@/i18n/*": ["./i18n/*"],
       "@/layout/*": ["./layout/*"],
       "@/pages/*": ["./pages/*"],
