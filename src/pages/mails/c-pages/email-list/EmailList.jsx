@@ -222,30 +222,28 @@ const EmailList = () => {
           <Col xs={24}>
             <BorderLessHeading>
               <Cards>
-                <div style={{ display: 'flex', gap: 20, flexWrap: 'auto' }}>
-                  <Button onClick={showModal} type="primary" key="1">
-                    <Link to="#">{t('Mail_EmailList_Add')}</Link>
-                  </Button>
-                  <div style={{ display: 'flex', gap: 2, flexWrap: 'auto', alignItems: 'center' }}>
-                    <span className="label">{t('Common_SelectDepartment')}</span>
-                    <Select
-                      popupClassName="dropdown-select"
-                      loading={loadingDepartments}
-                      disabled={loadingDepartments}
-                      onChange={handleSelectDepartment}
-                      style={{ width: 200, marginLeft: 10 }}
-                      defaultValue=""
-                    >
-                      <Select.Option value="">{t('Common_All')}</Select.Option>
-                      {departments?.length > 0 &&
-                        departments.map((item) => (
-                          <Select.Option key={item.id} value={item.id}>
-                            {item.name}
-                          </Select.Option>
-                        ))}
-                    </Select>
-                  </div>
+                <div style={{ display: 'flex', gap: 2, flexWrap: 'auto', alignItems: 'center', marginBottom: 20 }}>
+                  <span className="label">{t('Common_SelectDepartment')}</span>
+                  <Select
+                    popupClassName="dropdown-select"
+                    loading={loadingDepartments}
+                    disabled={loadingDepartments}
+                    onChange={handleSelectDepartment}
+                    style={{ width: 200, marginLeft: 10 }}
+                    defaultValue=""
+                  >
+                    <Select.Option value="">{t('Common_All')}</Select.Option>
+                    {departments?.length > 0 &&
+                      departments.map((item) => (
+                        <Select.Option key={item.id} value={item.id}>
+                          {item.name}
+                        </Select.Option>
+                      ))}
+                  </Select>
                 </div>
+                <Button onClick={showModal} type="primary" key="1">
+                  <Link to="#">{t('Mail_EmailList_Add')}</Link>
+                </Button>
                 {isLoadingGetList ? (
                   <Skeleton active style={{ marginTop: 30 }} />
                 ) : (

@@ -1,6 +1,5 @@
 import * as Unicons from '@iconscout/react-unicons';
 import PropTypes from 'prop-types';
-import React from 'react';
 import { Child, TabBasic } from './style';
 
 function Tab(props) {

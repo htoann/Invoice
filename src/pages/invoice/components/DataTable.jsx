@@ -4,7 +4,7 @@ import { TableWrapper } from '@/container/styled';
 import { downloadFile, formatTime } from '@/utils/index';
 import { DownloadOutlined } from '@ant-design/icons';
 import { UilSearch } from '@iconscout/react-unicons';
-import { DatePicker, Select, Table } from 'antd';
+import { DatePicker, Select, Space, Table } from 'antd';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -62,20 +62,20 @@ function DataTable({ loading, tableData, columns, state, setState, getInvoiceLis
   return (
     <DataTableStyleWrap>
       <div className="invoice-datatable-filter">
+        <Space className="invoice-datatable-filter__input mb-20">
+          <span className="label">{t('Invoice_InvoiceType')}</span>
+          <Select
+            popupClassName="dropdown-select"
+            onChange={handleLoaiHoaDonSearch}
+            style={{ width: 200 }}
+            defaultValue="purchase"
+          >
+            <Select.Option value="purchase">{t('Common_Purchase')}</Select.Option>
+            <Select.Option value="sold">{t('Common_Sold')}</Select.Option>
+          </Select>
+        </Space>
         <div style={{ justifyContent: 'space-between', display: 'flex', alignItems: 'center', flexWrap: 'wrap' }}>
           <div className="invoice-datatable-filter__left">
-            <div className="invoice-datatable-filter__input">
-              <span className="label">{t('Invoice_InvoiceType')}</span>
-              <Select
-                popupClassName="dropdown-select"
-                onChange={handleLoaiHoaDonSearch}
-                style={{ width: 200 }}
-                defaultValue="purchase"
-              >
-                <Select.Option value="purchase">{t('Common_Purchase')}</Select.Option>
-                <Select.Option value="sold">{t('Common_Sold')}</Select.Option>
-              </Select>
-            </div>
             <div className="invoice-datatable-filter__input">
               <span className="label">{t('Invoice_StartDate')}</span>
               <DatePicker
