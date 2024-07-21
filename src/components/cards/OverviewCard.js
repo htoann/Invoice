@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { Card } from 'antd';
 import propTypes from 'prop-types';
 import { useEffect, useState } from 'react';
