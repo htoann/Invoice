@@ -1,6 +1,5 @@
-/* eslint-disable react/forbid-prop-types */
 import PropTypes from 'prop-types';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { CheckboxStyle } from './style';
 
 const CheckboxGroup = CheckboxStyle.Group;
@@ -12,7 +11,7 @@ const Checkbox = (props) => {
     checked = false,
     multiple,
     onChange,
-    onChangeTriger,
+    onChangeTrigger,
     defaultChecked,
     disabled,
     children,
@@ -33,8 +32,8 @@ const Checkbox = (props) => {
   };
 
   useEffect(() => {
-    if (onChangeTriger) {
-      onChangeTriger(state.checkedList);
+    if (onChangeTrigger) {
+      onChangeTrigger(state.checkedList);
     }
     // eslint-disable-next-line
   }, [state]);
@@ -73,7 +72,7 @@ Checkbox.propTypes = {
   defaultSelect: PropTypes.array,
   multiple: PropTypes.bool,
   onChange: PropTypes.func,
-  onChangeTriger: PropTypes.func,
+  onChangeTrigger: PropTypes.func,
   defaultChecked: PropTypes.bool,
   disabled: PropTypes.bool,
   checked: PropTypes.bool,

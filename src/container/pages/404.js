@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
 import { Spin } from 'antd';
+import { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import { ErrorWrapper } from './style';
-import { Main } from '../styled';
-import Heading from '../../components/heading/heading';
 import { Button } from '../../components/buttons/buttons';
+import Heading from '../../components/heading/heading';
+import { Main } from '../styled';
+import { ErrorWrapper } from './style';
 
 function NotFound() {
   const [state, setState] = useState({

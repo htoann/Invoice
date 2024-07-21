@@ -48,7 +48,7 @@ function Checkboxs() {
             <Cards title="Check all">
               <Checkbox
                 multiple
-                onChangeTriger={multipleChange}
+                onChangeTrigger={multipleChange}
                 item={['Apple', 'Pear', 'Orange']}
                 defaultSelect={['Pear']}
               />

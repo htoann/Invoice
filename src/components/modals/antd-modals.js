@@ -1,7 +1,6 @@
 import PropTypes, { object } from 'prop-types';
-import React from 'react';
-import { ModalStyled } from './styled';
 import { Button } from '../buttons/buttons';
+import { ModalStyled } from './styled';
 
 const Modal = (props) => {
   const { onCancel, className = 'atbd-modal', onOk, open, title, type, color, footer, width = 620, children } = props;
@@ -47,4 +46,4 @@ Modal.propTypes = {
 };
 
 const alertModal = ModalStyled;
-export { Modal, alertModal };
+export { alertModal, Modal };
