@@ -1,5 +1,6 @@
 import { Cards } from '@/components/cards/frame/cards-frame';
 import { PageHeader } from '@/components/page-headers/page-headers';
+import { Tag } from '@/components/tags/tags';
 import { BorderLessHeading, Main } from '@/container/styled';
 import axios from '@/mock/index';
 import { Col, Input, Row, Select, Skeleton } from 'antd';
@@ -85,7 +86,11 @@ const SyncHistory = () => {
       id,
       time: <span>{time}</span>,
       query: <span>{query}</span>,
-      status: <span>{status === 1 ? t('Common_Success') : t('Common_Failure')}</span>,
+      status: (
+        <Tag color={status === 1 ? '#01b81a' : '#f5222d'}>
+          {status === 1 ? t('Common_Success') : t('Common_Failure')}
+        </Tag>
+      ),
       note: <span>{note}</span>,
       totalInvoice: <span>{totalInvoice}</span>,
       newInvoice: <span>{newInvoice}</span>,

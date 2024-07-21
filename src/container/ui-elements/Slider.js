@@ -16,7 +16,7 @@ function Sliders() {
       breadcrumbName: 'Sliders',
     },
   ];
-  const [state, setstate] = useState({
+  const [state, setState] = useState({
     onChangeValue: null,
     afterChangeValue: null,
   });
@@ -33,11 +33,11 @@ function Sliders() {
   };
 
   const onChange = (value) => {
-    setstate({ ...state, onChangeValue: value });
+    setState({ ...state, onChangeValue: value });
   };
 
   const onAfterChange = (value) => {
-    setstate({ ...state, afterChangeValue: value });
+    setState({ ...state, afterChangeValue: value });
   };
 
   const style = {

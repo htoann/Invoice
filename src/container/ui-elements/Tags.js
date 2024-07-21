@@ -16,15 +16,15 @@ function Tags() {
       breadcrumbName: 'Tags',
     },
   ];
-  const [state, setstate] = useState({
-    checke: null,
+  const [state, setState] = useState({
+    checked: null,
   });
   const log = () => {
     // console.log(e);
   };
 
-  const checked = (checke) => {
-    setstate({ ...state, checke });
+  const checked = (checked) => {
+    setState({ ...state, checked });
   };
 
   const preventDefault = () => {
@@ -38,7 +38,7 @@ function Tags() {
         <Row gutter={25}>
           <Col md={12} xs={24}>
             <Cards title="Basic" caption="The simplest use of tags">
-              <div className="taglist-wrap">
+              <div className="tagList-wrap">
                 <Tag>Tag 1</Tag>
                 <Tag>
                   <a href="https://demo.dashboardmarket.com/invoice-react">Link</a>
@@ -52,13 +52,13 @@ function Tags() {
               </div>
             </Cards>
             <Cards title="Hot Tag" caption="The simplest use of tags">
-              <Tag hottags onChange={checked} data={['Movies', 'Books', 'Music', 'Sports']} />
+              <Tag hotTags onChange={checked} data={['Movies', 'Books', 'Music', 'Sports']} />
             </Cards>
           </Col>
           <Col md={12} xs={24}>
             <Cards title="Colorful Tag" caption="The simplest use of tags">
               <h4 style={{ marginBottom: 16 }}>Presets:</h4>
-              <div className="taglist-wrap">
+              <div className="tagList-wrap">
                 <Tag color="magenta">magenta</Tag>
                 <Tag color="red">red</Tag>
                 <Tag color="volcano">volcano</Tag>
@@ -68,11 +68,10 @@ function Tags() {
                 <Tag color="green">green</Tag>
                 <Tag color="cyan">cyan</Tag>
                 <Tag color="blue">blue</Tag>
-                <Tag color="geekblue">geekblue</Tag>
                 <Tag color="purple">purple</Tag>
               </div>
               <h4 style={{ margin: '16px 0' }}>Custom:</h4>
-              <div className="taglist-wrap">
+              <div className="tagList-wrap">
                 <Tag color="#f50">#f50</Tag>
                 <Tag color="#2db7f5">#2db7f5</Tag>
                 <Tag color="#87d068">#87d068</Tag>
