@@ -3167,7 +3167,7 @@ html[dir='rtl'] .dark-mode .invoice-navbar-menu {
   padding-left: 0 !important;
   width: -webkit-fill-available;
   align-items: center;
-  text-transform: capitalize;
+  text-transform: none !important;
   font-size: 14px;
   font-weight: 500;
   position: relative;
