@@ -2,6 +2,7 @@
 import { Card } from 'antd';
 import propTypes from 'prop-types';
 import { useEffect, useState } from 'react';
+import CountUp from 'react-countup';
 import { useLocation } from 'react-router-dom';
 import { OverviewCardWrap } from './Style';
 
@@ -43,9 +44,33 @@ const OverviewCard = ({
               {halfCircleIcon ? (
                 <>
                   <span className="invoice-overview-label">{label}</span>
+                  <h4 className="invoice-overview-total">
+                    <CountUp
+                      start={0}
+                      end={didViewCountUp ? totalNumber : 0}
+                      suffix={suffix}
+                      prefix={prefix}
+                      delay={0.5}
+                      decimals={decimals}
+                      separator={separator}
+                      duration={2}
+                    />
+                  </h4>
                 </>
               ) : (
                 <>
+                  <h4 className="invoice-overview-total">
+                    <CountUp
+                      start={0}
+                      end={didViewCountUp ? totalNumber : 0}
+                      suffix={suffix}
+                      prefix={prefix}
+                      delay={0.5}
+                      decimals={decimals}
+                      separator={separator}
+                      duration={2}
+                    />
+                  </h4>
                   <span className="invoice-overview-label">{label}</span>
                 </>
               )}
