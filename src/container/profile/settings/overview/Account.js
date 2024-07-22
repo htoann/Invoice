@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
-import { Row, Col, Form, Input } from 'antd';
-import { AccountWrapper } from './style';
-import { Cards } from '@/components/cards/frame/cards-frame';
 import { Button } from '@/components/buttons/buttons';
-import { BasicFormWrapper } from '../../../styled';
+import { Cards } from '@/components/cards/frame/cards-frame';
 import Heading from '@/components/heading/heading';
+import { BasicFormWrapper } from '@/container/styled';
+import { Col, Form, Input, Row } from 'antd';
+import { useState } from 'react';
+import { AccountWrapper } from './style';
 
 function Account() {
   const [form] = Form.useForm();

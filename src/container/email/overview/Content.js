@@ -11,10 +11,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import FontAwesome from 'react-fontawesome';
 import { Style, EmailAuthor, EmailHeader } from './style';
 import Topbar from './Topbar';
-import { AutoComplete } from '../../../components/autoComplete/autoComplete';
-import Heading from '../../../components/heading/heading';
-import { textRefactor } from '../../../components/utilities/utilities';
-import { Dropdown } from '../../../components/dropdown/dropdown';
+import { AutoComplete } from '@/components/autoComplete/autoComplete';
+import Heading from '@/components/heading/heading';
+import { textRefactor } from '@/components/utilities/utilities';
+import { Dropdown } from '@/components/dropdown/dropdown';
 
 function Content({ searchData, email }) {
   const dispatch = useDispatch();

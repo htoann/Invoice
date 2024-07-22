@@ -71,7 +71,7 @@ const SampleCardFive = ({
         <p>{content}</p>
         <div className="feedbackSection">
           <div className="author">
-            <img src={require(`../../../${auth}`)} alt="" />
+            <img src={require(`@/${auth}`)} alt="" />
             <span>Burns Marks</span>
           </div>
         </div>

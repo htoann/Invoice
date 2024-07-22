@@ -1,8 +1,8 @@
 import { Col, Row, Skeleton } from 'antd';
 import { lazy, Suspense } from 'react';
 import { NavLink, Route, Routes } from 'react-router-dom';
-import { Cards } from '../../../components/cards/frame/cards-frame';
-import { PageHeader } from '../../../components/page-headers/page-headers';
+import { Cards } from '@/components/cards/frame/cards-frame';
+import { PageHeader } from '@/components/page-headers/page-headers';
 import { Main } from '../../styled';
 import { SettingWrapper } from './overview/Style';
 

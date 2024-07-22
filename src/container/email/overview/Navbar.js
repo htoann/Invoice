@@ -11,8 +11,8 @@ import UilTrashAlt from '@iconscout/react-unicons/icons/uil-trash-alt';
 import UilListUl from '@iconscout/react-unicons/icons/uil-list-ul';
 import propTypes from 'prop-types';
 import { EmailNav } from './style';
-import { Button } from '../../../components/buttons/buttons';
-import Title from '../../../components/heading/heading';
+import { Button } from '@/components/buttons/buttons';
+import Title from '@/components/heading/heading';
 
 const EmailNavbar = React.memo(({ toggleCollapsed }) => {
   const [state, setState] = useState({

@@ -20,9 +20,9 @@ import React, { Suspense } from 'react';
 import FontAwesome from 'react-fontawesome';
 import { useSelector } from 'react-redux';
 import { Link, NavLink, Route, Routes, useNavigate } from 'react-router-dom';
-import { Cards } from '../../../components/cards/frame/cards-frame';
-import { Dropdown } from '../../../components/dropdown/dropdown';
-import Heading from '../../../components/heading/heading';
+import { Cards } from '@/components/cards/frame/cards-frame';
+import { Dropdown } from '@/components/dropdown/dropdown';
+import Heading from '@/components/heading/heading';
 import { MailDetailsWrapper, MailRightAction, MessageAction, MessageDetails, MessageReply, ReplyList } from './style';
 
 function Single() {

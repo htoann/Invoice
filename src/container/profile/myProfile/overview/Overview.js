@@ -1,17 +1,16 @@
-import React from 'react';
-import { Row, Col, Table } from 'antd';
-import UilTimes from '@iconscout/react-unicons/icons/uil-times';
-import UilArrowUp from '@iconscout/react-unicons/icons/uil-arrow-up';
-import UilArrowDown from '@iconscout/react-unicons/icons/uil-arrow-down';
-import UilPrint from '@iconscout/react-unicons/icons/uil-print';
-import UilBookOpen from '@iconscout/react-unicons/icons/uil-book-open';
-import UilFileAlt from '@iconscout/react-unicons/icons/uil-file-alt';
-import UilFile from '@iconscout/react-unicons/icons/uil-file';
-import { NavLink } from 'react-router-dom';
-import { ProductOverviewTable } from './Style';
 import { Cards } from '@/components/cards/frame/cards-frame';
 import Heading from '@/components/heading/heading';
-import { CardBarChart2, EChartCard } from '../../../dashboard/Style';
+import { CardBarChart2, EChartCard } from '@/pages/dashboard/Style';
+import UilArrowDown from '@iconscout/react-unicons/icons/uil-arrow-down';
+import UilArrowUp from '@iconscout/react-unicons/icons/uil-arrow-up';
+import UilBookOpen from '@iconscout/react-unicons/icons/uil-book-open';
+import UilFile from '@iconscout/react-unicons/icons/uil-file';
+import UilFileAlt from '@iconscout/react-unicons/icons/uil-file-alt';
+import UilPrint from '@iconscout/react-unicons/icons/uil-print';
+import UilTimes from '@iconscout/react-unicons/icons/uil-times';
+import { Col, Row, Table } from 'antd';
+import { NavLink } from 'react-router-dom';
+import { ProductOverviewTable } from './Style';
 
 const moreContent = (
   <>
