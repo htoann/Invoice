@@ -65,7 +65,7 @@
     "core-js-pure": "^3.37.1",
     "craco-less": "^3.0.1",
     "eslint": "^8.22.0",
-    "eslint-config-prettier": "^8.5.0",
+    "eslint-config-prettier": "^9.1.0",
     "eslint-import-resolver-alias": "^1.1.2",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-prettier": "^4.2.1",
