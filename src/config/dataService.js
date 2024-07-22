@@ -1,12 +1,12 @@
+import { getCookie } from '@/utils/cookie';
 import axios from 'axios';
-import { getItem } from '../utils/localStorageControl';
 
 const API_ENDPOINT = process.env.REACT_APP_API_ENDPOINT;
 
 const authHeader = () => {
-  if (getItem('access_token')) {
+  if (getCookie('access_token')) {
     return {
-      Authorization: `Bearer ${getItem('access_token')}`,
+      Authorization: `Bearer ${getCookie('access_token')}`,
     };
   }
 

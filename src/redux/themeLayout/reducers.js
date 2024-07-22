@@ -32,13 +32,11 @@ const LayoutChangeReducer = (state = initialState, action) => {
     case CHANGE_LAYOUT_MODE_BEGIN:
       return {
         ...state,
-        loading: true,
       };
     case CHANGE_LAYOUT_MODE_SUCCESS:
       return {
         ...state,
         mode: data,
-        loading: false,
       };
     case CHANGE_LAYOUT_MODE_ERR:
       return {
@@ -50,36 +48,30 @@ const LayoutChangeReducer = (state = initialState, action) => {
     case CHANGE_RTL_MODE_BEGIN:
       return {
         ...state,
-        rtlLoading: true,
       };
     case CHANGE_RTL_MODE_SUCCESS:
       return {
         ...state,
         rtlData: data,
-        rtlLoading: false,
       };
     case CHANGE_RTL_MODE_ERR:
       return {
         ...state,
         error: err,
-        rtlLoading: false,
       };
     case CHANGE_MENU_MODE_BEGIN:
       return {
         ...state,
-        menuLoading: true,
       };
     case CHANGE_MENU_MODE_SUCCESS:
       return {
         ...state,
         topMenu: data,
-        menuLoading: false,
       };
     case CHANGE_MENU_MODE_ERR:
       return {
         ...state,
         error: err,
-        menuLoading: false,
       };
     default:
       return state;

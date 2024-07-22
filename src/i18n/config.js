@@ -1,10 +1,10 @@
-import { getItem } from '@/utils/localStorageControl';
+import { getLocalStorage } from '@/utils/localStorage';
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 
 i18n.use(initReactI18next).init({
   fallbackLng: 'vi',
-  lng: getItem('lang') || 'vi',
+  lng: getLocalStorage('lang') || 'vi',
   resources: {
     vi: {
       translations: require('./vi.json'),

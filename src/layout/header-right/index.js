@@ -12,13 +12,13 @@ import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { InfoWrapper, NavAuth, UserDropDown } from './Style';
 
+import Heading from '@/components/heading/heading';
+import { Popover } from '@/components/popup/popup';
 import { logOut } from '@/redux/authentication/actionCreator';
 import EngImg from '@/static/img/flag/en.png';
 import VieImg from '@/static/img/flag/vi.png';
-import { setItem } from '@/utils/localStorageControl';
+import { setLocalStorage } from '@/utils/localStorage';
 import { useTranslation } from 'react-i18next';
-import Heading from '@/components/heading/heading';
-import { Popover } from '@/components/popup/popup';
 import Customizer from './Customizer';
 
 const AuthInfo = React.memo(() => {
@@ -86,7 +86,7 @@ const AuthInfo = React.memo(() => {
       flag: value,
     });
     i18n.changeLanguage(value);
-    setItem('lang', value);
+    setLocalStorage('lang', value);
   };
 
   const country = (
