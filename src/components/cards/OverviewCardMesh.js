@@ -31,7 +31,7 @@ function OverviewCardMesh({ data, circleIcon }) {
           </div>
           <div className="invoice-overview-card__right">
             <div className="invoice-overview-card__right--content">
-              <span className="ninjadahs-overview-label">{label}</span>
+              <span className="invoice-overview-label">{label}</span>
             </div>
             <span className={`invoice-overview-status invoice-status-${status}`}>
               <span className="invoice-status-rate">

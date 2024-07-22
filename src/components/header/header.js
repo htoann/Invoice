@@ -1,8 +1,7 @@
 import PropTypes from 'prop-types';
-import React from 'react';
 import { ThemeProvider } from 'styled-components';
-import { H1 } from './style';
 import config from '../../config/config';
+import { H1 } from './style';
 
 const { theme } = config;
 

@@ -64,7 +64,7 @@ const OverviewCardWrap = Styled.div`
                         }
                     }
                     .invoice-overview-card__top--content{
-                        .ninjadahs-overview-label{
+                        .invoice-overview-label{
                             display: block;
                             margin-bottom: 4px;
                             font-size: 15px;
@@ -156,7 +156,7 @@ const OverviewCardWrap = Styled.div`
                             font-size: 20px;
                         }
                     }
-                    .ninjadahs-overview-label{
+                    .invoice-overview-label{
                         font-size: 15px;
                         font-weight: 400;
                         color: ${({ theme }) => theme[theme.mainContent]['gray-text']};
@@ -443,7 +443,7 @@ const OverviewCardMeshWrap = Styled.div`
                         font-size: 20px;
                     }
                 }
-                .ninjadahs-overview-label{
+                .invoice-overview-label{
                     font-size: 16px;
                     color: ${({ theme }) => theme[theme.mainContent]['gray-text']}
                 }

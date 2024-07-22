@@ -42,11 +42,11 @@ const OverviewCard = ({
             >
               {halfCircleIcon ? (
                 <>
-                  <span className="ninjadahs-overview-label">{label}</span>
+                  <span className="invoice-overview-label">{label}</span>
                 </>
               ) : (
                 <>
-                  <span className="ninjadahs-overview-label">{label}</span>
+                  <span className="invoice-overview-label">{label}</span>
                 </>
               )}
             </div>
