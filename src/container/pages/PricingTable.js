@@ -1,12 +1,11 @@
-import React from 'react';
-import { Row, Col } from 'antd';
-import { PricingCard, ListGroup, Badge } from './style';
-import { PageHeader } from '@/components/page-headers/page-headers';
-import { Main } from '../styled';
-import Heading from '@/components/heading/heading';
-import { List } from '@/components/pricing/pricing';
 import { Button } from '@/components/buttons/buttons';
 import { Cards } from '@/components/cards/frame/cards-frame';
+import Heading from '@/components/heading/heading';
+import { PageHeader } from '@/components/page-headers/page-headers';
+import { List } from '@/components/pricing/pricing';
+import { Col, Row } from 'antd';
+import { Main } from '../styled';
+import { Badge, ListGroup, PricingCard } from './style';
 
 function PricingTable() {
   const PageRoutes = [

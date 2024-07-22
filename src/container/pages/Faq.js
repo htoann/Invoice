@@ -1,16 +1,15 @@
-import React from 'react';
-import { Row, Col, Collapse } from 'antd';
-import { Link } from 'react-router-dom';
-import UilPlus from '@iconscout/react-unicons/icons/uil-plus';
-import UilMinus from '@iconscout/react-unicons/icons/uil-minus';
-import UilSmile from '@iconscout/react-unicons/icons/uil-smile';
-import UilFrown from '@iconscout/react-unicons/icons/uil-frown';
-import { Badge, FaqCategoryBox, FaqSupportBox, FaqWrapper } from './style';
-import { PageHeader } from '@/components/page-headers/page-headers';
-import { Main } from '../styled';
+import { Button } from '@/components/buttons/buttons';
 import { Cards } from '@/components/cards/frame/cards-frame';
 import Heading from '@/components/heading/heading';
-import { Button } from '@/components/buttons/buttons';
+import { PageHeader } from '@/components/page-headers/page-headers';
+import UilFrown from '@iconscout/react-unicons/icons/uil-frown';
+import UilMinus from '@iconscout/react-unicons/icons/uil-minus';
+import UilPlus from '@iconscout/react-unicons/icons/uil-plus';
+import UilSmile from '@iconscout/react-unicons/icons/uil-smile';
+import { Col, Collapse, Row } from 'antd';
+import { Link } from 'react-router-dom';
+import { Main } from '../styled';
+import { Badge, FaqCategoryBox, FaqSupportBox, FaqWrapper } from './style';
 
 const { Panel } = Collapse;
 
