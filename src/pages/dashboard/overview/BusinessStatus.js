@@ -47,13 +47,13 @@ const BusinessStatus = React.memo(() => {
 
   if (bestSeller !== null) {
     bestSeller[sellerTab].map((value) => {
-      const { key, img, name, company, product, revenue, status } = value;
+      const { key, name, company, product, revenue, status } = value;
       return bestSellerData.push({
         key,
         sellerName: (
           <div className="invoice-info-element align-center-v">
             <div className="invoice-info-element__media">
-              <img src={require(`@/static/img/sellers/${img}`)} alt="invoice Product" />
+              <img src={require(`@/static/img/corporate.png`)} alt="invoice Product" />
             </div>
             <div className="invoice-info-element__content">
               <span className="invoice-info-element__text">{name}</span>
