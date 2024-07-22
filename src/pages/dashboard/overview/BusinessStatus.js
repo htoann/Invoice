@@ -1,6 +1,5 @@
 import { Table } from 'antd';
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react';
 
 import { Cards } from '@/components/cards/frame/cards-frame';
 import { BorderLessHeading, TableDefaultStyle } from '@/container/styled';
@@ -37,16 +36,10 @@ const sellerColumns = [
 ];
 
 const BusinessStatus = React.memo(() => {
-  const [state, setState] = useState({
-    sellerTab: 'today',
-  });
-
-  const { sellerTab } = state;
-
   const bestSellerData = [];
 
   if (bestSeller !== null) {
-    bestSeller[sellerTab].map((value) => {
+    bestSeller['today'].map((value) => {
       const { key, name, company, product, revenue, status } = value;
       return bestSellerData.push({
         key,
@@ -68,42 +61,10 @@ const BusinessStatus = React.memo(() => {
     });
   }
 
-  const handleTabChange = (value, event) => {
-    event.preventDefault();
-    setState({
-      ...state,
-      sellerTab: value,
-    });
-  };
-
   return (
     <div className="full-width-table">
       <BorderLessHeading>
-        <Cards
-          isButton={
-            <div className="invoice-card-nav">
-              <ul>
-                <li className={sellerTab === 'today' ? 'invoice-active' : 'invoice-today'}>
-                  <Link onClick={(e) => handleTabChange('today', e)} to="#">
-                    Today
-                  </Link>
-                </li>
-                <li className={sellerTab === 'week' ? 'invoice-active' : 'invoice-week'}>
-                  <Link onClick={(e) => handleTabChange('week', e)} to="#">
-                    Week
-                  </Link>
-                </li>
-                <li className={sellerTab === 'month' ? 'invoice-active' : 'invoice-month'}>
-                  <Link onClick={(e) => handleTabChange('month', e)} to="#">
-                    Month
-                  </Link>
-                </li>
-              </ul>
-            </div>
-          }
-          title="Trạng thái doanh nghiệp"
-          size="large"
-        >
+        <Cards title="Trạng thái doanh nghiệp" size="large">
           <TableDefaultStyle className="invoice-having-header-bg">
             <div className="table-responsive">
               <Table columns={sellerColumns} dataSource={bestSellerData} pagination={false} />
