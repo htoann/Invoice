@@ -25,7 +25,7 @@ export const LeftMenu = ({ toggleCollapsed }) => {
 
   const { topMenu } = useSelector((state) => {
     return {
-      topMenu: state.ChangeLayoutMode.topMenu,
+      topMenu: state.changeLayoutMode.topMenu,
     };
   });
 

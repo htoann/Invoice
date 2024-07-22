@@ -20,7 +20,7 @@ function Content({ searchData, email }) {
   const dispatch = useDispatch();
   const { rtl } = useSelector((state) => {
     return {
-      rtl: state.ChangeLayoutMode.rtlData,
+      rtl: state.changeLayoutMode.rtlData,
     };
   });
 

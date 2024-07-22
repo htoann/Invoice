@@ -13,7 +13,7 @@ function ComingSoon() {
 
   const { mainContent } = useSelector((state) => {
     return {
-      mainContent: state.ChangeLayoutMode.mode,
+      mainContent: state.changeLayoutMode.mode,
     };
   });
 

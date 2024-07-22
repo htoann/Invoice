@@ -19,7 +19,7 @@ function ProgressBar() {
       breadcrumbName: 'Progress Bar',
     },
   ];
-  const rtl = useSelector((state) => state.ChangeLayoutMode.rtlData);
+  const rtl = useSelector((state) => state.changeLayoutMode.rtlData);
   const [state, setState] = useState({
     percent: 0,
   });

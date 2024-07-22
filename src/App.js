@@ -24,9 +24,9 @@ function ProviderConfig() {
 
   const { rtl, isLoggedIn, topMenu, mainContent } = useSelector((state) => {
     return {
-      rtl: state.ChangeLayoutMode.rtlData,
-      topMenu: state.ChangeLayoutMode.topMenu,
-      mainContent: state.ChangeLayoutMode.mode,
+      rtl: state.changeLayoutMode.rtlData,
+      topMenu: state.changeLayoutMode.topMenu,
+      mainContent: state.changeLayoutMode.mode,
       isLoggedIn: state.auth.login,
     };
   });

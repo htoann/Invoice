@@ -18,7 +18,7 @@ const Cards = (props) => {
     bodyStyle,
     headStyle,
     border = false,
-    bodyPadding,
+    bodypadding,
     className,
   } = props;
   return (
@@ -31,7 +31,7 @@ const Cards = (props) => {
           headStyle={headStyle && headStyle}
           bordered={border}
           className={className}
-          bodyPadding={bodyPadding && bodyPadding}
+          bodypadding={bodypadding && bodypadding}
           extra={
             <>
               {more && (
@@ -51,7 +51,7 @@ const Cards = (props) => {
         </CardFrame>
       ) : (
         <CardFrame
-          bodyPadding={bodyPadding && bodyPadding}
+          bodypadding={bodypadding && bodypadding}
           bodyStyle={bodyStyle && bodyStyle}
           size={size}
           style={{ width: '100%' }}
@@ -77,7 +77,7 @@ Cards.propTypes = {
   headless: PropTypes.bool,
   border: PropTypes.bool,
   caption: PropTypes.string,
-  bodyPadding: PropTypes.string,
+  bodypadding: PropTypes.string,
   className: PropTypes.string,
   moreText: PropTypes.bool,
   children: PropTypes.oneOfType([PropTypes.object, PropTypes.string, PropTypes.node]),

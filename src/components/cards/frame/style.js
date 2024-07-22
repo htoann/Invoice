@@ -76,9 +76,9 @@ const CardFrame = Styled(Card)`
     }
   }
   .ant-card-body{
-    padding: ${({ bodyPadding }) => (bodyPadding ? `${bodyPadding} !important` : '25px !important')};
+    padding: ${({ bodypadding }) => (bodypadding ? `${bodypadding} !important` : '25px !important')};
     @media only screen and (max-width: 575px){
-      padding: ${({ bodyPadding }) => (bodyPadding ? `${bodyPadding} !important` : '15px !important')};
+      padding: ${({ bodypadding }) => (bodypadding ? `${bodypadding} !important` : '15px !important')};
     }
     table{
       .ant-tag{

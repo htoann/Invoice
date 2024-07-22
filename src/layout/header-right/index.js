@@ -13,7 +13,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { InfoWrapper, NavAuth, UserDropDown } from './Style';
 
 import { logOut } from '@/redux/authentication/actionCreator';
-import ChatAuthImg from '@/static/img/avatar/chat-auth.png';
+import ChatAuthImg from '@/static/img/corporate.png';
 import EngImg from '@/static/img/flag/en.png';
 import VieImg from '@/static/img/flag/vi.png';
 import { setItem } from '@/utils/localStorageControl';

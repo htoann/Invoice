@@ -10,7 +10,7 @@ import { Popover } from '../popup/popup';
 function HeaderSearch() {
   const dispatch = useDispatch();
   const searchData = useSelector((state) => state.headerSearchData);
-  const rtl = useSelector((state) => state.ChangeLayoutMode.rtlData);
+  const rtl = useSelector((state) => state.changeLayoutMode.rtlData);
 
   const search = (e) => {
     dispatch(headerSearchAction(e.target.value));

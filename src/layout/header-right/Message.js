@@ -13,7 +13,7 @@ import { Popover } from '@/components/popup/popup';
 const MessageBox = React.memo(() => {
   const { rtl } = useSelector((state) => {
     return {
-      rtl: state.ChangeLayoutMode.rtlData,
+      rtl: state.changeLayoutMode.rtlData,
     };
   });
 

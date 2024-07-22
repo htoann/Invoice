@@ -14,7 +14,7 @@ import { Popover } from '@/components/popup/popup';
 const NotificationBox = React.memo(() => {
   const { rtl } = useSelector((state) => {
     return {
-      rtl: state.ChangeLayoutMode.rtlData,
+      rtl: state.changeLayoutMode.rtlData,
     };
   });
 

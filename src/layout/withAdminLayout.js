@@ -86,20 +86,20 @@ const WithAdminLayout = (WrappedComponent) => {
       };
 
       const renderThumbVertical = ({ style }) => {
-        const { ChangeLayoutMode } = this.props;
+        const { changeLayoutMode } = this.props;
         const thumbStyle = {
           borderRadius: 6,
-          backgroundColor: ChangeLayoutMode ? '#ffffff16' : '#F1F2F6',
+          backgroundColor: changeLayoutMode ? '#ffffff16' : '#F1F2F6',
           [left]: '2px',
         };
         return <div style={{ ...style, ...thumbStyle }} />;
       };
 
       const renderThumbHorizontal = ({ style }) => {
-        const { ChangeLayoutMode } = this.props;
+        const { changeLayoutMode } = this.props;
         const thumbStyle = {
           borderRadius: 6,
-          backgroundColor: ChangeLayoutMode ? '#ffffff16' : '#F1F2F6',
+          backgroundColor: changeLayoutMode ? '#ffffff16' : '#F1F2F6',
         };
         return <div style={{ ...style, ...thumbStyle }} />;
       };
@@ -224,9 +224,9 @@ const WithAdminLayout = (WrappedComponent) => {
 
   const mapStateToProps = (state) => {
     return {
-      layoutMode: state.ChangeLayoutMode.mode,
-      rtl: state.ChangeLayoutMode.rtlData,
-      topMenu: state.ChangeLayoutMode.topMenu,
+      layoutMode: state.changeLayoutMode.mode,
+      rtl: state.changeLayoutMode.rtlData,
+      topMenu: state.changeLayoutMode.topMenu,
     };
   };
 
