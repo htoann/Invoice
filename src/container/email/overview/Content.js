@@ -72,7 +72,7 @@ function Content({ searchData, email }) {
             <Link to="#" className={stared ? 'starActive' : 'starDeactivate'}>
               <FontAwesome name="star-o" />
             </Link>
-            <img src={require(`../../../${img}`)} alt="" />
+            <img src={require(`@/${img}`)} alt="" />
             <Heading as="h5">
               <Link to="#">{userName}</Link>
             </Heading>

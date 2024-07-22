@@ -173,7 +173,7 @@ function Posts({ postId, from, time, like, comment, content, author }) {
           <div className="post-comments">
             <div className="commentArea">
               <div className="comment-form">
-                <img src={require('@/../static/img/chat-author/t2.jpg')} alt="" />
+                <img src={require('@/@/static/img/chat-author/t2.jpg')} alt="" />
                 <Input.TextArea onChange={onTextChange} value={textValue} placeholder="Write comment...." />
                 <div className="chatbox-reply-action d-flex">
                   <span className="smile-icon">

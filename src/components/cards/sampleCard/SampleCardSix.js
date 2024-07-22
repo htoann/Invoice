@@ -59,7 +59,7 @@ const SampleCardSix = ({
     <Cards headless>
       <CardWrapper>
         <Icon className={className}>
-          <img src={require(`../../../${img}`)} alt="" />
+          <img src={require(`@/${img}`)} alt="" />
         </Icon>
         <figcaption>
           <div className="more">

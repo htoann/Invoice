@@ -132,7 +132,7 @@ const SampleCardSeven = ({
     <CardWrapper>
       <div className="card-short">
         <h4 className="card-short__title align-v-center">
-          <img src={require(`../../../${img}`)} alt="" />
+          <img src={require(`@/${img}`)} alt="" />
           <span>{title}</span>
         </h4>
         <div className="card-short__content">

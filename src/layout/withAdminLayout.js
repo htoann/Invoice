@@ -125,8 +125,8 @@ const WithAdminLayout = (WrappedComponent) => {
                       <img
                         src={
                           layoutMode === 'lightMode'
-                            ? require(`../static/img/logo_dark.png`)
-                            : require(`../static/img/logo_white.svg`).default
+                            ? require(`@/static/img/logo_dark.png`)
+                            : require(`@/static/img/logo_white.svg`).default
                         }
                         alt=""
                       />
@@ -134,7 +134,7 @@ const WithAdminLayout = (WrappedComponent) => {
                     {!topMenu || window.innerWidth <= 991 ? (
                       <Button type="link" onClick={toggleCollapsed}>
                         <img
-                          src={require(`../static/img/icon/${collapsed ? 'left-bar.svg' : 'left-bar.svg'}`)}
+                          src={require(`@/static/img/icon/${collapsed ? 'left-bar.svg' : 'left-bar.svg'}`)}
                           alt="menu"
                         />
                       </Button>

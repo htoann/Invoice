@@ -86,7 +86,7 @@ const SampleCardFour = ({
   const { content, title, img } = item;
   return (
     <CardWrapper>
-      <img src={require(`../../../${img}`)} alt="" />
+      <img src={require(`@/${img}`)} alt="" />
       <figcaption>
         <h4>
           <span>Web Development</span>

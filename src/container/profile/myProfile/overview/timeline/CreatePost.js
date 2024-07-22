@@ -58,14 +58,14 @@ function Post() {
       {drawer && <BackShadow onClick={() => setDrawer(false)} />}
       <Cards title="Post Something">
         <div onClick={() => setDrawer(true)} className="postBody">
-          <img className="post-author" src={require('@/../static/img/chat-author/t4.jpg')} alt="" />
+          <img className="post-author" src={require('@/@/static/img/chat-author/t4.jpg')} alt="" />
           <Input.TextArea value={textValue} onChange={onTextChange} placeholder="Write something..." />
         </div>
         <div onClick={() => setDrawer(true)} className="postFooter">
           <div className="postFooter_left">
             <Upload>
               <Button shape="circle" type="light">
-                <img src={require('@/../static/img/icon/image.png')} alt="" />
+                <img src={require('@/@/static/img/icon/image.png')} alt="" />
                 Photo/Video
               </Button>
             </Upload>

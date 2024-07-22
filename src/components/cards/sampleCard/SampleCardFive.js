@@ -65,7 +65,7 @@ const SampleCardFive = ({
   const { content, title, img, auth } = item;
   return (
     <CardWrapper>
-      <img src={require(`../../../${img}`)} alt="" />
+      <img src={require(`@/${img}`)} alt="" />
       <figcaption>
         <h2>{title}</h2>
         <p>{content}</p>
