@@ -103,7 +103,7 @@ function Banner5() {
         <Figure3 className="theme-wide">
           <img src={require('@/static/img/banner/4.png')} alt="" />
           <figcaption>
-            <h2>Congratulations Jhon!</h2>
+            <h2>Congratulations John!</h2>
             <p>Best Seller on the last month.</p>
             <Button size="large" type="white">
               Learn More
@@ -130,7 +130,7 @@ function Banner8() {
         <Figure8 className="invoice-congratulation-banner-content theme-wide">
           <img src={require('@/static/img/trophy.png')} alt="" />
           <figcaption>
-            <h2>Congratulations Jhon!</h2>
+            <h2>Congratulations John!</h2>
             <p>Best Seller on the last month.</p>
             <Button size="large" type="gray">
               Learn More
@@ -157,7 +157,7 @@ function Banner9() {
         <Figure8 className="invoice-card-banner-content theme-wide">
           <img src={require('@/static/img/trophy-2.png')} alt="" />
           <figcaption>
-            <h2>Congratulations Jhon!</h2>
+            <h2>Congratulations John!</h2>
             <p>Best Seller on the last month.</p>
             <Button size="large" type="white">
               Learn More
@@ -221,7 +221,7 @@ function BannerCarousel() {
   return (
     <BannerCarouselWrap>
       <Carousel autoplay>
-        <div className="banner-signle">
+        <div className="banner-single">
           <div className="banner-single__img">
             <img src={require('@/static/img/banner/8.png')} alt="" />
           </div>
@@ -230,8 +230,7 @@ function BannerCarousel() {
             <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</p>
           </div>
         </div>
-        {/* End of /.banner-signle */}
-        <div className="banner-signle">
+        <div className="banner-single">
           <div className="banner-single__img">
             <img src={require('@/static/img/banner/8.png')} alt="" />
           </div>
@@ -240,8 +239,7 @@ function BannerCarousel() {
             <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</p>
           </div>
         </div>
-        {/* End of /.banner-signle */}
-        <div className="banner-signle">
+        <div className="banner-single">
           <div className="banner-single__img">
             <img src={require('@/static/img/banner/8.png')} alt="" />
           </div>
@@ -250,7 +248,6 @@ function BannerCarousel() {
             <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</p>
           </div>
         </div>
-        {/* End of /.banner-signle */}
       </Carousel>
     </BannerCarouselWrap>
   );

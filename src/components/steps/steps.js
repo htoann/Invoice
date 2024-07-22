@@ -8,14 +8,14 @@ import { ActionWrapper, StepsStyle } from './style';
 const { Step } = StepsStyle;
 
 const Steps = ({
-  isvertical,
+  isVertical,
   size,
   current = 0,
   direction,
   status,
   progressDot,
   steps,
-  isswitch,
+  isSwitch,
   navigation,
   onNext = () => {},
   onPrev = () => {},
@@ -23,7 +23,7 @@ const Steps = ({
   onChange = () => {},
   children,
   height = 150,
-  isfinished = false,
+  isFinished = false,
 }) => {
   const [state, setState] = useState({
     currents: current,
@@ -55,7 +55,7 @@ const Steps = ({
     if (onChange) onChange(curr);
   };
 
-  return !isswitch ? (
+  return !isSwitch ? (
     <StepsStyle
       type={navigation && 'navigation'}
       style={navigation && stepStyle}
@@ -81,7 +81,7 @@ const Steps = ({
             />
           ))}
       </StepsStyle>
-      {isvertical ? (
+      {isVertical ? (
         <div className="steps-wrapper">
           <div
             className="steps-content"
@@ -90,7 +90,7 @@ const Steps = ({
             {steps[state.currents].content}
           </div>
 
-          {!isfinished && (
+          {!isFinished && (
             <ActionWrapper>
               <div className="step-action-wrap">
                 <div className="step-action-inner">
@@ -133,7 +133,7 @@ const Steps = ({
             {steps[state.currents].content}
           </div>
 
-          {!isfinished && (
+          {!isFinished && (
             <ActionWrapper>
               <div className="step-action-wrap">
                 <div className="step-action-inner">
@@ -179,16 +179,16 @@ Steps.propTypes = {
   status: PropTypes.string,
   progressDot: PropTypes.func,
   steps: PropTypes.arrayOf(PropTypes.object),
-  isswitch: PropTypes.bool,
+  isSwitch: PropTypes.bool,
   navigation: PropTypes.bool,
-  isfinished: PropTypes.bool,
+  isFinished: PropTypes.bool,
   onNext: PropTypes.func,
   onPrev: PropTypes.func,
   onDone: PropTypes.func,
   onChange: PropTypes.func,
   height: PropTypes.number,
   children: PropTypes.oneOfType([PropTypes.object, PropTypes.node, PropTypes.string]),
-  isvertical: PropTypes.bool,
+  isVertical: PropTypes.bool,
 };
 
 export { Step, Steps };

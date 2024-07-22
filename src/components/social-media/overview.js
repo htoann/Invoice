@@ -1,13 +1,13 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import FontAwesome from 'react-fontawesome';
-import { MainWraper, SocialIcon } from './overview-style';
+import { MainWrapper, SocialIcon } from './overview-style';
 import Heading from '../heading/heading';
 
 function SocialMediaContent(props) {
   const { icon, bgColor, title, subTitle } = props;
   return (
-    <MainWraper>
+    <MainWrapper>
       <SocialIcon className="social-icon" bgColor={bgColor}>
         <FontAwesome
           className="super-crazy-colors"
@@ -18,7 +18,7 @@ function SocialMediaContent(props) {
       </SocialIcon>
       <Heading as="h1">{title}</Heading>
       <p>{subTitle}</p>
-    </MainWraper>
+    </MainWrapper>
   );
 }
 

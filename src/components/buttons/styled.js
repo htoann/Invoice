@@ -1,4 +1,3 @@
-/* eslint-disable no-shadow */
 import { Button } from 'antd';
 import Styled from 'styled-components';
 

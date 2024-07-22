@@ -1,6 +1,6 @@
 import Styled from 'styled-components';
 
-const MainWraper = Styled.div`
+const MainWrapper = Styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -35,4 +35,4 @@ const SocialIcon = Styled.div`
   border-radius: 10px;
 `;
 
-export { MainWraper, SocialIcon };
+export { MainWrapper, SocialIcon };

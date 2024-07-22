@@ -1,6 +1,6 @@
 import Styled from 'styled-components';
 
-const ItemWraper = Styled.div`
+const ItemWrapper = Styled.div`
     display: flex;
     flex-direction: column;
     .rdrDateDisplay, .rdrMonthAndYearPickers{
@@ -189,4 +189,4 @@ const ButtonGroup = Styled.div`
     }
 `;
 
-export { ItemWraper, ButtonGroup };
+export { ItemWrapper, ButtonGroup };

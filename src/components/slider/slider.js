@@ -1,8 +1,7 @@
-/* eslint-disable react/forbid-prop-types */
 import { FrownOutlined } from '@ant-design/icons';
 import { Col, InputNumber, Row } from 'antd';
 import PropTypes from 'prop-types';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { IconWrapper, SliderStyle } from './style';
 
 function Slider(props) {
@@ -16,7 +15,6 @@ function Slider(props) {
   });
 
   const onChanges = (value) => {
-    // eslint-disable-next-line no-restricted-globals
     if (isNaN(value)) {
       return;
     }

@@ -6,7 +6,7 @@ import { HeaderWrapper, PageHeaderStyle } from './style';
 function PageHeader(props) {
   const { title, subTitle, routes, buttons, ghost, bgColor, className } = props;
   const breadcrumb = routes ? (
-    <Breadcrumb separator={<span className="invoice-seperator" />}>
+    <Breadcrumb separator={<span className="invoice-separator" />}>
       {routes.map((route, index) =>
         index + 1 === routes.length ? (
           <Breadcrumb.Item key={index}>{route.breadcrumbName}</Breadcrumb.Item>

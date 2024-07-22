@@ -1,5 +1,4 @@
 /* eslint-disable no-unused-vars */
-/* eslint-disable no-return-assign */
 import UilDown from '@iconscout/react-unicons/icons/uil-arrow-down';
 import UilUp from '@iconscout/react-unicons/icons/uil-arrow-up';
 import { Card } from 'antd';

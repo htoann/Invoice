@@ -2,7 +2,6 @@ import UilBook from '@iconscout/react-unicons/icons/uil-book-alt';
 import UilClock from '@iconscout/react-unicons/icons/uil-clock';
 import { Card, Col } from 'antd';
 import propTypes from 'prop-types';
-import React from 'react';
 import { Link } from 'react-router-dom';
 import { CourseCardWrap } from './Style';
 

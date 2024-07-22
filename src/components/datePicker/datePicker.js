@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { DateRangePicker } from 'react-date-range';
 import 'react-date-range/dist/styles.css'; // main style file
 import 'react-date-range/dist/theme/default.css'; // theme css file
-import { ButtonGroup, ItemWraper } from './style';
+import { ButtonGroup, ItemWrapper } from './style';
 import { Button } from '../buttons/buttons';
 
 function DateRangePickerOne() {
@@ -33,7 +33,7 @@ function DateRangePickerOne() {
   const end = dateRangePicker.selection.endDate.toString().split(' ');
 
   return (
-    <ItemWraper>
+    <ItemWrapper>
       <DateRangePicker
         onChange={handleRangeChange}
         showSelectionPreview
@@ -53,7 +53,7 @@ function DateRangePickerOne() {
           Cancel
         </Button>
       </ButtonGroup>
-    </ItemWraper>
+    </ItemWrapper>
   );
 }
 

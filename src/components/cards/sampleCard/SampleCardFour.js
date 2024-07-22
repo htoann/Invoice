@@ -1,7 +1,6 @@
 import UilEye from '@iconscout/react-unicons/icons/uil-eye';
 import UilHeart from '@iconscout/react-unicons/icons/uil-heart';
 import propTypes from 'prop-types';
-import React from 'react';
 import styled from 'styled-components';
 
 const CardWrapper = styled.figure`

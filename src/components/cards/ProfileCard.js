@@ -30,11 +30,6 @@ const ProfileCard = ({
                 <FontAwesome name="twitter" />
               </Link>
             </li>
-            <li className="invoice-dribble">
-              <Link to="#">
-                <FontAwesome name="dribbble" />
-              </Link>
-            </li>
           </ul>
         </div>
       </figcaption>

@@ -43,7 +43,7 @@ const PageHeaderStyle = Styled(PageHeader)`
         .ant-breadcrumb-separator{
           display: flex;
           align-items: center;
-          .invoice-seperator{
+          .invoice-separator{
             display: block;
             width: 4px;
             height: 4px;

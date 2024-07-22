@@ -1,6 +1,5 @@
 import UilCheck from '@iconscout/react-unicons/icons/uil-check';
 import PropTypes from 'prop-types';
-import React from 'react';
 import { ListStyle } from './style';
 
 function List(props) {

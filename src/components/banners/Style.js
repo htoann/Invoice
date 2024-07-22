@@ -445,7 +445,7 @@ const BannerCarouselWrap = Styled.div`
             }
         }
     }
-    .banner-signle{
+    .banner-single{
         display: flex !important;
         flex-direction: column;
         justify-content: center;

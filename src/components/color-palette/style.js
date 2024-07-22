@@ -1,6 +1,6 @@
 import Styled from 'styled-components';
 
-const borderd = (type) => {
+const border = (type) => {
   return `
         border-radius: 4px;
         background: #ffffff;
@@ -43,7 +43,7 @@ const ColorPalette = Styled.div`
     align-items: center;
     padding: 0 20px;
     justify-content: center;
-    ${({ isbordered, type }) => isbordered && borderd(type)}
+    ${({ isbordered, type }) => isbordered && border(type)}
     ${({ iscontent }) => iscontent && content()}
     ${({ isbg }) => isbg && bg()}
     ${({ isgrad, type, direction }) => isgrad && grad(type, direction)}

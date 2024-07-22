@@ -1,11 +1,10 @@
 import UilSearch from '@iconscout/react-unicons/icons/uil-search';
 import { Col, Input, Row } from 'antd';
-import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { Div } from './header-search-style';
 import { headerSearchAction } from '../../redux/headerSearch/actionCreator';
 import { Popover } from '../popup/popup';
+import { Div } from './header-search-style';
 
 function HeaderSearch() {
   const dispatch = useDispatch();

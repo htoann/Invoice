@@ -1,7 +1,7 @@
 import { Modal } from 'antd';
 import Styled from 'styled-components';
 
-const ModalStyledColord = (type, theme) => `
+const ModalStyledColor = (type, theme) => `
   .ant-modal-content, .ant-modal-header {
     background-color: ${type !== 'default' && theme[`${type}-color`]} !important;
   }
@@ -26,7 +26,7 @@ const ModalStyledColord = (type, theme) => `
 `;
 
 const ModalStyled = Styled(Modal)`    
-  ${({ theme, type }) => type && ModalStyledColord(type, theme)}
+  ${({ theme, type }) => type && ModalStyledColor(type, theme)}
 `;
 
-export { ModalStyled, ModalStyledColord };
+export { ModalStyled, ModalStyledColor };

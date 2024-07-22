@@ -1,4 +1,3 @@
-import React from 'react';
 import { NewsletterStyle } from './Style';
 
 function Newsletter() {
