@@ -126,7 +126,8 @@ const WithAdminLayout = (WrappedComponent) => {
                         src={
                           layoutMode === 'lightMode'
                             ? require(`@/static/img/logo_dark.png`)
-                            : require(`@/static/img/logo_white.svg`).default
+                            : // Change logo for white mode
+                              require(`@/static/img/logo_dark.png`).default
                         }
                         alt=""
                       />
