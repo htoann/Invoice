@@ -32,13 +32,13 @@ const InvoicesChange = React.memo(() => {
   const newProductData = [];
   if (newProduct !== null) {
     newProduct[productTab].map((value) => {
-      const { key, name, img, price } = value;
+      const { key, name, price } = value;
       return newProductData.push({
         key,
         pName: (
           <div className="invoice-info-element align-center-v">
             <div className="invoice-info-element__media">
-              <img src={require(`@/static/img/products/electronics/${img}`)} alt="invoice Product" />
+              <img src={require(`@/static/img/corporate.png`)} alt="invoice Product" />
             </div>
             <div className="invoice-info-element__content">
               <span className="invoice-info-element__text">{name}</span>
