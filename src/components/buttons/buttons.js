@@ -71,7 +71,6 @@ Button.propTypes = {
     'default',
   ]),
   shape: PropTypes.string,
-  icon: PropTypes.string,
   size: PropTypes.string,
   color: PropTypes.string,
   outlined: PropTypes.bool,

@@ -21,7 +21,7 @@ const Customizer = () => {
   };
 
   return (
-    <Drawer title={t('User_Settings')} isBtn={false} outlined size="extra-small" shape="circle" type="light">
+    <Drawer title={t('User_Settings')} isBtn={false} size="extra-small" shape="circle" type="light">
       <div className="customizer__body">
         {/* <div className="customizer__single">
           <h4>Layout Type</h4>
