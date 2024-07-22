@@ -74,7 +74,7 @@ const MessageBox = React.memo(() => {
             <li>
               <Link to="#">
                 <figure className="invoice-top-dropdown__content">
-                  <img src={require('../../static/img/avatar/NoPath.png')} alt="" />
+                  <img src={require('@/static/img/avatar/NoPath.png')} alt="" />
                   <figcaption>
                     <Heading as="h5">
                       Software <span className="color-success">3 hrs ago</span>
@@ -92,7 +92,7 @@ const MessageBox = React.memo(() => {
             <li>
               <Link to="#">
                 <figure className="invoice-top-dropdown__content">
-                  <img src={require('../../static/img/avatar/NoPath.png')} alt="" />
+                  <img src={require('@/static/img/avatar/NoPath.png')} alt="" />
                   <figcaption>
                     <Heading as="h5">
                       Software <span className="color-success">3 hrs ago</span>
@@ -110,7 +110,7 @@ const MessageBox = React.memo(() => {
             <li>
               <Link to="#">
                 <figure className="invoice-top-dropdown__content">
-                  <img src={require('../../static/img/avatar/NoPath.png')} alt="" />
+                  <img src={require('@/static/img/avatar/NoPath.png')} alt="" />
                   <figcaption>
                     <Heading as="h5">
                       Software <span className="color-success">3 hrs ago</span>
@@ -128,7 +128,7 @@ const MessageBox = React.memo(() => {
             <li>
               <Link to="#">
                 <figure className="invoice-top-dropdown__content">
-                  <img src={require('../../static/img/avatar/NoPath.png')} alt="" />
+                  <img src={require('@/static/img/avatar/NoPath.png')} alt="" />
                   <figcaption>
                     <Heading as="h5">
                       Software <span className="color-success">3 hrs ago</span>
@@ -146,7 +146,7 @@ const MessageBox = React.memo(() => {
             <li>
               <Link to="#">
                 <figure className="invoice-top-dropdown__content">
-                  <img src={require('../../static/img/avatar/NoPath.png')} alt="" />
+                  <img src={require('@/static/img/avatar/NoPath.png')} alt="" />
                   <figcaption>
                     <Heading as="h5">
                       Software <span className="color-success">3 hrs ago</span>
@@ -176,7 +176,7 @@ const MessageBox = React.memo(() => {
       <Popover placement="bottomLeft" content={content} action="click">
         <Badge dot offset={[-8, -5]}>
           <Link to="#" className="invoice-nav-action-link">
-            <ReactSVG src={require('../../static/img/icon/envelope.svg').default} />
+            <ReactSVG src={require('@/static/img/icon/envelope.svg').default} />
           </Link>
         </Badge>
       </Popover>

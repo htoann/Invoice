@@ -37,7 +37,7 @@ function Banner2() {
     <BannerWrapper>
       <Cards className="mb-70" bodyStyle={{ background: '#5F63F2', borderRadius: '10px', minHeight: '270px' }} headless>
         <Figure2>
-          <img src={require('../../static/img/banner/1.png')} alt="" />
+          <img src={require('@/static/img/banner/1.png')} alt="" />
           <figcaption>
             <h2>Upgrade your plan</h2>
             <p>Lorem ipsum dolor sit amet</p>
@@ -56,7 +56,7 @@ function Banner3() {
     <BannerWrapper>
       <Cards bodyStyle={{ borderRadius: '10px', minHeight: '270px', background: '#5F63F2' }} headless>
         <Figure3>
-          <img src={require('../../static/img/banner/2.png')} alt="" />
+          <img src={require('@/static/img/banner/2.png')} alt="" />
           <figcaption>
             <h2>Earn More Money</h2>
             <Button size="large" type="white">
@@ -74,7 +74,7 @@ function Banner4() {
     <BannerWrapper>
       <Cards bodyStyle={{ background: '#272B41', borderRadius: '10px', minHeight: '270px' }} headless>
         <Figure3 className="theme-3">
-          <img src={require('../../static/img/banner/3.png')} alt="" />
+          <img src={require('@/static/img/banner/3.png')} alt="" />
           <figcaption>
             <h2>Win Your Bonus</h2>
             <p>Weekly performance bonus</p>
@@ -102,7 +102,7 @@ function Banner5() {
         headless
       >
         <Figure3 className="theme-wide">
-          <img src={require('../../static/img/banner/4.png')} alt="" />
+          <img src={require('@/static/img/banner/4.png')} alt="" />
           <figcaption>
             <h2>Congratulations Jhon!</h2>
             <p>Best Seller on the last month.</p>
@@ -129,7 +129,7 @@ function Banner8() {
         headless
       >
         <Figure8 className="invoice-congratulation-banner-content theme-wide">
-          <img src={require('../../static/img/trophy.png')} alt="" />
+          <img src={require('@/static/img/trophy.png')} alt="" />
           <figcaption>
             <h2>Congratulations Jhon!</h2>
             <p>Best Seller on the last month.</p>
@@ -156,7 +156,7 @@ function Banner9() {
         headless
       >
         <Figure8 className="invoice-card-banner-content theme-wide">
-          <img src={require('../../static/img/trophy-2.png')} alt="" />
+          <img src={require('@/static/img/trophy-2.png')} alt="" />
           <figcaption>
             <h2>Congratulations Jhon!</h2>
             <p>Best Seller on the last month.</p>
@@ -175,7 +175,7 @@ function Banner6() {
     <BannerWrapper>
       <Cards
         bodyStyle={{
-          background: `url(${require('../../static/img/banner/5.png')})`,
+          background: `url(${require('@/static/img/banner/5.png')})`,
           backgroundSize: 'cover',
           borderRadius: '10px',
           minHeight: '265px',
@@ -186,7 +186,7 @@ function Banner6() {
         headless
       >
         <Figure6>
-          <img src={require('../../static/img/banner/badge.svg')} alt="" />
+          <img src={require('@/static/img/banner/badge.svg')} alt="" />
           <figcaption>
             <h2>Up to 50 OFF</h2>
             <Button className="btn-outlined" size="small" outlined type="danger">
@@ -204,7 +204,7 @@ function Banner7() {
     <BannerNormal className="theme-wide">
       <Cards headless>
         <Figure7>
-          <img src={require('../../static/img/banner/6.png')} alt="" />
+          <img src={require('@/static/img/banner/6.png')} alt="" />
           <figcaption>
             <h2>Subscribe to our newsletter</h2>
             <p>Lorem ipsum dolor sit amet, consetetur </p>
@@ -224,7 +224,7 @@ function BannerCarousel() {
       <Carousel autoplay>
         <div className="banner-signle">
           <div className="banner-single__img">
-            <img src={require('../../static/img/banner/8.png')} alt="" />
+            <img src={require('@/static/img/banner/8.png')} alt="" />
           </div>
           <div className="banner-single__content">
             <h3>Achievements</h3>
@@ -234,7 +234,7 @@ function BannerCarousel() {
         {/* End of /.banner-signle */}
         <div className="banner-signle">
           <div className="banner-single__img">
-            <img src={require('../../static/img/banner/8.png')} alt="" />
+            <img src={require('@/static/img/banner/8.png')} alt="" />
           </div>
           <div className="banner-single__content">
             <h3>Achievements</h3>
@@ -244,7 +244,7 @@ function BannerCarousel() {
         {/* End of /.banner-signle */}
         <div className="banner-signle">
           <div className="banner-single__img">
-            <img src={require('../../static/img/banner/8.png')} alt="" />
+            <img src={require('@/static/img/banner/8.png')} alt="" />
           </div>
           <div className="banner-single__content">
             <h3>Achievements</h3>
@@ -262,7 +262,7 @@ function BannerLong() {
     <BannerLongWrap>
       <div className="banner-long-inner">
         <h2>Up To Date </h2>
-        <img src={require('../../static/img/banner/9.png')} alt="" />
+        <img src={require('@/static/img/banner/9.png')} alt="" />
       </div>
     </BannerLongWrap>
   );
@@ -273,7 +273,7 @@ function BannerCard() {
     <BannerCardWrap>
       <div
         className="banner-card-inner"
-        style={{ backgroundImage: `url("${require('../../static/img/banner/card-banner-1.png')}")` }}
+        style={{ backgroundImage: `url("${require('@/static/img/banner/card-banner-1.png')}")` }}
       >
         <h2>Need More Space?</h2>
         <Button size="small" type="white">
@@ -289,7 +289,7 @@ function BannerCard2() {
     <BannerCardWrap>
       <div
         className="banner-card-inner theme-2"
-        style={{ backgroundImage: `url("${require('../../static/img/banner/card-banner-2.png')}")` }}
+        style={{ backgroundImage: `url("${require('@/static/img/banner/card-banner-2.png')}")` }}
       >
         <h2>Create Sale Report</h2>
         <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy</p>
@@ -306,7 +306,7 @@ function BannerCta() {
     <BannerCtaWrap>
       <div
         className="banner-cta align-center-v"
-        style={{ backgroundImage: `url("${require('../../static/img/banner/cta-banner-1.png')}")` }}
+        style={{ backgroundImage: `url("${require('@/static/img/banner/cta-banner-1.png')}")` }}
       >
         <div className="banner-cta__content">
           <h2>Dedicated Support</h2>
@@ -324,7 +324,7 @@ function BannerCta2() {
     <BannerCtaWrap>
       <div
         className="banner-cta align-center-v theme-2"
-        style={{ backgroundImage: `url("${require('../../static/img/banner/cta-banner-2.png')}")` }}
+        style={{ backgroundImage: `url("${require('@/static/img/banner/cta-banner-2.png')}")` }}
       >
         <div className="banner-cta__content">
           <h2>Welcome Back Garry Sobars!</h2>
@@ -350,9 +350,9 @@ function PageHeaderBanner({
       <Cards headless>
         <PageHeader className="theme-wide">
           {type === 'corporate' ? (
-            <img src={require('../../static/img/corporate.png')} alt="Invoice Template" />
+            <img src={require('@/static/img/corporate.png')} alt="Invoice Template" />
           ) : (
-            <img src={require('../../static/img/banner/header-banner.png')} alt="Invoice Template" />
+            <img src={require('@/static/img/banner/header-banner.png')} alt="Invoice Template" />
           )}
 
           <figcaption>

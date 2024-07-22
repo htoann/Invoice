@@ -14,7 +14,7 @@ function Newsletter() {
           </Button>
         </form>
       </figcaption>
-      <img src={require('../../static/img/open-message.png')} alt="" />
+      <img src={require('@/static/img/open-message.png')} alt="" />
     </NewsletterStyle>
   );
 }

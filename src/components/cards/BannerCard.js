@@ -112,7 +112,7 @@ const CardWrapper = styled.figure`
 `;
 
 const ImageUrl = styled.div`
-  ${({ bgUrl }) => bgUrl && `background-image: url(${require(`../../static/img/sampleCards/${bgUrl}`)})`};
+  ${({ bgUrl }) => bgUrl && `background-image: url(${require(`@/static/img/sampleCards/${bgUrl}`)})`};
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
@@ -137,7 +137,7 @@ const BannerCard = ({
       <ImageUrl className={`banner-card banner-card-${type}`} bgUrl={bgImage}>
         <div className="banner-card__top align-center-v justify-content-between">
           <h4 className="banner-card__title">
-            <img src={require(`../../static/img/icon/${icon}`)} alt="StrikingDash Banner" />
+            <img src={require(`@/static/img/icon/${icon}`)} alt="StrikingDash Banner" />
             <span>{title}</span>
           </h4>
           <div className="banner-card__action">
@@ -165,7 +165,7 @@ const BannerCard = ({
         </div>
         <div className="banner-card__bottom  align-center-v justify-content-between">
           <div className="card-author">
-            {/* <img src={require(`../../static/img/users/${authorImg}`)} alt="" /> */}
+            {/* <img src={require(`@/static/img/users/${authorImg}`)} alt="" /> */}
             <span className="author-name">{authorName}</span>
           </div>
           <div className="card-meta">

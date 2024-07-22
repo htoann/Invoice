@@ -26,7 +26,7 @@ function OverviewCardMesh({ data, circleIcon }) {
         <div className={`invoice-overview-card invoice-overview-card-${type}`}>
           <div className="invoice-overview-card__left d-flex justify-content-between">
             <div className={`invoice-overview-card__left--icon invoice-${type}`}>
-              <ReactSVG src={require(`../../static/img/icon/${icon}`)} />
+              <ReactSVG src={require(`@/static/img/icon/${icon}`)} />
             </div>
           </div>
           <div className="invoice-overview-card__right">

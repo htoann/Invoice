@@ -7,7 +7,7 @@ function Maintenance() {
   return (
     <Main>
       <MaintananceWrapper>
-        <img src={require(`../../static/img/pages/maintenance.svg`).default} alt="maintenance" />
+        <img src={require(`@/static/img/pages/maintenance.svg`).default} alt="maintenance" />
         <Heading as="h3">We are currently performing maintenance</Heading>
         <p>
           We&rsquo;re making the system more awesome. <br />

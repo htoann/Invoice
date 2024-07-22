@@ -89,7 +89,7 @@ function Faq() {
                 <FaqSupportBox>
                   <Cards headless>
                     <figure>
-                      <img src={require('../../static/img/pages/support.svg').default} alt="" />
+                      <img src={require('@/static/img/pages/support.svg').default} alt="" />
                     </figure>
                     <figcaption>
                       <Heading as="h5">Not finding the help you need?</Heading>

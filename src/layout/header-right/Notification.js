@@ -188,7 +188,7 @@ const NotificationBox = React.memo(() => {
       <Popover placement="bottomLeft" content={content} action="click">
         <Badge dot offset={[-8, -5]}>
           <Link to="#" className="invoice-nav-action-link">
-            <ReactSVG src={require('../../static/img/icon/bell.svg').default} />
+            <ReactSVG src={require('@/static/img/icon/bell.svg').default} />
           </Link>
         </Badge>
       </Popover>

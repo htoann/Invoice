@@ -28,7 +28,7 @@ function NotFound() {
         </div>
       ) : (
         <ErrorWrapper>
-          <img src={require(`../../static/img/pages/404.svg`).default} alt="404" />
+          <img src={require(`@/static/img/pages/404.svg`).default} alt="404" />
           <Heading className="error-text" as="h3">
             404
           </Heading>

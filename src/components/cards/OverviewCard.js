@@ -34,7 +34,7 @@ const OverviewCard = ({
             }
           >
             <div className={`invoice-overview-card__top--icon invoice-${type}`}>
-              <ReactSVG src={require(`../../static/img/icon/${icon}`)} />
+              <ReactSVG src={require(`@/static/img/icon/${icon}`)} />
             </div>
             <div
               className={

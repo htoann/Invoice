@@ -13,14 +13,14 @@ function CourseCard({ courseData }) {
       <CourseCardWrap className="invoice-course-card-single">
         <Card bordered={false}>
           <div className="invoice-course-card-thumbnail">
-            <img src={require(`../../static/img/courses/${thumbnail}`)} alt="invoice" />
+            <img src={require(`@/static/img/courses/${thumbnail}`)} alt="invoice" />
           </div>
           <div className="invoice-course-card-content">
             <h4 className="invoice-course-card-title">
               <Link to={`/app/course/courseDetails/${id}`}>{title}</Link>
             </h4>
             <div className="invoice-course-card-author">
-              <img src={require(`../../static/img/avatar/${authorImg}`)} alt="invoice" />
+              <img src={require(`@/static/img/avatar/${authorImg}`)} alt="invoice" />
               <span className="invoice-course-card-author__name">{author}</span>
             </div>
             <div className="invoice-course-card-meta">

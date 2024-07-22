@@ -1704,14 +1704,14 @@ const TestimonialStyleWrapper = Styled.div`
         left: 10px;
         &:before{
           font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-          content: url('${require('../../static/img/icon/arrow-left.png')}');
+          content: url('${require('@/static/img/icon/arrow-left.png')}');
         }
       }
       .swiper-button-next{
         right: 10px;
         &:before{
           font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-          content: url('${require('../../static/img/icon/arrow-right.png')}');
+          content: url('${require('@/static/img/icon/arrow-right.png')}');
         }
       }
       .swiper-pagination{
@@ -1817,7 +1817,7 @@ const TestimonialStyleWrapper = Styled.div`
         }
         &:before{
           font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-          content: url('${require('../../static/img/icon/arrow-left.png')}');
+          content: url('${require('@/static/img/icon/arrow-left.png')}');
         }
       }
       .swiper-button-next{
@@ -1830,7 +1830,7 @@ const TestimonialStyleWrapper = Styled.div`
         }
         &:before{
           font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-          content: url('${require('../../static/img/icon/arrow-right.png')}');
+          content: url('${require('@/static/img/icon/arrow-right.png')}');
         }
       }
       .swiper-container{
@@ -2016,7 +2016,7 @@ const TestimonialStyleWrapper = Styled.div`
         }
         &:before{
           font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-          content: url('${require('../../static/img/icon/arrow-left.png')}');
+          content: url('${require('@/static/img/icon/arrow-left.png')}');
         }
       }
       .swiper-button-next{
@@ -2029,7 +2029,7 @@ const TestimonialStyleWrapper = Styled.div`
         }
         &:before{
           font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-          content: url('${require('../../static/img/icon/arrow-right.png')}');
+          content: url('${require('@/static/img/icon/arrow-right.png')}');
         }
       }
       .swiper-container{
