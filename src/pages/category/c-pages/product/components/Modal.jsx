@@ -1,11 +1,13 @@
 import { Button } from '@/components/buttons/buttons';
 import { AddUser } from '@/container/pages/style';
 import { BasicFormWrapper } from '@/container/styled';
-import { AutoComplete, Form, Input } from 'antd';
+import { AutoComplete, Form, Input, Select } from 'antd';
+import useUnit from 'hooks/useUnit';
 import { useTranslation } from 'react-i18next';
 
 const ModalHangHoa = ({ form, handleOk, state, onCancel, loading, textSubmit }) => {
   const { t } = useTranslation();
+  const { unitOptions } = useUnit();
 
   return (
     <AddUser>
@@ -22,7 +24,13 @@ const ModalHangHoa = ({ form, handleOk, state, onCancel, loading, textSubmit }) 
           </Form.Item>
 
           <Form.Item label={t('Product_Unit')} name="donViTinh" initialValue={state?.update.donViTinh}>
-            <Input />
+            <Select defaultValue={state?.update.donViTinh || unitOptions[0].value}>
+              {unitOptions.map((option) => (
+                <Select.Option key={option.value} value={option.value}>
+                  {option.label}
+                </Select.Option>
+              ))}
+            </Select>
           </Form.Item>
 
           <Form.Item

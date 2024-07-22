@@ -63,6 +63,13 @@
   "Org_Structure": "Cơ cấu tổ chức",
   "Menu_Direction": "Hướng menu",
 
+  "Unit_Piece": "Cái",
+  "Unit_Kilogram": "Kilogram",
+  "Unit_Meter": "Mét",
+  "Unit_Liter": "Lít",
+  "Unit_Box": "Hộp",
+  "Unit_Pack": "Gói",
+
   "User_Profile": "Hồ sơ",
   "User_Settings": "Cài đặt",
   "User_Billing": "Thanh toán",

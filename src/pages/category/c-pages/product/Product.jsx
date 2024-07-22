@@ -5,6 +5,7 @@ import axios from '@/mock/index';
 import UilEdit from '@iconscout/react-unicons/icons/uil-edit';
 import UilTrash from '@iconscout/react-unicons/icons/uil-trash-alt';
 import { Col, Input, Popconfirm, Row, Skeleton, notification } from 'antd';
+import useUnit from 'hooks/useUnit';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
@@ -14,6 +15,7 @@ import EditProduct from './components/EditProduct';
 
 const Product = () => {
   const { t } = useTranslation();
+  const { EUnit } = useUnit();
 
   const [state, setState] = useState({
     selectedRowKeys: 0,
@@ -140,7 +142,7 @@ const Product = () => {
         mahang: <span>{mahang}</span>,
         tenHangBan: <span>{tenHangBan}</span>,
         tenHangMua: <span>{tenHangMua}</span>,
-        donViTinh: <span>{donViTinh}</span>,
+        donViTinh: <span>{EUnit[donViTinh]}</span>,
         taiKhoanHang: <span>{taiKhoanHang}</span>,
         taiKhoanGiaVon: <span>{taiKhoanGiaVon}</span>,
         taiKhoanDoanhThu: <span>{taiKhoanDoanhThu}</span>,
