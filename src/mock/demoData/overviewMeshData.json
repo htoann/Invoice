@@ -9,7 +9,7 @@
     "prefix": "$",
     "status": "growth",
     "statusRate": "25.36",
-    "decimel": 0,
+    "decimal": 0,
     "dataPeriod": "3 tháng gần đây"
   },
   {
@@ -22,7 +22,7 @@
     "prefix": "",
     "status": "growth",
     "statusRate": "28.50",
-    "decimel": 2,
+    "decimal": 2,
     "dataPeriod": "3 tháng gần đây"
   },
   {
@@ -35,7 +35,7 @@
     "prefix": "",
     "status": "down",
     "statusRate": "25.36",
-    "decimel": 0,
+    "decimal": 0,
     "dataPeriod": "3 tháng gần đây"
   },
   {
@@ -48,7 +48,7 @@
     "prefix": "$",
     "status": "growth",
     "statusRate": "9.87",
-    "decimel": 0,
+    "decimal": 0,
     "dataPeriod": "3 tháng gần đây"
   }
 ]

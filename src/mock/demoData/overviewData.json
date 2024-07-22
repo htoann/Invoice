@@ -9,7 +9,7 @@
     "prefix": "",
     "status": "growth",
     "statusRate": "25.36",
-    "decimel": 0,
+    "decimal": 0,
     "dataPeriod": "3 tháng gần đây"
   },
   {
@@ -22,7 +22,7 @@
     "prefix": "",
     "status": "growth",
     "statusRate": "25.36",
-    "decimels": 0,
+    "decimals": 0,
     "separator": ",",
     "dataPeriod": "3 tháng gần đây"
   },
@@ -36,7 +36,7 @@
     "prefix": "$",
     "status": "down",
     "statusRate": "25.36",
-    "decimels": 0,
+    "decimals": 0,
     "separator": ",",
     "dataPeriod": "3 tháng gần đây"
   },
@@ -50,7 +50,7 @@
     "prefix": "",
     "status": "growth",
     "statusRate": "25.36",
-    "decimels": 0,
+    "decimals": 0,
     "separator": ",",
     "dataPeriod": "3 tháng gần đây"
   },
@@ -64,7 +64,7 @@
     "prefix": "",
     "status": "growth",
     "statusRate": "25.36",
-    "decimels": 0,
+    "decimals": 0,
     "separator": ",",
     "dataPeriod": "3 tháng gần đây"
   },
@@ -78,7 +78,7 @@
     "prefix": "",
     "status": "growth",
     "statusRate": "9.87",
-    "decimels": 0,
+    "decimals": 0,
     "dataPeriod": "3 tháng gần đây"
   },
   {
@@ -91,7 +91,7 @@
     "prefix": "",
     "status": "down",
     "statusRate": "12.36",
-    "decimels": 0,
+    "decimals": 0,
     "dataPeriod": "3 tháng gần đây"
   },
   {
@@ -104,7 +104,7 @@
     "prefix": "",
     "status": "growth",
     "statusRate": "9.87",
-    "decimels": 2,
+    "decimals": 2,
     "dataPeriod": "3 tháng gần đây"
   }
 ]

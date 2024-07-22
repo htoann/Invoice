@@ -1,9 +1,10 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-return-assign */
 import UilDown from '@iconscout/react-unicons/icons/uil-arrow-down';
 import UilUp from '@iconscout/react-unicons/icons/uil-arrow-up';
 import { Card } from 'antd';
 import propTypes from 'prop-types';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { ReactSVG } from 'react-svg';
 import { OverviewCardMeshWrap } from './Style';
@@ -16,7 +17,7 @@ function OverviewCardMesh({ data, circleIcon }) {
     setDidViewCountUp(true);
   }, [pathname]);
 
-  const { type, icon, label, total, status, statusRate, suffix, prefix, decimel } = data;
+  const { type, icon, label, total, status, statusRate, suffix, prefix, decimal } = data;
   const totalNumber = Number(total);
   return (
     <OverviewCardMeshWrap

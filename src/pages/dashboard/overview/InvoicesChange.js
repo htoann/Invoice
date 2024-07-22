@@ -38,7 +38,7 @@ const InvoicesChange = React.memo(() => {
         pName: (
           <div className="invoice-info-element align-center-v">
             <div className="invoice-info-element__media">
-              <img src={require(`@/static/img/corporate.png`)} alt="invoice Product" />
+              <img src={require(`@/static/img/placeholder.png`)} alt="invoice Product" />
             </div>
             <div className="invoice-info-element__content">
               <span className="invoice-info-element__text">{name}</span>

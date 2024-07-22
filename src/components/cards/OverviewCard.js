@@ -20,7 +20,7 @@ const OverviewCard = ({
     setDidViewCountUp(true);
   }, [pathname]);
 
-  const { type, icon, label, total, status, statusRate, dataPeriod, suffix, prefix, decimels, separator } = data;
+  const { type, icon, label, total, status, statusRate, dataPeriod, suffix, prefix, decimals, separator } = data;
   const totalNumber = Number(total);
   return (
     <OverviewCardWrap className={className}>

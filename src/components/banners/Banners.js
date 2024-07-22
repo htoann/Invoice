@@ -350,7 +350,7 @@ function PageHeaderBanner({
       <Cards headless>
         <PageHeader className="theme-wide">
           {type === 'corporate' ? (
-            <img src={require('@/static/img/corporate.png')} alt="Invoice Template" />
+            <img src={require('@/static/img/placeholder.png')} alt="Invoice Template" />
           ) : (
             <img src={require('@/static/img/banner/header-banner.png')} alt="Invoice Template" />
           )}
