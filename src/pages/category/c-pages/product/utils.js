@@ -1,5 +1,5 @@
 import { downloadFile, formatTime } from '@/utils/index';
-import { DataService } from '../../../../config/dataService';
+import { DataService } from '@/config/dataService';
 
 export const handleExport = async (date) => {
   try {

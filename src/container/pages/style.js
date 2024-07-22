@@ -1053,7 +1053,7 @@ const ErrorWrapper = Styled.div`
   }
 `;
 
-const ComingsoonStyleWrapper = Styled.div`
+const ComingSoonStyleWrapper = Styled.div`
   text-align: center;
   background: ${({ theme }) => theme[theme.mainContent]['white-background']};
   border-radius: 10px;
@@ -1121,7 +1121,7 @@ const ComingsoonStyleWrapper = Styled.div`
       }
     }
   }
-  .countdwon-data{
+  .countdown-data{
     display: flex;
     justify-content: center;
     >span{
@@ -2374,7 +2374,7 @@ export {
   ResultList,
   MaintananceWrapper,
   ErrorWrapper,
-  ComingsoonStyleWrapper,
+  ComingSoonStyleWrapper,
   AddUser,
   ChangelogWrapper,
   VersionHistoryList,

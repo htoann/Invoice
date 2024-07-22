@@ -1,7 +1,7 @@
 import { Button, Col, Form, Input, Row } from 'antd';
 import { useState } from 'react';
-import { Cards } from '../../../../components/cards/frame/cards-frame';
-import Heading from '../../../../components/heading/heading';
+import { Cards } from '@/components/cards/frame/cards-frame';
+import Heading from '@/components/heading/heading';
 import { BasicFormWrapper } from '../../../styled';
 import { ChangePasswordWrapper } from './style';
 

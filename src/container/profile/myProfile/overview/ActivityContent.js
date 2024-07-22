@@ -8,8 +8,8 @@ import UilEllipsisH from '@iconscout/react-unicons/icons/uil-ellipsis-h';
 import UilCommentAlt from '@iconscout/react-unicons/icons/uil-comment-alt';
 import { Link } from 'react-router-dom';
 import { ActivityContents } from './Style';
-import { Cards } from '../../../../components/cards/frame/cards-frame';
-import { Dropdown } from '../../../../components/dropdown/dropdown';
+import { Cards } from '@/components/cards/frame/cards-frame';
+import { Dropdown } from '@/components/dropdown/dropdown';
 
 function ActivityContent() {
   return (
@@ -22,7 +22,7 @@ function ActivityContent() {
             </span>
             <div className="activity-content">
               <div className="activity-info">
-                <img src={require('../../../../static/img/chat-author/t1.jpg')} alt="" />
+                <img src={require('@/static/img/chat-author/t1.jpg')} alt="" />
                 <p>
                   <span className="inline-text color-primary">James</span> Send you a message{' '}
                   <span className="hour">5 hours ago</span>
@@ -53,7 +53,7 @@ function ActivityContent() {
             </span>
             <div className="activity-content">
               <div className="activity-info">
-                <img src={require('../../../../static/img/chat-author/t2.jpg')} alt="" />
+                <img src={require('@/static/img/chat-author/t2.jpg')} alt="" />
                 <p>
                   <span className="inline-text color-primary">Adam </span>upload website template for sale{' '}
                   <span className="hour">5 hours ago</span>
@@ -84,7 +84,7 @@ function ActivityContent() {
             </span>
             <div className="activity-content">
               <div className="activity-info">
-                <img src={require('../../../../static/img/chat-author/t3.jpg')} alt="" />
+                <img src={require('@/static/img/chat-author/t3.jpg')} alt="" />
                 <p>
                   <span className="inline-text color-primary">Mumtahin</span> has registered{' '}
                   <span className="hour">5 hours ago</span>
@@ -115,7 +115,7 @@ function ActivityContent() {
             </span>
             <div className="activity-content">
               <div className="activity-info">
-                <img src={require('../../../../static/img/chat-author/t4.jpg')} alt="" />
+                <img src={require('@/static/img/chat-author/t4.jpg')} alt="" />
                 <p>
                   <span className="inline-text color-primary">James</span> Send you a message{' '}
                   <span className="hour">5 hours ago</span>
@@ -146,7 +146,7 @@ function ActivityContent() {
             </span>
             <div className="activity-content">
               <div className="activity-info">
-                <img src={require('../../../../static/img/chat-author/t5.png')} alt="" />
+                <img src={require('@/static/img/chat-author/t5.png')} alt="" />
                 <p>
                   <span className="inline-text color-primary">Adam</span> upload website template for sale{' '}
                   <span className="hour">5 hours ago</span>
@@ -177,7 +177,7 @@ function ActivityContent() {
             </span>
             <div className="activity-content">
               <div className="activity-info">
-                <img src={require('../../../../static/img/chat-author/t1.jpg')} alt="" />
+                <img src={require('@/static/img/chat-author/t1.jpg')} alt="" />
                 <p>
                   <span className="inline-text color-primary">Mumtahin</span> has registered{' '}
                   <span className="hour">5 hours ago</span>
@@ -208,7 +208,7 @@ function ActivityContent() {
             </span>
             <div className="activity-content">
               <div className="activity-info">
-                <img src={require('../../../../static/img/chat-author/t6.png')} alt="" />
+                <img src={require('@/static/img/chat-author/t6.png')} alt="" />
                 <p>
                   <span className="inline-text color-primary">James</span> Send you a message{' '}
                   <span className="hour">5 hours ago</span>
@@ -239,7 +239,7 @@ function ActivityContent() {
             </span>
             <div className="activity-content">
               <div className="activity-info">
-                <img src={require('../../../../static/img/chat-author/t7.png')} alt="" />
+                <img src={require('@/static/img/chat-author/t7.png')} alt="" />
                 <p>
                   <span className="inline-text color-primary">Mumtahin</span> has registered{' '}
                   <span className="hour">5 hours ago</span>
@@ -270,7 +270,7 @@ function ActivityContent() {
             </span>
             <div className="activity-content">
               <div className="activity-info">
-                <img src={require('../../../../static/img/chat-author/t8.png')} alt="" />
+                <img src={require('@/static/img/chat-author/t8.png')} alt="" />
                 <p>
                   <span className="inline-text color-primary">Adam</span> upload website template for sale{' '}
                   <span className="hour">5 hours ago</span>
@@ -301,7 +301,7 @@ function ActivityContent() {
             </span>
             <div className="activity-content">
               <div className="activity-info">
-                <img src={require('../../../../static/img/chat-author/t1.jpg')} alt="" />
+                <img src={require('@/static/img/chat-author/t1.jpg')} alt="" />
                 <p>
                   <span className="inline-text color-primary">James</span> Send you a message{' '}
                   <span className="hour">5 hours ago</span>

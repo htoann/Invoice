@@ -9,8 +9,8 @@ import UilFileAlt from '@iconscout/react-unicons/icons/uil-file-alt';
 import UilFile from '@iconscout/react-unicons/icons/uil-file';
 import { NavLink } from 'react-router-dom';
 import { ProductOverviewTable } from './Style';
-import { Cards } from '../../../../components/cards/frame/cards-frame';
-import Heading from '../../../../components/heading/heading';
+import { Cards } from '@/components/cards/frame/cards-frame';
+import Heading from '@/components/heading/heading';
 import { CardBarChart2, EChartCard } from '../../../dashboard/Style';
 
 const moreContent = (

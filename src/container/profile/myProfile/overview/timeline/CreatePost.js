@@ -3,9 +3,9 @@ import UilEllipsisH from '@iconscout/react-unicons/icons/uil-ellipsis-h';
 import { Input, Upload } from 'antd';
 import { useSelector, useDispatch } from 'react-redux';
 import { BackShadow, CreatePost } from './style';
-import { Cards } from '../../../../../components/cards/frame/cards-frame';
-import { Button } from '../../../../../components/buttons/buttons';
-import { submitPost } from '../../../../../redux/profile/actionCreator';
+import { Cards } from '@/../components/cards/frame/cards-frame';
+import { Button } from '@/../components/buttons/buttons';
+import { submitPost } from '@/../redux/profile/actionCreator';
 
 function Post() {
   const dispatch = useDispatch();
@@ -58,14 +58,14 @@ function Post() {
       {drawer && <BackShadow onClick={() => setDrawer(false)} />}
       <Cards title="Post Something">
         <div onClick={() => setDrawer(true)} className="postBody">
-          <img className="post-author" src={require('../../../../../static/img/chat-author/t4.jpg')} alt="" />
+          <img className="post-author" src={require('@/../static/img/chat-author/t4.jpg')} alt="" />
           <Input.TextArea value={textValue} onChange={onTextChange} placeholder="Write something..." />
         </div>
         <div onClick={() => setDrawer(true)} className="postFooter">
           <div className="postFooter_left">
             <Upload>
               <Button shape="circle" type="light">
-                <img src={require('../../../../../static/img/icon/image.png')} alt="" />
+                <img src={require('@/../static/img/icon/image.png')} alt="" />
                 Photo/Video
               </Button>
             </Upload>

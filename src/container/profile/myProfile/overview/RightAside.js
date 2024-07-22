@@ -4,9 +4,9 @@ import { Col, Row } from 'antd';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { Button } from '../../../../components/buttons/buttons';
-import { Cards } from '../../../../components/cards/frame/cards-frame';
-import { profileFriendsChangeStatus } from '../../../../redux/profile/actionCreator';
+import { Button } from '@/components/buttons/buttons';
+import { Cards } from '@/components/cards/frame/cards-frame';
+import { profileFriendsChangeStatus } from '@/redux/profile/actionCreator';
 import { RightAsideWrapper } from './Style';
 import './video-modal.css';
 
@@ -29,7 +29,7 @@ function RightAside() {
             return (
               <li key={key}>
                 <div className="ff-info">
-                  <img src={require(`../../../../${img}`)} alt="" />
+                  <img src={require(`@/${img}`)} alt="" />
                   <p>
                     {name} <span>{designation}</span>
                   </p>
@@ -72,7 +72,7 @@ function RightAside() {
               return (
                 id <= 6 && (
                   <Col key={id} xxl={8} lg={12} md={8} sm={8} xs={8}>
-                    <img style={{ width: '100%' }} src={require(`../../../../${img}`)} alt="" />
+                    <img style={{ width: '100%' }} src={require(`@/${img}`)} alt="" />
                   </Col>
                 )
               );
@@ -95,7 +95,7 @@ function RightAside() {
                 id <= 6 && (
                   <Col key={id} xxl={8} lg={12} md={8} sm={6} xs={8}>
                     <Link onClick={() => setOpen(true)} className="video" to="#">
-                      <img style={{ width: '100%' }} src={require(`../../../../${img}`)} alt="" />
+                      <img style={{ width: '100%' }} src={require(`@/${img}`)} alt="" />
                       <span>
                         <UilPlay />
                       </span>

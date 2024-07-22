@@ -5,8 +5,8 @@ import UilEnvelope from '@iconscout/react-unicons/icons/uil-envelope';
 import FontAwesome from 'react-fontawesome';
 import { Link } from 'react-router-dom';
 import { UserBioBox } from './Style';
-import { Cards } from '../../../../components/cards/frame/cards-frame';
-import { Button } from '../../../../components/buttons/buttons';
+import { Cards } from '@/components/cards/frame/cards-frame';
+import { Button } from '@/components/buttons/buttons';
 
 function UserBio() {
   return (

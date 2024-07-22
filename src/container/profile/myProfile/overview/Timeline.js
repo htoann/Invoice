@@ -1,7 +1,7 @@
 import React, { lazy, Suspense } from 'react';
 import { Row, Col, Skeleton } from 'antd';
 import { useSelector } from 'react-redux';
-import { Cards } from '../../../../components/cards/frame/cards-frame';
+import { Cards } from '@/components/cards/frame/cards-frame';
 
 const RightAside = lazy(() => import('./RightAside'));
 const CreatePost = lazy(() => import('./timeline/CreatePost'));

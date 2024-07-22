@@ -3,8 +3,8 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import { useDispatch } from 'react-redux';
-import { Checkbox } from '../../../../components/checkbox/checkbox';
-import { register } from '../../../../redux/authentication/actionCreator';
+import { Checkbox } from '@/components/checkbox/checkbox';
+import { register } from '@/redux/authentication/actionCreator';
 import { AuthFormWrap } from './style';
 
 function SignUp() {

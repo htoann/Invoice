@@ -1,6 +1,6 @@
 import React, { lazy, Suspense } from 'react';
 import { Row, Col, Skeleton } from 'antd';
-import { Cards } from '../../../../components/cards/frame/cards-frame';
+import { Cards } from '@/components/cards/frame/cards-frame';
 
 const RightAside = lazy(() => import('./RightAside'));
 const ActivityContent = lazy(() => import('./ActivityContent'));

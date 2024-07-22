@@ -1,8 +1,7 @@
-import React from 'react';
-import { Row, Col } from 'antd';
-import { PageHeader } from '../../components/page-headers/page-headers';
+import { Cards } from '@/components/cards/frame/cards-frame';
+import { PageHeader } from '@/components/page-headers/page-headers';
+import { Col, Row } from 'antd';
 import { Main } from '../styled';
-import { Cards } from '../../components/cards/frame/cards-frame';
 
 function BlankPage() {
   const PageRoutes = [
@@ -15,6 +14,7 @@ function BlankPage() {
       breadcrumbName: 'Blank Page',
     },
   ];
+
   return (
     <>
       <PageHeader className="invoice-page-header-main" title="Blank Page" routes={PageRoutes} />

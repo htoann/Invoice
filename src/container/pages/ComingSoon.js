@@ -1,15 +1,13 @@
-/* eslint-disable react/jsx-no-bind */
-/* eslint-disable react/react-in-jsx-scope */
+import { Button } from '@/components/buttons/buttons';
+import { Cards } from '@/components/cards/frame/cards-frame';
+import { PageHeader } from '@/components/page-headers/page-headers';
 import { Col, Form, Input, Row } from 'antd';
 import PropTypes from 'prop-types';
 import FontAwesome from 'react-fontawesome';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { ComingsoonStyleWrapper } from './style';
-import { Button } from '../../components/buttons/buttons';
-import { Cards } from '../../components/cards/frame/cards-frame';
-import { PageHeader } from '../../components/page-headers/page-headers';
 import { Main } from '../styled';
+import { ComingSoonStyleWrapper } from './style';
 
 function ComingSoon() {
   const PageRoutes = [
@@ -27,15 +25,14 @@ function ComingSoon() {
       mainContent: state.ChangeLayoutMode.mode,
     };
   });
-  function Completionist() {
-    return <span>You are good to go!</span>;
-  }
+
   function renderer({ days, hours, minutes, seconds, completed }) {
     if (completed) {
-      return <Completionist />;
+      return <span>You are good to go!</span>;
     }
+
     return (
-      <div className="countdwon-data">
+      <div className="countdown-data">
         <span>
           <span className="countdown-time">{days}</span> <span className="countdown-title">Days</span>
         </span>
@@ -68,13 +65,13 @@ function ComingSoon() {
       <Main>
         <Row gutter={25}>
           <Col sm={24} xs={24}>
-            <ComingsoonStyleWrapper>
+            <ComingSoonStyleWrapper>
               <Cards headless>
                 <div className="invoice-logo">
                   {mainContent === 'lightMode' ? (
-                    <img src={require('../../static/img/logo_dark.png')} alt="" />
+                    <img src={require('@/static/img/logo_dark.png')} alt="" />
                   ) : (
-                    <img src={require('../../static/img/logo_white.svg').default} alt="" />
+                    <img src={require('@/static/img/logo_white.svg').default} alt="" />
                   )}
                 </div>
                 <div className="coming-soon-content">
@@ -122,7 +119,7 @@ function ComingSoon() {
                   <p>2024 © Invoice System</p>
                 </div>
               </Cards>
-            </ComingsoonStyleWrapper>
+            </ComingSoonStyleWrapper>
           </Col>
         </Row>
       </Main>

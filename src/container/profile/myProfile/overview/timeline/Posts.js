@@ -11,9 +11,9 @@ import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { Button } from '../../../../../components/buttons/buttons';
-import { Cards } from '../../../../../components/cards/frame/cards-frame';
-import { commentUpdate, likeUpdate, postDelete } from '../../../../../redux/profile/actionCreator';
+import { Button } from '@/../components/buttons/buttons';
+import { Cards } from '@/../components/cards/frame/cards-frame';
+import { commentUpdate, likeUpdate, postDelete } from '@/../redux/profile/actionCreator';
 import { AllPosts, BackShadowEmoji, Title } from './style';
 
 function ExampleComment({ children, replay }) {
@@ -132,7 +132,7 @@ function Posts({ postId, from, time, like, comment, content, author }) {
       <Cards
         title={
           <Title>
-            <img src={require(`../../../../../${author}`)} alt="" />
+            <img src={require(`@/../${author}`)} alt="" />
             <p>
               {from} <span>{moment(parseInt(time, 10)).fromNow()}</span>
             </p>
@@ -173,7 +173,7 @@ function Posts({ postId, from, time, like, comment, content, author }) {
           <div className="post-comments">
             <div className="commentArea">
               <div className="comment-form">
-                <img src={require('../../../../../static/img/chat-author/t2.jpg')} alt="" />
+                <img src={require('@/../static/img/chat-author/t2.jpg')} alt="" />
                 <Input.TextArea onChange={onTextChange} value={textValue} placeholder="Write comment...." />
                 <div className="chatbox-reply-action d-flex">
                   <span className="smile-icon">
