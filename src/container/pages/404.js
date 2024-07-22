@@ -10,11 +10,13 @@ function NotFound() {
   const [state, setState] = useState({
     isLoading: true,
   });
+
   useEffect(() => {
     setTimeout(() => {
       setState({ isLoading: false });
     }, 1500);
   }, []);
+
   return (
     <Main>
       {state.isLoading ? (
