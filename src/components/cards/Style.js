@@ -68,6 +68,7 @@ const OverviewCardWrap = Styled.div`
                             display: block;
                             margin-bottom: 4px;
                             font-size: 15px;
+                            font-weight: 500;
                         }
                     }
                 }

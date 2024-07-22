@@ -75,7 +75,7 @@ const Customizer = () => {
         </div> */}
         <div className="customizer__single">
           <h4>{t('Common_MenuDirection')}</h4>
-          <ul className="customizer-list d-flex l_navbar">
+          <ul className="customizer-list d-flex l_navbar" style={{ justifyContent: 'center' }}>
             <li className="customizer-list__item active">
               <a
                 style={{ marginTop: 10 }}

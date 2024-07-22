@@ -13,7 +13,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import { InfoWrapper, NavAuth, UserDropDown } from './Style';
 
 import { logOut } from '@/redux/authentication/actionCreator';
-import ChatAuthImg from '@/static/img/placeholder.png';
 import EngImg from '@/static/img/flag/en.png';
 import VieImg from '@/static/img/flag/vi.png';
 import { setItem } from '@/utils/localStorageControl';
@@ -41,8 +40,8 @@ const AuthInfo = React.memo(() => {
     <UserDropDown>
       <div className="user-dropdown">
         <figure className="user-dropdown__info">
-          <img src={ChatAuthImg} alt="" />
-          <figcaption>
+          <img width="35" src="https://cdn0.iconfinder.com/data/icons/user-pictures/100/matureman1-512.png" alt="" />
+          <figcaption style={{ margin: 'auto' }}>
             <Heading as="h5">Cristiano Ronaldo</Heading>
           </figcaption>
         </figure>
