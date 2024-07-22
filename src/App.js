@@ -46,25 +46,23 @@ function ProviderConfig() {
   return (
     <ConfigProvider direction={rtl ? 'rtl' : 'ltr'} locale={getAntdLocale(i18n.language)}>
       <ThemeProvider theme={{ ...themeColor, rtl, topMenu, mainContent }}>
-        <>
-          <Router basename={process.env.PUBLIC_URL}>
-            {!isLoggedIn ? (
-              <Routes>
-                <Route path="/*" element={<Auth />} />
-              </Routes>
-            ) : (
-              <Routes>
-                <Route path="/*" element={<ProtectedRoute path="/*" Component={Index} />} />
-                <Route path="*" element={<NotFound />} />
-              </Routes>
-            )}
-            {isLoggedIn && (path === process.env.PUBLIC_URL || path === `${process.env.PUBLIC_URL}/`) && (
-              <Routes>
-                <Route path="/" element={<Navigate to="" />} />
-              </Routes>
-            )}
-          </Router>
-        </>
+        <Router basename={process.env.PUBLIC_URL}>
+          {!isLoggedIn ? (
+            <Routes>
+              <Route path="/*" element={<Auth />} />
+            </Routes>
+          ) : (
+            <Routes>
+              <Route path="/*" element={<ProtectedRoute path="/*" Component={Index} />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          )}
+          {isLoggedIn && (path === process.env.PUBLIC_URL || path === `${process.env.PUBLIC_URL}/`) && (
+            <Routes>
+              <Route path="/" element={<Navigate to="" />} />
+            </Routes>
+          )}
+        </Router>
       </ThemeProvider>
     </ConfigProvider>
   );

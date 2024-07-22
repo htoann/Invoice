@@ -13,8 +13,8 @@ const setLocalStorage = (key, value) => {
   return localStorage.setItem(key, stringify);
 };
 
-const removeItem = (key) => {
+const removeLocalStorage = (key) => {
   localStorage.removeItem(key);
 };
 
-export { getLocalStorage, setLocalStorage, removeItem };
+export { getLocalStorage, setLocalStorage, removeLocalStorage };

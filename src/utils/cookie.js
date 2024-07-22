@@ -15,8 +15,8 @@ const setCookie = (key, value) => {
   return Cookies.set(key, stringify);
 };
 
-const removeItem = (key) => {
+const removeCookie = (key) => {
   Cookies.remove(key);
 };
 
-export { getCookie, setCookie, removeItem };
+export { getCookie, setCookie, removeCookie };
