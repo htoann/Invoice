@@ -8,7 +8,7 @@ import { SettingWrapper } from './overview/style';
 
 const Profile = lazy(() => import('./overview/Profile'));
 const Account = lazy(() => import('./overview/Account'));
-const Password = lazy(() => import('./overview/Passwoard'));
+const Password = lazy(() => import('./overview/Password'));
 const SocialProfiles = lazy(() => import('./overview/SocialProfile'));
 const Notification = lazy(() => import('./overview/Notification'));
 const AuthorBox = lazy(() => import('./overview/ProfileAuthorBox'));
