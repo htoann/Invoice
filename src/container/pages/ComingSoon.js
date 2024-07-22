@@ -1,67 +1,25 @@
-import { Button } from '@/components/buttons/buttons';
 import { Cards } from '@/components/cards/frame/cards-frame';
 import { PageHeader } from '@/components/page-headers/page-headers';
-import { Col, Form, Input, Row } from 'antd';
-import PropTypes from 'prop-types';
+import { Col, Row } from 'antd';
 import FontAwesome from 'react-fontawesome';
+import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Main } from '../styled';
 import { ComingSoonStyleWrapper } from './style';
 
 function ComingSoon() {
-  const PageRoutes = [
-    {
-      path: 'index',
-      breadcrumbName: 'Dashboard',
-    },
-    {
-      path: '',
-      breadcrumbName: 'Coming Soon',
-    },
-  ];
+  const { t } = useTranslation();
+
   const { mainContent } = useSelector((state) => {
     return {
       mainContent: state.ChangeLayoutMode.mode,
     };
   });
 
-  function renderer({ days, hours, minutes, seconds, completed }) {
-    if (completed) {
-      return <span>You are good to go!</span>;
-    }
-
-    return (
-      <div className="countdown-data">
-        <span>
-          <span className="countdown-time">{days}</span> <span className="countdown-title">Days</span>
-        </span>
-        <span>
-          <div className="countdown-time">{hours}</div>
-          <span className="countdown-title">Hours</span>
-        </span>
-        <span>
-          <div className="countdown-time">{minutes}</div>
-          <span className="countdown-title">Minutes</span>
-        </span>
-        <span>
-          <div className="countdown-time">{seconds}</div> <span className="countdown-title">Seconds</span>
-        </span>
-      </div>
-    );
-  }
-
-  renderer.propTypes = {
-    days: PropTypes.number,
-    hours: PropTypes.number,
-    minutes: PropTypes.number,
-    seconds: PropTypes.number,
-    completed: PropTypes.node,
-  };
-
   return (
     <>
-      <PageHeader className="invoice-page-header-main" title="Coming Soon" routes={PageRoutes} />
+      <PageHeader className="invoice-page-header-main" title={t('Common_ComingSoonTitle')} />
       <Main>
         <Row gutter={25}>
           <Col sm={24} xs={24}>
@@ -75,23 +33,8 @@ function ComingSoon() {
                   )}
                 </div>
                 <div className="coming-soon-content">
-                  <h1>We are coming soon</h1>
-                  <p>
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry`s standard dummy text ever
-                    since the 1500s,
-                  </p>
-                </div>
-                <div className="subscription-form">
-                  <Form name="basic">
-                    <div className="subscription-form-inner">
-                      <Form.Item name="email" rules={[{ type: 'email', message: 'Please input your username!' }]}>
-                        <Input placeholder="name@example.com" />
-                      </Form.Item>
-                      <Button size="large" type="primary" htmlType="submit">
-                        Subscribe
-                      </Button>
-                    </div>
-                  </Form>
+                  <h1>{t('Common_ComingSoonTitle')}</h1>
+                  <p>{t('Common_ComingSoonContent')}</p>
                 </div>
                 <div className="coming-soon-social">
                   <ul>
@@ -116,7 +59,7 @@ function ComingSoon() {
                       </Link>
                     </li>
                   </ul>
-                  <p>2024 © Invoice System</p>
+                  <p>{t('Common_CopyRight')}</p>
                 </div>
               </Cards>
             </ComingSoonStyleWrapper>
