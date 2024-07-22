@@ -1,9 +1,9 @@
-import { Table } from 'antd';
-import React from 'react';
-
 import { Cards } from '@/components/cards/frame/cards-frame';
 import { BorderLessHeading, TableDefaultStyle } from '@/container/styled';
 import tableData from '@/mock/demoData/table-data.json';
+import { Table } from 'antd';
+import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 const { bestSeller } = tableData;
 
@@ -36,17 +36,19 @@ const sellerColumns = [
 ];
 
 const BusinessStatus = React.memo(() => {
+  const { t } = useTranslation();
+
   const bestSellerData = [];
 
   if (bestSeller !== null) {
-    bestSeller['today'].map((value) => {
+    bestSeller.map((value) => {
       const { key, name, company, product, revenue, status } = value;
       return bestSellerData.push({
         key,
         sellerName: (
           <div className="invoice-info-element align-center-v">
             <div className="invoice-info-element__media">
-              <img src={require(`@/static/img/placeholder.png`)} alt="invoice Product" />
+              <img src={require(`@/static/img/placeholder.png`)} alt="Invoice Product" />
             </div>
             <div className="invoice-info-element__content">
               <span className="invoice-info-element__text">{name}</span>
@@ -64,7 +66,7 @@ const BusinessStatus = React.memo(() => {
   return (
     <div className="full-width-table">
       <BorderLessHeading>
-        <Cards title="Trạng thái doanh nghiệp" size="large">
+        <Cards title={t('BusinessStatus')} size="large">
           <TableDefaultStyle className="invoice-having-header-bg">
             <div className="table-responsive">
               <Table columns={sellerColumns} dataSource={bestSellerData} pagination={false} />

@@ -1,6 +1,5 @@
 import { Table } from 'antd';
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react';
 
 import { Cards } from '@/components/cards/frame/cards-frame';
 import { BorderLessHeading, TableDefaultStyle } from '@/container/styled';
@@ -23,15 +22,9 @@ const productColumns = [
 ];
 
 const InvoicesChange = React.memo(() => {
-  const [state, setState] = useState({
-    productTab: 'today',
-  });
-
-  const { productTab } = state;
-
   const newProductData = [];
   if (newProduct !== null) {
-    newProduct[productTab].map((value) => {
+    newProduct.map((value) => {
       const { key, name, price } = value;
       return newProductData.push({
         key,
@@ -50,42 +43,10 @@ const InvoicesChange = React.memo(() => {
     });
   }
 
-  const handleTabActivation = (value, e) => {
-    e.preventDefault();
-    setState({
-      ...state,
-      productTab: value,
-    });
-  };
-
   return (
     <div className="full-width-table">
       <BorderLessHeading>
-        <Cards
-          isButton={
-            <div className="invoice-card-nav">
-              <ul>
-                <li className={productTab === 'today' ? 'invoice-active' : 'invoice-today'}>
-                  <Link onClick={(e) => handleTabActivation('today', e)} to="#">
-                    Today
-                  </Link>
-                </li>
-                <li className={productTab === 'week' ? 'invoice-active' : 'invoice-week'}>
-                  <Link onClick={(e) => handleTabActivation('week', e)} to="#">
-                    Week
-                  </Link>
-                </li>
-                <li className={productTab === 'month' ? 'invoice-active' : 'invoice-month'}>
-                  <Link onClick={(e) => handleTabActivation('month', e)} to="#">
-                    Month
-                  </Link>
-                </li>
-              </ul>
-            </div>
-          }
-          title="Hóa đơn bị thay đổi bởi người bán - Nhà cung cấp"
-          size="large"
-        >
+        <Cards title="Hóa đơn bị thay đổi bởi người bán - Nhà cung cấp" size="large">
           <TableDefaultStyle className="invoice-having-header-bg">
             <NewProductWrapper>
               <div className="table-responsive">
