@@ -1,5 +1,5 @@
+import { DataService } from '@/config/dataService';
 import Cookies from 'js-cookie';
-import { DataService } from '../../config/dataService';
 import actions from './actions';
 
 const { loginBegin, loginSuccess, loginErr, logoutBegin, logoutSuccess, logoutErr } = actions;

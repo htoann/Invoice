@@ -3160,18 +3160,18 @@ html[dir='rtl'] .dark-mode .invoice-navbar-menu {
 /* Custom css */
 
 .left-menu-navbar-title {
-  display: block;
+  display: block !important;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  padding-left: 36px;
+  padding-left: 0 !important;
   width: -webkit-fill-available;
   align-items: center;
   text-transform: capitalize;
   font-size: 14px;
   font-weight: 500;
   position: relative;
-  color: #404040;
+  color: #404040 !important;
 }
 
 .ant-table-empty {

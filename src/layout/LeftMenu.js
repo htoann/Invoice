@@ -3,7 +3,7 @@ import { Menu, Tooltip } from 'antd';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 import { routes } from '@/routes/const';
 import UilEllipsisV from '@iconscout/react-unicons/icons/uil-ellipsis-v';
@@ -51,7 +51,7 @@ export const LeftMenu = ({ toggleCollapsed }) => {
     const text = t(textKey);
 
     return (
-      <span
+      <Link
         onClick={toggleCollapsed}
         to={pathLink}
         style={{ display: 'block', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis' }}
@@ -59,7 +59,7 @@ export const LeftMenu = ({ toggleCollapsed }) => {
         <Tooltip title={text} placement="right" className="left-menu-navbar-title">
           {text}
         </Tooltip>
-      </span>
+      </Link>
     );
   };
 
