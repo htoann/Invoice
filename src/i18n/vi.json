@@ -135,7 +135,7 @@
   "Mail_UpdateAccount_Error": "Không thể cập nhật tài khoản. Vui lòng thử lại.",
   "Mail_SearchBySender": "Tìm kiếm theo người gửi",
 
-  "SyncHistory_PageHeader": "Danh sách đồng bộ",
+  "SyncHistory_PageHeader": "Lịch sử đồng bộ",
   "SyncHistory_TotalInvoice": "Tổng số hóa đơn",
   "SyncHistory_NewInvoice": "Hóa đơn mới",
 
