@@ -1,10 +1,10 @@
 import { DownOutlined, LeftOutlined, RightOutlined } from '@ant-design/icons';
 import UilLayers from '@iconscout/react-unicons/icons/uil-layers';
 import { Col, Row } from 'antd';
-import { BtnGroup, Button } from '../../components/buttons/buttons';
-import { Cards } from '../../components/cards/frame/cards-frame';
-import { Dropdown } from '../../components/dropdown/dropdown';
-import { PageHeader } from '../../components/page-headers/page-headers';
+import { BtnGroup, Button } from '@/components/buttons/buttons';
+import { Cards } from '@/components/cards/frame/cards-frame';
+import { Dropdown } from '@/components/dropdown/dropdown';
+import { PageHeader } from '@/components/page-headers/page-headers';
 import { BlockButtonsWrapper, BtnWithIcon, ButtonsGroupWrapper, ButtonSizeWrapper, Main } from '../styled';
 
 function Buttons() {

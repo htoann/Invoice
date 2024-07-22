@@ -1,8 +1,8 @@
 import { RightOutlined } from '@ant-design/icons';
 import { Col, Collapse, Row } from 'antd';
 import { useState } from 'react';
-import { Cards } from '../../components/cards/frame/cards-frame';
-import { PageHeader } from '../../components/page-headers/page-headers';
+import { Cards } from '@/components/cards/frame/cards-frame';
+import { PageHeader } from '@/components/page-headers/page-headers';
 import { Main } from '../styled';
 
 const { Panel } = Collapse;

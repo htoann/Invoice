@@ -1,8 +1,8 @@
 import { Col, Row } from 'antd';
 import { useState } from 'react';
-import { Cards } from '../../components/cards/frame/cards-frame';
-import { PageHeader } from '../../components/page-headers/page-headers';
-import { Tag } from '../../components/tags/tags';
+import { Cards } from '@/components/cards/frame/cards-frame';
+import { PageHeader } from '@/components/page-headers/page-headers';
+import { Tag } from '@/components/tags/tags';
 import { Main } from '../styled';
 
 function Tags() {

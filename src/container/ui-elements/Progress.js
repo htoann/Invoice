@@ -2,8 +2,8 @@ import { MinusOutlined, PlusOutlined } from '@ant-design/icons';
 import { Button, Col, Progress, Row, Tooltip } from 'antd';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { Cards } from '../../components/cards/frame/cards-frame';
-import { PageHeader } from '../../components/page-headers/page-headers';
+import { Cards } from '@/components/cards/frame/cards-frame';
+import { PageHeader } from '@/components/page-headers/page-headers';
 import { Main } from '../styled';
 
 const ButtonGroup = Button.Group;

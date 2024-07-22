@@ -1,10 +1,10 @@
 import { CreditCardOutlined, SmileOutlined, SolutionOutlined, UserOutlined } from '@ant-design/icons';
 import { Col, Divider, Row } from 'antd';
 import { useState } from 'react';
-import { Cards } from '../../components/cards/frame/cards-frame';
-import { PageHeader } from '../../components/page-headers/page-headers';
-import { Popover } from '../../components/popup/popup';
-import { Step, Steps } from '../../components/steps/steps';
+import { Cards } from '@/components/cards/frame/cards-frame';
+import { PageHeader } from '@/components/page-headers/page-headers';
+import { Popover } from '@/components/popup/popup';
+import { Step, Steps } from '@/components/steps/steps';
 import { Main } from '../styled';
 
 const customDot = (dot, { status, index }) => (

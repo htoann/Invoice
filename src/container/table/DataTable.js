@@ -5,9 +5,9 @@ import { Col, Divider, Radio, Row, Table } from 'antd';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { Cards } from '../../components/cards/frame/cards-frame';
-import DataTable from '../../components/data-table/DataTable';
-import { PageHeader } from '../../components/page-headers/page-headers';
+import { Cards } from '@/components/cards/frame/cards-frame';
+import DataTable from '@/components/data-table/DataTable';
+import { PageHeader } from '@/components/page-headers/page-headers';
 import UserListTable from '../pages/overview/UserTable';
 import { BorderLessHeading, Main } from '../styled';
 

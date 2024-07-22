@@ -1,12 +1,11 @@
+import { Popover } from '@/components/popup/popup';
 import UilBook from '@iconscout/react-unicons/icons/uil-book-open';
 import UilDownloadAlt from '@iconscout/react-unicons/icons/uil-download-alt';
 import UilFile from '@iconscout/react-unicons/icons/uil-file';
 import UilFileAlt from '@iconscout/react-unicons/icons/uil-file-alt';
 import UilPrint from '@iconscout/react-unicons/icons/uil-print';
 import UilTimes from '@iconscout/react-unicons/icons/uil-times';
-import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { Popover } from '../../popup/popup';
 import { Button } from '../buttons';
 
 function ExportButtonPageHeader() {

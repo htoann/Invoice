@@ -1,9 +1,9 @@
 import { Col, Row } from 'antd';
 import { NavLink } from 'react-router-dom';
-import { Button } from '../../components/buttons/buttons';
-import { Cards } from '../../components/cards/frame/cards-frame';
-import { PageHeader } from '../../components/page-headers/page-headers';
-import { Popover } from '../../components/popup/popup';
+import { Button } from '@/components/buttons/buttons';
+import { Cards } from '@/components/cards/frame/cards-frame';
+import { PageHeader } from '@/components/page-headers/page-headers';
+import { Popover } from '@/components/popup/popup';
 import { Main } from '../styled';
 import { DropdownStyle } from './ui-elements-styled';
 

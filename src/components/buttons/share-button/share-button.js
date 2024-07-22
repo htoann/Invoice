@@ -1,3 +1,4 @@
+import { Popover } from '@/components/popup/popup';
 import UilFacebook from '@iconscout/react-unicons/icons/uil-facebook-f';
 import UilInstagram from '@iconscout/react-unicons/icons/uil-instagram';
 import UilLinkedin from '@iconscout/react-unicons/icons/uil-linkedin';
@@ -5,7 +6,6 @@ import UilRss from '@iconscout/react-unicons/icons/uil-rss';
 import UilShareAlt from '@iconscout/react-unicons/icons/uil-share-alt';
 import UilTwitter from '@iconscout/react-unicons/icons/uil-twitter';
 import { NavLink } from 'react-router-dom';
-import { Popover } from '../../popup/popup';
 import { Button } from '../buttons';
 
 function ShareButtonPageHeader() {

@@ -1,7 +1,7 @@
 import { Col, DatePicker, Form, Input, Row, Select } from 'antd';
-import { Cards } from '../../components/cards/frame/cards-frame';
-import { Drawer } from '../../components/drawer/drawer';
-import { PageHeader } from '../../components/page-headers/page-headers';
+import { Cards } from '@/components/cards/frame/cards-frame';
+import { Drawer } from '@/components/drawer/drawer';
+import { PageHeader } from '@/components/page-headers/page-headers';
 import { Main } from '../styled';
 
 const { Option } = Select;

@@ -1,7 +1,7 @@
 import React from 'react';
 import { MaintananceWrapper } from './style';
 import { Main } from '../styled';
-import Heading from '../../components/heading/heading';
+import Heading from '@/components/heading/heading';
 
 function Maintenance() {
   return (

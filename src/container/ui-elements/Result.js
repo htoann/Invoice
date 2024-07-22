@@ -1,8 +1,8 @@
 import { CloseCircleOutlined } from '@ant-design/icons';
 import { Button, Col, Result, Row, Typography } from 'antd';
 import { NavLink } from 'react-router-dom';
-import { Cards } from '../../components/cards/frame/cards-frame';
-import { PageHeader } from '../../components/page-headers/page-headers';
+import { Cards } from '@/components/cards/frame/cards-frame';
+import { PageHeader } from '@/components/page-headers/page-headers';
 import { Main } from '../styled';
 
 const { Paragraph, Text } = Typography;

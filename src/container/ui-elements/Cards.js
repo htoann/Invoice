@@ -5,8 +5,8 @@ import UilPrint from '@iconscout/react-unicons/icons/uil-print';
 import UilTimes from '@iconscout/react-unicons/icons/uil-times';
 import { Card, Col, Row } from 'antd';
 import { NavLink } from 'react-router-dom';
-import { Cards } from '../../components/cards/frame/cards-frame';
-import { PageHeader } from '../../components/page-headers/page-headers';
+import { Cards } from '@/components/cards/frame/cards-frame';
+import { PageHeader } from '@/components/page-headers/page-headers';
 import { Main } from '../styled';
 import { CardStyleWrapper } from './ui-elements-styled';
 

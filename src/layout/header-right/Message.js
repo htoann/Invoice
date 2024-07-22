@@ -7,8 +7,8 @@ import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { ReactSVG } from 'react-svg';
 import { UserActionDropDown } from './Style';
-import Heading from '../../components/heading/heading';
-import { Popover } from '../../components/popup/popup';
+import Heading from '@/components/heading/heading';
+import { Popover } from '@/components/popup/popup';
 
 const MessageBox = React.memo(() => {
   const { rtl } = useSelector((state) => {

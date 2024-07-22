@@ -1,5 +1,4 @@
 import propTypes from 'prop-types';
-import React from 'react';
 import FontAwesome from 'react-fontawesome';
 import { Link } from 'react-router-dom';
 import { ProfileCardWrapper } from './Style';
@@ -13,10 +12,10 @@ const ProfileCard = ({
   return (
     <ProfileCardWrapper>
       <figcaption>
-        <img className="invoice-profile-top-img" src={require(`../../${bgImage}`)} alt="banner" />
+        <img className="invoice-profile-top-img" src={require(`@/${bgImage}`)} alt="banner" />
         <div className="invoice-profile-content">
           <div className="invoice-profile-content__img">
-            <img className="profile" src={require(`../../${image}`)} alt="profile" />
+            <img className="profile" src={require(`@/${image}`)} alt="profile" />
           </div>
           <h4 className="invoice-profile-name">{title}</h4>
           <p className="invoice-profile-text">{tag}</p>

@@ -1,8 +1,8 @@
 import { Button, Col, Row, TimePicker } from 'antd';
 import moment from 'moment';
 import { useState } from 'react';
-import { Cards } from '../../components/cards/frame/cards-frame';
-import { PageHeader } from '../../components/page-headers/page-headers';
+import { Cards } from '@/components/cards/frame/cards-frame';
+import { PageHeader } from '@/components/page-headers/page-headers';
 import { Main } from '../styled';
 
 const format = 'HH:mm';

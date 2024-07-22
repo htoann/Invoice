@@ -1,6 +1,6 @@
 import { Col, Row, Table } from 'antd';
-import { Cards } from '../../components/cards/frame/cards-frame';
-import { PageHeader } from '../../components/page-headers/page-headers';
+import { Cards } from '@/components/cards/frame/cards-frame';
+import { PageHeader } from '@/components/page-headers/page-headers';
 import BestSeller from '../dashboard/overview/BusinessStatus';
 import RevenueGenerated from '../dashboard/overview/RevenueGenerated';
 import { Main } from '../styled';

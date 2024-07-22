@@ -1,8 +1,8 @@
 import { ArrowDownOutlined, ArrowUpOutlined, LikeOutlined } from '@ant-design/icons';
 import { Col, Row, Statistic } from 'antd';
-import { Button } from '../../components/buttons/buttons';
-import { Cards } from '../../components/cards/frame/cards-frame';
-import { PageHeader } from '../../components/page-headers/page-headers';
+import { Button } from '@/components/buttons/buttons';
+import { Cards } from '@/components/cards/frame/cards-frame';
+import { PageHeader } from '@/components/page-headers/page-headers';
 import { Main } from '../styled';
 
 function Statistics() {

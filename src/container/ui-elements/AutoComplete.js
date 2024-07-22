@@ -1,9 +1,9 @@
 import { Col, Input, Row } from 'antd';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { AutoComplete } from '../../components/autoComplete/autoComplete';
-import { Cards } from '../../components/cards/frame/cards-frame';
-import { PageHeader } from '../../components/page-headers/page-headers';
+import { AutoComplete } from '@/components/autoComplete/autoComplete';
+import { Cards } from '@/components/cards/frame/cards-frame';
+import { PageHeader } from '@/components/page-headers/page-headers';
 import { AutoCompleteWrapper, Main } from '../styled';
 
 const { TextArea } = Input;

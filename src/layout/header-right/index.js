@@ -18,8 +18,8 @@ import EngImg from '@/static/img/flag/en.png';
 import VieImg from '@/static/img/flag/vi.png';
 import { setItem } from '@/utils/localStorageControl';
 import { useTranslation } from 'react-i18next';
-import Heading from '../../components/heading/heading';
-import { Popover } from '../../components/popup/popup';
+import Heading from '@/components/heading/heading';
+import { Popover } from '@/components/popup/popup';
 import Customizer from './Customizer';
 
 const AuthInfo = React.memo(() => {

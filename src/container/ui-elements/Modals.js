@@ -1,9 +1,9 @@
 import { Col, Row } from 'antd';
 import { useState } from 'react';
-import { Button } from '../../components/buttons/buttons';
-import { Cards } from '../../components/cards/frame/cards-frame';
-import { Modal, alertModal } from '../../components/modals/antd-modals';
-import { PageHeader } from '../../components/page-headers/page-headers';
+import { Button } from '@/components/buttons/buttons';
+import { Cards } from '@/components/cards/frame/cards-frame';
+import { Modal, alertModal } from '@/components/modals/antd-modals';
+import { PageHeader } from '@/components/page-headers/page-headers';
 import { Main } from '../styled';
 
 const info = () => {

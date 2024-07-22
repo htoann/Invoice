@@ -1,6 +1,6 @@
 import { Col, Row } from 'antd';
-import { Cards } from '../../components/cards/frame/cards-frame';
-import { PageHeader } from '../../components/page-headers/page-headers';
+import { Cards } from '@/components/cards/frame/cards-frame';
+import { PageHeader } from '@/components/page-headers/page-headers';
 import { Main } from '../styled';
 import { GridStyle, GridStyleGutter, GridStyleOffset } from './GridStyled';
 

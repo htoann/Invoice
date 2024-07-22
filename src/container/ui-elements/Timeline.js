@@ -1,7 +1,7 @@
 import { ClockCircleOutlined } from '@ant-design/icons';
 import { Col, Row, Timeline } from 'antd';
-import { Cards } from '../../components/cards/frame/cards-frame';
-import { PageHeader } from '../../components/page-headers/page-headers';
+import { Cards } from '@/components/cards/frame/cards-frame';
+import { PageHeader } from '@/components/page-headers/page-headers';
 import {
   SwClock,
   SwEllipse,
@@ -12,7 +12,7 @@ import {
   SwRocket,
   SwShieldCheck,
   SwUsers,
-} from '../../components/utilities/icons';
+} from '@/components/utilities/icons';
 import { Main } from '../styled';
 import { TimeLinePointerIconWrap, TimelineBoxWrap, TimelineNormalWrap } from './ui-elements-styled';
 

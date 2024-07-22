@@ -1,8 +1,8 @@
 import { Col, Row } from 'antd';
 import { useState } from 'react';
-import { Cards } from '../../components/cards/frame/cards-frame';
-import { PageHeader } from '../../components/page-headers/page-headers';
-import { Slider } from '../../components/slider/slider';
+import { Cards } from '@/components/cards/frame/cards-frame';
+import { PageHeader } from '@/components/page-headers/page-headers';
+import { Slider } from '@/components/slider/slider';
 import { Main } from '../styled';
 
 function Sliders() {

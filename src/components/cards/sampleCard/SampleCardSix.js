@@ -1,6 +1,5 @@
 import UilEllipsisH from '@iconscout/react-unicons/icons/uil-ellipsis-h';
 import propTypes from 'prop-types';
-import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { Dropdown } from '../../dropdown/dropdown';

@@ -1,8 +1,8 @@
 import { HomeOutlined } from '@ant-design/icons';
 import { Breadcrumb, Col, Menu, Row } from 'antd';
 import { NavLink } from 'react-router-dom';
-import { Cards } from '../../components/cards/frame/cards-frame';
-import { PageHeader } from '../../components/page-headers/page-headers';
+import { Cards } from '@/components/cards/frame/cards-frame';
+import { PageHeader } from '@/components/page-headers/page-headers';
 import { Main } from '../styled';
 import { BreadcrumbWrapperStyle } from './ui-elements-styled';
 

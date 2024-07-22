@@ -1,10 +1,10 @@
 import { DownOutlined, EllipsisOutlined, UserOutlined } from '@ant-design/icons';
 import { Col, message, Row, Tooltip } from 'antd';
 import { Link } from 'react-router-dom';
-import { Button } from '../../components/buttons/buttons';
-import { Cards } from '../../components/cards/frame/cards-frame';
-import { Dropdown } from '../../components/dropdown/dropdown';
-import { PageHeader } from '../../components/page-headers/page-headers';
+import { Button } from '@/components/buttons/buttons';
+import { Cards } from '@/components/cards/frame/cards-frame';
+import { Dropdown } from '@/components/dropdown/dropdown';
+import { PageHeader } from '@/components/page-headers/page-headers';
 import { Main } from '../styled';
 import { DropdownIconStyleWrapper, DropdownStyle } from './ui-elements-styled';
 

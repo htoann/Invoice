@@ -1,7 +1,7 @@
 import { CheckOutlined, CloseOutlined } from '@ant-design/icons';
 import { Col, Row, Switch } from 'antd';
-import { Cards } from '../../components/cards/frame/cards-frame';
-import { PageHeader } from '../../components/page-headers/page-headers';
+import { Cards } from '@/components/cards/frame/cards-frame';
+import { PageHeader } from '@/components/page-headers/page-headers';
 import { Main } from '../styled';
 import { SwitchStyleWrap } from './ui-elements-styled';
 

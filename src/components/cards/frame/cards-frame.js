@@ -1,8 +1,8 @@
+import { Dropdown } from '@/components/dropdown/dropdown';
+import Heading from '@/components/heading/heading';
 import UilellipsisH from '@iconscout/react-unicons/icons/uil-ellipsis-h';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { Dropdown } from '../../dropdown/dropdown';
-import Heading from '../../heading/heading';
 import { CardFrame } from './style';
 
 const Cards = (props) => {
@@ -18,7 +18,7 @@ const Cards = (props) => {
     bodyStyle,
     headStyle,
     border = false,
-    bodypadding,
+    bodyPadding,
     className,
   } = props;
   return (
@@ -31,7 +31,7 @@ const Cards = (props) => {
           headStyle={headStyle && headStyle}
           bordered={border}
           className={className}
-          bodypadding={bodypadding && bodypadding}
+          bodyPadding={bodyPadding && bodyPadding}
           extra={
             <>
               {more && (
@@ -51,7 +51,7 @@ const Cards = (props) => {
         </CardFrame>
       ) : (
         <CardFrame
-          bodypadding={bodypadding && bodypadding}
+          bodyPadding={bodyPadding && bodyPadding}
           bodyStyle={bodyStyle && bodyStyle}
           size={size}
           style={{ width: '100%' }}
@@ -77,7 +77,7 @@ Cards.propTypes = {
   headless: PropTypes.bool,
   border: PropTypes.bool,
   caption: PropTypes.string,
-  bodypadding: PropTypes.string,
+  bodyPadding: PropTypes.string,
   className: PropTypes.string,
   moreText: PropTypes.bool,
   children: PropTypes.oneOfType([PropTypes.object, PropTypes.string, PropTypes.node]),

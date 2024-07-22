@@ -1,6 +1,6 @@
 import { Col, Row } from 'antd';
 import { Link } from 'react-router-dom';
-import { PageHeader } from '../../components/page-headers/page-headers';
+import { PageHeader } from '@/components/page-headers/page-headers';
 import { Main } from '../styled';
 import { TermsConditionsStyle } from './style';
 

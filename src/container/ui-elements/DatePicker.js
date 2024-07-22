@@ -1,9 +1,9 @@
 import { Col, DatePicker, Row } from 'antd';
 import moment from 'moment';
 import { useState } from 'react';
-import { Cards } from '../../components/cards/frame/cards-frame';
-import { CustomDateRange, DateRangePickerOne } from '../../components/datePicker/datePicker';
-import { PageHeader } from '../../components/page-headers/page-headers';
+import { Cards } from '@/components/cards/frame/cards-frame';
+import { CustomDateRange, DateRangePickerOne } from '@/components/datePicker/datePicker';
+import { PageHeader } from '@/components/page-headers/page-headers';
 import { DatePickerWrapper, Main } from '../styled';
 
 const { MonthPicker, RangePicker, WeekPicker } = DatePicker;

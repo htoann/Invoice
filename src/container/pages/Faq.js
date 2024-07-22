@@ -6,11 +6,11 @@ import UilMinus from '@iconscout/react-unicons/icons/uil-minus';
 import UilSmile from '@iconscout/react-unicons/icons/uil-smile';
 import UilFrown from '@iconscout/react-unicons/icons/uil-frown';
 import { Badge, FaqCategoryBox, FaqSupportBox, FaqWrapper } from './style';
-import { PageHeader } from '../../components/page-headers/page-headers';
+import { PageHeader } from '@/components/page-headers/page-headers';
 import { Main } from '../styled';
-import { Cards } from '../../components/cards/frame/cards-frame';
-import Heading from '../../components/heading/heading';
-import { Button } from '../../components/buttons/buttons';
+import { Cards } from '@/components/cards/frame/cards-frame';
+import Heading from '@/components/heading/heading';
+import { Button } from '@/components/buttons/buttons';
 
 const { Panel } = Collapse;
 
