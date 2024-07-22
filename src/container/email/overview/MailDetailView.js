@@ -32,7 +32,7 @@ function Single() {
   const ReplayMess = React.memo(() => {
     return (
       <>
-        <img style={{ width: 50, height: 50 }} src={require('../../../static/img/email/2.png')} alt="" />
+        <img style={{ width: 50, height: 50 }} src={require('@/static/img/email/2.png')} alt="" />
       </>
     );
   });
@@ -167,7 +167,7 @@ function Single() {
               <div className="message-attachments">
                 <figure>
                   <div className="attachment-image">
-                    <img src={require('../../../static/img/email/2.png')} alt="" />
+                    <img src={require('@/static/img/email/2.png')} alt="" />
                   </div>
                   <div className="attachment-hover">
                     <Link className="btn-link" to="#">
@@ -185,7 +185,7 @@ function Single() {
 
                 <figure>
                   <div className="attachment-image">
-                    <img src={require('../../../static/img/email/1.png')} alt="" />
+                    <img src={require('@/static/img/email/1.png')} alt="" />
                   </div>
                   <div className="attachment-hover">
                     <Link className="btn-link" to="#">
@@ -202,7 +202,7 @@ function Single() {
                 </figure>
                 <figure>
                   <div className="attachment-image">
-                    <img src={require('../../../static/img/email/3.png')} alt="" />
+                    <img src={require('@/static/img/email/3.png')} alt="" />
                   </div>
                   <div className="attachment-hover">
                     <Link className="btn-link" to="#">
@@ -219,7 +219,7 @@ function Single() {
                 </figure>
                 <figure>
                   <div className="attachment-image">
-                    <img src={require('../../../static/img/email/4.png')} alt="" />
+                    <img src={require('@/static/img/email/4.png')} alt="" />
                   </div>
                   <div className="attachment-hover">
                     <Link className="btn-link" to="#">
@@ -245,7 +245,7 @@ function Single() {
             <ReplyList>
               <div className="reply-view__single">
                 <figure className="reply-view__content d-flex">
-                  <img style={{ width: 50, height: 50 }} src={require('../../../static/img/email/2.png')} alt="" />
+                  <img style={{ width: 50, height: 50 }} src={require('@/static/img/email/2.png')} alt="" />
                   <figcaption>
                     <Heading as="h6">Reynante Labares</Heading>
                     <p>

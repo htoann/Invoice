@@ -12,10 +12,10 @@ const AuthLayout = (WrapperContent) => {
           </div>
         }
       >
-        <AuthenticationWrap style={{ backgroundImage: `url("${require('../../../static/img/admin-bg-light.png')}")` }}>
+        <AuthenticationWrap style={{ backgroundImage: `url("${require('@/static/img/admin-bg-light.png')}")` }}>
           <div className="invoice-authentication-wrap">
             <div className="invoice-authentication-brand">
-              <img src={require(`../../../static/img/logo_dark.png`)} alt="" />
+              <img src={require(`@/static/img/logo_dark.png`)} alt="" />
             </div>
             <WrapperContent />
           </div>

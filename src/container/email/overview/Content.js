@@ -89,7 +89,7 @@ function Content({ searchData, email }) {
             <p>{textRefactor(body, 10)}</p>
             {attach.length
               ? attach.map((item) => (
-                  <a key={item} className="btn-attachment" download href={require(`../../../static/img/email/${item}`)}>
+                  <a key={item} className="btn-attachment" download href={require(`@/static/img/email/${item}`)}>
                     <UilPaperclip />
                     {item}
                   </a>

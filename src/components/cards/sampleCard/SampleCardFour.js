@@ -96,7 +96,7 @@ const SampleCardFour = ({
         <p>{content}</p>
         <div className="feedbackSection">
           <div className="author">
-            <img src={require('../../../static/img/chat-author/t1.jpg')} alt="" />
+            <img src={require('@/static/img/chat-author/t1.jpg')} alt="" />
             <span>Burns Marks</span>
           </div>
           <div className="feedback">

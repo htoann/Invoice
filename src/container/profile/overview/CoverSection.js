@@ -22,7 +22,7 @@ function CoverSection() {
 
   return (
     <div className="cover-image">
-      <img style={{ width: '100%' }} src={require('../../../static/img/profile/cover-img.png')} alt="banner" />
+      <img style={{ width: '100%' }} src={require('@/static/img/profile/cover-img.png')} alt="banner" />
       <Upload {...props}>
         <Link to="#">
           <UilCamera /> Change Cover
