@@ -1,12 +1,15 @@
+import { Button } from '@/components/buttons/buttons';
+import Heading from '@/components/heading/heading';
 import { Spin } from 'antd';
 import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { NavLink } from 'react-router-dom';
-import { Button } from '../../components/buttons/buttons';
-import Heading from '../../components/heading/heading';
 import { Main } from '../styled';
 import { ErrorWrapper } from './style';
 
 function NotFound() {
+  const { t } = useTranslation();
+
   const [state, setState] = useState({
     isLoading: true,
   });
@@ -29,10 +32,10 @@ function NotFound() {
           <Heading className="error-text" as="h3">
             404
           </Heading>
-          <p>Sorry! the page you are looking for does not exist.</p>
+          <p>{t('Common_PageNotFound')}</p>
           <NavLink to="/">
             <Button size="default" type="primary" to="/">
-              Return Home
+              {t('Common_ReturnHome')}
             </Button>
           </NavLink>
         </ErrorWrapper>

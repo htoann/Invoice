@@ -52,6 +52,8 @@
   "Common_InvoiceList": "Danh sách hoá đơn",
   "Common_SyncHistory": "Lịch sử đồng bộ",
   "Common_AreYouSureWantToDelete": "Bạn có chắc chắn muốn xoá",
+  "Common_PageNotFound": "Xin lỗi! Trang bạn tìm kiếm không tồn tại.",
+  "Common_ReturnHome": "Quay lại trang chủ",
 
   "Connect_Tax_Authorities": "Kết nối cơ quan thuế",
   "List_Products": "Danh sách hàng hóa",
