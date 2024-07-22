@@ -5,7 +5,7 @@
   "dependencies": {
     "@iconscout/react-unicons": "^2.0.2",
     "@pezhmanparsaee/react-custom-scrollbars": "^4.3.1",
-    "antd": "^4.21.3",
+    "antd": "4.24.16",
     "axios": "^1.7.2",
     "axios-mock-adapter": "^1.22.0",
     "core-js": "^3.37.1",
