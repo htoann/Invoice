@@ -12,7 +12,7 @@ const useBranches = () => {
         const response = await axios.get('/branches');
         setBranches(response.data.branches);
       } catch (error) {
-        console.log(error);
+        console.error(error);
       } finally {
         setLoadingBranches(false);
       }

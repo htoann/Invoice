@@ -1,67 +1,62 @@
 import { Cards } from '@/components/cards/frame/cards-frame';
 import { BorderLessHeading, TableDefaultStyle } from '@/container/styled';
-import tableData from '@/mock/demoData/table-data.json';
+import axios from '@/mock/index';
 import { Table } from 'antd';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-
-const { bestSeller } = tableData;
-
-const sellerColumns = [
-  {
-    title: 'Seller Name',
-    dataIndex: 'sellerName',
-    key: 'sellerName',
-  },
-  {
-    title: 'Company',
-    dataIndex: 'company',
-    key: 'company',
-  },
-  {
-    title: 'Product',
-    dataIndex: 'product',
-    key: 'product',
-  },
-  {
-    title: 'Revenue',
-    dataIndex: 'revenue',
-    key: 'revenue',
-  },
-  {
-    title: 'Status',
-    dataIndex: 'status',
-    key: 'status',
-  },
-];
 
 const BusinessStatus = React.memo(() => {
   const { t } = useTranslation();
+  const [list, setList] = useState([]);
 
-  const bestSellerData = [];
+  const tableColumns = [
+    {
+      title: 'Tình trạng',
+      dataIndex: 'tinhTrang',
+      key: 'tinhTrang',
+    },
+    {
+      title: 'Tổng số mã số thuế',
+      dataIndex: 'tongSoMaSoThue',
+      key: 'tongSoMaSoThue',
+    },
+    {
+      title: 'Tổng tiền mua vào',
+      dataIndex: 'tongTienMuaVao',
+      key: 'tongTienMuaVao',
+    },
+    {
+      title: 'Ngày cập nhật',
+      dataIndex: 'ngayCapNhat',
+      key: 'ngayCapNhat',
+    },
+  ];
 
-  if (bestSeller !== null) {
-    bestSeller.map((value) => {
-      const { key, name, company, product, revenue, status } = value;
-      return bestSellerData.push({
-        key,
-        sellerName: (
-          <div className="invoice-info-element align-center-v">
-            <div className="invoice-info-element__media">
-              <img src={require(`@/static/img/placeholder.png`)} alt="Invoice Product" />
-            </div>
-            <div className="invoice-info-element__content">
-              <span className="invoice-info-element__text">{name}</span>
-            </div>
-          </div>
-        ),
-        company,
-        product,
-        revenue,
-        status,
-      });
+  const getList = async () => {
+    try {
+      const response = await axios.get('/api/business-status');
+      setList(response?.data?.businessStatus || []);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    getList();
+  }, []);
+
+  const listData =
+    list?.length > 0 &&
+    list.map((value, index) => {
+      const { tinhTrang, tongSoMaSoThue, tongTienMuaVao, ngayCapNhat } = value;
+      return {
+        key: index,
+        tinhTrang,
+        tongSoMaSoThue,
+        tongTienMuaVao,
+        ngayCapNhat,
+      };
     });
-  }
 
   return (
     <div className="full-width-table">
@@ -69,7 +64,7 @@ const BusinessStatus = React.memo(() => {
         <Cards title={t('Dashboard_BusinessStatus')} size="large">
           <TableDefaultStyle className="invoice-having-header-bg">
             <div className="table-responsive">
-              <Table columns={sellerColumns} dataSource={bestSellerData} pagination={false} />
+              <Table columns={tableColumns} dataSource={listData} pagination={false} />
             </div>
           </TableDefaultStyle>
         </Cards>

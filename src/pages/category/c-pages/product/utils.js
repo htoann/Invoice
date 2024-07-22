@@ -9,6 +9,6 @@ export const handleExport = async (date) => {
 
     downloadFile(response, `HangHoa${formatTime(date)}.xlsx`);
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 };

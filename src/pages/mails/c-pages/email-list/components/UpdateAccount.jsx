@@ -36,7 +36,7 @@ const UpdateAccount = ({ state, setState, accounts, setAccounts }) => {
         description: t('Mail_UpdateAccount_Success'),
       });
     } catch (error) {
-      console.log(error);
+      console.error(error);
       notification.error({
         message: t('Common_Error'),
         description: t('Mail_UpdateAccount_Error'),

@@ -36,7 +36,7 @@ const EditProduct = ({ state, setState, list, setList }) => {
         description: t('Product_UpdateSuccessDescription'),
       });
     } catch (error) {
-      console.log(error);
+      console.error(error);
       notification.error({
         message: t('Common_Failure'),
         description: t('Product_UpdateErrorDescription'),

@@ -44,7 +44,7 @@ const getFileName = (response) => {
         .replace(/^"(.*)"$/, '$1');
     }
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 };
 

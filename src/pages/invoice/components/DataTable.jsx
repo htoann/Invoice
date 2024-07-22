@@ -47,7 +47,7 @@ function DataTable({ loading, tableData, columns, state, setState, getInvoiceLis
 
       downloadFile(response, `HDDT${formatTime(startDate || endDate)}.xlsx`);
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
 

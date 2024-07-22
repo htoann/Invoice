@@ -1732,7 +1732,6 @@ const TableDefaultStyle = Styled.div`
                     font-size: 14px;
                     &:first-child{
                         font-size: 15px;
-                        ${({ theme }) => (!theme.rtl ? 'padding-left' : 'padding-right')}: 0;
                     }
                     &:last-child{
                         ${({ theme }) => (!theme.rtl ? 'padding-right' : 'padding-left')}: 15px;

@@ -69,7 +69,7 @@ function InvoiceList() {
         }));
       }
     } catch (error) {
-      console.log(error);
+      console.error(error);
     } finally {
       if (searchLoading) {
         setSearchLoading(false);

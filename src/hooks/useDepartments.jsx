@@ -12,7 +12,7 @@ const useDepartments = () => {
         const response = await axios.get('/departments');
         setDepartments(response.data.departments);
       } catch (error) {
-        console.log(error);
+        console.error(error);
       } finally {
         setLoadingDepartments(false);
       }
