@@ -101,11 +101,11 @@ export const LeftMenu = ({ toggleCollapsed }) => {
       'category',
       !topMenu && <UilTable />,
       createMenuItems([
-        { path: routes.emailAccount, textKey: t('Org_Structure'), key: 'Cơ cấu tổ chức' },
-        { path: routes.emailAccount, textKey: 'Nhà cung cấp', key: 'Nhà cung cấp' },
-        { path: routes.emailAccount, textKey: 'Khách hàng', key: 'Khách hàng' },
-        { path: routes.emailAccount, textKey: 'Hàng hoá', key: 'Hàng hoá' },
-        { path: routes.emailAccount, textKey: 'Khoản mục chi phí', key: 'Khoản mục chi phí' },
+        { path: routes.emailAccount, textKey: t('Common_OrgStructure'), key: t('Common_OrgStructure') },
+        { path: routes.emailAccount, textKey: t('Common_Supplier'), key: 'Nhà cung cấp' },
+        { path: routes.emailAccount, textKey: t('Common_Customer'), key: 'Khách hàng' },
+        { path: routes.emailAccount, textKey: t('Common_Goods'), key: 'Hàng hoá' },
+        { path: routes.emailAccount, textKey: t('Common_ExpenseItem'), key: 'Khoản mục chi phí' },
       ]),
     ),
     getItem(

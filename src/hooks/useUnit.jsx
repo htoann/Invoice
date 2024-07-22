@@ -4,21 +4,21 @@ const useUnit = () => {
   const { t } = useTranslation();
 
   const unitOptions = [
-    { value: 'cai', label: t('Unit_Piece') },
-    { value: 'kilogram', label: t('Unit_Kilogram') },
-    { value: 'met', label: t('Unit_Meter') },
-    { value: 'lit', label: t('Unit_Liter') },
-    { value: 'hop', label: t('Unit_Box') },
-    { value: 'goi', label: t('Unit_Pack') },
+    { value: 'cai', label: t('Common_UnitPiece') },
+    { value: 'kilogram', label: t('Common_UnitKilogram') },
+    { value: 'met', label: t('Common_UnitMeter') },
+    { value: 'lit', label: t('Common_UnitLiter') },
+    { value: 'hop', label: t('Common_UnitBox') },
+    { value: 'goi', label: t('Common_UnitPack') },
   ];
 
   const EUnit = {
-    cai: t('Unit_Piece'),
-    kilogram: t('Unit_Kilogram'),
-    met: t('Unit_Meter'),
-    lit: t('Unit_Liter'),
-    hop: t('Unit_Box'),
-    goi: t('Unit_Pack'),
+    cai: t('Common_UnitPiece'),
+    kilogram: t('Common_UnitKilogram'),
+    met: t('Common_UnitMeter'),
+    lit: t('Common_UnitLiter'),
+    hop: t('Common_UnitBox'),
+    goi: t('Common_UnitPack'),
   };
 
   return { unitOptions, EUnit };

@@ -74,7 +74,7 @@ const Customizer = () => {
           </ul>
         </div> */}
         <div className="customizer__single">
-          <h4>{t('Menu_Direction')}</h4>
+          <h4>{t('Common_MenuDirection')}</h4>
           <ul className="customizer-list d-flex l_navbar">
             <li className="customizer-list__item active">
               <a

@@ -228,7 +228,7 @@ const Product = () => {
 
   return (
     <>
-      <PageHeader className="invoice-page-header-main" title={t('List_Products')} />
+      <PageHeader className="invoice-page-header-main" title={t('Common_ListProducts')} />
       <Main>
         <Row gutter={15}>
           <Col xs={24}>

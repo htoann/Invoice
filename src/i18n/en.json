@@ -53,10 +53,10 @@
   "Common_SyncHistory": "Sync History",
   "Common_AreYouSureWantToDelete": "Are you sure you want to delete?",
 
-  "Connect_Tax_Authorities": "Connect to Tax Authorities",
-  "List_Products": "Product List",
-  "Org_Structure": "Organizational Structure",
-  "Menu_Direction": "Menu Direction",
+  "Common_ConnectTaxAuthorities": "Connect to Tax Authorities",
+  "Common_ListProducts": "Product List",
+  "Common_OrgStructure": "Organizational Structure",
+  "Common_MenuDirection": "Menu Direction",
 
   "User_Profile": "Profile",
   "User_Settings": "Settings",

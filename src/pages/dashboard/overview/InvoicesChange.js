@@ -1,6 +1,6 @@
 import { Table } from 'antd';
 import React from 'react';
-
+import { useTranslation } from 'react-i18next';
 import { Cards } from '@/components/cards/frame/cards-frame';
 import { BorderLessHeading, TableDefaultStyle } from '@/container/styled';
 import tableData from '@/mock/demoData/table-data.json';
@@ -22,6 +22,8 @@ const productColumns = [
 ];
 
 const InvoicesChange = React.memo(() => {
+  const { t } = useTranslation();
+
   const newProductData = [];
   if (newProduct !== null) {
     newProduct.map((value) => {
@@ -31,7 +33,7 @@ const InvoicesChange = React.memo(() => {
         pName: (
           <div className="invoice-info-element align-center-v">
             <div className="invoice-info-element__media">
-              <img src={require(`@/static/img/placeholder.png`)} alt="invoice Product" />
+              <img src={require(`@/static/img/placeholder.png`)} alt="Invoice Product" />
             </div>
             <div className="invoice-info-element__content">
               <span className="invoice-info-element__text">{name}</span>
@@ -46,7 +48,7 @@ const InvoicesChange = React.memo(() => {
   return (
     <div className="full-width-table">
       <BorderLessHeading>
-        <Cards title="Hóa đơn bị thay đổi bởi người bán - Nhà cung cấp" size="large">
+        <Cards title={t('Dashboard_InvoicesChange')} size="large">
           <TableDefaultStyle className="invoice-having-header-bg">
             <NewProductWrapper>
               <div className="table-responsive">

@@ -66,7 +66,7 @@ const BusinessStatus = React.memo(() => {
   return (
     <div className="full-width-table">
       <BorderLessHeading>
-        <Cards title={t('BusinessStatus')} size="large">
+        <Cards title={t('Dashboard_BusinessStatus')} size="large">
           <TableDefaultStyle className="invoice-having-header-bg">
             <div className="table-responsive">
               <Table columns={sellerColumns} dataSource={bestSellerData} pagination={false} />

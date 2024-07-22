@@ -23,7 +23,7 @@ export const Organization = () => {
 
   return (
     <>
-      <PageHeader className="invoice-page-header-main" title={t('Org_Structure')} />
+      <PageHeader className="invoice-page-header-main" title={t('Common_OrgStructure')} />
       <Main>
         <Row gutter={15}>
           <BranchList
