@@ -52,7 +52,7 @@ export const InboxList = React.memo(({ setSelectedInbox, selectedInbox }) => {
         total: Number(response?.data?.count) || 0,
       }));
     } catch (error) {
-      console.error('Failed to fetch inbox list', error);
+      console.error(error);
     } finally {
       setLoading(false);
     }

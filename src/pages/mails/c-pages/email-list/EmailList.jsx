@@ -72,7 +72,7 @@ const EmailList = () => {
         }));
       }
     } catch (error) {
-      console.error('Failed to fetch accounts', error);
+      console.error(error);
     } finally {
       if (searchLoading) {
         setSearchLoading(false);

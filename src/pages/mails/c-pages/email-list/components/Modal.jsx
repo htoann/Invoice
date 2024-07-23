@@ -16,7 +16,7 @@ const ModalAccount = ({ form, handleOk, state, onCancel, loading, textSubmit }) 
           initialValue={state?.update?.username}
           label={t('Common_AccountName')}
           name="username"
-          rules={[{ message: t('Common_PleaseEnterAccountName'), type: 'email', required: true }]}
+          rules={[{ message: t('Common_PleaseEnterAccountName'), required: true }]}
         >
           <Input placeholder={t('Common_EnterAccountName')} />
         </Form.Item>
@@ -43,7 +43,7 @@ const ModalAccount = ({ form, handleOk, state, onCancel, loading, textSubmit }) 
           label={t('Common_Department')}
           name="department_id"
           initialValue={state?.update?.departmentId}
-          rules={[{ required: true, message: t('Vui lòng chọn phòng ban') }]}
+          rules={[{ required: true, message: t('Department_PleaseSelect') }]}
         >
           {departments?.length > 0 && (
             <Select

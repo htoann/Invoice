@@ -13,7 +13,7 @@ const useAccounts = (onHandleResult, selectedDepartmentId = null) => {
 
       response?.data?.results?.length > 0 && onHandleResult && onHandleResult(response?.data?.results);
     } catch (error) {
-      console.error('Failed to fetch accounts', error);
+      console.error(error);
     } finally {
       setLoadingUser(false);
     }
