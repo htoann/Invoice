@@ -126,7 +126,7 @@ const EmailList = () => {
 
   if (accounts?.length > 0) {
     accounts.map((item, index) => {
-      const { id, username, email } = item;
+      const { id, username, email, department } = item;
 
       return tableDataSource.push({
         key: id,
@@ -134,6 +134,7 @@ const EmailList = () => {
         id,
         username: <span>{username}</span>,
         email: <span>{email}</span>,
+        department: <span>{department?.name}</span>,
         action: (
           <div className="table-actions">
             <Link className="edit" to="#" onClick={() => showEditModal(item)}>
@@ -200,6 +201,12 @@ const EmailList = () => {
       key: 'email',
       sorter: (a, b) => a.email.props.children.localeCompare(b.email.props.children),
       className: 'searchInput',
+    },
+    {
+      title: <>{t('Common_Department')}</>,
+      dataIndex: 'department',
+      key: 'department',
+      sorter: (a, b) => a.department.props.children.localeCompare(b.department.props.children),
     },
     {
       title: t('Common_Action'),

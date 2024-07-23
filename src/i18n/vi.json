@@ -22,6 +22,8 @@
   "Common_ExportExcel": "Xuất Excel",
   "Common_Account": "Tên tài khoản",
   "Common_Account_Placeholder": "Nhập tên tài khoản",
+  "Common_Account_PleaseEnter": "Vui lòng nhập tên tài khoản!",
+  "Common_Email_PleaseEnter": "Vui lòng nhập email!",
   "Common_Email": "Địa chỉ email",
   "Common_Password": "Mật khẩu",
   "Common_Password_Placeholder": "Nhập mật khẩu",
@@ -71,6 +73,7 @@
   "Common_Customer": "Khách hàng",
   "Common_Goods": "Hàng hoá",
   "Common_ExpenseItem": "Khoản mục chi phí",
+  "Common_Department": "Phòng ban",
 
   "Dashboard_BusinessStatus": "Trạng thái doanh nghiệp",
   "Dashboard_InvoicesChange": "Hóa đơn bị thay đổi bởi người bán - Nhà cung cấp",

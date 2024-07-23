@@ -6,3 +6,4 @@ jsconfig.json
 *.json
 style.js
 Style.js
+.eslintrc

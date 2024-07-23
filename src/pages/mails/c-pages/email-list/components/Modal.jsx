@@ -1,22 +1,30 @@
 import { Button } from '@/components/buttons/buttons';
 import { BasicFormWrapper } from '@/container/styled';
-import { Form, Input } from 'antd';
+import { Form, Input, Select } from 'antd';
+import useDepartments from 'hooks/useDepartments';
 import { useTranslation } from 'react-i18next';
 
-const ModalAccount = ({ form, handleOk, state, onCancel, loading, textSubmit = 'Lưu' }) => {
+const ModalAccount = ({ form, handleOk, state, onCancel, loading, textSubmit }) => {
   const { t } = useTranslation();
+
+  const { loadingDepartments, departments } = useDepartments();
 
   return (
     <BasicFormWrapper>
       <Form form={form} name="edit_account" onFinish={handleOk}>
-        <Form.Item initialValue={state?.update?.username} label={t('Common_Account')} name="username">
+        <Form.Item
+          initialValue={state?.update?.username}
+          label={t('Common_Account')}
+          name="username"
+          rules={[{ message: t('Common_Account_PleaseEnter'), type: 'email', required: true }]}
+        >
           <Input placeholder={t('Common_Account_Placeholder')} />
         </Form.Item>
 
         <Form.Item
           label={t('Common_Email')}
           name="email"
-          rules={[{ message: t('Vui lòng nhập địa chỉ email!'), type: 'email', required: true }]}
+          rules={[{ message: t('Common_Email_PleaseEnter'), type: 'email', required: true }]}
           initialValue={state?.update.email}
         >
           <Input placeholder="name@example.com" />
@@ -26,9 +34,30 @@ const ModalAccount = ({ form, handleOk, state, onCancel, loading, textSubmit = '
           initialValue={state?.update?.password}
           name="password"
           label={t('Common_Password')}
-          rules={[{ required: true, message: t('Vui lòng nhập mật khẩu') }]}
+          rules={[{ required: true, message: t('Common_Password_PleaseEnter') }]}
         >
           <Input.Password placeholder={t('Common_Password_Placeholder')} />
+        </Form.Item>
+
+        <Form.Item
+          label={t('Common_Department')}
+          name="department_id"
+          initialValue={state?.update?.departmentId}
+          rules={[{ required: true, message: t('Vui lòng chọn phòng ban') }]}
+        >
+          {departments?.length > 0 && (
+            <Select
+              loading={loadingDepartments}
+              disabled={loadingDepartments}
+              defaultValue={state?.update.departmentId || departments[0]?.id}
+            >
+              {departments.map((item) => (
+                <Select.Option key={item.id} value={item.id}>
+                  {item.name}
+                </Select.Option>
+              ))}
+            </Select>
+          )}
         </Form.Item>
 
         <div style={{ justifyContent: 'end', display: 'flex' }}>

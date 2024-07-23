@@ -11,6 +11,11 @@ export const mailMockApi = (mock) => {
 
     let results = accounts;
 
+    results = results.map((account) => ({
+      ...account,
+      department: findDepartmentById(account.departmentId) || null,
+    }));
+
     if (username) {
       results = results.filter((account) => account.username.includes(username));
     }
@@ -22,11 +27,6 @@ export const mailMockApi = (mock) => {
     if (department_id) {
       results = results.filter((account) => account.departmentId === department_id);
     }
-
-    results = results.map((account) => ({
-      ...account,
-      department: findDepartmentById(account.departmentId) || null,
-    }));
 
     const count = results.length;
 
@@ -67,12 +67,14 @@ export const mailMockApi = (mock) => {
 
   mock.onPut(/\/accounts\/\w+/).reply((config) => {
     const id = config.url.split('/').pop();
-    const { username, email, password } = JSON.parse(config.data);
+    const { username, email, password, department_id } = JSON.parse(config.data);
     const account = accounts.find((acc) => acc.id === id);
     if (account) {
       account.username = username;
       account.email = email;
       account.password = password;
+      account.departmentId = department_id;
+      account.department = findDepartmentById(department_id);
       return [200, account];
     }
     return [404];
