@@ -53,7 +53,7 @@ const EmailList = () => {
         setIsLoadingGetList(true);
       }
 
-      const response = await axios.get('/accounts/', {
+      const response = await axios.get('/accounts', {
         username,
         email,
         page,
@@ -103,7 +103,7 @@ const EmailList = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`/accounts/${id}/`);
+      await axios.delete(`/accounts/${id}`);
       setAccounts(accounts.filter((account) => account.id !== id));
 
       notification.success({

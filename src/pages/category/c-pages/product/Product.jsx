@@ -63,7 +63,7 @@ const Product = () => {
         setIsLoadingGetList(true);
       }
 
-      const response = await axios.get('/products/', {
+      const response = await axios.get('/products', {
         mahang,
         tenHangBan,
         tenHangMua,
@@ -110,7 +110,7 @@ const Product = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`/products/${id}/`);
+      await axios.delete(`/products/${id}`);
       setList(list.filter((account) => account.id !== id));
 
       notification.success({

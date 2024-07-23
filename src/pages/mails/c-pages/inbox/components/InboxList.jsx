@@ -39,7 +39,7 @@ export const InboxList = React.memo(({ setSelectedInbox, selectedInbox }) => {
   const getList = async ({ searchTerm = '', page = 1, page_size = 20, userId = '' } = {}) => {
     try {
       setLoading(true);
-      const response = await axios.get('/inbox/', {
+      const response = await axios.get('/inbox', {
         search_term: searchTerm,
         page,
         page_size,

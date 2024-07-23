@@ -34,7 +34,7 @@ const ProjectList = ({ list, setList, loadingList }) => {
   const handleCreateSubmit = async (values) => {
     try {
       setLoading(true);
-      const response = await axios.post('/projects/', {
+      const response = await axios.post('/projects', {
         project: values,
       });
       setList([response.data, ...list]);
@@ -58,7 +58,7 @@ const ProjectList = ({ list, setList, loadingList }) => {
   const handleEditSubmit = async (values) => {
     try {
       setLoading(true);
-      const response = await axios.put(`/projects/${editItem.id}/`, { project: { ...values, id: editItem.id } });
+      const response = await axios.put(`/projects/${editItem.id}`, { project: { ...values, id: editItem.id } });
       const updatedProject = response.data;
 
       const updatedProjects = list.map((proj) => (proj.id === updatedProject.id ? updatedProject : proj));
@@ -83,7 +83,7 @@ const ProjectList = ({ list, setList, loadingList }) => {
   const handleDelete = async (id) => {
     try {
       setLoading(true);
-      await axios.delete(`/projects/${id}/`);
+      await axios.delete(`/projects/${id}`);
       notification.success({
         message: t('Common_Delete'),
         description: t('Project_Delete_Success'),

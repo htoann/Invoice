@@ -22,7 +22,7 @@ const UpdateAccount = ({ state, setState, accounts, setAccounts }) => {
     try {
       setLoading(true);
 
-      const response = await axios.put(`/accounts/${state.update.id}/`, values);
+      const response = await axios.put(`/accounts/${state.update.id}`, values);
       const updatedAccount = response.data;
 
       const updatedAccounts = accounts.map((acc) => (acc.id === updatedAccount.id ? updatedAccount : acc));

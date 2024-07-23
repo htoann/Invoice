@@ -39,7 +39,7 @@ const InvoicesChange = React.memo(() => {
 
   const getList = async () => {
     try {
-      const response = await axios.get('/api/invoices-change/');
+      const response = await axios.get('/api/invoices-change');
       setList(response?.data?.invoicesChange || []);
     } catch (error) {
       console.error(error);

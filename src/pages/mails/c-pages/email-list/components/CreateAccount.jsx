@@ -18,7 +18,7 @@ function CreateAccount({ state, setState, accounts, setAccounts }) {
   const createNewAccount = async (data) => {
     try {
       setLoading(true);
-      const response = await axios.post('/accounts/', data);
+      const response = await axios.post('/accounts', data);
       return response.data;
     } catch (error) {
       console.error(error);

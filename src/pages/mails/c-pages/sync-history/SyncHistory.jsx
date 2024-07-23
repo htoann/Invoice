@@ -41,7 +41,7 @@ const SyncHistory = () => {
         setIsLoadingGetList(true);
       }
 
-      const response = await axios.get('/sync-history/', {
+      const response = await axios.get('/sync-history', {
         status,
         note,
         page,
