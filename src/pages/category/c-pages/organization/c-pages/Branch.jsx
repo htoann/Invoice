@@ -1,7 +1,6 @@
 import { Button } from '@/components/buttons/buttons';
 import { Cards } from '@/components/cards/frame/cards-frame';
 import { Modal } from '@/components/modals/antd-modals';
-import { AddUser } from '@/container/pages/style';
 import { BasicFormWrapper, BorderLessHeading } from '@/container/styled';
 import axios from '@/mock/index';
 import { RightOutlined } from '@ant-design/icons';
@@ -110,28 +109,26 @@ const BranchList = ({ list, setList, loadingList, selectedItem, setSelectedItem 
   };
 
   const customModal = (textSubmit, onSubmit, onCancel, loading) => (
-    <AddUser>
-      <BasicFormWrapper>
-        <Form form={form} onFinish={onSubmit}>
-          <Form.Item
-            name="name"
-            label={t('Branch_Name')}
-            rules={[{ required: true, message: t('Branch_Name_Required') }]}
-            initialValue={showEdit ? editItem?.name : ''}
-          >
-            <Input />
-          </Form.Item>
-          <div style={{ justifyContent: 'end', display: 'flex' }}>
-            <Button size="default" type="white" outlined style={{ marginRight: 8 }} onClick={onCancel}>
-              {t('Common_Cancel')}
-            </Button>
-            <Button htmlType="submit" size="default" type="primary" key="submit" loading={loading}>
-              {textSubmit}
-            </Button>
-          </div>
-        </Form>
-      </BasicFormWrapper>
-    </AddUser>
+    <BasicFormWrapper>
+      <Form form={form} onFinish={onSubmit}>
+        <Form.Item
+          name="name"
+          label={t('Branch_Name')}
+          rules={[{ required: true, message: t('Branch_Name_Required') }]}
+          initialValue={showEdit ? editItem?.name : ''}
+        >
+          <Input />
+        </Form.Item>
+        <div style={{ justifyContent: 'end', display: 'flex' }}>
+          <Button size="default" type="white" outlined style={{ marginRight: 8 }} onClick={onCancel}>
+            {t('Common_Cancel')}
+          </Button>
+          <Button htmlType="submit" size="default" type="primary" key="submit" loading={loading}>
+            {textSubmit}
+          </Button>
+        </div>
+      </Form>
+    </BasicFormWrapper>
   );
 
   return (

@@ -110,28 +110,26 @@ const DepartmentList = ({ list, setList, loadingList, selectedItem, setSelectedI
   };
 
   const customModal = (textSubmit, onSubmit, onCancel, loading) => (
-    <AddUser>
-      <BasicFormWrapper>
-        <Form form={form} onFinish={onSubmit}>
-          <Form.Item
-            name="name"
-            label={t('Department_Name')}
-            rules={[{ required: true, message: t('Department_Name_Required') }]}
-            initialValue={showEdit ? editItem?.name : ''}
-          >
-            <Input />
-          </Form.Item>
-          <div style={{ justifyContent: 'end', display: 'flex' }}>
-            <Button size="default" type="white" outlined style={{ marginRight: 8 }} onClick={onCancel}>
-              {t('Common_Cancel')}
-            </Button>
-            <Button htmlType="submit" size="default" type="primary" key="submit" loading={loading}>
-              {textSubmit}
-            </Button>
-          </div>
-        </Form>
-      </BasicFormWrapper>
-    </AddUser>
+    <BasicFormWrapper>
+      <Form form={form} onFinish={onSubmit}>
+        <Form.Item
+          name="name"
+          label={t('Department_Name')}
+          rules={[{ required: true, message: t('Department_Name_Required') }]}
+          initialValue={showEdit ? editItem?.name : ''}
+        >
+          <Input />
+        </Form.Item>
+        <div style={{ justifyContent: 'end', display: 'flex' }}>
+          <Button size="default" type="white" outlined style={{ marginRight: 8 }} onClick={onCancel}>
+            {t('Common_Cancel')}
+          </Button>
+          <Button htmlType="submit" size="default" type="primary" key="submit" loading={loading}>
+            {textSubmit}
+          </Button>
+        </div>
+      </Form>
+    </BasicFormWrapper>
   );
 
   return (
