@@ -1,6 +1,7 @@
 import { Breadcrumb } from 'antd';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import { ReactSVG } from 'react-svg';
 import { HeaderWrapper, PageHeaderStyle } from './style';
 
 function PageHeader(props) {
@@ -12,7 +13,7 @@ function PageHeader(props) {
           <Breadcrumb.Item key={index}>{route.breadcrumbName}</Breadcrumb.Item>
         ) : (
           <Breadcrumb.Item key={index}>
-            <img src={require(`@/static/img/icon/home.svg`).default} />{' '}
+            <ReactSVG src={require(`@/static/img/icon/home.svg`).default} />{' '}
             <Link to={route.path}>{route.breadcrumbName}</Link>
           </Breadcrumb.Item>
         ),

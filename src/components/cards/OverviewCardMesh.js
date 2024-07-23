@@ -5,6 +5,7 @@ import { Card } from 'antd';
 import propTypes from 'prop-types';
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
+import { ReactSVG } from 'react-svg';
 import { OverviewCardMeshWrap } from './Style';
 
 function OverviewCardMesh({ data, circleIcon }) {
@@ -25,7 +26,7 @@ function OverviewCardMesh({ data, circleIcon }) {
         <div className={`invoice-overview-card invoice-overview-card-${type}`}>
           <div className="invoice-overview-card__left d-flex justify-content-between">
             <div className={`invoice-overview-card__left--icon invoice-${type}`}>
-              <img src={require(`@/static/img/icon/${icon}`)} />
+              <ReactSVG src={require(`@/static/img/icon/${icon}`)} />
             </div>
           </div>
           <div className="invoice-overview-card__right">

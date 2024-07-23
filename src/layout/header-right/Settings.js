@@ -1,6 +1,7 @@
 import { Col, Row } from 'antd';
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { ReactSVG } from 'react-svg';
 import { SettingDropdown } from './Style';
 import Heading from '@/components/heading/heading';
 import { Popover } from '@/components/popup/popup';
@@ -73,7 +74,7 @@ const Settings = React.memo(() => {
     <div className="invoice-nav-actions__settings">
       <Popover placement="bottomRight" content={content} action="click">
         <Link to="#" className="invoice-nav-action-link">
-          <img src={require('@/static/img/icon/setting.svg').default} />
+          <ReactSVG src={require('@/static/img/icon/setting.svg').default} />
         </Link>
       </Popover>
     </div>
