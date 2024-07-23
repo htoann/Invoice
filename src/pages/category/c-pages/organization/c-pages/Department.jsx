@@ -1,7 +1,6 @@
 import { Button } from '@/components/buttons/buttons';
 import { Cards } from '@/components/cards/frame/cards-frame';
 import { Modal } from '@/components/modals/antd-modals';
-import { AddUser } from '@/container/pages/style';
 import { BasicFormWrapper, BorderLessHeading } from '@/container/styled';
 import axios from '@/mock/index';
 import { RightOutlined } from '@ant-design/icons';
