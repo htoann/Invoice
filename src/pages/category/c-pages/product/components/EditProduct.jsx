@@ -32,13 +32,13 @@ const EditProduct = ({ state, setState, list, setList }) => {
       onCancel();
 
       notification.success({
-        message: t('Common_Success'),
+        message: t('Common_Goods'),
         description: t('Product_UpdateSuccessDescription'),
       });
     } catch (error) {
       console.error(error);
       notification.error({
-        message: t('Common_Failure'),
+        message: t('Common_Goods'),
         description: t('Product_UpdateErrorDescription'),
       });
     } finally {

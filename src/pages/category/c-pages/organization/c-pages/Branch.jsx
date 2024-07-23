@@ -41,12 +41,12 @@ const BranchList = ({ list, setList, loadingList, selectedItem, setSelectedItem 
       form.resetFields();
 
       notification.success({
-        message: t('Branch_Create_Success_Title'),
+        message: t('Branch_Title'),
         description: t('Branch_Create_Success_Description'),
       });
     } catch (error) {
       notification.error({
-        message: t('Common_Error'),
+        message: t('Branch_Title'),
         description: t('Branch_Create_Error_Description'),
       });
     } finally {
@@ -66,12 +66,12 @@ const BranchList = ({ list, setList, loadingList, selectedItem, setSelectedItem 
       form.resetFields();
       setShowEdit(false);
       notification.success({
-        message: t('Branch_Edit_Success_Title'),
+        message: t('Branch_Title'),
         description: t('Branch_Edit_Success_Description'),
       });
     } catch (error) {
       notification.error({
-        message: t('Common_Error'),
+        message: t('Branch_Title'),
         description: t('Branch_Edit_Error_Description'),
       });
     } finally {
@@ -84,14 +84,14 @@ const BranchList = ({ list, setList, loadingList, selectedItem, setSelectedItem 
       setLoading(true);
       await axios.delete(`/branches/${id}`);
       notification.success({
-        message: t('Branch_Delete_Success_Title'),
+        message: t('Branch_Title'),
         description: t('Branch_Delete_Success_Description'),
       });
       setList(list.filter((item) => item.id !== id));
       setSelectedItem(null);
     } catch (error) {
       notification.error({
-        message: t('Common_Error'),
+        message: t('Branch_Title'),
         description: t('Branch_Delete_Error_Description'),
       });
     } finally {
@@ -156,7 +156,7 @@ const BranchList = ({ list, setList, loadingList, selectedItem, setSelectedItem 
                   outlined
                   style={{ marginBottom: 10 }}
                 >
-                  + {t('Branch_Add')}
+                  + {t('Branch_Create')}
                 </Button>
                 {list.map((department) => (
                   <Menu.Item key={department.id}>
@@ -179,7 +179,7 @@ const BranchList = ({ list, setList, loadingList, selectedItem, setSelectedItem 
                 }}
               >
                 <Button size="small" type="primary" onClick={() => handleCreate()}>
-                  {t('Common_CreateNew')}
+                  {t('Common_Create')}
                 </Button>
               </Empty>
             )}
@@ -187,8 +187,8 @@ const BranchList = ({ list, setList, loadingList, selectedItem, setSelectedItem 
         </Cards>
       </BorderLessHeading>
 
-      <Modal title={t('Branch_Create_Title')} open={showCreate} onCancel={cancelCreate} footer={null}>
-        {customModal(t('Branch_Add'), handleCreateSubmit, cancelCreate, loading)}
+      <Modal title={t('Branch_Create')} open={showCreate} onCancel={cancelCreate} footer={null}>
+        {customModal(t('Common_Create'), handleCreateSubmit, cancelCreate, loading)}
       </Modal>
 
       <Modal title={t('Branch_Edit_Title')} open={showEdit} onCancel={cancelEdit} footer={null}>

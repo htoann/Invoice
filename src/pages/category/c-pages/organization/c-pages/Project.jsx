@@ -42,12 +42,12 @@ const ProjectList = ({ list, setList, loadingList }) => {
       form.resetFields();
 
       notification.success({
-        message: t('Common_Create'),
+        message: t('Project_Title'),
         description: t('Project_Create_Success'),
       });
     } catch (error) {
       notification.error({
-        message: t('Common_Error'),
+        message: t('Project_Title'),
         description: t('Project_Create_Error'),
       });
     } finally {
@@ -67,12 +67,12 @@ const ProjectList = ({ list, setList, loadingList }) => {
       form.resetFields();
       setShowEdit(false);
       notification.success({
-        message: t('Common_Save'),
+        message: t('Project_Title'),
         description: t('Project_Edit_Success'),
       });
     } catch (error) {
       notification.error({
-        message: t('Common_Error'),
+        message: t('Project_Title'),
         description: t('Project_Edit_Error'),
       });
     } finally {
@@ -85,13 +85,13 @@ const ProjectList = ({ list, setList, loadingList }) => {
       setLoading(true);
       await axios.delete(`/projects/${id}`);
       notification.success({
-        message: t('Common_Delete'),
+        message: t('Project_Title'),
         description: t('Project_Delete_Success'),
       });
       setList(list.filter((item) => item.id !== id));
     } catch (error) {
       notification.error({
-        message: t('Common_Error'),
+        message: t('Project_Title'),
         description: t('Project_Delete_Error'),
       });
     } finally {
@@ -154,7 +154,7 @@ const ProjectList = ({ list, setList, loadingList }) => {
                   outlined
                   style={{ marginBottom: 10 }}
                 >
-                  + {t('Project_Add')}
+                  + {t('Project_Create')}
                 </Button>
                 {list.map((project) => (
                   <Menu.Item key={project.id}>
@@ -170,14 +170,14 @@ const ProjectList = ({ list, setList, loadingList }) => {
               </>
             ) : (
               <Empty
-                description={t('Project_Not_Found')}
+                description={t('Project_NotFound')}
                 className="common-center"
                 style={{
                   minHeight: 'calc(100vh - 290px)',
                 }}
               >
                 <Button size="small" type="primary" onClick={() => handleCreate()}>
-                  {t('Project_Create')}
+                  {t('Common_Create')}
                 </Button>
               </Empty>
             )}
@@ -185,7 +185,7 @@ const ProjectList = ({ list, setList, loadingList }) => {
         </Cards>
       </BorderLessHeading>
 
-      <Modal title={t('Project_Add')} open={showCreate} onCancel={cancelCreate} footer={null}>
+      <Modal title={t('Project_Create')} open={showCreate} onCancel={cancelCreate} footer={null}>
         {customModal(t('Common_Create'), handleCreateSubmit, cancelCreate, loading)}
       </Modal>
 

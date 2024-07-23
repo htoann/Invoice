@@ -41,12 +41,12 @@ const DepartmentList = ({ list, setList, loadingList, selectedItem, setSelectedI
       form.resetFields();
 
       notification.success({
-        message: t('Department_Create_Success_Title'),
+        message: t('Common_Department'),
         description: t('Department_Create_Success_Description'),
       });
     } catch (error) {
       notification.error({
-        message: t('Common_Error'),
+        message: t('Common_Department'),
         description: t('Department_Create_Error_Description'),
       });
     } finally {
@@ -66,12 +66,12 @@ const DepartmentList = ({ list, setList, loadingList, selectedItem, setSelectedI
       form.resetFields();
       setShowEdit(false);
       notification.success({
-        message: t('Department_Edit_Success_Title'),
+        message: t('Common_Department'),
         description: t('Department_Edit_Success_Description'),
       });
     } catch (error) {
       notification.error({
-        message: t('Common_Error'),
+        message: t('Common_Department'),
         description: t('Department_Edit_Error_Description'),
       });
     } finally {
@@ -84,7 +84,7 @@ const DepartmentList = ({ list, setList, loadingList, selectedItem, setSelectedI
       setLoading(true);
       await axios.delete(`/departments/${id}`);
       notification.success({
-        message: t('Department_Delete_Success_Title'),
+        message: t('Common_Department'),
         description: t('Department_Delete_Success_Description'),
       });
       setList(list.filter((item) => item.id !== id));
@@ -137,7 +137,7 @@ const DepartmentList = ({ list, setList, loadingList, selectedItem, setSelectedI
   return (
     <Col xs={24} sm={12} md={8} lg={8}>
       <BorderLessHeading>
-        <Cards title={t('Department_List_Title')}>
+        <Cards title={t('Common_Department')}>
           <Menu
             style={{ width: '100%', minHeight: 'calc(100vh - 290px)' }}
             mode="inline"
@@ -156,7 +156,7 @@ const DepartmentList = ({ list, setList, loadingList, selectedItem, setSelectedI
                   outlined
                   style={{ marginBottom: 10 }}
                 >
-                  + {t('Department_Add_Button')}
+                  + {t('Department_Create')}
                 </Button>
                 {list.map((department) => (
                   <Menu.Item key={department.id}>
@@ -179,7 +179,7 @@ const DepartmentList = ({ list, setList, loadingList, selectedItem, setSelectedI
                 }}
               >
                 <Button size="small" type="primary" onClick={() => handleCreate()}>
-                  {t('Common_CreateNew')}
+                  {t('Common_Create')}
                 </Button>
               </Empty>
             )}

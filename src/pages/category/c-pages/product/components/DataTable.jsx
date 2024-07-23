@@ -55,7 +55,7 @@ function DataTable({ rowSelection, tableData, columns, pagination, setState, sta
               type="success"
               key="1"
             >
-              + {t('Product_AddNew')}
+              + {t('Product_Create')}
             </Button>
 
             <Button className="btn-add_new" size="small" type="primary" key="2">
