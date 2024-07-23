@@ -22,7 +22,7 @@ const EditProduct = ({ state, setState, list, setList }) => {
     try {
       setLoading(true);
 
-      const response = await axios.put(`/products/${state.update.id}`, { ...values, id: state.update.id });
+      const response = await axios.put(`/products/${state.update.id}/`, { ...values, id: state.update.id });
       const updated = response.data;
 
       const updatedAccounts = list.map((acc) => (acc.id === updated.id ? updated : acc));

@@ -33,7 +33,7 @@ const DepartmentList = ({ list, setList, loadingList, selectedItem, setSelectedI
   const handleCreateSubmit = async (values) => {
     try {
       setLoading(true);
-      const response = await axios.post('/departments', {
+      const response = await axios.post('/departments/', {
         department: values,
       });
       setList([response.data, ...list]);
@@ -57,7 +57,7 @@ const DepartmentList = ({ list, setList, loadingList, selectedItem, setSelectedI
   const handleEditSubmit = async (values) => {
     try {
       setLoading(true);
-      const response = await axios.put(`/departments/${editItem.id}`, { department: { ...values, id: editItem.id } });
+      const response = await axios.put(`/departments/${editItem.id}/`, { department: { ...values, id: editItem.id } });
       const updatedAccount = response.data;
 
       const updatedAccounts = list.map((acc) => (acc.id === updatedAccount.id ? updatedAccount : acc));
@@ -82,7 +82,7 @@ const DepartmentList = ({ list, setList, loadingList, selectedItem, setSelectedI
   const handleDelete = async (id) => {
     try {
       setLoading(true);
-      await axios.delete(`/departments/${id}`);
+      await axios.delete(`/departments/${id}/`);
       notification.success({
         message: t('Department_Delete_Success_Title'),
         description: t('Department_Delete_Success_Description'),

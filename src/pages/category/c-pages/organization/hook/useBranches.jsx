@@ -9,7 +9,7 @@ const useBranches = () => {
     const getBranches = async () => {
       try {
         setLoadingBranches(true);
-        const response = await axios.get('/branches');
+        const response = await axios.get('/branches/');
         setBranches(response.data.branches);
       } catch (error) {
         console.error(error);

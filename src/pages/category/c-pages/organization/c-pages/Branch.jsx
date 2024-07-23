@@ -33,7 +33,7 @@ const BranchList = ({ list, setList, loadingList, selectedItem, setSelectedItem 
   const handleCreateSubmit = async (values) => {
     try {
       setLoading(true);
-      const response = await axios.post('/branches', {
+      const response = await axios.post('/branches/', {
         branch: values,
       });
       setList([response.data, ...list]);
@@ -57,7 +57,7 @@ const BranchList = ({ list, setList, loadingList, selectedItem, setSelectedItem 
   const handleEditSubmit = async (values) => {
     try {
       setLoading(true);
-      const response = await axios.put(`/branches/${editItem.id}`, { branch: { ...values, id: editItem.id } });
+      const response = await axios.put(`/branches/${editItem.id}/`, { branch: { ...values, id: editItem.id } });
       const updatedAccount = response.data;
 
       const updatedAccounts = list.map((acc) => (acc.id === updatedAccount.id ? updatedAccount : acc));
@@ -82,7 +82,7 @@ const BranchList = ({ list, setList, loadingList, selectedItem, setSelectedItem 
   const handleDelete = async (id) => {
     try {
       setLoading(true);
-      await axios.delete(`/branches/${id}`);
+      await axios.delete(`/branches/${id}/`);
       notification.success({
         message: t('Branch_Delete_Success_Title'),
         description: t('Branch_Delete_Success_Description'),

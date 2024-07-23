@@ -1,9 +1,9 @@
 import React, { lazy, useEffect } from 'react';
 import { Route, Routes, useNavigate } from 'react-router-dom';
-import AuthLayout from '../container/profile/authentication/Index';
+import AuthLayout from '@/container/profile/authentication/Index';
 
-const Login = lazy(() => import('../container/profile/authentication/overview/SignIn'));
-const SignUp = lazy(() => import('../container/profile/authentication/overview/Signup'));
+const Login = lazy(() => import('@/container/profile/authentication/overview/SignIn'));
+const SignUp = lazy(() => import('@/container/profile/authentication/overview/Signup'));
 
 const AuthRoot = () => {
   const navigate = useNavigate();

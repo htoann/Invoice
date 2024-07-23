@@ -8,7 +8,7 @@ const useAccounts = (onHandleResult, selectedDepartmentId = null) => {
   const getUsers = async ({ departmentId = '' } = {}) => {
     try {
       setLoadingUser(true);
-      const response = await axios.get('/accounts', { department_id: departmentId });
+      const response = await axios.get('/accounts/', { department_id: departmentId });
       setAccountList(response?.data?.results);
 
       response?.data?.results?.length > 0 && onHandleResult && onHandleResult(response?.data?.results);

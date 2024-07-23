@@ -18,7 +18,7 @@ function CreateProduct({ state, setState, list, setList }) {
   const createNew = async (data) => {
     try {
       setLoading(true);
-      const response = await axios.post('/products', data);
+      const response = await axios.post('/products/', data);
       return response.data;
     } catch (error) {
       console.error(error);

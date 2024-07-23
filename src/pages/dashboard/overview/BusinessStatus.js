@@ -34,7 +34,7 @@ const BusinessStatus = React.memo(() => {
 
   const getList = async () => {
     try {
-      const response = await axios.get('/api/business-status');
+      const response = await axios.get('/api/business-status/');
       setList(response?.data?.businessStatus || []);
     } catch (error) {
       console.error(error);
