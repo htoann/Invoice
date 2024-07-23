@@ -282,16 +282,16 @@ const Main = Styled.div`
                 .ant-skeleton-title{
                     background: linear-gradient(90deg, ${({ theme }) =>
                       theme[theme.mainContent]['border-color-default']} 25%, ${({ theme }) =>
-  theme[theme.mainContent]['border-color-secondary']} 37%, ${({ theme }) =>
-  theme[theme.mainContent]['border-color-default']} 63%);
+                      theme[theme.mainContent]['border-color-secondary']} 37%, ${({ theme }) =>
+                      theme[theme.mainContent]['border-color-default']} 63%);
                     background-size: 400% 100%;
                 }
                 .ant-skeleton-paragraph{
                     >li{
                         background: linear-gradient(90deg, ${({ theme }) =>
                           theme[theme.mainContent]['border-color-default']} 25%, ${({ theme }) =>
-  theme[theme.mainContent]['border-color-secondary']} 37%, ${({ theme }) =>
-  theme[theme.mainContent]['border-color-default']} 63%);
+                          theme[theme.mainContent]['border-color-secondary']} 37%, ${({ theme }) =>
+                          theme[theme.mainContent]['border-color-default']} 63%);
                         background-size: 400% 100%;
                     }
                 }
@@ -299,8 +299,8 @@ const Main = Styled.div`
             .ant-skeleton-avatar{
                 background: linear-gradient(90deg, ${({ theme }) =>
                   theme[theme.mainContent]['border-color-default']} 25%, ${({ theme }) =>
-  theme[theme.mainContent]['border-color-secondary']} 37%, ${({ theme }) =>
-  theme[theme.mainContent]['border-color-default']} 63%);
+                  theme[theme.mainContent]['border-color-secondary']} 37%, ${({ theme }) =>
+                  theme[theme.mainContent]['border-color-default']} 63%);
                 background-size: 400% 100%;
             }
         }
@@ -499,11 +499,11 @@ const Main = Styled.div`
     .ant-card-grid{
         color: ${({ theme }) => theme[theme.mainContent]['gray-text']};
         box-shadow: 1px 0 0 0 ${({ theme }) => theme[theme.mainContent]['border-color-default']}, 0 1px 0 0 ${({
-  theme,
-}) => theme[theme.mainContent]['border-color-default']}, 1px 1px 0 0 ${({ theme }) =>
-  theme[theme.mainContent]['border-color-default']}, 1px 0 0 0 ${({ theme }) =>
-  theme[theme.mainContent]['border-color-default']} inset, 0 1px 0 0 ${({ theme }) =>
-  theme[theme.mainContent]['border-color-default']} inset     
+          theme,
+        }) => theme[theme.mainContent]['border-color-default']}, 1px 1px 0 0 ${({ theme }) =>
+          theme[theme.mainContent]['border-color-default']}, 1px 0 0 0 ${({ theme }) =>
+          theme[theme.mainContent]['border-color-default']} inset, 0 1px 0 0 ${({ theme }) =>
+          theme[theme.mainContent]['border-color-default']} inset     
     }
 
     /* Ant Collapse */
@@ -1510,7 +1510,7 @@ const Main = Styled.div`
                 padding: 25px;
             }
             ${({ theme }) => (theme.rtl ? 'border-right' : 'border-left')}: 1px solid ${({ theme }) =>
-  theme[theme.mainContent]['border-color-default']};
+              theme[theme.mainContent]['border-color-default']};
         }
     }
     .editor-compose > div {

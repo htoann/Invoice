@@ -621,11 +621,11 @@ const LayoutContainer = Styled.div`
                             }
                             &:before{
                                 transform: rotate(45deg) ${({ theme }) =>
-        !theme.rtl ? 'translateY(-3px)' : 'translateY(3px)'};
+                                  !theme.rtl ? 'translateY(-3px)' : 'translateY(3px)'};
                             }
                             &:after{
                                 transform: rotate(-45deg) ${({ theme }) =>
-        theme.rtl ? 'translateY(-3px)' : 'translateY(3px)'};
+                                  theme.rtl ? 'translateY(-3px)' : 'translateY(3px)'};
                             }
                         }
                     }
@@ -708,7 +708,7 @@ const LayoutContainer = Styled.div`
 
     .antd-main-layout{
         ${({ theme }) => (!theme.rtl ? 'margin-left' : 'margin-right')}: ${({ theme }) =>
-        theme.topMenu ? 0 : '280px'};
+          theme.topMenu ? 0 : '280px'};
         /* margin-top: 90px; */
         margin-top: 74px;
         transition: 0.3s ease;
@@ -1242,12 +1242,12 @@ const FooterStyle = Styled(Footer)`
 `;
 
 export {
-    NavTitle,
-    FooterStyle,
-    LayoutContainer,
-    SmallScreenAuthInfo,
-    SmallScreenSearch,
-    ModeSwitch,
-    TopMenuStyle,
-    TopMenuSearch,
+  NavTitle,
+  FooterStyle,
+  LayoutContainer,
+  SmallScreenAuthInfo,
+  SmallScreenSearch,
+  ModeSwitch,
+  TopMenuStyle,
+  TopMenuSearch,
 };
