@@ -1,11 +1,5 @@
 # 🚀 Invoice System 🚀
 
-## Run with docker
-
-```
-  docker-compose up
-```
-
 ## Quick install
 
 ```
