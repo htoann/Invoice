@@ -129,11 +129,30 @@ export const LeftMenu = ({ toggleCollapsed }) => {
           key: 'Xuất dữ liệu cho phần mềm kế toán',
         },
         { path: routes.emailAccount, textKey: 'Báo cáo kiểm tra đơn giá', key: 'Báo cáo kiểm tra đơn giá' },
-        { path: routes.emailAccount, textKey: 'Đối chiếu tài khoản', key: 'Đối chiếu tài khoản' },
         {
           path: routes.emailAccount,
           textKey: 'Báo cáo đối chiếu chênh lệch hoá đơn',
           key: 'Báo cáo đối chiếu chênh lệch hoá đơn',
+        },
+        {
+          path: routes.emailAccount,
+          textKey: 'Đối chiếu tài khoản kho hạch toán',
+          key: 'Đối chiếu tài khoản kho hạch toán',
+        },
+        {
+          path: routes.emailAccount,
+          textKey: 'Đối chiếu tài khoản hạch toán chi phí',
+          key: 'Đối chiếu tài khoản hạch toán chi phí',
+        },
+        {
+          path: routes.emailAccount,
+          textKey: 'Bổ sung đối chiếu tờ khai thuế theo từng lần kiểm tra',
+          key: 'Bổ sung đối chiếu tờ khai thuế theo từng lần kiểm tra',
+        },
+        {
+          path: routes.emailAccount,
+          textKey: 'Báo cáo tổng hợp hoá đơn mua vào/bán ra',
+          key: 'Báo cáo tổng hợp hoá đơn mua vào/bán ra',
         },
       ]),
     ),

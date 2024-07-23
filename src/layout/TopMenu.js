@@ -120,10 +120,19 @@ export const TopMenu = () => {
                 <Link to="#">Báo cáo kiểm tra đơn giá</Link>
               </li>
               <li>
-                <Link to="#">Đối chiếu tài khoản</Link>
+                <Link to="#">Báo cáo đối chiếu chênh lệch hoá đơn</Link>
               </li>
               <li>
-                <Link to="#">Báo cáo đối chiếu chênh lệch hoá đơn</Link>
+                <Link to="#">Đối chiếu tài khoản kho hạch toán</Link>
+              </li>
+              <li>
+                <Link to="#">Đối chiếu tài khoản hạch toán chi phí</Link>
+              </li>
+              <li>
+                <Link to="#">Bổ sung đối chiếu tờ khai thuế theo từng lần kiểm tra</Link>
+              </li>
+              <li>
+                <Link to="#">Báo cáo tổng hợp hoá đơn mua vào/bán ra</Link>
               </li>
             </ul>
           </li>
