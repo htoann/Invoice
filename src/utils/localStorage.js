@@ -4,6 +4,7 @@ const getLocalStorage = (key) => {
   try {
     return JSON.parse(data);
   } catch (err) {
+    console.error(err);
     return data;
   }
 };

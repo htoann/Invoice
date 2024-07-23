@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import { Button } from '@/../components/buttons/buttons';
+import { Cards } from '@/../components/cards/frame/cards-frame';
+import { submitPost } from '@/../redux/profile/actionCreator';
 import UilEllipsisH from '@iconscout/react-unicons/icons/uil-ellipsis-h';
 import { Input, Upload } from 'antd';
-import { useSelector, useDispatch } from 'react-redux';
+import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { BackShadow, CreatePost } from './style';
-import { Cards } from '@/../components/cards/frame/cards-frame';
-import { Button } from '@/../components/buttons/buttons';
-import { submitPost } from '@/../redux/profile/actionCreator';
 
 function Post() {
   const dispatch = useDispatch();

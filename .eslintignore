@@ -1,9 +1,0 @@
-node_modules
-build
-public
-src/serviceWorker.js
-jsconfig.json
-*.json
-style.js
-Style.js
-.eslintrc
