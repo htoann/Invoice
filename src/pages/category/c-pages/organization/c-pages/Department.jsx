@@ -42,12 +42,12 @@ const DepartmentList = ({ list, setList, loadingList, selectedItem, setSelectedI
 
       notification.success({
         message: t('Common_Department'),
-        description: t('Department_Create_Success_Description'),
+        description: t('Department_CreateSuccess'),
       });
     } catch (error) {
       notification.error({
         message: t('Common_Department'),
-        description: t('Department_Create_Error_Description'),
+        description: t('Department_CreateError'),
       });
     } finally {
       setLoading(false);
@@ -67,12 +67,12 @@ const DepartmentList = ({ list, setList, loadingList, selectedItem, setSelectedI
       setShowEdit(false);
       notification.success({
         message: t('Common_Department'),
-        description: t('Department_Edit_Success_Description'),
+        description: t('Department_EditSuccess'),
       });
     } catch (error) {
       notification.error({
         message: t('Common_Department'),
-        description: t('Department_Edit_Error_Description'),
+        description: t('Department_EditError'),
       });
     } finally {
       setLoading(false);
@@ -85,14 +85,14 @@ const DepartmentList = ({ list, setList, loadingList, selectedItem, setSelectedI
       await axios.delete(`/departments/${id}`);
       notification.success({
         message: t('Common_Department'),
-        description: t('Department_Delete_Success_Description'),
+        description: t('Department_DeleteSuccess'),
       });
       setList(list.filter((item) => item.id !== id));
       setSelectedItem(null);
     } catch (error) {
       notification.error({
         message: t('Common_Error'),
-        description: t('Department_Delete_Error_Description'),
+        description: t('Department_DeleteError'),
       });
     } finally {
       setLoading(false);

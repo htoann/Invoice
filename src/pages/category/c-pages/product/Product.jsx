@@ -152,7 +152,7 @@ const Product = () => {
               <UilEdit />
             </Link>
             <Popconfirm
-              title={t('Common_AreYouSureWantToDelete')}
+              title={t('Common_AreYouSureDelete')}
               onConfirm={() => handleDelete(id)}
               okText={t('Common_Yes')}
               cancelText={t('Common_No')}

@@ -43,12 +43,12 @@ const ProjectList = ({ list, setList, loadingList }) => {
 
       notification.success({
         message: t('Project_Title'),
-        description: t('Project_Create_Success'),
+        description: t('Project_CreateSuccess'),
       });
     } catch (error) {
       notification.error({
         message: t('Project_Title'),
-        description: t('Project_Create_Error'),
+        description: t('Project_CreateError'),
       });
     } finally {
       setLoading(false);
@@ -68,12 +68,12 @@ const ProjectList = ({ list, setList, loadingList }) => {
       setShowEdit(false);
       notification.success({
         message: t('Project_Title'),
-        description: t('Project_Edit_Success'),
+        description: t('Project_EditSuccess'),
       });
     } catch (error) {
       notification.error({
         message: t('Project_Title'),
-        description: t('Project_Edit_Error'),
+        description: t('Project_EditError'),
       });
     } finally {
       setLoading(false);
@@ -86,13 +86,13 @@ const ProjectList = ({ list, setList, loadingList }) => {
       await axios.delete(`/projects/${id}`);
       notification.success({
         message: t('Project_Title'),
-        description: t('Project_Delete_Success'),
+        description: t('Project_DeleteSuccess'),
       });
       setList(list.filter((item) => item.id !== id));
     } catch (error) {
       notification.error({
         message: t('Project_Title'),
-        description: t('Project_Delete_Error'),
+        description: t('Project_DeleteError'),
       });
     } finally {
       setLoading(false);

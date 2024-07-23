@@ -35,13 +35,13 @@ function CreateProduct({ state, setState, list, setList }) {
       onCancel();
       notification.success({
         message: t('Common_Goods'),
-        description: t('Product_Create_Success'),
+        description: t('Product_CreateSuccess'),
       });
       form.resetFields();
     } else {
       notification.error({
         message: t('Common_Goods'),
-        description: t('Product_Create_Error'),
+        description: t('Product_CreateError'),
       });
     }
   };

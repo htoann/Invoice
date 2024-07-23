@@ -141,7 +141,7 @@ const EmailList = () => {
               <UilEdit />
             </Link>
             <Popconfirm
-              title={t('Mail_EmailList_ConfirmDelete')}
+              title={t('Common_AreYouSureDelete')}
               onConfirm={() => handleDelete(id)}
               okText={t('Common_Yes')}
               cancelText={t('Common_No')}
@@ -189,7 +189,7 @@ const EmailList = () => {
       key: 'stt',
     },
     {
-      title: <>{customHeader(t('Mail_EmailList_Username'), 'username')}</>,
+      title: <>{customHeader(t('Common_AccountName'), 'username')}</>,
       dataIndex: 'username',
       key: 'username',
       sorter: (a, b) => a.username.props.children.localeCompare(b.username.props.children),
@@ -249,7 +249,7 @@ const EmailList = () => {
                   </Select>
                 </div>
                 <Button onClick={showModal} type="primary" key="1">
-                  <Link to="#">+ {t('Mail_EmailList_Add')}</Link>
+                  <Link to="#">+ {t('Mail_EmailList_Create')}</Link>
                 </Button>
                 {isLoadingGetList ? (
                   <Skeleton active style={{ marginTop: 30 }} />

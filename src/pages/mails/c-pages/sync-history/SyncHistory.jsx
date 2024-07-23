@@ -176,7 +176,7 @@ const SyncHistory = () => {
 
   return (
     <>
-      <PageHeader className="invoice-page-header-main" title={t('SyncHistory_PageHeader')} />
+      <PageHeader className="invoice-page-header-main" title={t('Common_SyncHistory')} />
       <Main>
         <Row gutter={15}>
           <Col xs={24}>

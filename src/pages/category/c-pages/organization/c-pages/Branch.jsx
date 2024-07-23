@@ -42,12 +42,12 @@ const BranchList = ({ list, setList, loadingList, selectedItem, setSelectedItem 
 
       notification.success({
         message: t('Branch_Title'),
-        description: t('Branch_Create_Success_Description'),
+        description: t('Branch_CreateSuccess'),
       });
     } catch (error) {
       notification.error({
         message: t('Branch_Title'),
-        description: t('Branch_Create_Error_Description'),
+        description: t('Branch_CreateError'),
       });
     } finally {
       setLoading(false);
@@ -67,12 +67,12 @@ const BranchList = ({ list, setList, loadingList, selectedItem, setSelectedItem 
       setShowEdit(false);
       notification.success({
         message: t('Branch_Title'),
-        description: t('Branch_Edit_Success_Description'),
+        description: t('Branch_EditSuccess'),
       });
     } catch (error) {
       notification.error({
         message: t('Branch_Title'),
-        description: t('Branch_Edit_Error_Description'),
+        description: t('Branch_EditError'),
       });
     } finally {
       setLoading(false);
@@ -85,14 +85,14 @@ const BranchList = ({ list, setList, loadingList, selectedItem, setSelectedItem 
       await axios.delete(`/branches/${id}`);
       notification.success({
         message: t('Branch_Title'),
-        description: t('Branch_Delete_Success_Description'),
+        description: t('Branch_DeleteSuccess'),
       });
       setList(list.filter((item) => item.id !== id));
       setSelectedItem(null);
     } catch (error) {
       notification.error({
         message: t('Branch_Title'),
-        description: t('Branch_Delete_Error_Description'),
+        description: t('Branch_DeleteError'),
       });
     } finally {
       setLoading(false);

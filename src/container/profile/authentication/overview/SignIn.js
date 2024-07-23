@@ -55,7 +55,7 @@ function SignIn() {
             <Form name="login" form={form} onFinish={handleSubmit} layout="vertical">
               <Form.Item
                 name="username"
-                rules={[{ message: t('Common_Username_PleaseEnter'), required: true }]}
+                rules={[{ message: t('Common_PleaseEnterUsername'), required: true }]}
                 label={t('Common_Username')}
               >
                 <Input placeholder="name@example.com" />
@@ -63,7 +63,7 @@ function SignIn() {
               <Form.Item
                 name="password"
                 label={t('Common_Password')}
-                rules={[{ message: t('Common_Password_PleaseEnter'), required: true }]}
+                rules={[{ message: t('Common_PleaseEnterPassword'), required: true }]}
               >
                 <Input.Password placeholder={t('Common_Password')} style={{ height: 45 }} />
               </Form.Item>
@@ -73,7 +73,7 @@ function SignIn() {
                   <Form.Item
                     name="cvalue"
                     label={t('Common_Captcha')}
-                    rules={[{ message: t('Common_Captcha_Placeholder'), required: true }]}
+                    rules={[{ message: t('Common_PleaseEnterCaptcha'), required: true }]}
                   >
                     <Input />
                   </Form.Item>

@@ -14,17 +14,17 @@ const ModalAccount = ({ form, handleOk, state, onCancel, loading, textSubmit }) 
       <Form form={form} name="edit_account" onFinish={handleOk}>
         <Form.Item
           initialValue={state?.update?.username}
-          label={t('Common_Account')}
+          label={t('Common_AccountName')}
           name="username"
-          rules={[{ message: t('Common_Account_PleaseEnter'), type: 'email', required: true }]}
+          rules={[{ message: t('Common_PleaseEnterAccountName'), type: 'email', required: true }]}
         >
-          <Input placeholder={t('Common_Account_Placeholder')} />
+          <Input placeholder={t('Common_EnterAccountName')} />
         </Form.Item>
 
         <Form.Item
           label={t('Common_Email')}
           name="email"
-          rules={[{ message: t('Common_Email_PleaseEnter'), type: 'email', required: true }]}
+          rules={[{ message: t('Common_PleaseEnterEmail'), type: 'email', required: true }]}
           initialValue={state?.update.email}
         >
           <Input placeholder="name@example.com" />
@@ -34,9 +34,9 @@ const ModalAccount = ({ form, handleOk, state, onCancel, loading, textSubmit }) 
           initialValue={state?.update?.password}
           name="password"
           label={t('Common_Password')}
-          rules={[{ required: true, message: t('Common_Password_PleaseEnter') }]}
+          rules={[{ required: true, message: t('Common_PleaseEnterPassword') }]}
         >
-          <Input.Password placeholder={t('Common_Password_Placeholder')} />
+          <Input.Password placeholder={t('Common_EnterPassword')} />
         </Form.Item>
 
         <Form.Item
