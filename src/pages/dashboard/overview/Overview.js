@@ -5,7 +5,7 @@ import OverviewCard from '@/components/cards/OverviewCard';
 import OverviewData from '@/mock/demoData/overviewData.json';
 import { OverviewDataStyleWrap } from '../Style';
 
-const OverviewDataList = React.memo(() => {
+const Overview = React.memo(() => {
   const OverviewDataSorted = OverviewData.slice(Math.max(OverviewData.length - 4, 1));
 
   return (
@@ -23,4 +23,4 @@ const OverviewDataList = React.memo(() => {
   );
 });
 
-export default OverviewDataList;
+export default Overview;

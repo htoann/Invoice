@@ -6,7 +6,7 @@ import { Suspense } from 'react';
 import { useTranslation } from 'react-i18next';
 import BusinessStatus from './overview/BusinessStatus';
 import InvoicesChange from './overview/InvoicesChange';
-import OverviewDataList from './overview/OverviewDataList';
+import Overview from './overview/Overview';
 
 function Dashboard() {
   const { t } = useTranslation();
@@ -25,7 +25,7 @@ function Dashboard() {
                 </Cards>
               }
             >
-              <OverviewDataList />
+              <Overview />
             </Suspense>
           </Col>
         </Row>
