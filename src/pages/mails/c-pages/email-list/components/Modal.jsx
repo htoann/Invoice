@@ -8,7 +8,6 @@ const ModalAccount = ({ form, handleOk, state, onCancel, loading, textSubmit }) 
   const { t } = useTranslation();
 
   const { loadingDepartments, departments } = useDepartments();
-
   return (
     <BasicFormWrapper>
       <Form form={form} name="edit_account" onFinish={handleOk}>
@@ -24,7 +23,13 @@ const ModalAccount = ({ form, handleOk, state, onCancel, loading, textSubmit }) 
         <Form.Item
           label={t('Common_Email')}
           name="email"
-          rules={[{ message: t('Common_PleaseEnterEmail'), type: 'email', required: true }]}
+          rules={[
+            {
+              message: t('Common_PleaseEnterEmail'),
+              type: 'email',
+              required: true,
+            },
+          ]}
           initialValue={state?.update.email}
         >
           <Input placeholder="name@example.com" />
