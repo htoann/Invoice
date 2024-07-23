@@ -59,6 +59,22 @@ function DataTable({ loading, tableData, columns, state, setState, getInvoiceLis
     return startDate && current ? current?._d?.getTime() < startDate.getTime() : false;
   };
 
+  const handleStartDateChange = (e) => {
+    setState((prev) => ({
+      ...prev,
+      date_from: e?._d ? formatTime(e._d, 'DD-MM-YYYY') : null,
+    }));
+    setStartDate(e?._d || null);
+  };
+
+  const handleEndDateChange = (e) => {
+    setState((prev) => ({
+      ...prev,
+      date_to: e?._d ? formatTime(e._d, 'DD-MM-YYYY') : null,
+    }));
+    setEndDate(e?._d || null);
+  };
+
   return (
     <DataTableStyleWrap>
       <div className="invoice-datatable-filter">
@@ -80,13 +96,7 @@ function DataTable({ loading, tableData, columns, state, setState, getInvoiceLis
               <span className="label">{t('Invoice_StartDate')}</span>
               <DatePicker
                 placeholder={t('Invoice_SelectStartDate')}
-                onChange={(e) => {
-                  setState((prev) => ({
-                    ...prev,
-                    date_from: e?._d ? formatTime(e._d, 'DD-MM-YYYY') : null,
-                  }));
-                  setStartDate(e?._d || null);
-                }}
+                onChange={handleStartDateChange}
                 format="DD/MM/yyyy"
                 disabledDate={disabledStartDate}
               />
@@ -95,13 +105,7 @@ function DataTable({ loading, tableData, columns, state, setState, getInvoiceLis
               <span className="label">{t('Invoice_EndDate')}</span>
               <DatePicker
                 placeholder={t('Invoice_SelectEndDate')}
-                onChange={(e) => {
-                  setState((prev) => ({
-                    ...prev,
-                    date_to: e?._d ? formatTime(e._d, 'DD-MM-YYYY') : null,
-                  }));
-                  setEndDate(e?._d || null);
-                }}
+                onChange={handleEndDateChange}
                 format="DD/MM/yyyy"
                 disabledDate={disabledEndDate}
               />

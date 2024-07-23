@@ -42,6 +42,8 @@ function InvoiceList() {
   const { loaiHoaDon, invoiceList, pagination } = state;
   const { current, pageSize } = pagination;
 
+  const tableDataSource = handleTableDataSource(invoiceList, current, pageSize);
+
   const getInvoiceList = async (page, page_size = 20, loaihdon = 'purchase', date_from, date_to, searchLoading) => {
     try {
       if (searchLoading) {
@@ -82,8 +84,6 @@ function InvoiceList() {
   useEffect(() => {
     getInvoiceList(current, pageSize);
   }, [current, pageSize]);
-
-  const tableDataSource = handleTableDataSource(invoiceList, current, pageSize);
 
   return (
     <>
