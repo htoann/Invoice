@@ -9,6 +9,7 @@
   "editor.formatOnSave": true,
   "prettier.semi": true,
   "prettier.eslintIntegration": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
   "jsxBracketSameLine": false,
   "endOfLine": "auto",
   "tabWidth": 2,

@@ -1,6 +1,9 @@
 import { accounts } from '../accounts';
+import { departments } from '../category/organization/organization';
 import { inbox } from './inbox';
 import { syncHistory } from './syncHistory';
+
+const findDepartmentById = (id) => departments.find((dept) => dept.id === id);
 
 export const mailMockApi = (mock) => {
   mock.onGet('/accounts').reply((config) => {
@@ -19,6 +22,11 @@ export const mailMockApi = (mock) => {
     if (department_id) {
       results = results.filter((account) => account.departmentId === department_id);
     }
+
+    results = results.map((account) => ({
+      ...account,
+      department: findDepartmentById(account.departmentId) || null,
+    }));
 
     const count = results.length;
 
