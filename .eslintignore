@@ -4,3 +4,5 @@ public
 src/serviceWorker.js
 jsconfig.json
 *.json
+style.js
+Style.js

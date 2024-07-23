@@ -13,16 +13,9 @@
   "endOfLine": "auto",
   "tabWidth": 2,
   "useTabs": false,
-  "parser": "typescript",
   "overrides": [
     {
       "files": "*.scss",
-      "options": {
-        "parser": "css"
-      }
-    },
-    {
-      "files": "*.less",
       "options": {
         "parser": "css"
       }
