@@ -1,23 +1,22 @@
-import React, { useState, useEffect } from 'react';
-import UilAngleLeft from '@iconscout/react-unicons/icons/uil-angle-left';
-import UilAngleRight from '@iconscout/react-unicons/icons/uil-angle-right';
-import UilPaperclip from '@iconscout/react-unicons/icons/uil-paperclip';
-import UilSlidersV from '@iconscout/react-unicons/icons/uil-sliders-v';
-import UilEllipsisV from '@iconscout/react-unicons/icons/uil-ellipsis-v';
-import moment from 'moment';
-import { Link } from 'react-router-dom';
-import propTypes from 'prop-types';
-import { useDispatch, useSelector } from 'react-redux';
-import FontAwesome from 'react-fontawesome';
-import { Style, EmailAuthor, EmailHeader } from './style';
-import Topbar from './Topbar';
 import { AutoComplete } from '@/components/autoComplete/autoComplete';
+import { Dropdown } from '@/components/dropdown/dropdown';
 import Heading from '@/components/heading/heading';
 import { textRefactor } from '@/components/utilities/utilities';
-import { Dropdown } from '@/components/dropdown/dropdown';
+import UilAngleLeft from '@iconscout/react-unicons/icons/uil-angle-left';
+import UilAngleRight from '@iconscout/react-unicons/icons/uil-angle-right';
+import UilEllipsisV from '@iconscout/react-unicons/icons/uil-ellipsis-v';
+import UilPaperclip from '@iconscout/react-unicons/icons/uil-paperclip';
+import UilSlidersV from '@iconscout/react-unicons/icons/uil-sliders-v';
+import moment from 'moment';
+import propTypes from 'prop-types';
+import { useEffect, useState } from 'react';
+import FontAwesome from 'react-fontawesome';
+import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { EmailAuthor, EmailHeader, Style } from './style';
+import Topbar from './Topbar';
 
 function Content({ searchData, email }) {
-  const dispatch = useDispatch();
   const { rtl } = useSelector((state) => {
     return {
       rtl: state.changeLayoutMode.rtlData,
