@@ -3276,3 +3276,8 @@ tr[data-row-key='searchInput'] {
   // }
 }
 // End common class name
+
+.subMenu {
+  min-width: 250px;
+  width: max-content !important;
+}

@@ -106,7 +106,7 @@ export const TopMenu = () => {
             <Link to="#" className="parent">
               {t('Common_Report')}
             </Link>
-            <ul className="subMenu" style={{ width: 400 }}>
+            <ul className="subMenu">
               <li>
                 <Link to="#">Báo cáo tổng hợp hoá đơn mua vào/bán ra</Link>
               </li>

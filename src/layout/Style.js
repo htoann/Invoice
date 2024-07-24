@@ -1007,7 +1007,7 @@ const TopMenuStyle = Styled.div`
                         ${({ theme }) => (theme.rtl ? 'margin-left' : 'margin-right')}: 0 !important;
                         a{
                             font-weight: 400;
-                            padding: 0 30px;
+                            padding: 0px 40px 0 30px;
                             line-height: 3;
                             color: #868EAE;
                             transition: .3s;
@@ -1016,6 +1016,7 @@ const TopMenuStyle = Styled.div`
                                 color: ${({ theme }) => theme[theme.mainContent]['menu-active']};
                                 background-color: ${({ theme }) => theme[theme.mainContent]['menu-active']}06;
                                 ${({ theme }) => (theme.rtl ? 'padding-right' : 'padding-left')}: 40px;
+                                padding-right: 30px;
                             }
                         }
                         &:hover{
