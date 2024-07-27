@@ -10,19 +10,19 @@ const ModalAccount = ({ form, handleOk, state, onCancel, loading, textSubmit }) 
 
   return (
     <BasicFormWrapper>
-      <Form form={form} name="edit_account" onFinish={handleOk}>
+      <Form form={form} name="edit_account" onFinish={handleOk} autoComplete="off">
         <Form.Item
+          name="name"
           initialValue={state?.update?.name}
           label={t('Common_AccountName')}
-          name="name"
           rules={[{ message: t('Common_PleaseEnterAccountName'), required: true }]}
         >
-          <Input placeholder={t('Common_EnterAccountName')} />
+          <Input placeholder={t('Common_EnterAccountName')} autoComplete="off" />
         </Form.Item>
-
         <Form.Item
-          label={t('Common_Email')}
           name="email"
+          initialValue={state?.update.email}
+          label={t('Common_Email')}
           rules={[
             {
               message: t('Common_PleaseEnterEmail'),
@@ -30,24 +30,26 @@ const ModalAccount = ({ form, handleOk, state, onCancel, loading, textSubmit }) 
               required: true,
             },
           ]}
-          initialValue={state?.update.email}
         >
-          <Input placeholder="name@example.com" />
+          <Input placeholder="name@example.com" autoComplete="email" />
         </Form.Item>
-
         <Form.Item
-          initialValue={state?.update?.password}
           name="password"
+          initialValue={state?.update?.password}
           label={t('Common_AppPassword')}
           rules={[{ required: true, message: t('Common_PleaseEnterPassword') }]}
         >
-          <Input.Password placeholder={t('Common_EnterAppPassword')} />
+          <Input.Password placeholder="xczh qecu sgjk ibjy" autoComplete="app-password" />
         </Form.Item>
-
-        {/* <Form.Item
-          label={t('Common_Department')}
+        <p>* {t('Lưu ý rằng mật khẩu ứng dụng khác với mật khẩu email')}</p>
+        <a href="https://support.google.com/mail/answer/185833" target="_blank" rel="noopener noreferrer">
+          {t('Cách tạo mật khẩu ứng dụng')}
+        </a>
+        {/* 
+        <Form.Item
           name="department_id"
           initialValue={state?.update?.departmentId}
+          label={t('Common_Department')}
           rules={[{ required: true, message: t('Department_PleaseSelect') }]}
         >
           {departments?.length > 0 && (
@@ -64,7 +66,6 @@ const ModalAccount = ({ form, handleOk, state, onCancel, loading, textSubmit }) 
             </Select>
           )}
         </Form.Item> */}
-
         <div style={{ justifyContent: 'end', display: 'flex' }}>
           <Button size="default" type="white" outlined style={{ marginRight: 8 }} onClick={onCancel}>
             {t('Common_Cancel')}

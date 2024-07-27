@@ -1190,7 +1190,7 @@ const EmailWrapper = Styled.div`
 
   .mail-sidebar-bottom-scroll {
     /* max-height: calc(100vh - 190px); */
-    height: inherit;
+    height: calc(100vh - 72px - 10px);
     overflow: auto;
   }
 

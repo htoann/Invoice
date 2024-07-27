@@ -10,7 +10,7 @@ const ModalHangHoa = ({ form, handleOk, state, onCancel, loading, textSubmit }) 
 
   return (
     <BasicFormWrapper>
-      <Form form={form} name="contactEdit" onFinish={handleOk}>
+      <Form form={form} name="contactEdit" onFinish={handleOk} autoComplete="off">
         <Form.Item
           initialValue={state?.update.mahang}
           label={t('Product_Code')}

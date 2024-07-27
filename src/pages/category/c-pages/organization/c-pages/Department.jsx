@@ -110,7 +110,7 @@ const DepartmentList = ({ list, setList, loadingList, selectedItem, setSelectedI
 
   const customModal = (textSubmit, onSubmit, onCancel, loading) => (
     <BasicFormWrapper>
-      <Form form={form} onFinish={onSubmit}>
+      <Form form={form} onFinish={onSubmit} autoComplete="off">
         <Form.Item
           name="name"
           label={t('Department_Name')}

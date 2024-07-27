@@ -39,7 +39,7 @@ function CreateTaxAccount({ state, setState }) {
       <Modal type="primary" title="Tạo người dùng" visible={state.visible} footer={null} onCancel={onCancel}>
         <div className="project-modal">
           <BasicFormWrapper>
-            <Form form={form} name="username" onFinish={handleOk}>
+            <Form form={form} name="username" onFinish={handleOk} autoComplete="off">
               <Form.Item
                 name="name"
                 rules={[{ message: 'Vui lòng nhập tên đăng nhập', required: true }]}
