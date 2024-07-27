@@ -1,26 +1,26 @@
 import { Button } from '@/components/buttons/buttons';
 import { BasicFormWrapper } from '@/container/styled';
-import { Form, Input, Select } from 'antd';
+import { Form, Input } from 'antd';
 import useDepartments from 'hooks/useDepartments';
 import { useTranslation } from 'react-i18next';
 
 const ModalAccount = ({ form, handleOk, state, onCancel, loading, textSubmit }) => {
   const { t } = useTranslation();
-
   const { loadingDepartments, departments } = useDepartments();
+
   return (
     <BasicFormWrapper>
       <Form form={form} name="edit_account" onFinish={handleOk}>
         <Form.Item
-          initialValue={state?.update?.username}
+          initialValue={state?.update?.name}
           label={t('Common_AccountName')}
-          name="username"
+          name="name"
           rules={[{ message: t('Common_PleaseEnterAccountName'), required: true }]}
         >
           <Input placeholder={t('Common_EnterAccountName')} />
         </Form.Item>
 
-        {/* <Form.Item
+        <Form.Item
           label={t('Common_Email')}
           name="email"
           rules={[
@@ -33,18 +33,18 @@ const ModalAccount = ({ form, handleOk, state, onCancel, loading, textSubmit }) 
           initialValue={state?.update.email}
         >
           <Input placeholder="name@example.com" />
-        </Form.Item> */}
-
-        {/* <Form.Item
-          initialValue={state?.update?.password}
-          name="password"
-          label={t('Common_Password')}
-          rules={[{ required: true, message: t('Common_PleaseEnterPassword') }]}
-        >
-          <Input.Password placeholder={t('Common_EnterPassword')} />
-        </Form.Item> */}
+        </Form.Item>
 
         <Form.Item
+          initialValue={state?.update?.password}
+          name="password"
+          label={t('Common_AppPassword')}
+          rules={[{ required: true, message: t('Common_PleaseEnterPassword') }]}
+        >
+          <Input.Password placeholder={t('Common_EnterAppPassword')} />
+        </Form.Item>
+
+        {/* <Form.Item
           label={t('Common_Department')}
           name="department_id"
           initialValue={state?.update?.departmentId}
@@ -63,7 +63,7 @@ const ModalAccount = ({ form, handleOk, state, onCancel, loading, textSubmit }) 
               ))}
             </Select>
           )}
-        </Form.Item>
+        </Form.Item> */}
 
         <div style={{ justifyContent: 'end', display: 'flex' }}>
           <Button size="default" type="white" outlined style={{ marginRight: 8 }} onClick={onCancel}>

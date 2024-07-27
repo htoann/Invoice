@@ -37,14 +37,14 @@ export const InboxList = React.memo(({ setSelectedInbox, selectedInbox }) => {
   const { loadingDepartments, departments } = useDepartments();
   const { accountList, loadingUsers } = useAccounts(selectFirstAccount, selectedDepartmentId);
 
-  const getList = async ({ searchSender = '', page = 1, page_size = 20, username = '' } = {}) => {
+  const getList = async ({ searchSender = '', page = 1, page_size = 20, email = '' } = {}) => {
     try {
       setLoading(true);
       const response = await DataService.get('/mails/inbox/', {
         sender: searchSender,
         page,
         page_size,
-        username: 'huutrantoan@gmail.com',
+        email,
       });
 
       setInboxList(response?.data?.results);
@@ -60,7 +60,7 @@ export const InboxList = React.memo(({ setSelectedInbox, selectedInbox }) => {
   };
 
   useEffect(() => {
-    getList({ searchSender, page: current, page_size: pageSize, username: selectedUsername });
+    getList({ searchSender, page: current, page_size: pageSize, email: selectedUsername });
   }, [selectedUsername, current, pageSize]);
 
   const resetCurrentPage = () => {
@@ -157,7 +157,7 @@ export const InboxList = React.memo(({ setSelectedInbox, selectedInbox }) => {
             setSearchSender(event.target.value);
           }}
           onPressEnter={() => {
-            getList({ searchSender, page_size: pageSize, username: selectedUsername });
+            getList({ searchSender, page_size: pageSize, email: selectedUsername });
             resetCurrentPage();
           }}
         />

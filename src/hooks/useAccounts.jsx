@@ -1,5 +1,5 @@
+import { DataService } from '@/config/dataService';
 import { useEffect, useState } from 'react';
-import axios from '../mock/index';
 
 const useAccounts = (onHandleResult, selectedDepartmentId = null) => {
   const [accountList, setAccountList] = useState([]);
@@ -8,7 +8,7 @@ const useAccounts = (onHandleResult, selectedDepartmentId = null) => {
   const getUsers = async ({ departmentId = '' } = {}) => {
     try {
       setLoadingUser(true);
-      const response = await axios.get('/accounts', { department_id: departmentId });
+      const response = await DataService.get('/mails/accounts', ...(departmentId && { department_id: departmentId }));
       setAccountList(response?.data?.results);
 
       response?.data?.results?.length > 0 && onHandleResult && onHandleResult(response?.data?.results);

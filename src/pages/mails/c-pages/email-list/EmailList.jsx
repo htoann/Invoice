@@ -1,6 +1,7 @@
 import { Button } from '@/components/buttons/buttons';
 import { Cards } from '@/components/cards/frame/cards-frame';
 import { PageHeader } from '@/components/page-headers/page-headers';
+import { DataService } from '@/config/dataService';
 import { BorderLessHeading, Main } from '@/container/styled';
 import axios from '@/mock/index';
 import UilEdit from '@iconscout/react-unicons/icons/uil-edit';
@@ -8,11 +9,11 @@ import UilTrash from '@iconscout/react-unicons/icons/uil-trash-alt';
 import { Col, Input, notification, Popconfirm, Row, Select, Skeleton } from 'antd';
 import useDepartments from 'hooks/useDepartments';
 import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import CreateAccount from './components/CreateAccount';
 import DataTable from './components/DataTable';
 import UpdateAccount from './components/UpdateAccount';
-import { useTranslation } from 'react-i18next';
 
 const EmailList = () => {
   const { t } = useTranslation();
@@ -34,12 +35,12 @@ const EmailList = () => {
   const [accounts, setAccounts] = useState([]);
   const [isLoadingGetList, setIsLoadingGetList] = useState(false);
   const [searchLoading, setSearchLoading] = useState(false);
-  const [searchParams, setSearchParams] = useState({ username: '', password: '', departmentId: '' });
+  const [searchParams, setSearchParams] = useState({ name: '', password: '', departmentId: '' });
 
   const { loadingDepartments, departments } = useDepartments();
 
   const getList = async ({
-    username = '',
+    name = '',
     email = '',
     departmentId = '',
     page = 1,
@@ -53,13 +54,14 @@ const EmailList = () => {
         setIsLoadingGetList(true);
       }
 
-      const response = await axios.get('/accounts', {
-        username,
-        email,
-        page,
-        page_size,
-        department_id: departmentId,
-      });
+      // const response = await DataService.get('/mails/accounts/', {
+      //   name,
+      //   email,
+      //   page,
+      //   page_size,
+      //   department_id: departmentId,
+      // });
+      const response = await DataService.get('/mails/accounts/');
 
       if (response?.data) {
         setAccounts(response?.data?.results);
@@ -126,13 +128,13 @@ const EmailList = () => {
 
   if (accounts?.length > 0) {
     accounts.map((item, index) => {
-      const { id, username, email, department } = item;
+      const { id, name, email, department } = item;
 
       return tableDataSource.push({
         key: id,
         stt: (current - 1) * pageSize + index + 1,
         id,
-        username: <span>{username}</span>,
+        name: <span>{name}</span>,
         email: <span>{email}</span>,
         department: <span>{department?.name}</span>,
         action: (
@@ -189,10 +191,10 @@ const EmailList = () => {
       key: 'stt',
     },
     {
-      title: <>{customHeader(t('Common_AccountName'), 'username')}</>,
-      dataIndex: 'username',
-      key: 'username',
-      sorter: (a, b) => a.username.props.children.localeCompare(b.username.props.children),
+      title: <>{customHeader(t('Common_AccountName'), 'name')}</>,
+      dataIndex: 'name',
+      key: 'name',
+      sorter: (a, b) => a.name.props.children.localeCompare(b.name.props.children),
       className: 'searchInput',
     },
     {
