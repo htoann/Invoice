@@ -550,7 +550,7 @@ const EmailNav = Styled.nav`
               width: 100%;
               font-weight: 500;
               color: rgb(64, 64, 64);
-              margin-bottom: 0 !important;
+              margin-bottom: 5px !important;
               line-height: 1.5;
             }
 

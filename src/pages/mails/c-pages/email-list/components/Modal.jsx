@@ -35,14 +35,14 @@ const ModalAccount = ({ form, handleOk, state, onCancel, loading, textSubmit }) 
           <Input placeholder="name@example.com" />
         </Form.Item> */}
 
-        <Form.Item
+        {/* <Form.Item
           initialValue={state?.update?.password}
           name="password"
           label={t('Common_Password')}
           rules={[{ required: true, message: t('Common_PleaseEnterPassword') }]}
         >
           <Input.Password placeholder={t('Common_EnterPassword')} />
-        </Form.Item>
+        </Form.Item> */}
 
         <Form.Item
           label={t('Common_Department')}

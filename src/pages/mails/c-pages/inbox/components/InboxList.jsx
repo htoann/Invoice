@@ -40,7 +40,7 @@ export const InboxList = React.memo(({ setSelectedInbox, selectedInbox }) => {
   const getList = async ({ searchSender = '', page = 1, page_size = 20, username = '' } = {}) => {
     try {
       setLoading(true);
-      const response = await DataService.get('mails/', {
+      const response = await DataService.get('/mails/inbox/', {
         sender: searchSender,
         page,
         page_size,
@@ -188,7 +188,7 @@ export const InboxList = React.memo(({ setSelectedInbox, selectedInbox }) => {
             <ul>
               {inboxList?.length > 0 ? (
                 inboxList.map((item) => (
-                  <li key={item.id} style={{ marginBottom: 5 }}>
+                  <li key={item.id}>
                     <Link
                       className={item?.id === selectedInbox?.id ? 'active' : ''}
                       onClick={(e) => {
@@ -211,9 +211,9 @@ export const InboxList = React.memo(({ setSelectedInbox, selectedInbox }) => {
                                 marginBottom: 0,
                                 lineHeight: '1.2rem',
                               }}
-                              title={item?.from}
+                              title={item?.sender}
                             >
-                              {item?.from}
+                              {item?.sender}
                             </Paragraph>
                           </div>
                           <span className="email-date">{formatTime(item?.date, 'DD/MM/YY')}</span>
