@@ -1,4 +1,5 @@
-import axios from '@/mock/index';
+import { DataService } from '@/config/dataService';
+import { formatTime } from '@/utils/index';
 import UilInbox from '@iconscout/react-unicons/icons/uil-inbox';
 import { Empty, Input, Pagination, Select, Skeleton } from 'antd';
 import Paragraph from 'antd/lib/typography/Paragraph';
@@ -25,25 +26,25 @@ export const InboxList = React.memo(({ setSelectedInbox, selectedInbox }) => {
 
   const [selectedDepartmentId, setSelectedDepartmentId] = useState(null);
 
-  const [searchTerm, setSearchTerm] = useState('');
-  const [selectedUserId, setSelectedUserId] = useState(null);
+  const [searchSender, setSearchSender] = useState('');
+  const [selectedUsername, setSelectedUsername] = useState(null);
   const [loading, setLoading] = useState(false);
 
   const selectFirstAccount = (results) => {
-    setSelectedUserId(results[0].id);
+    setSelectedUsername(results[0].email);
   };
 
   const { loadingDepartments, departments } = useDepartments();
   const { accountList, loadingUsers } = useAccounts(selectFirstAccount, selectedDepartmentId);
 
-  const getList = async ({ searchTerm = '', page = 1, page_size = 20, userId = '' } = {}) => {
+  const getList = async ({ searchSender = '', page = 1, page_size = 20, username = '' } = {}) => {
     try {
       setLoading(true);
-      const response = await axios.get('/inbox', {
-        search_term: searchTerm,
+      const response = await DataService.get('mails/', {
+        sender: searchSender,
         page,
         page_size,
-        receiver_id: userId,
+        username: 'huutrantoan@gmail.com',
       });
 
       setInboxList(response?.data?.results);
@@ -59,8 +60,8 @@ export const InboxList = React.memo(({ setSelectedInbox, selectedInbox }) => {
   };
 
   useEffect(() => {
-    getList({ searchTerm, page: current, page_size: pageSize, userId: selectedUserId });
-  }, [selectedUserId, current, pageSize]);
+    getList({ searchSender, page: current, page_size: pageSize, username: selectedUsername });
+  }, [selectedUsername, current, pageSize]);
 
   const resetCurrentPage = () => {
     setPagination((prev) => ({
@@ -78,7 +79,7 @@ export const InboxList = React.memo(({ setSelectedInbox, selectedInbox }) => {
   };
 
   const handleReset = () => {
-    setSearchTerm('');
+    setSearchSender('');
     setPagination({
       pageSize: 20,
       showSizeChanger: true,
@@ -90,7 +91,7 @@ export const InboxList = React.memo(({ setSelectedInbox, selectedInbox }) => {
   const accountsSelect =
     accountList?.length > 0 &&
     accountList.map((item) => ({
-      value: item.id,
+      value: item.email,
       label: item.email,
     }));
 
@@ -101,6 +102,8 @@ export const InboxList = React.memo(({ setSelectedInbox, selectedInbox }) => {
       label: item.name,
     })),
   ];
+
+  // console.log(inboxList);
 
   return (
     <>
@@ -114,7 +117,7 @@ export const InboxList = React.memo(({ setSelectedInbox, selectedInbox }) => {
               placeholder={t('Common_SelectDepartment')}
               onChange={(value) => {
                 setSelectedDepartmentId(value);
-                setSelectedUserId('');
+                setSelectedUsername('');
                 handleReset();
               }}
               loading={loadingDepartments}
@@ -134,12 +137,12 @@ export const InboxList = React.memo(({ setSelectedInbox, selectedInbox }) => {
             style={{ width: '100%', marginBottom: 20 }}
             placeholder={t('Common_SelectAccount')}
             onChange={(value) => {
-              setSelectedUserId(value);
+              setSelectedUsername(value);
               handleReset();
             }}
             loading={loadingUsers}
             disabled={loadingUsers}
-            defaultValue={selectedUserId}
+            defaultValue={selectedUsername}
             options={accountsSelect}
           />
         </div>
@@ -149,12 +152,12 @@ export const InboxList = React.memo(({ setSelectedInbox, selectedInbox }) => {
         <Input
           style={{ width: '100%', marginBottom: 20, height: 40 }}
           placeholder={t('Mail_SearchBySender')}
-          value={searchTerm}
+          value={searchSender}
           onChange={(event) => {
-            setSearchTerm(event.target.value);
+            setSearchSender(event.target.value);
           }}
           onPressEnter={() => {
-            getList({ searchTerm, page_size: pageSize, userId: selectedUserId });
+            getList({ searchSender, page_size: pageSize, username: selectedUsername });
             resetCurrentPage();
           }}
         />
@@ -208,12 +211,12 @@ export const InboxList = React.memo(({ setSelectedInbox, selectedInbox }) => {
                                 marginBottom: 0,
                                 lineHeight: '1.2rem',
                               }}
-                              title={`${item?.sender.name} <${item?.sender.email}>`}
+                              title={item?.from}
                             >
-                              {item?.sender.name} &lt;{item?.sender.email}&gt;
+                              {item?.from}
                             </Paragraph>
                           </div>
-                          <span className="email-date">{item?.created_at}</span>
+                          <span className="email-date">{formatTime(item?.date, 'DD/MM/YY')}</span>
                         </div>
                       </span>
                     </Link>

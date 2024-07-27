@@ -550,7 +550,8 @@ const EmailNav = Styled.nav`
               width: 100%;
               font-weight: 500;
               color: rgb(64, 64, 64);
-              margin-bottom: 0.5rem;
+              margin-bottom: 0 !important;
+              line-height: 1.5;
             }
 
             .email-sender {
