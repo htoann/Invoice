@@ -1,4 +1,4 @@
-import { AutoComplete } from '@/components/autoComplete/autoComplete';
+import { AutoComplete } from '@/components/auto-complete/auto-complete';
 import { Cards } from '@/components/cards/frame/cards-frame';
 import Heading from '@/components/heading/heading';
 import { PageHeader } from '@/components/page-headers/page-headers';

@@ -20,7 +20,7 @@ const ModalAccount = ({ form, handleOk, state, onCancel, loading, textSubmit }) 
           <Input placeholder={t('Common_EnterAccountName')} />
         </Form.Item>
 
-        <Form.Item
+        {/* <Form.Item
           label={t('Common_Email')}
           name="email"
           rules={[
@@ -33,7 +33,7 @@ const ModalAccount = ({ form, handleOk, state, onCancel, loading, textSubmit }) 
           initialValue={state?.update.email}
         >
           <Input placeholder="name@example.com" />
-        </Form.Item>
+        </Form.Item> */}
 
         <Form.Item
           initialValue={state?.update?.password}

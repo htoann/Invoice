@@ -1,4 +1,4 @@
-import { AutoComplete } from '@/components/autoComplete/autoComplete';
+import { AutoComplete } from '@/components/auto-complete/auto-complete';
 import { Dropdown } from '@/components/dropdown/dropdown';
 import Heading from '@/components/heading/heading';
 import { textRefactor } from '@/components/utilities/utilities';

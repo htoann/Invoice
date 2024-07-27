@@ -1,9 +1,12 @@
 import { Modal } from '@/components/modals/antd-modals';
 import axios from '@/mock/index';
+import GoogleIcon from '@/static/img/icon/google-customIcon.svg';
+import { useGoogleLogin } from '@react-oauth/google';
 import { Form, notification } from 'antd';
 import { useState } from 'react';
-import ModalAccount from './Modal';
 import { useTranslation } from 'react-i18next';
+import ModalAccount from './Modal';
+import './index.scss';
 
 function CreateAccount({ state, setState, accounts, setAccounts }) {
   const [loading, setLoading] = useState(false);
@@ -46,9 +49,21 @@ function CreateAccount({ state, setState, accounts, setAccounts }) {
     }
   };
 
+  const login = useGoogleLogin({
+    onSuccess: (response) => {
+      console.log('Login Success:', response);
+    },
+    onFailure: (error) => {
+      console.log('Login Failed:', error);
+    },
+  });
+
   return (
     <Modal type="primary" title={t('Mail_CreateAccount_Title')} open={state.visible} footer={null} onCancel={onCancel}>
       <div className="project-modal">
+        <button type="button" className="login-btn" onClick={login}>
+          <img src={GoogleIcon} className="icon" /> {t('Kết nối với tài khoản email')}
+        </button>
         <ModalAccount
           form={form}
           handleOk={handleOk}

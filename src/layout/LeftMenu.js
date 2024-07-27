@@ -136,16 +136,6 @@ export const LeftMenu = ({ toggleCollapsed }) => {
         },
         {
           path: routes.emailAccount,
-          textKey: 'Đối chiếu tài khoản kho hạch toán',
-          key: 'Đối chiếu tài khoản kho hạch toán',
-        },
-        {
-          path: routes.emailAccount,
-          textKey: 'Đối chiếu tài khoản hạch toán chi phí',
-          key: 'Đối chiếu tài khoản hạch toán chi phí',
-        },
-        {
-          path: routes.emailAccount,
           textKey: 'Bổ sung đối chiếu tờ khai thuế theo từng lần kiểm tra',
           key: 'Bổ sung đối chiếu tờ khai thuế theo từng lần kiểm tra',
         },

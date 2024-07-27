@@ -123,12 +123,6 @@ export const TopMenu = () => {
                 <Link to="#">Báo cáo đối chiếu chênh lệch hoá đơn</Link>
               </li>
               <li>
-                <Link to="#">Đối chiếu tài khoản kho hạch toán</Link>
-              </li>
-              <li>
-                <Link to="#">Đối chiếu tài khoản hạch toán chi phí</Link>
-              </li>
-              <li>
                 <Link to="#">Bổ sung đối chiếu tờ khai thuế theo từng lần kiểm tra</Link>
               </li>
               <li>
