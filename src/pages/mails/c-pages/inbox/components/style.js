@@ -446,6 +446,7 @@ const EmailNav = Styled.nav`
   ul{
     list-style: none;
     margin-top: 20px;
+    margin-bottom: 20px;
     padding: 0;
     /* Disable scroll lỏ for now */
     /* max-height: calc(100vh - 418px);
@@ -637,8 +638,8 @@ const EmailNav = Styled.nav`
 const MailDetailsWrapper = Styled.div`
   .ant-card-body{
     padding-top: 30px !important;
-    max-height: calc(-198px + 100vh);
-    overflow: auto;
+    /* max-height: calc(-198px + 100vh); */
+    /* overflow: auto; */
     overflow-x: hidden;
   }
   .ant-card-head-wrapper{
@@ -954,6 +955,9 @@ const MessageDetails = Styled.div`
       ${({ theme }) => (theme.rtl ? 'padding-right' : 'padding-left')}: 0px;
       margin-top: 18px;
     }
+    
+    /* word-break: break-word; */
+
     .welcome-text{
       font-size: 15px;
       margin-bottom: 40px;
@@ -1166,7 +1170,8 @@ const EmailWrapper = Styled.div`
     }
     .ant-card{
       /* min-height: 900px; */
-      height: 100%;
+      /* height: 100%; */
+      height: auto;
       .ant-card-body{
         padding: 0px !important;
         height: 100%;
@@ -1190,7 +1195,7 @@ const EmailWrapper = Styled.div`
 
   .mail-sidebar-bottom-scroll {
     /* max-height: calc(100vh - 190px); */
-    height: calc(100vh - 72px - 10px);
+    height: calc(100vh - 72px);
     overflow: auto;
   }
 

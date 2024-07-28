@@ -1,6 +1,6 @@
 import { Cards } from '@/components/cards/frame/cards-frame';
-import { Dropdown } from '@/components/dropdown/dropdown';
 import Heading from '@/components/heading/heading';
+import { Popover } from '@/components/popup/popup';
 import csvImg from '@/static/img/files/csv.png';
 import pdfImg from '@/static/img/files/pdf.png';
 import UilAngleDown from '@iconscout/react-unicons/icons/uil-angle-down';
@@ -14,6 +14,8 @@ import { MailDetailsWrapper, MessageDetails } from './style';
 function MailDetail({ selectedInbox: email }) {
   const { t } = useTranslation();
 
+  const cleanedBody = email?.body?.replace(/<style[\s\S]*?<\/style>/gi, '');
+
   return (
     <MailDetailsWrapper>
       <Cards headless>
@@ -24,7 +26,7 @@ function MailDetail({ selectedInbox: email }) {
                 <div className="message-subject">
                   <Heading as="h2">
                     {email?.subject}
-                    <span className="mail-badge primary">{email?.type}</span>
+                    <span className="mail-badge primary">{email?.type || 'Inbox'}</span>
                   </Heading>
                 </div>
               </div>
@@ -37,31 +39,27 @@ function MailDetail({ selectedInbox: email }) {
                     alt=""
                   />
                   <div>
-                    <Heading as="h4">{email?.sender.name}</Heading>
-                    <Dropdown
-                      placement="bottom"
+                    <Heading as="h4">{email?.sender}</Heading>
+                    <Popover
                       content={
                         <ul className="mail-props">
                           <li>
-                            <span>{t('Common_From')}:</span> <span>{email?.sender.email}</span>{' '}
+                            <span>{t('Common_From')}:</span> <span>{email?.sender}</span>{' '}
                           </li>
                           <li>
-                            <span>{t('Common_To')}:</span> <span>{email?.receiver.email}</span>{' '}
+                            <span>{t('Common_To')}:</span> <span>{email?.receiver || 'me'}</span>{' '}
                           </li>
                           <li>
-                            <span>{t('Common_CC')}:</span> <span>example@gmail.com</span>{' '}
-                          </li>
-                          <li>
-                            <span>{t('Common_Date')}:</span> <span>{moment(email?.created_at).format('LLL')}</span>
+                            <span>{t('Common_Date')}:</span> <span>{moment(email?.date).format('LLL')}</span>
                           </li>
                         </ul>
                       }
                     >
                       <Link to="#">
-                        {t('Common_To')} {email?.receiver?.name}
+                        {t('Common_To')} {email?.receiver || 'me'}
                         <UilAngleDown />
                       </Link>
-                    </Dropdown>
+                    </Popover>
                   </div>
                 </div>
 
@@ -70,9 +68,7 @@ function MailDetail({ selectedInbox: email }) {
                 </div>
               </div>
 
-              <div className="message-body">
-                <p>{email?.body}</p>
-              </div>
+              <div className="message-body" dangerouslySetInnerHTML={{ __html: cleanedBody }} />
 
               <div style={{ display: 'flex', gap: 10, padding: '10px 0px', flexWrap: 'wrap' }}>
                 <div className="message-attachments">
