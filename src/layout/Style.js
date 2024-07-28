@@ -497,6 +497,7 @@ const LayoutContainer = Styled.div`
                         transition: 0.3s ease;
                     }
                     .ant-menu-title-content{
+                        text-transform: capitalize;
                         ${({ theme }) => (!theme.rtl ? 'padding-left' : 'padding-right')}: 16px;
                     }
                 }
@@ -910,6 +911,7 @@ const TopMenuStyle = Styled.div`
         ul{
             margin-bottom: 0;
             li{
+                text-transform: capitalize;
                 display: inline-block;
                 position: relative;
                 ${({ theme }) => (theme.rtl ? 'padding-left' : 'padding-right')}: 14px;
