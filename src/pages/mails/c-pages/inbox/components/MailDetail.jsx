@@ -70,7 +70,7 @@ function MailDetail({ selectedInbox: email }) {
 
               <div className="message-body" dangerouslySetInnerHTML={{ __html: cleanedBody }} />
 
-              <div style={{ display: 'flex', gap: 10, padding: '10px 0px', flexWrap: 'wrap' }}>
+              <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
                 <div className="message-attachments">
                   <div className="invoice-ticket-file-item d-flex">
                     <div className="invoice-ticket-file-item__info d-flex">
