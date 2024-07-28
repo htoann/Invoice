@@ -3,7 +3,6 @@ import { Cards } from '@/components/cards/frame/cards-frame';
 import { PageHeader } from '@/components/page-headers/page-headers';
 import { DataService } from '@/config/dataService';
 import { BorderLessHeading, Main } from '@/container/styled';
-import axios from '@/mock/index';
 import UilEdit from '@iconscout/react-unicons/icons/uil-edit';
 import UilTrash from '@iconscout/react-unicons/icons/uil-trash-alt';
 import { Col, Input, notification, Popconfirm, Row, Select, Skeleton } from 'antd';
@@ -54,14 +53,13 @@ const EmailList = () => {
         setIsLoadingGetList(true);
       }
 
-      // const response = await DataService.get('/mails/accounts/', {
-      //   name,
-      //   email,
-      //   page,
-      //   page_size,
-      //   department_id: departmentId,
-      // });
-      const response = await DataService.get('/mails/accounts/');
+      const response = await DataService.get('/mails/accounts/', {
+        name,
+        email,
+        page,
+        page_size,
+        // department_id: departmentId,
+      });
 
       if (response?.data) {
         setAccounts(response?.data?.results);
@@ -105,7 +103,7 @@ const EmailList = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`/accounts/${id}`);
+      await DataService.delete(`/mails/accounts/${id}`);
       setAccounts(accounts.filter((account) => account.id !== id));
 
       notification.success({

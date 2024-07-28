@@ -1,6 +1,5 @@
 import { Button } from '@/components/buttons/buttons';
 import { Modal } from '@/components/modals/antd-modals';
-import { AddUser } from '@/container/pages/style';
 import { BasicFormWrapper } from '@/container/styled';
 import { Checkbox, Col, DatePicker, Form, Input, Row } from 'antd';
 import axios from 'axios';

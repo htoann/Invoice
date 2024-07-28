@@ -41,10 +41,14 @@ const ModalAccount = ({ form, handleOk, state, onCancel, loading, textSubmit }) 
         >
           <Input.Password placeholder="xczh qecu sgjk ibjy" autoComplete="app-password" />
         </Form.Item>
-        <p>* {t('Lưu ý rằng mật khẩu ứng dụng khác với mật khẩu email')}</p>
-        <a href="https://support.google.com/mail/answer/185833" target="_blank" rel="noopener noreferrer">
-          {t('Cách tạo mật khẩu ứng dụng')}
-        </a>
+        {!state?.update?.password && (
+          <>
+            <p>* {t('Lưu ý rằng mật khẩu ứng dụng khác với mật khẩu email')}</p>
+            <a href="https://support.google.com/mail/answer/185833" target="_blank" rel="noopener noreferrer">
+              {t('Cách tạo mật khẩu ứng dụng')}
+            </a>
+          </>
+        )}
         {/* 
         <Form.Item
           name="department_id"

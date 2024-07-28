@@ -57,6 +57,14 @@ class DataService {
       headers: { ...authHeader() },
     });
   }
+
+  static delete(path = '') {
+    return client({
+      method: 'DELETE',
+      url: path,
+      headers: { ...authHeader() },
+    });
+  }
 }
 
 /**

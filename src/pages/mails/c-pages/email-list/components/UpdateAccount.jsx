@@ -1,9 +1,9 @@
 import { Modal } from '@/components/modals/antd-modals';
-import axios from '@/mock/index';
+import { DataService } from '@/config/dataService';
 import { Form, notification } from 'antd';
 import { useState } from 'react';
-import ModalAccount from './Modal';
 import { useTranslation } from 'react-i18next';
+import ModalAccount from './Modal';
 
 const UpdateAccount = ({ state, setState, accounts, setAccounts }) => {
   const [form] = Form.useForm();
@@ -22,7 +22,7 @@ const UpdateAccount = ({ state, setState, accounts, setAccounts }) => {
     try {
       setLoading(true);
 
-      const response = await axios.put(`/accounts/${state.update.id}`, values);
+      const response = await DataService.put(`/mails/accounts/${state.update.id}/`, values);
       const updatedAccount = response.data;
 
       const updatedAccounts = accounts.map((acc) => (acc.id === updatedAccount.id ? updatedAccount : acc));
