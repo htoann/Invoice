@@ -15,6 +15,12 @@ export const AuthProvider = ({ children }) => {
     error: null,
   });
 
+  const [themeState, setThemeState] = useState({
+    login: Cookies.get('loggedIn') || false,
+    loading: false,
+    error: null,
+  });
+
   const login = useCallback(async (values) => {
     setAuthState((prevState) => ({ ...prevState, loading: true }));
     try {

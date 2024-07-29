@@ -1,10 +1,11 @@
+import Cookies from 'js-cookie';
 import { themeColor } from './theme/themeVariables';
 
-const config = {
-  topMenu: true,
-  rtl: false,
-  mainTemplate: 'lightMode',
+const initialThemeConfig = {
+  topMenu: Cookies.get('topMenu') || true,
+  rtl: Cookies.get('rtl') || false,
+  layoutMode: Cookies.get('layoutMode') || 'lightMode',
   themeColor,
 };
 
-export default config;
+export default initialThemeConfig;

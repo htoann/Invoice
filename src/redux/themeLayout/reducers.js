@@ -4,7 +4,7 @@ import staticData from '../../config/config';
 const initialState = {
   rtlData: staticData.rtl,
   topMenu: staticData.topMenu,
-  mode: staticData.mainTemplate,
+  mode: staticData.layoutMode,
   loading: false,
   rtlLoading: false,
   menuLoading: false,
