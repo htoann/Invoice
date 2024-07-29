@@ -1,4 +1,3 @@
-import { initialThemeConfig } from '@/config/config';
 import Cookies from 'js-cookie';
 import { createContext, useCallback, useContext, useState } from 'react';
 
@@ -39,7 +38,7 @@ export const ThemeProvider = ({ children }) => {
     <ThemeContext.Provider
       value={{
         layoutMode: themeState.layoutMode,
-        rtl: themeState.rtl,
+        rtl: themeState.rtlData,
         topMenu: themeState.topMenu,
         changeLayoutMode,
         changeDirectionMode,
