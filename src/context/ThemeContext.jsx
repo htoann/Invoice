@@ -7,7 +7,7 @@ export const ThemeProvider = ({ children }) => {
   const [themeState, setThemeState] = useState({
     rtlData: Cookies.get('rtl') || false,
     topMenu: Cookies.get('topMenu') || true,
-    mode: Cookies.get('layoutMode') || 'lightMode',
+    layoutMode: Cookies.get('layoutMode') || 'lightMode',
   });
 
   const changeLayoutMode = useCallback((value) => {
