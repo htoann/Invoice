@@ -5,6 +5,7 @@ import reportWebVitals from './reportWebVitals';
 
 import i18n from './i18n/config';
 
+import { AuthProvider } from 'context/AuthContext';
 import dayjs from './utils/dayjs';
 import moment from './utils/moment';
 
@@ -18,7 +19,9 @@ const root = createRoot(rootElement);
 
 root.render(
   <React.StrictMode>
-    <App />
+    <AuthProvider>
+      <App />
+    </AuthProvider>
   </React.StrictMode>,
 );
 

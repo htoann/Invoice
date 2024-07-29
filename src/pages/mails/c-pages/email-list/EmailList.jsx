@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { Button } from '@/components/buttons/buttons';
 import { Cards } from '@/components/cards/frame/cards-frame';
 import { PageHeader } from '@/components/page-headers/page-headers';

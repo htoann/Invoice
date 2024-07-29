@@ -1,36 +1,21 @@
-import { Button, Col, Form, Input, notification, Row } from 'antd';
+import { Button, Col, Form, Input, Row } from 'antd';
 import { useEffect, useState } from 'react';
 
-import { login } from '@/redux/authentication/actionCreator';
 import axios from 'axios';
+import { useAuth } from 'context/AuthContext';
 import { useTranslation } from 'react-i18next';
-import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
 import { AuthFormWrap } from './style';
 
 function SignIn() {
   const { t } = useTranslation();
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
-  const isLoading = useSelector((state) => state.auth.loading);
+  const { loading, login } = useAuth();
   const [form] = Form.useForm();
 
   const [imgCaptcha, setImgCaptcha] = useState();
   const [keyCaptcha, setKeyCaptcha] = useState();
 
   const handleSubmit = (values) => {
-    dispatch(
-      login(
-        { ...values, ckey: keyCaptcha },
-        () => navigate('/'),
-        () => {
-          notification.error({
-            message: t('Auth_SignIn'),
-            description: t('Auth_SignIn_Failed'),
-          });
-        },
-      ),
-    );
+    login({ ...values, ckey: keyCaptcha });
   };
 
   const getCaptcha = async () => {
@@ -91,7 +76,7 @@ function SignIn() {
 
               <Form.Item>
                 <Button className="btn-signIn" htmlType="submit" type="primary" size="large">
-                  {isLoading ? t('Auth_SigningIn') : t('Auth_SignIn')}
+                  {loading ? t('Auth_SigningIn') : t('Auth_SignIn')}
                 </Button>
               </Form.Item>
             </Form>

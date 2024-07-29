@@ -1,9 +1,9 @@
+import { useAuth } from 'context/AuthContext';
 import propTypes from 'prop-types';
-import { useSelector } from 'react-redux';
 import { Navigate, Route, Routes } from 'react-router-dom';
 
 function ProtectedRoute({ Component, path }) {
-  const isLoggedIn = useSelector((state) => state.auth.login);
+  const { isLoggedIn } = useAuth();
 
   return isLoggedIn ? (
     <Routes>

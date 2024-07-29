@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { Button } from '@/components/buttons/buttons';
 import { BasicFormWrapper } from '@/container/styled';
 import { Form, Input } from 'antd';

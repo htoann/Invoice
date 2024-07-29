@@ -2,20 +2,18 @@ import { Button, Col, Form, Input, Row } from 'antd';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import { useDispatch } from 'react-redux';
 import { Checkbox } from '@/components/checkbox/checkbox';
-import { register } from '@/redux/authentication/actionCreator';
+import { useAuth } from 'context/AuthContext';
 import { AuthFormWrap } from './style';
 
 function SignUp() {
-  const dispatch = useDispatch();
-
+  const { register } = useAuth();
   const [state, setState] = useState({
     values: null,
     checked: null,
   });
   const handleSubmit = (values) => {
-    dispatch(register(values));
+    register(values);
   };
 
   const onChange = (checked) => {

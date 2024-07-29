@@ -9,6 +9,7 @@ import ProtectedRoute from './components/utilities/protectedRoute';
 import config from './config/config';
 import store from './redux/store';
 
+import { useAuth } from 'context/AuthContext';
 import { useTranslation } from 'react-i18next';
 import './index.scss';
 import Auth from './routes/auth';
@@ -21,13 +22,13 @@ const { themeColor } = config;
 
 function ProviderConfig() {
   const { i18n } = useTranslation();
+  const { isLoggedIn } = useAuth();
 
-  const { rtl, isLoggedIn, topMenu, mainContent } = useSelector((state) => {
+  const { rtl, topMenu, mainContent } = useSelector((state) => {
     return {
       rtl: state.changeLayoutMode.rtlData,
       topMenu: state.changeLayoutMode.topMenu,
       mainContent: state.changeLayoutMode.mode,
-      isLoggedIn: state.auth.login,
     };
   });
 

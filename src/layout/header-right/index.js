@@ -8,23 +8,21 @@ import UilUser from '@iconscout/react-unicons/icons/uil-user';
 import UilUsersAlt from '@iconscout/react-unicons/icons/uil-users-alt';
 import { Avatar } from 'antd';
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { InfoWrapper, NavAuth, UserDropDown } from './Style';
 
 import Heading from '@/components/heading/heading';
 import { Popover } from '@/components/popup/popup';
-import { logOut } from '@/redux/authentication/actionCreator';
 import EngImg from '@/static/img/flag/en.png';
 import VieImg from '@/static/img/flag/vi.png';
 import { setLocalStorage } from '@/utils/localStorage';
+import { useAuth } from 'context/AuthContext';
 import { useTranslation } from 'react-i18next';
 import Customizer from './Customizer';
 
 const AuthInfo = React.memo(() => {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
   const { i18n, t } = useTranslation();
+  const { logOut } = useAuth();
 
   const [state, setState] = useState({
     flag: i18n.language,
@@ -33,7 +31,7 @@ const AuthInfo = React.memo(() => {
 
   const signOut = (e) => {
     e.preventDefault();
-    dispatch(logOut(() => navigate('/')));
+    logOut();
   };
 
   const userContent = (
