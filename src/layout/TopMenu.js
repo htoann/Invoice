@@ -125,9 +125,6 @@ export const TopMenu = () => {
               <li>
                 <Link to="#">Bổ sung đối chiếu tờ khai thuế theo từng lần kiểm tra</Link>
               </li>
-              <li>
-                <Link to="#">Báo cáo tổng hợp hoá đơn mua vào/bán ra</Link>
-              </li>
             </ul>
           </li>
 

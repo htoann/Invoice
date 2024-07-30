@@ -135,11 +135,6 @@ export const LeftMenu = ({ toggleCollapsed }) => {
           textKey: 'Bổ sung đối chiếu tờ khai thuế theo từng lần kiểm tra',
           key: 'Bổ sung đối chiếu tờ khai thuế theo từng lần kiểm tra',
         },
-        {
-          path: routes.emailAccount,
-          textKey: 'Báo cáo tổng hợp hoá đơn mua vào/bán ra',
-          key: 'Báo cáo tổng hợp hoá đơn mua vào/bán ra',
-        },
       ]),
     ),
   ];
