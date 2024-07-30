@@ -5,19 +5,17 @@ import { Navigate, Route, BrowserRouter as Router, Routes } from 'react-router-d
 
 import { ThemeProvider } from 'styled-components';
 import ProtectedRoute from './components/utilities/protectedRoute';
-import config from './config/config';
 
 import { useAuth } from 'context/AuthContext';
 import { useTheme } from 'context/ThemeContext';
 import { useTranslation } from 'react-i18next';
+import { themeColor } from './config/theme/themeVariables';
 import './index.scss';
 import Auth from './routes/auth';
 import Index from './routes/index';
 import { getAntdLocale } from './utils';
 
 const NotFound = lazy(() => import('./container/pages/404'));
-
-const { themeColor } = config;
 
 export const App = () => {
   const { i18n } = useTranslation();

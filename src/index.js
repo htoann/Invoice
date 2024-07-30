@@ -8,11 +8,9 @@ import { App } from 'App';
 import { AuthProvider } from 'context/AuthContext';
 import { ThemeProvider } from 'context/ThemeContext';
 import dayjs from './utils/dayjs';
-import moment from './utils/moment';
 
 const locale = i18n.language;
 
-moment.locale(locale);
 dayjs.locale(locale);
 
 const rootElement = document.getElementById('root');

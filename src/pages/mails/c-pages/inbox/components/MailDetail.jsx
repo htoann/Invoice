@@ -3,10 +3,10 @@ import Heading from '@/components/heading/heading';
 import { Popover } from '@/components/popup/popup';
 import csvImg from '@/static/img/files/csv.png';
 import pdfImg from '@/static/img/files/pdf.png';
+import { formatTime } from '@/utils/index';
 import UilAngleDown from '@iconscout/react-unicons/icons/uil-angle-down';
 import UilImport from '@iconscout/react-unicons/icons/uil-import';
 import { Col, Row } from 'antd';
-import moment from 'moment';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { MailDetailsWrapper, MessageDetails } from './style';
@@ -50,7 +50,8 @@ function MailDetail({ selectedInbox: email }) {
                             <span>{t('Common_To')}:</span> <span>{email?.receiver || 'me'}</span>{' '}
                           </li>
                           <li>
-                            <span>{t('Common_Date')}:</span> <span>{moment(email?.date).format('LLL')}</span>
+                            <span>{t('Common_Date')}:</span>{' '}
+                            <span>{formatTime(email?.date, 'MMMM D, YYYY h:mm A')}</span>
                           </li>
                         </ul>
                       }
@@ -64,7 +65,7 @@ function MailDetail({ selectedInbox: email }) {
                 </div>
 
                 <div className="message-excerpt">
-                  <span>{moment(email?.created_at).format('LLL')}</span>
+                  <span>{formatTime(email?.date, 'MMMM D, YYYY h:mm A')}</span>
                 </div>
               </div>
 
