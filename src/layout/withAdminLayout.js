@@ -1,9 +1,8 @@
 import UilEllipsisV from '@iconscout/react-unicons/icons/uil-ellipsis-v';
 import { Scrollbars } from '@pezhmanparsaee/react-custom-scrollbars';
 import { Button, Col, Layout, Row } from 'antd';
-import propTypes from 'prop-types';
-import { Component } from 'react';
-import { connect } from 'react-redux';
+import { useTheme } from 'context/ThemeContext';
+import { useCallback, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import { LeftMenu } from './LeftMenu';
@@ -13,231 +12,197 @@ import SearchBar from './header-right/Search';
 import AuthInfo from './header-right/index';
 
 const { theme } = require('../config/theme/themeVariables');
-
 const { Header, Sider, Content } = Layout;
 
 const WithAdminLayout = (WrappedComponent) => {
-  class LayoutComponent extends Component {
-    constructor(props) {
-      super(props);
-      this.state = {
-        collapsed: false,
-        hide: true,
+  const LayoutComponent = (props) => {
+    const [collapsed, setCollapsed] = useState(false);
+    const [hide, setHide] = useState(true);
+
+    const { rtl, topMenu, layoutMode } = useTheme();
+
+    const updateDimensions = useCallback(() => {
+      setCollapsed(window.innerWidth <= 1200);
+    }, []);
+
+    useEffect(() => {
+      window.addEventListener('resize', updateDimensions);
+      updateDimensions();
+
+      return () => {
+        window.removeEventListener('resize', updateDimensions);
       };
-      this.updateDimensions = this.updateDimensions.bind(this);
-    }
+    }, [updateDimensions]);
 
-    componentDidMount() {
-      window.addEventListener('resize', this.updateDimensions);
-      this.updateDimensions();
-    }
+    const toggleCollapsed = useCallback(() => {
+      setCollapsed((prevCollapsed) => !prevCollapsed);
+    }, []);
 
-    componentWillUnmount() {
-      window.removeEventListener('resize', this.updateDimensions);
-    }
+    const toggleCollapsedMobile = useCallback(() => {
+      if (window.innerWidth <= 990) {
+        setCollapsed((prevCollapsed) => !prevCollapsed);
+      }
+    }, []);
 
-    updateDimensions() {
-      this.setState({
-        collapsed: window.innerWidth <= 1200 && true,
-      });
-    }
+    const onShowHide = useCallback(() => {
+      setHide((prevHide) => !prevHide);
+    }, []);
 
-    render() {
-      const { collapsed, hide } = this.state;
-      const { layoutMode, rtl, topMenu } = this.props;
+    const left = !rtl ? 'left' : 'right';
 
-      const left = !rtl ? 'left' : 'right';
-      const toggleCollapsed = () => {
-        this.setState({
-          collapsed: !collapsed,
-        });
+    const SideBarStyle = {
+      margin: '63px 0 0 0',
+      padding: `${!rtl ? '20px 20px 55px 0' : '20px 0 55px 20px'}`,
+      overflowY: 'auto',
+      height: '100vh',
+      position: 'fixed',
+      [left]: 0,
+      zIndex: 988,
+    };
+
+    const renderView = ({ style }) => {
+      const customStyle = {
+        marginRight: 'auto',
+        [rtl ? 'marginLeft' : 'marginRight']: '-19px',
       };
+      return <div style={{ ...style, ...customStyle }} />;
+    };
 
-      const toggleCollapsedMobile = () => {
-        if (window.innerWidth <= 990) {
-          this.setState({
-            collapsed: !collapsed,
-          });
-        }
+    const renderThumbVertical = ({ style }) => {
+      const thumbStyle = {
+        borderRadius: 6,
+        backgroundColor: layoutMode ? '#ffffff16' : '#F1F2F6',
+        [left]: '2px',
       };
+      return <div style={{ ...style, ...thumbStyle }} />;
+    };
 
-      const onShowHide = () => {
-        this.setState({
-          hide: !hide,
-        });
+    const renderThumbHorizontal = ({ style }) => {
+      const thumbStyle = {
+        borderRadius: 6,
+        backgroundColor: layoutMode ? '#ffffff16' : '#F1F2F6',
       };
+      return <div style={{ ...style, ...thumbStyle }} />;
+    };
 
-      const SideBarStyle = {
-        margin: '63px 0 0 0',
-        padding: `${!rtl ? '20px 20px 55px 0' : '20px 0 55px 20px'}`,
-        overflowY: 'auto',
-        height: '100vh',
-        position: 'fixed',
-        [left]: 0,
-        zIndex: 988,
-      };
-
-      const renderView = ({ style }) => {
-        const customStyle = {
-          marginRight: 'auto',
-          [rtl ? 'marginLeft' : 'marginRight']: '-19px',
-        };
-        return <div style={{ ...style, ...customStyle }} />;
-      };
-
-      const renderThumbVertical = ({ style }) => {
-        const { changeLayoutMode } = this.props;
-        const thumbStyle = {
-          borderRadius: 6,
-          backgroundColor: changeLayoutMode ? '#ffffff16' : '#F1F2F6',
-          [left]: '2px',
-        };
-        return <div style={{ ...style, ...thumbStyle }} />;
-      };
-
-      const renderThumbHorizontal = ({ style }) => {
-        const { changeLayoutMode } = this.props;
-        const thumbStyle = {
-          borderRadius: 6,
-          backgroundColor: changeLayoutMode ? '#ffffff16' : '#F1F2F6',
-        };
-        return <div style={{ ...style, ...thumbStyle }} />;
-      };
-
-      return (
-        <LayoutContainer>
-          <Layout className="layout">
-            <Header
-              style={{
-                position: 'fixed',
-                width: '100%',
-                top: 0,
-                [!rtl ? 'left' : 'right']: 0,
-              }}
-            >
-              <div className="invoice-header-content d-flex">
-                <div className="invoice-header-content__left">
-                  <div className="navbar-brand align-center-v">
-                    <Link
-                      className={topMenu && window.innerWidth > 991 ? 'invoice-logo top-menu' : 'invoice-logo'}
-                      to="/"
-                    >
+    return (
+      <LayoutContainer>
+        <Layout className="layout">
+          <Header
+            style={{
+              position: 'fixed',
+              width: '100%',
+              top: 0,
+              [!rtl ? 'left' : 'right']: 0,
+            }}
+          >
+            <div className="invoice-header-content d-flex">
+              <div className="invoice-header-content__left">
+                <div className="navbar-brand align-center-v">
+                  <Link
+                    className={topMenu && window.innerWidth > 991 ? 'invoice-logo top-menu' : 'invoice-logo'}
+                    to="/"
+                  >
+                    <img
+                      src={
+                        layoutMode === 'lightMode'
+                          ? require(`@/static/img/logo_dark.png`)
+                          : require(`@/static/img/logo_dark.png`).default
+                      }
+                      alt=""
+                    />
+                  </Link>
+                  {!topMenu || window.innerWidth <= 991 ? (
+                    <Button type="link" onClick={toggleCollapsed}>
                       <img
-                        src={
-                          layoutMode === 'lightMode'
-                            ? require(`@/static/img/logo_dark.png`)
-                            : // Change logo for white mode
-                              require(`@/static/img/logo_dark.png`).default
-                        }
-                        alt=""
+                        src={require(`@/static/img/icon/${collapsed ? 'left-bar.svg' : 'left-bar.svg'}`)}
+                        alt="menu"
                       />
-                    </Link>
-                    {!topMenu || window.innerWidth <= 991 ? (
-                      <Button type="link" onClick={toggleCollapsed}>
-                        <img
-                          src={require(`@/static/img/icon/${collapsed ? 'left-bar.svg' : 'left-bar.svg'}`)}
-                          alt="menu"
-                        />
-                      </Button>
-                    ) : null}
-                  </div>
-                </div>
-                <div className="invoice-header-content__right d-flex">
-                  <div className="invoice-navbar-menu d-flex align-center-v">
-                    {topMenu && window.innerWidth > 991 ? <TopMenu /> : ''}
-                  </div>
-                  <div className="invoice-nav-actions">
-                    {topMenu && window.innerWidth > 991 ? (
-                      <TopMenuSearch>
-                        <div className="top-right-wrap d-flex">
-                          <AuthInfo />
-                        </div>
-                      </TopMenuSearch>
-                    ) : (
-                      <AuthInfo />
-                    )}
-                  </div>
-                </div>
-                <div className="invoice-header-content__mobile">
-                  <div className="invoice-mobile-action">
-                    <div className="btn-search" to="#">
-                      <SearchBar />
-                    </div>
-
-                    <Link className="btn-auth" onClick={onShowHide} to="#">
-                      <UilEllipsisV />
-                    </Link>
-                  </div>
+                    </Button>
+                  ) : null}
                 </div>
               </div>
-            </Header>
-            <div className="invoice-header-more">
-              <Row>
-                <Col md={0} sm={24} xs={24}>
-                  <div className="invoice-header-more-inner">
-                    <SmallScreenAuthInfo hide={hide}>
-                      <AuthInfo rtl={rtl} />
-                    </SmallScreenAuthInfo>
+              <div className="invoice-header-content__right d-flex">
+                <div className="invoice-navbar-menu d-flex align-center-v">
+                  {topMenu && window.innerWidth > 991 ? <TopMenu /> : ''}
+                </div>
+                <div className="invoice-nav-actions">
+                  {topMenu && window.innerWidth > 991 ? (
+                    <TopMenuSearch>
+                      <div className="top-right-wrap d-flex">
+                        <AuthInfo />
+                      </div>
+                    </TopMenuSearch>
+                  ) : (
+                    <AuthInfo />
+                  )}
+                </div>
+              </div>
+              <div className="invoice-header-content__mobile">
+                <div className="invoice-mobile-action">
+                  <div className="btn-search" to="#">
+                    <SearchBar />
                   </div>
-                </Col>
-              </Row>
+
+                  <Link className="btn-auth" onClick={onShowHide} to="#">
+                    <UilEllipsisV />
+                  </Link>
+                </div>
+              </div>
             </div>
-            <Layout>
-              {!topMenu || window.innerWidth <= 991 ? (
-                <ThemeProvider theme={theme}>
-                  <Sider
-                    width={280}
-                    style={SideBarStyle}
-                    collapsed={collapsed}
-                    theme={layoutMode === 'lightMode' ? 'light' : 'dark'}
+          </Header>
+          <div className="invoice-header-more">
+            <Row>
+              <Col md={0} sm={24} xs={24}>
+                <div className="invoice-header-more-inner">
+                  <SmallScreenAuthInfo hide={hide}>
+                    <AuthInfo rtl={rtl} />
+                  </SmallScreenAuthInfo>
+                </div>
+              </Col>
+            </Row>
+          </div>
+          <Layout>
+            {!topMenu || window.innerWidth <= 991 ? (
+              <ThemeProvider theme={theme}>
+                <Sider
+                  width={280}
+                  style={SideBarStyle}
+                  collapsed={collapsed}
+                  theme={layoutMode === 'lightMode' ? 'light' : 'dark'}
+                >
+                  <Scrollbars
+                    className="custom-scrollbar"
+                    autoHide
+                    autoHideTimeout={500}
+                    autoHideDuration={200}
+                    renderThumbHorizontal={renderThumbHorizontal}
+                    renderThumbVertical={renderThumbVertical}
+                    renderView={renderView}
+                    renderTrackVertical={(props) => <div {...props} className="invoice-track-vertical" />}
                   >
-                    <Scrollbars
-                      className="custom-scrollbar"
-                      autoHide
-                      autoHideTimeout={500}
-                      autoHideDuration={200}
-                      renderThumbHorizontal={renderThumbHorizontal}
-                      renderThumbVertical={renderThumbVertical}
-                      renderView={renderView}
-                      renderTrackVertical={(props) => <div {...props} className="invoice-track-vertical" />}
-                    >
-                      <LeftMenu topMenu={topMenu} toggleCollapsed={toggleCollapsedMobile} />
-                    </Scrollbars>
-                  </Sider>
-                </ThemeProvider>
-              ) : null}
-              <Layout className="antd-main-layout">
-                <Content>
-                  <WrappedComponent {...this.props} />
-                </Content>
-              </Layout>
+                    <LeftMenu topMenu={topMenu} toggleCollapsed={toggleCollapsedMobile} />
+                  </Scrollbars>
+                </Sider>
+              </ThemeProvider>
+            ) : null}
+            <Layout className="antd-main-layout">
+              <Content>
+                <WrappedComponent {...props} />
+              </Content>
             </Layout>
           </Layout>
-          {window.innerWidth <= 991 ? (
-            <span className={collapsed ? 'invoice-shade' : 'invoice-shade show'} onClick={toggleCollapsed} />
-          ) : (
-            ''
-          )}
-        </LayoutContainer>
-      );
-    }
-  }
-
-  const mapStateToProps = (state) => {
-    return {
-      layoutMode: state.changeLayoutMode.mode,
-      rtl: state.changeLayoutMode.rtlData,
-      topMenu: state.changeLayoutMode.topMenu,
-    };
+        </Layout>
+        {window.innerWidth <= 991 ? (
+          <span className={collapsed ? 'invoice-shade' : 'invoice-shade show'} onClick={toggleCollapsed} />
+        ) : (
+          ''
+        )}
+      </LayoutContainer>
+    );
   };
 
-  LayoutComponent.propTypes = {
-    layoutMode: propTypes.string,
-    rtl: propTypes.bool,
-    topMenu: propTypes.bool,
-  };
-
-  return connect(mapStateToProps)(LayoutComponent);
+  return LayoutComponent;
 };
 
 export default WithAdminLayout;

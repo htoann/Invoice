@@ -1,15 +1,14 @@
 import { ConfigProvider } from 'antd';
 import 'antd/dist/antd.less';
 import { lazy, useEffect, useState } from 'react';
-import { Provider, useSelector } from 'react-redux';
 import { Navigate, Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 
 import { ThemeProvider } from 'styled-components';
 import ProtectedRoute from './components/utilities/protectedRoute';
 import config from './config/config';
-import store from './redux/store';
 
 import { useAuth } from 'context/AuthContext';
+import { useTheme } from 'context/ThemeContext';
 import { useTranslation } from 'react-i18next';
 import './index.scss';
 import Auth from './routes/auth';
@@ -20,17 +19,11 @@ const NotFound = lazy(() => import('./container/pages/404'));
 
 const { themeColor } = config;
 
-function ProviderConfig() {
+export const App = () => {
   const { i18n } = useTranslation();
   const { isLoggedIn } = useAuth();
 
-  const { rtl, topMenu, mainContent } = useSelector((state) => {
-    return {
-      rtl: state.changeLayoutMode.rtlData,
-      topMenu: state.changeLayoutMode.topMenu,
-      mainContent: state.changeLayoutMode.mode,
-    };
-  });
+  const { rtl, topMenu, layoutMode: mainContent } = useTheme();
 
   const [path, setPath] = useState(window.location.pathname);
 
@@ -67,14 +60,4 @@ function ProviderConfig() {
       </ThemeProvider>
     </ConfigProvider>
   );
-}
-
-function App() {
-  return (
-    <Provider store={store}>
-      <ProviderConfig />
-    </Provider>
-  );
-}
-
-export default App;
+};

@@ -1,11 +1,12 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 import i18n from './i18n/config';
 
+import { App } from 'App';
 import { AuthProvider } from 'context/AuthContext';
+import { ThemeProvider } from 'context/ThemeContext';
 import dayjs from './utils/dayjs';
 import moment from './utils/moment';
 
@@ -20,7 +21,9 @@ const root = createRoot(rootElement);
 root.render(
   <React.StrictMode>
     <AuthProvider>
-      <App />
+      <ThemeProvider>
+        <App />
+      </ThemeProvider>
     </AuthProvider>
   </React.StrictMode>,
 );

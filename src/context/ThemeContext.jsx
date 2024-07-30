@@ -6,7 +6,7 @@ const ThemeContext = createContext();
 export const ThemeProvider = ({ children }) => {
   const [themeState, setThemeState] = useState({
     rtlData: Cookies.get('rtl') || false,
-    topMenu: Cookies.get('topMenu') || true,
+    topMenu: Cookies.get('topMenu') !== undefined ? Cookies.get('topMenu') === 'true' : true,
     layoutMode: Cookies.get('layoutMode') || 'lightMode',
   });
 

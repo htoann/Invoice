@@ -2,12 +2,12 @@ import { UilClipboardAlt, UilCreateDashboard, UilInvoice, UilTable } from '@icon
 import { Menu, Tooltip } from 'antd';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { useSelector } from 'react-redux';
 import { Link, NavLink } from 'react-router-dom';
 
 import { routes } from '@/routes/const';
 import UilEllipsisV from '@iconscout/react-unicons/icons/uil-ellipsis-v';
 import UilEnvelope from '@iconscout/react-unicons/icons/uil-envelope';
+import { useTheme } from 'context/ThemeContext';
 import propTypes from 'prop-types';
 
 export const LeftMenu = ({ toggleCollapsed }) => {
@@ -23,11 +23,7 @@ export const LeftMenu = ({ toggleCollapsed }) => {
     };
   };
 
-  const { topMenu } = useSelector((state) => {
-    return {
-      topMenu: state.changeLayoutMode.topMenu,
-    };
-  });
+  const { topMenu } = useTheme();
 
   const path = '/';
   const pathName = window.location.pathname;

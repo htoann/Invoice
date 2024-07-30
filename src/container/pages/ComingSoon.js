@@ -1,21 +1,16 @@
 import { Cards } from '@/components/cards/frame/cards-frame';
 import { PageHeader } from '@/components/page-headers/page-headers';
 import { Col, Row } from 'antd';
+import { useTheme } from 'context/ThemeContext';
 import FontAwesome from 'react-fontawesome';
 import { useTranslation } from 'react-i18next';
-import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Main } from '../styled';
 import { ComingSoonStyleWrapper } from './style';
 
 function ComingSoon() {
   const { t } = useTranslation();
-
-  const { mainContent } = useSelector((state) => {
-    return {
-      mainContent: state.changeLayoutMode.mode,
-    };
-  });
+  const { layoutMode } = useTheme();
 
   return (
     <>
@@ -26,7 +21,7 @@ function ComingSoon() {
             <ComingSoonStyleWrapper>
               <Cards headless>
                 <div className="invoice-logo">
-                  {mainContent === 'lightMode' ? (
+                  {layoutMode === 'lightMode' ? (
                     <img src={require('@/static/img/logo_dark.png')} alt="" />
                   ) : (
                     <img src={require('@/static/img/logo_white.svg').default} alt="" />

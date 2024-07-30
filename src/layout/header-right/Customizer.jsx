@@ -1,14 +1,13 @@
 import { Drawer } from '@/components/drawer/drawer';
-import { changeMenuMode } from '@/redux/themeLayout/actionCreator';
 // import Left from '@/static/img/layouts/side.png';
 // import Top from '@/static/img/layouts/top.png';
 import Left from '@/static/img/layouts/left.png';
+import { useTheme } from 'context/ThemeContext';
 import { useTranslation } from 'react-i18next';
-import { useDispatch } from 'react-redux';
 
 const Customizer = () => {
   const { t } = useTranslation();
-  const dispatch = useDispatch();
+  const { changeMenuMode } = useTheme();
 
   const changeNavbar = (topMode) => {
     const html = document.querySelector('html');
@@ -17,7 +16,7 @@ const Customizer = () => {
     } else {
       html.classList.remove('invoice-topMenu');
     }
-    dispatch(changeMenuMode(topMode));
+    changeMenuMode(topMode);
   };
 
   return (

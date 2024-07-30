@@ -4,13 +4,13 @@ import Heading from '@/components/heading/heading';
 import { PageHeader } from '@/components/page-headers/page-headers';
 import { Col, Pagination, Row } from 'antd';
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Main } from '../styled';
 import { ResultList, SearchResultWrapper } from './style';
 
 function SearchResult() {
-  const searchData = useSelector((state) => state.headerSearchData);
+  const searchData = '';
+
   const [state, setState] = useState({
     notData: searchData,
     activeClass: 'all',

@@ -1,8 +1,8 @@
 import { SearchOutlined } from '@ant-design/icons';
 import { Button, Input } from 'antd';
+import { useTheme } from 'context/ThemeContext';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { useSelector } from 'react-redux';
 import { AutoCompleteStyled } from './style';
 
 const onSelect = () => {
@@ -36,11 +36,7 @@ const AutoComplete = React.memo(
     options = [],
     placeholder = 'Input here',
   }) => {
-    const { rtl } = useSelector((state) => {
-      return {
-        rtl: state.changeLayoutMode.rtlData,
-      };
-    });
+    const { rtl } = useTheme();
 
     const content =
       options?.length > 0 &&

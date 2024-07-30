@@ -11,7 +11,7 @@ function ProtectedRoute({ Component, path }) {
     </Routes>
   ) : (
     <Routes>
-      <Route path="/invoice" element={<Navigate to="/" />} />
+      <Route path="/*" element={<Navigate to="/" />} />
     </Routes>
   );
 }

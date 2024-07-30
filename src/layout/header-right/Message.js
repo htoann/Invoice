@@ -1,21 +1,16 @@
-/* eslint-disable react/jsx-no-bind */
+import Heading from '@/components/heading/heading';
+import { Popover } from '@/components/popup/popup';
+import { Scrollbars } from '@pezhmanparsaee/react-custom-scrollbars';
 import { Badge } from 'antd';
+import { useTheme } from 'context/ThemeContext';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Scrollbars } from '@pezhmanparsaee/react-custom-scrollbars';
-import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { ReactSVG } from 'react-svg';
 import { UserActionDropDown } from './Style';
-import Heading from '@/components/heading/heading';
-import { Popover } from '@/components/popup/popup';
 
 const MessageBox = React.memo(() => {
-  const { rtl } = useSelector((state) => {
-    return {
-      rtl: state.changeLayoutMode.rtlData,
-    };
-  });
+  const { rtl } = useTheme();
 
   function renderThumb({ style }) {
     const thumbStyle = {
