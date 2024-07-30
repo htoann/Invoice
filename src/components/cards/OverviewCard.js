@@ -2,9 +2,9 @@
 import { Card } from 'antd';
 import propTypes from 'prop-types';
 import { useEffect, useState } from 'react';
-import CountUp from 'react-countup';
 import { useLocation } from 'react-router-dom';
 import { ReactSVG } from 'react-svg';
+import CountUp from '../count-up/CountUp';
 import { OverviewCardWrap } from './Style';
 
 const OverviewCard = ({
