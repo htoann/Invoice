@@ -5,7 +5,7 @@ import { Main } from '@/container/styled';
 import { routes } from '@/routes/const';
 import UilAlignLeft from '@iconscout/react-unicons/icons/uil-align-left';
 import UilAlignRight from '@iconscout/react-unicons/icons/uil-align-right';
-import { Col, Row } from 'antd';
+import { Col, Empty, Row } from 'antd';
 import { useEffect, useLayoutEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { InboxList } from './components/InboxList';
@@ -85,11 +85,19 @@ function Email() {
               </div>
             </Col>
 
-            {selectedInbox && (
-              <Col xxl={16} xl={15} lg={14} xs={24}>
+            <Col xxl={16} xl={15} lg={14} xs={24}>
+              {selectedInbox ? (
                 <MailDetail selectedInbox={selectedInbox} />
-              </Col>
-            )}
+              ) : (
+                <Cards
+                  headless
+                  style={{ height: 'calc(100vh - 200px)' }}
+                  bodyStyle={{ margin: 'auto', height: '100%', display: 'flex' }}
+                >
+                  <Empty description={t('Common_SelectAnEmail')} style={{ margin: 'auto' }} />
+                </Cards>
+              )}
+            </Col>
           </Row>
         </EmailWrapper>
       </Main>
