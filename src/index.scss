@@ -2407,6 +2407,16 @@ html[dir='rtl']
 @media only screen and (max-width: 1199px) {
   .ant-page-header {
     padding: 0 15px;
+    padding-left: 100px !important;
+    transition: padding 0.3s ease;
+  }
+}
+
+@media only screen and (max-width: 1149px) {
+  .ant-page-header {
+    padding: 0 15px;
+    padding-left: 15px !important;
+    transition: padding 0.3s ease;
   }
 }
 

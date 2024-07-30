@@ -251,6 +251,12 @@ const Main = Styled.div`
     
     @media only screen and (max-width: 1199px){
         padding: 0px 15px;
+        padding-left: 100px;
+        transition: padding 0.3s ease;
+    }
+    @media only screen and (max-width: 1149px){
+        padding: 0px 15px;
+        transition: padding 0.3s ease;
     }
     @media only screen and (max-width: 991px){
         min-height: 580px;
