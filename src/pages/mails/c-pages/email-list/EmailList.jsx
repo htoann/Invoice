@@ -108,12 +108,12 @@ const EmailList = () => {
       setAccounts(accounts.filter((account) => account.id !== id));
 
       notification.success({
-        message: t('Mail_EmailList_Title'),
+        message: t('Mail_AccountList_Title'),
         description: t('Mail_EmailList_DeleteSuccess'),
       });
     } catch (error) {
       notification.error({
-        message: t('Mail_EmailList_Title'),
+        message: t('Mail_AccountList_Title'),
         description: t('Mail_EmailList_DeleteError'),
       });
     }
@@ -224,7 +224,7 @@ const EmailList = () => {
 
   return (
     <>
-      <PageHeader className="invoice-page-header-main" title={t('Mail_EmailList_Title')} />
+      <PageHeader className="invoice-page-header-main" title={t('Mail_AccountList_Title')} />
       <Main>
         <Row gutter={15}>
           <Col xs={24}>
@@ -250,7 +250,7 @@ const EmailList = () => {
                   </Select>
                 </div>
                 <Button onClick={showModal} type="primary" key="1">
-                  <Link to="#">+ {t('Mail_EmailList_Create')}</Link>
+                  <Link to="#">+ {t('Mail_AccountList_Create')}</Link>
                 </Button>
                 {isLoadingGetList ? (
                   <Skeleton active style={{ marginTop: 30 }} />

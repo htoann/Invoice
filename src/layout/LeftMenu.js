@@ -87,7 +87,7 @@ export const LeftMenu = ({ toggleCollapsed }) => {
       'inbox',
       !topMenu && <UilEnvelope />,
       createMenuItems([
-        { path: routes.emailAccount, textKey: t('Mail_EmailList_Title'), key: 'Danh sách email' },
+        { path: routes.emailAccount, textKey: t('Mail_AccountList_Title'), key: 'Danh sách email' },
         { path: routes.emailInbox, textKey: t('Common_Inbox'), key: 'Hộp thư đến' },
         { path: routes.emailSync, textKey: t('Common_SyncHistory'), key: 'Lịch sử đồng bộ' },
       ]),

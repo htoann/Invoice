@@ -68,7 +68,7 @@ export const TopMenu = () => {
             </Link>
             <ul className="subMenu">
               <li>
-                <Link to={routes.emailAccount}>{t('Mail_EmailList_Title')}</Link>
+                <Link to={routes.emailAccount}>{t('Mail_AccountList_Title')}</Link>
               </li>
               <li>
                 <Link to={routes.emailInbox}>{t('Common_Inbox')}</Link>
