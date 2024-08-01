@@ -4,7 +4,7 @@ import Styled from 'styled-components';
 const { TabPane } = Tabs;
 
 const TabBasic = Styled(Tabs)`
-  margin-bottom: 30px !important;
+  margin-bottom: 30px;
   .ant-tabs-nav-wrap{
     .ant-tabs-tab{
       &.ant-tabs-tab-active{

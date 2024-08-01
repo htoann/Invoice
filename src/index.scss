@@ -3290,3 +3290,9 @@ tr[data-row-key='searchInput'] {
   min-width: 250px;
   width: max-content !important;
 }
+
+.invoice-datatable-filter__input {
+  .ant-tabs-top {
+    margin-bottom: 15px;
+  }
+}

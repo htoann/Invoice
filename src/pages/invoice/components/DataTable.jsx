@@ -1,10 +1,11 @@
 import { Button } from '@/components/buttons/buttons';
+import { Tab } from '@/components/tabs/tabs';
 import { DataService } from '@/config/dataService';
 import { TableWrapper } from '@/container/styled';
 import { downloadFile, formatTime } from '@/utils/index';
 import { DownloadOutlined } from '@ant-design/icons';
 import { UilSearch } from '@iconscout/react-unicons';
-import { DatePicker, Select, Space, Table } from 'antd';
+import { DatePicker, Space, Table } from 'antd';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -78,8 +79,8 @@ function DataTable({ loading, tableData, columns, state, setState, getInvoiceLis
   return (
     <DataTableStyleWrap>
       <div className="invoice-datatable-filter">
-        <Space className="invoice-datatable-filter__input mb-20">
-          <span className="label">{t('Invoice_InvoiceType')}</span>
+        <Space className="invoice-datatable-filter__input">
+          {/* <span className="label">{t('Invoice_InvoiceType')}</span>
           <Select
             popupClassName="dropdown-select"
             onChange={handleLoaiHoaDonSearch}
@@ -88,7 +89,14 @@ function DataTable({ loading, tableData, columns, state, setState, getInvoiceLis
           >
             <Select.Option value="purchase">{t('Common_Purchase')}</Select.Option>
             <Select.Option value="sold">{t('Common_Sold')}</Select.Option>
-          </Select>
+          </Select> */}
+          <Tab
+            data={[
+              { key: 'purchase', tabTitle: t('Common_Purchase'), disabled: loading },
+              { key: 'sold', tabTitle: t('Common_Sold'), disabled: loading },
+            ]}
+            onChange={handleLoaiHoaDonSearch}
+          />
         </Space>
         <div style={{ justifyContent: 'space-between', display: 'flex', alignItems: 'center', flexWrap: 'wrap' }}>
           <div className="invoice-datatable-filter__left">

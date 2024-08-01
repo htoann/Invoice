@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Child, TabBasic } from './style';
 
 function Tab(props) {
-  const { data, tabPosition, type, color } = props;
+  const { data, tabPosition, type, color, onChange, prop } = props;
   let counter = 0;
 
   return (
@@ -12,9 +12,11 @@ function Tab(props) {
       color={color && color}
       defaultActiveKey="1"
       tabPosition={tabPosition !== undefined ? tabPosition : 'top'}
+      onChange={onChange}
+      {...prop}
     >
       {data.map((item) => {
-        const { title, content, icon, tabTitle } = item;
+        const { title, content, icon, tabTitle, key, disabled } = item;
         const IconTag = Unicons[icon];
         counter += 1;
         return (
@@ -30,10 +32,11 @@ function Tab(props) {
                 </span>
               )
             }
-            key={counter}
+            key={key || counter}
+            disabled={disabled}
           >
-            <h2>{title}</h2>
-            <p>{content}</p>
+            {title && <h2>{title}</h2>}
+            {content && <p>{content}</p>}
           </Child>
         );
       })}
