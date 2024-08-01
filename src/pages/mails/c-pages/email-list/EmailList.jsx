@@ -2,7 +2,7 @@
 import { Button } from '@/components/buttons/buttons';
 import { Cards } from '@/components/cards/frame/cards-frame';
 import { PageHeader } from '@/components/page-headers/page-headers';
-import { DataService } from '@/config/dataService';
+import { DataService } from '@/utils/dataService';
 import { BorderLessHeading, Main } from '@/container/styled';
 import UilEdit from '@iconscout/react-unicons/icons/uil-edit';
 import UilTrash from '@iconscout/react-unicons/icons/uil-trash-alt';

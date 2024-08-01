@@ -1,4 +1,4 @@
-import { DataService } from '@/config/dataService';
+import { DataService } from '@/utils/dataService';
 import { formatTime } from '@/utils/index';
 import UilInbox from '@iconscout/react-unicons/icons/uil-inbox';
 import { Empty, Input, Pagination, Select, Skeleton } from 'antd';

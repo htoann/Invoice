@@ -1,4 +1,4 @@
-import { DataService } from '@/config/dataService';
+import { DataService } from '@/utils/dataService';
 import { useEffect, useState } from 'react';
 
 const useAccounts = (onHandleResult, selectedDepartmentId = '') => {

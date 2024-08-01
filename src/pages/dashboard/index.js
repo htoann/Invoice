@@ -4,9 +4,9 @@ import { Main } from '@/container/styled';
 import { Col, Row, Skeleton } from 'antd';
 import { Suspense } from 'react';
 import { useTranslation } from 'react-i18next';
-import BusinessStatus from './overview/BusinessStatus';
-import InvoicesChange from './overview/InvoicesChange';
-import Overview from './overview/Overview';
+import BusinessStatus from './components/BusinessStatus';
+import InvoicesChange from './components/InvoicesChange';
+import Overview from './components/Overview';
 
 function Dashboard() {
   const { t } = useTranslation();

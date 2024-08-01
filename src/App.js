@@ -9,7 +9,7 @@ import ProtectedRoute from './routes/protectedRoute';
 import { useAuth } from 'context/AuthContext';
 import { useTheme } from 'context/ThemeContext';
 import { useTranslation } from 'react-i18next';
-import { themeColor } from './config/theme/themeVariables';
+import { themeColor } from './utils/theme/themeVariables';
 import './index.scss';
 import Auth from './routes/auth';
 import Index from './routes/index';

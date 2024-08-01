@@ -11,7 +11,7 @@ import { TopMenu } from './TopMenu';
 import SearchBar from './header-right/Search';
 import AuthInfo from './header-right/index';
 
-const { theme } = require('../config/theme/themeVariables');
+const { theme } = require('../utils/theme/themeVariables');
 const { Header, Sider, Content } = Layout;
 
 const WithAdminLayout = (WrappedComponent) => {

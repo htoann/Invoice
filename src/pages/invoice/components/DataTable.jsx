@@ -1,6 +1,6 @@
 import { Button } from '@/components/buttons/buttons';
 import { Tab } from '@/components/tabs/tabs';
-import { DataService } from '@/config/dataService';
+import { DataService } from '@/utils/dataService';
 import { TableWrapper } from '@/container/styled';
 import { downloadFile, formatTime } from '@/utils/index';
 import { DownloadOutlined } from '@ant-design/icons';

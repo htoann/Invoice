@@ -1,6 +1,6 @@
 import { Cards } from '@/components/cards/frame/cards-frame';
 import { PageHeader } from '@/components/page-headers/page-headers';
-import { DataService } from '@/config/dataService';
+import { DataService } from '@/utils/dataService';
 import { BorderLessHeading, Main } from '@/container/styled';
 import { routes } from '@/routes/const';
 import { Col, Row } from 'antd';

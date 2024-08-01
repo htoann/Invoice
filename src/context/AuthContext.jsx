@@ -1,4 +1,4 @@
-import { DataService } from '@/config/dataService';
+import { DataService } from '@/utils/dataService';
 import { notification } from 'antd';
 import Cookies from 'js-cookie';
 import { createContext, useCallback, useContext, useState } from 'react';
