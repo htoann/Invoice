@@ -1,6 +1,6 @@
-import dayjs from 'dayjs';
-import viVN from 'antd/lib/locale/vi_VN';
 import enUS from 'antd/lib/locale/en_US';
+import viVN from 'antd/lib/locale/vi_VN';
+import dayjs from './dayjs';
 
 /**
  * Return ellipsis of a given string
@@ -79,4 +79,4 @@ const getAntdLocale = (language) => {
   }
 };
 
-export { ellipsis, idGenerator, downloadFile, formatTime, getAntdLocale };
+export { downloadFile, ellipsis, formatTime, getAntdLocale, idGenerator };
