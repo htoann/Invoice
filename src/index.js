@@ -1,6 +1,5 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import reportWebVitals from './reportWebVitals';
 
 import i18n from './i18n/config';
 
@@ -25,5 +24,3 @@ root.render(
     </AuthProvider>
   </React.StrictMode>,
 );
-
-reportWebVitals();
