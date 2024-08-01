@@ -87,7 +87,7 @@ export const LeftMenu = ({ toggleCollapsed }) => {
       'inbox',
       !topMenu && <UilEnvelope />,
       createMenuItems([
-        { path: routes.emailAccount, textKey: t('Mail_EmailList_Title'), key: 'Danh sách email' },
+        { path: routes.emailAccount, textKey: t('Mail_AccountList_Title'), key: 'Danh sách email' },
         { path: routes.emailInbox, textKey: t('Common_Inbox'), key: 'Hộp thư đến' },
         { path: routes.emailSync, textKey: t('Common_SyncHistory'), key: 'Lịch sử đồng bộ' },
       ]),
@@ -134,11 +134,6 @@ export const LeftMenu = ({ toggleCollapsed }) => {
           path: routes.emailAccount,
           textKey: 'Bổ sung đối chiếu tờ khai thuế theo từng lần kiểm tra',
           key: 'Bổ sung đối chiếu tờ khai thuế theo từng lần kiểm tra',
-        },
-        {
-          path: routes.emailAccount,
-          textKey: 'Báo cáo tổng hợp hoá đơn mua vào/bán ra',
-          key: 'Báo cáo tổng hợp hoá đơn mua vào/bán ra',
         },
       ]),
     ),

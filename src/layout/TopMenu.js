@@ -68,7 +68,7 @@ export const TopMenu = () => {
             </Link>
             <ul className="subMenu">
               <li>
-                <Link to={routes.emailAccount}>{t('Mail_EmailList_Title')}</Link>
+                <Link to={routes.emailAccount}>{t('Mail_AccountList_Title')}</Link>
               </li>
               <li>
                 <Link to={routes.emailInbox}>{t('Common_Inbox')}</Link>
@@ -124,9 +124,6 @@ export const TopMenu = () => {
               </li>
               <li>
                 <Link to="#">Bổ sung đối chiếu tờ khai thuế theo từng lần kiểm tra</Link>
-              </li>
-              <li>
-                <Link to="#">Báo cáo tổng hợp hoá đơn mua vào/bán ra</Link>
               </li>
             </ul>
           </li>

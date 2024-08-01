@@ -20,6 +20,7 @@ const Cards = (props) => {
     border = false,
     bodypadding,
     className,
+    style,
   } = props;
   return (
     <>
@@ -45,7 +46,7 @@ const Cards = (props) => {
               {isButton && isButton}
             </>
           }
-          style={{ width: '100%' }}
+          style={{ width: '100%', ...style }}
         >
           {children}
         </CardFrame>
@@ -54,7 +55,7 @@ const Cards = (props) => {
           bodypadding={bodypadding && bodypadding}
           bodyStyle={bodyStyle && bodyStyle}
           size={size}
-          style={{ width: '100%' }}
+          style={{ width: '100%', ...style }}
           bordered={border}
           className={className}
         >
