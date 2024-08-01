@@ -206,7 +206,7 @@ function Banner7() {
           <img src={require('@/static/img/banner/6.png')} alt="" />
           <figcaption>
             <h2>Subscribe to our newsletter</h2>
-            <p>Lorem ipsum dolor sit amet, consetetur </p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi, provident. </p>
             <Button className="btn-outlined" size="large" outlined type="primary">
               Subscribe Now
             </Button>
@@ -227,7 +227,7 @@ function BannerCarousel() {
           </div>
           <div className="banner-single__content">
             <h3>Achievements</h3>
-            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi, provident. </p>
           </div>
         </div>
         <div className="banner-single">
@@ -236,7 +236,7 @@ function BannerCarousel() {
           </div>
           <div className="banner-single__content">
             <h3>Achievements</h3>
-            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi, provident. </p>
           </div>
         </div>
         <div className="banner-single">
@@ -245,7 +245,7 @@ function BannerCarousel() {
           </div>
           <div className="banner-single__content">
             <h3>Achievements</h3>
-            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi, provident. </p>
           </div>
         </div>
       </Carousel>

@@ -4,7 +4,7 @@ import { lazy, useEffect, useState } from 'react';
 import { Navigate, Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 
 import { ThemeProvider } from 'styled-components';
-import ProtectedRoute from './components/utilities/protectedRoute';
+import ProtectedRoute from './routes/protectedRoute';
 
 import { useAuth } from 'context/AuthContext';
 import { useTheme } from 'context/ThemeContext';
