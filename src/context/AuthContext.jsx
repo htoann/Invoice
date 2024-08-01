@@ -15,7 +15,7 @@ export const AuthProvider = ({ children }) => {
     error: null,
   });
 
-  const login = useCallback(async (values) => {
+  const login = useCallback(async () => {
     setAuthState((prevState) => ({ ...prevState, loading: true }));
     try {
       // const response = await DataService.post('/users/login/', values);
