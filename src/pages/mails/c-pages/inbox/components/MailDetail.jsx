@@ -1,8 +1,9 @@
 import { Cards } from '@/components/cards/frame/cards-frame';
 import Heading from '@/components/heading/heading';
 import { Popover } from '@/components/popup/popup';
-import csvImg from '@/static/img/files/csv.png';
-import pdfImg from '@/static/img/files/pdf.png';
+// import csvImg from '@/static/img/files/csv.png';
+// import pdfImg from '@/static/img/files/pdf.png';
+import { attachments } from '@/mock/mails/attachments';
 import { formatTime } from '@/utils/index';
 import UilAngleDown from '@iconscout/react-unicons/icons/uil-angle-down';
 import UilImport from '@iconscout/react-unicons/icons/uil-import';
@@ -10,11 +11,16 @@ import { Col, Row } from 'antd';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { MailDetailsWrapper, MessageDetails } from './style';
+import { downloadAttachment } from './utils';
 
 function MailDetail({ selectedInbox: email }) {
   const { t } = useTranslation();
 
   const cleanedBody = email?.body?.replace(/<style[\s\S]*?<\/style>/gi, '');
+
+  const handleDownloadAttachment = async (attachment) => {
+    await downloadAttachment(attachment.file_name);
+  };
 
   return (
     <MailDetailsWrapper>
@@ -71,40 +77,35 @@ function MailDetail({ selectedInbox: email }) {
 
               <div className="message-body" dangerouslySetInnerHTML={{ __html: cleanedBody }} />
 
-              <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
-                <div className="message-attachments">
-                  <div className="invoice-ticket-file-item d-flex">
-                    <div className="invoice-ticket-file-item__info d-flex">
-                      <div className="invoice-ticket-file-item__logo">
-                        <img style={{ width: '40px' }} src={pdfImg} alt="File Logo" />
+              <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap', marginTop: 40 }}>
+                {attachments?.length > 0 &&
+                  attachments.map((item) => (
+                    <div className="message-attachments" key={item.id}>
+                      <div className="invoice-ticket-file-item d-flex">
+                        <div className="invoice-ticket-file-item__info d-flex">
+                          <div className="invoice-ticket-file-item__logo">
+                            <img
+                              style={{ width: '40px' }}
+                              src={require(`@/static/img/files/${item.type}.png`)}
+                              alt="File Logo"
+                            />
+                          </div>
+                          <div className="invoice-file-item__content">
+                            <span className="invoice-ticket-file-name">{item.file_name}</span>
+                            <span className="invoice-ticket-file-size">{item.file_size}</span>
+                          </div>
+                          <Link
+                            className="btn-link"
+                            to="#"
+                            style={{ marginLeft: 10 }}
+                            onClick={() => handleDownloadAttachment(item)}
+                          >
+                            <UilImport />
+                          </Link>
+                        </div>
                       </div>
-                      <div className="invoice-file-item__content">
-                        <span className="invoice-ticket-file-name">Product-guidelines.pdf</span>
-                        <span className="invoice-ticket-file-size">522 KB</span>
-                      </div>
-                      <Link className="btn-link" to="#" style={{ marginLeft: 10 }}>
-                        <UilImport />
-                      </Link>
                     </div>
-                  </div>
-                </div>
-
-                <div className="message-attachments">
-                  <div className="invoice-ticket-file-item d-flex">
-                    <div className="invoice-ticket-file-item__info d-flex">
-                      <div className="invoice-ticket-file-item__logo">
-                        <img style={{ width: '40px' }} src={csvImg} alt={t('Mail_Detail_FileLogo')} />
-                      </div>
-                      <div className="invoice-file-item__content">
-                        <span className="invoice-ticket-file-name">Product-guidelines.pdf</span>
-                        <span className="invoice-ticket-file-size">522 KB</span>
-                      </div>
-                      <Link className="btn-link" to="#" style={{ marginLeft: 10 }}>
-                        <UilImport />
-                      </Link>
-                    </div>
-                  </div>
-                </div>
+                  ))}
               </div>
             </MessageDetails>
           </Col>

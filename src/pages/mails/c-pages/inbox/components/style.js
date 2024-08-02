@@ -978,7 +978,7 @@ const MessageDetails = Styled.div`
     }
   }
   .message-attachments{
-    margin: 40px -5px 10px -5px;
+    margin: 10px -5px 10px -5px;
     ${({ theme }) => (theme.rtl ? 'padding-right' : 'padding-left')}: 60px;
     display: flex;
     flex-wrap: wrap;

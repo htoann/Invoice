@@ -200,7 +200,7 @@ export const InboxList = React.memo(({ setSelectedInbox, selectedInbox }) => {
                       <span className="nav-text">
                         <div className="email-container">
                           <div className="email-content">
-                            <Paragraph className="email-subject" ellipsis>
+                            <Paragraph className="email-subject" ellipsis title={item?.subject}>
                               {item?.subject}
                             </Paragraph>
                             <Paragraph
