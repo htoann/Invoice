@@ -134,7 +134,7 @@ const ProjectList = ({ list, setList, loadingList }) => {
   return (
     <Col xs={24} sm={12} md={8} lg={8}>
       <BorderLessHeading>
-        <Cards title={t('Project_Title')} style={{ height: 1000 }}>
+        <Cards title={t('Project_Title')}>
           <StyledMenu
             style={{ width: '100%', minHeight: 'calc(100vh - 290px)' }}
             mode="inline"
