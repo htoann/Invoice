@@ -1,13 +1,13 @@
-import { DataService } from '@/utils/dataService';
 import { downloadFile, formatTime } from '@/utils/index';
+import axios from 'axios';
 
-export const downloadAttachment = async (fileName) => {
+export const downloadAttachment = async (attachment) => {
   try {
-    const response = await DataService.get('mails/attachments', {
+    const response = await axios.get(attachment.filePath, {
       responseType: 'blob',
     });
 
-    downloadFile(response, `${fileName}${formatTime()}.xlsx`);
+    downloadFile(response, `${attachment.fileName}${formatTime()}.xlsx`);
   } catch (error) {
     console.error(error);
   }

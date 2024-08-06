@@ -19,7 +19,7 @@ function MailDetail({ selectedInbox: email }) {
   const cleanedBody = email?.body?.replace(/<style[\s\S]*?<\/style>/gi, '');
 
   const handleDownloadAttachment = async (attachment) => {
-    await downloadAttachment(attachment.file_name);
+    await downloadAttachment(attachment);
   };
 
   return (
