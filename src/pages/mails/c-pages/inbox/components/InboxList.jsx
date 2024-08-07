@@ -26,25 +26,24 @@ export const InboxList = React.memo(({ setSelectedInbox, selectedInbox }) => {
 
   const [selectedDepartmentId, setSelectedDepartmentId] = useState(null);
 
-  const [searchSender, setSearchSender] = useState('');
-  const [selectedUsername, setSelectedUsername] = useState(null);
+  const [search, setSearchSender] = useState('');
+  const [selectedAccountId, setSelectedAccountId] = useState(null);
   const [loading, setLoading] = useState(false);
 
   const selectFirstAccount = (results) => {
-    setSelectedUsername(results[0].email);
+    setSelectedAccountId(results[0].id);
   };
 
   const { loadingDepartments, departments } = useDepartments();
   const { accountList, loadingUsers } = useAccounts(selectFirstAccount, selectedDepartmentId);
 
-  const getList = async ({ searchSender = '', page = 1, page_size = 20, email = '' } = {}) => {
+  const getList = async ({ accountId, search = '', page = 1, page_size = 20 } = {}) => {
     try {
       setLoading(true);
-      const response = await DataService.get('/mails/inbox/', {
-        sender: searchSender,
+      const response = await DataService.get(`/mails/accounts/${accountId}/inboxes/`, {
+        search,
         page,
         page_size,
-        email,
       });
 
       setInboxList(response?.data?.results);
@@ -60,8 +59,8 @@ export const InboxList = React.memo(({ setSelectedInbox, selectedInbox }) => {
   };
 
   useEffect(() => {
-    getList({ searchSender, page: current, page_size: pageSize, email: selectedUsername });
-  }, [selectedUsername, current, pageSize]);
+    if (selectedAccountId) getList({ search, page: current, page_size: pageSize, accountId: selectedAccountId });
+  }, [selectedAccountId, current, pageSize]);
 
   const resetCurrentPage = () => {
     setPagination((prev) => ({
@@ -91,7 +90,7 @@ export const InboxList = React.memo(({ setSelectedInbox, selectedInbox }) => {
   const accountsSelect =
     accountList?.length > 0 &&
     accountList.map((item) => ({
-      value: item.email,
+      value: item.id,
       label: item.email,
     }));
 
@@ -117,7 +116,7 @@ export const InboxList = React.memo(({ setSelectedInbox, selectedInbox }) => {
               placeholder={t('Common_SelectDepartment')}
               onChange={(value) => {
                 setSelectedDepartmentId(value);
-                setSelectedUsername('');
+                setSelectedAccountId('');
                 handleReset();
               }}
               loading={loadingDepartments}
@@ -137,12 +136,12 @@ export const InboxList = React.memo(({ setSelectedInbox, selectedInbox }) => {
             style={{ width: '100%', marginBottom: 20 }}
             placeholder={t('Common_SelectAccount')}
             onChange={(value) => {
-              setSelectedUsername(value);
+              setSelectedAccountId(value);
               handleReset();
             }}
             loading={loadingUsers}
             disabled={loadingUsers}
-            defaultValue={selectedUsername}
+            defaultValue={selectedAccountId}
             options={accountsSelect}
           />
         </div>
@@ -152,12 +151,12 @@ export const InboxList = React.memo(({ setSelectedInbox, selectedInbox }) => {
         <Input
           style={{ width: '100%', marginBottom: 20, height: 40 }}
           placeholder={t('Mail_SearchBySender')}
-          value={searchSender}
+          value={search}
           onChange={(event) => {
             setSearchSender(event.target.value);
           }}
           onPressEnter={() => {
-            getList({ searchSender, page_size: pageSize, email: selectedUsername });
+            getList({ search, page_size: pageSize, accountId: selectedAccountId });
             resetCurrentPage();
           }}
         />
@@ -188,7 +187,7 @@ export const InboxList = React.memo(({ setSelectedInbox, selectedInbox }) => {
             <ul>
               {inboxList?.length > 0 ? (
                 inboxList.map((item) => (
-                  <li key={item.id}>
+                  <li key={item.id} style={{ marginBottom: 5 }}>
                     <Link
                       className={item?.id === selectedInbox?.id ? 'active' : ''}
                       onClick={(e) => {

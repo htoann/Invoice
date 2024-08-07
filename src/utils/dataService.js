@@ -4,11 +4,11 @@ import axios from 'axios';
 const API_ENDPOINT = process.env.REACT_APP_API_ENDPOINT;
 
 const authHeader = () => {
-  if (getCookie('access_token')) {
-    return {
-      Authorization: `Bearer ${getCookie('access_token')}`,
-    };
-  }
+  // if (getCookie('access_token')) {
+  //   return {
+  //     Authorization: `Bearer ${getCookie('access_token')}`,
+  //   };
+  // }
 
   return {};
 };

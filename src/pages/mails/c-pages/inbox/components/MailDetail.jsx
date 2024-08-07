@@ -3,7 +3,6 @@ import Heading from '@/components/heading/heading';
 import { Popover } from '@/components/popup/popup';
 // import csvImg from '@/static/img/files/csv.png';
 // import pdfImg from '@/static/img/files/pdf.png';
-import { attachments } from '@/mock/mails/attachments';
 import { formatTime } from '@/utils/index';
 import UilAngleDown from '@iconscout/react-unicons/icons/uil-angle-down';
 import UilImport from '@iconscout/react-unicons/icons/uil-import';
@@ -26,7 +25,7 @@ function MailDetail({ selectedInbox: email }) {
     <MailDetailsWrapper>
       <Cards headless>
         <Row gutter={15}>
-          <Col>
+          <Col style={{ width: '100%' }}>
             <MessageDetails>
               <div className="d-flex justify-content-between align-items-center">
                 <div className="message-subject">
@@ -78,30 +77,37 @@ function MailDetail({ selectedInbox: email }) {
               <div className="message-body" dangerouslySetInnerHTML={{ __html: cleanedBody }} />
 
               <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap', marginTop: 40 }}>
-                {attachments?.length > 0 &&
-                  attachments.map((item) => (
+                {email?.attachments?.length > 0 &&
+                  email?.attachments.map((item) => (
                     <div className="message-attachments" key={item.id}>
                       <div className="invoice-ticket-file-item d-flex">
                         <div className="invoice-ticket-file-item__info d-flex">
                           <div className="invoice-ticket-file-item__logo">
-                            <img
+                            {/* <img
                               style={{ width: '40px' }}
                               src={require(`@/static/img/files/${item.type}.png`)}
                               alt="File Logo"
-                            />
+                            /> */}
                           </div>
                           <div className="invoice-file-item__content">
                             <span className="invoice-ticket-file-name">{item.file_name}</span>
-                            <span className="invoice-ticket-file-size">{item.file_size}</span>
+                            <span className="invoice-ticket-file-size">{item.size}</span>
                           </div>
-                          <Link
+                          {/* <Link
                             className="btn-link"
                             to="#"
                             style={{ marginLeft: 10 }}
                             onClick={() => handleDownloadAttachment(item)}
                           >
                             <UilImport />
-                          </Link>
+                          </Link> */}
+                          <a
+                            href={`http://localhost:8000/mails/attachments/${item.id}`}
+                            target="_blank"
+                            rel="noreferrer"
+                          >
+                            Lmao
+                          </a>
                         </div>
                       </div>
                     </div>
