@@ -4,6 +4,7 @@ import { BasicFormWrapper } from '@/container/styled';
 import { Checkbox, Col, DatePicker, Form, Input, Row } from 'antd';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import { HDDT_CAPTCHA_ENDPOINT } from '../utils';
 
 function CreateTaxAccount({ state, setState }) {
   const [form] = Form.useForm();
@@ -12,7 +13,7 @@ function CreateTaxAccount({ state, setState }) {
 
   const getCaptcha = async () => {
     try {
-      const data = await axios.get(process.env.REACT_APP_HDDT_CAPTCHA);
+      const data = await axios.get(HDDT_CAPTCHA_ENDPOINT);
       setImgCaptcha(data?.data?.content || null);
     } catch (error) {
       console.error(error);

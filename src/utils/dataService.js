@@ -1,7 +1,5 @@
-import { getCookie } from '@/utils/cookie';
+import { API_ENDPOINT } from '@/utils/index';
 import axios from 'axios';
-
-const API_ENDPOINT = process.env.REACT_APP_API_ENDPOINT;
 
 const authHeader = () => {
   // if (getCookie('access_token')) {

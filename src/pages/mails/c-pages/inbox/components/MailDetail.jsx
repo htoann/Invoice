@@ -3,23 +3,18 @@ import Heading from '@/components/heading/heading';
 import { Popover } from '@/components/popup/popup';
 // import csvImg from '@/static/img/files/csv.png';
 // import pdfImg from '@/static/img/files/pdf.png';
-import { formatTime } from '@/utils/index';
+import { API_ENDPOINT, formatDataSize, formatTime } from '@/utils/index';
 import UilAngleDown from '@iconscout/react-unicons/icons/uil-angle-down';
 import UilImport from '@iconscout/react-unicons/icons/uil-import';
 import { Col, Row } from 'antd';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { MailDetailsWrapper, MessageDetails } from './style';
-import { downloadAttachment } from './utils';
 
 function MailDetail({ selectedInbox: email }) {
   const { t } = useTranslation();
 
   const cleanedBody = email?.body?.replace(/<style[\s\S]*?<\/style>/gi, '');
-
-  const handleDownloadAttachment = async (attachment) => {
-    await downloadAttachment(attachment);
-  };
 
   return (
     <MailDetailsWrapper>
@@ -54,6 +49,16 @@ function MailDetail({ selectedInbox: email }) {
                           <li>
                             <span>{t('Common_To')}:</span> <span>{email?.receiver || 'me'}</span>{' '}
                           </li>
+                          {email?.cc && (
+                            <li>
+                              <span>{t('Common_CC')}:</span> <span>{email?.cc}</span>{' '}
+                            </li>
+                          )}
+                          {email?.bcc && (
+                            <li>
+                              <span>{t('Common_BCC')}:</span> <span>{email?.bcc}</span>{' '}
+                            </li>
+                          )}
                           <li>
                             <span>{t('Common_Date')}:</span>{' '}
                             <span>{formatTime(email?.date, 'MMMM D, YYYY h:mm A')}</span>
@@ -91,23 +96,15 @@ function MailDetail({ selectedInbox: email }) {
                           </div>
                           <div className="invoice-file-item__content">
                             <span className="invoice-ticket-file-name">{item.file_name}</span>
-                            <span className="invoice-ticket-file-size">{item.size}</span>
+                            <span className="invoice-ticket-file-size">{formatDataSize(item.size)}</span>
                           </div>
-                          {/* <Link
+                          <Link
                             className="btn-link"
-                            to="#"
+                            to={`${API_ENDPOINT}/mails/attachments/${item.id}`}
                             style={{ marginLeft: 10 }}
-                            onClick={() => handleDownloadAttachment(item)}
                           >
                             <UilImport />
-                          </Link> */}
-                          <a
-                            href={`http://localhost:8000/mails/attachments/${item.id}`}
-                            target="_blank"
-                            rel="noreferrer"
-                          >
-                            Lmao
-                          </a>
+                          </Link>
                         </div>
                       </div>
                     </div>

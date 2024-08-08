@@ -1,6 +1,7 @@
 import { Button, Col, Form, Input, Row } from 'antd';
 import { useEffect, useState } from 'react';
 
+import { HDDT_CAPTCHA_ENDPOINT } from '@/utils/index';
 import axios from 'axios';
 import { useAuth } from 'context/AuthContext';
 import { useTranslation } from 'react-i18next';
@@ -19,7 +20,7 @@ function SignIn() {
   };
 
   const getCaptcha = async () => {
-    const data = await axios.get(process.env.REACT_APP_HDDT_CAPTCHA);
+    const data = await axios.get(HDDT_CAPTCHA_ENDPOINT);
     setImgCaptcha(data?.data?.content || null);
     setKeyCaptcha(data?.data?.key || null);
   };
