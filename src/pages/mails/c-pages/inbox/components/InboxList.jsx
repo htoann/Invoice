@@ -150,7 +150,7 @@ export const InboxList = React.memo(({ setSelectedInbox, selectedInbox }) => {
       {!loadingDepartments && (
         <Input
           style={{ width: '100%', marginBottom: 20, height: 40 }}
-          placeholder={t('Mail_SearchBySender')}
+          placeholder={t('Mail_Search')}
           value={search}
           onChange={(event) => {
             setSearchSender(event.target.value);

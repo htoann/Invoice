@@ -143,7 +143,7 @@
   "Mail_UpdateAccount_Title": "Cập nhật tài khoản",
   "Mail_UpdateAccount_Success": "Tài khoản đã được cập nhật thành công.",
   "Mail_UpdateAccount_Error": "Không thể cập nhật tài khoản. Vui lòng thử lại.",
-  "Mail_SearchBySender": "Tìm kiếm theo người gửi",
+  "Mail_Search": "Tìm kiếm theo tiêu đề email hoặc người gửi",
 
   "SyncHistory_TotalInvoice": "Tổng số hóa đơn",
   "SyncHistory_NewInvoice": "Hóa đơn mới",

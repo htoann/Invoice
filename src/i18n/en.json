@@ -133,7 +133,7 @@
   "Mail_UpdateAccount_Title": "Update Account",
   "Mail_UpdateAccount_Success": "Account successfully updated.",
   "Mail_UpdateAccount_Error": "Unable to update account. Please try again.",
-  "Mail_SearchBySender": "Search by sender",
+  "Mail_Search": "Search by sender",
 
   "SyncHistory_TotalInvoice": "Total Invoices",
   "SyncHistory_NewInvoice": "New Invoice",
