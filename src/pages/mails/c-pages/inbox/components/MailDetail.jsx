@@ -49,12 +49,12 @@ function MailDetail({ selectedInbox: email }) {
                           <li>
                             <span>{t('Common_To')}:</span> <span>{email?.receiver || 'me'}</span>{' '}
                           </li>
-                          {email?.cc && (
+                          {email?.cc && email?.cc !== '()' && (
                             <li>
                               <span>{t('Common_CC')}:</span> <span>{email?.cc}</span>{' '}
                             </li>
                           )}
-                          {email?.bcc && (
+                          {email?.bcc && email?.bcc !== '()' && (
                             <li>
                               <span>{t('Common_BCC')}:</span> <span>{email?.bcc}</span>{' '}
                             </li>
@@ -102,6 +102,7 @@ function MailDetail({ selectedInbox: email }) {
                             className="btn-link"
                             to={`${API_ENDPOINT}/mails/attachments/${item.id}`}
                             style={{ marginLeft: 10 }}
+                            target="_blank"
                           >
                             <UilImport />
                           </Link>
