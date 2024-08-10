@@ -47,7 +47,7 @@ function MailDetail({ selectedInbox: email }) {
                             <span>{t('Common_From')}:</span> <span>{email?.sender}</span>{' '}
                           </li>
                           <li>
-                            <span>{t('Common_To')}:</span> <span>{email?.receiver || 'me'}</span>{' '}
+                            <span>{t('Common_To')}:</span> <span>{email?.to || 'me'}</span>{' '}
                           </li>
                           {email?.cc && email?.cc !== '()' && (
                             <li>
@@ -67,7 +67,7 @@ function MailDetail({ selectedInbox: email }) {
                       }
                     >
                       <Link to="#">
-                        {t('Common_To')} {email?.receiver || 'me'}
+                        {t('Common_To')} {email?.to || 'me'}
                         <UilAngleDown />
                       </Link>
                     </Popover>
