@@ -107,59 +107,57 @@ export const InboxList = React.memo(({ setSelectedInbox, selectedInbox }) => {
   return (
     <>
       <div style={{ display: 'flex', gap: 2, flexWrap: 'auto', flexDirection: 'column' }}>
-        {!loadingDepartments && (
-          <>
-            <span className="label mb-8">{t('Common_SelectDepartment')}</span>
-            <Select
-              popupClassName="dropdown-select"
-              style={{ width: '100%', marginBottom: 20 }}
-              placeholder={t('Common_SelectDepartment')}
-              onChange={(value) => {
-                setSelectedDepartmentId(value);
-                setSelectedAccountId('');
-                handleReset();
-              }}
-              loading={loadingDepartments}
-              disabled={loadingDepartments}
-              defaultValue=""
-              options={departmentsSelect}
-            />
-          </>
-        )}
-      </div>
-
-      {!loadingUsers && (
-        <div style={{ display: 'flex', gap: 2, flexWrap: 'auto', flexDirection: 'column' }}>
-          <span className="label mb-8">{t('Common_SelectAccount')}</span>
+        <>
+          <span className="label mb-8">{t('Common_SelectDepartment')}</span>
           <Select
             popupClassName="dropdown-select"
             style={{ width: '100%', marginBottom: 20 }}
-            placeholder={t('Common_SelectAccount')}
+            placeholder={t('Common_SelectDepartment')}
             onChange={(value) => {
-              setSelectedAccountId(value);
+              setSelectedDepartmentId(value);
+              setSelectedAccountId('');
               handleReset();
             }}
-            loading={loadingUsers}
-            disabled={loadingUsers}
-            defaultValue={selectedAccountId}
-            options={accountsSelect}
+            loading={loadingDepartments}
+            disabled={loadingDepartments}
+            defaultValue=""
+            options={departmentsSelect}
           />
-        </div>
-      )}
+        </>
+      </div>
 
-      {!loadingDepartments && (
-        <Input
-          style={{ width: '100%', marginBottom: 20, height: 40 }}
-          placeholder={t('Mail_Search')}
-          value={search}
-          onChange={(event) => {
-            setSearchSender(event.target.value);
-          }}
-          onPressEnter={() => {
-            getList({ search, page_size: pageSize, accountId: selectedAccountId });
-            resetCurrentPage();
-          }}
-        />
+      {!loadingUsers && (
+        <>
+          <div style={{ display: 'flex', gap: 2, flexWrap: 'auto', flexDirection: 'column' }}>
+            <span className="label mb-8">{t('Common_SelectAccount')}</span>
+            <Select
+              popupClassName="dropdown-select"
+              style={{ width: '100%', marginBottom: 20 }}
+              placeholder={t('Common_SelectAccount')}
+              onChange={(value) => {
+                setSelectedAccountId(value);
+                handleReset();
+              }}
+              loading={loadingUsers}
+              disabled={loadingUsers}
+              defaultValue={selectedAccountId}
+              options={accountsSelect}
+            />
+          </div>
+
+          <Input
+            style={{ width: '100%', marginBottom: 20, height: 40 }}
+            placeholder={t('Mail_Search')}
+            value={search}
+            onChange={(event) => {
+              setSearchSender(event.target.value);
+            }}
+            onPressEnter={() => {
+              getList({ search, page_size: pageSize, accountId: selectedAccountId });
+              resetCurrentPage();
+            }}
+          />
+        </>
       )}
 
       {!loadingUsers && !loadingDepartments && (
@@ -176,11 +174,10 @@ export const InboxList = React.memo(({ setSelectedInbox, selectedInbox }) => {
       )}
 
       {loading || loadingUsers ? (
-        <div style={{ minHeight: 'calc(100vh - 230px)' }}>
+        <>
           <Skeleton active />
           <Skeleton style={{ marginTop: 10 }} active />
-          <Skeleton style={{ marginTop: 10 }} active />
-        </div>
+        </>
       ) : (
         <>
           <EmailNav>

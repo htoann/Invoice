@@ -1188,8 +1188,7 @@ const EmailWrapper = Styled.div`
 
   .mail-sidebar-bottom{
     padding: 25px 15px 0 15px;
-    /* Disable scroll lỏ for now */
-    /* height: calc(100vh - 215px);
+    height: calc(100vh - 200px);
     overflow: auto; */
   }
 
