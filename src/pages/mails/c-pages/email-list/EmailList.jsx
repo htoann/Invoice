@@ -55,8 +55,8 @@ const EmailList = () => {
       }
 
       const response = await DataService.get('/mails/accounts/', {
-        name,
-        email,
+        ...(name && { name }),
+        ...(email && { email }),
         page,
         page_size,
         // department_id: departmentId,

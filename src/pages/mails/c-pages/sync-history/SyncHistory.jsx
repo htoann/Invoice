@@ -22,12 +22,12 @@ const SyncHistory = () => {
   const [list, setList] = useState([]);
   const [isLoadingGetList, setIsLoadingGetList] = useState(false);
   const [searchLoading, setSearchLoading] = useState(false);
-  const [searchParams, setSearchParams] = useState({ status: '', note: '', accountId: '' });
+  const [searchParams, setSearchParams] = useState({ state: '', note: '', accountId: '' });
 
   const { loadingUsers, accountList } = useAccounts();
 
   const getList = async ({
-    status = null,
+    state = null,
     note = '',
     accountId = '',
     page = 1,
@@ -41,8 +41,8 @@ const SyncHistory = () => {
         setIsLoadingGetList(true);
       }
 
-      const response = await axios.get('/sync-history', {
-        status,
+      const response = await axios.get('/mails/task_histories/', {
+        state,
         note,
         page,
         page_size,
@@ -79,17 +79,15 @@ const SyncHistory = () => {
   };
 
   const tableDataSource = list.map((item, index) => {
-    const { id, time, query, status, note, totalInvoice, newInvoice } = item;
+    const { id, time, name, state, note, totalInvoice, newInvoice } = item;
     return {
       key: id,
       stt: (current - 1) * pageSize + index + 1,
       id,
       time: <span>{time}</span>,
-      query: <span>{query}</span>,
-      status: (
-        <Tag color={status === 1 ? '#01b81a' : '#f5222d'}>
-          {status === 1 ? t('Common_Success') : t('Common_Failure')}
-        </Tag>
+      name: <span>{name}</span>,
+      state: (
+        <Tag color={state === 1 ? '#01b81a' : '#f5222d'}>{state === 1 ? t('Common_Success') : t('Common_Failure')}</Tag>
       ),
       note: <span>{note}</span>,
       totalInvoice: <span>{totalInvoice}</span>,
@@ -137,15 +135,15 @@ const SyncHistory = () => {
     },
     {
       title: t('Common_Query'),
-      dataIndex: 'query',
-      key: 'query',
-      sorter: (a, b) => a.query.props.children.localeCompare(b.query.props.children),
+      dataIndex: 'name',
+      key: 'name',
+      sorter: (a, b) => a.name.props.children.localeCompare(b.name.props.children),
     },
     {
-      title: <>{customHeader(t('Common_Status'), 'status')}</>,
-      dataIndex: 'status',
-      key: 'status',
-      sorter: (a, b) => a.status.props.children > b.status.props.children,
+      title: <>{customHeader(t('Common_Status'), 'state')}</>,
+      dataIndex: 'state',
+      key: 'state',
+      sorter: (a, b) => a.state.props.children > b.state.props.children,
       className: 'searchInput',
     },
     {
