@@ -61,7 +61,7 @@ function MailDetail({ selectedInbox: email }) {
                           )}
                           <li>
                             <span>{t('Common_Date')}:</span>{' '}
-                            <span>{formatTime(email?.date, 'MMMM D, YYYY h:mm A')}</span>
+                            <span>{formatTime(email?.date, 'D MMMM, YYYY h:mm A')}</span>
                           </li>
                         </ul>
                       }
@@ -75,7 +75,7 @@ function MailDetail({ selectedInbox: email }) {
                 </div>
 
                 <div className="message-excerpt">
-                  <span>{formatTime(email?.date, 'MMMM D, YYYY h:mm A')}</span>
+                  <span>{formatTime(email?.date, 'D MMMM, YYYY h:mm A')}</span>
                 </div>
               </div>
 
