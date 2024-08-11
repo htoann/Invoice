@@ -1875,7 +1875,7 @@ const BasicFormWrapper = Styled.div`
             input,
             textarea{
                 color: ${({ theme }) => theme[theme.mainContent]['gray-text']};
-                background-color: ${({ theme }) => theme[theme.mainContent]['input-bg']};
+                // background-color: ${({ theme }) => theme[theme.mainContent]['input-bg']};
                 border-color: ${({ theme }) => theme[theme.mainContent]['border-color-secondary']};
                 &:placeholder{
                     color: ${({ theme }) => theme[theme.mainContent]['light-text']};
