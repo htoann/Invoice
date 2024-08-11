@@ -118,7 +118,7 @@ function MailDetail({ selectedInbox: email }) {
                   ))}
               </div> */}
 
-              <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+              <div style={{ display: 'flex', flexWrap: 'wrap', marginLeft: 40 }}>
                 {email?.attachments?.length > 0 &&
                   email?.attachments.map((item) => (
                     <div className="message-attachments" key={item.id}>

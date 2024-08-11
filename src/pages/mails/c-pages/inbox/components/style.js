@@ -979,7 +979,7 @@ const MessageDetails = Styled.div`
   }
   .message-attachments{
     margin: 10px -5px 10px -5px;
-    ${({ theme }) => (theme.rtl ? 'padding-right' : 'padding-left')}: 60px;
+    ${({ theme }) => (theme.rtl ? 'padding-right' : 'padding-left')}: 20px;
     display: flex;
     flex-wrap: wrap;
     @media only screen and (max-width: 767px){
