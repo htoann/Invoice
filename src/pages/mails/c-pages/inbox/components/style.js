@@ -1024,7 +1024,7 @@ const MessageDetails = Styled.div`
       }
       .attachment-hover{
         position: absolute;
-        top: 80px;
+        top: 20px;
         ${({ theme }) => (theme.rtl ? 'right' : 'left')}: 50%;
         transform: translateX(-50%);
         opacity: 0;

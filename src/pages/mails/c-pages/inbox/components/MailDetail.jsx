@@ -86,7 +86,7 @@ function MailDetail({ selectedInbox: email }) {
                 <>
                   <hr style={{ marginTop: 30, marginBottom: 15, marginLeft: 60 }} />
                   <p style={{ paddingLeft: 60, fontWeight: 600, marginBottom: 10 }}>
-                    {email?.attachments?.length} tep dinh kem
+                    {email?.attachments?.length} tệp đính kèm
                   </p>
                 </>
               )}
@@ -122,9 +122,15 @@ function MailDetail({ selectedInbox: email }) {
                 {email?.attachments?.length > 0 &&
                   email?.attachments.map((item) => (
                     <div className="message-attachments" key={item.id}>
-                      <figure>
+                      <figure style={{ width: 120 }}>
                         <div className="attachment-image">
-                          <img src={AttachmentLogo} alt="" width={120} height={120} />
+                          <img
+                            src={AttachmentLogo}
+                            alt=""
+                            width={60}
+                            height={60}
+                            style={{ display: 'flex', margin: 'auto' }}
+                          />
                         </div>
                         <div className="attachment-hover">
                           <Link
