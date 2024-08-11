@@ -160,7 +160,7 @@ export const InboxList = React.memo(({ setSelectedInbox, selectedInbox }) => {
         </>
       )}
 
-      {!loadingUsers && !loadingDepartments && (
+      {!loadingUsers && !loadingDepartments && inboxList?.length > 0 && (
         <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 20 }}>
           <Pagination
             current={current}

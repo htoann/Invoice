@@ -32,7 +32,7 @@ const ModalAccount = ({ form, handleOk, state, onCancel, loading, textSubmit }) 
             },
           ]}
         >
-          <Input placeholder="name@example.com" autoComplete="email" />
+          <Input disabled={state?.update.email} placeholder="name@example.com" autoComplete="email" />
         </Form.Item>
         <Form.Item
           name="password"
@@ -40,12 +40,17 @@ const ModalAccount = ({ form, handleOk, state, onCancel, loading, textSubmit }) 
           label={t('Common_AppPassword')}
           rules={[{ required: true, message: t('Common_PleaseEnterPassword') }]}
         >
-          <Input.Password placeholder="xczh qecu sgjk ibjy" autoComplete="app-password" />
+          <Input.Password
+            disabled={state?.update.password}
+            placeholder="xczh qecu sgjk ibjy"
+            autoComplete="app-password"
+          />
         </Form.Item>
+
         {!state?.update?.password && (
           <>
             <p>* {t('Lưu ý rằng mật khẩu ứng dụng khác với mật khẩu email')}</p>
-            <a href="https://support.google.com/mail/answer/185833" target="_blank" rel="noopener noreferrer">
+            <a href="https://support.google.com/mail/answer/185833?hl=vi" target="_blank" rel="noopener noreferrer">
               {t('Cách tạo mật khẩu ứng dụng')}
             </a>
           </>

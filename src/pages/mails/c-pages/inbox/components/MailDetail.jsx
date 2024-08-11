@@ -7,7 +7,7 @@ import AttachmentLogo from '@/static/img/files/attach2.png';
 import { API_ENDPOINT, formatDataSize, formatTime } from '@/utils/index';
 import UilAngleDown from '@iconscout/react-unicons/icons/uil-angle-down';
 import UilImport from '@iconscout/react-unicons/icons/uil-import';
-import { Col, Row } from 'antd';
+import { Avatar, Col, Row } from 'antd';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { MailDetailsWrapper, MessageDetails } from './style';
@@ -34,11 +34,9 @@ function MailDetail({ selectedInbox: email }) {
 
               <div className="message-box d-flex justify-content-between align-items-center">
                 <div className="message-author">
-                  <img
-                    style={{ width: '40px', borderRadius: '50%' }}
-                    src="https://cdn0.iconfinder.com/data/icons/user-pictures/100/matureman1-512.png"
-                    alt=""
-                  />
+                  <Avatar size={48} style={{ backgroundColor: '#8231D3' }}>
+                    {email?.sender?.charAt(0)?.toUpperCase()}
+                  </Avatar>
                   <div>
                     <Heading as="h4">{email?.sender}</Heading>
                     <Popover
@@ -48,7 +46,7 @@ function MailDetail({ selectedInbox: email }) {
                             <span>{t('Common_From')}:</span> <span>{email?.sender}</span>{' '}
                           </li>
                           <li>
-                            <span>{t('Common_To')}:</span> <span>{email?.to || 'me'}</span>{' '}
+                            <span>{t('Common_To')}:</span> <span>{email?.receiver}</span>{' '}
                           </li>
                           {email?.cc && email?.cc !== '()' && (
                             <li>
@@ -62,13 +60,13 @@ function MailDetail({ selectedInbox: email }) {
                           )}
                           <li>
                             <span>{t('Common_Date')}:</span>{' '}
-                            <span>{formatTime(email?.date, 'D MMMM, YYYY h:mm A')}</span>
+                            <span>{formatTime(email?.date, 'HH:mm D MMMM, YYYY')}</span>
                           </li>
                         </ul>
                       }
                     >
                       <Link to="#">
-                        {t('Common_To')} {email?.to || 'me'}
+                        {t('Common_To')} {email?.receiver}
                         <UilAngleDown />
                       </Link>
                     </Popover>
@@ -76,7 +74,7 @@ function MailDetail({ selectedInbox: email }) {
                 </div>
 
                 <div className="message-excerpt">
-                  <span>{formatTime(email?.date, 'D MMMM, YYYY h:mm A')}</span>
+                  <span>{formatTime(email?.date, 'HH:mm D MMMM, YYYY')}</span>
                 </div>
               </div>
 
@@ -122,7 +120,7 @@ function MailDetail({ selectedInbox: email }) {
                 {email?.attachments?.length > 0 &&
                   email?.attachments.map((item) => (
                     <div className="message-attachments" key={item.id}>
-                      <figure style={{ width: 120 }}>
+                      <figure style={{ width: 150 }}>
                         <div className="attachment-image">
                           <img
                             src={AttachmentLogo}
@@ -142,7 +140,19 @@ function MailDetail({ selectedInbox: email }) {
                           </Link>
                         </div>
                         <figcaption>
-                          <Heading as="h4">{item.file_name}</Heading>
+                          <Heading as="h4">
+                            <div
+                              style={{
+                                whiteSpace: 'nowrap',
+                                overflow: 'hidden',
+                                textOverflow: 'ellipsis',
+                                width: '100%',
+                              }}
+                              title={item.file_name}
+                            >
+                              {item.file_name}
+                            </div>
+                          </Heading>
                           <p>{formatDataSize(item.size)}</p>
                         </figcaption>
                       </figure>
