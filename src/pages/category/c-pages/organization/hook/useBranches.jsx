@@ -1,4 +1,5 @@
-import axios from '@/mock/index';
+import { apiConst } from '@/utils/apiConst';
+import { DataService } from '@/utils/dataService';
 import { useEffect, useState } from 'react';
 
 const useBranches = () => {
@@ -9,8 +10,8 @@ const useBranches = () => {
     const getBranches = async () => {
       try {
         setLoadingBranches(true);
-        const response = await axios.get('/branches');
-        setBranches(response.data.branches);
+        const response = await DataService.get(apiConst.branches);
+        setBranches(response.data);
       } catch (error) {
         console.error(error);
       } finally {

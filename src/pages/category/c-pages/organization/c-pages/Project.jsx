@@ -2,7 +2,8 @@ import { Button } from '@/components/buttons/buttons';
 import { Cards } from '@/components/cards/frame/cards-frame';
 import { Modal } from '@/components/modals/antd-modals';
 import { BasicFormWrapper, BorderLessHeading } from '@/container/styled';
-import axios from '@/mock/index';
+import { apiConst } from '@/utils/apiConst';
+import { DataService } from '@/utils/dataService';
 import { RightOutlined } from '@ant-design/icons';
 import { Col, Empty, Form, Input, Menu, notification, Skeleton } from 'antd';
 import { useState } from 'react';
@@ -33,7 +34,7 @@ const ProjectList = ({ list, setList, loadingList }) => {
   const handleCreateSubmit = async (values) => {
     try {
       setLoading(true);
-      const response = await axios.post('/projects', {
+      const response = await DataService.post(apiConst.projects, {
         project: values,
       });
       setList([response.data, ...list]);
@@ -57,7 +58,9 @@ const ProjectList = ({ list, setList, loadingList }) => {
   const handleEditSubmit = async (values) => {
     try {
       setLoading(true);
-      const response = await axios.put(`/projects/${editItem.id}`, { project: { ...values, id: editItem.id } });
+      const response = await DataService.put(`${apiConst.projects}${editItem.id}`, {
+        ...values,
+      });
       const updatedProject = response.data;
 
       const updatedProjects = list.map((proj) => (proj.id === updatedProject.id ? updatedProject : proj));
@@ -82,7 +85,7 @@ const ProjectList = ({ list, setList, loadingList }) => {
   const handleDelete = async (id) => {
     try {
       setLoading(true);
-      await axios.delete(`/projects/${id}`);
+      await DataService.delete(`${apiConst.projects}${id}`);
       notification.success({
         message: t('Project_Title'),
         description: t('Project_DeleteSuccess'),

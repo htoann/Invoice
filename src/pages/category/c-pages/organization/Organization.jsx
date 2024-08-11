@@ -41,6 +41,7 @@ export const Organization = () => {
               loadingList={loadingDepartments}
               selectedItem={selectedDepartment}
               setSelectedItem={setSelectedDepartment}
+              selectedBranch={selectedBranch}
             />
           )}
 

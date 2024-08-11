@@ -1,4 +1,5 @@
-import axios from '@/mock/index';
+import { apiConst } from '@/utils/apiConst';
+import { DataService } from '@/utils/dataService';
 import { useEffect, useState } from 'react';
 
 const useProjects = (selectedDepartment, selectedBranch) => {
@@ -13,10 +14,10 @@ const useProjects = (selectedDepartment, selectedBranch) => {
     }
 
     setLoadingProjects(true);
-    axios
-      .get(`/projects/${selectedDepartment}`)
+
+    DataService.get(`${apiConst.projects}${selectedDepartment}`)
       .then((response) => {
-        setProjects(response.data.projects);
+        setProjects(response.data);
         setLoadingProjects(false);
       })
       .catch(() => {

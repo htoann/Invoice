@@ -2,14 +2,15 @@ import { Button } from '@/components/buttons/buttons';
 import { Cards } from '@/components/cards/frame/cards-frame';
 import { Modal } from '@/components/modals/antd-modals';
 import { BasicFormWrapper, BorderLessHeading } from '@/container/styled';
-import axios from '@/mock/index';
+import { apiConst } from '@/utils/apiConst';
+import { DataService } from '@/utils/dataService';
 import { RightOutlined } from '@ant-design/icons';
 import { Col, Empty, Form, Input, Menu, notification, Skeleton } from 'antd';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import MenuItem from '../components/MenuItem';
 
-const DepartmentList = ({ list, setList, loadingList, selectedItem, setSelectedItem }) => {
+const DepartmentList = ({ list, setList, loadingList, selectedItem, setSelectedItem, selectedBranch }) => {
   const { t } = useTranslation();
   const [showCreate, setShowCreate] = useState(false);
   const [showEdit, setShowEdit] = useState(false);
@@ -32,8 +33,9 @@ const DepartmentList = ({ list, setList, loadingList, selectedItem, setSelectedI
   const handleCreateSubmit = async (values) => {
     try {
       setLoading(true);
-      const response = await axios.post('/departments', {
-        department: values,
+      const response = await DataService.post(apiConst.departments, {
+        ...values,
+        branch: selectedBranch,
       });
       setList([response.data, ...list]);
       setShowCreate(false);
@@ -56,7 +58,9 @@ const DepartmentList = ({ list, setList, loadingList, selectedItem, setSelectedI
   const handleEditSubmit = async (values) => {
     try {
       setLoading(true);
-      const response = await axios.put(`/departments/${editItem.id}`, { department: { ...values, id: editItem.id } });
+      const response = await DataService.put(`${apiConst.departments}${editItem.id}/`, {
+        ...values,
+      });
       const updatedAccount = response.data;
 
       const updatedAccounts = list.map((acc) => (acc.id === updatedAccount.id ? updatedAccount : acc));
@@ -81,7 +85,7 @@ const DepartmentList = ({ list, setList, loadingList, selectedItem, setSelectedI
   const handleDelete = async (id) => {
     try {
       setLoading(true);
-      await axios.delete(`/departments/${id}`);
+      await DataService.delete(`${apiConst.departments}${id}/`);
       notification.success({
         message: t('Common_Department'),
         description: t('Department_DeleteSuccess'),

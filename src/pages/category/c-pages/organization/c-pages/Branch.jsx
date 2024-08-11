@@ -2,7 +2,8 @@ import { Button } from '@/components/buttons/buttons';
 import { Cards } from '@/components/cards/frame/cards-frame';
 import { Modal } from '@/components/modals/antd-modals';
 import { BasicFormWrapper, BorderLessHeading } from '@/container/styled';
-import axios from '@/mock/index';
+import { apiConst } from '@/utils/apiConst';
+import { DataService } from '@/utils/dataService';
 import { RightOutlined } from '@ant-design/icons';
 import { Col, Empty, Form, Input, Menu, notification, Skeleton } from 'antd';
 import { useState } from 'react';
@@ -32,8 +33,8 @@ const BranchList = ({ list, setList, loadingList, selectedItem, setSelectedItem 
   const handleCreateSubmit = async (values) => {
     try {
       setLoading(true);
-      const response = await axios.post('/branches', {
-        branch: values,
+      const response = await DataService.post(apiConst.branches, {
+        ...values,
       });
       setList([response.data, ...list]);
       setShowCreate(false);
@@ -56,7 +57,9 @@ const BranchList = ({ list, setList, loadingList, selectedItem, setSelectedItem 
   const handleEditSubmit = async (values) => {
     try {
       setLoading(true);
-      const response = await axios.put(`/branches/${editItem.id}`, { branch: { ...values, id: editItem.id } });
+      const response = await DataService.put(`${apiConst.branches}${editItem.id}/`, {
+        ...values,
+      });
       const updatedAccount = response.data;
 
       const updatedAccounts = list.map((acc) => (acc.id === updatedAccount.id ? updatedAccount : acc));
@@ -81,7 +84,7 @@ const BranchList = ({ list, setList, loadingList, selectedItem, setSelectedItem 
   const handleDelete = async (id) => {
     try {
       setLoading(true);
-      await axios.delete(`/branches/${id}`);
+      await DataService.delete(`${apiConst.branches}${id}`);
       notification.success({
         message: t('Branch_Title'),
         description: t('Branch_DeleteSuccess'),
