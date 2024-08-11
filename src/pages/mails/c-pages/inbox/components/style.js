@@ -1019,8 +1019,7 @@ const MessageDetails = Styled.div`
           content: '';
           opacity: 0;
           visibility: hidden;
-          transition: .3s ease-in;
-          background: ${({ theme }) => theme['dark-color']}50;
+          background: ${({ theme }) => theme['dark-color']}20;
         }
       }
       .attachment-hover{
@@ -1030,7 +1029,7 @@ const MessageDetails = Styled.div`
         transform: translateX(-50%);
         opacity: 0;
         visibility: hidden;
-        transition: .35s;
+        // transition: .35s;
         .btn-link{
           position: relative;
           display: inline-flex;
@@ -1046,8 +1045,9 @@ const MessageDetails = Styled.div`
             width: 100%;
             height: 100%;
             border-radius: 50%;
-            background: #fff;
-            opacity: .20;
+            // background: #fff;
+            // opacity: .20;
+            background: #80868b;
             content: '';
           }
           svg,
@@ -1055,6 +1055,7 @@ const MessageDetails = Styled.div`
             min-width: 14.5px;
             width: 14.5px;
             color: #fff;
+            z-index: 1000;
           }
         }
         .btn-link + .btn-link{

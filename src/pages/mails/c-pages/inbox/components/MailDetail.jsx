@@ -3,6 +3,7 @@ import Heading from '@/components/heading/heading';
 import { Popover } from '@/components/popup/popup';
 // import csvImg from '@/static/img/files/csv.png';
 // import pdfImg from '@/static/img/files/pdf.png';
+import AttachmentLogo from '@/static/img/files/attach2.png';
 import { API_ENDPOINT, formatDataSize, formatTime } from '@/utils/index';
 import UilAngleDown from '@iconscout/react-unicons/icons/uil-angle-down';
 import UilImport from '@iconscout/react-unicons/icons/uil-import';
@@ -19,7 +20,7 @@ function MailDetail({ selectedInbox: email }) {
   return (
     <MailDetailsWrapper>
       <Cards headless>
-        <Row gutter={15}>
+        <Row gutter={15} style={{ maxHeight: 'calc(100vh - 254px)' }}>
           <Col style={{ width: '100%' }}>
             <MessageDetails>
               <div className="d-flex justify-content-between align-items-center">
@@ -81,18 +82,23 @@ function MailDetail({ selectedInbox: email }) {
 
               <div className="message-body" dangerouslySetInnerHTML={{ __html: cleanedBody }} />
 
-              <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap', marginTop: 40 }}>
+              {!!email?.attachments?.length && (
+                <>
+                  <hr style={{ marginTop: 30, marginBottom: 15, marginLeft: 60 }} />
+                  <p style={{ paddingLeft: 60, fontWeight: 600, marginBottom: 10 }}>
+                    {email?.attachments?.length} tep dinh kem
+                  </p>
+                </>
+              )}
+
+              {/* <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
                 {email?.attachments?.length > 0 &&
                   email?.attachments.map((item) => (
                     <div className="message-attachments" key={item.id}>
                       <div className="invoice-ticket-file-item d-flex">
                         <div className="invoice-ticket-file-item__info d-flex">
                           <div className="invoice-ticket-file-item__logo">
-                            {/* <img
-                              style={{ width: '40px' }}
-                              src={require(`@/static/img/files/${item.type}.png`)}
-                              alt="File Logo"
-                            /> */}
+                            <img style={{ width: '40px' }} src={AttachmentLogo} alt="File Logo" />
                           </div>
                           <div className="invoice-file-item__content">
                             <span className="invoice-ticket-file-name">{item.file_name}</span>
@@ -108,6 +114,32 @@ function MailDetail({ selectedInbox: email }) {
                           </Link>
                         </div>
                       </div>
+                    </div>
+                  ))}
+              </div> */}
+
+              <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+                {email?.attachments?.length > 0 &&
+                  email?.attachments.map((item) => (
+                    <div className="message-attachments" key={item.id}>
+                      <figure>
+                        <div className="attachment-image">
+                          <img src={AttachmentLogo} alt="" width={120} height={120} />
+                        </div>
+                        <div className="attachment-hover">
+                          <Link
+                            className="btn-link"
+                            to={`${API_ENDPOINT}/mails/attachments/${item.id}`}
+                            target="_blank"
+                          >
+                            <UilImport />
+                          </Link>
+                        </div>
+                        <figcaption>
+                          <Heading as="h4">{item.file_name}</Heading>
+                          <p>{formatDataSize(item.size)}</p>
+                        </figcaption>
+                      </figure>
                     </div>
                   ))}
               </div>
