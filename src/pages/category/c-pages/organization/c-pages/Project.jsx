@@ -38,7 +38,7 @@ const ProjectList = ({ list, setList, loadingList, selectedBranchId, selectedDep
       setLoading(true);
 
       await dataService.post(
-        `${apiConst.branches}/${selectedBranchId}/${apiConst.departments}/${selectedDepartmentId}/${apiConst.projects}/`,
+        `${apiConst.orgsBranches}${selectedBranchId}${apiConst.orgsDepartments}${selectedDepartmentId}${apiConst.projects}/`,
         {
           ...values,
         },
@@ -94,7 +94,7 @@ const ProjectList = ({ list, setList, loadingList, selectedBranchId, selectedDep
     try {
       setLoading(true);
 
-      await dataService.delete(`${apiConst.projects}/${id}/`);
+      await dataService.delete(`${apiConst.projects}${id}/`);
 
       setList(list.filter((item) => item.id !== id));
 

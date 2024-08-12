@@ -23,7 +23,7 @@ const EditProduct = ({ state, setState, list, setList }) => {
     try {
       setLoading(true);
 
-      const response = await dataService.put(`${apiConst.products}/${state.update.id}`, {
+      const response = await dataService.put(`${apiConst.products}${state.update.id}/`, {
         ...values,
         id: state.update.id,
       });

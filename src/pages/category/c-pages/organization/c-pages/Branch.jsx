@@ -26,7 +26,7 @@ const BranchList = ({ list, setList, loadingList, selectedItem, setSelectedItem 
     try {
       setLoading(true);
 
-      await dataService.post(`${apiConst.branches}/`, {
+      await dataService.post(`${apiConst.orgsBranches}`, {
         ...values,
       });
 
@@ -52,7 +52,7 @@ const BranchList = ({ list, setList, loadingList, selectedItem, setSelectedItem 
     try {
       setLoading(true);
 
-      const response = await dataService.put(`${apiConst.branches}${editItem.id}/`, {
+      const response = await dataService.put(`${apiConst.orgsBranches}${editItem.id}/`, {
         ...values,
       });
       const updatedAccount = response.data;
@@ -81,7 +81,7 @@ const BranchList = ({ list, setList, loadingList, selectedItem, setSelectedItem 
     try {
       setLoading(true);
 
-      await dataService.delete(`${apiConst.branches}/${id}`);
+      await dataService.delete(`${apiConst.orgsBranches}${id}`);
 
       setList(list.filter((item) => item.id !== id));
       setSelectedItem(null);

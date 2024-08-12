@@ -10,7 +10,7 @@ const useDepartments = () => {
     const getDepartments = async () => {
       try {
         setLoadingDepartments(true);
-        const response = await dataService.get(`${apiConst.departments}`);
+        const response = await dataService.get(`${apiConst.orgsDepartments}`);
         setDepartments(response.data.departments);
       } catch (error) {
         console.error(error);

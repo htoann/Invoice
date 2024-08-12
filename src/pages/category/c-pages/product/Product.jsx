@@ -111,7 +111,7 @@ const Product = () => {
 
   const handleDelete = async (id) => {
     try {
-      await dataService.delete(`${apiConst.products}/${id}`);
+      await dataService.delete(`${apiConst.products}${id}/`);
       setList(list.filter((account) => account.id !== id));
 
       notification.success({

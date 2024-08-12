@@ -9,7 +9,7 @@ const useBranches = () => {
   const getBranches = async () => {
     try {
       setLoadingBranches(true);
-      const response = await dataService.get(`${apiConst.branches}/`);
+      const response = await dataService.get(`${apiConst.orgsBranches}`);
       setBranches(response.data);
     } catch (error) {
       console.error(error);

@@ -19,7 +19,7 @@ const useDepartments = (selectedBranchId) => {
     setLoadingDepartments(true);
 
     try {
-      const response = await dataService.get(`${apiConst.branches}/${selectedBranchId}/${apiConst.departments}/`);
+      const response = await dataService.get(`${apiConst.orgsBranches}${selectedBranchId}${apiConst.orgsDepartments}`);
       setDepartments(response.data);
     } catch (error) {
       console.error(error);

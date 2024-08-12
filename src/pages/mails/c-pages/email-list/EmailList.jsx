@@ -55,7 +55,7 @@ const EmailList = () => {
         setIsLoadingGetList(true);
       }
 
-      const response = await dataService.get(`${apiConst.mailsAccounts}/`, {
+      const response = await dataService.get(`${apiConst.mailsAccounts}`, {
         ...(name && { name }),
         ...(email && { email }),
         page,
@@ -105,7 +105,7 @@ const EmailList = () => {
 
   const handleDelete = async (id) => {
     try {
-      await dataService.delete(`${apiConst.mailsAccounts}/${id}`);
+      await dataService.delete(`${apiConst.mailsAccounts}${id}/`);
       setAccounts(accounts.filter((account) => account.id !== id));
 
       notification.success({

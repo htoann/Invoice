@@ -43,7 +43,7 @@ function DataTable({ loading, tableData, columns, state, setState, getInvoiceLis
 
   const handleExport = async () => {
     try {
-      const response = await dataService.get(`${apiConst.invoicesExcel}/`, {
+      const response = await dataService.get(`${apiConst.invoicesExcel}`, {
         responseType: 'blob',
       });
 

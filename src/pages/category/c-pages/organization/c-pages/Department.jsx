@@ -34,9 +34,12 @@ const DepartmentList = ({ list, setList, loadingList, selectedItem, setSelectedI
     try {
       setLoading(true);
 
-      const response = await dataService.post(`${apiConst.branches}/${selectedBranchId}/${apiConst.departments}/`, {
-        ...values,
-      });
+      const response = await dataService.post(
+        `${apiConst.orgsBranches}${selectedBranchId}${apiConst.orgsDepartments}`,
+        {
+          ...values,
+        },
+      );
 
       setList([response.data, ...list]);
       setShowCreate(false);
@@ -60,7 +63,7 @@ const DepartmentList = ({ list, setList, loadingList, selectedItem, setSelectedI
     try {
       setLoading(true);
 
-      const response = await dataService.put(`${apiConst.departments}/${editItem.id}/`, {
+      const response = await dataService.put(`${apiConst.orgsDepartments}${editItem.id}/`, {
         ...values,
       });
 
@@ -89,7 +92,7 @@ const DepartmentList = ({ list, setList, loadingList, selectedItem, setSelectedI
     try {
       setLoading(true);
 
-      await dataService.delete(`${apiConst.departments}/${id}/`);
+      await dataService.delete(`${apiConst.orgsDepartments}${id}/`);
 
       setList(list.filter((item) => item.id !== id));
       setSelectedItem(null);
