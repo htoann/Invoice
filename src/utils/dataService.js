@@ -98,4 +98,4 @@ client.interceptors.response.use(
     return Promise.reject(error);
   },
 );
-export { DataService };
+export { DataService as dataService };

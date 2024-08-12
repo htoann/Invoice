@@ -1,38 +1,45 @@
 import { apiConst } from '@/utils/apiConst';
-import { DataService } from '@/utils/dataService';
+import { dataService } from '@/utils/dataService';
 import { useEffect, useState } from 'react';
 
-const useDepartments = (selectedBranch) => {
+const useDepartments = (selectedBranchId) => {
   const [departments, setDepartments] = useState([]);
   const [loadingDepartments, setLoadingDepartments] = useState(true);
-  const [selectedDepartment, setSelectedDepartment] = useState(null);
+  const [selectedDepartmentId, setSelectedDepartmentId] = useState(null);
 
-  useEffect(() => {
+  const getDepartments = async () => {
     setDepartments([]);
-    setSelectedDepartment(null);
+    setSelectedDepartmentId(null);
 
-    if (!selectedBranch) {
+    if (!selectedBranchId) {
+      setLoadingDepartments(false);
       return;
     }
 
     setLoadingDepartments(true);
-    DataService.get(`${apiConst.departments}`)
-      .then((response) => {
-        setDepartments(response.data);
-        setLoadingDepartments(false);
-      })
-      .catch(() => {
-        setLoadingDepartments(false);
-      });
-  }, [selectedBranch]);
+
+    try {
+      const response = await dataService.get(`${apiConst.branches}/${selectedBranchId}/${departments}`);
+      setDepartments(response.data);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoadingDepartments(false);
+    }
+  };
+
+  useEffect(() => {
+    getDepartments();
+  }, [selectedBranchId]);
 
   return {
     departments,
     setDepartments,
     loadingDepartments,
     setLoadingDepartments,
-    selectedDepartment,
-    setSelectedDepartment,
+    selectedDepartmentId,
+    setSelectedDepartmentId,
+    getDepartments,
   };
 };
 

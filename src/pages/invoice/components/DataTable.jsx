@@ -1,7 +1,8 @@
 import { Button } from '@/components/buttons/buttons';
 import { Tab } from '@/components/tabs/tabs';
-import { DataService } from '@/utils/dataService';
 import { TableWrapper } from '@/container/styled';
+import { apiConst } from '@/utils/apiConst';
+import { dataService } from '@/utils/dataService';
 import { downloadFile, formatTime } from '@/utils/index';
 import { DownloadOutlined } from '@ant-design/icons';
 import { UilSearch } from '@iconscout/react-unicons';
@@ -42,7 +43,7 @@ function DataTable({ loading, tableData, columns, state, setState, getInvoiceLis
 
   const handleExport = async () => {
     try {
-      const response = await DataService.get('invoices_excel/', {
+      const response = await dataService.get(`${apiConst.invoicesExcel}/`, {
         responseType: 'blob',
       });
 

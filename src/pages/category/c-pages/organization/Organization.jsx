@@ -14,12 +14,12 @@ export const Organization = () => {
   const { t } = useTranslation();
 
   const { branches, setBranches, loadingBranches } = useBranches();
-  const [selectedBranch, setSelectedBranch] = useState(null);
+  const [selectedBranchId, setSelectedBranchId] = useState(null);
 
-  const { selectedDepartment, departments, setDepartments, loadingDepartments, setSelectedDepartment } =
-    useDepartments(selectedBranch);
+  const { selectedDepartmentId, departments, setDepartments, loadingDepartments, setSelectedDepartmentId } =
+    useDepartments(selectedBranchId);
 
-  const { projects, setProjects, loadingProjects } = useProjects(selectedDepartment, selectedBranch);
+  const { projects, setProjects, loadingProjects } = useProjects(selectedDepartmentId, selectedBranchId);
 
   return (
     <>
@@ -30,22 +30,29 @@ export const Organization = () => {
             list={branches}
             setList={setBranches}
             loadingList={loadingBranches}
-            selectedItem={selectedBranch}
-            setSelectedItem={setSelectedBranch}
+            selectedItem={selectedBranchId}
+            setSelectedItem={setSelectedBranchId}
           />
 
-          {selectedBranch && (
+          {selectedBranchId && (
             <DepartmentList
               list={departments}
               setList={setDepartments}
               loadingList={loadingDepartments}
-              selectedItem={selectedDepartment}
-              setSelectedItem={setSelectedDepartment}
-              selectedBranch={selectedBranch}
+              selectedItem={selectedDepartmentId}
+              setSelectedItem={setSelectedDepartmentId}
+              selectedBranchId={selectedBranchId}
             />
           )}
 
-          {selectedDepartment && <ProjectList list={projects} setList={setProjects} loadingList={loadingProjects} />}
+          {selectedDepartmentId && (
+            <ProjectList
+              list={projects}
+              setList={setProjects}
+              loadingList={loadingProjects}
+              selectedDepartmentId={selectedDepartmentId}
+            />
+          )}
         </Row>
       </Main>
     </>

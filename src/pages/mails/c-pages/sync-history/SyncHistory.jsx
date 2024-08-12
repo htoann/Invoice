@@ -3,6 +3,7 @@ import { PageHeader } from '@/components/page-headers/page-headers';
 import { Tag } from '@/components/tags/tags';
 import { BorderLessHeading, Main } from '@/container/styled';
 import axios from '@/mock/index';
+import { apiConst } from '@/utils/apiConst';
 import { Col, Input, Row, Select, Skeleton } from 'antd';
 import useAccounts from 'hooks/useAccounts';
 import { useEffect, useState } from 'react';
@@ -41,7 +42,7 @@ const SyncHistory = () => {
         setIsLoadingGetList(true);
       }
 
-      const response = await axios.get('/mails/task_histories/', {
+      const response = await axios.get(`${apiConst.taskHistories}`, {
         state,
         note,
         page,

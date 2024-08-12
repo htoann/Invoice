@@ -1,4 +1,5 @@
-import { DataService } from '@/utils/dataService';
+import { apiConst } from '@/utils/apiConst';
+import { dataService } from '@/utils/dataService';
 import { useEffect, useState } from 'react';
 
 const useAccounts = (onHandleResult, selectedDepartmentId = '') => {
@@ -8,7 +9,7 @@ const useAccounts = (onHandleResult, selectedDepartmentId = '') => {
   const getUsers = async ({ departmentId = '' } = {}) => {
     try {
       setLoadingUser(true);
-      const response = await DataService.get('/mails/accounts', { department_id: departmentId });
+      const response = await dataService.get(`${apiConst.mailsAccounts}`, { department_id: departmentId });
       setAccountList(response?.data?.results);
 
       response?.data?.results?.length > 0 && onHandleResult && onHandleResult(response?.data?.results);

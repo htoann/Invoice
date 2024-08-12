@@ -1,5 +1,6 @@
 import { Modal } from '@/components/modals/antd-modals';
-import { DataService } from '@/utils/dataService';
+import { apiConst } from '@/utils/apiConst';
+import { dataService } from '@/utils/dataService';
 import { Form, notification } from 'antd';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -22,7 +23,7 @@ const UpdateAccount = ({ state, setState, accounts, setAccounts }) => {
     try {
       setLoading(true);
 
-      const response = await DataService.put(`/mails/accounts/${state.update.id}/`, values);
+      const response = await dataService.put(`${apiConst.mailsAccounts}/${state.update.id}/`, values);
       const updatedAccount = response.data;
 
       const updatedAccounts = accounts.map((acc) => (acc.id === updatedAccount.id ? updatedAccount : acc));

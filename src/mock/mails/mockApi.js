@@ -101,7 +101,7 @@ export const mailMockApi = (mock) => {
     return [200, { results: paginatedInbox, count: results.length }];
   });
 
-  mock.onGet('/sync-history').reply((config) => {
+  mock.onGet('/mails/task_histories').reply((config) => {
     const { account_id = '', status = null, note = '', page = 1, page_size = 20 } = config || {};
 
     let results = syncHistory;

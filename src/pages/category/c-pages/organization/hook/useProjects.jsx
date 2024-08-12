@@ -1,31 +1,36 @@
 import { apiConst } from '@/utils/apiConst';
-import { DataService } from '@/utils/dataService';
+import { dataService } from '@/utils/dataService';
 import { useEffect, useState } from 'react';
 
-const useProjects = (selectedDepartment, selectedBranch) => {
+const useProjects = (selectedDepartmentId, selectedBranchId) => {
   const [projects, setProjects] = useState([]);
   const [loadingProjects, setLoadingProjects] = useState(false);
 
-  useEffect(() => {
+  const getProjects = async () => {
     setProjects([]);
-
-    if (!selectedDepartment) {
+    if (!selectedDepartmentId) {
       return;
     }
 
     setLoadingProjects(true);
 
-    DataService.get(`${apiConst.projects}${selectedDepartment}`)
-      .then((response) => {
-        setProjects(response.data);
-        setLoadingProjects(false);
-      })
-      .catch(() => {
-        setLoadingProjects(false);
-      });
-  }, [selectedDepartment, selectedBranch]);
+    try {
+      const response = await dataService.get(
+        `${apiConst.branches}/${selectedDepartmentId}/${apiConst.departments}/${selectedDepartmentId}/${apiConst.projects}`,
+      );
+      setProjects(response.data);
+    } catch (error) {
+      console.error('Error fetching projects:', error);
+    } finally {
+      setLoadingProjects(false);
+    }
+  };
 
-  return { projects, setProjects, loadingProjects, setLoadingProjects };
+  useEffect(() => {
+    getProjects();
+  }, [selectedDepartmentId, selectedBranchId]);
+
+  return { projects, setProjects, loadingProjects, setLoadingProjects, getProjects };
 };
 
 export default useProjects;

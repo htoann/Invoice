@@ -2,8 +2,9 @@
 import { Button } from '@/components/buttons/buttons';
 import { Cards } from '@/components/cards/frame/cards-frame';
 import { PageHeader } from '@/components/page-headers/page-headers';
-import { DataService } from '@/utils/dataService';
 import { BorderLessHeading, Main } from '@/container/styled';
+import { apiConst } from '@/utils/apiConst';
+import { dataService } from '@/utils/dataService';
 import UilEdit from '@iconscout/react-unicons/icons/uil-edit';
 import UilTrash from '@iconscout/react-unicons/icons/uil-trash-alt';
 import { Col, Input, notification, Popconfirm, Row, Select, Skeleton } from 'antd';
@@ -54,7 +55,7 @@ const EmailList = () => {
         setIsLoadingGetList(true);
       }
 
-      const response = await DataService.get('/mails/accounts/', {
+      const response = await dataService.get(`${apiConst.mailsAccounts}/`, {
         ...(name && { name }),
         ...(email && { email }),
         page,
@@ -104,7 +105,7 @@ const EmailList = () => {
 
   const handleDelete = async (id) => {
     try {
-      await DataService.delete(`/mails/accounts/${id}`);
+      await dataService.delete(`${apiConst.mailsAccounts}/${id}`);
       setAccounts(accounts.filter((account) => account.id !== id));
 
       notification.success({

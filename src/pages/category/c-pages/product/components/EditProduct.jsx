@@ -1,5 +1,6 @@
 import { Modal } from '@/components/modals/antd-modals';
-import axios from '@/mock/index';
+import { apiConst } from '@/utils/apiConst';
+import { dataService } from '@/utils/dataService';
 import { Form, notification } from 'antd';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -22,7 +23,10 @@ const EditProduct = ({ state, setState, list, setList }) => {
     try {
       setLoading(true);
 
-      const response = await axios.put(`/products/${state.update.id}`, { ...values, id: state.update.id });
+      const response = await dataService.put(`${apiConst.products}/${state.update.id}`, {
+        ...values,
+        id: state.update.id,
+      });
       const updated = response.data;
 
       const updatedAccounts = list.map((acc) => (acc.id === updated.id ? updated : acc));

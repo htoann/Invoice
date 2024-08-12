@@ -3,15 +3,17 @@ import { Cards } from '@/components/cards/frame/cards-frame';
 import { Modal } from '@/components/modals/antd-modals';
 import { BasicFormWrapper, BorderLessHeading } from '@/container/styled';
 import { apiConst } from '@/utils/apiConst';
-import { DataService } from '@/utils/dataService';
+import { dataService } from '@/utils/dataService';
 import { RightOutlined } from '@ant-design/icons';
 import { Col, Empty, Form, Input, Menu, notification, Skeleton } from 'antd';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import MenuItem from '../components/MenuItem';
+import useBranches from '../hook/useBranches';
 
 const BranchList = ({ list, setList, loadingList, selectedItem, setSelectedItem }) => {
   const { t } = useTranslation();
+  const { getBranches } = useBranches();
   const [showCreate, setShowCreate] = useState(false);
   const [showEdit, setShowEdit] = useState(false);
   const [editItem, setEditItem] = useState(null);
@@ -20,23 +22,15 @@ const BranchList = ({ list, setList, loadingList, selectedItem, setSelectedItem 
 
   const [form] = Form.useForm();
 
-  const handleCreate = () => {
-    setShowCreate(true);
-  };
-
-  const handleEdit = (item) => {
-    setEditItem(item);
-    setShowEdit(true);
-    form.setFieldsValue(item);
-  };
-
   const handleCreateSubmit = async (values) => {
     try {
       setLoading(true);
-      const response = await DataService.post(apiConst.branches, {
+
+      await dataService.post(`${apiConst.branches}/`, {
         ...values,
       });
-      setList([response.data, ...list]);
+
+      getBranches();
       setShowCreate(false);
       form.resetFields();
 
@@ -57,7 +51,8 @@ const BranchList = ({ list, setList, loadingList, selectedItem, setSelectedItem 
   const handleEditSubmit = async (values) => {
     try {
       setLoading(true);
-      const response = await DataService.put(`${apiConst.branches}${editItem.id}/`, {
+
+      const response = await dataService.put(`${apiConst.branches}${editItem.id}/`, {
         ...values,
       });
       const updatedAccount = response.data;
@@ -67,6 +62,7 @@ const BranchList = ({ list, setList, loadingList, selectedItem, setSelectedItem 
 
       form.resetFields();
       setShowEdit(false);
+
       notification.success({
         message: t('Branch_Title'),
         description: t('Branch_EditSuccess'),
@@ -84,13 +80,16 @@ const BranchList = ({ list, setList, loadingList, selectedItem, setSelectedItem 
   const handleDelete = async (id) => {
     try {
       setLoading(true);
-      await DataService.delete(`${apiConst.branches}${id}`);
+
+      await dataService.delete(`${apiConst.branches}/${id}`);
+
+      setList(list.filter((item) => item.id !== id));
+      setSelectedItem(null);
+
       notification.success({
         message: t('Branch_Title'),
         description: t('Branch_DeleteSuccess'),
       });
-      setList(list.filter((item) => item.id !== id));
-      setSelectedItem(null);
     } catch (error) {
       notification.error({
         message: t('Branch_Title'),
@@ -99,6 +98,16 @@ const BranchList = ({ list, setList, loadingList, selectedItem, setSelectedItem 
     } finally {
       setLoading(false);
     }
+  };
+
+  const handleCreate = () => {
+    setShowCreate(true);
+  };
+
+  const handleEdit = (item) => {
+    setEditItem(item);
+    setShowEdit(true);
+    form.setFieldsValue(item);
   };
 
   const cancelCreate = () => {

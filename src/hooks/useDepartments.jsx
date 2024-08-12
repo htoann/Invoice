@@ -1,5 +1,6 @@
+import { apiConst } from '@/utils/apiConst';
+import { dataService } from '@/utils/dataService';
 import { useEffect, useState } from 'react';
-import axios from './../mock/index';
 
 const useDepartments = () => {
   const [loadingDepartments, setLoadingDepartments] = useState(true);
@@ -9,7 +10,7 @@ const useDepartments = () => {
     const getDepartments = async () => {
       try {
         setLoadingDepartments(true);
-        const response = await axios.get('/departments');
+        const response = await dataService.get(`${apiConst.departments}`);
         setDepartments(response.data.departments);
       } catch (error) {
         console.error(error);

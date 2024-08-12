@@ -1,6 +1,7 @@
 import { Cards } from '@/components/cards/frame/cards-frame';
 import { BorderLessHeading, TableDefaultStyle } from '@/container/styled';
 import axios from '@/mock/index';
+import { apiConst } from '@/utils/apiConst';
 import { Table } from 'antd';
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -34,7 +35,7 @@ const BusinessStatus = React.memo(() => {
 
   const getList = async () => {
     try {
-      const response = await axios.get('/api/business-status');
+      const response = await axios.get(`${apiConst.businessStatus}`);
       setList(response?.data?.businessStatus || []);
     } catch (error) {
       console.error(error);

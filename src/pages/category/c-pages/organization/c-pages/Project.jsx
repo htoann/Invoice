@@ -3,16 +3,18 @@ import { Cards } from '@/components/cards/frame/cards-frame';
 import { Modal } from '@/components/modals/antd-modals';
 import { BasicFormWrapper, BorderLessHeading } from '@/container/styled';
 import { apiConst } from '@/utils/apiConst';
-import { DataService } from '@/utils/dataService';
+import { dataService } from '@/utils/dataService';
 import { RightOutlined } from '@ant-design/icons';
 import { Col, Empty, Form, Input, Menu, notification, Skeleton } from 'antd';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 import MenuItem from '../components/MenuItem';
+import useProjects from '../hook/useProjects';
 
-const ProjectList = ({ list, setList, loadingList }) => {
+const ProjectList = ({ list, setList, loadingList, selectedDepartmentId }) => {
   const { t } = useTranslation();
+  const { getProjects } = useProjects();
   const [showCreate, setShowCreate] = useState(false);
   const [showEdit, setShowEdit] = useState(false);
   const [editItem, setEditItem] = useState(null);
@@ -34,10 +36,13 @@ const ProjectList = ({ list, setList, loadingList }) => {
   const handleCreateSubmit = async (values) => {
     try {
       setLoading(true);
-      const response = await DataService.post(apiConst.projects, {
-        project: values,
+
+      await dataService.post(`${apiConst.projects}/`, {
+        ...values,
+        department: selectedDepartmentId,
       });
-      setList([response.data, ...list]);
+
+      getProjects();
       setShowCreate(false);
       form.resetFields();
 
@@ -58,7 +63,8 @@ const ProjectList = ({ list, setList, loadingList }) => {
   const handleEditSubmit = async (values) => {
     try {
       setLoading(true);
-      const response = await DataService.put(`${apiConst.projects}${editItem.id}`, {
+
+      const response = await dataService.put(`${apiConst.projects}${editItem.id}`, {
         ...values,
       });
       const updatedProject = response.data;
@@ -68,6 +74,7 @@ const ProjectList = ({ list, setList, loadingList }) => {
 
       form.resetFields();
       setShowEdit(false);
+
       notification.success({
         message: t('Project_Title'),
         description: t('Project_EditSuccess'),
@@ -85,7 +92,9 @@ const ProjectList = ({ list, setList, loadingList }) => {
   const handleDelete = async (id) => {
     try {
       setLoading(true);
-      await DataService.delete(`${apiConst.projects}${id}`);
+
+      await dataService.delete(`${apiConst.projects}/${id}`);
+
       notification.success({
         message: t('Project_Title'),
         description: t('Project_DeleteSuccess'),

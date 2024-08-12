@@ -1,4 +1,5 @@
-import { DataService } from '@/utils/dataService';
+import { apiConst } from '@/utils/apiConst';
+import { dataService } from '@/utils/dataService';
 import { formatTime } from '@/utils/index';
 import UilInbox from '@iconscout/react-unicons/icons/uil-inbox';
 import { Empty, Input, Pagination, Select, Skeleton } from 'antd';
@@ -40,7 +41,7 @@ export const InboxList = React.memo(({ setSelectedInbox, selectedInbox }) => {
   const getList = async ({ accountId, search = '', page = 1, page_size = 20 } = {}) => {
     try {
       setLoading(true);
-      const response = await DataService.get(`/mails/accounts/${accountId}/inboxes/`, {
+      const response = await dataService.get(`${apiConst.mailsAccounts}/${accountId}/inboxes/`, {
         search,
         page,
         page_size,

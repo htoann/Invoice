@@ -1,5 +1,6 @@
 import { Modal } from '@/components/modals/antd-modals';
-import axios from '@/mock/index';
+import { apiConst } from '@/utils/apiConst';
+import { dataService } from '@/utils/dataService';
 import { Form, notification } from 'antd';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -18,7 +19,7 @@ function CreateProduct({ state, setState, list, setList }) {
   const createNew = async (data) => {
     try {
       setLoading(true);
-      const response = await axios.post('/products', data);
+      const response = await dataService.post(`${apiConst.products}`, data);
       return response.data;
     } catch (error) {
       console.error(error);

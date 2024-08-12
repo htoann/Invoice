@@ -1,9 +1,9 @@
 import { downloadFile, formatTime } from '@/utils/index';
-import { DataService } from '@/utils/dataService';
+import { dataService } from '@/utils/dataService';
 
 export const handleExport = async (date) => {
   try {
-    const response = await DataService.get('invoices_excel/', {
+    const response = await dataService.get('invoices_excel/', {
       responseType: 'blob',
     });
 

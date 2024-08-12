@@ -1,7 +1,8 @@
 import { Cards } from '@/components/cards/frame/cards-frame';
 import { PageHeader } from '@/components/page-headers/page-headers';
 import { BorderLessHeading, Main } from '@/container/styled';
-import axios from '@/mock/index';
+import { apiConst } from '@/utils/apiConst';
+import { dataService } from '@/utils/dataService';
 import UilEdit from '@iconscout/react-unicons/icons/uil-edit';
 import UilTrash from '@iconscout/react-unicons/icons/uil-trash-alt';
 import { Col, Input, Popconfirm, Row, Skeleton, notification } from 'antd';
@@ -63,7 +64,7 @@ const Product = () => {
         setIsLoadingGetList(true);
       }
 
-      const response = await axios.get('/products', {
+      const response = await dataService.get(`${apiConst.products}`, {
         mahang,
         tenHangBan,
         tenHangMua,
@@ -110,7 +111,7 @@ const Product = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`/products/${id}`);
+      await dataService.delete(`${apiConst.products}/${id}`);
       setList(list.filter((account) => account.id !== id));
 
       notification.success({
