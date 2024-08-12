@@ -103,8 +103,6 @@ export const InboxList = React.memo(({ setSelectedInbox, selectedInbox }) => {
     })),
   ];
 
-  // console.log(inboxList);
-
   return (
     <>
       <div style={{ display: 'flex', gap: 2, flexWrap: 'auto', flexDirection: 'column' }}>

@@ -1,11 +1,14 @@
 /* eslint-disable no-unused-vars */
 import { Button } from '@/components/buttons/buttons';
 import { BasicFormWrapper } from '@/container/styled';
+import i18n from '@/i18n/config';
 import { Form, Input } from 'antd';
 import useDepartments from 'hooks/useDepartments';
 import { useTranslation } from 'react-i18next';
 
 const ModalAccount = ({ form, handleOk, state, onCancel, loading, textSubmit }) => {
+  const locale = i18n.language;
+
   const { t } = useTranslation();
   const { loadingDepartments, departments } = useDepartments();
 
@@ -49,9 +52,13 @@ const ModalAccount = ({ form, handleOk, state, onCancel, loading, textSubmit }) 
 
         {!state?.update?.password && (
           <>
-            <p>* {t('Lưu ý rằng mật khẩu ứng dụng khác với mật khẩu email')}</p>
-            <a href="https://support.google.com/mail/answer/185833?hl=vi" target="_blank" rel="noopener noreferrer">
-              {t('Cách tạo mật khẩu ứng dụng')}
+            <p>* {t('Mail_NoticeAppPassword')}</p>
+            <a
+              href={`https://support.google.com/mail/answer/185833?hl=${locale}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {t('Mail_HowToCreateAppPassword')}
             </a>
           </>
         )}
