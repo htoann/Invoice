@@ -33,10 +33,12 @@ const DepartmentList = ({ list, setList, loadingList, selectedItem, setSelectedI
   const handleCreateSubmit = async (values) => {
     try {
       setLoading(true);
+
       const response = await dataService.post(`${apiConst.departments}/`, {
         ...values,
         branch: selectedBranchId,
       });
+
       setList([response.data, ...list]);
       setShowCreate(false);
       form.resetFields();
@@ -58,16 +60,18 @@ const DepartmentList = ({ list, setList, loadingList, selectedItem, setSelectedI
   const handleEditSubmit = async (values) => {
     try {
       setLoading(true);
+
       const response = await dataService.put(`${apiConst.departments}/${editItem.id}/`, {
         ...values,
       });
-      const updatedAccount = response.data;
 
+      const updatedAccount = response.data;
       const updatedAccounts = list.map((acc) => (acc.id === updatedAccount.id ? updatedAccount : acc));
       setList(updatedAccounts);
 
       form.resetFields();
       setShowEdit(false);
+
       notification.success({
         message: t('Common_Department'),
         description: t('Department_EditSuccess'),
@@ -85,13 +89,16 @@ const DepartmentList = ({ list, setList, loadingList, selectedItem, setSelectedI
   const handleDelete = async (id) => {
     try {
       setLoading(true);
+
       await dataService.delete(`${apiConst.departments}/${id}/`);
+
+      setList(list.filter((item) => item.id !== id));
+      setSelectedItem(null);
+
       notification.success({
         message: t('Common_Department'),
         description: t('Department_DeleteSuccess'),
       });
-      setList(list.filter((item) => item.id !== id));
-      setSelectedItem(null);
     } catch (error) {
       notification.error({
         message: t('Common_Error'),
