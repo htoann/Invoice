@@ -37,7 +37,7 @@ export const App = () => {
 
   return (
     <ConfigProvider direction={rtl ? 'rtl' : 'ltr'} locale={getAntdLocale(i18n.language)}>
-      <AppProvider theme={{ ...themeColor, rtl, topMenu, mainContent }}>
+      <ThemeProvider theme={{ ...themeColor, rtl, topMenu, mainContent }}>
         <Router basename={process.env.PUBLIC_URL}>
           {!isLoggedIn ? (
             <Routes>
@@ -55,7 +55,7 @@ export const App = () => {
             </Routes>
           )}
         </Router>
-      </AppProvider>
+      </ThemeProvider>
     </ConfigProvider>
   );
 };
