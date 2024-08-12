@@ -678,7 +678,6 @@ const LayoutContainer = Styled.div`
                     }
                 }
                 
-                
                 &.ant-menu-inline-collapsed{
                     .ant-menu-submenu{
                         text-align: ${({ theme }) => (!theme.rtl ? 'left' : 'right')};                        

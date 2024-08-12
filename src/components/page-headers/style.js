@@ -6,6 +6,19 @@ const PageHeaderStyle = Styled(PageHeader)`
   &.ant-page-header {  
     padding: 16px 24px 25px;  
     background-color: ${({ theme }) => theme[theme.mainContent]['main-background-light']};
+
+    @media only screen and (max-width: 1199px){
+      padding: 0 15px;
+      ${({ theme }) => !theme.topMenu && 'padding-left'}: 100px !important;
+      transition: padding 0.3s ease;
+    }
+
+    @media only screen and (max-width: 1149px){
+      padding: 0 15px;
+      ${({ theme }) => !theme.topMenu && 'padding-left'}: 15px !important;
+      transition: padding 0.3s ease;
+    }
+
     &.invoice-page-header-main{
       background-color: ${({ theme }) => theme[theme.mainContent]['main-background']};
     }
