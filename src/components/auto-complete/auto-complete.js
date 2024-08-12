@@ -1,6 +1,6 @@
 import { SearchOutlined } from '@ant-design/icons';
 import { Button, Input } from 'antd';
-import { useTheme } from 'context/ThemeContext';
+import { useAppState } from 'context/AppContext';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { AutoCompleteStyled } from './style';
@@ -36,7 +36,7 @@ const AutoComplete = React.memo(
     options = [],
     placeholder = 'Input here',
   }) => {
-    const { rtl } = useTheme();
+    const { rtl } = useAppState();
 
     const content =
       options?.length > 0 &&

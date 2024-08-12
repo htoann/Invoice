@@ -1,7 +1,7 @@
 import { Cards } from '@/components/cards/frame/cards-frame';
 import { PageHeader } from '@/components/page-headers/page-headers';
 import { Col, Row } from 'antd';
-import { useTheme } from 'context/ThemeContext';
+import { useAppState } from 'context/AppContext';
 import FontAwesome from 'react-fontawesome';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
@@ -10,7 +10,7 @@ import { ComingSoonStyleWrapper } from './style';
 
 function ComingSoon() {
   const { t } = useTranslation();
-  const { layoutMode } = useTheme();
+  const { layoutMode } = useAppState();
 
   return (
     <>

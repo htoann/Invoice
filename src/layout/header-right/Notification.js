@@ -4,7 +4,7 @@ import UilHdd from '@iconscout/react-unicons/icons/uil-hdd';
 import UilUpload from '@iconscout/react-unicons/icons/uil-upload';
 import { Scrollbars } from '@pezhmanparsaee/react-custom-scrollbars';
 import { Badge } from 'antd';
-import { useTheme } from 'context/ThemeContext';
+import { useAppState } from 'context/AppContext';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Link } from 'react-router-dom';
@@ -12,7 +12,7 @@ import { ReactSVG } from 'react-svg';
 import { UserActionDropDown } from './Style';
 
 const NotificationBox = React.memo(() => {
-  const { rtl } = useTheme();
+  const { rtl } = useAppState();
 
   function renderThumb({ style }) {
     const thumbStyle = {

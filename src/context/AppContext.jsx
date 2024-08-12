@@ -1,9 +1,9 @@
 import Cookies from 'js-cookie';
 import { createContext, useCallback, useContext, useState } from 'react';
 
-const ThemeContext = createContext();
+const AppContext = createContext();
 
-export const ThemeProvider = ({ children }) => {
+export const AppProvider = ({ children }) => {
   const [themeState, setThemeState] = useState({
     rtlData: Cookies.get('rtl') || false,
     topMenu: Cookies.get('topMenu') !== undefined ? Cookies.get('topMenu') === 'true' : true,
@@ -35,7 +35,7 @@ export const ThemeProvider = ({ children }) => {
   }, []);
 
   return (
-    <ThemeContext.Provider
+    <AppContext.Provider
       value={{
         layoutMode: themeState.layoutMode,
         rtl: themeState.rtlData,
@@ -46,8 +46,8 @@ export const ThemeProvider = ({ children }) => {
       }}
     >
       {children}
-    </ThemeContext.Provider>
+    </AppContext.Provider>
   );
 };
 
-export const useTheme = () => useContext(ThemeContext);
+export const useAppState = () => useContext(AppContext);

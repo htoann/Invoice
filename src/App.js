@@ -7,7 +7,7 @@ import { ThemeProvider } from 'styled-components';
 import ProtectedRoute from './routes/protectedRoute';
 
 import { useAuth } from 'context/AuthContext';
-import { useTheme } from 'context/ThemeContext';
+import { useAppState } from 'context/AppContext';
 import { useTranslation } from 'react-i18next';
 import { themeColor } from './utils/theme/themeVariables';
 import './index.scss';
@@ -21,7 +21,7 @@ export const App = () => {
   const { i18n } = useTranslation();
   const { isLoggedIn } = useAuth();
 
-  const { rtl, topMenu, layoutMode: mainContent } = useTheme();
+  const { rtl, topMenu, layoutMode: mainContent } = useAppState();
 
   const [path, setPath] = useState(window.location.pathname);
 
@@ -37,7 +37,7 @@ export const App = () => {
 
   return (
     <ConfigProvider direction={rtl ? 'rtl' : 'ltr'} locale={getAntdLocale(i18n.language)}>
-      <ThemeProvider theme={{ ...themeColor, rtl, topMenu, mainContent }}>
+      <AppProvider theme={{ ...themeColor, rtl, topMenu, mainContent }}>
         <Router basename={process.env.PUBLIC_URL}>
           {!isLoggedIn ? (
             <Routes>
@@ -55,7 +55,7 @@ export const App = () => {
             </Routes>
           )}
         </Router>
-      </ThemeProvider>
+      </AppProvider>
     </ConfigProvider>
   );
 };

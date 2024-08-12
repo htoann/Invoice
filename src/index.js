@@ -5,7 +5,7 @@ import i18n from './i18n/config';
 
 import { App } from 'App';
 import { AuthProvider } from 'context/AuthContext';
-import { ThemeProvider } from 'context/ThemeContext';
+import { AppProvider } from 'context/AppContext';
 import dayjs from './utils/dayjs';
 
 const locale = i18n.language;
@@ -18,9 +18,9 @@ const root = createRoot(rootElement);
 root.render(
   <React.StrictMode>
     <AuthProvider>
-      <ThemeProvider>
+      <AppProvider>
         <App />
-      </ThemeProvider>
+      </AppProvider>
     </AuthProvider>
   </React.StrictMode>,
 );

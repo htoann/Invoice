@@ -7,7 +7,7 @@ import { Link, NavLink } from 'react-router-dom';
 import { routes } from '@/routes/const';
 import UilEllipsisV from '@iconscout/react-unicons/icons/uil-ellipsis-v';
 import UilEnvelope from '@iconscout/react-unicons/icons/uil-envelope';
-import { useTheme } from 'context/ThemeContext';
+import { useAppState } from 'context/AppContext';
 import propTypes from 'prop-types';
 
 export const LeftMenu = ({ toggleCollapsed }) => {
@@ -23,7 +23,7 @@ export const LeftMenu = ({ toggleCollapsed }) => {
     };
   };
 
-  const { topMenu } = useTheme();
+  const { topMenu } = useAppState();
 
   const path = '/';
   const pathName = window.location.pathname;

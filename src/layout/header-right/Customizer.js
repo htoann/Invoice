@@ -2,12 +2,12 @@ import { Drawer } from '@/components/drawer/drawer';
 // import Left from '@/static/img/layouts/side.png';
 // import Top from '@/static/img/layouts/top.png';
 import Left from '@/static/img/layouts/left.png';
-import { useTheme } from 'context/ThemeContext';
+import { useAppState } from 'context/AppContext';
 import { useTranslation } from 'react-i18next';
 
 const Customizer = () => {
   const { t } = useTranslation();
-  const { changeMenuMode } = useTheme();
+  const { changeMenuMode } = useAppState();
 
   const changeNavbar = (topMode) => {
     const html = document.querySelector('html');

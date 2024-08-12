@@ -2,7 +2,7 @@ import Heading from '@/components/heading/heading';
 import { Popover } from '@/components/popup/popup';
 import { Scrollbars } from '@pezhmanparsaee/react-custom-scrollbars';
 import { Badge } from 'antd';
-import { useTheme } from 'context/ThemeContext';
+import { useAppState } from 'context/AppContext';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Link } from 'react-router-dom';
@@ -10,7 +10,7 @@ import { ReactSVG } from 'react-svg';
 import { UserActionDropDown } from './Style';
 
 const MessageBox = React.memo(() => {
-  const { rtl } = useTheme();
+  const { rtl } = useAppState();
 
   function renderThumb({ style }) {
     const thumbStyle = {

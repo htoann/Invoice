@@ -1,7 +1,7 @@
 import UilEllipsisV from '@iconscout/react-unicons/icons/uil-ellipsis-v';
 import { Scrollbars } from '@pezhmanparsaee/react-custom-scrollbars';
 import { Button, Col, Layout, Row } from 'antd';
-import { useTheme } from 'context/ThemeContext';
+import { useAppState } from 'context/AppContext';
 import { useCallback, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
@@ -19,7 +19,7 @@ const WithAdminLayout = (WrappedComponent) => {
     const [collapsed, setCollapsed] = useState(false);
     const [hide, setHide] = useState(true);
 
-    const { rtl, topMenu, layoutMode } = useTheme();
+    const { rtl, topMenu, layoutMode } = useAppState();
 
     const updateDimensions = useCallback(() => {
       setCollapsed(window.innerWidth <= 1200);
