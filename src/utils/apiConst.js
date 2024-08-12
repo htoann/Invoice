@@ -5,6 +5,7 @@ export const apiConst = {
 
   mailsAccounts: '/mails/accounts',
   taskHistories: '/mails/task_histories',
+  inboxes: 'inboxes',
 
   invoices: '/invoices',
   invoicesChange: '/invoices-change',

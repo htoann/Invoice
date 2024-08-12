@@ -41,7 +41,7 @@ export const InboxList = React.memo(({ setSelectedInbox, selectedInbox }) => {
   const getList = async ({ accountId, search = '', page = 1, page_size = 20 } = {}) => {
     try {
       setLoading(true);
-      const response = await dataService.get(`${apiConst.mailsAccounts}/${accountId}/inboxes/`, {
+      const response = await dataService.get(`${apiConst.mailsAccounts}/${accountId}/${apiConst.inboxes}/`, {
         search,
         page,
         page_size,

@@ -19,7 +19,7 @@ function CreateAccount({ state, setState, accounts, setAccounts }) {
   const createNewAccount = async (data) => {
     try {
       setLoading(true);
-      const response = await dataService.post(`${apiConst.mailsAccounts}`, data);
+      const response = await dataService.post(`${apiConst.mailsAccounts}/`, data);
       return response.data;
     } catch (error) {
       console.error(error);
