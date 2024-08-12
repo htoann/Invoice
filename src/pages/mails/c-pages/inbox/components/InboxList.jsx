@@ -145,7 +145,7 @@ export const InboxList = React.memo(({ setSelectedInbox, selectedInbox }) => {
           </div>
 
           <Input
-            style={{ width: '100%', marginBottom: 20, height: 40 }}
+            style={{ width: '100%', height: 40 }}
             placeholder={t('Mail_Search')}
             value={search}
             onChange={(event) => {
@@ -160,7 +160,7 @@ export const InboxList = React.memo(({ setSelectedInbox, selectedInbox }) => {
       )}
 
       {!loadingUsers && !loadingDepartments && inboxList?.length > 0 && (
-        <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 20 }}>
+        <div style={{ display: 'flex', justifyContent: 'center', marginTop: 20 }}>
           <Pagination
             current={current}
             pageSize={pageSize}
@@ -179,49 +179,50 @@ export const InboxList = React.memo(({ setSelectedInbox, selectedInbox }) => {
         </>
       ) : (
         <>
-          <EmailNav>
-            <ul>
-              {inboxList?.length > 0 ? (
-                inboxList.map((item) => (
-                  <li key={item.id} style={{ marginBottom: 5 }}>
-                    <Link
-                      className={item?.id === selectedInbox?.id ? 'active' : ''}
-                      onClick={(e) => {
-                        e.preventDefault();
-                        setSelectedInbox(item);
-                      }}
-                    >
-                      <UilInbox />
-                      <span className="nav-text">
-                        <div className="email-container">
-                          <div className="email-content">
-                            <Paragraph className="email-subject" ellipsis title={item?.subject}>
-                              {item?.subject}
-                            </Paragraph>
-                            <Paragraph
-                              className="email-sender"
-                              ellipsis
-                              style={{
-                                width: '100%',
-                                marginBottom: 0,
-                                lineHeight: '1.2rem',
-                              }}
-                              title={item?.sender}
-                            >
-                              {item?.sender}
-                            </Paragraph>
+          {inboxList?.length > 0 ? (
+            <EmailNav>
+              <ul>
+                {inboxList?.length > 0 &&
+                  inboxList.map((item) => (
+                    <li key={item.id} style={{ marginBottom: 5 }}>
+                      <Link
+                        className={item?.id === selectedInbox?.id ? 'active' : ''}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          setSelectedInbox(item);
+                        }}
+                      >
+                        <UilInbox />
+                        <span className="nav-text">
+                          <div className="email-container">
+                            <div className="email-content">
+                              <Paragraph className="email-subject" ellipsis title={item?.subject}>
+                                {item?.subject}
+                              </Paragraph>
+                              <Paragraph
+                                className="email-sender"
+                                ellipsis
+                                style={{
+                                  width: '100%',
+                                  marginBottom: 0,
+                                  lineHeight: '1.2rem',
+                                }}
+                                title={item?.sender}
+                              >
+                                {item?.sender}
+                              </Paragraph>
+                            </div>
+                            <span className="email-date">{formatTime(item?.date, 'DD/MM/YY')}</span>
                           </div>
-                          <span className="email-date">{formatTime(item?.date, 'DD/MM/YY')}</span>
-                        </div>
-                      </span>
-                    </Link>
-                  </li>
-                ))
-              ) : (
-                <Empty description={t('Common_NoEmailsFound')} />
-              )}
-            </ul>
-          </EmailNav>
+                        </span>
+                      </Link>
+                    </li>
+                  ))}
+              </ul>
+            </EmailNav>
+          ) : (
+            <Empty description={t('Common_NoEmailsFound')} style={{ margin: 'auto' }} />
+          )}
         </>
       )}
     </>

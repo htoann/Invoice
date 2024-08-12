@@ -1192,7 +1192,9 @@ const EmailWrapper = Styled.div`
   .mail-sidebar-bottom{
     padding: 25px 15px 0 15px;
     height: calc(100vh - 200px);
-    overflow: auto; */
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
   }
 
   .mail-sidebar-bottom-scroll {
