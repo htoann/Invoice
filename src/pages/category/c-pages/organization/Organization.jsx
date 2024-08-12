@@ -50,6 +50,7 @@ export const Organization = () => {
               list={projects}
               setList={setProjects}
               loadingList={loadingProjects}
+              selectedBranchId={selectedBranchId}
               selectedDepartmentId={selectedDepartmentId}
             />
           )}

@@ -12,7 +12,7 @@ import styled from 'styled-components';
 import MenuItem from '../components/MenuItem';
 import useProjects from '../hook/useProjects';
 
-const ProjectList = ({ list, setList, loadingList, selectedDepartmentId }) => {
+const ProjectList = ({ list, setList, loadingList, selectedBranchId, selectedDepartmentId }) => {
   const { t } = useTranslation();
   const { getProjects } = useProjects();
   const [showCreate, setShowCreate] = useState(false);
@@ -37,10 +37,12 @@ const ProjectList = ({ list, setList, loadingList, selectedDepartmentId }) => {
     try {
       setLoading(true);
 
-      await dataService.post(`${apiConst.projects}/`, {
-        ...values,
-        department: selectedDepartmentId,
-      });
+      await dataService.post(
+        `${apiConst.branches}/${selectedBranchId}/${apiConst.departments}/${selectedDepartmentId}/${apiConst.projects}/`,
+        {
+          ...values,
+        },
+      );
 
       getProjects();
       setShowCreate(false);
@@ -64,11 +66,10 @@ const ProjectList = ({ list, setList, loadingList, selectedDepartmentId }) => {
     try {
       setLoading(true);
 
-      const response = await dataService.put(`${apiConst.projects}${editItem.id}`, {
+      const response = await dataService.put(`${apiConst.projects}${editItem.id}/`, {
         ...values,
       });
       const updatedProject = response.data;
-
       const updatedProjects = list.map((proj) => (proj.id === updatedProject.id ? updatedProject : proj));
       setList(updatedProjects);
 
@@ -93,13 +94,14 @@ const ProjectList = ({ list, setList, loadingList, selectedDepartmentId }) => {
     try {
       setLoading(true);
 
-      await dataService.delete(`${apiConst.projects}/${id}`);
+      await dataService.delete(`${apiConst.projects}/${id}/`);
+
+      setList(list.filter((item) => item.id !== id));
 
       notification.success({
         message: t('Project_Title'),
         description: t('Project_DeleteSuccess'),
       });
-      setList(list.filter((item) => item.id !== id));
     } catch (error) {
       notification.error({
         message: t('Project_Title'),

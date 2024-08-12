@@ -34,9 +34,8 @@ const DepartmentList = ({ list, setList, loadingList, selectedItem, setSelectedI
     try {
       setLoading(true);
 
-      const response = await dataService.post(`${apiConst.departments}/`, {
+      const response = await dataService.post(`${apiConst.branches}/${selectedBranchId}/${apiConst.departments}/`, {
         ...values,
-        branch: selectedBranchId,
       });
 
       setList([response.data, ...list]);

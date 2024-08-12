@@ -16,7 +16,7 @@ const useProjects = (selectedDepartmentId, selectedBranchId) => {
 
     try {
       const response = await dataService.get(
-        `${apiConst.branches}/${selectedDepartmentId}/${apiConst.departments}/${selectedDepartmentId}/${apiConst.projects}`,
+        `${apiConst.branches}/${selectedDepartmentId}/${apiConst.departments}/${selectedDepartmentId}/${apiConst.projects}/`,
       );
       setProjects(response.data);
     } catch (error) {
