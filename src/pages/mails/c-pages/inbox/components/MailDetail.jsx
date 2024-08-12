@@ -84,7 +84,7 @@ function MailDetail({ selectedInbox: email }) {
                 <>
                   <hr style={{ marginTop: 30, marginBottom: 15, marginLeft: 60 }} />
                   <p style={{ paddingLeft: 60, fontWeight: 600, marginBottom: 10 }}>
-                    {email?.attachments?.length} tệp đính kèm
+                    {email?.attachments?.length} {t('Mail_Attachments')}
                   </p>
                 </>
               )}
