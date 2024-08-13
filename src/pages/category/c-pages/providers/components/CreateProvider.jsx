@@ -4,7 +4,7 @@ import { dataService } from '@/utils/dataService';
 import { Form, notification } from 'antd';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import ModalHangHoa from './Modal';
+import ModalHangHoa from './ModalProvider';
 
 const CreateProvider = ({ state, setState, list, setList }) => {
   const [loading, setLoading] = useState(false);

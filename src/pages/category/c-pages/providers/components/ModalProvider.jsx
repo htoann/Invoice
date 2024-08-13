@@ -39,7 +39,7 @@ const fields = [
   { key: 'branch', label: 'Provider_Branch', type: 'input' },
 ];
 
-const ModalHangHoa = ({ form, handleOk, state, onCancel, loading, textSubmit }) => {
+const ModalProvider = ({ form, handleOk, state, onCancel, loading, textSubmit }) => {
   const { t } = useTranslation();
 
   const renderField = (type, key, options) => {
@@ -94,4 +94,4 @@ const ModalHangHoa = ({ form, handleOk, state, onCancel, loading, textSubmit }) 
   );
 };
 
-export default ModalHangHoa;
+export default ModalProvider;
