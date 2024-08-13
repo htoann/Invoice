@@ -6,14 +6,14 @@ import { useTranslation } from 'react-i18next';
 export const ModalCommon = ({ form, handleOk, state, onCancel, loading, textSubmit, fields }) => {
   const { t } = useTranslation();
 
-  const renderField = (type, key, options) => {
+  const renderField = (type, key, options = []) => {
     switch (type) {
       case 'select':
         return (
-          <Select defaultValue={state?.update[key] || options[0]}>
-            {options.map((option) => (
-              <Select.Option key={option} value={option}>
-                {t(option.charAt(0).toUpperCase() + option.slice(1))}
+          <Select defaultValue={state?.update?.[key] || options?.[0]?.key}>
+            {options?.map((option) => (
+              <Select.Option key={option.key} value={option.key}>
+                {t(option.label)}
               </Select.Option>
             ))}
           </Select>
@@ -24,25 +24,41 @@ export const ModalCommon = ({ form, handleOk, state, onCancel, loading, textSubm
         return <Input type="checkbox" />;
       case 'autocomplete':
         return <AutoComplete />;
+      case 'email':
+        return <Input type="email" />;
       case 'number':
-        return <InputNumber stringMode keyboard={false} />;
+        return <InputNumber />;
       case 'input':
       default:
         return <Input />;
     }
   };
 
+  const getRules = (type, required) => {
+    const rules = [];
+
+    if (required) {
+      rules.push({ required: true, message: t('Common_Input_Required') });
+    }
+
+    if (type === 'email') {
+      rules.push({ type: 'email', message: t('Common_Invalid_Email') });
+    }
+
+    return rules;
+  };
+
   return (
     <BasicFormWrapper>
       <Form form={form} name="contactEdit" onFinish={handleOk} autoComplete="off">
-        {fields.map(({ name, label, type, options, required }) => (
+        {fields.map(({ name, label, type, options, required, min, max }) => (
           <Form.Item
             key={name}
             initialValue={state?.update[name]}
             label={t(label)}
             name={name}
             valuePropName={type === 'checkbox' ? 'checked' : 'value'}
-            rules={required ? [{ required: true, message: t('Common_Input_Required') }] : []}
+            rules={getRules(type, required, min, max)}
           >
             {renderField(type, name, options)}
           </Form.Item>

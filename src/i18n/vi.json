@@ -93,6 +93,10 @@
   "Common_DataSize_TB": "TB",
   "Common_Branch": "Chi nhánh",
   "Common_Input_Required": "Vui lòng nhập trường này",
+  "Common_Invalid_Email": "Vui lòng nhập email hợp lệ",
+  "Common_Invalid_Number": "Vui lòng nhập số",
+  "Common_Org": "Tổ chức",
+  "Common_Individual": "Cá nhân",
 
   "Dashboard_BusinessStatus": "Trạng thái doanh nghiệp",
   "Dashboard_InvoicesChange": "Hóa đơn bị thay đổi bởi người bán - Nhà cung cấp",
