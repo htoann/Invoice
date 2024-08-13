@@ -9,6 +9,15 @@ export default [
       globals: {
         ...globals.browser,
         process: 'readonly',
+        require: 'readonly',
+        module: 'readonly',
+        __dirname: 'readonly',
+      },
+    },
+    ignores: ['node_modules/', 'build/', 'public/', 'jsconfig.json', '*.json', 'style.js', 'Style.js', '.eslintrc'],
+    settings: {
+      react: {
+        version: 'detect',
       },
     },
   },

@@ -68,6 +68,7 @@ const BranchList = ({ list, setList, loadingList, selectedItem, setSelectedItem 
         description: t('Branch_EditSuccess'),
       });
     } catch (error) {
+      console.error(error);
       notification.error({
         message: t('Common_Branch'),
         description: t('Branch_EditError'),
@@ -91,6 +92,7 @@ const BranchList = ({ list, setList, loadingList, selectedItem, setSelectedItem 
         description: t('Branch_DeleteSuccess'),
       });
     } catch (error) {
+      console.error(error);
       notification.error({
         message: t('Common_Branch'),
         description: t('Branch_DeleteError'),

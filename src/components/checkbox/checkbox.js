@@ -35,7 +35,6 @@ const Checkbox = (props) => {
     if (onChangeTrigger) {
       onChangeTrigger(state.checkedList);
     }
-    // eslint-disable-next-line
   }, [state]);
 
   const onCheckAllChange = (e) => {
