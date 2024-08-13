@@ -1,7 +1,6 @@
 import { Cards } from '@/components/cards/frame/cards-frame';
 import { PageHeader } from '@/components/page-headers/page-headers';
 import { BorderLessHeading, Main } from '@/container/styled';
-import { providers } from '@/mock/providers';
 import { API_PRODUCT } from '@/utils/apiConst';
 import { dataService } from '@/utils/dataService';
 import { formatTime } from '@/utils/index';
@@ -49,8 +48,7 @@ const Providers = () => {
   const [searchParams, setSearchParams] = useState({});
 
   useEffect(() => {
-    // getList({ ...searchParams, page: current, page_size: pageSize });
-    setList(providers.results); // Fake for now
+    getList({ ...searchParams, page: current, page_size: pageSize });
   }, [current, pageSize]);
 
   const handleDelete = async (id) => {

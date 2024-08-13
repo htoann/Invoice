@@ -3,6 +3,7 @@ import { Modal } from '@/components/modals/antd-modals';
 import { API_PROVIDERS } from '@/utils/apiConst';
 import { dataService } from '@/utils/dataService';
 import { Form, notification } from 'antd';
+import useProvinces from 'hooks/vietnam-division/useProvinces';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { fieldsModalProvider } from '../utils';
@@ -11,6 +12,13 @@ const CreateProvider = ({ state, setState, list, setList }) => {
   const [loading, setLoading] = useState(false);
   const [form] = Form.useForm();
   const { t } = useTranslation();
+
+  const { provinces } = useProvinces();
+
+  const provincesOption = provinces?.map((province) => ({
+    key: province.id,
+    label: province.name,
+  }));
 
   const onCancel = () => {
     setState({ ...state, visible: false });
@@ -48,6 +56,16 @@ const CreateProvider = ({ state, setState, list, setList }) => {
     }
   };
 
+  const fields = fieldsModalProvider.map((field) => {
+    if (field.name === 'province') {
+      return {
+        ...field,
+        options: provincesOption,
+      };
+    }
+    return field;
+  });
+
   return (
     <div>
       <Modal type="primary" title={t('Provider_Create')} open={state.visible} onCancel={onCancel}>
@@ -58,7 +76,7 @@ const CreateProvider = ({ state, setState, list, setList }) => {
             onCancel={onCancel}
             loading={loading}
             textSubmit={t('Common_Create')}
-            fields={fieldsModalProvider}
+            fields={fields}
           />
         </div>
       </Modal>
