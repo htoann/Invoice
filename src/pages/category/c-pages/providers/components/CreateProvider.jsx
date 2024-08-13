@@ -3,21 +3,39 @@ import { Modal } from '@/components/modals/antd-modals';
 import { API_PROVIDERS } from '@/utils/apiConst';
 import { dataService } from '@/utils/dataService';
 import { Form, notification } from 'antd';
+import useCommunes from 'hooks/vietnam-division/useCommunes';
+import useDistricts from 'hooks/vietnam-division/useDistricts';
 import useProvinces from 'hooks/vietnam-division/useProvinces';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { fieldsModalProvider } from '../utils';
 
 const CreateProvider = ({ state, setState, list, setList }) => {
-  const [loading, setLoading] = useState(false);
-  const [form] = Form.useForm();
   const { t } = useTranslation();
+  const [form] = Form.useForm();
+
+  const [loading, setLoading] = useState(false);
+
+  const [provinceId, setProvinceId] = useState('');
+  const [districtId, setDistrictId] = useState('');
 
   const { provinces } = useProvinces();
+  const { districts } = useDistricts(provinceId);
+  const { communes } = useCommunes(districtId);
 
   const provincesOption = provinces?.map((province) => ({
     key: province.id,
     label: province.name,
+  }));
+
+  const districtsOption = districts?.map((district) => ({
+    key: district.id,
+    label: district.name,
+  }));
+
+  const communesOption = communes?.map((commune) => ({
+    key: commune.id,
+    label: commune.name,
   }));
 
   const onCancel = () => {
@@ -63,8 +81,29 @@ const CreateProvider = ({ state, setState, list, setList }) => {
         options: provincesOption,
       };
     }
+    if (field.name === 'district') {
+      return {
+        ...field,
+        options: districtsOption,
+      };
+    }
+    if (field.name === 'ward') {
+      return {
+        ...field,
+        options: communesOption,
+      };
+    }
     return field;
   });
+
+  const onFormValuesChange = (changedValues) => {
+    if (changedValues?.province) {
+      setProvinceId(changedValues?.province);
+    }
+    if (changedValues?.district) {
+      setDistrictId(changedValues?.district);
+    }
+  };
 
   return (
     <div>
@@ -77,6 +116,7 @@ const CreateProvider = ({ state, setState, list, setList }) => {
             loading={loading}
             textSubmit={t('Common_Create')}
             fields={fields}
+            onValuesChange={onFormValuesChange}
           />
         </div>
       </Modal>

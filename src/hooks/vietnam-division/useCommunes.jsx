@@ -24,7 +24,7 @@ const useCommunes = (districtId) => {
 
   useEffect(() => {
     getCommunes();
-  }, []);
+  }, [districtId]);
 
   return { communes, setCommunes, loadingCommunes, setLoadingCommunes };
 };

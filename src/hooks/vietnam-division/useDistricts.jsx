@@ -22,7 +22,7 @@ const useDistricts = (provinceId) => {
 
   useEffect(() => {
     getDistricts();
-  }, []);
+  }, [provinceId]);
 
   return { districts, setDistricts, loadingDistricts, setLoadingDistricts };
 };

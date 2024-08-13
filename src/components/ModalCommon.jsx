@@ -3,7 +3,7 @@ import { BasicFormWrapper } from '@/container/styled';
 import { AutoComplete, DatePicker, Form, Input, InputNumber, Select } from 'antd';
 import { useTranslation } from 'react-i18next';
 
-export const ModalCommon = ({ form, handleOk, state, onCancel, loading, textSubmit, fields }) => {
+export const ModalCommon = ({ form, handleOk, state, onCancel, loading, textSubmit, fields, onValuesChange }) => {
   const { t } = useTranslation();
 
   const renderField = (type, key, options = []) => {
@@ -11,8 +11,8 @@ export const ModalCommon = ({ form, handleOk, state, onCancel, loading, textSubm
       case 'select':
         return (
           <Select defaultValue={state?.update?.[key] || options?.[0]?.key}>
-            {options?.map((option) => (
-              <Select.Option key={option.key} value={option.key}>
+            {options?.map((option, index) => (
+              <Select.Option key={index} value={option.key}>
                 {t(option.label)}
               </Select.Option>
             ))}
@@ -50,7 +50,7 @@ export const ModalCommon = ({ form, handleOk, state, onCancel, loading, textSubm
 
   return (
     <BasicFormWrapper>
-      <Form form={form} name="contactEdit" onFinish={handleOk} autoComplete="off">
+      <Form form={form} name="contactEdit" onFinish={handleOk} autoComplete="off" onValuesChange={onValuesChange}>
         {fields.map(({ name, label, type, options, required, min, max }) => (
           <Form.Item
             key={name}
