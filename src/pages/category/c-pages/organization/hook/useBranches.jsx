@@ -1,10 +1,10 @@
 import { API_BRANCHES } from '@/utils/apiConst';
 import { dataService } from '@/utils/dataService';
-import { useEffect, useState } from 'react';
+import { useAppState } from 'context/AppContext';
+import { useEffect } from 'react';
 
 const useBranches = () => {
-  const [branches, setBranches] = useState([]);
-  const [loadingBranches, setLoadingBranches] = useState(false);
+  const { branches, setBranches, loadingBranches, setLoadingBranches } = useAppState();
 
   const getBranches = async () => {
     try {

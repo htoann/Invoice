@@ -1,10 +1,10 @@
 import { API_DEPARTMENTS_BY_BRANCH } from '@/utils/apiConst';
 import { dataService } from '@/utils/dataService';
+import { useAppState } from 'context/AppContext';
 import { useEffect, useState } from 'react';
 
 const useDepartments = (selectedBranchId) => {
-  const [departments, setDepartments] = useState([]);
-  const [loadingDepartments, setLoadingDepartments] = useState(true);
+  const { departments, setDepartments, loadingDepartments, setLoadingDepartments } = useAppState();
   const [selectedDepartmentId, setSelectedDepartmentId] = useState(null);
 
   const getDepartments = async () => {

@@ -34,6 +34,15 @@ export const AppProvider = ({ children }) => {
     }));
   }, []);
 
+  const [branches, setBranches] = useState([]);
+  const [loadingBranches, setLoadingBranches] = useState(false);
+
+  const [departments, setDepartments] = useState([]);
+  const [loadingDepartments, setLoadingDepartments] = useState(true);
+
+  const [projects, setProjects] = useState([]);
+  const [loadingProjects, setLoadingProjects] = useState(false);
+
   return (
     <AppContext.Provider
       value={{
@@ -43,6 +52,21 @@ export const AppProvider = ({ children }) => {
         changeLayoutMode,
         changeDirectionMode,
         changeMenuMode,
+
+        branches,
+        setBranches,
+        loadingBranches,
+        setLoadingBranches,
+
+        departments,
+        setDepartments,
+        loadingDepartments,
+        setLoadingDepartments,
+
+        projects,
+        setProjects,
+        loadingProjects,
+        setLoadingProjects,
       }}
     >
       {children}

@@ -1,10 +1,10 @@
 import { API_PROJECTS_BY_BRANCH_AND_DEPARTMENT } from '@/utils/apiConst';
 import { dataService } from '@/utils/dataService';
-import { useEffect, useState } from 'react';
+import { useAppState } from 'context/AppContext';
+import { useEffect } from 'react';
 
 const useProjects = (selectedDepartmentId, selectedBranchId) => {
-  const [projects, setProjects] = useState([]);
-  const [loadingProjects, setLoadingProjects] = useState(false);
+  const { projects, setProjects, loadingProjects, setLoadingProjects } = useAppState();
 
   const getProjects = async () => {
     setProjects([]);
