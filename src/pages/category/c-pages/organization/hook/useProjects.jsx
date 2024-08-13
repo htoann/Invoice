@@ -1,4 +1,4 @@
-import { apiConst } from '@/utils/apiConst';
+import { API_PROJECTS_BY_BRANCH_AND_DEPARTMENT } from '@/utils/apiConst';
 import { dataService } from '@/utils/dataService';
 import { useEffect, useState } from 'react';
 
@@ -16,7 +16,7 @@ const useProjects = (selectedDepartmentId, selectedBranchId) => {
 
     try {
       const response = await dataService.get(
-        `${apiConst.orgsBranches}${selectedDepartmentId}${apiConst.orgsDepartments}${selectedDepartmentId}${apiConst.projects}`,
+        API_PROJECTS_BY_BRANCH_AND_DEPARTMENT(selectedBranchId, selectedDepartmentId),
       );
       setProjects(response.data);
     } catch (error) {

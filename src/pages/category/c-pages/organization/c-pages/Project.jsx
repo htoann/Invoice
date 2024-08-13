@@ -2,7 +2,7 @@ import { Button } from '@/components/buttons/buttons';
 import { Cards } from '@/components/cards/frame/cards-frame';
 import { Modal } from '@/components/modals/antd-modals';
 import { BasicFormWrapper, BorderLessHeading } from '@/container/styled';
-import { apiConst } from '@/utils/apiConst';
+import { API_PROJECT, API_PROJECTS_BY_BRANCH_AND_DEPARTMENT } from '@/utils/apiConst';
 import { dataService } from '@/utils/dataService';
 import { RightOutlined } from '@ant-design/icons';
 import { Col, Empty, Form, Input, Menu, notification, Skeleton } from 'antd';
@@ -17,7 +17,7 @@ const ProjectList = ({ list, setList, loadingList, selectedBranchId, selectedDep
   const { getProjects } = useProjects();
   const [showCreate, setShowCreate] = useState(false);
   const [showEdit, setShowEdit] = useState(false);
-  const [editItem, setEditItem] = useState(null);
+  const [projectEdit, setProjectEdit] = useState(null);
 
   const [loading, setLoading] = useState(false);
 
@@ -28,7 +28,7 @@ const ProjectList = ({ list, setList, loadingList, selectedBranchId, selectedDep
   };
 
   const handleEdit = (item) => {
-    setEditItem(item);
+    setProjectEdit(item);
     setShowEdit(true);
     form.setFieldsValue(item);
   };
@@ -37,12 +37,9 @@ const ProjectList = ({ list, setList, loadingList, selectedBranchId, selectedDep
     try {
       setLoading(true);
 
-      await dataService.post(
-        `${apiConst.orgsBranches}${selectedBranchId}${apiConst.orgsDepartments}${selectedDepartmentId}${apiConst.projects}/`,
-        {
-          ...values,
-        },
-      );
+      await dataService.post(API_PROJECTS_BY_BRANCH_AND_DEPARTMENT(selectedBranchId, selectedDepartmentId), {
+        ...values,
+      });
 
       getProjects();
       setShowCreate(false);
@@ -66,7 +63,7 @@ const ProjectList = ({ list, setList, loadingList, selectedBranchId, selectedDep
     try {
       setLoading(true);
 
-      const response = await dataService.put(`${apiConst.projects}${editItem.id}/`, {
+      const response = await dataService.put(API_PROJECT(selectedBranchId, selectedDepartmentId, projectEdit.id), {
         ...values,
       });
       const updatedProject = response.data;
@@ -94,7 +91,7 @@ const ProjectList = ({ list, setList, loadingList, selectedBranchId, selectedDep
     try {
       setLoading(true);
 
-      await dataService.delete(`${apiConst.projects}${id}/`);
+      await dataService.delete(API_PROJECT(id));
 
       setList(list.filter((item) => item.id !== id));
 
@@ -129,7 +126,7 @@ const ProjectList = ({ list, setList, loadingList, selectedBranchId, selectedDep
           name="name"
           label={t('Project_Name')}
           rules={[{ required: true, message: t('Project_Name_Required') }]}
-          initialValue={showEdit ? editItem?.name : ''}
+          initialValue={showEdit ? projectEdit?.name : ''}
         >
           <Input />
         </Form.Item>

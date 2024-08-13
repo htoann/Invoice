@@ -1,5 +1,5 @@
 import { Modal } from '@/components/modals/antd-modals';
-import { apiConst } from '@/utils/apiConst';
+import { API_PRODUCT } from '@/utils/apiConst';
 import { dataService } from '@/utils/dataService';
 import { Form, notification } from 'antd';
 import { useState } from 'react';
@@ -23,7 +23,7 @@ const EditProduct = ({ state, setState, list, setList }) => {
     try {
       setLoading(true);
 
-      const response = await dataService.put(`${apiConst.products}${state.update.id}/`, {
+      const response = await dataService.put(API_PRODUCT(state.update.id), {
         ...values,
         id: state.update.id,
       });

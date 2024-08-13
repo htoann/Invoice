@@ -1,4 +1,4 @@
-import { apiConst } from '@/utils/apiConst';
+import { API_DEPARTMENTS_BY_BRANCH } from '@/utils/apiConst';
 import { dataService } from '@/utils/dataService';
 import { useEffect, useState } from 'react';
 
@@ -19,7 +19,7 @@ const useDepartments = (selectedBranchId) => {
     setLoadingDepartments(true);
 
     try {
-      const response = await dataService.get(`${apiConst.orgsBranches}${selectedBranchId}${apiConst.orgsDepartments}`);
+      const response = await dataService.get(API_DEPARTMENTS_BY_BRANCH(selectedBranchId));
       setDepartments(response.data);
     } catch (error) {
       console.error(error);

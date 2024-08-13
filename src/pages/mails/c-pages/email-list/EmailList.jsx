@@ -3,12 +3,12 @@ import { Button } from '@/components/buttons/buttons';
 import { Cards } from '@/components/cards/frame/cards-frame';
 import { PageHeader } from '@/components/page-headers/page-headers';
 import { BorderLessHeading, Main } from '@/container/styled';
-import { apiConst } from '@/utils/apiConst';
+import { API_MAILS_ACCOUNT_BY_ACCOUNT_ID, API_MAILS_ACCOUNTS } from '@/utils/apiConst';
 import { dataService } from '@/utils/dataService';
 import UilEdit from '@iconscout/react-unicons/icons/uil-edit';
 import UilTrash from '@iconscout/react-unicons/icons/uil-trash-alt';
 import { Col, Input, notification, Popconfirm, Row, Select, Skeleton } from 'antd';
-import useDepartments from 'hooks/useDepartments';
+import useGetAllDepartments from 'hooks/useGetAllDepartments';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
@@ -38,7 +38,7 @@ const EmailList = () => {
   const [searchLoading, setSearchLoading] = useState(false);
   const [searchParams, setSearchParams] = useState({ name: '', password: '', departmentId: '' });
 
-  const { loadingDepartments, departments } = useDepartments();
+  const { loadingDepartments, departments } = useGetAllDepartments();
 
   const getList = async ({
     name = '',
@@ -55,7 +55,7 @@ const EmailList = () => {
         setIsLoadingGetList(true);
       }
 
-      const response = await dataService.get(`${apiConst.mailsAccounts}`, {
+      const response = await dataService.get(API_MAILS_ACCOUNTS, {
         ...(name && { name }),
         ...(email && { email }),
         page,
@@ -105,7 +105,7 @@ const EmailList = () => {
 
   const handleDelete = async (id) => {
     try {
-      await dataService.delete(`${apiConst.mailsAccounts}${id}/`);
+      await dataService.delete(API_MAILS_ACCOUNT_BY_ACCOUNT_ID(id));
       setAccounts(accounts.filter((account) => account.id !== id));
 
       notification.success({

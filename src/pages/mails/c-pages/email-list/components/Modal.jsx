@@ -3,14 +3,14 @@ import { Button } from '@/components/buttons/buttons';
 import { BasicFormWrapper } from '@/container/styled';
 import i18n from '@/i18n/config';
 import { Form, Input } from 'antd';
-import useDepartments from 'hooks/useDepartments';
+import useGetAllDepartments from 'hooks/useGetAllDepartments';
 import { useTranslation } from 'react-i18next';
 
 const ModalAccount = ({ form, handleOk, state, onCancel, loading, textSubmit }) => {
   const locale = i18n.language;
 
   const { t } = useTranslation();
-  const { loadingDepartments, departments } = useDepartments();
+  const { loadingDepartments, departments } = useGetAllDepartments();
 
   return (
     <BasicFormWrapper>

@@ -1,7 +1,7 @@
 import { Cards } from '@/components/cards/frame/cards-frame';
 import { BorderLessHeading, TableDefaultStyle } from '@/container/styled';
 import axios from '@/mock/index';
-import { apiConst } from '@/utils/apiConst';
+import { API_INVOICES_CHANGE } from '@/utils/apiConst';
 import { Table } from 'antd';
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -40,7 +40,7 @@ const InvoicesChange = React.memo(() => {
 
   const getList = async () => {
     try {
-      const response = await axios.get(`${apiConst.invoicesChange}`);
+      const response = await axios.get(API_INVOICES_CHANGE);
       setList(response?.data?.invoicesChange || []);
     } catch (error) {
       console.error(error);

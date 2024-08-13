@@ -2,7 +2,7 @@ import { Button } from '@/components/buttons/buttons';
 import { Cards } from '@/components/cards/frame/cards-frame';
 import { Modal } from '@/components/modals/antd-modals';
 import { BasicFormWrapper, BorderLessHeading } from '@/container/styled';
-import { apiConst } from '@/utils/apiConst';
+import { API_DEPARTMENT, API_DEPARTMENTS_BY_BRANCH } from '@/utils/apiConst';
 import { dataService } from '@/utils/dataService';
 import { RightOutlined } from '@ant-design/icons';
 import { Col, Empty, Form, Input, Menu, notification, Skeleton } from 'antd';
@@ -14,7 +14,7 @@ const DepartmentList = ({ list, setList, loadingList, selectedItem, setSelectedI
   const { t } = useTranslation();
   const [showCreate, setShowCreate] = useState(false);
   const [showEdit, setShowEdit] = useState(false);
-  const [editItem, setEditItem] = useState(null);
+  const [departmentEdit, setDepartmentEdit] = useState(null);
 
   const [loading, setLoading] = useState(false);
 
@@ -25,7 +25,7 @@ const DepartmentList = ({ list, setList, loadingList, selectedItem, setSelectedI
   };
 
   const handleEdit = (item) => {
-    setEditItem(item);
+    setDepartmentEdit(item);
     setShowEdit(true);
     form.setFieldsValue(item);
   };
@@ -34,12 +34,9 @@ const DepartmentList = ({ list, setList, loadingList, selectedItem, setSelectedI
     try {
       setLoading(true);
 
-      const response = await dataService.post(
-        `${apiConst.orgsBranches}${selectedBranchId}${apiConst.orgsDepartments}`,
-        {
-          ...values,
-        },
-      );
+      const response = await dataService.post(API_DEPARTMENTS_BY_BRANCH(selectedBranchId), {
+        ...values,
+      });
 
       setList([response.data, ...list]);
       setShowCreate(false);
@@ -63,7 +60,7 @@ const DepartmentList = ({ list, setList, loadingList, selectedItem, setSelectedI
     try {
       setLoading(true);
 
-      const response = await dataService.put(`${apiConst.orgsDepartments}${editItem.id}/`, {
+      const response = await dataService.put(API_DEPARTMENT(selectedBranchId, departmentEdit.id), {
         ...values,
       });
 
@@ -92,7 +89,7 @@ const DepartmentList = ({ list, setList, loadingList, selectedItem, setSelectedI
     try {
       setLoading(true);
 
-      await dataService.delete(`${apiConst.orgsDepartments}${id}/`);
+      await dataService.delete(API_DEPARTMENT(selectedBranchId, id));
 
       setList(list.filter((item) => item.id !== id));
       setSelectedItem(null);
@@ -128,7 +125,7 @@ const DepartmentList = ({ list, setList, loadingList, selectedItem, setSelectedI
           name="name"
           label={t('Department_Name')}
           rules={[{ required: true, message: t('Department_Name_Required') }]}
-          initialValue={showEdit ? editItem?.name : ''}
+          initialValue={showEdit ? departmentEdit?.name : ''}
         >
           <Input />
         </Form.Item>

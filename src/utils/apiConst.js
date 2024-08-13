@@ -1,34 +1,56 @@
-// export const apiConst = {
-//   orgsBranches: '/orgs/branches/',
-//   orgsDepartments: '/orgs/departments/',
-//   departments: '/departments/',
-//   projects: '/orgs/projects/',
+export const API_LOGIN = () => '/users/login/';
+export const API_REGISTER = () => '/users/register/';
 
-//   mailsAccounts: '/mails/accounts/',
-//   taskHistories: '/mails/task_histories/',
-//   inboxes: 'inboxes/',
+//
 
-//   invoices: '/invoices/',
-//   invoicesChange: '/invoices-change/',
-//   invoicesExcel: '/invoices_excel/',
-//   businessStatus: '/business-status/',
+export const API_INVOICES = () => `/invoices/`;
 
-//   products: '/products/',
-// };
+export const API_INVOICES_EXCEL = () => `/invoices_excel/`;
 
-// src/constants/api.js
+//
+
+export const API_MAILS_ACCOUNTS = () => `/mails/accounts/`;
+
+export const API_MAILS_ACCOUNT_BY_ACCOUNT_ID = (accountId) => `${API_MAILS_ACCOUNTS}${accountId}/`;
+
+export const API_INBOXES_BY_ACCOUNT_ID = (accountId) => `${API_MAILS_ACCOUNT_BY_ACCOUNT_ID(accountId)}inboxes/`;
+
+//
+
+export const API_MAIL_TASK_HISTORIES = '/mails/task_histories/';
+
+//
+
+export const API_PRODUCTS = () => '/products/';
+
+export const API_PRODUCT = (productId) => `${API_PRODUCTS}${productId}`;
+
+//
 
 export const API_BRANCHES = '/orgs/branches/';
 
-export const API_DEPARTMENTS_BY_BRANCH = (branchId) => `/${API_BRANCHES}/${branchId}/departments`;
+export const API_BRANCH = (branchId) => `${API_BRANCHES}${branchId}/`;
 
-export const API_COMPANY_DEPARTMENTS = (companyId) => `${API_COMPANY_BY_ID(companyId)}/departments`;
+//
 
-export const API_COMPANY_DEPARTMENT_BY_ID = (companyId, departmentId) =>
-  `${API_COMPANY_DEPARTMENTS(companyId)}/${departmentId}`;
+export const API_DEPARTMENTS_ALL = (branchId) => `${API_BRANCHES}${branchId}/departments/all`;
 
-export const API_DEPARTMENT_EMPLOYEES = (companyId, departmentId) =>
-  `${API_COMPANY_DEPARTMENT_BY_ID(companyId, departmentId)}/employees`;
+export const API_DEPARTMENTS_BY_BRANCH = (branchId) => `${API_BRANCHES}${branchId}/departments`;
 
-export const API_EMPLOYEE_BY_ID = (companyId, departmentId, employeeId) =>
-  `${API_DEPARTMENT_EMPLOYEES(companyId, departmentId)}/${employeeId}`;
+export const API_DEPARTMENT = (branchId, departmentId) => `${API_DEPARTMENTS_BY_BRANCH(branchId)}${departmentId}/`;
+
+//
+
+export const API_PROJECTS_BY_BRANCH_AND_DEPARTMENT = (branchId, departmentId) =>
+  `${API_DEPARTMENTS_BY_BRANCH(branchId)}${departmentId}/projects/`;
+
+export const API_PROJECT = (branchId, departmentId, projectId) =>
+  `${API_PROJECTS_BY_BRANCH_AND_DEPARTMENT(branchId, departmentId)}${projectId}`;
+
+//
+
+export const API_BUSINESS_STATUS = '/business-status/';
+
+//
+
+export const API_INVOICES_CHANGE = '/invoices-change/';

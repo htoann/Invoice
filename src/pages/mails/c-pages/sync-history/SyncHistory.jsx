@@ -3,9 +3,9 @@ import { PageHeader } from '@/components/page-headers/page-headers';
 import { Tag } from '@/components/tags/tags';
 import { BorderLessHeading, Main } from '@/container/styled';
 import axios from '@/mock/index';
-import { apiConst } from '@/utils/apiConst';
+import { API_MAIL_TASK_HISTORIES } from '@/utils/apiConst';
 import { Col, Input, Row, Select, Skeleton } from 'antd';
-import useAccounts from 'hooks/useAccounts';
+import useMailAccounts from 'hooks/useMailAccounts';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import DataTable from './components/DataTable';
@@ -25,7 +25,7 @@ const SyncHistory = () => {
   const [searchLoading, setSearchLoading] = useState(false);
   const [searchParams, setSearchParams] = useState({ state: '', note: '', accountId: '' });
 
-  const { loadingUsers, accountList } = useAccounts();
+  const { loadingMailAccounts, mailAccountList } = useMailAccounts();
 
   const getList = async ({
     state = null,
@@ -42,7 +42,7 @@ const SyncHistory = () => {
         setIsLoadingGetList(true);
       }
 
-      const response = await axios.get(`${apiConst.taskHistories}`, {
+      const response = await axios.get(API_MAIL_TASK_HISTORIES, {
         state,
         note,
         page,
@@ -186,15 +186,15 @@ const SyncHistory = () => {
                     <span className="label">{t('Common_SelectAccount')}</span>
                     <Select
                       popupClassName="dropdown-select"
-                      loading={loadingUsers}
-                      disabled={loadingUsers}
+                      loading={loadingMailAccounts}
+                      disabled={loadingMailAccounts}
                       onChange={handleSelectAccount}
                       style={{ width: 200, marginLeft: 10 }}
                       defaultValue=""
                     >
                       <Select.Option value="">{t('Common_All')}</Select.Option>
-                      {accountList?.length > 0 &&
-                        accountList.map((item) => (
+                      {mailAccountList?.length > 0 &&
+                        mailAccountList.map((item) => (
                           <Select.Option key={item.id} value={item.id}>
                             {item.name}
                           </Select.Option>

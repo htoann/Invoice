@@ -1,8 +1,8 @@
-import { apiConst } from '@/utils/apiConst';
+import { API_DEPARTMENTS_ALL } from '@/utils/apiConst';
 import { dataService } from '@/utils/dataService';
 import { useEffect, useState } from 'react';
 
-const useDepartments = () => {
+const useGetAllDepartments = () => {
   const [loadingDepartments, setLoadingDepartments] = useState(true);
   const [departments, setDepartments] = useState([]);
 
@@ -10,7 +10,7 @@ const useDepartments = () => {
     const getDepartments = async () => {
       try {
         setLoadingDepartments(true);
-        const response = await dataService.get(`${apiConst.orgsDepartments}`);
+        const response = await dataService.get(API_DEPARTMENTS_ALL);
         setDepartments(response.data.departments);
       } catch (error) {
         console.error(error);
@@ -25,4 +25,4 @@ const useDepartments = () => {
   return { loadingDepartments, setLoadingDepartments, departments, setDepartments };
 };
 
-export default useDepartments;
+export default useGetAllDepartments;

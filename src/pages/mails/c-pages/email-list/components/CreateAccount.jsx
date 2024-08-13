@@ -1,5 +1,5 @@
 import { Modal } from '@/components/modals/antd-modals';
-import { apiConst } from '@/utils/apiConst';
+import { API_MAILS_ACCOUNTS } from '@/utils/apiConst';
 import { dataService } from '@/utils/dataService';
 import { Form, notification } from 'antd';
 import { useState } from 'react';
@@ -19,7 +19,7 @@ function CreateAccount({ state, setState, accounts, setAccounts }) {
   const createNewAccount = async (data) => {
     try {
       setLoading(true);
-      const response = await dataService.post(`${apiConst.mailsAccounts}`, data);
+      const response = await dataService.post(API_MAILS_ACCOUNTS, data);
       return response.data;
     } catch (error) {
       console.error(error);

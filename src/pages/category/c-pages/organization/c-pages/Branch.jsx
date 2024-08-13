@@ -2,7 +2,7 @@ import { Button } from '@/components/buttons/buttons';
 import { Cards } from '@/components/cards/frame/cards-frame';
 import { Modal } from '@/components/modals/antd-modals';
 import { BasicFormWrapper, BorderLessHeading } from '@/container/styled';
-import { apiConst } from '@/utils/apiConst';
+import { API_BRANCH, API_BRANCHES } from '@/utils/apiConst';
 import { dataService } from '@/utils/dataService';
 import { RightOutlined } from '@ant-design/icons';
 import { Col, Empty, Form, Input, Menu, notification, Skeleton } from 'antd';
@@ -16,7 +16,7 @@ const BranchList = ({ list, setList, loadingList, selectedItem, setSelectedItem 
   const { getBranches } = useBranches();
   const [showCreate, setShowCreate] = useState(false);
   const [showEdit, setShowEdit] = useState(false);
-  const [editItem, setEditItem] = useState(null);
+  const [branchEdit, setBranchEdit] = useState(null);
 
   const [loading, setLoading] = useState(false);
 
@@ -26,7 +26,7 @@ const BranchList = ({ list, setList, loadingList, selectedItem, setSelectedItem 
     try {
       setLoading(true);
 
-      await dataService.post(`${apiConst.orgsBranches}`, {
+      await dataService.post(API_BRANCHES, {
         ...values,
       });
 
@@ -52,7 +52,7 @@ const BranchList = ({ list, setList, loadingList, selectedItem, setSelectedItem 
     try {
       setLoading(true);
 
-      const response = await dataService.put(`${apiConst.orgsBranches}${editItem.id}/`, {
+      const response = await dataService.put(API_BRANCH(branchEdit.id), {
         ...values,
       });
       const updatedAccount = response.data;
@@ -81,7 +81,7 @@ const BranchList = ({ list, setList, loadingList, selectedItem, setSelectedItem 
     try {
       setLoading(true);
 
-      await dataService.delete(`${apiConst.orgsBranches}${id}`);
+      await dataService.delete(API_BRANCH(id));
 
       setList(list.filter((item) => item.id !== id));
       setSelectedItem(null);
@@ -105,7 +105,7 @@ const BranchList = ({ list, setList, loadingList, selectedItem, setSelectedItem 
   };
 
   const handleEdit = (item) => {
-    setEditItem(item);
+    setBranchEdit(item);
     setShowEdit(true);
     form.setFieldsValue(item);
   };
@@ -127,7 +127,7 @@ const BranchList = ({ list, setList, loadingList, selectedItem, setSelectedItem 
           name="name"
           label={t('Branch_Name')}
           rules={[{ required: true, message: t('Branch_Name_Required') }]}
-          initialValue={showEdit ? editItem?.name : ''}
+          initialValue={showEdit ? branchEdit?.name : ''}
         >
           <Input />
         </Form.Item>

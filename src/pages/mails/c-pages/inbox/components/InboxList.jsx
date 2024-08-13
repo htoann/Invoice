@@ -1,11 +1,11 @@
-import { apiConst } from '@/utils/apiConst';
+import { API_INBOXES_BY_ACCOUNT_ID } from '@/utils/apiConst';
 import { dataService } from '@/utils/dataService';
 import { formatTime } from '@/utils/index';
 import UilInbox from '@iconscout/react-unicons/icons/uil-inbox';
 import { Empty, Input, Pagination, Select, Skeleton } from 'antd';
 import Paragraph from 'antd/lib/typography/Paragraph';
-import useAccounts from 'hooks/useAccounts';
-import useDepartments from 'hooks/useDepartments';
+import useGetAllDepartments from 'hooks/useGetAllDepartments';
+import useMailAccounts from 'hooks/useMailAccounts';
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
@@ -35,13 +35,13 @@ export const InboxList = React.memo(({ setSelectedInbox, selectedInbox }) => {
     setSelectedAccountId(results[0].id);
   };
 
-  const { loadingDepartments, departments } = useDepartments();
-  const { accountList, loadingUsers } = useAccounts(selectFirstAccount, selectedDepartmentId);
+  const { loadingDepartments, departments } = useGetAllDepartments();
+  const { mailAccountList, loadingMailAccounts } = useMailAccounts(selectFirstAccount, selectedDepartmentId);
 
   const getList = async ({ accountId, search = '', page = 1, page_size = 20 } = {}) => {
     try {
       setLoading(true);
-      const response = await dataService.get(`${apiConst.mailsAccounts}${accountId}${apiConst.inboxes}`, {
+      const response = await dataService.get(API_INBOXES_BY_ACCOUNT_ID(accountId), {
         search,
         page,
         page_size,
@@ -89,8 +89,8 @@ export const InboxList = React.memo(({ setSelectedInbox, selectedInbox }) => {
   };
 
   const accountsSelect =
-    accountList?.length > 0 &&
-    accountList.map((item) => ({
+    mailAccountList?.length > 0 &&
+    mailAccountList.map((item) => ({
       value: item.id,
       label: item.email,
     }));
@@ -125,7 +125,7 @@ export const InboxList = React.memo(({ setSelectedInbox, selectedInbox }) => {
         </>
       </div>
 
-      {!loadingUsers && (
+      {!loadingMailAccounts && (
         <>
           <div style={{ display: 'flex', gap: 2, flexWrap: 'auto', flexDirection: 'column' }}>
             <span className="label mb-8">{t('Common_SelectAccount')}</span>
@@ -137,8 +137,8 @@ export const InboxList = React.memo(({ setSelectedInbox, selectedInbox }) => {
                 setSelectedAccountId(value);
                 handleReset();
               }}
-              loading={loadingUsers}
-              disabled={loadingUsers}
+              loading={loadingMailAccounts}
+              disabled={loadingMailAccounts}
               defaultValue={selectedAccountId}
               options={accountsSelect}
             />
@@ -159,7 +159,7 @@ export const InboxList = React.memo(({ setSelectedInbox, selectedInbox }) => {
         </>
       )}
 
-      {!loadingUsers && !loadingDepartments && inboxList?.length > 0 && (
+      {!loadingMailAccounts && !loadingDepartments && inboxList?.length > 0 && (
         <div style={{ display: 'flex', justifyContent: 'center', marginTop: 20 }}>
           <Pagination
             current={current}
@@ -172,7 +172,7 @@ export const InboxList = React.memo(({ setSelectedInbox, selectedInbox }) => {
         </div>
       )}
 
-      {loading || loadingUsers ? (
+      {loading || loadingMailAccounts ? (
         <>
           <Skeleton active />
           <Skeleton style={{ marginTop: 10 }} active />

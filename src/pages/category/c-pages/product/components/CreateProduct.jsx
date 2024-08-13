@@ -1,5 +1,5 @@
 import { Modal } from '@/components/modals/antd-modals';
-import { apiConst } from '@/utils/apiConst';
+import { API_PRODUCTS } from '@/utils/apiConst';
 import { dataService } from '@/utils/dataService';
 import { Form, notification } from 'antd';
 import { useState } from 'react';
@@ -19,7 +19,7 @@ function CreateProduct({ state, setState, list, setList }) {
   const createNew = async (data) => {
     try {
       setLoading(true);
-      const response = await dataService.post(`${apiConst.products}`, data);
+      const response = await dataService.post(API_PRODUCTS, data);
       return response.data;
     } catch (error) {
       console.error(error);

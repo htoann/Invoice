@@ -1,4 +1,4 @@
-import { apiConst } from '@/utils/apiConst';
+import { API_BRANCHES } from '@/utils/apiConst';
 import { dataService } from '@/utils/dataService';
 import { useEffect, useState } from 'react';
 
@@ -9,7 +9,7 @@ const useBranches = () => {
   const getBranches = async () => {
     try {
       setLoadingBranches(true);
-      const response = await dataService.get(`${apiConst.orgsBranches}`);
+      const response = await dataService.get(API_BRANCHES);
       setBranches(response.data);
     } catch (error) {
       console.error(error);

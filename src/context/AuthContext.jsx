@@ -1,3 +1,4 @@
+import { API_REGISTER } from '@/utils/apiConst';
 import { dataService } from '@/utils/dataService';
 import { notification } from 'antd';
 import Cookies from 'js-cookie';
@@ -18,7 +19,7 @@ export const AuthProvider = ({ children }) => {
   const login = useCallback(async () => {
     setAuthState((prevState) => ({ ...prevState, loading: true }));
     try {
-      // const response = await dataService.post('/users/login/', values);
+      // const response = await dataService.post(API_LOGIN, values);
       // if (response.data.errors) {
       //   setAuthState((prevState) => ({ ...prevState, loading: false, error: response.data.errors }));
       // } else {
@@ -42,7 +43,7 @@ export const AuthProvider = ({ children }) => {
   const register = useCallback(async (values) => {
     setAuthState((prevState) => ({ ...prevState, loading: true }));
     try {
-      const response = await dataService.post('/users/register/', values);
+      const response = await dataService.post(API_REGISTER, values);
       if (response.data.errors) {
         setAuthState((prevState) => ({ ...prevState, loading: false, error: 'Registration failed!' }));
       } else {

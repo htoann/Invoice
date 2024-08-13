@@ -2,7 +2,7 @@ import { Cards } from '@/components/cards/frame/cards-frame';
 import { PageHeader } from '@/components/page-headers/page-headers';
 import { BorderLessHeading, Main } from '@/container/styled';
 import { routes } from '@/routes/const';
-import { apiConst } from '@/utils/apiConst';
+import { API_INVOICES } from '@/utils/apiConst';
 import { dataService } from '@/utils/dataService';
 import { Col, Row } from 'antd';
 import { useEffect, useState } from 'react';
@@ -53,7 +53,7 @@ function InvoiceList() {
         setLoading(true);
       }
 
-      const response = await dataService.get(apiConst.invoices, {
+      const response = await dataService.get(API_INVOICES, {
         page,
         page_size,
         loaihdon,
