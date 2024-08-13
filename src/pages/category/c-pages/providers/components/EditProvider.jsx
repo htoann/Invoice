@@ -1,10 +1,10 @@
+import { ModalCommon } from '@/components/ModalCommon';
 import { Modal } from '@/components/modals/antd-modals';
 import { API_PROVIDERS } from '@/utils/apiConst';
 import { dataService } from '@/utils/dataService';
 import { Form, notification } from 'antd';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import ModalAccount from './ModalProvider';
 
 const EditProvider = ({ state, setState, list, setList }) => {
   const { t } = useTranslation();
@@ -52,7 +52,7 @@ const EditProvider = ({ state, setState, list, setList }) => {
 
   return (
     <Modal title={t('Provider_Update')} open={state.editVisible} onCancel={onCancel}>
-      <ModalAccount
+      <ModalCommon
         form={form}
         handleOk={handleOk}
         state={state}

@@ -1,10 +1,11 @@
+import { ModalCommon } from '@/components/ModalCommon';
 import { Modal } from '@/components/modals/antd-modals';
 import { API_PROVIDERS } from '@/utils/apiConst';
 import { dataService } from '@/utils/dataService';
 import { Form, notification } from 'antd';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import ModalHangHoa from './ModalProvider';
+import { fieldsModalProvider } from '../utils';
 
 const CreateProvider = ({ state, setState, list, setList }) => {
   const [loading, setLoading] = useState(false);
@@ -51,12 +52,13 @@ const CreateProvider = ({ state, setState, list, setList }) => {
     <div>
       <Modal type="primary" title={t('Provider_Create')} open={state.visible} onCancel={onCancel}>
         <div className="project-modal">
-          <ModalHangHoa
+          <ModalCommon
             form={form}
             handleOk={handleOk}
             onCancel={onCancel}
             loading={loading}
             textSubmit={t('Common_Create')}
+            fields={fieldsModalProvider}
           />
         </div>
       </Modal>

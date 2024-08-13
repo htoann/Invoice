@@ -2703,12 +2703,12 @@ const TopToolBox = Styled.div`
 `;
 
 export {
-  Main,
-  BorderLessHeading,
-  TableDefaultStyle,
-  TagInput,
   BasicFormWrapper,
+  BorderLessHeading,
   FileCardWrapper,
+  Main,
+  TableDefaultStyle,
   TableWrapper,
+  TagInput,
   TopToolBox,
 };

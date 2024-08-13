@@ -92,6 +92,7 @@
   "Common_DataSize_GB": "GB",
   "Common_DataSize_TB": "TB",
   "Common_Branch": "Chi nhánh",
+  "Common_Input_Required": "Vui lòng nhập trường này",
 
   "Dashboard_BusinessStatus": "Trạng thái doanh nghiệp",
   "Dashboard_InvoicesChange": "Hóa đơn bị thay đổi bởi người bán - Nhà cung cấp",
