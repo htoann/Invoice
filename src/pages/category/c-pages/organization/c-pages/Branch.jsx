@@ -152,7 +152,7 @@ const BranchList = ({ list, setList, loadingList, selectedItem, setSelectedItem 
       <BorderLessHeading>
         <Cards title={t('Common_Branch')}>
           <Menu
-            style={{ width: '100%', minHeight: 'calc(100vh - 290px)' }}
+            style={{ width: '100%', minHeight: 'calc(100vh - 290px)', borderRight: 'none' }}
             mode="inline"
             selectedKeys={[selectedItem]}
             onClick={({ key }) => setSelectedItem(key)}

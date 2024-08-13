@@ -156,7 +156,7 @@ const ProjectList = ({ list, setList, loadingList, selectedBranchId, selectedDep
       <BorderLessHeading>
         <Cards title={t('Project_Title')} style={{ height: 1000 }}>
           <StyledMenu
-            style={{ width: '100%', minHeight: 'calc(100vh - 290px)' }}
+            style={{ width: '100%', minHeight: 'calc(100vh - 290px)', borderRight: 'none' }}
             mode="inline"
             itemIcon={<RightOutlined />}
           >

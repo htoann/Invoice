@@ -49,7 +49,7 @@ const CreateProvider = ({ state, setState, list, setList }) => {
 
   return (
     <div>
-      <Modal type="primary" title={t('Provider_Create_Title')} open={state.visible} onCancel={onCancel}>
+      <Modal type="primary" title={t('Provider_Create')} open={state.visible} onCancel={onCancel}>
         <div className="project-modal">
           <ModalHangHoa
             form={form}

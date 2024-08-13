@@ -155,7 +155,7 @@ const DepartmentList = ({ list, setList, loadingList, selectedItem, setSelectedI
       <BorderLessHeading>
         <Cards title={t('Common_Department')}>
           <Menu
-            style={{ width: '100%', minHeight: 'calc(100vh - 290px)' }}
+            style={{ width: '100%', minHeight: 'calc(100vh - 290px)', borderRight: 'none' }}
             mode="inline"
             selectedKeys={[selectedItem]}
             onClick={({ key }) => setSelectedItem(key)}

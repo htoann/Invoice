@@ -224,8 +224,8 @@
   "Product_DeleteSuccess": "Hàng hoá được xoá thành công",
   "Product_DeleteError": "Không thể xóa hàng hoá. Vui lòng thử lại sau.",
 
-  "Provider_Create_Title": "Tạo nhà cung cấp",
-  "Provider_UpdateTitle": "Cập nhật nhà cung cấp",
+  "Provider_Create": "Thêm nhà cung cấp",
+  "Provider_Update": "Cập nhật nhà cung cấp",
   "Provider_Code": "Mã nhà cung cấp",
   "Provider_Name": "Tên nhà cung cấp",
   "Provider_Address": "Địa chỉ",

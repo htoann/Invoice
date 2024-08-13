@@ -51,7 +51,7 @@ const EditProvider = ({ state, setState, list, setList }) => {
   };
 
   return (
-    <Modal title={t('Provider_UpdateTitle')} open={state.editVisible} onCancel={onCancel}>
+    <Modal title={t('Provider_Update')} open={state.editVisible} onCancel={onCancel}>
       <ModalAccount
         form={form}
         handleOk={handleOk}
