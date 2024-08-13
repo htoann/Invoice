@@ -61,6 +61,7 @@ const Providers = () => {
         description: t('Common_DeleteSuccess'),
       });
     } catch (error) {
+      console.error(error);
       notification.error({
         message: t('Common_Failure'),
         description: t('Common_DeleteFailure'),
@@ -76,6 +77,7 @@ const Providers = () => {
 
   if (list?.length > 0) {
     list.map((item, index) => {
+      // eslint-disable-next-line no-unused-vars
       const { branch, ...fieldsDirectly } = item;
 
       return tableDataSource.push({

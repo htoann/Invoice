@@ -38,7 +38,7 @@ const BranchList = ({ list, setList, loadingList, selectedItem, setSelectedItem 
         message: t('Common_Branch'),
         description: t('Branch_CreateSuccess'),
       });
-    } catch (error) {
+    } catch {
       notification.error({
         message: t('Common_Branch'),
         description: t('Branch_CreateError'),

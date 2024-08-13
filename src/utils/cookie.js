@@ -5,7 +5,7 @@ const getCookie = (key) => {
 
   try {
     return JSON.parse(data);
-  } catch (err) {
+  } catch {
     return data;
   }
 };

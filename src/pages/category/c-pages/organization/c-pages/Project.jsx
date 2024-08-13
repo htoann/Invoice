@@ -50,6 +50,7 @@ const ProjectList = ({ list, setList, loadingList, selectedBranchId, selectedDep
         description: t('Project_CreateSuccess'),
       });
     } catch (error) {
+      console.error(error);
       notification.error({
         message: t('Project_Title'),
         description: t('Project_CreateError'),
@@ -78,6 +79,7 @@ const ProjectList = ({ list, setList, loadingList, selectedBranchId, selectedDep
         description: t('Project_EditSuccess'),
       });
     } catch (error) {
+      console.error(error);
       notification.error({
         message: t('Project_Title'),
         description: t('Project_EditError'),
@@ -100,6 +102,7 @@ const ProjectList = ({ list, setList, loadingList, selectedBranchId, selectedDep
         description: t('Project_DeleteSuccess'),
       });
     } catch (error) {
+      console.error(error);
       notification.error({
         message: t('Project_Title'),
         description: t('Project_DeleteError'),

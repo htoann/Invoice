@@ -120,6 +120,7 @@ const Products = () => {
         description: t('Product_DeleteSuccess'),
       });
     } catch (error) {
+      console.error(error);
       notification.error({
         message: t('Common_Failure'),
         description: t('Product_DeleteError'),

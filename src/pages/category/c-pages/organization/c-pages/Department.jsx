@@ -47,6 +47,7 @@ const DepartmentList = ({ list, setList, loadingList, selectedItem, setSelectedI
         description: t('Department_CreateSuccess'),
       });
     } catch (error) {
+      console.error(error);
       notification.error({
         message: t('Common_Department'),
         description: t('Department_CreateError'),
@@ -76,6 +77,7 @@ const DepartmentList = ({ list, setList, loadingList, selectedItem, setSelectedI
         description: t('Department_EditSuccess'),
       });
     } catch (error) {
+      console.error(error);
       notification.error({
         message: t('Common_Department'),
         description: t('Department_EditError'),
@@ -99,6 +101,7 @@ const DepartmentList = ({ list, setList, loadingList, selectedItem, setSelectedI
         description: t('Department_DeleteSuccess'),
       });
     } catch (error) {
+      console.error(error);
       notification.error({
         message: t('Common_Error'),
         description: t('Department_DeleteError'),
