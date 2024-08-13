@@ -54,3 +54,7 @@ export const API_BUSINESS_STATUS = '/business-status/';
 //
 
 export const API_INVOICES_CHANGE = '/invoices-change/';
+
+//
+
+export const API_PROVIDERS = '/providers/';

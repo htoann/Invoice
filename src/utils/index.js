@@ -5,6 +5,7 @@ import i18next from 'i18next';
 
 export const API_ENDPOINT = process.env.REACT_APP_API_ENDPOINT;
 export const HDDT_CAPTCHA_ENDPOINT = process.env.REACT_APP_HDDT_CAPTCHA;
+export const REACT_MODE = process.env.REACT_APP_MODE;
 
 const getFileName = (response) => {
   try {

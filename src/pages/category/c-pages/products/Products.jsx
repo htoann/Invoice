@@ -14,7 +14,7 @@ import CreateProduct from './components/CreateProduct';
 import DataTable from './components/DataTable';
 import EditProduct from './components/EditProduct';
 
-const Product = () => {
+const Products = () => {
   const { t } = useTranslation();
   const { EUnit } = useUnit();
 
@@ -260,4 +260,4 @@ const Product = () => {
   );
 };
 
-export default Product;
+export default Products;

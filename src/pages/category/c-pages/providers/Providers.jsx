@@ -1,0 +1,297 @@
+import { Cards } from '@/components/cards/frame/cards-frame';
+import { PageHeader } from '@/components/page-headers/page-headers';
+import { BorderLessHeading, Main } from '@/container/styled';
+import { providers } from '@/mock/providers';
+import { API_PRODUCT, API_PROVIDERS } from '@/utils/apiConst';
+import { dataService } from '@/utils/dataService';
+import UilEdit from '@iconscout/react-unicons/icons/uil-edit';
+import UilTrash from '@iconscout/react-unicons/icons/uil-trash-alt';
+import { Col, Input, Popconfirm, Row, Skeleton, notification } from 'antd';
+import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
+import CreateProduct from './components/CreateProduct';
+import DataTable from './components/DataTable';
+import EditProduct from './components/EditProduct';
+
+const Providers = () => {
+  const { t } = useTranslation();
+
+  const [state, setState] = useState({
+    selectedRowKeys: 0,
+    selectedRows: 0,
+    visible: false,
+    editVisible: false,
+    modalType: 'primary',
+    update: {},
+    pagination: { pageSize: 20, showSizeChanger: true, current: 1, total: 0 },
+  });
+
+  const { pagination } = state;
+  const { current, pageSize } = pagination;
+
+  const [list, setList] = useState([]);
+  const [isLoadingGetList, setIsLoadingGetList] = useState(false);
+  const [searchLoading, setSearchLoading] = useState(false);
+  const [searchParams, setSearchParams] = useState({
+    mahang: '',
+    tenHangBan: '',
+    tenHangMua: '',
+    donViTinh: '',
+    taiKhoanHang: '',
+    taiKhoanGiaVon: '',
+    taiKhoanDoanhThu: '',
+  });
+
+  const getList = async ({
+    mahang = '',
+    tenHangBan = '',
+    tenHangMua = '',
+    donViTinh = '',
+    taiKhoanHang = '',
+    taiKhoanGiaVon = '',
+    taiKhoanDoanhThu = '',
+    page = 1,
+    page_size = 20,
+    searchLoading = true,
+  } = {}) => {
+    try {
+      if (searchLoading) {
+        setSearchLoading(true);
+      } else {
+        setIsLoadingGetList(true);
+      }
+
+      const response = await dataService.get(API_PROVIDERS, {
+        mahang,
+        tenHangBan,
+        tenHangMua,
+        donViTinh,
+        taiKhoanHang,
+        taiKhoanGiaVon,
+        taiKhoanDoanhThu,
+        page,
+        page_size,
+      });
+
+      if (response?.data) {
+        // setList(response?.data?.results);
+        setList(providers);
+        setState((prev) => ({
+          ...prev,
+          pagination: {
+            ...prev.pagination,
+            total: Number(response?.data?.count) || 0,
+          },
+        }));
+      }
+    } catch (error) {
+      console.error(error);
+    } finally {
+      if (searchLoading) {
+        setSearchLoading(false);
+      } else {
+        setIsLoadingGetList(false);
+      }
+    }
+  };
+
+  useEffect(() => {
+    getList({ ...searchParams, page: current, page_size: pageSize });
+  }, [current, pageSize]);
+
+  const showEditModal = (data) => {
+    setState({
+      ...state,
+      editVisible: true,
+      update: data,
+    });
+  };
+
+  const handleDelete = async (id) => {
+    try {
+      await dataService.delete(API_PRODUCT(id));
+      setList(list.filter((account) => account.id !== id));
+
+      notification.success({
+        message: t('Common_Success'),
+        description: t('Product_DeleteSuccess'),
+      });
+    } catch (error) {
+      notification.error({
+        message: t('Common_Failure'),
+        description: t('Product_DeleteError'),
+      });
+    }
+  };
+
+  const stopPropagation = (e) => {
+    e.stopPropagation();
+  };
+
+  const tableDataSource = [];
+
+  if (list?.length > 0) {
+    list.map((item, index) => {
+      const {
+        id,
+        code,
+        name,
+        address,
+        note,
+        tax_code,
+        phone_number,
+        website,
+        id_number,
+        id_issue_day,
+        id_issue_address,
+        term,
+        num_of_days_debt,
+        max_debt_amount,
+        account_payable,
+        employee,
+        employee_name,
+        bank_account,
+        bank_name,
+        bank_account_branch,
+        bank_account_city,
+        country,
+        province,
+        district,
+        ward,
+        contact_person_title,
+        contact_person_name,
+        contact_person_phone_number,
+        contact_person_email,
+        legal_representative,
+        delivery_address,
+        is_individual,
+        is_customer,
+        status,
+        created_at,
+        updated_at,
+        branch,
+      } = item;
+
+      const fieldsDirectlySpan = { ...item, branch };
+
+      return tableDataSource.push({
+        key: item.id,
+        stt: (current - 1) * pageSize + index + 1,
+        ...Object.fromEntries(
+          Object.entries(fieldsDirectlySpan).map(([key, value]) => [key, <span key={key}>{value}</span>]),
+        ),
+        action: (
+          <div className="table-actions">
+            <Link className="edit" to="#" onClick={() => showEditModal(item)}>
+              <UilEdit />
+            </Link>
+            <Popconfirm
+              title={t('Common_AreYouSureDelete')}
+              onConfirm={() => handleDelete(id)}
+              okText={t('Common_Yes')}
+              cancelText={t('Common_No')}
+            >
+              <Link className="invoice-delete" to="#">
+                <UilTrash />
+              </Link>
+            </Popconfirm>
+          </div>
+        ),
+      });
+    });
+  }
+
+  const customHeader = (title, name) => (
+    <>
+      <div>{t(title)}</div>
+      <Input
+        style={{ width: 'auto', height: 35, marginTop: 10 }}
+        onClick={stopPropagation}
+        onFocus={stopPropagation}
+        value={searchParams[name]}
+        onChange={(e) => {
+          e.stopPropagation();
+          setSearchParams({ ...searchParams, [name]: e.target.value.toLowerCase() });
+        }}
+        onKeyDown={(e) => {
+          stopPropagation(e);
+          if (e.key === 'Enter') {
+            setState({
+              ...state,
+              pagination: { ...pagination, current: 1 },
+            });
+            getList({ ...searchParams, shouldLoading: false, page_size: pageSize });
+          }
+        }}
+      />
+    </>
+  );
+
+  const columnData = [
+    { title: 'Common_STT', dataIndex: 'stt', key: 'stt' },
+    { title: 'Product_Code', dataIndex: 'mahang', key: 'mahang' },
+    { title: 'Product_SellingName', dataIndex: 'tenHangBan', key: 'tenHangBan' },
+    { title: 'Product_PurchasingName', dataIndex: 'tenHangMua', key: 'tenHangMua' },
+    { title: 'Product_Unit', dataIndex: 'donViTinh', key: 'donViTinh' },
+    { title: 'Product_AccountGoods', dataIndex: 'taiKhoanHang', key: 'taiKhoanHang' },
+    { title: 'Product_AccountCost', dataIndex: 'taiKhoanGiaVon', key: 'taiKhoanGiaVon' },
+    { title: 'Product_AccountRevenue', dataIndex: 'taiKhoanDoanhThu', key: 'taiKhoanDoanhThu' },
+    { title: 'Common_Action', dataIndex: 'action', key: 'action', fixed: 'right' },
+  ];
+
+  const dataTableColumn = columnData.map((col) => ({
+    title: col.key === 'stt' || col.key === 'action' ? t(col.title) : <>{customHeader(col.title, col.dataIndex)}</>,
+    dataIndex: col.dataIndex,
+    key: col.key,
+    sorter:
+      col.key !== 'stt' && col.key !== 'action'
+        ? (a, b) => a[col.dataIndex].props.children.localeCompare(b[col.dataIndex].props.children)
+        : false,
+    fixed: col?.fixed,
+    className: col.key === 'stt' || col.key === 'action' ? '' : 'searchInput',
+  }));
+
+  const rowSelection = {
+    onChange: (selectedRowKeys, selectedRows) => {
+      setState({ ...state, selectedRowKeys, selectedRows });
+    },
+    getCheckboxProps: (record) => ({
+      id: record.id,
+    }),
+  };
+
+  return (
+    <>
+      <PageHeader className="invoice-page-header-main" title={t('Common_ListProducts')} />
+      <Main>
+        <Row gutter={15}>
+          <Col xs={24}>
+            <BorderLessHeading>
+              <Cards headless>
+                {isLoadingGetList ? (
+                  <Skeleton active style={{ marginTop: 30 }} />
+                ) : (
+                  <DataTable
+                    tableData={tableDataSource}
+                    columns={dataTableColumn}
+                    rowSelection={rowSelection}
+                    state={state}
+                    setState={setState}
+                    loading={searchLoading}
+                  />
+                )}
+              </Cards>
+            </BorderLessHeading>
+          </Col>
+        </Row>
+      </Main>
+
+      {state.visible && <CreateProduct state={state} setState={setState} list={list} setList={setList} />}
+
+      {state.editVisible && <EditProduct state={state} setState={setState} list={list} setList={setList} />}
+    </>
+  );
+};
+
+export default Providers;

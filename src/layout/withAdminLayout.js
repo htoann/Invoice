@@ -5,6 +5,7 @@ import { useAppState } from 'context/AppContext';
 import { useCallback, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
+import { REACT_MODE } from '../utils';
 import { LeftMenu } from './LeftMenu';
 import { LayoutContainer, SmallScreenAuthInfo, TopMenuSearch } from './Style';
 import { TopMenu } from './TopMenu';
@@ -103,14 +104,16 @@ const WithAdminLayout = (WrappedComponent) => {
                     className={topMenu && window.innerWidth > 991 ? 'invoice-logo top-menu' : 'invoice-logo'}
                     to="/"
                   >
-                    <img
-                      src={
-                        layoutMode === 'lightMode'
-                          ? require(`@/static/img/logo_dark.png`)
-                          : require(`@/static/img/logo_dark.png`).default
-                      }
-                      alt=""
-                    />
+                    {REACT_MODE !== 'ave' && (
+                      <img
+                        src={
+                          layoutMode === 'lightMode'
+                            ? require(`@/static/img/logo_dark.png`)
+                            : require(`@/static/img/logo_dark.png`).default
+                        }
+                        alt=""
+                      />
+                    )}
                   </Link>
                   {!topMenu || window.innerWidth <= 991 ? (
                     <Button type="link" onClick={toggleCollapsed}>
