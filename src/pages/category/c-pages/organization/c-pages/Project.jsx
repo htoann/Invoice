@@ -26,6 +26,7 @@ const ProjectList = ({ list, setList, loadingList, selectedBranchId, selectedDep
 
   const handleCreate = () => {
     setShowCreate(true);
+    setShowEdit(false);
   };
 
   const handleEdit = (item) => {

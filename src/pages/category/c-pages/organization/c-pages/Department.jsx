@@ -25,6 +25,7 @@ const DepartmentList = ({ list, setList, loadingList, selectedItem, setSelectedI
 
   const handleCreate = () => {
     setShowCreate(true);
+    setShowEdit(false);
   };
 
   const handleEdit = (item) => {

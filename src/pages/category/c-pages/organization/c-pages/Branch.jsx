@@ -24,6 +24,7 @@ const BranchList = ({ list, setList, loadingList, selectedItem, setSelectedItem 
 
   const handleCreateSubmit = async (values) => {
     try {
+      setShowEdit(false);
       setLoading(true);
 
       await dataService.post(API_BRANCHES, {
@@ -104,6 +105,7 @@ const BranchList = ({ list, setList, loadingList, selectedItem, setSelectedItem 
 
   const handleCreate = () => {
     setShowCreate(true);
+    setShowEdit(false);
   };
 
   const handleEdit = (item) => {
