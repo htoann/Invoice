@@ -1,7 +1,7 @@
 import { products } from './product';
 
 export const productMockApi = (mock) => {
-  mock.onGet('/products').reply((config) => {
+  mock.onGet('/products/').reply((config) => {
     const {
       mahang = '',
       tenHangBan = '',
@@ -52,7 +52,7 @@ export const productMockApi = (mock) => {
   });
 
   // Add a new product
-  mock.onPost('/products').reply((config) => {
+  mock.onPost('/products/').reply((config) => {
     const newProduct = JSON.parse(config.data);
     newProduct.id = products.length + 1;
     products.push(newProduct);
