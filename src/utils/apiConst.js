@@ -25,7 +25,7 @@ export const API_PRODUCTS = () => '/products/';
 
 export const API_PRODUCT = (productId) => `${API_PRODUCTS}${productId}`;
 
-//
+// Organizations
 
 export const API_BRANCHES = '/orgs/branches/';
 
@@ -49,12 +49,12 @@ export const API_PROJECT = (branchId, departmentId, projectId) =>
 
 //
 
+export const API_PROVIDERS = '/orgs/providers/';
+
+//
+
 export const API_BUSINESS_STATUS = '/business-status/';
 
 //
 
 export const API_INVOICES_CHANGE = '/invoices-change/';
-
-//
-
-export const API_PROVIDERS = '/providers/';

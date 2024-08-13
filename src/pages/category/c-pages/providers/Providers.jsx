@@ -2,7 +2,7 @@ import { Cards } from '@/components/cards/frame/cards-frame';
 import { PageHeader } from '@/components/page-headers/page-headers';
 import { BorderLessHeading, Main } from '@/container/styled';
 import { providers } from '@/mock/providers';
-import { API_PRODUCT, API_PROVIDERS } from '@/utils/apiConst';
+import { API_PRODUCT } from '@/utils/apiConst';
 import { dataService } from '@/utils/dataService';
 import UilEdit from '@iconscout/react-unicons/icons/uil-edit';
 import UilTrash from '@iconscout/react-unicons/icons/uil-trash-alt';
@@ -10,12 +10,27 @@ import { Col, Input, Popconfirm, Row, Skeleton, notification } from 'antd';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
-import CreateProduct from './components/CreateProduct';
+import CreateProvider from './components/CreateProvider';
 import DataTable from './components/DataTable';
-import EditProduct from './components/EditProduct';
+import EditProduct from './components/EditProvider';
+import useColumnProviders from './hooks/useColumnProviders';
+import useGetProviders from './hooks/useGetProviders';
 
 const Providers = () => {
   const { t } = useTranslation();
+  const columnData = useColumnProviders();
+
+  const updatePagination = (response) => {
+    setState((prev) => ({
+      ...prev,
+      pagination: {
+        ...prev.pagination,
+        total: Number(response?.data?.count) || 0,
+      },
+    }));
+  };
+
+  const { list, searchLoading, isLoadingGetList, getList, setList } = useGetProviders(updatePagination);
 
   const [state, setState] = useState({
     selectedRowKeys: 0,
@@ -30,83 +45,12 @@ const Providers = () => {
   const { pagination } = state;
   const { current, pageSize } = pagination;
 
-  const [list, setList] = useState([]);
-  const [isLoadingGetList, setIsLoadingGetList] = useState(false);
-  const [searchLoading, setSearchLoading] = useState(false);
-  const [searchParams, setSearchParams] = useState({
-    mahang: '',
-    tenHangBan: '',
-    tenHangMua: '',
-    donViTinh: '',
-    taiKhoanHang: '',
-    taiKhoanGiaVon: '',
-    taiKhoanDoanhThu: '',
-  });
-
-  const getList = async ({
-    mahang = '',
-    tenHangBan = '',
-    tenHangMua = '',
-    donViTinh = '',
-    taiKhoanHang = '',
-    taiKhoanGiaVon = '',
-    taiKhoanDoanhThu = '',
-    page = 1,
-    page_size = 20,
-    searchLoading = true,
-  } = {}) => {
-    try {
-      if (searchLoading) {
-        setSearchLoading(true);
-      } else {
-        setIsLoadingGetList(true);
-      }
-
-      const response = await dataService.get(API_PROVIDERS, {
-        mahang,
-        tenHangBan,
-        tenHangMua,
-        donViTinh,
-        taiKhoanHang,
-        taiKhoanGiaVon,
-        taiKhoanDoanhThu,
-        page,
-        page_size,
-      });
-
-      if (response?.data) {
-        // setList(response?.data?.results);
-        setList(providers);
-        setState((prev) => ({
-          ...prev,
-          pagination: {
-            ...prev.pagination,
-            total: Number(response?.data?.count) || 0,
-          },
-        }));
-      }
-    } catch (error) {
-      console.error(error);
-    } finally {
-      if (searchLoading) {
-        setSearchLoading(false);
-      } else {
-        setIsLoadingGetList(false);
-      }
-    }
-  };
+  const [searchParams, setSearchParams] = useState({});
 
   useEffect(() => {
-    getList({ ...searchParams, page: current, page_size: pageSize });
+    // getList({ ...searchParams, page: current, page_size: pageSize });
+    setList(providers.results); // Fake for now
   }, [current, pageSize]);
-
-  const showEditModal = (data) => {
-    setState({
-      ...state,
-      editVisible: true,
-      update: data,
-    });
-  };
 
   const handleDelete = async (id) => {
     try {
@@ -115,12 +59,12 @@ const Providers = () => {
 
       notification.success({
         message: t('Common_Success'),
-        description: t('Product_DeleteSuccess'),
+        description: t('Common_DeleteSuccess'),
       });
     } catch (error) {
       notification.error({
         message: t('Common_Failure'),
-        description: t('Product_DeleteError'),
+        description: t('Common_DeleteFailure'),
       });
     }
   };
@@ -133,53 +77,13 @@ const Providers = () => {
 
   if (list?.length > 0) {
     list.map((item, index) => {
-      const {
-        id,
-        code,
-        name,
-        address,
-        note,
-        tax_code,
-        phone_number,
-        website,
-        id_number,
-        id_issue_day,
-        id_issue_address,
-        term,
-        num_of_days_debt,
-        max_debt_amount,
-        account_payable,
-        employee,
-        employee_name,
-        bank_account,
-        bank_name,
-        bank_account_branch,
-        bank_account_city,
-        country,
-        province,
-        district,
-        ward,
-        contact_person_title,
-        contact_person_name,
-        contact_person_phone_number,
-        contact_person_email,
-        legal_representative,
-        delivery_address,
-        is_individual,
-        is_customer,
-        status,
-        created_at,
-        updated_at,
-        branch,
-      } = item;
-
-      const fieldsDirectlySpan = { ...item, branch };
+      const { branch, ...fieldsDirectly } = item;
 
       return tableDataSource.push({
         key: item.id,
         stt: (current - 1) * pageSize + index + 1,
         ...Object.fromEntries(
-          Object.entries(fieldsDirectlySpan).map(([key, value]) => [key, <span key={key}>{value}</span>]),
+          Object.entries(fieldsDirectly).map(([key, value]) => [key, <span key={key}>{value}</span>]),
         ),
         action: (
           <div className="table-actions">
@@ -188,7 +92,7 @@ const Providers = () => {
             </Link>
             <Popconfirm
               title={t('Common_AreYouSureDelete')}
-              onConfirm={() => handleDelete(id)}
+              onConfirm={() => handleDelete(item.id)}
               okText={t('Common_Yes')}
               cancelText={t('Common_No')}
             >
@@ -228,18 +132,6 @@ const Providers = () => {
     </>
   );
 
-  const columnData = [
-    { title: 'Common_STT', dataIndex: 'stt', key: 'stt' },
-    { title: 'Product_Code', dataIndex: 'mahang', key: 'mahang' },
-    { title: 'Product_SellingName', dataIndex: 'tenHangBan', key: 'tenHangBan' },
-    { title: 'Product_PurchasingName', dataIndex: 'tenHangMua', key: 'tenHangMua' },
-    { title: 'Product_Unit', dataIndex: 'donViTinh', key: 'donViTinh' },
-    { title: 'Product_AccountGoods', dataIndex: 'taiKhoanHang', key: 'taiKhoanHang' },
-    { title: 'Product_AccountCost', dataIndex: 'taiKhoanGiaVon', key: 'taiKhoanGiaVon' },
-    { title: 'Product_AccountRevenue', dataIndex: 'taiKhoanDoanhThu', key: 'taiKhoanDoanhThu' },
-    { title: 'Common_Action', dataIndex: 'action', key: 'action', fixed: 'right' },
-  ];
-
   const dataTableColumn = columnData.map((col) => ({
     title: col.key === 'stt' || col.key === 'action' ? t(col.title) : <>{customHeader(col.title, col.dataIndex)}</>,
     dataIndex: col.dataIndex,
@@ -261,9 +153,17 @@ const Providers = () => {
     }),
   };
 
+  const showEditModal = (data) => {
+    setState({
+      ...state,
+      editVisible: true,
+      update: data,
+    });
+  };
+
   return (
     <>
-      <PageHeader className="invoice-page-header-main" title={t('Common_ListProducts')} />
+      <PageHeader className="invoice-page-header-main" title={t('Common_ListProviders')} />
       <Main>
         <Row gutter={15}>
           <Col xs={24}>
@@ -287,7 +187,7 @@ const Providers = () => {
         </Row>
       </Main>
 
-      {state.visible && <CreateProduct state={state} setState={setState} list={list} setList={setList} />}
+      {state.visible && <CreateProvider state={state} setState={setState} list={list} setList={setList} />}
 
       {state.editVisible && <EditProduct state={state} setState={setState} list={list} setList={setList} />}
     </>

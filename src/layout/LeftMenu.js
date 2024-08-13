@@ -98,7 +98,7 @@ export const LeftMenu = ({ toggleCollapsed }) => {
       !topMenu && <UilTable />,
       createMenuItems([
         { path: routes.categoryOrg, textKey: t('Common_OrgStructure'), key: t('Common_OrgStructure') },
-        { path: routes.emailAccount, textKey: t('Common_Supplier'), key: 'Nhà cung cấp' },
+        { path: routes.categoryProvider, textKey: t('Common_Supplier'), key: 'Nhà cung cấp' },
         { path: routes.emailAccount, textKey: t('Common_Customer'), key: 'Khách hàng' },
         { path: routes.categoryProduct, textKey: t('Common_Goods'), key: 'Hàng hoá' },
         { path: routes.emailAccount, textKey: t('Common_ExpenseItem'), key: 'Khoản mục chi phí' },

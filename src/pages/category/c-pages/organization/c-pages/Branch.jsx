@@ -35,12 +35,12 @@ const BranchList = ({ list, setList, loadingList, selectedItem, setSelectedItem 
       form.resetFields();
 
       notification.success({
-        message: t('Branch_Title'),
+        message: t('Common_Branch'),
         description: t('Branch_CreateSuccess'),
       });
     } catch (error) {
       notification.error({
-        message: t('Branch_Title'),
+        message: t('Common_Branch'),
         description: t('Branch_CreateError'),
       });
     } finally {
@@ -64,12 +64,12 @@ const BranchList = ({ list, setList, loadingList, selectedItem, setSelectedItem 
       setShowEdit(false);
 
       notification.success({
-        message: t('Branch_Title'),
+        message: t('Common_Branch'),
         description: t('Branch_EditSuccess'),
       });
     } catch (error) {
       notification.error({
-        message: t('Branch_Title'),
+        message: t('Common_Branch'),
         description: t('Branch_EditError'),
       });
     } finally {
@@ -87,12 +87,12 @@ const BranchList = ({ list, setList, loadingList, selectedItem, setSelectedItem 
       setSelectedItem(null);
 
       notification.success({
-        message: t('Branch_Title'),
+        message: t('Common_Branch'),
         description: t('Branch_DeleteSuccess'),
       });
     } catch (error) {
       notification.error({
-        message: t('Branch_Title'),
+        message: t('Common_Branch'),
         description: t('Branch_DeleteError'),
       });
     } finally {
@@ -146,7 +146,7 @@ const BranchList = ({ list, setList, loadingList, selectedItem, setSelectedItem 
   return (
     <Col xs={24} sm={12} md={8} lg={8}>
       <BorderLessHeading>
-        <Cards title={t('Branch_Title')}>
+        <Cards title={t('Common_Branch')}>
           <Menu
             style={{ width: '100%', minHeight: 'calc(100vh - 290px)' }}
             mode="inline"

@@ -6,7 +6,7 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import ModalHangHoa from './Modal';
 
-function CreateProduct({ state, setState, list, setList }) {
+const CreateProduct = ({ state, setState, list, setList }) => {
   const [loading, setLoading] = useState(false);
   const [form] = Form.useForm();
   const { t } = useTranslation();
@@ -62,6 +62,6 @@ function CreateProduct({ state, setState, list, setList }) {
       </Modal>
     </div>
   );
-}
+};
 
 export default CreateProduct;

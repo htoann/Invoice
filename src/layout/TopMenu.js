@@ -88,16 +88,16 @@ export const TopMenu = () => {
                 <Link to={routes.categoryOrg}>{t('Common_OrgStructure')}</Link>
               </li>
               <li>
-                <Link to="#">Nhà cung cấp</Link>
+                <Link to={routes.categoryProvider}>{t('Common_Supplier')}</Link>
               </li>
               <li>
-                <Link to="#">Khách hàng</Link>
+                <Link to="#">{t('Common_Customer')}</Link>
               </li>
               <li>
-                <Link to={routes.categoryProduct}>Hàng hoá</Link>
+                <Link to={routes.categoryProduct}>{t('Common_Goods')}</Link>
               </li>
               <li>
-                <Link to="#">Khoản mục chi phí</Link>
+                <Link to="#">{t('Common_ExpenseItem')}</Link>
               </li>
             </ul>
           </li>

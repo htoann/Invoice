@@ -6,7 +6,7 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import ModalAccount from './Modal';
 
-const EditProduct = ({ state, setState, list, setList }) => {
+const EditProvider = ({ state, setState, list, setList }) => {
   const { t } = useTranslation();
   const [form] = Form.useForm();
   const [loading, setLoading] = useState(false);
@@ -70,4 +70,4 @@ const EditProduct = ({ state, setState, list, setList }) => {
   );
 };
 
-export default EditProduct;
+export default EditProvider;
