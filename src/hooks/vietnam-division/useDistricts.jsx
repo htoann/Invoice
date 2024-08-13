@@ -2,7 +2,7 @@ import { API_DISTRICTS } from '@/utils/apiConst';
 import { dataService } from '@/utils/dataService';
 import { useEffect, useState } from 'react';
 
-const useDistricts = (selectedProvince) => {
+const useDistricts = (provinceId) => {
   const [districts, setDistricts] = useState([]);
   const [loadingDistricts, setLoadingDistricts] = useState(false);
 
@@ -10,7 +10,7 @@ const useDistricts = (selectedProvince) => {
     try {
       setLoadingDistricts(true);
 
-      const response = await dataService.get(API_DISTRICTS, { province_id: selectedProvince });
+      const response = await dataService.get(API_DISTRICTS, { province_id: provinceId });
       const districts = response?.data;
       setDistricts(districts);
     } catch (error) {
