@@ -98,7 +98,7 @@ const ProjectList = ({ list, setList, loadingList, selectedBranchId, selectedDep
     try {
       setLoading(true);
 
-      await dataService.delete(API_PROJECT(id));
+      await dataService.delete(API_PROJECT(selectedBranchId, selectedDepartmentId, id));
 
       setList(list.filter((item) => item.id !== id));
 
