@@ -1,14 +1,14 @@
 import { Button } from '@/components/buttons/buttons';
 import { BasicFormWrapper } from '@/container/styled';
-import { AutoComplete, Form, Input, Select } from 'antd';
+import { AutoComplete, Form, Input, InputNumber, Select } from 'antd';
 import { useTranslation } from 'react-i18next';
 
 const fields = [
-  { key: 'code', label: 'Provider_Code', type: 'input' },
-  { key: 'name', label: 'Provider_Name', type: 'input' },
+  { key: 'code', label: 'Provider_Code', type: 'input', required: true },
+  { key: 'name', label: 'Provider_Name', type: 'input', required: true },
+  { key: 'tax_code', label: 'Provider_TaxCode', type: 'input', required: true },
   { key: 'address', label: 'Provider_Address', type: 'input' },
-  { key: 'tax_code', label: 'Provider_TaxCode', type: 'input' },
-  { key: 'phone_number', label: 'Provider_PhoneNumber', type: 'input' },
+  { key: 'phone_number', label: 'Provider_PhoneNumber', type: 'number' },
   { key: 'website', label: 'Provider_Website', type: 'input' },
   { key: 'id_number', label: 'Provider_IDNumber', type: 'input' },
   { key: 'id_issue_day', label: 'Provider_IDIssueDay', type: 'date' },
@@ -60,6 +60,8 @@ const ModalProvider = ({ form, handleOk, state, onCancel, loading, textSubmit })
         return <Input type="checkbox" />;
       case 'autocomplete':
         return <AutoComplete />;
+      case 'number':
+        return <InputNumber stringMode keyboard={false} />;
       case 'input':
       default:
         return <Input />;
@@ -69,13 +71,14 @@ const ModalProvider = ({ form, handleOk, state, onCancel, loading, textSubmit })
   return (
     <BasicFormWrapper>
       <Form form={form} name="contactEdit" onFinish={handleOk} autoComplete="off">
-        {fields.map(({ key, label, type, options }) => (
+        {fields.map(({ key, label, type, options, required }) => (
           <Form.Item
             key={key}
             initialValue={state?.update[key]}
             label={t(label)}
             name={key}
             valuePropName={type === 'checkbox' ? 'checked' : 'value'}
+            rules={required ? [{ required: true, message: t('This_field_is_required') }] : []}
           >
             {renderField(type, key, options)}
           </Form.Item>
