@@ -973,7 +973,7 @@ const TopMenuStyle = Styled.div`
                         opacity: 1;
                         visibility: visible;
                         @media only screen and (max-width: 1700px){
-                            top: 45px;
+                            top: 35px;
                         }
                     }
                 }
@@ -1244,12 +1244,12 @@ const FooterStyle = Styled(Footer)`
 `;
 
 export {
-  NavTitle,
   FooterStyle,
   LayoutContainer,
+  ModeSwitch,
+  NavTitle,
   SmallScreenAuthInfo,
   SmallScreenSearch,
-  ModeSwitch,
-  TopMenuStyle,
   TopMenuSearch,
+  TopMenuStyle,
 };

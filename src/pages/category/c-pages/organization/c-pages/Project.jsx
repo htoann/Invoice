@@ -14,7 +14,8 @@ import useProjects from '../hook/useProjects';
 
 const ProjectList = ({ list, setList, loadingList, selectedBranchId, selectedDepartmentId }) => {
   const { t } = useTranslation();
-  const { getProjects } = useProjects();
+  const { getProjects } = useProjects(selectedBranchId, selectedDepartmentId);
+
   const [showCreate, setShowCreate] = useState(false);
   const [showEdit, setShowEdit] = useState(false);
   const [projectEdit, setProjectEdit] = useState(null);
@@ -39,6 +40,8 @@ const ProjectList = ({ list, setList, loadingList, selectedBranchId, selectedDep
 
       await dataService.post(API_PROJECTS_BY_BRANCH_AND_DEPARTMENT(selectedBranchId, selectedDepartmentId), {
         ...values,
+        branch: selectedBranchId,
+        department: selectedDepartmentId,
       });
 
       getProjects();
@@ -66,6 +69,8 @@ const ProjectList = ({ list, setList, loadingList, selectedBranchId, selectedDep
 
       const response = await dataService.put(API_PROJECT(selectedBranchId, selectedDepartmentId, projectEdit.id), {
         ...values,
+        branch: selectedBranchId,
+        department: selectedDepartmentId,
       });
       const updatedProject = response.data;
       const updatedProjects = list.map((proj) => (proj.id === updatedProject.id ? updatedProject : proj));

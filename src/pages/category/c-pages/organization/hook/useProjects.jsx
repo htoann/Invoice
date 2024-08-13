@@ -3,7 +3,7 @@ import { dataService } from '@/utils/dataService';
 import { useAppState } from 'context/AppContext';
 import { useEffect } from 'react';
 
-const useProjects = (selectedDepartmentId, selectedBranchId) => {
+const useProjects = (selectedBranchId, selectedDepartmentId) => {
   const { projects, setProjects, loadingProjects, setLoadingProjects } = useAppState();
 
   const getProjects = async () => {

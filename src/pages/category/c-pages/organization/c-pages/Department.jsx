@@ -9,9 +9,12 @@ import { Col, Empty, Form, Input, Menu, notification, Skeleton } from 'antd';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import MenuItem from '../components/MenuItem';
+import useDepartments from '../hook/useDepartments';
 
 const DepartmentList = ({ list, setList, loadingList, selectedItem, setSelectedItem, selectedBranchId }) => {
   const { t } = useTranslation();
+  const { getDepartments } = useDepartments(selectedBranchId);
+
   const [showCreate, setShowCreate] = useState(false);
   const [showEdit, setShowEdit] = useState(false);
   const [departmentEdit, setDepartmentEdit] = useState(null);
@@ -34,11 +37,12 @@ const DepartmentList = ({ list, setList, loadingList, selectedItem, setSelectedI
     try {
       setLoading(true);
 
-      const response = await dataService.post(API_DEPARTMENTS_BY_BRANCH(selectedBranchId), {
+      await dataService.post(API_DEPARTMENTS_BY_BRANCH(selectedBranchId), {
         ...values,
+        branch: selectedBranchId,
       });
 
-      setList([response.data, ...list]);
+      getDepartments();
       setShowCreate(false);
       form.resetFields();
 
@@ -63,6 +67,7 @@ const DepartmentList = ({ list, setList, loadingList, selectedItem, setSelectedI
 
       const response = await dataService.put(API_DEPARTMENT(selectedBranchId, departmentEdit.id), {
         ...values,
+        branch: selectedBranchId,
       });
 
       const updatedAccount = response.data;

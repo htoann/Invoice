@@ -11,7 +11,7 @@ const useGetAllDepartments = () => {
       try {
         setLoadingDepartments(true);
         const response = await dataService.get(API_DEPARTMENTS_ALL);
-        setDepartments(response.data.departments);
+        setDepartments(response.data);
       } catch (error) {
         console.error(error);
       } finally {

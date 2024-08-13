@@ -19,7 +19,7 @@ export const Organization = () => {
   const { selectedDepartmentId, departments, setDepartments, loadingDepartments, setSelectedDepartmentId } =
     useDepartments(selectedBranchId);
 
-  const { projects, setProjects, loadingProjects } = useProjects(selectedDepartmentId, selectedBranchId);
+  const { projects, setProjects, loadingProjects } = useProjects(selectedBranchId, selectedDepartmentId);
 
   return (
     <>

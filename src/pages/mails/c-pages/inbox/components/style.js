@@ -1,5 +1,5 @@
-import Styled from 'styled-components';
 import { Table } from 'antd';
+import Styled from 'styled-components';
 
 const Style = Styled(Table)`
   margin-bottom: 30px;  
@@ -1192,7 +1192,7 @@ const EmailWrapper = Styled.div`
   .mail-sidebar-bottom{
     padding: 25px 15px 0 15px;
     height: calc(100vh - 200px);
-    overflow: auto;
+    overflow: scroll;
     display: flex;
     flex-direction: column;
   }
@@ -1220,15 +1220,15 @@ const MailSideBar = Styled.div`
 `;
 
 export {
-  Style,
-  MailBox,
-  EmailNav,
-  MessageAction,
-  MailSideBar,
   EmailAuthor,
   EmailHeader,
-  MailDetailsWrapper,
-  MessageDetails,
-  MailRightAction,
+  EmailNav,
   EmailWrapper,
+  MailBox,
+  MailDetailsWrapper,
+  MailRightAction,
+  MailSideBar,
+  MessageAction,
+  MessageDetails,
+  Style,
 };

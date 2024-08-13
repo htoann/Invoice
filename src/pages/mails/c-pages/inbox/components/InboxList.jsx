@@ -97,10 +97,12 @@ export const InboxList = React.memo(({ setSelectedInbox, selectedInbox }) => {
 
   const departmentsSelect = [
     { label: t('Common_All'), value: '' },
-    ...departments.map((item) => ({
-      value: item.id,
-      label: item.name,
-    })),
+    ...(departments.length > 0
+      ? departments.map((item) => ({
+          value: item.id,
+          label: item.name,
+        }))
+      : []),
   ];
 
   return (
@@ -168,6 +170,7 @@ export const InboxList = React.memo(({ setSelectedInbox, selectedInbox }) => {
             total={total}
             showSizeChanger
             onShowSizeChange={(current, size) => setPagination((prev) => ({ ...prev, pageSize: size }))}
+            showLessItems
           />
         </div>
       )}
