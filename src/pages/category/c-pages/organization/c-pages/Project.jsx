@@ -201,11 +201,11 @@ const ProjectList = ({ list, setList, loadingList, selectedBranchId, selectedDep
         </Cards>
       </BorderLessHeading>
 
-      <Modal title={t('Project_Create')} open={showCreate} onCancel={cancelCreate} footer={null}>
+      <Modal title={t('Project_Create')} open={showCreate} onCancel={cancelCreate}>
         {customModal(t('Common_Create'), handleCreateSubmit, cancelCreate, loading)}
       </Modal>
 
-      <Modal title={t('Project_Edit')} open={showEdit} onCancel={cancelEdit} footer={null}>
+      <Modal title={t('Project_Edit')} open={showEdit} onCancel={cancelEdit}>
         {customModal(t('Common_Save'), handleEditSubmit, cancelEdit, loading)}
       </Modal>
     </Col>

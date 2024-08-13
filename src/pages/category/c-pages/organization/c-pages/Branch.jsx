@@ -198,11 +198,11 @@ const BranchList = ({ list, setList, loadingList, selectedItem, setSelectedItem 
         </Cards>
       </BorderLessHeading>
 
-      <Modal title={t('Branch_Create')} open={showCreate} onCancel={cancelCreate} footer={null}>
+      <Modal title={t('Branch_Create')} open={showCreate} onCancel={cancelCreate}>
         {customModal(t('Common_Create'), handleCreateSubmit, cancelCreate, loading)}
       </Modal>
 
-      <Modal title={t('Branch_Edit_Title')} open={showEdit} onCancel={cancelEdit} footer={null}>
+      <Modal title={t('Branch_Edit_Title')} open={showEdit} onCancel={cancelEdit}>
         {customModal(t('Common_Save'), handleEditSubmit, cancelEdit, loading)}
       </Modal>
     </Col>

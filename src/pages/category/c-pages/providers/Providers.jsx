@@ -4,12 +4,14 @@ import { BorderLessHeading, Main } from '@/container/styled';
 import { providers } from '@/mock/providers';
 import { API_PRODUCT } from '@/utils/apiConst';
 import { dataService } from '@/utils/dataService';
+import { formatTime } from '@/utils/index';
 import UilEdit from '@iconscout/react-unicons/icons/uil-edit';
 import UilTrash from '@iconscout/react-unicons/icons/uil-trash-alt';
 import { Col, Input, Popconfirm, Row, Skeleton, notification } from 'antd';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
+import useBranches from '../organization/hook/useBranches';
 import CreateProvider from './components/CreateProvider';
 import DataTable from './components/DataTable';
 import EditProduct from './components/EditProvider';
@@ -18,6 +20,7 @@ import { columnDataProvider } from './utils';
 
 const Providers = () => {
   const { t } = useTranslation();
+  const { branches } = useBranches();
 
   const updatePagination = (response) => {
     setState((prev) => ({
@@ -36,7 +39,6 @@ const Providers = () => {
     selectedRows: 0,
     visible: false,
     editVisible: false,
-    modalType: 'primary',
     update: {},
     pagination: { pageSize: 20, showSizeChanger: true, current: 1, total: 0 },
   });
@@ -73,19 +75,39 @@ const Providers = () => {
     e.stopPropagation();
   };
 
-  const tableDataSource = [];
+  const branchLookup = new Map(branches.map((branch) => [branch.id, branch.name]));
 
-  if (list?.length > 0) {
-    list.map((item, index) => {
-      // eslint-disable-next-line no-unused-vars
-      const { branch, ...fieldsDirectly } = item;
+  const tableDataSource =
+    list?.map((item, index) => {
+      const stt = (current - 1) * pageSize + index + 1;
 
-      return tableDataSource.push({
+      const formattedFields = Object.fromEntries(
+        Object.entries(item).map(([key, value]) => {
+          let formattedValue;
+
+          switch (key) {
+            case 'created_at':
+            case 'updated_at':
+              formattedValue = formatTime(value, 'DD/MM/YYYY');
+              break;
+
+            case 'branch':
+              formattedValue = branchLookup.get(value) || value;
+              break;
+
+            default:
+              formattedValue = value;
+              break;
+          }
+
+          return [key, <span key={key}>{formattedValue}</span>];
+        }),
+      );
+
+      return {
         key: item.id,
-        stt: (current - 1) * pageSize + index + 1,
-        ...Object.fromEntries(
-          Object.entries(fieldsDirectly).map(([key, value]) => [key, <span key={key}>{value}</span>]),
-        ),
+        stt,
+        ...formattedFields,
         action: (
           <div className="table-actions">
             <Link className="edit" to="#" onClick={() => showEditModal(item)}>
@@ -103,9 +125,8 @@ const Providers = () => {
             </Popconfirm>
           </div>
         ),
-      });
-    });
-  }
+      };
+    }) || [];
 
   const customHeader = (title, name) => (
     <>

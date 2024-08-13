@@ -24,7 +24,6 @@ const Products = () => {
     selectedRows: 0,
     visible: false,
     editVisible: false,
-    modalType: 'primary',
     url: null,
     update: {},
     pagination: { pageSize: 20, showSizeChanger: true, current: 1, total: 0 },

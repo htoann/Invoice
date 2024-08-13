@@ -51,13 +51,7 @@ const EditProduct = ({ state, setState, list, setList }) => {
   };
 
   return (
-    <Modal
-      type={state.modalType}
-      title={t('Product_UpdateTitle')}
-      open={state.editVisible}
-      footer={null}
-      onCancel={onCancel}
-    >
+    <Modal title={t('Product_UpdateTitle')} open={state.editVisible} onCancel={onCancel}>
       <ModalAccount
         form={form}
         handleOk={handleOk}

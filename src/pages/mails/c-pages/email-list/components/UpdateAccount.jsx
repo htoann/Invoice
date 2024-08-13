@@ -48,13 +48,7 @@ const UpdateAccount = ({ state, setState, accounts, setAccounts }) => {
   };
 
   return (
-    <Modal
-      type={state.modalType}
-      title={t('Mail_UpdateAccount_Title')}
-      open={state.editVisible}
-      footer={null}
-      onCancel={onCancel}
-    >
+    <Modal title={t('Mail_UpdateAccount_Title')} open={state.editVisible} onCancel={onCancel}>
       <ModalAccount
         form={form}
         handleOk={handleOk}

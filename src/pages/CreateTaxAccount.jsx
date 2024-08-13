@@ -36,7 +36,7 @@ function CreateTaxAccount({ state, setState }) {
 
   return (
     <div>
-      <Modal type="primary" title="Tạo người dùng" visible={state.visible} footer={null} onCancel={onCancel}>
+      <Modal type="primary" title="Tạo người dùng" visible={state.visible} onCancel={onCancel}>
         <div className="project-modal">
           <BasicFormWrapper>
             <Form form={form} name="username" onFinish={handleOk} autoComplete="off">

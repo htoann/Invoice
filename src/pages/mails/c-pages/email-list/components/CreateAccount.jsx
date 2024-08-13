@@ -48,7 +48,7 @@ function CreateAccount({ state, setState, accounts, setAccounts }) {
   };
 
   return (
-    <Modal type="primary" title={t('Mail_CreateAccount_Title')} open={state.visible} footer={null} onCancel={onCancel}>
+    <Modal type="primary" title={t('Mail_CreateAccount_Title')} open={state.visible} onCancel={onCancel}>
       <div className="project-modal">
         <ModalAccount
           form={form}

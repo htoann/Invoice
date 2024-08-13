@@ -202,11 +202,11 @@ const DepartmentList = ({ list, setList, loadingList, selectedItem, setSelectedI
         </Cards>
       </BorderLessHeading>
 
-      <Modal title={t('Department_Create_Title')} open={showCreate} onCancel={cancelCreate} footer={null}>
+      <Modal title={t('Department_Create_Title')} open={showCreate} onCancel={cancelCreate}>
         {customModal(t('Common_Create'), handleCreateSubmit, cancelCreate, loading)}
       </Modal>
 
-      <Modal title={t('Department_Edit_Title')} open={showEdit} onCancel={cancelEdit} footer={null}>
+      <Modal title={t('Department_Edit_Title')} open={showEdit} onCancel={cancelEdit}>
         {customModal(t('Common_Save'), handleEditSubmit, cancelEdit, loading)}
       </Modal>
     </Col>
