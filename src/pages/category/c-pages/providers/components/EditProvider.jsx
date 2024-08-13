@@ -1,5 +1,5 @@
 import { Modal } from '@/components/modals/antd-modals';
-import { API_PRODUCT } from '@/utils/apiConst';
+import { API_PROVIDERS } from '@/utils/apiConst';
 import { dataService } from '@/utils/dataService';
 import { Form, notification } from 'antd';
 import { useState } from 'react';
@@ -23,7 +23,7 @@ const EditProvider = ({ state, setState, list, setList }) => {
     try {
       setLoading(true);
 
-      const response = await dataService.put(API_PRODUCT(state.update.id), {
+      const response = await dataService.put(API_PROVIDERS(state.update.id), {
         ...values,
         id: state.update.id,
       });
@@ -36,14 +36,14 @@ const EditProvider = ({ state, setState, list, setList }) => {
       onCancel();
 
       notification.success({
-        message: t('Common_Goods'),
-        description: t('Product_UpdateSuccessDescription'),
+        message: t('Common_Providers'),
+        description: t('Common_UpdateSuccess'),
       });
     } catch (error) {
       console.error(error);
       notification.error({
-        message: t('Common_Goods'),
-        description: t('Product_UpdateErrorDescription'),
+        message: t('Common_Providers'),
+        description: t('Common_UpdateFailure'),
       });
     } finally {
       setLoading(false);
@@ -53,7 +53,7 @@ const EditProvider = ({ state, setState, list, setList }) => {
   return (
     <Modal
       type={state.modalType}
-      title={t('Product_UpdateTitle')}
+      title={t('Provider_UpdateTitle')}
       open={state.editVisible}
       footer={null}
       onCancel={onCancel}

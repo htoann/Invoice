@@ -13,11 +13,10 @@ import { Link } from 'react-router-dom';
 import CreateProduct from './components/CreateProduct';
 import DataTable from './components/DataTable';
 import EditProduct from './components/EditProduct';
-import useColumnProducts from './hooks/useColumnProducts';
+import { columnDataProduct } from './utils';
 
 const Products = () => {
   const { t } = useTranslation();
-  const columnData = useColumnProducts();
   const { EUnit } = useUnit();
 
   const [state, setState] = useState({
@@ -196,7 +195,7 @@ const Products = () => {
     </>
   );
 
-  const dataTableColumn = columnData.map((col) => ({
+  const dataTableColumn = columnDataProduct.map((col) => ({
     title: col.key === 'stt' || col.key === 'action' ? t(col.title) : <>{customHeader(col.title, col.dataIndex)}</>,
     dataIndex: col.dataIndex,
     key: col.key,

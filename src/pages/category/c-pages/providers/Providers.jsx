@@ -13,12 +13,11 @@ import { Link } from 'react-router-dom';
 import CreateProvider from './components/CreateProvider';
 import DataTable from './components/DataTable';
 import EditProduct from './components/EditProvider';
-import useColumnProviders from './hooks/useColumnProviders';
 import useGetProviders from './hooks/useGetProviders';
+import { columnDataProvider } from './utils';
 
 const Providers = () => {
   const { t } = useTranslation();
-  const columnData = useColumnProviders();
 
   const updatePagination = (response) => {
     setState((prev) => ({
@@ -132,7 +131,7 @@ const Providers = () => {
     </>
   );
 
-  const dataTableColumn = columnData.map((col) => ({
+  const dataTableColumn = columnDataProvider.map((col) => ({
     title: col.key === 'stt' || col.key === 'action' ? t(col.title) : <>{customHeader(col.title, col.dataIndex)}</>,
     dataIndex: col.dataIndex,
     key: col.key,

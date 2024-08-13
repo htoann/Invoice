@@ -1,5 +1,5 @@
 import { Modal } from '@/components/modals/antd-modals';
-import { API_PRODUCTS } from '@/utils/apiConst';
+import { API_PROVIDERS } from '@/utils/apiConst';
 import { dataService } from '@/utils/dataService';
 import { Form, notification } from 'antd';
 import { useState } from 'react';
@@ -19,7 +19,7 @@ const CreateProvider = ({ state, setState, list, setList }) => {
   const createNew = async (data) => {
     try {
       setLoading(true);
-      const response = await dataService.post(API_PRODUCTS, data);
+      const response = await dataService.post(API_PROVIDERS, data);
       return response.data;
     } catch (error) {
       console.error(error);
@@ -35,21 +35,21 @@ const CreateProvider = ({ state, setState, list, setList }) => {
       setList([newItem, ...list]);
       onCancel();
       notification.success({
-        message: t('Common_Goods'),
-        description: t('Product_CreateSuccess'),
+        message: t('Common_Providers'),
+        description: t('Common_CreateSuccess'),
       });
       form.resetFields();
     } else {
       notification.error({
-        message: t('Common_Goods'),
-        description: t('Product_CreateError'),
+        message: t('Common_Providers'),
+        description: t('Common_CreateFailure'),
       });
     }
   };
 
   return (
     <div>
-      <Modal type="primary" title={t('Product_Create_Title')} open={state.visible} footer={null} onCancel={onCancel}>
+      <Modal type="primary" title={t('Provider_Create_Title')} open={state.visible} footer={null} onCancel={onCancel}>
         <div className="project-modal">
           <ModalHangHoa
             form={form}
