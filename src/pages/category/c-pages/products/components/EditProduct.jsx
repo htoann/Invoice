@@ -12,10 +12,7 @@ const EditProduct = ({ state, setState, list, setList }) => {
   const [loading, setLoading] = useState(false);
 
   const onCancel = () => {
-    setState((prevState) => ({
-      ...prevState,
-      editVisible: false,
-    }));
+    setState({ ...state, editVisible: false });
     form.resetFields();
   };
 

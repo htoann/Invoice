@@ -1,11 +1,11 @@
 import { Button } from '@/components/buttons/buttons';
 import { Cards } from '@/components/cards/frame/cards-frame';
 import Heading from '@/components/heading/heading';
+import { BasicFormWrapper } from '@/container/styled';
 import { Col, Form, Input, Row } from 'antd';
 import { useState } from 'react';
 import FontAwesome from 'react-fontawesome';
 import { SocialProfileForm } from './style';
-import { BasicFormWrapper } from '@/container/styled';
 
 function SocialProfile() {
   const [form] = Form.useForm();

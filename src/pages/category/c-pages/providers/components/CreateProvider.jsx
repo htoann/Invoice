@@ -8,6 +8,7 @@ import useDistricts from 'hooks/vietnam-division/useDistricts';
 import useProvinces from 'hooks/vietnam-division/useProvinces';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import useBranches from '../../organization/hook/useBranches';
 import { fieldsModalProvider } from '../utils';
 
 const CreateProvider = ({ state, setState, list, setList }) => {
@@ -18,24 +19,13 @@ const CreateProvider = ({ state, setState, list, setList }) => {
   const [provinceId, setProvinceId] = useState('');
   const [districtId, setDistrictId] = useState('');
 
+  const { branches } = useBranches();
   const { provinces } = useProvinces();
   const { districts } = useDistricts(provinceId);
   const { communes } = useCommunes(districtId);
 
-  const divisionOptions = {
-    province: provinces?.map(({ id, name }) => ({ key: id, label: name })),
-    district: districts?.map(({ id, name }) => ({ key: id, label: name })),
-    ward: communes?.map(({ id, name }) => ({ key: id, label: name })),
-  };
-
-  const onCancel = () => {
-    setState({ ...state, visible: false });
-    form.resetFields();
-  };
-
   const createNew = async (data) => {
     setLoading(true);
-
     try {
       const response = await dataService.post(API_PROVIDERS, data);
       return response.data;
@@ -70,15 +60,25 @@ const CreateProvider = ({ state, setState, list, setList }) => {
     if (district) setDistrictId(district);
   };
 
+  const mapOptions = {
+    province: provinces,
+    district: districts,
+    ward: communes,
+    branch: branches,
+  };
+
   const fields = fieldsModalProvider.map((field) => ({
     ...field,
-    ...((field.name === 'province' || field.name === 'district' || field.name === 'ward') && {
-      options: divisionOptions[field.name],
-    }),
+    ...(field.name in mapOptions && { options: mapOptions[field.name] }),
   }));
 
+  const onCancel = () => {
+    setState({ ...state, visible: false });
+    form.resetFields();
+  };
+
   return (
-    <Modal type="primary" title={t('Provider_Create')} open={state.visible} onCancel={onCancel}>
+    <Modal title={t('Provider_Create')} open={state.visible} onCancel={onCancel} width="1000px">
       <div className="project-modal">
         <ModalCommon
           form={form}
@@ -88,6 +88,7 @@ const CreateProvider = ({ state, setState, list, setList }) => {
           textSubmit={t('Common_Create')}
           fields={fields}
           onValuesChange={onFormValuesChange}
+          size="large"
         />
       </div>
     </Modal>

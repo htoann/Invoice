@@ -62,7 +62,6 @@ export const fieldsModalProvider = [
   { name: 'bank_name', label: 'Provider_BankName', type: 'input' },
   { name: 'bank_account_branch', label: 'Provider_BankAccountBranch', type: 'input' },
   { name: 'bank_account_city', label: 'Provider_BankAccountCity', type: 'input' },
-  { name: 'country', label: 'Provider_Country', type: 'select' },
   { name: 'province', label: 'Provider_Province', type: 'select' },
   { name: 'district', label: 'Provider_District', type: 'select' },
   { name: 'ward', label: 'Provider_Ward', type: 'select' },
@@ -77,11 +76,19 @@ export const fieldsModalProvider = [
     label: 'Provider_IsIndividual',
     type: 'select',
     options: [
-      { key: 0, label: 'Common_Org' },
-      { key: 1, label: 'Common_Individual' },
+      { id: 0, name: 'Common_Org' },
+      { id: 1, name: 'Common_Individual' },
     ],
   },
   { name: 'is_customer', label: 'Provider_IsCustomer', type: 'checkbox' },
-  { name: 'status', label: 'Provider_Status', type: 'select', options: ['active', 'inactive'] },
-  { name: 'branch', label: 'Provider_Branch', type: 'input' },
+  {
+    name: 'status',
+    label: 'Common_Status',
+    type: 'select',
+    options: [
+      { id: 1, name: 'Common_Using' },
+      { id: 2, name: 'Common_NotUsing' },
+    ],
+  },
+  { name: 'branch', label: 'Common_Branch', type: 'select' },
 ];

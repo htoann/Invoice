@@ -1,5 +1,7 @@
 import { Carousel } from 'antd';
 import propTypes from 'prop-types';
+import { Button } from '../buttons/buttons';
+import { Cards } from '../cards/frame/cards-frame';
 import {
   BannerCardWrap,
   BannerCarouselWrap,
@@ -14,8 +16,6 @@ import {
   Figure8,
   PageHeader,
 } from './Style';
-import { Button } from '../buttons/buttons';
-import { Cards } from '../cards/frame/cards-frame';
 
 function Banner1() {
   return (
@@ -371,7 +371,6 @@ PageHeaderBanner.propTypes = {
 };
 
 export {
-  PageHeaderBanner,
   Banner1,
   Banner2,
   Banner3,
@@ -381,10 +380,11 @@ export {
   Banner7,
   Banner8,
   Banner9,
-  BannerCarousel,
-  BannerLong,
   BannerCard,
   BannerCard2,
+  BannerCarousel,
   BannerCta,
   BannerCta2,
+  BannerLong,
+  PageHeaderBanner,
 };

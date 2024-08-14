@@ -10,7 +10,6 @@ import { Col, Input, Popconfirm, Row, Skeleton, notification } from 'antd';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
-import useBranches from '../organization/hook/useBranches';
 import CreateProvider from './components/CreateProvider';
 import DataTable from './components/DataTable';
 import EditProduct from './components/EditProvider';
@@ -19,7 +18,6 @@ import { columnDataProvider } from './utils';
 
 const Providers = () => {
   const { t } = useTranslation();
-  const { branches } = useBranches();
 
   const updatePagination = (response) => {
     setState((prev) => ({
@@ -73,8 +71,6 @@ const Providers = () => {
     e.stopPropagation();
   };
 
-  const branchLookup = new Map(branches.map((branch) => [branch.id, branch.name]));
-
   const tableDataSource =
     list?.map((item, index) => {
       const stt = (current - 1) * pageSize + index + 1;
@@ -90,7 +86,7 @@ const Providers = () => {
               break;
 
             case 'branch':
-              formattedValue = branchLookup.get(value) || value;
+              formattedValue = value?.name;
               break;
 
             default:

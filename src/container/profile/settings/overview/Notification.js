@@ -1,10 +1,9 @@
-import React from 'react';
-import { Row, Col, Switch } from 'antd';
+import { Button } from '@/components/buttons/buttons';
+import { Cards } from '@/components/cards/frame/cards-frame';
+import Heading from '@/components/heading/heading';
+import { Col, Row, Switch } from 'antd';
 import { Link } from 'react-router-dom';
 import { NotificationWrapper } from './style';
-import { Cards } from '@/components/cards/frame/cards-frame';
-import { Button } from '@/components/buttons/buttons';
-import Heading from '@/components/heading/heading';
 
 const listStyle = {
   display: 'flex',

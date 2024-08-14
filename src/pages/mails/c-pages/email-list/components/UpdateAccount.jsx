@@ -12,10 +12,7 @@ const UpdateAccount = ({ state, setState, accounts, setAccounts }) => {
   const { t } = useTranslation();
 
   const onCancel = () => {
-    setState((prevState) => ({
-      ...prevState,
-      editVisible: false,
-    }));
+    setState({ ...state, editVisible: false });
     form.resetFields();
   };
 

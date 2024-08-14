@@ -1,19 +1,29 @@
 import { Button } from '@/components/buttons/buttons';
 import { BasicFormWrapper } from '@/container/styled';
-import { AutoComplete, Checkbox, DatePicker, Form, Input, InputNumber, Select } from 'antd';
+import { AutoComplete, Checkbox, Col, DatePicker, Form, Input, InputNumber, Row, Select } from 'antd';
 import { useTranslation } from 'react-i18next';
 
-export const ModalCommon = ({ form, handleOk, state, onCancel, loading, textSubmit, fields, onValuesChange }) => {
+export const ModalCommon = ({
+  form,
+  handleOk,
+  state,
+  onCancel,
+  loading,
+  textSubmit,
+  fields,
+  onValuesChange,
+  size = 'default',
+}) => {
   const { t } = useTranslation();
 
   const renderField = (type, key, options = []) => {
     switch (type) {
       case 'select':
         return (
-          <Select defaultValue={state?.update?.[key] || options?.[0]?.key}>
+          <Select defaultValue={state?.update?.[key] || options?.[0]?.id}>
             {options?.map((option, index) => (
-              <Select.Option key={index} value={option.key}>
-                {t(option.label)}
+              <Select.Option key={index} value={option.id}>
+                {t(option.name)}
               </Select.Option>
             ))}
           </Select>
@@ -51,24 +61,28 @@ export const ModalCommon = ({ form, handleOk, state, onCancel, loading, textSubm
   return (
     <BasicFormWrapper>
       <Form form={form} name="contactEdit" onFinish={handleOk} autoComplete="off" onValuesChange={onValuesChange}>
-        {fields.map(({ name, label, type, options, required, min, max }) => (
-          <Form.Item
-            key={name}
-            initialValue={state?.update[name]}
-            label={t(label)}
-            name={name}
-            valuePropName={type === 'checkbox' ? 'checked' : 'value'}
-            rules={getRules(type, required, min, max)}
-          >
-            {renderField(type, name, options)}
-          </Form.Item>
-        ))}
+        <Row gutter={size === 'large' ? 24 : 0}>
+          {fields.map(({ name, label, type, options, required }) => (
+            <Col span={size === 'large' ? 12 : 24} key={name}>
+              <Form.Item
+                initialValue={state?.update[name]}
+                label={t(label)}
+                name={name}
+                valuePropName={type === 'checkbox' ? 'checked' : 'value'}
+                rules={getRules(type, required)}
+                style={{ marginBottom: 14 }}
+              >
+                {renderField(type, name, options)}
+              </Form.Item>
+            </Col>
+          ))}
+        </Row>
 
         <div style={{ justifyContent: 'end', display: 'flex' }}>
           <Button size="default" type="white" outlined style={{ marginRight: 8 }} onClick={onCancel}>
             {t('Common_Cancel')}
           </Button>
-          <Button htmlType="submit" size="default" type="primary" key="submit" loading={loading}>
+          <Button htmlType="submit" size="default" key="submit" loading={loading}>
             {textSubmit}
           </Button>
         </div>

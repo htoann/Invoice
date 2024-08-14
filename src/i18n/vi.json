@@ -97,6 +97,8 @@
   "Common_Invalid_Number": "Vui lòng nhập số",
   "Common_Org": "Tổ chức",
   "Common_Individual": "Cá nhân",
+  "Common_Using": "Đang sử dụng",
+  "Common_NotUsing": "Không sử dụng",
 
   "Dashboard_BusinessStatus": "Trạng thái doanh nghiệp",
   "Dashboard_InvoicesChange": "Hóa đơn bị thay đổi bởi người bán - Nhà cung cấp",

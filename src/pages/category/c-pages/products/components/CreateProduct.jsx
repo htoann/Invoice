@@ -48,7 +48,7 @@ const CreateProduct = ({ state, setState, list, setList }) => {
   };
 
   return (
-    <Modal type="primary" title={t('Product_Create_Title')} open={state.visible} onCancel={onCancel}>
+    <Modal title={t('Product_Create_Title')} open={state.visible} onCancel={onCancel}>
       <div className="project-modal">
         <ModalHangHoa
           form={form}

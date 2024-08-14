@@ -9,15 +9,8 @@ import { useTranslation } from 'react-i18next';
 const EditProvider = ({ state, setState, list, setList }) => {
   const { t } = useTranslation();
   const [form] = Form.useForm();
-  const [loading, setLoading] = useState(false);
 
-  const onCancel = () => {
-    setState((prevState) => ({
-      ...prevState,
-      editVisible: false,
-    }));
-    form.resetFields();
-  };
+  const [loading, setLoading] = useState(false);
 
   const handleOk = async (values) => {
     try {
@@ -48,6 +41,11 @@ const EditProvider = ({ state, setState, list, setList }) => {
     } finally {
       setLoading(false);
     }
+  };
+
+  const onCancel = () => {
+    setState({ ...state, editVisible: false });
+    form.resetFields();
   };
 
   return (
