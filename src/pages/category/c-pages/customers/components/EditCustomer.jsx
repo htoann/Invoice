@@ -1,6 +1,6 @@
 import { ModalCommon } from '@/components/ModalCommon';
 import { Modal } from '@/components/modals/antd-modals';
-import { API_CUSTOMERS } from '@/utils/apiConst';
+import { API_CUSTOMER } from '@/utils/apiConst';
 import { dataService } from '@/utils/dataService';
 import { Form, notification } from 'antd';
 import useDivision from 'hooks/vietnam-division/useDivision';
@@ -20,7 +20,7 @@ const EditCustomer = ({ state, setState, list, setList }) => {
     try {
       setLoading(true);
 
-      const response = await dataService.put(API_CUSTOMERS(state.update.id), {
+      const response = await dataService.put(API_CUSTOMER(state.update.id), {
         ...values,
         id: state.update.id,
       });

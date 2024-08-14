@@ -1,4 +1,4 @@
-import { API_PROVIDERS } from '@/utils/apiConst';
+import { API_CUSTOMERS } from '@/utils/apiConst';
 import { dataService } from '@/utils/dataService';
 import { useState } from 'react';
 
@@ -20,7 +20,7 @@ const useGetCustomers = (onHandleResult) => {
         setIsLoadingGetList(true);
       }
 
-      const response = await dataService.get(API_PROVIDERS, {
+      const response = await dataService.get(API_CUSTOMERS, {
         ...(Object.keys(searchParams).length && { ...searchParams }),
         page,
         page_size,
