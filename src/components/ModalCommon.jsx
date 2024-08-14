@@ -1,6 +1,6 @@
 import { Button } from '@/components/buttons/buttons';
 import { BasicFormWrapper } from '@/container/styled';
-import { AutoComplete, DatePicker, Form, Input, InputNumber, Select } from 'antd';
+import { AutoComplete, Checkbox, DatePicker, Form, Input, InputNumber, Select } from 'antd';
 import { useTranslation } from 'react-i18next';
 
 export const ModalCommon = ({ form, handleOk, state, onCancel, loading, textSubmit, fields, onValuesChange }) => {
@@ -21,7 +21,7 @@ export const ModalCommon = ({ form, handleOk, state, onCancel, loading, textSubm
       case 'date':
         return <DatePicker format="DD/MM/yyyy" />;
       case 'checkbox':
-        return <Input type="checkbox" />;
+        return <Checkbox />;
       case 'autocomplete':
         return <AutoComplete />;
       case 'email':
