@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next';
 export const ModalCommon = ({
   form,
   handleOk,
-  state,
+  dataUpdate,
   onCancel,
   loading,
   textSubmit,
@@ -20,7 +20,7 @@ export const ModalCommon = ({
     switch (type) {
       case 'select':
         return (
-          <Select defaultValue={state?.update?.[key] || options?.[0]?.id}>
+          <Select defaultValue={dataUpdate?.[key] || options?.[0]?.id}>
             {options?.map((option, index) => (
               <Select.Option key={index} value={option.id}>
                 {t(option.name)}
@@ -65,7 +65,7 @@ export const ModalCommon = ({
           {fields.map(({ name, label, type, options, required }) => (
             <Col span={size === 'large' ? 12 : 24} key={name}>
               <Form.Item
-                initialValue={state?.update[name]}
+                initialValue={dataUpdate[name]}
                 label={t(label)}
                 name={name}
                 valuePropName={type === 'checkbox' ? 'checked' : 'value'}
