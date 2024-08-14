@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next';
 export const ModalCommon = ({
   form,
   handleOk,
-  dataUpdate,
+  dataUpdate = {},
   onCancel,
   loading,
   textSubmit,
@@ -65,7 +65,7 @@ export const ModalCommon = ({
           {fields.map(({ name, label, type, options, required }) => (
             <Col span={size === 'large' ? 12 : 24} key={name}>
               <Form.Item
-                initialValue={dataUpdate[name]}
+                initialValue={dataUpdate?.[name]}
                 label={t(label)}
                 name={name}
                 valuePropName={type === 'checkbox' ? 'checked' : 'value'}
@@ -82,7 +82,7 @@ export const ModalCommon = ({
           <Button size="default" type="white" outlined style={{ marginRight: 8 }} onClick={onCancel}>
             {t('Common_Cancel')}
           </Button>
-          <Button htmlType="submit" size="default" key="submit" loading={loading}>
+          <Button type="primary" htmlType="submit" size="default" key="submit" loading={loading}>
             {textSubmit}
           </Button>
         </div>

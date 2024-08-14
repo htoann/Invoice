@@ -89,7 +89,6 @@ const CreateProvider = ({ state, setState, list, setList }) => {
           fields={fields}
           onValuesChange={onFormValuesChange}
           size="large"
-          dataUpdate={state.update}
         />
       </div>
     </Modal>

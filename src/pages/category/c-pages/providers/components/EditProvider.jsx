@@ -3,14 +3,26 @@ import { Modal } from '@/components/modals/antd-modals';
 import { API_PROVIDERS } from '@/utils/apiConst';
 import { dataService } from '@/utils/dataService';
 import { Form, notification } from 'antd';
+import useCommunes from 'hooks/vietnam-division/useCommunes';
+import useDistricts from 'hooks/vietnam-division/useDistricts';
+import useProvinces from 'hooks/vietnam-division/useProvinces';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import useBranches from '../../organization/hook/useBranches';
+import { fieldsModalProvider } from '../utils';
 
 const EditProvider = ({ state, setState, list, setList }) => {
   const { t } = useTranslation();
   const [form] = Form.useForm();
 
   const [loading, setLoading] = useState(false);
+  const [provinceId, setProvinceId] = useState('');
+  const [districtId, setDistrictId] = useState('');
+
+  const { branches } = useBranches();
+  const { provinces } = useProvinces();
+  const { districts } = useDistricts(provinceId);
+  const { communes } = useCommunes(districtId);
 
   const handleOk = async (values) => {
     try {
@@ -43,21 +55,43 @@ const EditProvider = ({ state, setState, list, setList }) => {
     }
   };
 
+  const onFormValuesChange = ({ province, district }) => {
+    if (province) setProvinceId(province);
+    if (district) setDistrictId(district);
+  };
+
+  const mapOptions = {
+    province: provinces,
+    district: districts,
+    ward: communes,
+    branch: branches,
+  };
+
+  const fields = fieldsModalProvider.map((field) => ({
+    ...field,
+    ...(field.name in mapOptions && { options: mapOptions[field.name] }),
+  }));
+
   const onCancel = () => {
     setState({ ...state, editVisible: false });
     form.resetFields();
   };
 
   return (
-    <Modal title={t('Provider_Update')} open={state.editVisible} onCancel={onCancel}>
-      <ModalCommon
-        form={form}
-        handleOk={handleOk}
-        state={state}
-        onCancel={onCancel}
-        loading={loading}
-        textSubmit={t('Common_Save')}
-      />
+    <Modal title={t('Provider_Create')} open={state.visible} onCancel={onCancel} width="1000px">
+      <div className="project-modal">
+        <ModalCommon
+          form={form}
+          handleOk={handleOk}
+          onCancel={onCancel}
+          loading={loading}
+          textSubmit={t('Common_Create')}
+          fields={fields}
+          onValuesChange={onFormValuesChange}
+          size="large"
+          dataUpdate={state.update}
+        />
+      </div>
     </Modal>
   );
 };
