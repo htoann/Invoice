@@ -78,14 +78,14 @@ const EditProvider = ({ state, setState, list, setList }) => {
   };
 
   return (
-    <Modal title={t('Provider_Create')} open={state.visible} onCancel={onCancel} width="1000px">
+    <Modal title={t('Provider_Update')} open={state.visible} onCancel={onCancel} width="1000px">
       <div className="project-modal">
         <ModalCommon
           form={form}
           handleOk={handleOk}
           onCancel={onCancel}
           loading={loading}
-          textSubmit={t('Common_Create')}
+          textSubmit={t('Common_Update')}
           fields={fields}
           onValuesChange={onFormValuesChange}
           size="large"
