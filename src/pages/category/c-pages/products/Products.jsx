@@ -1,11 +1,12 @@
 import { Cards } from '@/components/cards/frame/cards-frame';
+import CustomHeader from '@/components/HeaderCommon';
 import { PageHeader } from '@/components/page-headers/page-headers';
 import { BorderLessHeading, Main } from '@/container/styled';
 import { API_PRODUCT, API_PRODUCTS } from '@/utils/apiConst';
 import { dataService } from '@/utils/dataService';
 import UilEdit from '@iconscout/react-unicons/icons/uil-edit';
 import UilTrash from '@iconscout/react-unicons/icons/uil-trash-alt';
-import { Col, Input, Popconfirm, Row, Skeleton, notification } from 'antd';
+import { Col, Popconfirm, Row, Skeleton, notification } from 'antd';
 import useUnit from 'hooks/useUnit';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -169,34 +170,23 @@ const Products = () => {
     });
   }
 
-  const customHeader = (title, name) => (
-    <>
-      <div>{t(title)}</div>
-      <Input
-        style={{ width: 'auto', height: 35, marginTop: 10 }}
-        onClick={stopPropagation}
-        onFocus={stopPropagation}
-        value={searchParams[name]}
-        onChange={(e) => {
-          e.stopPropagation();
-          setSearchParams({ ...searchParams, [name]: e.target.value.toLowerCase() });
-        }}
-        onKeyDown={(e) => {
-          stopPropagation(e);
-          if (e.key === 'Enter') {
-            setState({
-              ...state,
-              pagination: { ...pagination, current: 1 },
-            });
-            getList({ ...searchParams, shouldLoading: false, page_size: pageSize });
-          }
-        }}
-      />
-    </>
-  );
-
   const dataTableColumn = columnDataProduct.map((col) => ({
-    title: col.key === 'stt' || col.key === 'action' ? t(col.title) : <>{customHeader(col.title, col.dataIndex)}</>,
+    title:
+      col.key === 'stt' || col.key === 'action' ? (
+        t(col.title)
+      ) : (
+        <CustomHeader
+          title={col.title}
+          name={col.dataIndex}
+          searchParams={searchParams}
+          setSearchParams={setSearchParams}
+          getList={getList}
+          state={state}
+          setState={setState}
+          pagination={pagination}
+          pageSize={pageSize}
+        />
+      ),
     dataIndex: col.dataIndex,
     key: col.key,
     sorter:

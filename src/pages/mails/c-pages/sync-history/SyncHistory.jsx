@@ -1,10 +1,11 @@
 import { Cards } from '@/components/cards/frame/cards-frame';
+import CustomHeader from '@/components/HeaderCommon';
 import { PageHeader } from '@/components/page-headers/page-headers';
 import { Tag } from '@/components/tags/tags';
 import { BorderLessHeading, Main } from '@/container/styled';
 import axios from '@/mock/index';
 import { API_MAIL_TASK_HISTORIES } from '@/utils/apiConst';
-import { Col, Input, Row, Select, Skeleton } from 'antd';
+import { Col, Row, Select, Skeleton } from 'antd';
 import useMailAccounts from 'hooks/useMailAccounts';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -96,31 +97,15 @@ const SyncHistory = () => {
     };
   });
 
-  const customHeader = (title, name) => (
-    <>
-      <div>{title}</div>
-      <Input
-        style={{ width: 'auto', height: 35, marginTop: 10 }}
-        onClick={stopPropagation}
-        onFocus={stopPropagation}
-        value={searchParams[name]}
-        onChange={(e) => {
-          e.stopPropagation();
-          setSearchParams({ ...searchParams, [name]: e.target.value.toLowerCase() });
-        }}
-        onKeyDown={(e) => {
-          stopPropagation(e);
-          if (e.key === 'Enter') {
-            setState({
-              ...state,
-              pagination: { ...pagination, current: 1 },
-            });
-            getList({ ...searchParams, shouldLoading: false, page_size: pageSize });
-          }
-        }}
-      />
-    </>
-  );
+  const propsCustomHeader = {
+    searchParams,
+    setSearchParams,
+    getList,
+    state,
+    setState,
+    pagination,
+    pageSize,
+  };
 
   const dataTableColumn = [
     {
@@ -141,14 +126,14 @@ const SyncHistory = () => {
       sorter: (a, b) => a.name.props.children.localeCompare(b.name.props.children),
     },
     {
-      title: <>{customHeader(t('Common_Status'), 'state')}</>,
+      title: <CustomHeader title="Common_Status" name="state" {...propsCustomHeader} />,
       dataIndex: 'state',
       key: 'state',
       sorter: (a, b) => a.state.props.children > b.state.props.children,
       className: 'searchInput',
     },
     {
-      title: <>{customHeader(t('Common_Note'), 'note')}</>,
+      title: <CustomHeader title="Common_Note" name="note" {...propsCustomHeader} />,
       dataIndex: 'note',
       key: 'note',
       sorter: (a, b) => a.note.props.children.localeCompare(b.note.props.children),

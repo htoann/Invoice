@@ -1,13 +1,14 @@
 /* eslint-disable no-unused-vars */
 import { Button } from '@/components/buttons/buttons';
 import { Cards } from '@/components/cards/frame/cards-frame';
+import CustomHeader from '@/components/HeaderCommon';
 import { PageHeader } from '@/components/page-headers/page-headers';
 import { BorderLessHeading, Main } from '@/container/styled';
 import { API_MAILS_ACCOUNT_BY_ACCOUNT_ID, API_MAILS_ACCOUNTS } from '@/utils/apiConst';
 import { dataService } from '@/utils/dataService';
 import UilEdit from '@iconscout/react-unicons/icons/uil-edit';
 import UilTrash from '@iconscout/react-unicons/icons/uil-trash-alt';
-import { Col, Input, notification, Popconfirm, Row, Select, Skeleton } from 'antd';
+import { Col, notification, Popconfirm, Row, Select, Skeleton } from 'antd';
 import useGetAllDepartments from 'hooks/useGetAllDepartments';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -157,31 +158,15 @@ const EmailList = () => {
     });
   }
 
-  const customHeader = (title, name) => (
-    <>
-      <div>{t(title)}</div>
-      <Input
-        style={{ width: 'auto', height: 35, marginTop: 10 }}
-        onClick={stopPropagation}
-        onFocus={stopPropagation}
-        value={searchParams[name]}
-        onChange={(e) => {
-          e.stopPropagation();
-          setSearchParams({ ...searchParams, [name]: e.target.value.toLowerCase() });
-        }}
-        onKeyDown={(e) => {
-          stopPropagation(e);
-          if (e.key === 'Enter') {
-            setState({
-              ...state,
-              pagination: { ...pagination, current: 1 },
-            });
-            getList({ ...searchParams, shouldLoading: false, page_size: pageSize });
-          }
-        }}
-      />
-    </>
-  );
+  const propsCustomHeader = {
+    searchParams,
+    setSearchParams,
+    getList,
+    state,
+    setState,
+    pagination,
+    pageSize,
+  };
 
   const dataTableColumn = [
     {
@@ -190,14 +175,14 @@ const EmailList = () => {
       key: 'stt',
     },
     {
-      title: <>{customHeader(t('Common_AccountName'), 'name')}</>,
+      title: <CustomHeader title="Common_AccountName" name="name" {...propsCustomHeader} />,
       dataIndex: 'name',
       key: 'name',
       sorter: (a, b) => a.name.props.children.localeCompare(b.name.props.children),
       className: 'searchInput',
     },
     {
-      title: <>{customHeader(t('Common_Email'), 'email')}</>,
+      title: <CustomHeader title="Common_Email" name="email" {...propsCustomHeader} />,
       dataIndex: 'email',
       key: 'email',
       sorter: (a, b) => a.email.props.children.localeCompare(b.email.props.children),
