@@ -34,7 +34,7 @@ function DataTable({ rowSelection, tableData, columns, pagination, setState, sta
               type="primary"
               key="1"
             >
-              + {t('Provider_Create')}
+              + {t('Customer_Create')}
             </Button>
           </div>
         </div>

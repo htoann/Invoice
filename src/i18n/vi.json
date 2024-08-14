@@ -269,6 +269,8 @@
   "Provider_IsIndividual": "Tổ chức/Cá nhân",
   "Provider_IsCustomer": "Là khách hàng",
 
+  "Customer_Create": "Thêm khách hàng",
+  "Customer_Update": "Cập nhật khách hàng",
   "Customer_Code": "Mã khách hàng",
   "Customer_Name": "Tên khách hàng",
   "Customer_AccountPayable": "Công nợ"
