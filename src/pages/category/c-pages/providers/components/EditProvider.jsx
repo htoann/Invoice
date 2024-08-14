@@ -33,13 +33,13 @@ const EditProvider = ({ state, setState, list, setList }) => {
       onCancel();
 
       notification.success({
-        message: t('Common_Providers'),
+        message: t('Common_Provider'),
         description: t('Common_UpdateSuccess'),
       });
     } catch (error) {
       console.error(error);
       notification.error({
-        message: t('Common_Providers'),
+        message: t('Common_Provider'),
         description: t('Common_UpdateFailure'),
       });
     } finally {

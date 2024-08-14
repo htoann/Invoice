@@ -35,13 +35,13 @@ const CreateProvider = ({ state, setState, list, setList }) => {
       setList([newItem, ...list]);
       onCancel();
       notification.success({
-        message: t('Common_Providers'),
+        message: t('Common_Provider'),
         description: t('Common_CreateSuccess'),
       });
       form.resetFields();
     } else {
       notification.error({
-        message: t('Common_Providers'),
+        message: t('Common_Provider'),
         description: t('Common_CreateFailure'),
       });
     }

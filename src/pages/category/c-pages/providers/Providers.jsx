@@ -12,7 +12,7 @@ import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import CreateProvider from './components/CreateProvider';
 import DataTable from './components/DataTable';
-import EditProduct from './components/EditProvider';
+import EditProvider from './components/EditProvider';
 import useGetProviders from './hooks/useGetProviders';
 import { columnDataProvider } from './utils';
 
@@ -205,7 +205,7 @@ const Providers = () => {
 
       {state.visible && <CreateProvider state={state} setState={setState} list={list} setList={setList} />}
 
-      {state.editVisible && <EditProduct state={state} setState={setState} list={list} setList={setList} />}
+      {state.editVisible && <EditProvider state={state} setState={setState} list={list} setList={setList} />}
     </>
   );
 };

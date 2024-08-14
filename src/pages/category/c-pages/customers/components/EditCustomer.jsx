@@ -6,7 +6,7 @@ import { Form, notification } from 'antd';
 import useDivision from 'hooks/vietnam-division/useDivision';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { fieldsModalProvider } from '../utils';
+import { fieldsModalCustomer } from '../utils';
 
 const EditCustomer = ({ state, setState, list, setList }) => {
   const { t } = useTranslation();
@@ -33,13 +33,13 @@ const EditCustomer = ({ state, setState, list, setList }) => {
       onCancel();
 
       notification.success({
-        message: t('Common_Providers'),
+        message: t('Common_Customer'),
         description: t('Common_UpdateSuccess'),
       });
     } catch (error) {
       console.error(error);
       notification.error({
-        message: t('Common_Providers'),
+        message: t('Common_Customer'),
         description: t('Common_UpdateFailure'),
       });
     } finally {
@@ -59,7 +59,7 @@ const EditCustomer = ({ state, setState, list, setList }) => {
     branch: branches,
   };
 
-  const fields = fieldsModalProvider.map((field) => ({
+  const fields = fieldsModalCustomer.map((field) => ({
     ...field,
     ...(field.name in mapOptions && { options: mapOptions[field.name] }),
   }));

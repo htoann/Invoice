@@ -91,7 +91,7 @@ export const TopMenu = () => {
                 <Link to={routes.categoryProvider}>{t('Common_Supplier')}</Link>
               </li>
               <li>
-                <Link to="#">{t('Common_Customer')}</Link>
+                <Link to={routes.categoryCustomer}>{t('Common_Customer')}</Link>
               </li>
               <li>
                 <Link to={routes.categoryProduct}>{t('Common_Goods')}</Link>

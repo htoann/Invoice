@@ -9,4 +9,5 @@ export const routes = {
   categoryOrg: '/danh-muc/co-cau-to-chuc',
   categoryProduct: '/danh-muc/hang-hoa',
   categoryProvider: '/danh-muc/nha-cung-cap',
+  categoryCustomer: '/danh-muc/khach-hang',
 };

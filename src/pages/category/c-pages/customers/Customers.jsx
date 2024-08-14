@@ -10,11 +10,11 @@ import { Col, Input, Popconfirm, Row, Skeleton, notification } from 'antd';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
-import CreateProvider from './components/CreateCustomer';
+import CreateCustomer from './components/CreateCustomer';
 import DataTable from './components/DataTable';
-import EditProduct from './components/EditCustomer';
+import EditCustomer from './components/EditCustomer';
 import useGetProviders from './hooks/useGetCustomers';
-import { columnDataProvider } from './utils';
+import { columnDataCustomer } from './utils';
 
 const Customers = () => {
   const { t } = useTranslation();
@@ -148,7 +148,7 @@ const Customers = () => {
     </>
   );
 
-  const dataTableColumn = columnDataProvider.map((col) => ({
+  const dataTableColumn = columnDataCustomer.map((col) => ({
     title: col.key === 'stt' || col.key === 'action' ? t(col.title) : <>{customHeader(col.title, col.dataIndex)}</>,
     dataIndex: col.dataIndex,
     key: col.key,
@@ -179,7 +179,7 @@ const Customers = () => {
 
   return (
     <>
-      <PageHeader className="invoice-page-header-main" title={t('Common_ListProviders')} />
+      <PageHeader className="invoice-page-header-main" title={t('Common_ListCustomers')} />
       <Main>
         <Row gutter={15}>
           <Col xs={24}>
@@ -203,9 +203,9 @@ const Customers = () => {
         </Row>
       </Main>
 
-      {state.visible && <CreateProvider state={state} setState={setState} list={list} setList={setList} />}
+      {state.visible && <CreateCustomer state={state} setState={setState} list={list} setList={setList} />}
 
-      {state.editVisible && <EditProduct state={state} setState={setState} list={list} setList={setList} />}
+      {state.editVisible && <EditCustomer state={state} setState={setState} list={list} setList={setList} />}
     </>
   );
 };
