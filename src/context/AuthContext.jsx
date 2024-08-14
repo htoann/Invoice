@@ -25,12 +25,12 @@ export const AuthProvider = ({ children }) => {
         setAuthState({ login: true, loading: false });
       } else {
         const response = await dataService.post(API_LOGIN, values);
-        Cookies.set('access_token', response.data.token.access_token);
+        Cookies.set('access_token', response.data.access_token);
         Cookies.set('loggedIn', true);
         setAuthState({ login: true, loading: false });
       }
 
-      notification.error({
+      notification.success({
         message: t('Auth_SignIn'),
         description: t('Auth_SignIn_Success'),
       });
@@ -48,10 +48,13 @@ export const AuthProvider = ({ children }) => {
   const register = useCallback(async (values) => {
     setAuthState((prevState) => ({ ...prevState, loading: true }));
     try {
-      await dataService.post(API_REGISTER, values);
-      setAuthState((prevState) => ({ ...prevState, loading: false }));
+      const response = await dataService.post(API_REGISTER, values);
 
-      notification.error({
+      Cookies.set('access_token', response.data.access_token);
+      Cookies.set('loggedIn', true);
+      setAuthState({ login: true, loading: false });
+
+      notification.success({
         message: t('Auth_SignUp'),
         description: t('Auth_SignUp_Success'),
       });

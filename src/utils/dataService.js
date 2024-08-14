@@ -1,12 +1,13 @@
 import { API_ENDPOINT } from '@/utils/index';
 import axios from 'axios';
+import { getCookie } from './cookie';
 
 const authHeader = () => {
-  // if (getCookie('access_token')) {
-  //   return {
-  //     Authorization: `Bearer ${getCookie('access_token')}`,
-  //   };
-  // }
+  if (getCookie('access_token')) {
+    return {
+      Authorization: `Bearer ${getCookie('access_token')}`,
+    };
+  }
 
   return {};
 };
@@ -81,21 +82,22 @@ client.interceptors.request.use((config) => {
 
 client.interceptors.response.use(
   (response) => response,
-  (error) => {
-    /**
-     * Do something in case the response returns an error code [3**, 4**, 5**] etc
-     * For example, on token expiration retrieve a new access token, retry a failed request etc
-     */
+  async (error) => {
     const { response } = error;
-    const originalRequest = error.config;
+
     if (response) {
       if (response.status === 500) {
-        // do something here
-      } else {
-        return originalRequest;
+        // Handle the 500 error case
+        // You might want to do something like refreshing a token or retrying the request
+        console.error('Server error:', response);
+        // Return the response or throw an error
+        return Promise.reject(error);
       }
     }
+
+    // Return the error to the calling function so the catch block works
     return Promise.reject(error);
   },
 );
+
 export { DataService as dataService };

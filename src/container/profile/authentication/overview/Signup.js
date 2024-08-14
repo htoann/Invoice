@@ -32,7 +32,7 @@ function SignUp() {
             <Form name="register" onFinish={handleSubmit} layout="vertical">
               <Form.Item
                 label="Tên đăng nhập"
-                name="name"
+                name="username"
                 rules={[{ required: true, message: 'Vui lòng nhập tên đăng nhập' }]}
               >
                 <Input placeholder={t('Common_Username')} />
