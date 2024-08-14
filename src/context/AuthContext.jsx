@@ -1,9 +1,10 @@
-import { API_REGISTER } from '@/utils/apiConst';
+import { API_LOGIN, API_REGISTER } from '@/utils/apiConst';
 import { dataService } from '@/utils/dataService';
 import { notification } from 'antd';
 import Cookies from 'js-cookie';
 import { createContext, useCallback, useContext, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { REACT_MODE } from '../utils';
 
 const AuthContext = createContext();
 
@@ -13,25 +14,29 @@ export const AuthProvider = ({ children }) => {
   const [authState, setAuthState] = useState({
     login: Cookies.get('loggedIn') || false,
     loading: false,
-    error: null,
   });
 
-  const login = useCallback(async () => {
+  const login = useCallback(async (values) => {
     setAuthState((prevState) => ({ ...prevState, loading: true }));
     try {
-      // const response = await dataService.post(API_LOGIN, values);
-      // if (response.data.errors) {
-      //   setAuthState((prevState) => ({ ...prevState, loading: false, error: response.data.errors }));
-      // } else {
-      //   Cookies.set('access_token', response.data.token.access_token);
-      //   Cookies.set('loggedIn', true);
-      //   setAuthState({ login: true, loading: false, error: null });
-      // }
-      Cookies.set('access_token', 'cr7');
-      Cookies.set('loggedIn', true);
-      setAuthState({ login: true, loading: false, error: null });
+      if (REACT_MODE === 'ave') {
+        Cookies.set('access_token', 'cr7');
+        Cookies.set('loggedIn', true);
+        setAuthState({ login: true, loading: false });
+      } else {
+        const response = await dataService.post(API_LOGIN, values);
+        Cookies.set('access_token', response.data.token.access_token);
+        Cookies.set('loggedIn', true);
+        setAuthState({ login: true, loading: false });
+      }
+
+      notification.error({
+        message: t('Auth_SignIn'),
+        description: t('Auth_SignIn_Success'),
+      });
     } catch (err) {
-      setAuthState({ login: false, loading: false, error: err });
+      console.error(err);
+      setAuthState({ login: false, loading: false });
 
       notification.error({
         message: t('Auth_SignIn'),
@@ -43,14 +48,21 @@ export const AuthProvider = ({ children }) => {
   const register = useCallback(async (values) => {
     setAuthState((prevState) => ({ ...prevState, loading: true }));
     try {
-      const response = await dataService.post(API_REGISTER, values);
-      if (response.data.errors) {
-        setAuthState((prevState) => ({ ...prevState, loading: false, error: 'Registration failed!' }));
-      } else {
-        setAuthState((prevState) => ({ ...prevState, loading: false, error: null }));
-      }
+      await dataService.post(API_REGISTER, values);
+      setAuthState((prevState) => ({ ...prevState, loading: false }));
+
+      notification.error({
+        message: t('Auth_SignUp'),
+        description: t('Auth_SignUp_Success'),
+      });
     } catch (err) {
-      setAuthState((prevState) => ({ ...prevState, loading: false, error: err }));
+      console.error(err);
+      setAuthState((prevState) => ({ ...prevState, loading: false }));
+
+      notification.error({
+        message: t('Auth_SignIn'),
+        description: t('Auth_SignUp_Failed'),
+      });
     }
   }, []);
 
@@ -59,9 +71,9 @@ export const AuthProvider = ({ children }) => {
     try {
       Cookies.remove('loggedIn');
       Cookies.remove('access_token');
-      setAuthState({ login: false, loading: false, error: null });
-    } catch (err) {
-      setAuthState((prevState) => ({ ...prevState, loading: false, error: err }));
+      setAuthState({ login: false, loading: false });
+    } catch {
+      setAuthState((prevState) => ({ ...prevState, loading: false }));
     }
   }, []);
 

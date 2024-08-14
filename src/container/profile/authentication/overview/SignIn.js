@@ -1,10 +1,7 @@
 import { Button, Col, Form, Input, Row } from 'antd';
-import { useEffect, useState } from 'react';
-
-import { HDDT_CAPTCHA_ENDPOINT } from '@/utils/index';
-import axios from 'axios';
 import { useAuth } from 'context/AuthContext';
 import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 import { AuthFormWrap } from './style';
 
 function SignIn() {
@@ -12,22 +9,9 @@ function SignIn() {
   const { loading, login } = useAuth();
   const [form] = Form.useForm();
 
-  const [imgCaptcha, setImgCaptcha] = useState();
-  const [keyCaptcha, setKeyCaptcha] = useState();
-
   const handleSubmit = (values) => {
-    login({ ...values, ckey: keyCaptcha });
+    login({ ...values });
   };
-
-  const getCaptcha = async () => {
-    const data = await axios.get(HDDT_CAPTCHA_ENDPOINT);
-    setImgCaptcha(data?.data?.content || null);
-    setKeyCaptcha(data?.data?.key || null);
-  };
-
-  useEffect(() => {
-    getCaptcha();
-  }, []);
 
   return (
     <Row justify="center">
@@ -44,8 +28,9 @@ function SignIn() {
                 rules={[{ message: t('Common_PleaseEnterUsername'), required: true }]}
                 label={t('Common_Username')}
               >
-                <Input placeholder="name@example.com" />
+                <Input placeholder={t('Common_Username')} />
               </Form.Item>
+
               <Form.Item
                 name="password"
                 label={t('Common_Password')}
@@ -54,26 +39,13 @@ function SignIn() {
                 <Input.Password placeholder={t('Common_Password')} style={{ height: 45 }} />
               </Form.Item>
 
-              <Row justify="center" align="middle">
-                <Col xl={12} xs={24}>
-                  <Form.Item
-                    name="cvalue"
-                    label={t('Common_Captcha')}
-                    rules={[{ message: t('Common_PleaseEnterCaptcha'), required: true }]}
-                  >
-                    <Input />
-                  </Form.Item>
-                </Col>
-                <Col xl={12} xs={24}>
-                  {imgCaptcha && (
-                    <img
-                      style={{ margin: 'auto', display: 'flex' }}
-                      alt={t('Common_Captcha')}
-                      src={`data:image/svg+xml;utf8,${encodeURIComponent(imgCaptcha)}`}
-                    />
-                  )}
-                </Col>
-              </Row>
+              <Form.Item
+                name="org_code"
+                label={t('Common_OrgCode')}
+                rules={[{ message: t('Common_OrgCodeRequired'), required: true }]}
+              >
+                <Input placeholder={t('Common_OrgCode')} style={{ height: 45 }} />
+              </Form.Item>
 
               <Form.Item>
                 <Button className="btn-signIn" htmlType="submit" type="primary" size="large">
@@ -81,6 +53,12 @@ function SignIn() {
                 </Button>
               </Form.Item>
             </Form>
+          </div>
+          <div className="invoice-authentication-bottom">
+            <p>
+              {t('Auth_DontHaveAccount')}
+              <Link to="/register">{t('Auth_SignUp')}</Link>
+            </p>
           </div>
         </AuthFormWrap>
       </Col>

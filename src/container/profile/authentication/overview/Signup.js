@@ -1,12 +1,13 @@
-import { Button, Col, Form, Input, Row } from 'antd';
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
-
 import { Checkbox } from '@/components/checkbox/checkbox';
+import { Button, Col, Form, Input, Row } from 'antd';
 import { useAuth } from 'context/AuthContext';
+import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 import { AuthFormWrap } from './style';
 
 function SignUp() {
+  const { t } = useTranslation();
   const { register } = useAuth();
   const [state, setState] = useState({
     values: null,
@@ -34,15 +35,25 @@ function SignUp() {
                 name="name"
                 rules={[{ required: true, message: 'Vui lòng nhập tên đăng nhập' }]}
               >
-                <Input placeholder="Tên đăng nhập" />
+                <Input placeholder={t('Common_Username')} />
               </Form.Item>
+
               <Form.Item
-                label="Mật khẩu"
+                label={t('Common_Password')}
                 name="password"
                 rules={[{ required: true, message: 'Vui lòng nhập mật khẩu' }]}
               >
-                <Input.Password placeholder="Mật khẩu" />
+                <Input.Password placeholder={t('Common_Password')} style={{ height: 45 }} />
               </Form.Item>
+
+              <Form.Item
+                label={t('Common_OrgCode')}
+                name="org_code"
+                rules={[{ required: true, message: t('Common_OrgCodeRequired') }]}
+              >
+                <Input placeholder={t('Common_OrgCode')} style={{ height: 45 }} />
+              </Form.Item>
+
               <div className="invoice-auth-extra-links">
                 <Checkbox onChange={onChange} checked={state.checked}>
                   Tạo tài khoản nghĩa là bạn đồng ý với Điều khoản dịch vụ và Chính sách quyền riêng tư của chúng tôi
