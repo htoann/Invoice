@@ -1,7 +1,7 @@
 import { Cards } from '@/components/cards/frame/cards-frame';
 import { PageHeader } from '@/components/page-headers/page-headers';
 import { BorderLessHeading, Main } from '@/container/styled';
-import { API_PRODUCT } from '@/utils/apiConst';
+import { API_PROVIDER } from '@/utils/apiConst';
 import { dataService } from '@/utils/dataService';
 import { formatTime } from '@/utils/index';
 import UilEdit from '@iconscout/react-unicons/icons/uil-edit';
@@ -51,7 +51,7 @@ const Providers = () => {
 
   const handleDelete = async (id) => {
     try {
-      await dataService.delete(API_PRODUCT(id));
+      await dataService.delete(API_PROVIDER(id));
       setList(list.filter((account) => account.id !== id));
 
       notification.success({

@@ -1,6 +1,6 @@
 import { ModalCommon } from '@/components/ModalCommon';
 import { Modal } from '@/components/modals/antd-modals';
-import { API_PROVIDERS } from '@/utils/apiConst';
+import { API_CUSTOMERS } from '@/utils/apiConst';
 import { dataService } from '@/utils/dataService';
 import { Form, notification } from 'antd';
 import useDivision from 'hooks/vietnam-division/useDivision';
@@ -19,7 +19,7 @@ const CreateCustomer = ({ state, setState, list, setList }) => {
   const createNew = async (data) => {
     setLoading(true);
     try {
-      const response = await dataService.post(API_PROVIDERS, data);
+      const response = await dataService.post(API_CUSTOMERS, data);
       return response.data;
     } catch (error) {
       console.error(error);
