@@ -3,7 +3,7 @@ import { Route, Routes, useNavigate } from 'react-router-dom';
 import AuthLayout from '../container/profile/authentication/Index';
 
 const Login = lazy(() => import('../container/profile/authentication/overview/SignIn'));
-const SignUp = lazy(() => import('../container/profile/authentication/overview/Signup'));
+const SignUp = lazy(() => import('../container/profile/authentication/overview/SignUp'));
 
 const AuthRoot = () => {
   const navigate = useNavigate();

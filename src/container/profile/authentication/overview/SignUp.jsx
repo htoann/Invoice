@@ -3,18 +3,21 @@ import { Button, Col, Form, Input, Row } from 'antd';
 import { useAuth } from 'context/AuthContext';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
-import { AuthFormWrap } from './style';
+import { Link, useNavigate } from 'react-router-dom';
+import { AuthFormWrap } from './Style';
 
 function SignUp() {
   const { t } = useTranslation();
   const { register } = useAuth();
+
+  const navigate = useNavigate();
+
   const [state, setState] = useState({
     values: null,
     checked: null,
   });
   const handleSubmit = (values) => {
-    register(values);
+    register(values, () => navigate('/'));
   };
 
   const onChange = (checked) => {
