@@ -1,5 +1,5 @@
 import useBranches from '@/pages/category/c-pages/organization/hook/useBranches';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import useCommunes from './useCommunes';
 import useDistricts from './useDistricts';
 import useProvinces from './useProvinces';
@@ -12,6 +12,10 @@ const useDivision = () => {
   const { provinces } = useProvinces();
   const { districts } = useDistricts(provinceId);
   const { communes } = useCommunes(districtId);
+
+  useEffect(() => {
+    setDistrictId('');
+  }, [provinceId]);
 
   return { branches, provinces, districts, communes, setProvinceId, setDistrictId };
 };
