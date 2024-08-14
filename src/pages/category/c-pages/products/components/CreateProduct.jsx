@@ -48,19 +48,17 @@ const CreateProduct = ({ state, setState, list, setList }) => {
   };
 
   return (
-    <div>
-      <Modal type="primary" title={t('Product_Create_Title')} open={state.visible} onCancel={onCancel}>
-        <div className="project-modal">
-          <ModalHangHoa
-            form={form}
-            handleOk={handleOk}
-            onCancel={onCancel}
-            loading={loading}
-            textSubmit={t('Common_Create')}
-          />
-        </div>
-      </Modal>
-    </div>
+    <Modal type="primary" title={t('Product_Create_Title')} open={state.visible} onCancel={onCancel}>
+      <div className="project-modal">
+        <ModalHangHoa
+          form={form}
+          handleOk={handleOk}
+          onCancel={onCancel}
+          loading={loading}
+          textSubmit={t('Common_Create')}
+        />
+      </div>
+    </Modal>
   );
 };
 

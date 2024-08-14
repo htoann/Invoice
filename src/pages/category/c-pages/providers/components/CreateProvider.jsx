@@ -15,7 +15,6 @@ const CreateProvider = ({ state, setState, list, setList }) => {
   const [form] = Form.useForm();
 
   const [loading, setLoading] = useState(false);
-
   const [provinceId, setProvinceId] = useState('');
   const [districtId, setDistrictId] = useState('');
 
@@ -23,20 +22,11 @@ const CreateProvider = ({ state, setState, list, setList }) => {
   const { districts } = useDistricts(provinceId);
   const { communes } = useCommunes(districtId);
 
-  const provincesOption = provinces?.map((province) => ({
-    key: province.id,
-    label: province.name,
-  }));
-
-  const districtsOption = districts?.map((district) => ({
-    key: district.id,
-    label: district.name,
-  }));
-
-  const communesOption = communes?.map((commune) => ({
-    key: commune.id,
-    label: commune.name,
-  }));
+  const divisionOptions = {
+    province: provinces?.map(({ id, name }) => ({ key: id, label: name })),
+    district: districts?.map(({ id, name }) => ({ key: id, label: name })),
+    ward: communes?.map(({ id, name }) => ({ key: id, label: name })),
+  };
 
   const onCancel = () => {
     setState({ ...state, visible: false });
@@ -44,8 +34,9 @@ const CreateProvider = ({ state, setState, list, setList }) => {
   };
 
   const createNew = async (data) => {
+    setLoading(true);
+
     try {
-      setLoading(true);
       const response = await dataService.post(API_PROVIDERS, data);
       return response.data;
     } catch (error) {
@@ -74,53 +65,32 @@ const CreateProvider = ({ state, setState, list, setList }) => {
     }
   };
 
-  const fields = fieldsModalProvider.map((field) => {
-    if (field.name === 'province') {
-      return {
-        ...field,
-        options: provincesOption,
-      };
-    }
-    if (field.name === 'district') {
-      return {
-        ...field,
-        options: districtsOption,
-      };
-    }
-    if (field.name === 'ward') {
-      return {
-        ...field,
-        options: communesOption,
-      };
-    }
-    return field;
-  });
-
-  const onFormValuesChange = (changedValues) => {
-    if (changedValues?.province) {
-      setProvinceId(changedValues?.province);
-    }
-    if (changedValues?.district) {
-      setDistrictId(changedValues?.district);
-    }
+  const onFormValuesChange = ({ province, district }) => {
+    if (province) setProvinceId(province);
+    if (district) setDistrictId(district);
   };
 
+  const fields = fieldsModalProvider.map((field) => ({
+    ...field,
+    ...((field.name === 'province' || field.name === 'district' || field.name === 'ward') && {
+      options: divisionOptions[field.name],
+    }),
+  }));
+
   return (
-    <div>
-      <Modal type="primary" title={t('Provider_Create')} open={state.visible} onCancel={onCancel}>
-        <div className="project-modal">
-          <ModalCommon
-            form={form}
-            handleOk={handleOk}
-            onCancel={onCancel}
-            loading={loading}
-            textSubmit={t('Common_Create')}
-            fields={fields}
-            onValuesChange={onFormValuesChange}
-          />
-        </div>
-      </Modal>
-    </div>
+    <Modal type="primary" title={t('Provider_Create')} open={state.visible} onCancel={onCancel}>
+      <div className="project-modal">
+        <ModalCommon
+          form={form}
+          handleOk={handleOk}
+          onCancel={onCancel}
+          loading={loading}
+          textSubmit={t('Common_Create')}
+          fields={fields}
+          onValuesChange={onFormValuesChange}
+        />
+      </div>
+    </Modal>
   );
 };
 
