@@ -9,11 +9,9 @@ import { Col, Empty, Form, Input, Menu, notification, Skeleton } from 'antd';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import MenuItem from '../components/MenuItem';
-import useDepartments from '../hook/useDepartments';
 
-const DepartmentList = ({ list, setList, loadingList, selectedItem, setSelectedItem, selectedBranchId }) => {
+const DepartmentList = ({ list, setList, getList, loadingList, selectedItem, setSelectedItem, selectedBranchId }) => {
   const { t } = useTranslation();
-  const { getDepartments } = useDepartments(selectedBranchId);
 
   const [showCreate, setShowCreate] = useState(false);
   const [showEdit, setShowEdit] = useState(false);
@@ -43,7 +41,7 @@ const DepartmentList = ({ list, setList, loadingList, selectedItem, setSelectedI
         branch: selectedBranchId,
       });
 
-      getDepartments();
+      getList();
       setShowCreate(false);
       form.resetFields();
 

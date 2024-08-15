@@ -13,13 +13,19 @@ import useProjects from './hook/useProjects';
 export const Organization = () => {
   const { t } = useTranslation();
 
-  const { branches, setBranches, loadingBranches } = useBranches();
+  const { branches, setBranches, loadingBranches, getBranches } = useBranches();
   const [selectedBranchId, setSelectedBranchId] = useState(null);
 
-  const { selectedDepartmentId, departments, setDepartments, loadingDepartments, setSelectedDepartmentId } =
-    useDepartments(selectedBranchId);
+  const {
+    selectedDepartmentId,
+    departments,
+    setDepartments,
+    getDepartments,
+    loadingDepartments,
+    setSelectedDepartmentId,
+  } = useDepartments(selectedBranchId);
 
-  const { projects, setProjects, loadingProjects } = useProjects(selectedBranchId, selectedDepartmentId);
+  const { projects, setProjects, getProjects, loadingProjects } = useProjects(selectedBranchId, selectedDepartmentId);
 
   return (
     <>
@@ -29,6 +35,7 @@ export const Organization = () => {
           <BranchList
             list={branches}
             setList={setBranches}
+            getList={getBranches}
             loadingList={loadingBranches}
             selectedItem={selectedBranchId}
             setSelectedItem={setSelectedBranchId}
@@ -38,6 +45,7 @@ export const Organization = () => {
             <DepartmentList
               list={departments}
               setList={setDepartments}
+              getList={getDepartments}
               loadingList={loadingDepartments}
               selectedItem={selectedDepartmentId}
               setSelectedItem={setSelectedDepartmentId}
@@ -49,6 +57,7 @@ export const Organization = () => {
             <ProjectList
               list={projects}
               setList={setProjects}
+              getList={getProjects}
               loadingList={loadingProjects}
               selectedBranchId={selectedBranchId}
               selectedDepartmentId={selectedDepartmentId}

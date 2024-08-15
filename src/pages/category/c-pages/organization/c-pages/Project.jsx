@@ -10,11 +10,9 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 import MenuItem from '../components/MenuItem';
-import useProjects from '../hook/useProjects';
 
-const ProjectList = ({ list, setList, loadingList, selectedBranchId, selectedDepartmentId }) => {
+const ProjectList = ({ list, setList, getList, loadingList, selectedBranchId, selectedDepartmentId }) => {
   const { t } = useTranslation();
-  const { getProjects } = useProjects(selectedBranchId, selectedDepartmentId);
 
   const [showCreate, setShowCreate] = useState(false);
   const [showEdit, setShowEdit] = useState(false);
@@ -45,7 +43,7 @@ const ProjectList = ({ list, setList, loadingList, selectedBranchId, selectedDep
         department: selectedDepartmentId,
       });
 
-      getProjects();
+      getList();
       setShowCreate(false);
       form.resetFields();
 

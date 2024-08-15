@@ -9,11 +9,9 @@ import { Col, Empty, Form, Input, Menu, notification, Skeleton } from 'antd';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import MenuItem from '../components/MenuItem';
-import useBranches from '../hook/useBranches';
 
-const BranchList = ({ list, setList, loadingList, selectedItem, setSelectedItem }) => {
+const BranchList = ({ list, setList, getList, loadingList, selectedItem, setSelectedItem }) => {
   const { t } = useTranslation();
-  const { getBranches } = useBranches();
   const [showCreate, setShowCreate] = useState(false);
   const [showEdit, setShowEdit] = useState(false);
   const [branchEdit, setBranchEdit] = useState(null);
@@ -31,7 +29,7 @@ const BranchList = ({ list, setList, loadingList, selectedItem, setSelectedItem 
         ...values,
       });
 
-      getBranches();
+      getList();
       setShowCreate(false);
       form.resetFields();
 
