@@ -46,10 +46,10 @@ export const API_PROJECT = (branchId, departmentId, projectId) =>
 
 // Category
 export const API_PROVIDERS = '/orgs/providers/';
-export const API_PROVIDER = (providerId) => `/orgs/providers/${providerId}`;
+export const API_PROVIDER = (providerId) => `/orgs/providers/${providerId}/`;
 
 export const API_CUSTOMERS = '/orgs/customers/';
-export const API_CUSTOMER = (customerId) => `/orgs/customers/${customerId}`;
+export const API_CUSTOMER = (customerId) => `/orgs/customers/${customerId}/`;
 
 //
 
