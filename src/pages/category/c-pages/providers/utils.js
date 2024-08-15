@@ -23,7 +23,7 @@ export const columnDataProvider = [
   { title: 'Common_Country', dataIndex: 'country', key: 'country' },
   { title: 'Provider_Province', dataIndex: 'province', key: 'province' },
   { title: 'Provider_District', dataIndex: 'district', key: 'district' },
-  { title: 'Provider_Ward', dataIndex: 'ward', key: 'ward' },
+  { title: 'Provider_Ward', dataIndex: 'commune', key: 'commune' },
   { title: 'Common_ContactPersonTitle', dataIndex: 'contact_person_title', key: 'contact_person_title' },
   { title: 'Common_ContactPersonName', dataIndex: 'contact_person_name', key: 'contact_person_name' },
   {
@@ -66,7 +66,7 @@ export const fieldsModalProvider = [
   { name: 'bank_account_city', label: 'Provider_BankAccountCity', type: 'input' },
   { name: 'province', label: 'Provider_Province', type: 'select' },
   { name: 'district', label: 'Provider_District', type: 'select' },
-  { name: 'ward', label: 'Provider_Ward', type: 'select' },
+  { name: 'commune', label: 'Provider_Ward', type: 'select' },
   { name: 'contact_person_title', label: 'Common_ContactPersonTitle', type: 'input' },
   { name: 'contact_person_name', label: 'Common_ContactPersonName', type: 'input' },
   { name: 'contact_person_phone_number', label: 'Common_ContactPersonPhoneNumber', type: 'input' },

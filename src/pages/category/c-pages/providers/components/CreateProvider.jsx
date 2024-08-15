@@ -56,12 +56,12 @@ const CreateProvider = ({ state, setState, list, setList }) => {
       setProvinceId(province);
       form.setFieldsValue({
         district: undefined,
-        ward: undefined,
+        commune: undefined,
       });
     } else if (district) {
       setDistrictId(district);
       form.setFieldsValue({
-        ward: undefined,
+        commune: undefined,
       });
     }
   };
@@ -69,7 +69,7 @@ const CreateProvider = ({ state, setState, list, setList }) => {
   const mapOptions = {
     province: provinces,
     district: districts,
-    ward: communes,
+    commune: communes,
     branch: branches,
   };
 

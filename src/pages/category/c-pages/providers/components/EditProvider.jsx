@@ -4,7 +4,7 @@ import { API_PROVIDER } from '@/utils/apiConst';
 import { dataService } from '@/utils/dataService';
 import { Form, notification } from 'antd';
 import useDivision from 'hooks/vietnam-division/useDivision';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import useBranches from '../../../../../hooks/useBranches';
 import { fieldsModalProvider } from '../utils';
@@ -13,10 +13,22 @@ const EditProvider = ({ state, setState, list, setList }) => {
   const { t } = useTranslation();
   const [form] = Form.useForm();
 
+  const defaultProvideId = state?.update?.province?.id;
+  const defaultDistrictId = state?.update?.district?.id;
+
   const [loading, setLoading] = useState(false);
 
   const { provinces, districts, communes, setProvinceId, setDistrictId } = useDivision();
   const { branches } = useBranches();
+
+  useEffect(() => {
+    if (defaultProvideId) {
+      setProvinceId(defaultProvideId);
+    }
+    if (defaultDistrictId) {
+      setDistrictId(defaultDistrictId);
+    }
+  }, [defaultProvideId, defaultDistrictId]);
 
   const handleOk = async (values) => {
     try {
