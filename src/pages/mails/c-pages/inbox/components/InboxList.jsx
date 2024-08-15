@@ -24,15 +24,14 @@ export const InboxList = React.memo(({ setSelectedInbox, selectedInbox }) => {
   const { pageSize, current, total } = pagination;
 
   const [inboxList, setInboxList] = useState([]);
-
-  const [selectedDepartmentId, setSelectedDepartmentId] = useState(null);
+  const [selectedDepartmentId, setSelectedDepartmentId] = useState(undefined);
 
   const [search, setSearchSender] = useState('');
-  const [selectedAccountId, setSelectedAccountId] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const [selectedAccountId, setSelectedAccountId] = useState(undefined);
+  const [loading, setLoading] = useState(true);
 
-  const selectFirstAccount = (results) => {
-    setSelectedAccountId(results[0].id);
+  const selectFirstAccount = (accountList) => {
+    setSelectedAccountId(accountList[0].id);
   };
 
   const { loadingDepartments, departments } = useGetAllDepartments();
@@ -63,6 +62,14 @@ export const InboxList = React.memo(({ setSelectedInbox, selectedInbox }) => {
     if (selectedAccountId) getList({ search, page: current, page_size: pageSize, accountId: selectedAccountId });
   }, [selectedAccountId, current, pageSize]);
 
+  useEffect(() => {
+    setInboxList([]);
+  }, [selectedAccountId]);
+
+  useEffect(() => {
+    setSelectedAccountId(undefined);
+  }, [selectedDepartmentId]);
+
   const resetCurrentPage = () => {
     setPagination((prev) => ({
       ...prev,
@@ -89,11 +96,12 @@ export const InboxList = React.memo(({ setSelectedInbox, selectedInbox }) => {
   };
 
   const accountsSelect =
-    mailAccountList?.length > 0 &&
-    mailAccountList.map((item) => ({
-      value: item.id,
-      label: item.email,
-    }));
+    mailAccountList?.length > 0
+      ? mailAccountList.map((item) => ({
+          value: item.id,
+          label: item.email,
+        }))
+      : [];
 
   const departmentsSelect = [
     { label: t('Common_All'), value: '' },
@@ -127,39 +135,36 @@ export const InboxList = React.memo(({ setSelectedInbox, selectedInbox }) => {
         </>
       </div>
 
-      {!loadingMailAccounts && (
-        <>
-          <div style={{ display: 'flex', gap: 2, flexWrap: 'auto', flexDirection: 'column' }}>
-            <span className="label mb-8">{t('Common_SelectAccount')}</span>
-            <Select
-              popupClassName="dropdown-select"
-              style={{ width: '100%', marginBottom: 20 }}
-              placeholder={t('Common_SelectAccount')}
-              onChange={(value) => {
-                setSelectedAccountId(value);
-                handleReset();
-              }}
-              loading={loadingMailAccounts}
-              disabled={loadingMailAccounts}
-              defaultValue={selectedAccountId}
-              options={accountsSelect}
-            />
-          </div>
+      <div style={{ display: 'flex', gap: 2, flexWrap: 'auto', flexDirection: 'column' }}>
+        <span className="label mb-8">{t('Common_SelectAccount')}</span>
+        <Select
+          popupClassName="dropdown-select"
+          style={{ width: '100%', marginBottom: 20 }}
+          placeholder={t('Common_SelectAccount')}
+          onChange={(value) => {
+            setSelectedAccountId(value);
+            handleReset();
+          }}
+          loading={loadingMailAccounts}
+          disabled={loadingMailAccounts}
+          defaultValue={selectedAccountId}
+          options={accountsSelect}
+          key={selectedAccountId}
+        />
+      </div>
 
-          <Input
-            style={{ width: '100%', height: 40 }}
-            placeholder={t('Mail_Search')}
-            value={search}
-            onChange={(event) => {
-              setSearchSender(event.target.value);
-            }}
-            onPressEnter={() => {
-              getList({ search, page_size: pageSize, accountId: selectedAccountId });
-              resetCurrentPage();
-            }}
-          />
-        </>
-      )}
+      <Input
+        style={{ width: '100%', height: 40 }}
+        placeholder={t('Mail_Search')}
+        value={search}
+        onChange={(event) => {
+          setSearchSender(event.target.value);
+        }}
+        onPressEnter={() => {
+          getList({ search, page_size: pageSize, accountId: selectedAccountId });
+          resetCurrentPage();
+        }}
+      />
 
       {!loadingMailAccounts && !loadingDepartments && inboxList?.length > 0 && (
         <div style={{ display: 'flex', justifyContent: 'center', marginTop: 20 }}>
@@ -177,7 +182,7 @@ export const InboxList = React.memo(({ setSelectedInbox, selectedInbox }) => {
 
       {loading || loadingMailAccounts ? (
         <>
-          <Skeleton active />
+          <Skeleton active style={{ marginTop: 20 }} />
           <Skeleton style={{ marginTop: 10 }} active />
         </>
       ) : (

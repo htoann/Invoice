@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 
 const useMailAccounts = (onHandleResult, selectedDepartmentId = '') => {
   const [mailAccountList, setMailAccountList] = useState([]);
-  const [loadingMailAccounts, setLoadingMailAccounts] = useState(false);
+  const [loadingMailAccounts, setLoadingMailAccounts] = useState(true);
 
   const getMailAccounts = async ({ departmentId = '' } = {}) => {
     try {
