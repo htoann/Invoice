@@ -69,7 +69,7 @@ const EditProvider = ({ state, setState, list, setList }) => {
   const mapOptions = {
     province: provinces,
     district: districts,
-    ward: communes,
+    commune: communes,
     branch: branches,
   };
 
