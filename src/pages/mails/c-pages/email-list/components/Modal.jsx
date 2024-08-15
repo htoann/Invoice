@@ -1,9 +1,9 @@
-/* eslint-disable no-unused-vars */
 import { Button } from '@/components/buttons/buttons';
 import { BasicFormWrapper } from '@/container/styled';
 import i18n from '@/i18n/config';
-import { Form, Input } from 'antd';
+import { Form, Input, Select } from 'antd';
 import useGetAllDepartments from 'hooks/useGetAllDepartments';
+import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 
 const ModalAccount = ({ form, handleOk, state, onCancel, loading, textSubmit }) => {
@@ -11,6 +11,14 @@ const ModalAccount = ({ form, handleOk, state, onCancel, loading, textSubmit }) 
 
   const { t } = useTranslation();
   const { loadingDepartments, departments } = useGetAllDepartments();
+
+  useEffect(() => {
+    if (!loadingDepartments && !state?.update?.departmentId && departments?.length > 0) {
+      form.setFieldsValue({
+        department: state?.update?.departmentId || departments[0]?.id,
+      });
+    }
+  }, [loadingDepartments]);
 
   return (
     <BasicFormWrapper>
@@ -23,6 +31,24 @@ const ModalAccount = ({ form, handleOk, state, onCancel, loading, textSubmit }) 
         >
           <Input placeholder={t('Common_EnterAccountName')} autoComplete="off" />
         </Form.Item>
+
+        <Form.Item
+          name="department"
+          initialValue={state?.update?.departmentId || departments[0]?.id}
+          label={t('Common_Department')}
+          rules={[{ required: true, message: t('Department_PleaseSelect') }]}
+        >
+          {departments?.length > 0 && (
+            <Select loading={loadingDepartments} disabled={loadingDepartments}>
+              {departments.map((item) => (
+                <Select.Option key={item.id} value={item.id}>
+                  {item.name}
+                </Select.Option>
+              ))}
+            </Select>
+          )}
+        </Form.Item>
+
         <Form.Item
           name="email"
           initialValue={state?.update.email}
@@ -37,6 +63,7 @@ const ModalAccount = ({ form, handleOk, state, onCancel, loading, textSubmit }) 
         >
           <Input disabled={state?.update.email} placeholder="name@example.com" autoComplete="email" />
         </Form.Item>
+
         <Form.Item
           name="password"
           initialValue={state?.update?.password}
@@ -62,27 +89,7 @@ const ModalAccount = ({ form, handleOk, state, onCancel, loading, textSubmit }) 
             </a>
           </>
         )}
-        {/* 
-        <Form.Item
-          name="department_id"
-          initialValue={state?.update?.departmentId}
-          label={t('Common_Department')}
-          rules={[{ required: true, message: t('Department_PleaseSelect') }]}
-        >
-          {departments?.length > 0 && (
-            <Select
-              loading={loadingDepartments}
-              disabled={loadingDepartments}
-              defaultValue={state?.update.departmentId || departments[0]?.id}
-            >
-              {departments.map((item) => (
-                <Select.Option key={item.id} value={item.id}>
-                  {item.name}
-                </Select.Option>
-              ))}
-            </Select>
-          )}
-        </Form.Item> */}
+
         <div style={{ justifyContent: 'end', display: 'flex' }}>
           <Button size="default" type="white" outlined style={{ marginRight: 8 }} onClick={onCancel}>
             {t('Common_Cancel')}

@@ -68,8 +68,6 @@ const Customers = () => {
     }
   };
 
-  
-
   const tableDataSource =
     list?.map((item, index) => {
       const stt = (current - 1) * pageSize + index + 1;
@@ -146,6 +144,7 @@ const Customers = () => {
         : false,
     fixed: col?.fixed,
     className: col.key === 'stt' || col.key === 'action' ? '' : 'searchInput',
+    width: col?.width,
   }));
 
   const rowSelection = {

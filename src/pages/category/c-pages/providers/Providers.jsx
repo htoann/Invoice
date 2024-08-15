@@ -144,6 +144,7 @@ const Providers = () => {
         : false,
     fixed: col?.fixed,
     className: col.key === 'stt' || col.key === 'action' ? '' : 'searchInput',
+    width: col?.width,
   }));
 
   const rowSelection = {

@@ -22,6 +22,7 @@ export const columnDataCustomer = [
   { title: 'Common_Status', dataIndex: 'status', key: 'status' },
   { title: 'Common_CreatedAt', dataIndex: 'created_at', key: 'created_at' },
   { title: 'Common_UpdatedAt', dataIndex: 'updated_at', key: 'updated_at' },
+  { title: 'Common_Action', dataIndex: 'action', key: 'action', width: '90px', fixed: 'right' },
 ];
 
 export const fieldsModalCustomer = [
