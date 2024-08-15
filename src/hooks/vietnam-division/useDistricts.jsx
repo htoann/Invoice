@@ -21,7 +21,7 @@ const useDistricts = (provinceId) => {
   };
 
   useEffect(() => {
-    getDistricts();
+    provinceId && getDistricts();
   }, [provinceId]);
 
   return { districts, setDistricts, loadingDistricts, setLoadingDistricts };

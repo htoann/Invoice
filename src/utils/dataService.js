@@ -1,11 +1,27 @@
-import { API_ENDPOINT } from '@/utils/index';
+import { ACCESS_TOKEN, API_ENDPOINT, clearLogoutLocalStorageAndCookie, REFRESH_TOKEN } from '@/utils/index';
 import axios from 'axios';
-import { getCookie } from './cookie';
+import { getCookie, setCookie } from './cookie';
+
+const whiteListAPIs = ['/auth/login/'];
+
+let refreshTokenPromise = null;
+let failedQueue = [];
+
+const processQueue = (error, accessToken = null) => {
+  failedQueue.forEach((prom) => {
+    if (accessToken) {
+      prom.resolve(accessToken);
+    } else {
+      prom.reject(error);
+    }
+  });
+  failedQueue = [];
+};
 
 const authHeader = () => {
-  if (getCookie('access_token')) {
+  if (getCookie(ACCESS_TOKEN)) {
     return {
-      Authorization: `Bearer ${getCookie('access_token')}`,
+      Authorization: `Bearer ${getCookie(ACCESS_TOKEN)}`,
     };
   }
 
@@ -66,13 +82,25 @@ class DataService {
   }
 }
 
-/**
- * axios interceptors runs before and after a request, letting the developer modify req,req more
- * For more details on axios interceptor see https://github.com/axios/axios#interceptors
- */
+const refreshAccessToken = async () => {
+  try {
+    const response = await axios.post(`${API_ENDPOINT}/auth/refresh/`, {
+      refresh: getCookie(REFRESH_TOKEN),
+    });
+
+    if (response?.data?.token) {
+      const { access_token, refresh_token } = response.data.token;
+      setCookie(ACCESS_TOKEN, access_token);
+      setCookie(REFRESH_TOKEN, refresh_token);
+      return access_token;
+    }
+  } catch (error) {
+    console.error('Failed to refresh token:', error);
+    return null;
+  }
+};
+
 client.interceptors.request.use((config) => {
-  // do something before executing the request
-  // For example tag along the bearer access token to request header or set a cookie
   const requestConfig = config;
   const { headers } = config;
   requestConfig.headers = { ...headers, ...authHeader() };
@@ -83,19 +111,44 @@ client.interceptors.request.use((config) => {
 client.interceptors.response.use(
   (response) => response,
   async (error) => {
-    const { response } = error;
+    const { response, config } = error;
 
-    if (response) {
-      if (response.status === 500) {
-        // Handle the 500 error case
-        // You might want to do something like refreshing a token or retrying the request
-        console.error('Server error:', response);
-        // Return the response or throw an error
-        return Promise.reject(error);
+    if (response && response.status === 401 && !whiteListAPIs.includes(config.url)) {
+      const originalRequest = error.config;
+
+      if (refreshTokenPromise) {
+        return refreshTokenPromise
+          .then((accessToken) => {
+            originalRequest.headers['Authorization'] = `Bearer ${accessToken}`;
+            return client(originalRequest);
+          })
+          .catch((err) => Promise.reject(err));
       }
+
+      refreshTokenPromise = refreshAccessToken()
+        .then((accessToken) => {
+          refreshTokenPromise = null;
+          client.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
+          processQueue(null, accessToken);
+
+          originalRequest.headers['Authorization'] = `Bearer ${accessToken}`;
+          return client(originalRequest);
+        })
+        .catch((refreshError) => {
+          refreshTokenPromise = null;
+
+          clearLogoutLocalStorageAndCookie();
+
+          window.location.href = '/';
+
+          return Promise.reject(refreshError);
+        });
+
+      return new Promise((resolve, reject) => {
+        failedQueue.push({ resolve, reject });
+      });
     }
 
-    // Return the error to the calling function so the catch block works
     return Promise.reject(error);
   },
 );

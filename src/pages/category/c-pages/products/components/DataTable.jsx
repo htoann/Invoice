@@ -122,7 +122,6 @@ function DataTable({ rowSelection, tableData, columns, pagination, setState, sta
 }
 
 DataTable.propTypes = {
-  rowSelection: PropTypes.bool,
   tableData: PropTypes.array,
   columns: PropTypes.array,
 };

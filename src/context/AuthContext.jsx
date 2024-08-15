@@ -1,10 +1,12 @@
 import { API_LOGIN, API_REGISTER } from '@/utils/apiConst';
+import { setCookie } from '@/utils/cookie';
 import { dataService } from '@/utils/dataService';
+import { getLocalStorage, setLocalStorage } from '@/utils/localStorage';
 import { notification } from 'antd';
-import Cookies from 'js-cookie';
+import { jwtDecode } from 'jwt-decode';
 import { createContext, useCallback, useContext, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { REACT_MODE } from '../utils';
+import { ACCESS_TOKEN, clearLogoutLocalStorageAndCookie, LOGGED_IN, ORG_ID, REACT_MODE, REFRESH_TOKEN } from '../utils';
 
 const AuthContext = createContext();
 
@@ -12,74 +14,65 @@ export const AuthProvider = ({ children }) => {
   const { t } = useTranslation();
 
   const [authState, setAuthState] = useState({
-    login: Cookies.get('loggedIn') || false,
+    login: getLocalStorage(LOGGED_IN) || false,
+    orgId: getLocalStorage(ORG_ID) || null,
     loading: false,
   });
 
-  const login = useCallback(async (values) => {
+  const handleAuthSuccess = (token) => {
+    const { access_token, refresh_token } = token;
+    const { organization_id } = jwtDecode(access_token);
+
+    setCookie(ACCESS_TOKEN, access_token);
+    setCookie(REFRESH_TOKEN, refresh_token);
+
+    setLocalStorage(LOGGED_IN, true);
+    setLocalStorage(ORG_ID, organization_id);
+
+    setAuthState({ login: true, loading: false, orgId: organization_id });
+  };
+
+  const handleAuthError = (authType) => {
+    setAuthState((prevState) => ({ ...prevState, login: false, loading: false }));
+
+    notification.error({
+      message: t(`Auth_${authType}`),
+      description: t(`Auth_${authType}_Failed`),
+    });
+  };
+
+  const login = async (values) => {
     setAuthState((prevState) => ({ ...prevState, loading: true }));
     try {
       if (REACT_MODE === 'ave') {
-        Cookies.set('access_token', 'cr7');
-        Cookies.set('loggedIn', true);
+        setCookie('loggedIn', true);
         setAuthState({ login: true, loading: false });
       } else {
-        const response = await dataService.post(API_LOGIN, values);
-        Cookies.set('access_token', response.data.token.access_token);
-        Cookies.set('loggedIn', true);
-        setAuthState({ login: true, loading: false });
+        const { data } = await dataService.post(API_LOGIN, values);
+        handleAuthSuccess(data.token);
       }
-
-      notification.success({
-        message: t('Auth_SignIn'),
-        description: t('Auth_SignIn_Success'),
-      });
     } catch (err) {
       console.error(err);
-      setAuthState({ login: false, loading: false });
-
-      notification.error({
-        message: t('Auth_SignIn'),
-        description: t('Auth_SignIn_Failed'),
-      });
+      handleAuthError('SignIn');
     }
-  }, []);
+  };
 
-  const register = useCallback(async (values, handleSuccess) => {
+  const register = async (values, handleSuccess) => {
     setAuthState((prevState) => ({ ...prevState, loading: true }));
     try {
       const response = await dataService.post(API_REGISTER, values);
-
-      Cookies.set('access_token', response.data.token.access_token);
-      Cookies.set('loggedIn', true);
-      setAuthState({ login: true, loading: false });
-
-      notification.success({
-        message: t('Auth_SignUp'),
-        description: t('Auth_SignUp_Success'),
-      });
-
+      handleAuthSuccess(response.data.token, 'SignUp');
       handleSuccess && handleSuccess();
     } catch (err) {
       console.error(err);
-      setAuthState((prevState) => ({ ...prevState, loading: false }));
-
-      notification.error({
-        message: t('Auth_SignUp'),
-        description: t('Auth_SignUp_Failed'),
-      });
+      handleAuthError('SignUp');
     }
-  }, []);
+  };
 
   const logOut = useCallback(() => {
     setAuthState((prevState) => ({ ...prevState, loading: true }));
-    try {
-      Cookies.remove('loggedIn');
-      Cookies.remove('access_token');
-      setAuthState({ login: false, loading: false });
-    } catch {
-      setAuthState((prevState) => ({ ...prevState, loading: false }));
-    }
+    setAuthState({ login: false, loading: false });
+    clearLogoutLocalStorageAndCookie();
   }, []);
 
   return (
@@ -87,7 +80,6 @@ export const AuthProvider = ({ children }) => {
       value={{
         isLoggedIn: authState.login,
         loading: authState.loading,
-        error: authState.error,
         login,
         register,
         logOut,

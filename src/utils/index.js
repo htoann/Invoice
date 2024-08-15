@@ -1,11 +1,17 @@
 import enUS from 'antd/lib/locale/en_US';
 import viVN from 'antd/lib/locale/vi_VN';
-import dayjs from './dayjs';
 import i18next from 'i18next';
+import { removeCookie } from './cookie';
+import dayjs from './dayjs';
+import { removeLocalStorage } from './localStorage';
 
 export const API_ENDPOINT = process.env.REACT_APP_API_ENDPOINT;
 export const HDDT_CAPTCHA_ENDPOINT = process.env.REACT_APP_HDDT_CAPTCHA;
 export const REACT_MODE = process.env.REACT_APP_MODE;
+export const ACCESS_TOKEN = 'accessToken';
+export const REFRESH_TOKEN = 'refreshToken';
+export const LOGGED_IN = 'loggedIn';
+export const ORG_ID = 'orgId';
 
 const getFileName = (response) => {
   try {
@@ -81,4 +87,11 @@ export const formatDataSize = (byteSize) => {
   const size = (byteSize / Math.pow(1024, index)).toFixed(2);
 
   return `${size} ${units[index]}`;
+};
+
+export const clearLogoutLocalStorageAndCookie = () => {
+  removeCookie(ACCESS_TOKEN);
+  removeCookie(REFRESH_TOKEN);
+  removeLocalStorage(LOGGED_IN);
+  removeLocalStorage(ORG_ID);
 };

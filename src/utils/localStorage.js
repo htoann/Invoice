@@ -17,4 +17,4 @@ const removeLocalStorage = (key) => {
   localStorage.removeItem(key);
 };
 
-export { getLocalStorage, setLocalStorage, removeLocalStorage };
+export { getLocalStorage, removeLocalStorage, setLocalStorage };
