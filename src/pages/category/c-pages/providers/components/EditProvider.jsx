@@ -6,6 +6,7 @@ import { Form, notification } from 'antd';
 import useDivision from 'hooks/vietnam-division/useDivision';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import useBranches from '../../../../../hooks/useBranches';
 import { fieldsModalProvider } from '../utils';
 
 const EditProvider = ({ state, setState, list, setList }) => {
@@ -14,7 +15,8 @@ const EditProvider = ({ state, setState, list, setList }) => {
 
   const [loading, setLoading] = useState(false);
 
-  const { branches, provinces, districts, communes, setProvinceId, setDistrictId } = useDivision();
+  const { provinces, districts, communes, setProvinceId, setDistrictId } = useDivision();
+  const { branches } = useBranches();
 
   const handleOk = async (values) => {
     try {

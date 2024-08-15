@@ -3,10 +3,10 @@ import { Main } from '@/container/styled';
 import { Row } from 'antd';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import useBranches from '../../../../hooks/useBranches';
 import BranchList from './c-pages/Branch';
 import DepartmentList from './c-pages/Department';
 import ProjectList from './c-pages/Project';
-import useBranches from './hook/useBranches';
 import useDepartments from './hook/useDepartments';
 import useProjects from './hook/useProjects';
 
