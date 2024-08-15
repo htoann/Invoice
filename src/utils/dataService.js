@@ -113,7 +113,7 @@ client.interceptors.response.use(
   async (error) => {
     const { response, config } = error;
 
-    if (response && response.status === 401 && !whiteListAPIs.includes(config.url)) {
+    if (response?.status === 401 && !whiteListAPIs.includes(config.url)) {
       const originalRequest = error.config;
 
       if (refreshTokenPromise) {
