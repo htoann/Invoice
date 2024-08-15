@@ -128,10 +128,6 @@ const Products = () => {
     }
   };
 
-  const stopPropagation = (e) => {
-    e.stopPropagation();
-  };
-
   const tableDataSource = [];
 
   if (list?.length > 0) {

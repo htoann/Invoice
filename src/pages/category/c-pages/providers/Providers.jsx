@@ -68,10 +68,6 @@ const Providers = () => {
     }
   };
 
-  const stopPropagation = (e) => {
-    e.stopPropagation();
-  };
-
   const tableDataSource =
     list?.map((item, index) => {
       const stt = (current - 1) * pageSize + index + 1;

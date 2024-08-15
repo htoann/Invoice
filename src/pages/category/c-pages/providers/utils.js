@@ -46,6 +46,7 @@ export const fieldsModalProvider = [
   { name: 'code', label: 'Provider_Code', type: 'input', required: true },
   { name: 'name', label: 'Provider_Name', type: 'input', required: true },
   { name: 'tax_code', label: 'Common_TaxCode', type: 'input', required: true },
+  { name: 'branch', label: 'Common_Branch', type: 'select', required: true },
   { name: 'address', label: 'Common_Address', type: 'input' },
   { name: 'phone_number', label: 'Common_PhoneNumber', type: 'input' },
   { name: 'website', label: 'Common_Website', type: 'input' },
@@ -90,5 +91,4 @@ export const fieldsModalProvider = [
       { id: 2, name: 'Common_NotUsing' },
     ],
   },
-  { name: 'branch', label: 'Common_Branch', type: 'select' },
 ];

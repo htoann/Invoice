@@ -120,10 +120,6 @@ const EmailList = () => {
     }
   };
 
-  const stopPropagation = (e) => {
-    e.stopPropagation();
-  };
-
   const tableDataSource = [];
 
   if (accounts?.length > 0) {

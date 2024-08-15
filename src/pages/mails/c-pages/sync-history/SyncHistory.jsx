@@ -76,10 +76,6 @@ const SyncHistory = () => {
     getList({ ...searchParams, page: current, page_size: pageSize });
   }, [current, pageSize]);
 
-  const stopPropagation = (e) => {
-    e.stopPropagation();
-  };
-
   const tableDataSource = list.map((item, index) => {
     const { id, time, name, state, note, totalInvoice, newInvoice } = item;
     return {

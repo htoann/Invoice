@@ -68,9 +68,7 @@ const Customers = () => {
     }
   };
 
-  const stopPropagation = (e) => {
-    e.stopPropagation();
-  };
+  
 
   const tableDataSource =
     list?.map((item, index) => {
