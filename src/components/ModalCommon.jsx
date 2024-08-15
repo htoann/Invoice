@@ -20,7 +20,7 @@ export const ModalCommon = ({
     switch (type) {
       case 'select':
         return (
-          <Select defaultValue={dataUpdate?.[key] || options?.[0]?.id}>
+          <Select>
             {options?.map((option, index) => (
               <Select.Option key={index} value={option.id}>
                 {t(option.name)}
@@ -65,7 +65,7 @@ export const ModalCommon = ({
           {fields.map(({ name, label, type, options, required }) => (
             <Col span={size === 'large' ? 12 : 24} key={name}>
               <Form.Item
-                initialValue={dataUpdate?.[name]}
+                initialValue={dataUpdate?.[name] || (type === 'select' ? options?.[0]?.id : undefined)}
                 label={t(label)}
                 name={name}
                 valuePropName={type === 'checkbox' ? 'checked' : 'value'}
