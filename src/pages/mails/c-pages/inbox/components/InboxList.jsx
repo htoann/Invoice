@@ -97,7 +97,7 @@ export const InboxList = React.memo(({ setSelectedInbox, selectedInbox }) => {
 
   const departmentsSelect = [
     { label: t('Common_All'), value: '' },
-    ...(departments.length > 0
+    ...(departments?.length > 0
       ? departments.map((item) => ({
           value: item.id,
           label: item.name,
