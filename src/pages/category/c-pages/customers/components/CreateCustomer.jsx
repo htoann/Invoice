@@ -44,19 +44,13 @@ const CreateCustomer = ({ state, setState, list, setList }) => {
     }
   };
 
-  const onFormValuesChange = ({ province, district }) => {};
-
-  const fields = fieldsModalCustomer.map((field) => ({
-    ...field,
-  }));
-
   const onCancel = () => {
     setState({ ...state, visible: false });
     form.resetFields();
   };
 
   return (
-    <Modal title={t('Provider_Create')} open={state.visible} onCancel={onCancel} width={1000}>
+    <Modal title={t('Customer_Create')} open={state.visible} onCancel={onCancel} width={1000}>
       <div className="project-modal">
         <ModalCommon
           form={form}
@@ -64,8 +58,7 @@ const CreateCustomer = ({ state, setState, list, setList }) => {
           onCancel={onCancel}
           loading={loading}
           textSubmit={t('Common_Create')}
-          fields={fields}
-          onValuesChange={onFormValuesChange}
+          fields={fieldsModalCustomer}
           size="large"
         />
       </div>

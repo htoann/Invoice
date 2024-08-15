@@ -65,7 +65,11 @@ export const ModalCommon = ({
           {fields.map(({ name, label, type, options, required }) => (
             <Col span={size === 'large' ? 12 : 24} key={name}>
               <Form.Item
-                initialValue={type === 'select' ? dataUpdate?.[name]?.id || dataUpdate?.[name] : dataUpdate?.[name]}
+                initialValue={
+                  type === 'select'
+                    ? dataUpdate?.[name]?.id || dataUpdate?.[name] || options?.[0]?.id
+                    : dataUpdate?.[name]
+                }
                 label={t(label)}
                 name={name}
                 valuePropName={type === 'checkbox' ? 'checked' : 'value'}

@@ -3,7 +3,6 @@ import { Modal } from '@/components/modals/antd-modals';
 import { API_CUSTOMER } from '@/utils/apiConst';
 import { dataService } from '@/utils/dataService';
 import { Form, notification } from 'antd';
-import useDivision from 'hooks/vietnam-division/useDivision';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { fieldsModalCustomer } from '../utils';
@@ -13,8 +12,6 @@ const EditCustomer = ({ state, setState, list, setList }) => {
   const [form] = Form.useForm();
 
   const [loading, setLoading] = useState(false);
-
-  const { branches, provinces, districts, communes, setProvinceId, setDistrictId } = useDivision();
 
   const handleOk = async (values) => {
     try {
@@ -47,30 +44,13 @@ const EditCustomer = ({ state, setState, list, setList }) => {
     }
   };
 
-  const onFormValuesChange = ({ province, district }) => {
-    if (province) setProvinceId(province);
-    if (district) setDistrictId(district);
-  };
-
-  const mapOptions = {
-    province: provinces,
-    district: districts,
-    ward: communes,
-    branch: branches,
-  };
-
-  const fields = fieldsModalCustomer.map((field) => ({
-    ...field,
-    ...(field.name in mapOptions && { options: mapOptions[field.name] }),
-  }));
-
   const onCancel = () => {
     setState({ ...state, editVisible: false });
     form.resetFields();
   };
 
   return (
-    <Modal title={t('Provider_Update')} open={state.editVisible} onCancel={onCancel} width={1000}>
+    <Modal title={t('Customer_Update')} open={state.editVisible} onCancel={onCancel} width={1000}>
       <div className="project-modal">
         <ModalCommon
           form={form}
@@ -78,8 +58,7 @@ const EditCustomer = ({ state, setState, list, setList }) => {
           onCancel={onCancel}
           loading={loading}
           textSubmit={t('Common_Update')}
-          fields={fields}
-          onValuesChange={onFormValuesChange}
+          fields={fieldsModalCustomer}
           size="large"
           dataUpdate={state.update}
         />
