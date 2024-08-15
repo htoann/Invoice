@@ -139,8 +139,6 @@ client.interceptors.response.use(
 
           clearLogoutLocalStorageAndCookie();
 
-          window.location.href = '/';
-
           return Promise.reject(refreshError);
         });
 
