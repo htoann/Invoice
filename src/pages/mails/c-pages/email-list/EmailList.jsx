@@ -60,7 +60,7 @@ const EmailList = () => {
         ...(email && { email }),
         page,
         page_size,
-        // department_id: departmentId,
+        department_id: departmentId,
       });
 
       if (response?.data) {
@@ -132,7 +132,7 @@ const EmailList = () => {
         id,
         name: <span>{name}</span>,
         email: <span>{email}</span>,
-        department: <span>{department?.name}</span>,
+        department: <span>{departments.find((item) => item.id === department).name}</span>,
         action: (
           <div className="table-actions">
             <Link className="edit" to="#" onClick={() => showEditModal(item)}>
@@ -251,11 +251,23 @@ const EmailList = () => {
       </Main>
 
       {state.visible && (
-        <CreateAccount state={state} setState={setState} accounts={accounts} setAccounts={setAccounts} />
+        <CreateAccount
+          state={state}
+          setState={setState}
+          accounts={accounts}
+          setAccounts={setAccounts}
+          departments={departments}
+        />
       )}
 
       {state.editVisible && (
-        <UpdateAccount state={state} setState={setState} accounts={accounts} setAccounts={setAccounts} />
+        <UpdateAccount
+          state={state}
+          setState={setState}
+          accounts={accounts}
+          setAccounts={setAccounts}
+          departments={departments}
+        />
       )}
     </>
   );
