@@ -6,15 +6,8 @@ import { notification } from 'antd';
 import { jwtDecode } from 'jwt-decode';
 import { createContext, useCallback, useContext, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import {
-  ACCESS_TOKEN,
-  clearLogoutLocalStorageAndCookie,
-  LOGGED_IN,
-  ORG_ID,
-  REACT_MODE,
-  REFRESH_TOKEN,
-  watchObject,
-} from '../utils';
+import { ACCESS_TOKEN, clearLogoutLocalStorageAndCookie, LOGGED_IN, ORG_ID, REACT_MODE, REFRESH_TOKEN } from '../utils';
+import { watchObject } from './../utils/index';
 
 const AuthContext = createContext();
 
@@ -30,7 +23,6 @@ export const AuthProvider = ({ children }) => {
   watchObject(window.localStorage, ['removeItem'], (method, key) => {
     if (method === 'removeItem' && key === LOGGED_IN && authState.login) {
       setAuthState({ login: false, loading: false });
-      clearLogoutLocalStorageAndCookie();
     }
   });
 
