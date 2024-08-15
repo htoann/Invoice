@@ -78,8 +78,8 @@ export const fieldsModalProvider = [
     label: 'Provider_IsIndividual',
     type: 'select',
     options: [
-      { id: 0, name: 'Common_Org' },
-      { id: 1, name: 'Common_Individual' },
+      { id: false, name: 'Common_Org' },
+      { id: true, name: 'Common_Individual' },
     ],
   },
   { name: 'is_customer', label: 'Provider_IsCustomer', type: 'checkbox' },
