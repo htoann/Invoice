@@ -6,14 +6,14 @@ import { Navigate, Route, BrowserRouter as Router, Routes } from 'react-router-d
 import { ThemeProvider } from 'styled-components';
 import ProtectedRoute from './routes/protectedRoute';
 
-import { useAuth } from 'context/AuthContext';
 import { useAppState } from 'context/AppContext';
+import { useAuth } from 'context/AuthContext';
 import { useTranslation } from 'react-i18next';
-import { themeColor } from './utils/theme/themeVariables';
 import './index.scss';
 import Auth from './routes/auth';
 import Index from './routes/index';
 import { getAntdLocale } from './utils';
+import { themeColor } from './utils/theme/themeVariables';
 
 const NotFound = lazy(() => import('./container/pages/404'));
 

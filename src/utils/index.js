@@ -95,3 +95,21 @@ export const clearLogoutLocalStorageAndCookie = () => {
   removeLocalStorage(LOGGED_IN);
   removeLocalStorage(ORG_ID);
 };
+
+export const watchObject = (object = {}, methods = [], callbackBefore = () => {}, callbackAfter = () => {}) => {
+  methods.forEach((method) => {
+    const original = object[method].bind(object);
+    const newMethod = (...args) => {
+      callbackBefore(method, ...args);
+      const result = method === 'getItem' ? original(...args) : original(...args);
+      if (method === 'getItem') {
+        callbackAfter(method, ...args, result);
+        return result;
+      } else {
+        callbackAfter(method, ...args);
+        return result;
+      }
+    };
+    object[method] = newMethod.bind(object);
+  });
+};

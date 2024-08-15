@@ -6,7 +6,15 @@ import { notification } from 'antd';
 import { jwtDecode } from 'jwt-decode';
 import { createContext, useCallback, useContext, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { ACCESS_TOKEN, clearLogoutLocalStorageAndCookie, LOGGED_IN, ORG_ID, REACT_MODE, REFRESH_TOKEN } from '../utils';
+import {
+  ACCESS_TOKEN,
+  clearLogoutLocalStorageAndCookie,
+  LOGGED_IN,
+  ORG_ID,
+  REACT_MODE,
+  REFRESH_TOKEN,
+  watchObject,
+} from '../utils';
 
 const AuthContext = createContext();
 
@@ -17,6 +25,13 @@ export const AuthProvider = ({ children }) => {
     login: getLocalStorage(LOGGED_IN) || false,
     orgId: getLocalStorage(ORG_ID) || null,
     loading: false,
+  });
+
+  watchObject(window.localStorage, ['removeItem'], (method, key) => {
+    if (method === 'removeItem' && key === LOGGED_IN && authState.login) {
+      setAuthState({ login: false, loading: false });
+      clearLogoutLocalStorageAndCookie();
+    }
   });
 
   const handleAuthSuccess = (token) => {
@@ -45,7 +60,7 @@ export const AuthProvider = ({ children }) => {
     setAuthState((prevState) => ({ ...prevState, loading: true }));
     try {
       if (REACT_MODE === 'ave') {
-        setCookie('loggedIn', true);
+        setLocalStorage(LOGGED_IN, true);
         setAuthState({ login: true, loading: false });
       } else {
         const { data } = await dataService.post(API_LOGIN, values);
