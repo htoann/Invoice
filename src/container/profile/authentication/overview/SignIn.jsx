@@ -1,16 +1,18 @@
+import { routes } from '@/routes/const';
 import { Button, Col, Form, Input, Row } from 'antd';
 import { useAuth } from 'context/AuthContext';
 import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthFormWrap } from './Style';
 
 function SignIn() {
   const { t } = useTranslation();
   const { loading, login } = useAuth();
   const [form] = Form.useForm();
+  const navigate = useNavigate();
 
   const handleSubmit = (values) => {
-    login({ ...values });
+    login(values, () => navigate('/'));
   };
 
   return (
@@ -57,7 +59,7 @@ function SignIn() {
           <div className="invoice-authentication-bottom">
             <p>
               {t('Auth_DontHaveAccount')}
-              <Link to="/register">{t('Auth_SignUp')}</Link>
+              <Link to={routes.register}>{t('Auth_SignUp')}</Link>
             </p>
           </div>
         </AuthFormWrap>

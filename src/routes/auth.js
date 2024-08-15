@@ -1,20 +1,29 @@
+import { useAuth } from 'context/AuthContext';
 import React, { lazy, useEffect } from 'react';
 import { Route, Routes, useNavigate } from 'react-router-dom';
 import AuthLayout from '../container/profile/authentication/Index';
+import { routes } from './const';
 
 const Login = lazy(() => import('../container/profile/authentication/overview/SignIn'));
 const SignUp = lazy(() => import('../container/profile/authentication/overview/SignUp'));
 
 const AuthRoot = () => {
   const navigate = useNavigate();
+  const { isLoggedIn } = useAuth();
 
-  useEffect(() => navigate('/'));
+  useEffect(() => {
+    if (isLoggedIn) {
+      navigate('/');
+    } else {
+      navigate(routes.login);
+    }
+  }, [isLoggedIn]);
 };
 
 const FrontendRoutes = React.memo(() => {
   return (
     <Routes>
-      <Route index element={<Login />} />
+      <Route index path="login" element={<Login />} />
       <Route path="register" element={<SignUp />} />
       <Route path="*" element={<AuthRoot />} />
     </Routes>

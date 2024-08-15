@@ -1,8 +1,9 @@
 import { ACCESS_TOKEN, API_ENDPOINT, clearLogoutLocalStorageAndCookie, REFRESH_TOKEN } from '@/utils/index';
 import axios from 'axios';
+import { API_LOGIN } from './apiConst';
 import { getCookie, setCookie } from './cookie';
 
-const whiteListAPIs = ['/auth/login/'];
+const whiteListAPIs = [API_LOGIN];
 
 let refreshTokenPromise = null;
 let failedQueue = [];

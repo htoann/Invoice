@@ -48,7 +48,7 @@ export const AuthProvider = ({ children }) => {
     });
   };
 
-  const login = async (values) => {
+  const login = async (values, handleSuccess) => {
     setAuthState((prevState) => ({ ...prevState, loading: true }));
     try {
       if (REACT_MODE === 'ave') {
@@ -58,6 +58,7 @@ export const AuthProvider = ({ children }) => {
         const { data } = await dataService.post(API_LOGIN, values);
         handleAuthSuccess(data.token);
       }
+      handleSuccess && handleSuccess();
     } catch (err) {
       console.error(err);
       handleAuthError('SignIn');

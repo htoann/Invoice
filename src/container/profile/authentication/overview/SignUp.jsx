@@ -9,7 +9,6 @@ import { AuthFormWrap } from './Style';
 function SignUp() {
   const { t } = useTranslation();
   const { register } = useAuth();
-
   const navigate = useNavigate();
 
   const [state, setState] = useState({

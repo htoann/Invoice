@@ -1,4 +1,7 @@
 export const routes = {
+  login: '/login',
+  register: '/register',
+
   invoice: '/hoa-don',
 
   email: '/hop-thu',
