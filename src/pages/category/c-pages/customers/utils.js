@@ -18,7 +18,6 @@ export const columnDataCustomer = [
   },
   { title: 'Common_ContactPersonEmail', dataIndex: 'contact_person_email', key: 'contact_person_email' },
   { title: 'Common_DeliveryAddress', dataIndex: 'delivery_address', key: 'delivery_address' },
-  { title: 'Common_Country', dataIndex: 'country', key: 'country' },
   { title: 'Common_Status', dataIndex: 'status', key: 'status' },
   { title: 'Common_CreatedAt', dataIndex: 'created_at', key: 'created_at' },
   { title: 'Common_UpdatedAt', dataIndex: 'updated_at', key: 'updated_at' },

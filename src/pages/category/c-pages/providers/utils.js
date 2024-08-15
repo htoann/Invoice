@@ -20,7 +20,6 @@ export const columnDataProvider = [
   { title: 'Provider_BankName', dataIndex: 'bank_name', key: 'bank_name' },
   { title: 'Provider_BankAccountBranch', dataIndex: 'bank_account_branch', key: 'bank_account_branch' },
   { title: 'Provider_BankAccountCity', dataIndex: 'bank_account_city', key: 'bank_account_city' },
-  { title: 'Common_Country', dataIndex: 'country', key: 'country' },
   { title: 'Provider_Province', dataIndex: 'province', key: 'province' },
   { title: 'Provider_District', dataIndex: 'district', key: 'district' },
   { title: 'Provider_Ward', dataIndex: 'commune', key: 'commune' },

@@ -96,6 +96,7 @@ const Providers = () => {
               formattedValue = value === 1 ? t('Common_Using') : t('Common_NotUsing');
               break;
 
+            case 'id_issue_day':
             case 'created_at':
             case 'updated_at':
               formattedValue = formatTime(value, 'DD/MM/YYYY');
