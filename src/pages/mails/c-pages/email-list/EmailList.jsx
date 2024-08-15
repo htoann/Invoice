@@ -132,7 +132,7 @@ const EmailList = () => {
         id,
         name: <span>{name}</span>,
         email: <span>{email}</span>,
-        department: <span>{departments.find((item) => item.id === department).name}</span>,
+        department: <span>{departments?.find((item) => item.id === department)?.name}</span>,
         action: (
           <div className="table-actions">
             <Link className="edit" to="#" onClick={() => showEditModal(item)}>
