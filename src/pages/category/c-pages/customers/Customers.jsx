@@ -77,13 +77,13 @@ const Customers = () => {
           let formattedValue;
 
           switch (key) {
+            case 'status':
+              formattedValue = value === 1 ? t('Common_Using') : t('Common_NotUsing');
+              break;
+
             case 'created_at':
             case 'updated_at':
               formattedValue = formatTime(value, 'DD/MM/YYYY');
-              break;
-
-            case 'branch':
-              formattedValue = value?.name;
               break;
 
             default:

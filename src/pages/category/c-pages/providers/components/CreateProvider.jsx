@@ -49,9 +49,21 @@ const CreateProvider = ({ state, setState, list, setList }) => {
     }
   };
 
-  const onFormValuesChange = ({ province, district }) => {
-    if (province) setProvinceId(province);
-    if (district) setDistrictId(district);
+  const onFormValuesChange = (changedValues) => {
+    const { province, district } = changedValues;
+
+    if (province) {
+      setProvinceId(province);
+      form.setFieldsValue({
+        district: undefined,
+        ward: undefined,
+      });
+    } else if (district) {
+      setDistrictId(district);
+      form.setFieldsValue({
+        ward: undefined,
+      });
+    }
   };
 
   const mapOptions = {

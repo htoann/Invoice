@@ -77,13 +77,28 @@ const Providers = () => {
           let formattedValue;
 
           switch (key) {
-            case 'created_at':
-            case 'updated_at':
-              formattedValue = formatTime(value, 'DD/MM/YYYY');
+            case 'is_individual':
+              formattedValue = value ? t('Common_Individual') : t('Common_Org');
               break;
 
             case 'branch':
+            case 'province':
+            case 'district':
+            case 'commune':
               formattedValue = value?.name;
+              break;
+
+            case 'is_customer':
+              formattedValue = value ? '✓' : '';
+              break;
+
+            case 'status':
+              formattedValue = value === 1 ? t('Common_Using') : t('Common_NotUsing');
+              break;
+
+            case 'created_at':
+            case 'updated_at':
+              formattedValue = formatTime(value, 'DD/MM/YYYY');
               break;
 
             default:
