@@ -28,7 +28,7 @@ export const InboxList = React.memo(({ setSelectedInbox, selectedInbox }) => {
 
   const [search, setSearchSender] = useState('');
   const [selectedAccountId, setSelectedAccountId] = useState(undefined);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   const selectFirstAccount = (accountList) => {
     setSelectedAccountId(accountList[0].id);
