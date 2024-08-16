@@ -97,7 +97,11 @@ const refreshAccessToken = async () => {
     }
   } catch (error) {
     console.error('Failed to refresh token:', error);
-    return null;
+    refreshTokenPromise = null;
+
+    clearLogoutLocalStorageAndCookie();
+
+    return Promise.reject(error);
   }
 };
 
@@ -113,7 +117,6 @@ client.interceptors.response.use(
   (response) => response,
   async (error) => {
     const { response, config } = error;
-
     if (response?.status === 401 && !whiteListAPIs.includes(config.url)) {
       const originalRequest = error.config;
 
