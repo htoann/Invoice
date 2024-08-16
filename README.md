@@ -1,7 +1,6 @@
 # 🚀 Invoice System
 
-## Try this demo
-Sign in with anything, feel like a hacker
+## Just do it
 
 [Invoice on vercel](https://invoice-sys.vercel.app/)
 
