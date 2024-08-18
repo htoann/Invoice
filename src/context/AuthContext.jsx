@@ -15,13 +15,13 @@ export const AuthProvider = ({ children }) => {
   const { t } = useTranslation();
 
   const [authState, setAuthState] = useState({
-    login: getLocalStorage(LOGGED_IN) || false,
+    isLoggedIn: getLocalStorage(LOGGED_IN) || false,
     orgId: getLocalStorage(ORG_ID) || null,
     loading: false,
     userInfo: null,
   });
 
-  const { userInfo } = authState || {};
+  const { userInfo, isLoggedIn, orgId, loading } = authState || {};
 
   useEffect(() => {
     if (!userInfo) {
@@ -42,8 +42,8 @@ export const AuthProvider = ({ children }) => {
   };
 
   watchObject(window.localStorage, ['removeItem'], (method, key) => {
-    if (method === 'removeItem' && key === LOGGED_IN && authState.login) {
-      setAuthState({ login: false, loading: false });
+    if (method === 'removeItem' && key === LOGGED_IN && isLoggedIn) {
+      setAuthState({ isLoggedIn: false, loading: false });
     }
   });
 
@@ -57,11 +57,11 @@ export const AuthProvider = ({ children }) => {
     setLocalStorage(LOGGED_IN, true);
     setLocalStorage(ORG_ID, organization_id);
 
-    setAuthState({ login: true, loading: false, orgId: organization_id });
+    setAuthState({ isLoggedIn: true, loading: false, orgId: organization_id });
   };
 
   const handleAuthError = (authType) => {
-    setAuthState((prevState) => ({ ...prevState, login: false, loading: false }));
+    setState({ isLoggedIn: false, loading: false });
 
     notification.error({
       message: t(`Auth_${authType}`),
@@ -74,7 +74,7 @@ export const AuthProvider = ({ children }) => {
     try {
       if (REACT_MODE === 'ave') {
         setLocalStorage(LOGGED_IN, true);
-        setAuthState({ login: true, loading: false });
+        setAuthState({ isLoggedIn: true, loading: false });
       } else {
         const { data } = await dataService.post(API_LOGIN, values);
         handleAuthSuccess(data.token);
@@ -100,7 +100,7 @@ export const AuthProvider = ({ children }) => {
 
   const logOut = useCallback(() => {
     setState({ loading: true });
-    setAuthState({ login: false, loading: false });
+    setAuthState({ isLoggedIn: false, loading: false });
     clearLogoutLocalStorageAndCookie();
   }, []);
 
@@ -114,12 +114,13 @@ export const AuthProvider = ({ children }) => {
   return (
     <AuthContext.Provider
       value={{
-        isLoggedIn: authState.login,
-        loading: authState.loading,
+        isLoggedIn,
+        loading,
         login,
         register,
         logOut,
         userInfo,
+        orgId,
       }}
     >
       {children}
