@@ -266,6 +266,7 @@ const NestedDropdown = Styled.div`
 
 const UserDropDown = Styled.div`
     .user-dropdown{
+        width: 200px;
         max-width: 280px;
         .user-dropdown__info{
             display: flex;
@@ -274,7 +275,7 @@ const UserDropDown = Styled.div`
             border-radius: 8px;
             margin-bottom: 12px;
             background: ${({ theme }) => theme[theme.mainContent]['general-background']};
-            img{
+            span{
                 ${({ theme }) => (theme.rtl ? 'margin-left' : 'margin-right')}: 15px;
             }
             figcaption{
@@ -416,4 +417,4 @@ const NavAuth = Styled.span`
     }
 `;
 
-export { InfoWrapper, SettingDropdown, NestedDropdown, UserDropDown, UserActionDropDown, NavAuth };
+export { InfoWrapper, NavAuth, NestedDropdown, SettingDropdown, UserActionDropDown, UserDropDown };

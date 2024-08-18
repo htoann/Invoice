@@ -1,10 +1,10 @@
-import { API_LOGIN, API_REGISTER } from '@/utils/apiConst';
+import { API_LOGIN, API_REGISTER, API_USER_INFO } from '@/utils/apiConst';
 import { setCookie } from '@/utils/cookie';
 import { dataService } from '@/utils/dataService';
 import { getLocalStorage, setLocalStorage } from '@/utils/localStorage';
 import { notification } from 'antd';
 import { jwtDecode } from 'jwt-decode';
-import { createContext, useCallback, useContext, useState } from 'react';
+import { createContext, useCallback, useContext, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ACCESS_TOKEN, clearLogoutLocalStorageAndCookie, LOGGED_IN, ORG_ID, REACT_MODE, REFRESH_TOKEN } from '../utils';
 import { watchObject } from './../utils/index';
@@ -20,6 +20,26 @@ export const AuthProvider = ({ children }) => {
     loading: false,
     userInfo: null,
   });
+
+  const { userInfo } = authState || {};
+
+  useEffect(() => {
+    if (!userInfo) {
+      getProfileInfo();
+    }
+  }, [userInfo]);
+
+  const getProfileInfo = async () => {
+    setState({ loading: true });
+    try {
+      const response = await dataService.get(API_USER_INFO);
+      setState({ userInfo: response.data });
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setState({ loading: false });
+    }
+  };
 
   watchObject(window.localStorage, ['removeItem'], (method, key) => {
     if (method === 'removeItem' && key === LOGGED_IN && authState.login) {
@@ -50,7 +70,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   const login = async (values, handleSuccess) => {
-    setAuthState((prevState) => ({ ...prevState, loading: true }));
+    setState({ loading: true });
     try {
       if (REACT_MODE === 'ave') {
         setLocalStorage(LOGGED_IN, true);
@@ -67,7 +87,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   const register = async (values, handleSuccess) => {
-    setAuthState((prevState) => ({ ...prevState, loading: true }));
+    setState({ loading: true });
     try {
       const response = await dataService.post(API_REGISTER, values);
       handleAuthSuccess(response.data.token, 'SignUp');
@@ -79,10 +99,17 @@ export const AuthProvider = ({ children }) => {
   };
 
   const logOut = useCallback(() => {
-    setAuthState((prevState) => ({ ...prevState, loading: true }));
+    setState({ loading: true });
     setAuthState({ login: false, loading: false });
     clearLogoutLocalStorageAndCookie();
   }, []);
+
+  const setState = (updateState) => {
+    setAuthState((prevState) => ({
+      ...prevState,
+      ...updateState,
+    }));
+  };
 
   return (
     <AuthContext.Provider
@@ -92,6 +119,7 @@ export const AuthProvider = ({ children }) => {
         login,
         register,
         logOut,
+        userInfo,
       }}
     >
       {children}

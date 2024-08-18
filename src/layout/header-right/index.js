@@ -1,11 +1,6 @@
 /* eslint-disable no-unused-vars */
 import UilAngleDown from '@iconscout/react-unicons/icons/uil-angle-down';
-import UilBell from '@iconscout/react-unicons/icons/uil-bell';
-import UilDollarSign from '@iconscout/react-unicons/icons/uil-dollar-sign';
-import UilSetting from '@iconscout/react-unicons/icons/uil-setting';
 import UilSignout from '@iconscout/react-unicons/icons/uil-signout';
-import UilUser from '@iconscout/react-unicons/icons/uil-user';
-import UilUsersAlt from '@iconscout/react-unicons/icons/uil-users-alt';
 import { Avatar } from 'antd';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
@@ -22,7 +17,7 @@ import Customizer from './Customizer';
 
 const AuthInfo = React.memo(() => {
   const { i18n, t } = useTranslation();
-  const { logOut } = useAuth();
+  const { logOut, userInfo } = useAuth();
 
   const [state, setState] = useState({
     flag: i18n.language,
@@ -38,12 +33,14 @@ const AuthInfo = React.memo(() => {
     <UserDropDown>
       <div className="user-dropdown">
         <figure className="user-dropdown__info">
-          <img width="35" src="https://cdn0.iconfinder.com/data/icons/user-pictures/100/matureman1-512.png" alt="" />
+          <Avatar size={48} style={{ backgroundColor: '#8231D3' }}>
+            {userInfo?.username?.charAt(0)?.toUpperCase()}
+          </Avatar>
           <figcaption style={{ margin: 'auto' }}>
-            <Heading as="h5">Cristiano Ronaldo</Heading>
+            <Heading as="h5">{userInfo?.username}</Heading>
           </figcaption>
         </figure>
-        <ul className="user-dropdown__links">
+        {/* <ul className="user-dropdown__links">
           <li>
             <Link to="#">
               <UilUser /> {t('User_Profile')}
@@ -69,7 +66,7 @@ const AuthInfo = React.memo(() => {
               <UilBell /> {t('User_Help')}
             </Link>
           </li>
-        </ul>
+        </ul> */}
         <Link className="user-dropdown__bottomAction" onClick={signOut}>
           <UilSignout /> {t('User_SignOut')}
         </Link>
@@ -117,8 +114,11 @@ const AuthInfo = React.memo(() => {
       <div className="invoice-nav-actions__item invoice-nav-actions__author">
         <Popover placement="bottomRight" content={userContent} action="click">
           <Link to="#" className="invoice-nav-action-link">
-            <Avatar src="https://cdn0.iconfinder.com/data/icons/user-pictures/100/matureman1-512.png" />
-            <span className="invoice-nav-actions__author--name">Cristiano Ronaldo</span>
+            {/* <Avatar src="https://cdn0.iconfinder.com/data/icons/user-pictures/100/matureman1-512.png" /> */}
+            <Avatar size={40} style={{ backgroundColor: '#8231D3' }}>
+              {userInfo?.username?.charAt(0)?.toUpperCase()}
+            </Avatar>
+            <span className="invoice-nav-actions__author--name">{userInfo?.username}</span>
             <UilAngleDown />
           </Link>
         </Popover>

@@ -1,6 +1,7 @@
 // Auth
 export const API_LOGIN = '/auth/login/';
 export const API_REGISTER = '/auth/register/';
+export const API_USER_INFO = '/auth/profile/';
 
 // Invoice
 export const API_INVOICES = `/invoices/`;
