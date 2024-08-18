@@ -1,5 +1,6 @@
 import { API_COMMUNES } from '@/utils/apiConst';
 import { dataService } from '@/utils/dataService';
+import { notification } from 'antd';
 import { useEffect, useState } from 'react';
 
 const useCommunes = (districtId) => {
@@ -17,6 +18,10 @@ const useCommunes = (districtId) => {
       setCommunes(communes);
     } catch (error) {
       console.error(error);
+      notification.error({
+        message: 'Lỗi',
+        description: 'Không thể tải danh sách xã. Vui lòng thử lại sau.',
+      });
     } finally {
       setLoadingCommunes(false);
     }

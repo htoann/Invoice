@@ -1,5 +1,6 @@
 import { API_CUSTOMERS } from '@/utils/apiConst';
 import { dataService } from '@/utils/dataService';
+import { notification } from 'antd';
 import { useState } from 'react';
 
 const useGetCustomers = (onHandleResult) => {
@@ -32,6 +33,10 @@ const useGetCustomers = (onHandleResult) => {
       }
     } catch (error) {
       console.error(error);
+      notification.error({
+        message: 'Lỗi',
+        description: 'Không thể tải danh sách khách hàng. Vui lòng thử lại sau.',
+      });
     } finally {
       if (isSearchLoading) {
         setSearchLoading(false);

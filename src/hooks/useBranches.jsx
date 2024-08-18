@@ -1,5 +1,6 @@
 import { API_BRANCHES } from '@/utils/apiConst';
 import { dataService } from '@/utils/dataService';
+import { notification } from 'antd';
 import { useAppState } from 'context/AppContext';
 import { useEffect } from 'react';
 
@@ -13,6 +14,10 @@ const useBranches = () => {
       setBranches(response.data);
     } catch (error) {
       console.error(error);
+      notification.error({
+        message: 'Lỗi',
+        description: 'Không thể tải danh sách chi nhánh. Vui lòng thử lại sau.',
+      });
     } finally {
       setLoadingBranches(false);
     }

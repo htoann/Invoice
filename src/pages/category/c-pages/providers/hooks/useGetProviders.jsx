@@ -1,5 +1,6 @@
 import { API_PROVIDERS } from '@/utils/apiConst';
 import { dataService } from '@/utils/dataService';
+import { notification } from 'antd';
 import { useState } from 'react';
 
 const useGetProviders = (onHandleResult) => {
@@ -32,6 +33,10 @@ const useGetProviders = (onHandleResult) => {
       }
     } catch (error) {
       console.error(error);
+      notification.error({
+        message: 'Lỗi',
+        description: 'Không thể tải danh sách nhà cung cấp. Vui lòng thử lại sau.',
+      });
     } finally {
       if (isSearchLoading) {
         setSearchLoading(false);

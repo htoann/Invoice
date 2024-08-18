@@ -2,7 +2,7 @@ import { API_INBOXES_BY_ACCOUNT_ID } from '@/utils/apiConst';
 import { dataService } from '@/utils/dataService';
 import { formatTime } from '@/utils/index';
 import UilInbox from '@iconscout/react-unicons/icons/uil-inbox';
-import { Empty, Input, Pagination, Select, Skeleton } from 'antd';
+import { Empty, Input, notification, Pagination, Select, Skeleton } from 'antd';
 import Paragraph from 'antd/lib/typography/Paragraph';
 import useGetAllDepartments from 'hooks/useGetAllDepartments';
 import useMailAccounts from 'hooks/useMailAccounts';
@@ -53,6 +53,10 @@ export const InboxList = React.memo(({ setSelectedInbox, selectedInbox }) => {
       }));
     } catch (error) {
       console.error(error);
+      notification.error({
+        message: 'Lỗi',
+        description: 'Không thể tải danh sách hộp thư. Vui lòng thử lại sau.',
+      });
     } finally {
       setLoading(false);
     }

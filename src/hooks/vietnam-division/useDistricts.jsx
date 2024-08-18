@@ -1,5 +1,6 @@
 import { API_DISTRICTS } from '@/utils/apiConst';
 import { dataService } from '@/utils/dataService';
+import { notification } from 'antd';
 import { useEffect, useState } from 'react';
 
 const useDistricts = (provinceId) => {
@@ -15,6 +16,10 @@ const useDistricts = (provinceId) => {
       setDistricts(districts);
     } catch (error) {
       console.error(error);
+      notification.error({
+        message: 'Lỗi',
+        description: 'Không thể tải danh sách quận. Vui lòng thử lại sau.',
+      });
     } finally {
       setLoadingDistricts(false);
     }

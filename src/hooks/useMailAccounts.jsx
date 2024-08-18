@@ -1,5 +1,6 @@
 import { API_MAILS_ACCOUNTS } from '@/utils/apiConst';
 import { dataService } from '@/utils/dataService';
+import { notification } from 'antd';
 import { useEffect, useState } from 'react';
 
 const useMailAccounts = (onHandleResult, selectedDepartmentId = '') => {
@@ -17,6 +18,10 @@ const useMailAccounts = (onHandleResult, selectedDepartmentId = '') => {
       mailAccounts?.length > 0 && onHandleResult && onHandleResult(mailAccounts);
     } catch (error) {
       console.error(error);
+      notification.error({
+        message: 'Lỗi',
+        description: 'Không thể tải danh sách tài khoản. Vui lòng thử lại sau.',
+      });
     } finally {
       setLoadingMailAccounts(false);
     }

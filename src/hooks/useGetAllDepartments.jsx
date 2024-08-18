@@ -1,5 +1,6 @@
 import { API_DEPARTMENTS_ALL } from '@/utils/apiConst';
 import { dataService } from '@/utils/dataService';
+import { notification } from 'antd';
 import { useEffect, useState } from 'react';
 
 const useGetAllDepartments = () => {
@@ -14,6 +15,10 @@ const useGetAllDepartments = () => {
         setDepartments(response.data);
       } catch (error) {
         console.error(error);
+        notification.error({
+          message: 'Lỗi',
+          description: 'Không thể tải danh sách phòng ban. Vui lòng thử lại sau.',
+        });
       } finally {
         setLoadingDepartments(false);
       }

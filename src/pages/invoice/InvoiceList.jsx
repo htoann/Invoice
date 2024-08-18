@@ -4,7 +4,7 @@ import { BorderLessHeading, Main } from '@/container/styled';
 import { routes } from '@/routes/const';
 import { API_INVOICES } from '@/utils/apiConst';
 import { dataService } from '@/utils/dataService';
-import { Col, Row } from 'antd';
+import { Col, notification, Row } from 'antd';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import DataTable from './components/DataTable';
@@ -73,6 +73,10 @@ function InvoiceList() {
       }
     } catch (error) {
       console.error(error);
+      notification.error({
+        message: 'Lỗi',
+        description: 'Không thể tải danh sách hóa đơn. Vui lòng thử lại sau.',
+      });
     } finally {
       if (searchLoading) {
         setSearchLoading(false);

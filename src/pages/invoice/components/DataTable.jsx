@@ -6,7 +6,7 @@ import { dataService } from '@/utils/dataService';
 import { downloadFile, formatTime } from '@/utils/index';
 import { DownloadOutlined } from '@ant-design/icons';
 import { UilSearch } from '@iconscout/react-unicons';
-import { DatePicker, Space, Table } from 'antd';
+import { DatePicker, notification, Space, Table } from 'antd';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -50,6 +50,10 @@ function DataTable({ loading, tableData, columns, state, setState, getInvoiceLis
       downloadFile(response, `HDDT${formatTime(startDate || endDate)}.xlsx`);
     } catch (error) {
       console.error(error);
+      notification.error({
+        message: 'Lỗi',
+        description: 'Không thể xuất excel hóa đơn. Vui lòng thử lại sau.',
+      });
     }
   };
 

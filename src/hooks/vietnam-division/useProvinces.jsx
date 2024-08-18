@@ -1,5 +1,6 @@
 import { API_PROVINCES } from '@/utils/apiConst';
 import { dataService } from '@/utils/dataService';
+import { notification } from 'antd';
 import { useEffect, useState } from 'react';
 
 const useProvinces = () => {
@@ -15,6 +16,10 @@ const useProvinces = () => {
       setProvinces(provinces);
     } catch (error) {
       console.error(error);
+      notification.error({
+        message: 'Lỗi',
+        description: 'Không thể tải danh sách tỉnh. Vui lòng thử lại sau.',
+      });
     } finally {
       setLoadingProvinces(false);
     }

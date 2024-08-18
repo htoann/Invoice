@@ -89,6 +89,10 @@ const Products = () => {
       }
     } catch (error) {
       console.error(error);
+      notification.error({
+        message: 'Lỗi',
+        description: 'Không thể tải danh sách hàng hóa. Vui lòng thử lại sau.',
+      });
     } finally {
       if (searchLoading) {
         setSearchLoading(false);

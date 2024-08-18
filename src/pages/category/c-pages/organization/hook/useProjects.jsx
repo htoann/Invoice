@@ -1,5 +1,6 @@
 import { API_PROJECTS_BY_BRANCH_AND_DEPARTMENT } from '@/utils/apiConst';
 import { dataService } from '@/utils/dataService';
+import { notification } from 'antd';
 import { useAppState } from 'context/AppContext';
 import { useEffect } from 'react';
 
@@ -20,7 +21,11 @@ const useProjects = (selectedBranchId, selectedDepartmentId) => {
       );
       setProjects(response.data);
     } catch (error) {
-      console.error('Error fetching projects:', error);
+      console.error(error);
+      notification.error({
+        message: 'Lỗi',
+        description: 'Không thể tải danh sách dự án. Vui lòng thử lại sau.',
+      });
     } finally {
       setLoadingProjects(false);
     }

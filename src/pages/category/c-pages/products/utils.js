@@ -1,6 +1,7 @@
 import { API_INVOICES_EXCEL } from '@/utils/apiConst';
 import { dataService } from '@/utils/dataService';
 import { downloadFile, formatTime } from '@/utils/index';
+import { notification } from 'antd';
 
 export const handleExport = async (date) => {
   try {
@@ -11,6 +12,10 @@ export const handleExport = async (date) => {
     downloadFile(response, `HangHoa${formatTime(date)}.xlsx`);
   } catch (error) {
     console.error(error);
+    notification.error({
+      message: 'Lỗi',
+      description: 'Không thể xuất excel hóa đơn. Vui lòng thử lại sau.',
+    });
   }
 };
 

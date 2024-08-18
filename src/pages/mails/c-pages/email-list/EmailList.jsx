@@ -75,6 +75,10 @@ const EmailList = () => {
       }
     } catch (error) {
       console.error(error);
+      notification.error({
+        message: 'Lỗi',
+        description: 'Không thể tải danh sách tài khoản. Vui lòng thử lại sau.',
+      });
     } finally {
       if (searchLoading) {
         setSearchLoading(false);
