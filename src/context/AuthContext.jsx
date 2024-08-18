@@ -18,6 +18,7 @@ export const AuthProvider = ({ children }) => {
     login: getLocalStorage(LOGGED_IN) || false,
     orgId: getLocalStorage(ORG_ID) || null,
     loading: false,
+    userInfo: null,
   });
 
   watchObject(window.localStorage, ['removeItem'], (method, key) => {

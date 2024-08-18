@@ -119,7 +119,12 @@ function MailDetail({ selectedInbox: email }) {
               <div style={{ display: 'flex', flexWrap: 'wrap', marginLeft: 40 }}>
                 {email?.attachments?.length > 0 &&
                   email?.attachments.map((item) => (
-                    <div className="message-attachments" key={item.id}>
+                    <Link
+                      className="message-attachments"
+                      key={item.id}
+                      to={`${API_ENDPOINT}/mails/attachments/${item.id}`}
+                      target="_blank"
+                    >
                       <figure style={{ width: 150 }}>
                         <div className="attachment-image">
                           <img
@@ -131,13 +136,9 @@ function MailDetail({ selectedInbox: email }) {
                           />
                         </div>
                         <div className="attachment-hover">
-                          <Link
-                            className="btn-link"
-                            to={`${API_ENDPOINT}/mails/attachments/${item.id}`}
-                            target="_blank"
-                          >
+                          <div className="btn-link" to={`${API_ENDPOINT}/mails/attachments/${item.id}`} target="_blank">
                             <UilImport />
-                          </Link>
+                          </div>
                         </div>
                         <figcaption>
                           <Heading as="h4">
@@ -156,7 +157,7 @@ function MailDetail({ selectedInbox: email }) {
                           <p>{formatDataSize(item.size)}</p>
                         </figcaption>
                       </figure>
-                    </div>
+                    </Link>
                   ))}
               </div>
             </MessageDetails>

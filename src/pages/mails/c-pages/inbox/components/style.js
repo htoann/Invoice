@@ -951,10 +951,12 @@ const MessageDetails = Styled.div`
   .message-body{
     ${({ theme }) => (theme.rtl ? 'padding-right' : 'padding-left')}: 60px;
     margin-top: 22px;
+    padding-bottom: 1px;
+
     @media only screen and (max-width: 767px){
       ${({ theme }) => (theme.rtl ? 'padding-right' : 'padding-left')}: 0px;
       margin-top: 18px;
-    }
+    },
     
     /* word-break: break-word; */
 
