@@ -113,3 +113,10 @@ export const watchObject = (object = {}, methods = [], callbackBefore = () => {}
     object[method] = newMethod.bind(object);
   });
 };
+
+export const formatCurrency = (amount) => {
+  if (!amount) {
+    amount = 0;
+  }
+  return amount.toLocaleString('en-US');
+};

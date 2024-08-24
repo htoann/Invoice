@@ -1,3 +1,5 @@
+import { formatCurrency } from '@/utils/index';
+
 export const handleTableDataSource = (invoiceList, current, pageSize) => {
   return invoiceList?.length > 0
     ? invoiceList.map((item, index) => {
@@ -13,11 +15,11 @@ export const handleTableDataSource = (invoiceList, current, pageSize) => {
           chinhanh: <span>{item.chinhanh}</span>,
           nmmst: <span>{item.nmmst}</span>,
           nmten: <span>{item.nmten}</span>,
-          tgtcthue: <span>{item.tgtcthue}</span>,
-          tgtthue: <span>{item.tgtthue}</span>,
-          ttcktmai: <span>{item.ttcktmai}</span>,
-          thttlphi: <span>{item.thttlphi}</span>,
-          tgtttbso: <span>{item.tgtttbso}</span>,
+          tgtcthue: <span>{formatCurrency(item.tgtcthue)}</span>,
+          tgtthue: <span>{formatCurrency(item.tgtthue)}</span>,
+          ttcktmai: <span>{formatCurrency(item.ttcktmai)}</span>,
+          thttlphi: <span>{formatCurrency(item.thttlphi)}</span>,
+          tgtttbso: <span>{formatCurrency(item.tgtttbso)}</span>,
           dvtte: <span>{item.dvtte}</span>,
           tthai: <span>{item.tthai}</span>,
           ttxly: <span>{item.ttxly}</span>,

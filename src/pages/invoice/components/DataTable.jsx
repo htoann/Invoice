@@ -8,7 +8,7 @@ import { DownloadOutlined } from '@ant-design/icons';
 import { UilSearch } from '@iconscout/react-unicons';
 import { DatePicker, notification, Space, Table } from 'antd';
 import PropTypes from 'prop-types';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { DataTableStyleWrap } from '../style';
 
@@ -18,11 +18,11 @@ function DataTable({ loading, tableData, columns, state, setState, getInvoiceLis
   const [endDate, setEndDate] = useState();
 
   const { pagination, date_from, date_to, loaiHoaDon } = state;
-  const { pageSize } = pagination;
+  const { current, pageSize } = pagination;
 
-  const getList = () => {
-    getInvoiceList(1, pageSize, loaiHoaDon, date_from, date_to, true);
-  };
+  useEffect(() => {
+    getInvoiceList(current, pageSize, loaiHoaDon, date_from, date_to, true);
+  }, [current, pageSize, date_from, date_to, loaiHoaDon]);
 
   const handleLoaiHoaDonSearch = (loaiHoaDon) => {
     setState({
@@ -30,7 +30,6 @@ function DataTable({ loading, tableData, columns, state, setState, getInvoiceLis
       pagination: { ...pagination, current: 1 },
       loaiHoaDon,
     });
-    getList();
   };
 
   const handleSearch = () => {
@@ -38,7 +37,6 @@ function DataTable({ loading, tableData, columns, state, setState, getInvoiceLis
       ...state,
       pagination: { ...pagination, current: 1 },
     });
-    getList();
   };
 
   const handleExport = async () => {
