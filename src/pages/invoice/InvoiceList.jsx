@@ -5,7 +5,7 @@ import { routes } from '@/routes/const';
 import { API_INVOICES } from '@/utils/apiConst';
 import { dataService } from '@/utils/dataService';
 import { Col, notification, Row } from 'antd';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import DataTable from './components/DataTable';
 import { useInvoiceDataTable } from './useDataTable';
@@ -85,10 +85,6 @@ function InvoiceList() {
       }
     }
   };
-
-  useEffect(() => {
-    getInvoiceList(current, pageSize);
-  }, [current, pageSize]);
 
   return (
     <>
