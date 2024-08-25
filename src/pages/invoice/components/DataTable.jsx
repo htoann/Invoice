@@ -5,7 +5,6 @@ import { API_INVOICES_EXCEL } from '@/utils/apiConst';
 import { dataService } from '@/utils/dataService';
 import { downloadFile, formatTime } from '@/utils/index';
 import { DownloadOutlined } from '@ant-design/icons';
-import { UilSearch } from '@iconscout/react-unicons';
 import { DatePicker, notification, Space, Table } from 'antd';
 import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
@@ -33,12 +32,12 @@ function DataTable({ loading, tableData, columns, state, setState, getInvoiceLis
     });
   };
 
-  const handleSearch = () => {
-    setState({
-      ...state,
-      pagination: { ...pagination, current: 1 },
-    });
-  };
+  // const handleSearch = () => {
+  //   setState({
+  //     ...state,
+  //     pagination: { ...pagination, current: 1 },
+  //   });
+  // };
 
   const handleExport = async () => {
     setLoadingExport(true);
@@ -130,11 +129,11 @@ function DataTable({ loading, tableData, columns, state, setState, getInvoiceLis
                 disabledDate={disabledEndDate}
               />
             </div>
-            <div className="invoice-datatable-filter__action" style={{ marginRight: 10 }}>
+            {/* <div className="invoice-datatable-filter__action" style={{ marginRight: 10 }}>
               <Button type="primary" size="small" onClick={handleSearch} transparent icon={<UilSearch />}>
                 {t('Common_Search')}
               </Button>
-            </div>
+            </div> */}
           </div>
 
           <Button
