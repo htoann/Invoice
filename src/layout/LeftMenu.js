@@ -89,7 +89,8 @@ export const LeftMenu = ({ toggleCollapsed }) => {
       createMenuItems([
         { path: routes.emailAccount, textKey: t('Mail_AccountList_Title'), key: 'Danh sách email' },
         { path: routes.emailInbox, textKey: t('Common_Inbox'), key: 'Hộp thư đến' },
-        { path: routes.emailSync, textKey: t('Common_SyncHistory'), key: 'Lịch sử đồng bộ' },
+        // { path: routes.emailSync, textKey: t('Common_SyncHistory'), key: 'Lịch sử đồng bộ' },
+        { path: '#', textKey: t('Common_SyncHistory'), key: 'Lịch sử đồng bộ' },
       ]),
     ),
     getItem(
@@ -100,7 +101,8 @@ export const LeftMenu = ({ toggleCollapsed }) => {
         { path: routes.categoryOrg, textKey: t('Common_OrgStructure'), key: t('Common_OrgStructure') },
         { path: routes.categoryProvider, textKey: t('Common_Supplier'), key: 'Nhà cung cấp' },
         { path: routes.categoryCustomer, textKey: t('Common_Customer'), key: 'Khách hàng' },
-        { path: routes.categoryProduct, textKey: t('Common_Goods'), key: 'Hàng hoá' },
+        // { path: routes.categoryProduct, textKey: t('Common_Goods'), key: 'Hàng hoá' },
+        { path: '#', textKey: t('Common_Goods'), key: 'Hàng hoá' },
         { path: routes.emailAccount, textKey: t('Common_ExpenseItem'), key: 'Khoản mục chi phí' },
       ]),
     ),

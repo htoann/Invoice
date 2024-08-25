@@ -74,7 +74,8 @@ export const TopMenu = () => {
                 <Link to={routes.emailInbox}>{t('Common_Inbox')}</Link>
               </li>
               <li>
-                <Link to={routes.emailSync}>{t('Common_SyncHistory')}</Link>
+                {/* <Link to={routes.emailSync}>{t('Common_SyncHistory')}</Link> */}
+                <Link to="#">{t('Common_SyncHistory')}</Link>
               </li>
             </ul>
           </li>
@@ -94,7 +95,8 @@ export const TopMenu = () => {
                 <Link to={routes.categoryCustomer}>{t('Common_Customer')}</Link>
               </li>
               <li>
-                <Link to={routes.categoryProduct}>{t('Common_Goods')}</Link>
+                {/* <Link to={routes.categoryProduct}>{t('Common_Goods')}</Link> */}
+                <Link to="#">{t('Common_Goods')}</Link>
               </li>
               <li>
                 <Link to="#">{t('Common_ExpenseItem')}</Link>

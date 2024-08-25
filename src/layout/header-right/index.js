@@ -11,6 +11,10 @@ import { Popover } from '@/components/popup/popup';
 import EngImg from '@/static/img/flag/en.png';
 import VieImg from '@/static/img/flag/vi.png';
 import { setLocalStorage } from '@/utils/localStorage';
+import UilBell from '@iconscout/react-unicons/icons/uil-bell';
+import UilSetting from '@iconscout/react-unicons/icons/uil-setting';
+import UilUser from '@iconscout/react-unicons/icons/uil-user';
+import UilUsersAlt from '@iconscout/react-unicons/icons/uil-users-alt';
 import { useAuth } from 'context/AuthContext';
 import { useTranslation } from 'react-i18next';
 import Customizer from './Customizer';
@@ -40,7 +44,7 @@ const AuthInfo = React.memo(() => {
             <Heading as="h5">{userInfo?.username}</Heading>
           </figcaption>
         </figure>
-        {/* <ul className="user-dropdown__links">
+        <ul className="user-dropdown__links">
           <li>
             <Link to="#">
               <UilUser /> {t('User_Profile')}
@@ -51,11 +55,11 @@ const AuthInfo = React.memo(() => {
               <UilSetting /> {t('User_Settings')}
             </Link>
           </li>
-          <li>
+          {/* <li>
             <Link to="#">
               <UilDollarSign /> {t('User_Billing')}
             </Link>
-          </li>
+          </li> */}
           <li>
             <Link to="#">
               <UilUsersAlt /> {t('User_Activity')}
@@ -66,7 +70,7 @@ const AuthInfo = React.memo(() => {
               <UilBell /> {t('User_Help')}
             </Link>
           </li>
-        </ul> */}
+        </ul>
         <Link className="user-dropdown__bottomAction" onClick={signOut}>
           <UilSignout /> {t('User_SignOut')}
         </Link>
