@@ -16,6 +16,7 @@ function DataTable({ loading, tableData, columns, state, setState, getInvoiceLis
   const { t } = useTranslation();
   const [startDate, setStartDate] = useState();
   const [endDate, setEndDate] = useState();
+  const [loadingExport, setLoadingExport] = useState(false);
 
   const { pagination, date_from, date_to, loaiHoaDon } = state;
   const { current, pageSize } = pagination;
@@ -40,6 +41,8 @@ function DataTable({ loading, tableData, columns, state, setState, getInvoiceLis
   };
 
   const handleExport = async () => {
+    setLoadingExport(true);
+
     try {
       const response = await dataService.get(
         API_INVOICES_EXCEL,
@@ -56,6 +59,8 @@ function DataTable({ loading, tableData, columns, state, setState, getInvoiceLis
         message: 'Lỗi',
         description: 'Không thể xuất excel hóa đơn. Vui lòng thử lại sau.',
       });
+    } finally {
+      setLoadingExport(false);
     }
   };
 
@@ -138,7 +143,8 @@ function DataTable({ loading, tableData, columns, state, setState, getInvoiceLis
             size="small"
             outlined
             onClick={handleExport}
-            disabled={!state.invoiceList?.length}
+            disabled={!state.invoiceList?.length || loadingExport}
+            loading={loadingExport}
           >
             <DownloadOutlined />
             {t('Common_ExportExcel')}
