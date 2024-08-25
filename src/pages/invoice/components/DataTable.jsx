@@ -41,9 +41,13 @@ function DataTable({ loading, tableData, columns, state, setState, getInvoiceLis
 
   const handleExport = async () => {
     try {
-      const response = await dataService.get(API_INVOICES_EXCEL, {
-        responseType: 'blob',
-      });
+      const response = await dataService.get(
+        API_INVOICES_EXCEL,
+        {},
+        {
+          responseType: 'blob',
+        },
+      );
 
       downloadFile(response, `HDDT${formatTime(startDate || endDate)}.xlsx`);
     } catch (error) {
