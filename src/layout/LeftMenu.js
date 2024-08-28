@@ -79,7 +79,7 @@ export const LeftMenu = ({ toggleCollapsed }) => {
       !topMenu && <UilInvoice />,
       createMenuItems([
         { path: routes.invoice, textKey: t('Common_InvoiceList'), key: 'invoice-list' },
-        // { path: routes.invoice, textKey: 'Kiểm tra tình trạng MST', key: 'Kiểm tra tình trạng MST' },
+        { path: routes.invoice, textKey: 'Kết nối cơ quan thuế', key: 'Kết nối cơ quan thuế' },
       ]),
     ),
     getItem(

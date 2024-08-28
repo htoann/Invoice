@@ -3,6 +3,7 @@ export const routes = {
   register: '/register',
 
   invoice: '/hoa-don',
+  invoiceConnectTax: '/ket-noi-co-quan-thue',
 
   email: '/hop-thu',
   emailAccount: '/hop-thu/tai-khoan',

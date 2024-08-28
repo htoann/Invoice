@@ -6,9 +6,12 @@ import { routes } from './const';
 
 const Dashboard = lazy(() => import('@/pages/dashboard'));
 const InvoiceList = lazy(() => import('@/pages/invoice/InvoiceList'));
-const SyncHistory = lazy(() => import('@/pages/mails/c-pages/sync-history/SyncHistory'));
+const ConnectTaxAuthority = lazy(() => import('@/pages/invoice/c-pages/ConnectTaxAuthority'));
+
 const Email = lazy(() => import('@/pages/mails/c-pages/inbox/Inbox'));
 const EmailList = lazy(() => import('@/pages/mails/c-pages/email-list/EmailList'));
+const SyncHistory = lazy(() => import('@/pages/mails/c-pages/sync-history/SyncHistory'));
+
 const Products = lazy(() => import('@/pages/category/c-pages/products/Products'));
 const Customers = lazy(() => import('@/pages/category/c-pages/customers/Customers'));
 const Providers = lazy(() => import('@/pages/category/c-pages/providers/Providers'));
@@ -35,6 +38,7 @@ const Index = React.memo(() => {
         <Route index path="/" element={<Dashboard />} />
 
         <Route path={routes.invoice} element={<InvoiceList />} />
+        <Route path={routes.invoiceConnectTax} element={<ConnectTaxAuthority />} />
 
         <Route path={routes.emailAccount} element={<EmailList />} />
         <Route path={routes.emailSync} element={<SyncHistory />} />

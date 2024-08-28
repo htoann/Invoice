@@ -10,6 +10,8 @@ export const API_INVOICES_EXCEL = `/invoices_excel`;
 
 export const API_INVOICES_CHANGE = '/invoices-change/';
 
+export const API_INVOICES_CONNECT_AUTHORITY = '/invoice_credentials/ ';
+
 // Mails
 export const API_MAILS_ACCOUNTS = `/mails/accounts/`;
 
