@@ -63,7 +63,9 @@ function ConnectTaxAuthority() {
         <Row gutter={15}>
           <Col xs={24}>
             <BorderLessHeading>
-              <Cards>
+              <Cards
+              // style={{ maxWidth: 600, margin: 'auto' }}
+              >
                 {loading ? (
                   <Skeleton active style={{ marginTop: 30 }} />
                 ) : (
