@@ -45,7 +45,11 @@ function DataTable({ loading, tableData, columns, state, setState, getInvoiceLis
     try {
       const response = await dataService.get(
         API_INVOICES_EXCEL,
-        {},
+        {
+          loaihdon: state.loaiHoaDon,
+          ...(date_from && { date_from }),
+          ...(date_to && { date_to }),
+        },
         {
           responseType: 'blob',
         },
