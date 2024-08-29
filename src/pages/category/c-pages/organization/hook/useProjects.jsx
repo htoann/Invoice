@@ -1,4 +1,4 @@
-import { API_PROJECTS_BY_BRANCH_AND_DEPARTMENT } from '@/utils/apiConst';
+import { API_PROJECTS } from '@/utils/apiConst';
 import { dataService } from '@/utils/dataService';
 import { notification } from 'antd';
 import { useAppState } from 'context/AppContext';
@@ -16,9 +16,10 @@ const useProjects = (selectedBranchId, selectedDepartmentId) => {
     setLoadingProjects(true);
 
     try {
-      const response = await dataService.get(
-        API_PROJECTS_BY_BRANCH_AND_DEPARTMENT(selectedBranchId, selectedDepartmentId),
-      );
+      const response = await dataService.get(API_PROJECTS, {
+        branch: selectedBranchId,
+        department: selectedDepartmentId,
+      });
       setProjects(response.data);
     } catch (error) {
       console.error(error);
@@ -32,7 +33,7 @@ const useProjects = (selectedBranchId, selectedDepartmentId) => {
   };
 
   useEffect(() => {
-    getProjects();
+    selectedDepartmentId && getProjects();
   }, [selectedDepartmentId, selectedBranchId]);
 
   return { projects, setProjects, loadingProjects, setLoadingProjects, getProjects };

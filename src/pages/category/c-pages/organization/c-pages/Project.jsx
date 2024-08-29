@@ -2,7 +2,7 @@ import { Button } from '@/components/buttons/buttons';
 import { Cards } from '@/components/cards/frame/cards-frame';
 import { Modal } from '@/components/modals/antd-modals';
 import { BasicFormWrapper, BorderLessHeading } from '@/container/styled';
-import { API_PROJECT, API_PROJECTS_BY_BRANCH_AND_DEPARTMENT } from '@/utils/apiConst';
+import { API_PROJECT, API_PROJECTS } from '@/utils/apiConst';
 import { dataService } from '@/utils/dataService';
 import { RightOutlined } from '@ant-design/icons';
 import { Col, Empty, Form, Input, Menu, notification, Skeleton } from 'antd';
@@ -37,7 +37,7 @@ const ProjectList = ({ list, setList, getList, loadingList, selectedBranchId, se
     try {
       setLoading(true);
 
-      await dataService.post(API_PROJECTS_BY_BRANCH_AND_DEPARTMENT(selectedBranchId, selectedDepartmentId), {
+      await dataService.post(API_PROJECTS, {
         ...values,
         branch: selectedBranchId,
         department: selectedDepartmentId,
@@ -66,7 +66,7 @@ const ProjectList = ({ list, setList, getList, loadingList, selectedBranchId, se
     try {
       setLoading(true);
 
-      const response = await dataService.put(API_PROJECT(selectedBranchId, selectedDepartmentId, projectEdit.id), {
+      const response = await dataService.put(API_PROJECT(projectEdit.id), {
         ...values,
         branch: selectedBranchId,
         department: selectedDepartmentId,
@@ -93,13 +93,13 @@ const ProjectList = ({ list, setList, getList, loadingList, selectedBranchId, se
     }
   };
 
-  const handleDelete = async (id) => {
+  const handleDelete = async (projectId) => {
     try {
       setLoading(true);
 
-      await dataService.delete(API_PROJECT(selectedBranchId, selectedDepartmentId, id));
+      await dataService.delete(API_PROJECT(projectId));
 
-      setList(list.filter((item) => item.id !== id));
+      setList(list.filter((item) => item.id !== projectId));
 
       notification.success({
         message: t('Common_Project'),
@@ -152,7 +152,7 @@ const ProjectList = ({ list, setList, getList, loadingList, selectedBranchId, se
   return (
     <Col xs={24} sm={12} md={8} lg={8}>
       <BorderLessHeading>
-        <Cards title={t('Common_Project')} style={{ height: 1000 }}>
+        <Cards title={t('Common_Project')}>
           <StyledMenu
             style={{ width: '100%', minHeight: 'calc(100vh - 290px)', borderRight: 'none' }}
             mode="inline"

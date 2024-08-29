@@ -10,7 +10,7 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import MenuItem from '../components/MenuItem';
 
-const BranchList = ({ list, setList, getList, loadingList, selectedItem, setSelectedItem }) => {
+const BranchList = ({ list, setList, getList, loadingList, selectedItem, setSelectedItem, onResetDeleteBranch }) => {
   const { t } = useTranslation();
   const [showCreate, setShowCreate] = useState(false);
   const [showEdit, setShowEdit] = useState(false);
@@ -84,7 +84,7 @@ const BranchList = ({ list, setList, getList, loadingList, selectedItem, setSele
       await dataService.delete(API_BRANCH(id));
 
       setList(list.filter((item) => item.id !== id));
-      setSelectedItem(null);
+      onResetDeleteBranch();
 
       notification.success({
         message: t('Common_Branch'),

@@ -2,7 +2,7 @@ import { Button } from '@/components/buttons/buttons';
 import { Cards } from '@/components/cards/frame/cards-frame';
 import { Modal } from '@/components/modals/antd-modals';
 import { BasicFormWrapper, BorderLessHeading } from '@/container/styled';
-import { API_DEPARTMENT, API_DEPARTMENTS_BY_BRANCH } from '@/utils/apiConst';
+import { API_DEPARTMENT, API_DEPARTMENTS } from '@/utils/apiConst';
 import { dataService } from '@/utils/dataService';
 import { RightOutlined } from '@ant-design/icons';
 import { Col, Empty, Form, Input, Menu, notification, Skeleton } from 'antd';
@@ -36,7 +36,7 @@ const DepartmentList = ({ list, setList, getList, loadingList, selectedItem, set
     try {
       setLoading(true);
 
-      await dataService.post(API_DEPARTMENTS_BY_BRANCH(selectedBranchId), {
+      await dataService.post(API_DEPARTMENTS, {
         ...values,
         branch: selectedBranchId,
       });
@@ -64,7 +64,7 @@ const DepartmentList = ({ list, setList, getList, loadingList, selectedItem, set
     try {
       setLoading(true);
 
-      const response = await dataService.put(API_DEPARTMENT(selectedBranchId, departmentEdit.id), {
+      const response = await dataService.put(API_DEPARTMENT(departmentEdit.id), {
         ...values,
         branch: selectedBranchId,
       });
@@ -95,7 +95,7 @@ const DepartmentList = ({ list, setList, getList, loadingList, selectedItem, set
     try {
       setLoading(true);
 
-      await dataService.delete(API_DEPARTMENT(selectedBranchId, id));
+      await dataService.delete(API_DEPARTMENT(id));
 
       setList(list.filter((item) => item.id !== id));
       setSelectedItem(null);

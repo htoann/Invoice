@@ -15,7 +15,7 @@ export const API_INVOICES_CONNECT_AUTHORITY = '/invoice_credentials/ ';
 // Mails
 export const API_MAILS_ACCOUNTS = `/mails/accounts/`;
 
-export const API_MAILS_ACCOUNT_BY_ACCOUNT_ID = (accountId) => `${API_MAILS_ACCOUNTS}${accountId}/`;
+export const API_MAILS_ACCOUNT_BY_ACCOUNT_ID = (accountId) => `/mails/accounts/${accountId}/`;
 
 export const API_INBOXES_BY_ACCOUNT_ID = (accountId) => `${API_MAILS_ACCOUNT_BY_ACCOUNT_ID(accountId)}inboxes/`;
 
@@ -24,28 +24,24 @@ export const API_MAIL_TASK_HISTORIES = '/mails/task_histories/';
 // Products
 export const API_PRODUCTS = '/products/';
 
-export const API_PRODUCT = (productId) => `${API_PRODUCTS}${productId}/`;
+export const API_PRODUCT = (productId) => `/products/${productId}/`;
 
 // Organizations - Branch
 export const API_BRANCHES = '/orgs/branches/';
 
-export const API_BRANCH = (branchId) => `${API_BRANCHES}${branchId}/`;
+export const API_BRANCH = (branchId) => `/orgs/branches/${branchId}/`;
 
 // Organizations - Department
 
-export const API_DEPARTMENTS_ALL = `/orgs/departments/all`;
+export const API_DEPARTMENTS = `/orgs/departments/`;
 
-export const API_DEPARTMENTS_BY_BRANCH = (branchId) => `${API_BRANCHES}${branchId}/departments/`;
-
-export const API_DEPARTMENT = (branchId, departmentId) => `${API_DEPARTMENTS_BY_BRANCH(branchId)}${departmentId}/`;
+export const API_DEPARTMENT = (departmentId) => `/orgs/departments/${departmentId}/`;
 
 // Organizations - Project
 
-export const API_PROJECTS_BY_BRANCH_AND_DEPARTMENT = (branchId, departmentId) =>
-  `${API_DEPARTMENTS_BY_BRANCH(branchId)}${departmentId}/projects/`;
+export const API_PROJECTS = `/orgs/projects/`;
 
-export const API_PROJECT = (branchId, departmentId, projectId) =>
-  `${API_PROJECTS_BY_BRANCH_AND_DEPARTMENT(branchId, departmentId)}${projectId}/`;
+export const API_PROJECT = (projectId) => `/orgs/projects/${projectId}/`;
 
 // Category
 export const API_PROVIDERS = '/orgs/providers/';

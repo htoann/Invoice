@@ -27,6 +27,11 @@ export const Organization = () => {
 
   const { projects, setProjects, getProjects, loadingProjects } = useProjects(selectedBranchId, selectedDepartmentId);
 
+  const onResetDeleteBranch = () => {
+    setSelectedBranchId(null);
+    setSelectedDepartmentId(null);
+  };
+
   return (
     <>
       <PageHeader className="invoice-page-header-main" title={t('Common_OrgStructure')} />
@@ -39,6 +44,7 @@ export const Organization = () => {
             loadingList={loadingBranches}
             selectedItem={selectedBranchId}
             setSelectedItem={setSelectedBranchId}
+            onResetDeleteBranch={onResetDeleteBranch}
           />
 
           {selectedBranchId && (

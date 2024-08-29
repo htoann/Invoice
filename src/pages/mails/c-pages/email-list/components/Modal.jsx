@@ -1,20 +1,22 @@
 import { Button } from '@/components/buttons/buttons';
 import { BasicFormWrapper } from '@/container/styled';
 import i18n from '@/i18n/config';
+import useProjects from '@/pages/category/c-pages/organization/hook/useProjects';
 import { Form, Input, Select } from 'antd';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 const locale = i18n.language;
 
 const ModalAccount = ({ form, handleOk, state, onCancel, loading, textSubmit, departments }) => {
+  const { t } = useTranslation();
+  const { projects } = useProjects(null, selectedDepartmentId);
+
   const [selectedDepartmentId, setSelectedDepartmentId] = useState();
 
-  // const { projects, getProjects, loadingProjects } = useProjects(selectedDepartmentId);
-
-  const projects = [];
-
-  const { t } = useTranslation();
+  useEffect(() => {
+    form.setFieldValue('project', undefined);
+  }, [selectedDepartmentId]);
 
   return (
     <BasicFormWrapper>
@@ -34,7 +36,7 @@ const ModalAccount = ({ form, handleOk, state, onCancel, loading, textSubmit, de
           label={t('Common_Department')}
           rules={[{ required: true, message: t('Department_PleaseSelect') }]}
         >
-          <Select placeholder=".Vui lòng chọn phòng ban" onChange={(value) => setSelectedDepartmentId(value)}>
+          <Select placeholder={t('Department_PleaseSelect')} onChange={(value) => setSelectedDepartmentId(value)}>
             {departments?.map((item) => (
               <Select.Option key={item.id} value={item.id}>
                 {item.name}
@@ -45,7 +47,7 @@ const ModalAccount = ({ form, handleOk, state, onCancel, loading, textSubmit, de
 
         {selectedDepartmentId && (
           <Form.Item name="project" initialValue={state?.update?.project || undefined} label={t('Common_Project')}>
-            <Select placeholder=".Chọn dự án">
+            <Select placeholder="Chọn dự án">
               {projects?.map((item) => (
                 <Select.Option key={item.id} value={item.id}>
                   {item.name}

@@ -1,4 +1,4 @@
-import { API_DEPARTMENTS_BY_BRANCH } from '@/utils/apiConst';
+import { API_DEPARTMENTS } from '@/utils/apiConst';
 import { dataService } from '@/utils/dataService';
 import { notification } from 'antd';
 import { useAppState } from 'context/AppContext';
@@ -20,7 +20,7 @@ const useDepartments = (selectedBranchId) => {
     setLoadingDepartments(true);
 
     try {
-      const response = await dataService.get(API_DEPARTMENTS_BY_BRANCH(selectedBranchId));
+      const response = await dataService.get(API_DEPARTMENTS, { branch: selectedBranchId });
       setDepartments(response.data);
     } catch (error) {
       console.error(error);
@@ -34,7 +34,7 @@ const useDepartments = (selectedBranchId) => {
   };
 
   useEffect(() => {
-    getDepartments();
+    selectedBranchId && getDepartments();
   }, [selectedBranchId]);
 
   return {

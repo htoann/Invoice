@@ -1,4 +1,4 @@
-import { API_DEPARTMENTS_ALL } from '@/utils/apiConst';
+import { API_DEPARTMENTS } from '@/utils/apiConst';
 import { dataService } from '@/utils/dataService';
 import { notification } from 'antd';
 import { useEffect, useState } from 'react';
@@ -11,7 +11,7 @@ const useGetAllDepartments = () => {
     const getDepartments = async () => {
       try {
         setLoadingDepartments(true);
-        const response = await dataService.get(API_DEPARTMENTS_ALL);
+        const response = await dataService.get(API_DEPARTMENTS);
         setDepartments(response.data);
       } catch (error) {
         console.error(error);
