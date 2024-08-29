@@ -6,7 +6,7 @@ import { notification } from 'antd';
 import { jwtDecode } from 'jwt-decode';
 import { createContext, useCallback, useContext, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { ACCESS_TOKEN, clearLogoutLocalStorageAndCookie, LOGGED_IN, ORG_ID, REACT_MODE, REFRESH_TOKEN } from '../utils';
+import { ACCESS_TOKEN, clearLogoutLocalStorageAndCookie, LOGGED_IN, ORG_ID, REFRESH_TOKEN } from '../utils';
 import { watchObject } from './../utils/index';
 
 const AuthContext = createContext();
@@ -72,13 +72,8 @@ export const AuthProvider = ({ children }) => {
   const login = async (values, handleSuccess) => {
     setState({ loading: true });
     try {
-      if (REACT_MODE === 'ave') {
-        setLocalStorage(LOGGED_IN, true);
-        setAuthState({ isLoggedIn: true, loading: false });
-      } else {
-        const { data } = await dataService.post(API_LOGIN, values);
-        handleAuthSuccess(data.token);
-      }
+      const { data } = await dataService.post(API_LOGIN, values);
+      handleAuthSuccess(data.token);
       handleSuccess && handleSuccess();
     } catch (err) {
       console.error(err);

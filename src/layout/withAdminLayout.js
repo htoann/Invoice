@@ -1,3 +1,4 @@
+import { theme } from '@/utils/theme/themeVariables';
 import UilEllipsisV from '@iconscout/react-unicons/icons/uil-ellipsis-v';
 import { Scrollbars } from '@pezhmanparsaee/react-custom-scrollbars';
 import { Button, Col, Layout, Row } from 'antd';
@@ -11,7 +12,6 @@ import { LayoutContainer, SmallScreenAuthInfo, TopMenuSearch } from './Style';
 import { TopMenu } from './TopMenu';
 import SearchBar from './header-right/Search';
 import AuthInfo from './header-right/index';
-import { theme } from '@/utils/theme/themeVariables';
 
 const { Header, Sider, Content } = Layout;
 
