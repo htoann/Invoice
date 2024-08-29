@@ -73,7 +73,7 @@ function ConnectTaxAuthority() {
                     <Form form={form} name="taxConnect" onFinish={handleOk}>
                       <Form.Item
                         name="username"
-                        rules={[{ message: 'Vui lòng nhập tên đăng nhập', required: true }]}
+                        rules={[{ required: true, message: 'Vui lòng nhập tên đăng nhập' }]}
                         label="Tên đăng nhập"
                       >
                         <Input placeholder="name@example.com" />
@@ -82,13 +82,13 @@ function ConnectTaxAuthority() {
                       <Form.Item
                         name="password"
                         label="Mật khẩu"
-                        rules={[{ message: 'Vui lòng nhập mật khẩu', required: true }]}
+                        rules={[{ required: true, message: 'Vui lòng nhập mật khẩu' }]}
                       >
                         <Input.Password placeholder="Mật khẩu" />
                       </Form.Item>
 
                       <div style={{ justifyContent: 'end', display: 'flex' }}>
-                        <Button htmlType="submit" size="default" type="primary" key="submit" loading={saving}>
+                        <Button htmlType="submit" size="default" type="primary" loading={saving}>
                           Cập nhật
                         </Button>
                       </div>
