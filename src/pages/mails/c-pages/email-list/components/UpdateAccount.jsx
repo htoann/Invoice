@@ -6,7 +6,7 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import ModalAccount from './Modal';
 
-const UpdateAccount = ({ state, setState, accounts, setAccounts, departments, projects }) => {
+const UpdateAccount = ({ state, setState, accounts, setAccounts, departments }) => {
   const [form] = Form.useForm();
   const [loading, setLoading] = useState(false);
   const { t } = useTranslation();
@@ -54,7 +54,6 @@ const UpdateAccount = ({ state, setState, accounts, setAccounts, departments, pr
         loading={loading}
         textSubmit={t('Common_Save')}
         departments={departments}
-        projects={projects}
       />
     </Modal>
   );

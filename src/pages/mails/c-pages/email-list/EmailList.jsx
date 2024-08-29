@@ -40,8 +40,6 @@ const EmailList = () => {
 
   const { loadingDepartments, departments } = useGetAllDepartments();
 
-  const projects = [];
-
   const getList = async ({
     name = '',
     email = '',
@@ -263,7 +261,6 @@ const EmailList = () => {
           accounts={accounts}
           setAccounts={setAccounts}
           departments={departments}
-          projects={projects}
         />
       )}
 
@@ -274,7 +271,6 @@ const EmailList = () => {
           accounts={accounts}
           setAccounts={setAccounts}
           departments={departments}
-          projects={projects}
         />
       )}
     </>

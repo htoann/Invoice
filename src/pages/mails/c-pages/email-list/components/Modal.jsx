@@ -5,10 +5,14 @@ import { Form, Input, Select } from 'antd';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-const ModalAccount = ({ form, handleOk, state, onCancel, loading, textSubmit, departments, projects }) => {
-  const locale = i18n.language;
+const locale = i18n.language;
 
-  const [selectDepartment, setSelectedDepartment] = useState();
+const ModalAccount = ({ form, handleOk, state, onCancel, loading, textSubmit, departments }) => {
+  const [selectedDepartmentId, setSelectedDepartmentId] = useState();
+
+  // const { projects, getProjects, loadingProjects } = useProjects(selectedDepartmentId);
+
+  const projects = [];
 
   const { t } = useTranslation();
 
@@ -30,7 +34,7 @@ const ModalAccount = ({ form, handleOk, state, onCancel, loading, textSubmit, de
           label={t('Common_Department')}
           rules={[{ required: true, message: t('Department_PleaseSelect') }]}
         >
-          <Select placeholder=".Vui lòng chọn phòng ban" onChange={(value) => setSelectedDepartment(value)}>
+          <Select placeholder=".Vui lòng chọn phòng ban" onChange={(value) => setSelectedDepartmentId(value)}>
             {departments?.map((item) => (
               <Select.Option key={item.id} value={item.id}>
                 {item.name}
@@ -39,7 +43,7 @@ const ModalAccount = ({ form, handleOk, state, onCancel, loading, textSubmit, de
           </Select>
         </Form.Item>
 
-        {selectDepartment && (
+        {selectedDepartmentId && (
           <Form.Item name="project" initialValue={state?.update?.project || undefined} label={t('Common_Project')}>
             <Select placeholder=".Chọn dự án">
               {projects?.map((item) => (
