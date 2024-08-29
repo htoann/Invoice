@@ -97,6 +97,7 @@ export const InboxList = React.memo(({ setSelectedInbox, selectedInbox }) => {
       current: 1,
       total: 0,
     });
+    setSelectedInbox(null);
   };
 
   const accountsSelect =
@@ -167,6 +168,7 @@ export const InboxList = React.memo(({ setSelectedInbox, selectedInbox }) => {
         onPressEnter={() => {
           getList({ search, page_size: pageSize, accountId: selectedAccountId });
           resetCurrentPage();
+          setSelectedInbox(null);
         }}
       />
 
