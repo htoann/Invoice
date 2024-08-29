@@ -22,6 +22,10 @@ function ConnectTaxAuthority() {
       form.setFieldsValue(response?.data);
     } catch (error) {
       console.error(error);
+      notification.error({
+        message: t('Common_ConnectTaxAuthorities'),
+        description: t('Invoice_GetTaxConnectFailure'),
+      });
     } finally {
       setLoading(false);
     }

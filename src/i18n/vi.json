@@ -166,6 +166,7 @@
   "Invoice_SelectStartDate": "Chọn ngày bắt đầu",
   "Invoice_EndDate": "Ngày kết thúc",
   "Invoice_SelectEndDate": "Chọn ngày kết thúc",
+  "Invoice_GetTaxConnectFailure": "Lỗi khi hiển thị kết nối cơ quan thuế",
 
   "Mail_CreateAccount_Title": "Tạo tài khoản",
   "Mail_CreateAccount_Success": "Tài khoản đã được tạo thành công",
