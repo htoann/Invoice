@@ -1,9 +1,9 @@
 import { PageHeader } from '@/components/page-headers/page-headers';
 import { Main } from '@/container/styled';
 import { Row } from 'antd';
+import useBranches from 'hooks/useBranches';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import useBranches from '../../../../hooks/useBranches';
 import BranchList from './c-pages/Branch';
 import DepartmentList from './c-pages/Department';
 import ProjectList from './c-pages/Project';

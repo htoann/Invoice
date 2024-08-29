@@ -3,7 +3,7 @@ import useCommunes from './useCommunes';
 import useDistricts from './useDistricts';
 import useProvinces from './useProvinces';
 
-const useDivision = () => {
+export const useDivision = () => {
   const [provinceId, setProvinceId] = useState('');
   const [districtId, setDistrictId] = useState('');
 
@@ -17,5 +17,3 @@ const useDivision = () => {
 
   return { provinces, districts, communes, setProvinceId, setDistrictId };
 };
-
-export default useDivision;

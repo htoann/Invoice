@@ -4,7 +4,7 @@ import { API_PROVIDERS } from '@/utils/apiConst';
 import { dataService } from '@/utils/dataService';
 import { Form, notification } from 'antd';
 import useBranches from 'hooks/useBranches';
-import useDivision from 'hooks/vietnam-division/useDivision';
+import { useDivision } from 'hooks/vietnam-division';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { fieldsModalProvider } from '../utils';

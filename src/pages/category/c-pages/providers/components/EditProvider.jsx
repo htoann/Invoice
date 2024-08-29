@@ -3,10 +3,10 @@ import { Modal } from '@/components/modals/antd-modals';
 import { API_PROVIDER } from '@/utils/apiConst';
 import { dataService } from '@/utils/dataService';
 import { Form, notification } from 'antd';
-import useDivision from 'hooks/vietnam-division/useDivision';
+import useBranches from 'hooks/useBranches';
+import { useDivision } from 'hooks/vietnam-division';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import useBranches from '../../../../../hooks/useBranches';
 import { fieldsModalProvider } from '../utils';
 
 const EditProvider = ({ state, setState, list, setList }) => {
