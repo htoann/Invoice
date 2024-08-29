@@ -116,6 +116,7 @@
   "Common_ContactPersonName": "Người liên hệ",
   "Common_ContactPersonPhoneNumber": "ĐTDĐ NLH",
   "Common_Website": "Website",
+  "Common_Project": "Dự án",
 
   "Dashboard_BusinessStatus": "Trạng thái doanh nghiệp",
   "Dashboard_InvoicesChange": "Hóa đơn bị thay đổi bởi người bán - Nhà cung cấp",
@@ -220,7 +221,6 @@
   "Department_Edit_Title": "Chỉnh sửa phòng ban",
   "Department_PleaseSelect": "Vui lòng chọn phòng ban",
 
-  "Project_Title": "Dự án",
   "Project_Name": "Tên dự án",
   "Project_Name_Required": "Vui lòng nhập tên dự án",
   "Project_Create": "Thêm dự án",

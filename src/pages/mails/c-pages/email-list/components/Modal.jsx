@@ -2,10 +2,13 @@ import { Button } from '@/components/buttons/buttons';
 import { BasicFormWrapper } from '@/container/styled';
 import i18n from '@/i18n/config';
 import { Form, Input, Select } from 'antd';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-const ModalAccount = ({ form, handleOk, state, onCancel, loading, textSubmit, departments }) => {
+const ModalAccount = ({ form, handleOk, state, onCancel, loading, textSubmit, departments, projects }) => {
   const locale = i18n.language;
+
+  const [selectDepartment, setSelectedDepartment] = useState();
 
   const { t } = useTranslation();
 
@@ -23,11 +26,11 @@ const ModalAccount = ({ form, handleOk, state, onCancel, loading, textSubmit, de
 
         <Form.Item
           name="department"
-          initialValue={state?.update?.department || departments?.[0]?.id}
+          initialValue={state?.update?.department || undefined}
           label={t('Common_Department')}
           rules={[{ required: true, message: t('Department_PleaseSelect') }]}
         >
-          <Select>
+          <Select placeholder=".Vui lòng chọn phòng ban" onChange={(value) => setSelectedDepartment(value)}>
             {departments?.map((item) => (
               <Select.Option key={item.id} value={item.id}>
                 {item.name}
@@ -35,6 +38,18 @@ const ModalAccount = ({ form, handleOk, state, onCancel, loading, textSubmit, de
             ))}
           </Select>
         </Form.Item>
+
+        {selectDepartment && (
+          <Form.Item name="project" initialValue={state?.update?.project || undefined} label={t('Common_Project')}>
+            <Select placeholder=".Chọn dự án">
+              {projects?.map((item) => (
+                <Select.Option key={item.id} value={item.id}>
+                  {item.name}
+                </Select.Option>
+              ))}
+            </Select>
+          </Form.Item>
+        )}
 
         <Form.Item
           name="email"

@@ -48,13 +48,13 @@ const ProjectList = ({ list, setList, getList, loadingList, selectedBranchId, se
       form.resetFields();
 
       notification.success({
-        message: t('Project_Title'),
+        message: t('Common_Project'),
         description: t('Project_CreateSuccess'),
       });
     } catch (error) {
       console.error(error);
       notification.error({
-        message: t('Project_Title'),
+        message: t('Common_Project'),
         description: t('Project_CreateError'),
       });
     } finally {
@@ -79,13 +79,13 @@ const ProjectList = ({ list, setList, getList, loadingList, selectedBranchId, se
       setShowEdit(false);
 
       notification.success({
-        message: t('Project_Title'),
+        message: t('Common_Project'),
         description: t('Project_EditSuccess'),
       });
     } catch (error) {
       console.error(error);
       notification.error({
-        message: t('Project_Title'),
+        message: t('Common_Project'),
         description: t('Project_EditError'),
       });
     } finally {
@@ -102,13 +102,13 @@ const ProjectList = ({ list, setList, getList, loadingList, selectedBranchId, se
       setList(list.filter((item) => item.id !== id));
 
       notification.success({
-        message: t('Project_Title'),
+        message: t('Common_Project'),
         description: t('Project_DeleteSuccess'),
       });
     } catch (error) {
       console.error(error);
       notification.error({
-        message: t('Project_Title'),
+        message: t('Common_Project'),
         description: t('Project_DeleteError'),
       });
     } finally {
@@ -152,7 +152,7 @@ const ProjectList = ({ list, setList, getList, loadingList, selectedBranchId, se
   return (
     <Col xs={24} sm={12} md={8} lg={8}>
       <BorderLessHeading>
-        <Cards title={t('Project_Title')} style={{ height: 1000 }}>
+        <Cards title={t('Common_Project')} style={{ height: 1000 }}>
           <StyledMenu
             style={{ width: '100%', minHeight: 'calc(100vh - 290px)', borderRight: 'none' }}
             mode="inline"
