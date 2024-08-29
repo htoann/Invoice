@@ -10,9 +10,10 @@ const locale = i18n.language;
 
 const ModalAccount = ({ form, handleOk, state, onCancel, loading, textSubmit, departments }) => {
   const { t } = useTranslation();
-  const { projects } = useProjects(null, selectedDepartmentId);
 
   const [selectedDepartmentId, setSelectedDepartmentId] = useState();
+
+  const { projects } = useProjects(null, selectedDepartmentId);
 
   useEffect(() => {
     form.setFieldValue('project', undefined);
