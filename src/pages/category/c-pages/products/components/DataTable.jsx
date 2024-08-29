@@ -1,5 +1,6 @@
 import { Button } from '@/components/buttons/buttons';
 import { TableWrapper } from '@/container/styled';
+import { defaultPaginationConfig } from '@/utils/index';
 import { DownloadOutlined } from '@ant-design/icons';
 import { UilFileExport } from '@iconscout/react-unicons';
 import { Select, Table } from 'antd';
@@ -104,7 +105,7 @@ function DataTable({ rowSelection, tableData, columns, pagination, setState, sta
             rowSelection={{
               ...rowSelection,
             }}
-            pagination={{ pageSize: 20, showSizeChanger: true, ...pagination }}
+            pagination={{ ...defaultPaginationConfig, ...pagination }}
             dataSource={tableData}
             columns={columns}
             onChange={(_pagination) => {

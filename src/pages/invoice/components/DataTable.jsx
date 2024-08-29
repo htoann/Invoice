@@ -3,7 +3,7 @@ import { Tab } from '@/components/tabs/tabs';
 import { TableWrapper } from '@/container/styled';
 import { API_INVOICES_EXCEL } from '@/utils/apiConst';
 import { dataService } from '@/utils/dataService';
-import { downloadFile, formatTime } from '@/utils/index';
+import { defaultPaginationConfig, downloadFile, formatTime } from '@/utils/index';
 import { DownloadOutlined } from '@ant-design/icons';
 import { DatePicker, notification, Space, Table } from 'antd';
 import PropTypes from 'prop-types';
@@ -158,7 +158,7 @@ function DataTable({ loading, tableData, columns, state, setState, getInvoiceLis
       <div className="invoice-datatable">
         <TableWrapper className="table-data-view table-responsive">
           <Table
-            pagination={{ pageSize: 20, showSizeChanger: true, ...pagination }}
+            pagination={{ ...defaultPaginationConfig, ...pagination }}
             dataSource={tableData}
             columns={columns}
             onChange={(pagination) => {

@@ -120,3 +120,11 @@ export const formatCurrency = (amount) => {
   }
   return amount.toLocaleString('en-US');
 };
+
+export const defaultPaginationConfig = {
+  showSizeChanger: true,
+  showPrevNextJumpers: true,
+  pageSize: 20,
+  // showQuickJumper: true,
+  // showTotal: (total) => `Tổng số ${total}`,
+};

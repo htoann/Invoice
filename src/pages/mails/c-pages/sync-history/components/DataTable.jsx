@@ -1,4 +1,5 @@
 import { TableWrapper } from '@/container/styled';
+import { defaultPaginationConfig } from '@/utils/index';
 import { Table } from 'antd';
 import PropTypes from 'prop-types';
 import { DataTableStyleWrap } from '../style';
@@ -10,7 +11,7 @@ function DataTable({ tableData, columns, pagination, setState, loading }) {
         <TableWrapper className="table-data-view table-responsive">
           <Table
             className="table-search"
-            pagination={{ pageSize: 20, showSizeChanger: true, ...pagination }}
+            pagination={{ ...defaultPaginationConfig, ...pagination }}
             dataSource={tableData}
             columns={columns}
             onChange={(_pagination) => {

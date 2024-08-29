@@ -1,5 +1,6 @@
 import { Button } from '@/components/buttons/buttons';
 import { TableWrapper } from '@/container/styled';
+import { defaultPaginationConfig } from '@/utils/index';
 import { Table } from 'antd';
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
@@ -47,7 +48,7 @@ function DataTable({ rowSelection, tableData, columns, pagination, setState, sta
             rowSelection={{
               ...rowSelection,
             }}
-            pagination={{ pageSize: 20, showSizeChanger: true, ...pagination }}
+            pagination={{ ...defaultPaginationConfig, ...pagination }}
             dataSource={tableData}
             columns={columns}
             onChange={(_pagination) => {
