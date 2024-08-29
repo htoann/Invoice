@@ -8,30 +8,21 @@ import { Col, notification, Row } from 'antd';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import DataTable from './components/DataTable';
-import { useInvoiceDataTable } from './useDataTable';
+import { useInvoiceDataTable } from './hooks/useDataTable';
 import { handleTableDataSource } from './utils';
 
 function InvoiceList() {
   const { t } = useTranslation();
-
-  const pageRoutes = [
-    {
-      path: routes.invoice,
-      breadcrumbName: t('Invoice_Management'),
-    },
-    {
-      path: routes.invoice,
-      breadcrumbName: t('Invoice_List'),
-    },
-  ];
-
   const invoiceListDataTable = useInvoiceDataTable();
 
+  const pageRoutes = [
+    { path: routes.invoice, breadcrumbName: t('Invoice_Management') },
+    { path: routes.invoice, breadcrumbName: t('Invoice_List') },
+  ];
+
   const [state, setState] = useState({
-    selectedRowKeys: 0,
-    selectedRows: 0,
     invoiceList: [],
-    pagination: { pageSize: 20, showSizeChanger: true, current: 1, total: 0 },
+    pagination: { current: 1, total: 0 },
     loaiHoaDon: 'purchase',
     date_from: undefined,
     date_to: undefined,
@@ -47,11 +38,7 @@ function InvoiceList() {
 
   const getInvoiceList = async (page, page_size = 20, loaihdon = 'purchase', date_from, date_to, searchLoading) => {
     try {
-      if (searchLoading) {
-        setSearchLoading(true);
-      } else {
-        setLoading(true);
-      }
+      searchLoading ? setSearchLoading(true) : setLoading(true);
 
       const response = await dataService.get(API_INVOICES, {
         page,
@@ -78,11 +65,7 @@ function InvoiceList() {
         description: 'Không thể tải danh sách hóa đơn. Vui lòng thử lại sau.',
       });
     } finally {
-      if (searchLoading) {
-        setSearchLoading(false);
-      } else {
-        setLoading(false);
-      }
+      searchLoading ? setSearchLoading(false) : setLoading(false);
     }
   };
 
