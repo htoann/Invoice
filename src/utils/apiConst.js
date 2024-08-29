@@ -26,12 +26,12 @@ export const API_PRODUCTS = '/products/';
 
 export const API_PRODUCT = (productId) => `${API_PRODUCTS}${productId}/`;
 
-// Organizations
+// Organizations - Branch
 export const API_BRANCHES = '/orgs/branches/';
 
 export const API_BRANCH = (branchId) => `${API_BRANCHES}${branchId}/`;
 
-//
+// Organizations - Department
 
 export const API_DEPARTMENTS_ALL = `/orgs/departments/all`;
 
@@ -39,7 +39,7 @@ export const API_DEPARTMENTS_BY_BRANCH = (branchId) => `${API_BRANCHES}${branchI
 
 export const API_DEPARTMENT = (branchId, departmentId) => `${API_DEPARTMENTS_BY_BRANCH(branchId)}${departmentId}/`;
 
-//
+// Organizations - Project
 
 export const API_PROJECTS_BY_BRANCH_AND_DEPARTMENT = (branchId, departmentId) =>
   `${API_DEPARTMENTS_BY_BRANCH(branchId)}${departmentId}/projects/`;
