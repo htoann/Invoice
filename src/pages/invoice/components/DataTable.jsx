@@ -5,7 +5,7 @@ import { API_INVOICES_EXCEL } from '@/utils/apiConst';
 import { dataService } from '@/utils/dataService';
 import { defaultPaginationConfig, downloadFile, formatTime } from '@/utils/index';
 import { DownloadOutlined } from '@ant-design/icons';
-import { DatePicker, notification, Space, Table } from 'antd';
+import { DatePicker, notification, Select, Space, Table } from 'antd';
 import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -16,6 +16,7 @@ function DataTable({ loading, tableData, columns, state, setState, getInvoiceLis
   const [startDate, setStartDate] = useState();
   const [endDate, setEndDate] = useState();
   const [loadingExport, setLoadingExport] = useState(false);
+  const [taxNumber, setTaxNumber] = useState();
 
   const { pagination, date_from, date_to, loaiHoaDon } = state;
   const { current, pageSize } = pagination;
@@ -91,6 +92,10 @@ function DataTable({ loading, tableData, columns, state, setState, getInvoiceLis
     setEndDate(e?._d || null);
   };
 
+  const handleChangeTaxNumber = (value) => {
+    setTaxNumber(value);
+  };
+
   return (
     <DataTableStyleWrap>
       <div className="invoice-datatable-filter">
@@ -124,6 +129,7 @@ function DataTable({ loading, tableData, columns, state, setState, getInvoiceLis
                 disabledDate={disabledStartDate}
               />
             </div>
+
             <div className="invoice-datatable-filter__input">
               <span className="label">{t('Invoice_EndDate')}</span>
               <DatePicker
@@ -132,6 +138,17 @@ function DataTable({ loading, tableData, columns, state, setState, getInvoiceLis
                 format="DD/MM/yyyy"
                 disabledDate={disabledEndDate}
               />
+            </div>
+
+            <div className="invoice-datatable-filter__input">
+              <span className="label">{t('Chọn mã số thuế')}</span>
+              <Select
+                onChange={handleChangeTaxNumber}
+                style={{ width: 200 }}
+                defaultValue={taxNumber ? taxNumber : 'all'}
+              >
+                <Select.Option value="all">{t('Common_All')}</Select.Option>
+              </Select>
             </div>
             {/* <div className="invoice-datatable-filter__action" style={{ marginRight: 10 }}>
               <Button type="primary" size="small" onClick={handleSearch} transparent icon={<UilSearch />}>
