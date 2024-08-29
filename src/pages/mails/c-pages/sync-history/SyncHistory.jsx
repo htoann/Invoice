@@ -15,7 +15,7 @@ const SyncHistory = () => {
   const { t } = useTranslation();
 
   const [state, setState] = useState({
-    pagination: { pageSize: 20, showSizeChanger: true, current: 1, total: 0 },
+    pagination: { current: 1, total: 0 },
   });
 
   const { pagination } = state;

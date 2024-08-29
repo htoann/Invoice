@@ -27,7 +27,7 @@ const EmailList = () => {
     editVisible: false,
     url: null,
     update: {},
-    pagination: { pageSize: 20, showSizeChanger: true, current: 1, total: 0 },
+    pagination: { current: 1, total: 0 },
   });
 
   const { pagination } = state;
