@@ -950,8 +950,9 @@ const MessageDetails = Styled.div`
 
   .message-body{
     ${({ theme }) => (theme.rtl ? 'padding-right' : 'padding-left')}: 60px;
-    margin-top: 22px;
+    margin-top: 25px;
     padding-bottom: 1px;
+    width: 100%;
 
     @media only screen and (max-width: 767px){
       ${({ theme }) => (theme.rtl ? 'padding-right' : 'padding-left')}: 0px;
