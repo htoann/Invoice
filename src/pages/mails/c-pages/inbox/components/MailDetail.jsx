@@ -89,33 +89,6 @@ function MailDetail({ selectedInbox: email }) {
                 </>
               )}
 
-              {/* <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
-                {email?.attachments?.length > 0 &&
-                  email?.attachments.map((item) => (
-                    <div className="message-attachments" key={item.id}>
-                      <div className="invoice-ticket-file-item d-flex">
-                        <div className="invoice-ticket-file-item__info d-flex">
-                          <div className="invoice-ticket-file-item__logo">
-                            <img style={{ width: '40px' }} src={AttachmentLogo} alt="File Logo" />
-                          </div>
-                          <div className="invoice-file-item__content">
-                            <span className="invoice-ticket-file-name">{item.file_name}</span>
-                            <span className="invoice-ticket-file-size">{formatDataSize(item.size)}</span>
-                          </div>
-                          <Link
-                            className="btn-link"
-                            to={`${API_ENDPOINT}/mails/attachments/${item.id}`}
-                            style={{ marginLeft: 10 }}
-                            target="_blank"
-                          >
-                            <UilImport />
-                          </Link>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-              </div> */}
-
               <div style={{ display: 'flex', flexWrap: 'wrap', marginLeft: 40 }}>
                 {email?.attachments?.length > 0 &&
                   email?.attachments.map((item) => (

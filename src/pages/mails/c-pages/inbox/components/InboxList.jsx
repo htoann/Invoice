@@ -17,9 +17,7 @@ export const InboxList = React.memo(({ setSelectedInbox, selectedInbox }) => {
 
   const [pagination, setPagination] = useState({
     pageSize: 20,
-    showSizeChanger: true,
     current: 1,
-    total: 0,
   });
 
   const { pageSize, current, total } = pagination;
@@ -101,9 +99,7 @@ export const InboxList = React.memo(({ setSelectedInbox, selectedInbox }) => {
     setSearchSender('');
     setPagination({
       pageSize: 20,
-      showSizeChanger: true,
       current: 1,
-      total: 0,
     });
     setSelectedInbox(null);
   };
@@ -146,9 +142,7 @@ export const InboxList = React.memo(({ setSelectedInbox, selectedInbox }) => {
             options={departmentsSelect}
           />
 
-          <span className="label" style={{ marginLeft: 30 }}>
-            {t('Chọn dự án')}
-          </span>
+          <span className="label mb-8">{t('Chọn dự án')}</span>
           <Select
             popupClassName="dropdown-select"
             loading={loadingProjects}
@@ -159,7 +153,7 @@ export const InboxList = React.memo(({ setSelectedInbox, selectedInbox }) => {
               setSelectedAccountId('');
               handleReset();
             }}
-            style={{ width: 200, marginLeft: 10 }}
+            style={{ width: '100%', marginBottom: 20 }}
             defaultValue=""
           >
             <Select.Option value="">{t('Common_All')}</Select.Option>

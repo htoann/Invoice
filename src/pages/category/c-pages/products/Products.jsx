@@ -21,13 +21,10 @@ const Products = () => {
   const { EUnit } = useUnit();
 
   const [state, setState] = useState({
-    selectedRowKeys: 0,
-    selectedRows: 0,
     visible: false,
     editVisible: false,
-    url: null,
     update: {},
-    pagination: { current: 1, pageSize: 20, total: 0 },
+    pagination: { current: 1, pageSize: 20 },
   });
 
   const { pagination } = state;
