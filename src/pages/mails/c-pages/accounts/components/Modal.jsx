@@ -47,7 +47,7 @@ export const ModalAccount = ({ form, handleOk, state, onCancel, loading, textSub
         </Form.Item>
 
         <Form.Item name="project" initialValue={state?.update?.project || undefined} label={t('Common_Project')}>
-          <Select placeholder="Chọn dự án">
+          <Select placeholder={t('Common_SelectProject')}>
             {projects?.map((item) => (
               <Select.Option key={item.id} value={item.id}>
                 {item.name}

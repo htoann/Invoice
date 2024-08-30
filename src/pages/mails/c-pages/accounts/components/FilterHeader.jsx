@@ -34,7 +34,7 @@ export const FilterHeader = ({
       />
 
       <span className="label" style={{ marginLeft: 30 }}>
-        {t('Chọn dự án')}
+        {t('Common_SelectProject')}
       </span>
       <Select
         popupClassName="dropdown-select"

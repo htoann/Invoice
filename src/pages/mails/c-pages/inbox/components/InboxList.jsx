@@ -138,7 +138,7 @@ export const InboxList = React.memo(({ setSelectedInbox, selectedInbox }) => {
             options={departmentOptions}
           />
 
-          <span className="label mb-8">{t('Chọn dự án')}</span>
+          <span className="label mb-8">{t('Common_SelectProject')}</span>
           <Select
             style={{ width: '100%', marginBottom: 20 }}
             popupClassName="dropdown-select"
