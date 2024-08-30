@@ -109,6 +109,19 @@ export const InboxList = React.memo(({ setSelectedInbox, selectedInbox }) => {
   const departmentOptions = createOptions(departments, 'name');
   const projectOptions = createOptions(projects, 'name');
 
+  const handleChangeDepartment = (value) => {
+    setSelectedDepartmentId(value);
+    setSelectedProjectId('');
+    setSelectedAccountId('');
+    handleReset();
+  };
+
+  const handleChangeProject = (value) => {
+    setSelectedProjectId(value);
+    setSelectedAccountId('');
+    handleReset();
+  };
+
   return (
     <>
       <div style={{ display: 'flex', gap: 2, flexWrap: 'auto', flexDirection: 'column' }}>
@@ -118,12 +131,7 @@ export const InboxList = React.memo(({ setSelectedInbox, selectedInbox }) => {
             popupClassName="dropdown-select"
             style={{ width: '100%', marginBottom: 20 }}
             placeholder={t('Common_SelectDepartment')}
-            onChange={(value) => {
-              setSelectedDepartmentId(value);
-              setSelectedProjectId('');
-              setSelectedAccountId('');
-              handleReset();
-            }}
+            onChange={handleChangeDepartment}
             loading={loadingDepartments}
             disabled={loadingDepartments}
             value={selectedDepartmentId}
@@ -136,11 +144,7 @@ export const InboxList = React.memo(({ setSelectedInbox, selectedInbox }) => {
             popupClassName="dropdown-select"
             loading={loadingProjects}
             disabled={loadingProjects || !selectedDepartmentId}
-            onChange={(value) => {
-              setSelectedProjectId(value);
-              setSelectedAccountId('');
-              handleReset();
-            }}
+            onChange={handleChangeProject}
             value={selectedProjectId}
             options={projectOptions}
           />
