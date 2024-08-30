@@ -1,3 +1,4 @@
+import useProjects from '@/pages/category/c-pages/organization/hook/useProjects';
 import { API_INBOXES_BY_ACCOUNT_ID } from '@/utils/apiConst';
 import { dataService } from '@/utils/dataService';
 import { formatTime } from '@/utils/index';
@@ -24,10 +25,11 @@ export const InboxList = React.memo(({ setSelectedInbox, selectedInbox }) => {
   const { pageSize, current, total } = pagination;
 
   const [inboxList, setInboxList] = useState([]);
-  const [selectedDepartmentId, setSelectedDepartmentId] = useState(undefined);
+  const [selectedDepartmentId, setSelectedDepartmentId] = useState();
+  const [selectedProjectId, setSelectedProjectId] = useState();
 
   const [search, setSearchSender] = useState('');
-  const [selectedAccountId, setSelectedAccountId] = useState(undefined);
+  const [selectedAccountId, setSelectedAccountId] = useState();
   const [loading, setLoading] = useState(false);
 
   const selectFirstAccount = (accountList) => {
@@ -35,7 +37,13 @@ export const InboxList = React.memo(({ setSelectedInbox, selectedInbox }) => {
   };
 
   const { loadingDepartments, departments } = useGetAllDepartments();
-  const { mailAccountList, loadingMailAccounts } = useMailAccounts(selectFirstAccount, selectedDepartmentId);
+  const { projects, loadingProjects } = useProjects(null, selectedDepartmentId);
+
+  const { mailAccountList, loadingMailAccounts } = useMailAccounts(
+    selectFirstAccount,
+    selectedDepartmentId,
+    selectedProjectId,
+  );
 
   const getList = async ({ accountId, search = '', page = 1, page_size = 20 } = {}) => {
     try {
@@ -137,6 +145,31 @@ export const InboxList = React.memo(({ setSelectedInbox, selectedInbox }) => {
             defaultValue=""
             options={departmentsSelect}
           />
+
+          <span className="label" style={{ marginLeft: 30 }}>
+            {t('Chọn dự án')}
+          </span>
+          <Select
+            popupClassName="dropdown-select"
+            loading={loadingProjects}
+            disabled={loadingProjects || !selectedDepartmentId}
+            onChange={(value) => {
+              setSelectedProjectId(value);
+              setSelectedDepartmentId('');
+              setSelectedAccountId('');
+              handleReset();
+            }}
+            style={{ width: 200, marginLeft: 10 }}
+            defaultValue=""
+          >
+            <Select.Option value="">{t('Common_All')}</Select.Option>
+            {projects?.length > 0 &&
+              projects.map((item) => (
+                <Select.Option key={item.id} value={item.id}>
+                  {item.name}
+                </Select.Option>
+              ))}
+          </Select>
         </>
       </div>
 

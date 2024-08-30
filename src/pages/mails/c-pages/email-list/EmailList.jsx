@@ -1,9 +1,9 @@
 /* eslint-disable no-unused-vars */
 import { Button } from '@/components/buttons/buttons';
 import { Cards } from '@/components/cards/frame/cards-frame';
-import CustomHeader from '@/components/HeaderCommon';
 import { PageHeader } from '@/components/page-headers/page-headers';
 import { BorderLessHeading, Main } from '@/container/styled';
+import useProjects from '@/pages/category/c-pages/organization/hook/useProjects';
 import { API_MAILS_ACCOUNT_BY_ACCOUNT_ID, API_MAILS_ACCOUNTS } from '@/utils/apiConst';
 import { dataService } from '@/utils/dataService';
 import UilEdit from '@iconscout/react-unicons/icons/uil-edit';
@@ -16,16 +16,14 @@ import { Link } from 'react-router-dom';
 import CreateAccount from './components/CreateAccount';
 import DataTable from './components/DataTable';
 import UpdateAccount from './components/UpdateAccount';
+import useDataTable from './hooks/useDataTable';
 
 const EmailList = () => {
   const { t } = useTranslation();
 
   const [state, setState] = useState({
-    selectedRowKeys: 0,
-    selectedRows: 0,
     visible: false,
     editVisible: false,
-    url: null,
     update: {},
     pagination: { current: 1, total: 0 },
   });
@@ -38,7 +36,10 @@ const EmailList = () => {
   const [searchLoading, setSearchLoading] = useState(false);
   const [searchParams, setSearchParams] = useState({ name: '', password: '', departmentId: '' });
 
+  const { departmentId } = searchParams || {};
+
   const { loadingDepartments, departments } = useGetAllDepartments();
+  const { projects, loadingProjects } = useProjects(null, departmentId);
 
   const getList = async ({
     name = '',
@@ -49,11 +50,7 @@ const EmailList = () => {
     searchLoading = true,
   } = {}) => {
     try {
-      if (searchLoading) {
-        setSearchLoading(true);
-      } else {
-        setIsLoadingGetList(true);
-      }
+      searchLoading ? setSearchLoading(true) : setIsLoadingGetList(true);
 
       const response = await dataService.get(API_MAILS_ACCOUNTS, {
         ...(name && { name }),
@@ -80,11 +77,7 @@ const EmailList = () => {
         description: 'Không thể tải danh sách tài khoản. Vui lòng thử lại sau.',
       });
     } finally {
-      if (searchLoading) {
-        setSearchLoading(false);
-      } else {
-        setIsLoadingGetList(false);
-      }
+      searchLoading ? setSearchLoading(false) : setIsLoadingGetList(false);
     }
   };
 
@@ -168,43 +161,12 @@ const EmailList = () => {
     pageSize,
   };
 
-  const dataTableColumn = [
-    {
-      title: t('STT'),
-      dataIndex: 'stt',
-      key: 'stt',
-    },
-    {
-      title: <CustomHeader title="Common_AccountName" name="name" {...propsCustomHeader} />,
-      dataIndex: 'name',
-      key: 'name',
-      sorter: (a, b) => a.name.props.children.localeCompare(b.name.props.children),
-      className: 'searchInput',
-    },
-    {
-      title: <CustomHeader title="Common_Email" name="email" {...propsCustomHeader} />,
-      dataIndex: 'email',
-      key: 'email',
-      sorter: (a, b) => a.email.props.children.localeCompare(b.email.props.children),
-      className: 'searchInput',
-    },
-    {
-      title: <>{t('Common_Department')}</>,
-      dataIndex: 'department',
-      key: 'department',
-      sorter: (a, b) => a.department.props.children.localeCompare(b.department.props.children),
-    },
-    {
-      title: t('Common_Action'),
-      dataIndex: 'action',
-      key: 'action',
-      width: '90px',
-    },
-  ];
+  const dataTableColumn = useDataTable(propsCustomHeader);
 
-  const handleSelectDepartment = (departmentId) => {
-    setSearchParams({ ...searchParams, departmentId });
-    getList({ ...searchParams, shouldLoading: false, page_size: pageSize, departmentId });
+  const handleSelectFilter = (key, value) => {
+    const updatedParams = { ...searchParams, [key]: value };
+    setSearchParams(updatedParams);
+    getList({ ...updatedParams, shouldLoading: false, page_size: pageSize });
   };
 
   return (
@@ -221,13 +183,33 @@ const EmailList = () => {
                     popupClassName="dropdown-select"
                     loading={loadingDepartments}
                     disabled={loadingDepartments}
-                    onChange={handleSelectDepartment}
+                    onChange={(departmentId) => handleSelectFilter('departmentId', departmentId)}
                     style={{ width: 200, marginLeft: 10 }}
                     defaultValue=""
                   >
                     <Select.Option value="">{t('Common_All')}</Select.Option>
                     {departments?.length > 0 &&
                       departments.map((item) => (
+                        <Select.Option key={item.id} value={item.id}>
+                          {item.name}
+                        </Select.Option>
+                      ))}
+                  </Select>
+
+                  <span className="label" style={{ marginLeft: 30 }}>
+                    {t('Chọn dự án')}
+                  </span>
+                  <Select
+                    popupClassName="dropdown-select"
+                    loading={loadingProjects}
+                    disabled={loadingProjects || !departmentId}
+                    onChange={(projectId) => handleSelectFilter('projectId', projectId)}
+                    style={{ width: 200, marginLeft: 10 }}
+                    defaultValue=""
+                  >
+                    <Select.Option value="">{t('Common_All')}</Select.Option>
+                    {projects?.length > 0 &&
+                      projects.map((item) => (
                         <Select.Option key={item.id} value={item.id}>
                           {item.name}
                         </Select.Option>

@@ -3,15 +3,18 @@ import { dataService } from '@/utils/dataService';
 import { notification } from 'antd';
 import { useEffect, useState } from 'react';
 
-const useMailAccounts = (onHandleResult, selectedDepartmentId = '') => {
+const useMailAccounts = (onHandleResult, selectedDepartmentId = '', selectedProjectId = '') => {
   const [mailAccountList, setMailAccountList] = useState([]);
   const [loadingMailAccounts, setLoadingMailAccounts] = useState(false);
 
-  const getMailAccounts = async ({ departmentId = '' } = {}) => {
+  const getMailAccounts = async ({ departmentId = '', projectId = '' } = {}) => {
     try {
       setLoadingMailAccounts(true);
 
-      const response = await dataService.get(API_MAILS_ACCOUNTS, { department_id: departmentId });
+      const response = await dataService.get(API_MAILS_ACCOUNTS, {
+        department_id: departmentId,
+        project_id: projectId,
+      });
       const mailAccounts = response?.data?.results;
       setMailAccountList(mailAccounts);
 
@@ -28,8 +31,8 @@ const useMailAccounts = (onHandleResult, selectedDepartmentId = '') => {
   };
 
   useEffect(() => {
-    getMailAccounts({ departmentId: selectedDepartmentId });
-  }, [selectedDepartmentId]);
+    getMailAccounts({ departmentId: selectedDepartmentId, ...(selectedProjectId && { projectId: selectedProjectId }) });
+  }, [selectedDepartmentId, selectedProjectId]);
 
   return { mailAccountList, setMailAccountList, loadingMailAccounts, setLoadingMailAccounts };
 };
