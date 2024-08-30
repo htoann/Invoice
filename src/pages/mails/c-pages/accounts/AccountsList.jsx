@@ -17,7 +17,7 @@ import { useGetAllDepartments } from 'hooks/useGetAllDepartments';
 import { CreateAccount } from './components/CreateAccount';
 import { DataTable } from './components/DataTable';
 import { UpdateAccount } from './components/UpdateAccount';
-import { useDataTable } from './hooks/useDataTable';
+import { useTableColumnAccount } from './hooks/useDataTable';
 
 const AccountList = () => {
   const { t } = useTranslation();
@@ -134,7 +134,15 @@ const AccountList = () => {
         }))
       : [];
 
-  const dataTableColumn = useDataTable(searchParams, setSearchParams, getList, state, setState, pagination, pageSize);
+  const dataTableColumn = useTableColumnAccount({
+    searchParams,
+    setSearchParams,
+    getList,
+    state,
+    setState,
+    pagination,
+    pageSize,
+  });
 
   const handleFilterChange = (key, value) => {
     setSearchParams((prevParams) => ({ ...prevParams, [key]: value }));

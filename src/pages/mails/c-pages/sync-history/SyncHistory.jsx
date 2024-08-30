@@ -1,16 +1,15 @@
 import { Cards } from '@/components/cards/frame/cards-frame';
-import CustomHeader from '@/components/HeaderCommon';
 import { PageHeader } from '@/components/page-headers/page-headers';
+import { MailAccountSelect } from '@/components/select-common/MailAccountSelect';
 import { Tag } from '@/components/tags/tags';
 import { BorderLessHeading, Main } from '@/container/styled';
 import axios from '@/mock/index';
 import { API_MAIL_TASK_HISTORIES } from '@/utils/apiConst';
-import { createOptions } from '@/utils/index';
-import { Col, Row, Select, Skeleton } from 'antd';
-import { useMailAccounts } from 'hooks/useMailAccounts';
+import { Col, Row, Skeleton } from 'antd';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import DataTable from './components/DataTable';
+import { useTableColumnSyncHistory } from './hooks/useDataTable';
 
 const SyncHistory = () => {
   const { t } = useTranslation();
@@ -26,8 +25,6 @@ const SyncHistory = () => {
   const [isLoadingGetList, setIsLoadingGetList] = useState(false);
   const [searchLoading, setSearchLoading] = useState(false);
   const [searchParams, setSearchParams] = useState({ state: '', note: '', accountId: '' });
-
-  const { loadingMailAccounts, mailAccountList } = useMailAccounts();
 
   const getList = async ({
     state = null,
@@ -94,7 +91,7 @@ const SyncHistory = () => {
     };
   });
 
-  const propsCustomHeader = {
+  const dataTableColumn = useTableColumnSyncHistory({
     searchParams,
     setSearchParams,
     getList,
@@ -102,60 +99,12 @@ const SyncHistory = () => {
     setState,
     pagination,
     pageSize,
-  };
-
-  const dataTableColumn = [
-    {
-      title: t('Common_STT'),
-      dataIndex: 'stt',
-      key: 'stt',
-    },
-    {
-      title: t('Common_Time'),
-      dataIndex: 'time',
-      key: 'time',
-      sorter: (a, b) => a.time.props.children.localeCompare(b.time.props.children),
-    },
-    {
-      title: t('Common_Query'),
-      dataIndex: 'name',
-      key: 'name',
-      sorter: (a, b) => a.name.props.children.localeCompare(b.name.props.children),
-    },
-    {
-      title: <CustomHeader title="Common_Status" name="state" {...propsCustomHeader} />,
-      dataIndex: 'state',
-      key: 'state',
-      sorter: (a, b) => a.state.props.children > b.state.props.children,
-      className: 'searchInput',
-    },
-    {
-      title: <CustomHeader title="Common_Note" name="note" {...propsCustomHeader} />,
-      dataIndex: 'note',
-      key: 'note',
-      sorter: (a, b) => a.note.props.children.localeCompare(b.note.props.children),
-      className: 'searchInput',
-    },
-    {
-      title: t('SyncHistory_TotalInvoice'),
-      dataIndex: 'totalInvoice',
-      key: 'totalInvoice',
-      sorter: (a, b) => a.totalInvoice.props.children > b.totalInvoice.props.children,
-    },
-    {
-      title: t('SyncHistory_NewInvoice'),
-      dataIndex: 'newInvoice',
-      key: 'newInvoice',
-      sorter: (a, b) => a.newInvoice.props.children > b.newInvoice.props.children,
-    },
-  ];
+  });
 
   const handleSelectAccount = (accountId) => {
     setSearchParams({ ...searchParams, accountId });
     getList({ ...searchParams, shouldLoading: false, page_size: pageSize, accountId });
   };
-
-  const accountOptions = createOptions(mailAccountList, 'email');
 
   return (
     <>
@@ -167,16 +116,7 @@ const SyncHistory = () => {
               <Cards>
                 <div style={{ display: 'flex', gap: 20, flexWrap: 'auto' }}>
                   <div style={{ display: 'flex', gap: 2, flexWrap: 'auto', alignItems: 'center' }}>
-                    <span className="label">{t('Common_SelectAccount')}</span>
-                    <Select
-                      popupClassName="dropdown-select"
-                      loading={loadingMailAccounts}
-                      disabled={loadingMailAccounts}
-                      onChange={handleSelectAccount}
-                      style={{ width: 200, marginLeft: 10 }}
-                      value={searchParams.accountId}
-                      options={accountOptions}
-                    />
+                    <MailAccountSelect onChange={handleSelectAccount} value={searchParams?.accountId} />
                   </div>
                 </div>
                 {isLoadingGetList ? (
