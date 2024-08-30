@@ -38,7 +38,7 @@ const Providers = () => {
     visible: false,
     editVisible: false,
     update: {},
-    pagination: { current: 1, total: 0 },
+    pagination: { current: 1, pageSize: 20, total: 0 },
   });
 
   const { pagination } = state;

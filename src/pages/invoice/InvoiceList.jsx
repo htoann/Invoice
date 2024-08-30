@@ -22,7 +22,7 @@ function InvoiceList() {
 
   const [state, setState] = useState({
     invoiceList: [],
-    pagination: { current: 1, total: 0 },
+    pagination: { current: 1, pageSize: 20, total: 0 },
     loaiHoaDon: 'purchase',
     date_from: undefined,
     date_to: undefined,

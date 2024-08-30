@@ -25,7 +25,7 @@ const CustomHeader = ({
         style={{ width: 'auto', height: 35, marginTop: 10 }}
         onClick={stopPropagation}
         onFocus={stopPropagation}
-        value={searchParams[name]}
+        value={searchParams?.[name] || ''}
         onChange={(e) => {
           stopPropagation(e);
           setSearchParams({ ...searchParams, [name]: e.target.value.toLowerCase() });
