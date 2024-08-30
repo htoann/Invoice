@@ -4,7 +4,7 @@ import { notification } from 'antd';
 import { useAppState } from 'context/AppContext';
 import { useEffect } from 'react';
 
-const useProjects = (selectedBranchId, selectedDepartmentId) => {
+export const useProjects = (selectedBranchId, selectedDepartmentId) => {
   const { projects, setProjects, loadingProjects, setLoadingProjects } = useAppState();
 
   const getProjects = async () => {
@@ -38,5 +38,3 @@ const useProjects = (selectedBranchId, selectedDepartmentId) => {
 
   return { projects, setProjects, loadingProjects, setLoadingProjects, getProjects };
 };
-
-export default useProjects;

@@ -1,14 +1,14 @@
 import { Button } from '@/components/buttons/buttons';
 import { BasicFormWrapper } from '@/container/styled';
 import i18n from '@/i18n/config';
-import useProjects from '@/pages/category/c-pages/organization/hook/useProjects';
+import { useProjects } from '@/pages/category/c-pages/organization/hook/useProjects';
 import { Form, Input, Select } from 'antd';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 const locale = i18n.language;
 
-const ModalAccount = ({ form, handleOk, state, onCancel, loading, textSubmit, departments }) => {
+export const ModalAccount = ({ form, handleOk, state, onCancel, loading, textSubmit, departments }) => {
   const { t } = useTranslation();
 
   const [selectedDepartmentId, setSelectedDepartmentId] = useState();
@@ -109,5 +109,3 @@ const ModalAccount = ({ form, handleOk, state, onCancel, loading, textSubmit, de
     </BasicFormWrapper>
   );
 };
-
-export default ModalAccount;

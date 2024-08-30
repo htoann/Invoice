@@ -3,7 +3,7 @@ import { dataService } from '@/utils/dataService';
 import { notification } from 'antd';
 import { useEffect, useState } from 'react';
 
-const useDistricts = (provinceId) => {
+export const useDistricts = (provinceId) => {
   const [districts, setDistricts] = useState([]);
   const [loadingDistricts, setLoadingDistricts] = useState(false);
 
@@ -31,5 +31,3 @@ const useDistricts = (provinceId) => {
 
   return { districts, setDistricts, loadingDistricts, setLoadingDistricts };
 };
-
-export default useDistricts;

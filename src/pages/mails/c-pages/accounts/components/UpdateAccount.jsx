@@ -4,9 +4,9 @@ import { dataService } from '@/utils/dataService';
 import { Form, notification } from 'antd';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import ModalAccount from './Modal';
+import { ModalAccount } from './Modal';
 
-const UpdateAccount = ({ state, setState, accounts, setAccounts, departments }) => {
+export const UpdateAccount = ({ state, setState, accounts, setAccounts, departments }) => {
   const [form] = Form.useForm();
   const [loading, setLoading] = useState(false);
   const { t } = useTranslation();
@@ -58,5 +58,3 @@ const UpdateAccount = ({ state, setState, accounts, setAccounts, departments }) 
     </Modal>
   );
 };
-
-export default UpdateAccount;

@@ -1,12 +1,12 @@
-import useProjects from '@/pages/category/c-pages/organization/hook/useProjects';
+import { useProjects } from '@/pages/category/c-pages/organization/hook/useProjects';
 import { API_INBOXES_BY_ACCOUNT_ID } from '@/utils/apiConst';
 import { dataService } from '@/utils/dataService';
 import { formatTime } from '@/utils/index';
 import UilInbox from '@iconscout/react-unicons/icons/uil-inbox';
 import { Empty, Input, notification, Pagination, Select, Skeleton } from 'antd';
 import Paragraph from 'antd/lib/typography/Paragraph';
-import useGetAllDepartments from 'hooks/useGetAllDepartments';
-import useMailAccounts from 'hooks/useMailAccounts';
+import { useGetAllDepartments } from 'hooks/useGetAllDepartments';
+import { useMailAccounts } from 'hooks/useMailAccounts';
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';

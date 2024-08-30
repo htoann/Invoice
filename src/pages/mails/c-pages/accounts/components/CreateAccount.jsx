@@ -4,9 +4,9 @@ import { dataService } from '@/utils/dataService';
 import { Form, notification } from 'antd';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import ModalAccount from './Modal';
+import { ModalAccount } from './Modal';
 
-const CreateAccount = ({ state, setState, accounts, setAccounts, departments }) => {
+export const CreateAccount = ({ state, setState, accounts, setAccounts, departments }) => {
   const [loading, setLoading] = useState(false);
   const [form] = Form.useForm();
   const { t } = useTranslation();
@@ -62,5 +62,3 @@ const CreateAccount = ({ state, setState, accounts, setAccounts, departments }) 
     </Modal>
   );
 };
-
-export default CreateAccount;

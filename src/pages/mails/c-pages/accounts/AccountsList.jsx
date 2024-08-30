@@ -9,14 +9,14 @@ import { Link } from 'react-router-dom';
 import { Cards } from '@/components/cards/frame/cards-frame';
 import { PageHeader } from '@/components/page-headers/page-headers';
 import { BorderLessHeading, Main } from '@/container/styled';
-import useProjects from '@/pages/category/c-pages/organization/hook/useProjects';
+import { useProjects } from '@/pages/category/c-pages/organization/hook/useProjects';
 import { API_MAILS_ACCOUNT_BY_ACCOUNT_ID, API_MAILS_ACCOUNTS } from '@/utils/apiConst';
 import { dataService } from '@/utils/dataService';
-import useGetAllDepartments from 'hooks/useGetAllDepartments';
-import CreateAccount from './components/CreateAccount';
-import DataTable from './components/DataTable';
-import UpdateAccount from './components/UpdateAccount';
-import useDataTable from './hooks/useDataTable';
+import { useGetAllDepartments } from 'hooks/useGetAllDepartments';
+import { CreateAccount } from './components/CreateAccount';
+import { DataTable } from './components/DataTable';
+import { UpdateAccount } from './components/UpdateAccount';
+import { useDataTable } from './hooks/useDataTable';
 
 const AccountList = () => {
   const { t } = useTranslation();

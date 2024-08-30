@@ -4,12 +4,11 @@ import { defaultPaginationConfig } from '@/utils/index';
 import { DownloadOutlined } from '@ant-design/icons';
 import { UilFileExport } from '@iconscout/react-unicons';
 import { Select, Table } from 'antd';
-import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 import { DataTableStyleWrap } from '../style';
 import { handleExport } from '../utils';
 
-function DataTable({ rowSelection, tableData, columns, pagination, setState, state, loading }) {
+const DataTable = ({ rowSelection, tableData, columns, pagination, setState, state, loading }) => {
   const { t } = useTranslation();
 
   const handleLoaiHoaDonSearch = (value) => {
@@ -120,10 +119,6 @@ function DataTable({ rowSelection, tableData, columns, pagination, setState, sta
       </div>
     </DataTableStyleWrap>
   );
-}
-
-DataTable.propTypes = {
-  tableData: PropTypes.array,
-  columns: PropTypes.array,
 };
+
 export default DataTable;

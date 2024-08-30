@@ -1,7 +1,7 @@
 import CustomHeader from '@/components/HeaderCommon';
 import { useTranslation } from 'react-i18next';
 
-const useDataTable = (propsCustomHeader) => {
+export const useDataTable = (propsCustomHeader) => {
   const { t } = useTranslation();
 
   const columns = [
@@ -40,5 +40,3 @@ const useDataTable = (propsCustomHeader) => {
 
   return columns;
 };
-
-export default useDataTable;

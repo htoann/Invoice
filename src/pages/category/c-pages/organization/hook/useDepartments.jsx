@@ -4,7 +4,7 @@ import { notification } from 'antd';
 import { useAppState } from 'context/AppContext';
 import { useEffect, useState } from 'react';
 
-const useDepartments = (selectedBranchId) => {
+export const useDepartments = (selectedBranchId) => {
   const { departments, setDepartments, loadingDepartments, setLoadingDepartments } = useAppState();
   const [selectedDepartmentId, setSelectedDepartmentId] = useState(null);
 
@@ -47,5 +47,3 @@ const useDepartments = (selectedBranchId) => {
     getDepartments,
   };
 };
-
-export default useDepartments;

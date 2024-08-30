@@ -3,7 +3,7 @@ import { dataService } from '@/utils/dataService';
 import { notification } from 'antd';
 import { useEffect, useState } from 'react';
 
-const useMailAccounts = (onHandleResult, selectedDepartmentId = '', selectedProjectId = '') => {
+export const useMailAccounts = (onHandleResult, selectedDepartmentId = '', selectedProjectId = '') => {
   const [mailAccountList, setMailAccountList] = useState([]);
   const [loadingMailAccounts, setLoadingMailAccounts] = useState(false);
 
@@ -36,5 +36,3 @@ const useMailAccounts = (onHandleResult, selectedDepartmentId = '', selectedProj
 
   return { mailAccountList, setMailAccountList, loadingMailAccounts, setLoadingMailAccounts };
 };
-
-export default useMailAccounts;

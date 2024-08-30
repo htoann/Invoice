@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 
-const useUnit = () => {
+export const useUnit = () => {
   const { t } = useTranslation();
 
   const unitOptions = [
@@ -23,5 +23,3 @@ const useUnit = () => {
 
   return { unitOptions, EUnit };
 };
-
-export default useUnit;

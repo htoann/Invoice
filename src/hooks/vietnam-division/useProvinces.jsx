@@ -3,7 +3,7 @@ import { dataService } from '@/utils/dataService';
 import { notification } from 'antd';
 import { useEffect, useState } from 'react';
 
-const useProvinces = () => {
+export const useProvinces = () => {
   const [provinces, setProvinces] = useState([]);
   const [loadingProvinces, setLoadingProvinces] = useState(false);
 
@@ -31,5 +31,3 @@ const useProvinces = () => {
 
   return { provinces, setProvinces, loadingProvinces, setLoadingProvinces };
 };
-
-export default useProvinces;

@@ -7,7 +7,7 @@ import { dataService } from '@/utils/dataService';
 import UilEdit from '@iconscout/react-unicons/icons/uil-edit';
 import UilTrash from '@iconscout/react-unicons/icons/uil-trash-alt';
 import { Col, Popconfirm, Row, Skeleton, notification } from 'antd';
-import useUnit from 'hooks/useUnit';
+import { useUnit } from 'hooks/useUnit';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';

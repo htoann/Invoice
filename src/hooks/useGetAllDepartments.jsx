@@ -3,7 +3,7 @@ import { dataService } from '@/utils/dataService';
 import { notification } from 'antd';
 import { useEffect, useState } from 'react';
 
-const useGetAllDepartments = () => {
+export const useGetAllDepartments = () => {
   const [loadingDepartments, setLoadingDepartments] = useState(true);
   const [departments, setDepartments] = useState([]);
 
@@ -29,5 +29,3 @@ const useGetAllDepartments = () => {
 
   return { loadingDepartments, setLoadingDepartments, departments, setDepartments };
 };
-
-export default useGetAllDepartments;

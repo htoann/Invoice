@@ -6,7 +6,7 @@ import { BorderLessHeading, Main } from '@/container/styled';
 import axios from '@/mock/index';
 import { API_MAIL_TASK_HISTORIES } from '@/utils/apiConst';
 import { Col, Row, Select, Skeleton } from 'antd';
-import useMailAccounts from 'hooks/useMailAccounts';
+import { useMailAccounts } from 'hooks/useMailAccounts';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import DataTable from './components/DataTable';

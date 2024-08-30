@@ -3,7 +3,7 @@ import { dataService } from '@/utils/dataService';
 import { notification } from 'antd';
 import { useState } from 'react';
 
-const useGetProviders = (onHandleResult) => {
+export const useGetProviders = (onHandleResult) => {
   const [list, setList] = useState([]);
   const [searchLoading, setSearchLoading] = useState(false);
   const [isLoadingGetList, setIsLoadingGetList] = useState(false);
@@ -54,5 +54,3 @@ const useGetProviders = (onHandleResult) => {
     setList,
   };
 };
-
-export default useGetProviders;

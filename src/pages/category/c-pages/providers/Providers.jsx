@@ -14,7 +14,7 @@ import { Link } from 'react-router-dom';
 import CreateProvider from './components/CreateProvider';
 import DataTable from './components/DataTable';
 import EditProvider from './components/EditProvider';
-import useGetProviders from './hooks/useGetProviders';
+import { useGetProviders } from './hooks/useGetProviders';
 import { columnDataProvider } from './utils';
 
 const Providers = () => {

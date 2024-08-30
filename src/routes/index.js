@@ -9,7 +9,7 @@ const InvoiceList = lazy(() => import('@/pages/invoice/InvoiceList'));
 const ConnectTaxAuthority = lazy(() => import('@/pages/invoice/c-pages/ConnectTaxAuthority'));
 
 const Email = lazy(() => import('@/pages/mails/c-pages/inbox/Inbox'));
-const AccountsList = lazy(() => import('@/pages/mails/c-pages/accounts-list/AccountsList'));
+const AccountsList = lazy(() => import('@/pages/mails/c-pages/accounts/AccountsList'));
 const SyncHistory = lazy(() => import('@/pages/mails/c-pages/sync-history/SyncHistory'));
 
 const Products = lazy(() => import('@/pages/category/c-pages/products/Products'));
