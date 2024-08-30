@@ -18,6 +18,7 @@ export const InboxList = React.memo(({ setSelectedInbox, selectedInbox }) => {
   const [pagination, setPagination] = useState({
     pageSize: 20,
     current: 1,
+    total: 0,
   });
 
   const { pageSize, current, total } = pagination;
