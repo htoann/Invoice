@@ -22,8 +22,8 @@ function DataTable({ loading, tableData, columns, state, setState, getInvoiceLis
   const { current, pageSize } = pagination;
 
   useEffect(() => {
-    getInvoiceList(current, pageSize, loaiHoaDon, date_from, date_to, true);
-  }, [current, pageSize, date_from, date_to, loaiHoaDon]);
+    getInvoiceList(loaiHoaDon, date_from, date_to, taxNumber);
+  }, [current, pageSize, loaiHoaDon, date_from, date_to, taxNumber]);
 
   const handleLoaiHoaDonSearch = (loaiHoaDon) => {
     setState({
@@ -32,13 +32,6 @@ function DataTable({ loading, tableData, columns, state, setState, getInvoiceLis
       loaiHoaDon,
     });
   };
-
-  // const handleSearch = () => {
-  //   setState({
-  //     ...state,
-  //     pagination: { ...pagination, current: 1 },
-  //   });
-  // };
 
   const handleExport = async () => {
     setLoadingExport(true);
@@ -100,16 +93,6 @@ function DataTable({ loading, tableData, columns, state, setState, getInvoiceLis
     <DataTableStyleWrap>
       <div className="invoice-datatable-filter">
         <Space className="invoice-datatable-filter__input">
-          {/* <span className="label">{t('Invoice_InvoiceType')}</span>
-          <Select
-            popupClassName="dropdown-select"
-            onChange={handleLoaiHoaDonSearch}
-            style={{ width: 200 }}
-            defaultValue="purchase"
-          >
-            <Select.Option value="purchase">{t('Common_Purchase')}</Select.Option>
-            <Select.Option value="sold">{t('Common_Sold')}</Select.Option>
-          </Select> */}
           <Tab
             data={[
               { key: 'purchase', tabTitle: t('Common_Purchase'), disabled: loading },
@@ -143,18 +126,18 @@ function DataTable({ loading, tableData, columns, state, setState, getInvoiceLis
             <div className="invoice-datatable-filter__input">
               <span className="label">{t('Chọn mã số thuế')}</span>
               <Select
+                showSearch
+                filterOption={(input, option) => (option?.label ?? '').toLowerCase().includes(input.toLowerCase())}
                 onChange={handleChangeTaxNumber}
                 style={{ width: 200 }}
-                defaultValue={taxNumber ? taxNumber : 'all'}
-              >
-                <Select.Option value="all">{t('Common_All')}</Select.Option>
-              </Select>
+                defaultValue={taxNumber ? taxNumber : ''}
+                options={[
+                  { value: '', label: 'Tất cả' },
+                  { value: '0315367844', label: '0315367844' },
+                  { value: '0315367845', label: '0315367845' },
+                ]}
+              />
             </div>
-            {/* <div className="invoice-datatable-filter__action" style={{ marginRight: 10 }}>
-              <Button type="primary" size="small" onClick={handleSearch} transparent icon={<UilSearch />}>
-                {t('Common_Search')}
-              </Button>
-            </div> */}
           </div>
 
           <Button

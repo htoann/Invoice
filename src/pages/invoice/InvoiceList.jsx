@@ -28,24 +28,23 @@ function InvoiceList() {
     date_to: undefined,
   });
 
-  const [isLoading, setLoading] = useState(false);
-  const [searchLoading, setSearchLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const { loaiHoaDon, invoiceList, pagination } = state;
   const { current, pageSize } = pagination;
 
   const tableDataSource = handleTableDataSource(invoiceList, current, pageSize);
 
-  const getInvoiceList = async (page, page_size = 20, loaihdon = 'purchase', date_from, date_to, searchLoading) => {
+  const getInvoiceList = async (loaihdon = 'purchase', date_from, date_to, taxNumber) => {
+    setLoading(true);
     try {
-      searchLoading ? setSearchLoading(true) : setLoading(true);
-
       const response = await dataService.get(API_INVOICES, {
-        page,
-        page_size,
+        page: current,
+        page_size: pageSize,
         loaihdon,
         ...(date_from && { date_from }),
         ...(date_to && { date_to }),
+        ...(taxNumber && { taxNumber }),
       });
 
       if (response?.data) {
@@ -65,7 +64,7 @@ function InvoiceList() {
         description: 'Không thể tải danh sách hóa đơn. Vui lòng thử lại sau.',
       });
     } finally {
-      searchLoading ? setSearchLoading(false) : setLoading(false);
+      setLoading(false);
     }
   };
 
@@ -87,7 +86,7 @@ function InvoiceList() {
                   state={state}
                   setState={setState}
                   getInvoiceList={getInvoiceList}
-                  loading={isLoading || searchLoading}
+                  loading={loading}
                 />
               </Cards>
             </BorderLessHeading>
