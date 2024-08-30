@@ -151,6 +151,11 @@ const AccountList = () => {
   const departmentOptions = createOptions(departments, 'name');
   const projectOptions = createOptions(projects, 'name');
 
+  const handleChangeDepartment = (departmentId) => {
+    handleFilterChange('departmentId', departmentId);
+    handleFilterChange('projectId', '');
+  };
+
   return (
     <>
       <PageHeader className="invoice-page-header-main" title={t('Mail_AccountList_Title')} />
@@ -165,10 +170,7 @@ const AccountList = () => {
                     popupClassName="dropdown-select"
                     loading={loadingDepartments}
                     disabled={loadingDepartments}
-                    onChange={(departmentId) => {
-                      handleFilterChange('departmentId', departmentId);
-                      handleFilterChange('projectId', '');
-                    }}
+                    onChange={handleChangeDepartment}
                     style={{ width: 200, marginLeft: 10 }}
                     value={searchParams.departmentId}
                     options={departmentOptions}
