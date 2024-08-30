@@ -1,7 +1,5 @@
 /* eslint-disable no-unused-vars */
-import UilEdit from '@iconscout/react-unicons/icons/uil-edit';
-import UilTrash from '@iconscout/react-unicons/icons/uil-trash-alt';
-import { Button, Col, notification, Popconfirm, Row, Select } from 'antd';
+import { Button, Col, notification, Row } from 'antd';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
@@ -12,11 +10,12 @@ import { BorderLessHeading, Main } from '@/container/styled';
 import { useProjects } from '@/pages/category/c-pages/organization/hook/useProjects';
 import { API_MAILS_ACCOUNT_BY_ACCOUNT_ID, API_MAILS_ACCOUNTS } from '@/utils/apiConst';
 import { dataService } from '@/utils/dataService';
-import { createOptions } from '@/utils/index';
 import { useGetAllDepartments } from 'hooks/useGetAllDepartments';
 import { CreateAccount } from './components/CreateAccount';
 import { DataTable } from './components/DataTable';
+import { FilterHeader } from './components/FilterHeader';
 import { UpdateAccount } from './components/UpdateAccount';
+import { useTableDataSource } from './hooks/useDataSource';
 import { useTableColumnAccount } from './hooks/useDataTable';
 
 const AccountList = () => {
@@ -105,34 +104,14 @@ const AccountList = () => {
     }
   };
 
-  const tableDataSource =
-    accounts?.length > 0
-      ? accounts.map((item, index) => ({
-          key: item?.id,
-          stt: (current - 1) * pageSize + index + 1,
-          id: item?.id,
-          name: <span>{item?.name}</span>,
-          email: <span>{item?.email}</span>,
-          department: <span>{departments?.find((dept) => dept?.id === item?.department)?.name}</span>,
-          action: (
-            <div className="table-actions">
-              <Link className="edit" to="#" onClick={() => showEditModal(item)}>
-                <UilEdit />
-              </Link>
-              <Popconfirm
-                title={t('Common_AreYouSureDelete')}
-                onConfirm={() => handleDelete(item?.id)}
-                okText={t('Common_Yes')}
-                cancelText={t('Common_No')}
-              >
-                <Link className="invoice-delete" to="#">
-                  <UilTrash />
-                </Link>
-              </Popconfirm>
-            </div>
-          ),
-        }))
-      : [];
+  const tableDataSource = useTableDataSource({
+    accounts,
+    departments,
+    current,
+    pageSize,
+    showEditModal,
+    handleDelete,
+  });
 
   const dataTableColumn = useTableColumnAccount({
     searchParams,
@@ -148,14 +127,6 @@ const AccountList = () => {
     setSearchParams((prevParams) => ({ ...prevParams, [key]: value }));
   };
 
-  const departmentOptions = createOptions(departments, 'name');
-  const projectOptions = createOptions(projects, 'name');
-
-  const handleChangeDepartment = (departmentId) => {
-    handleFilterChange('departmentId', departmentId);
-    handleFilterChange('projectId', '');
-  };
-
   return (
     <>
       <PageHeader className="invoice-page-header-main" title={t('Mail_AccountList_Title')} />
@@ -164,31 +135,14 @@ const AccountList = () => {
           <Col xs={24}>
             <BorderLessHeading>
               <Cards>
-                <div style={{ display: 'flex', gap: 2, flexWrap: 'auto', alignItems: 'center', marginBottom: 20 }}>
-                  <span className="label">{t('Common_SelectDepartment')}</span>
-                  <Select
-                    popupClassName="dropdown-select"
-                    loading={loadingDepartments}
-                    disabled={loadingDepartments}
-                    onChange={handleChangeDepartment}
-                    style={{ width: 200, marginLeft: 10 }}
-                    value={searchParams.departmentId}
-                    options={departmentOptions}
-                  />
-
-                  <span className="label" style={{ marginLeft: 30 }}>
-                    {t('Chọn dự án')}
-                  </span>
-                  <Select
-                    popupClassName="dropdown-select"
-                    loading={loadingProjects}
-                    disabled={loadingProjects || !departmentId}
-                    onChange={(projectId) => handleFilterChange('projectId', projectId)}
-                    style={{ width: 200, marginLeft: 10 }}
-                    value={searchParams.projectId}
-                    options={projectOptions}
-                  />
-                </div>
+                <FilterHeader
+                  departments={departments}
+                  projects={projects}
+                  loadingDepartments={loadingDepartments}
+                  loadingProjects={loadingProjects}
+                  searchParams={searchParams}
+                  handleFilterChange={handleFilterChange}
+                />
                 <Button onClick={showModal} type="primary" key="1">
                   <Link to="#">+ {t('Mail_AccountList_Create')}</Link>
                 </Button>
