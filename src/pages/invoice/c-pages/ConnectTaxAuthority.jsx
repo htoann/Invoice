@@ -61,15 +61,13 @@ function ConnectTaxAuthority() {
   };
 
   return (
-    <>
+    <div style={{ width: '35%', maxWidth: '100%', margin: 'auto' }}>
       <PageHeader className="invoice-page-header-main" title={t('Common_ConnectTaxAuthorities')} />
       <Main>
         <Row gutter={15}>
           <Col xs={24}>
             <BorderLessHeading>
-              <Cards
-              // style={{ maxWidth: 600, margin: 'auto' }}
-              >
+              <Cards>
                 {loading ? (
                   <Skeleton active style={{ marginTop: 30 }} />
                 ) : (
@@ -104,7 +102,7 @@ function ConnectTaxAuthority() {
           </Col>
         </Row>
       </Main>
-    </>
+    </div>
   );
 }
 
