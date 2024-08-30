@@ -1,21 +1,27 @@
 import { Input } from 'antd';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-const CustomHeader = ({
-  title,
-  name,
-  searchParams,
-  setSearchParams,
-  getList,
-  state,
-  setState,
-  pagination,
-  pageSize,
-}) => {
+const CustomHeader = ({ title, name, searchParams, setSearchParams, setState }) => {
   const { t } = useTranslation();
+  const [search, setSearch] = useState(searchParams?.[name] || '');
 
-  const stopPropagation = (e) => {
-    e.stopPropagation();
+  const handleInputChange = (e) => {
+    const value = e.target.value.toLowerCase();
+    setSearch(value);
+  };
+
+  const handleEnterPress = (e) => {
+    if (e.key === 'Enter') {
+      setState((prev) => ({
+        ...prev,
+        pagination: {
+          ...prev.pagination,
+          current: 1,
+        },
+      }));
+      setSearchParams((prev) => ({ ...prev, [name]: search }));
+    }
   };
 
   return (
@@ -23,23 +29,11 @@ const CustomHeader = ({
       <div>{t(title)}</div>
       <Input
         style={{ width: 'auto', height: 35, marginTop: 10 }}
-        onClick={stopPropagation}
-        onFocus={stopPropagation}
-        value={searchParams?.[name] || ''}
-        onChange={(e) => {
-          stopPropagation(e);
-          setSearchParams({ ...searchParams, [name]: e.target.value.toLowerCase() });
-        }}
-        onKeyDown={(e) => {
-          stopPropagation(e);
-          if (e.key === 'Enter') {
-            setState({
-              ...state,
-              pagination: { ...pagination, current: 1 },
-            });
-            getList({ ...searchParams, shouldLoading: false, page_size: pageSize });
-          }
-        }}
+        onClick={(e) => e.stopPropagation()}
+        onFocus={(e) => e.stopPropagation()}
+        value={search}
+        onChange={handleInputChange}
+        onKeyDown={handleEnterPress}
       />
     </>
   );

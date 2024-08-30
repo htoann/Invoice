@@ -116,11 +116,7 @@ const AccountList = () => {
   const dataTableColumn = useTableColumnAccount({
     searchParams,
     setSearchParams,
-    getList,
-    state,
     setState,
-    pagination,
-    pageSize,
   });
 
   const handleFilterChange = (key, value) => {

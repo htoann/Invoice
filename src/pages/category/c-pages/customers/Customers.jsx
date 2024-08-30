@@ -127,11 +127,7 @@ const Customers = () => {
           name={col.dataIndex}
           searchParams={searchParams}
           setSearchParams={setSearchParams}
-          getList={getList}
-          state={state}
           setState={setState}
-          pagination={pagination}
-          pageSize={pageSize}
         />
       ),
     dataIndex: col.dataIndex,

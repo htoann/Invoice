@@ -94,11 +94,7 @@ const SyncHistory = () => {
   const dataTableColumn = useTableColumnSyncHistory({
     searchParams,
     setSearchParams,
-    getList,
-    state,
     setState,
-    pagination,
-    pageSize,
   });
 
   const handleSelectAccount = (accountId) => {
