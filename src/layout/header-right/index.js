@@ -41,7 +41,18 @@ const AuthInfo = React.memo(() => {
             {userInfo?.username?.charAt(0)?.toUpperCase()}
           </Avatar>
           <figcaption style={{ margin: 'auto' }}>
-            <Heading as="h5">{userInfo?.username}</Heading>
+            <Heading as="h5">
+              <div
+                style={{
+                  whiteSpace: 'nowrap',
+                  overflow: 'hidden',
+                  textOverflow: 'ellipsis',
+                  maxWidth: '80px',
+                }}
+              >
+                {userInfo?.username}
+              </div>
+            </Heading>
           </figcaption>
         </figure>
         <ul className="user-dropdown__links">
@@ -55,11 +66,6 @@ const AuthInfo = React.memo(() => {
               <UilSetting /> {t('User_Settings')}
             </Link>
           </li>
-          {/* <li>
-            <Link to="#">
-              <UilDollarSign /> {t('User_Billing')}
-            </Link>
-          </li> */}
           <li>
             <Link to="#">
               <UilUsersAlt /> {t('User_Activity')}
@@ -103,8 +109,6 @@ const AuthInfo = React.memo(() => {
 
   return (
     <InfoWrapper>
-      {/* <Search /> */}
-      {/* <Message /> */}
       {/* <Notification /> */}
       {/* <Settings /> */}
       <Customizer />
@@ -118,7 +122,6 @@ const AuthInfo = React.memo(() => {
       <div className="invoice-nav-actions__item invoice-nav-actions__author">
         <Popover placement="bottomRight" content={userContent} action="click">
           <Link to="#" className="invoice-nav-action-link">
-            {/* <Avatar src="https://cdn0.iconfinder.com/data/icons/user-pictures/100/matureman1-512.png" /> */}
             <Avatar size={40} style={{ backgroundColor: '#8231D3' }}>
               {userInfo?.username?.charAt(0)?.toUpperCase()}
             </Avatar>

@@ -191,6 +191,12 @@ const LayoutContainer = Styled.div`
                     font-size: 14px;
                     display: inline-block;
                     font-weight: 500;
+
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    max-width: 100px;
+
                     margin: ${({ theme }) => (theme.rtl ? '0 10px 0 6px' : '0 6px 0 10px')};
                     color: ${({ theme }) => theme[theme.mainContent]['gray-text']};
                     @media only screen and (max-width: 991px){
@@ -244,6 +250,10 @@ const LayoutContainer = Styled.div`
         .invoice-nav-actions__author{
             .invoice-nav-actions__author--name{
                 display: none;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                max-width: 100px;
             }
             .invoice-nav-action-link{
                 display: flex;
