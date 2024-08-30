@@ -12,6 +12,7 @@ import { BorderLessHeading, Main } from '@/container/styled';
 import { useProjects } from '@/pages/category/c-pages/organization/hook/useProjects';
 import { API_MAILS_ACCOUNT_BY_ACCOUNT_ID, API_MAILS_ACCOUNTS } from '@/utils/apiConst';
 import { dataService } from '@/utils/dataService';
+import { createOptions } from '@/utils/index';
 import { useGetAllDepartments } from 'hooks/useGetAllDepartments';
 import { CreateAccount } from './components/CreateAccount';
 import { DataTable } from './components/DataTable';
@@ -33,7 +34,7 @@ const AccountList = () => {
 
   const [accounts, setAccounts] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [searchParams, setSearchParams] = useState({ name: '', email: '', departmentId: '' });
+  const [searchParams, setSearchParams] = useState({ name: '', email: '', departmentId: '', projectId: '' });
 
   const { departmentId } = searchParams || {};
   const { loadingDepartments, departments } = useGetAllDepartments();
@@ -139,6 +140,9 @@ const AccountList = () => {
     setSearchParams((prevParams) => ({ ...prevParams, [key]: value }));
   };
 
+  const departmentOptions = createOptions(departments, 'name');
+  const projectOptions = createOptions(projects, 'name');
+
   return (
     <>
       <PageHeader className="invoice-page-header-main" title={t('Mail_AccountList_Title')} />
@@ -153,18 +157,14 @@ const AccountList = () => {
                     popupClassName="dropdown-select"
                     loading={loadingDepartments}
                     disabled={loadingDepartments}
-                    onChange={(departmentId) => handleFilterChange('departmentId', departmentId)}
+                    onChange={(departmentId) => {
+                      handleFilterChange('departmentId', departmentId);
+                      handleFilterChange('projectId', '');
+                    }}
                     style={{ width: 200, marginLeft: 10 }}
-                    defaultValue=""
-                  >
-                    <Select.Option value="">{t('Common_All')}</Select.Option>
-                    {departments?.length > 0 &&
-                      departments.map((item) => (
-                        <Select.Option key={item.id} value={item.id}>
-                          {item.name}
-                        </Select.Option>
-                      ))}
-                  </Select>
+                    value={searchParams.departmentId}
+                    options={departmentOptions}
+                  />
 
                   <span className="label" style={{ marginLeft: 30 }}>
                     {t('Chọn dự án')}
@@ -175,16 +175,9 @@ const AccountList = () => {
                     disabled={loadingProjects || !departmentId}
                     onChange={(projectId) => handleFilterChange('projectId', projectId)}
                     style={{ width: 200, marginLeft: 10 }}
-                    defaultValue=""
-                  >
-                    <Select.Option value="">{t('Common_All')}</Select.Option>
-                    {projects?.length > 0 &&
-                      projects.map((item) => (
-                        <Select.Option key={item.id} value={item.id}>
-                          {item.name}
-                        </Select.Option>
-                      ))}
-                  </Select>
+                    value={searchParams.projectId}
+                    options={projectOptions}
+                  />
                 </div>
                 <Button onClick={showModal} type="primary" key="1">
                   <Link to="#">+ {t('Mail_AccountList_Create')}</Link>

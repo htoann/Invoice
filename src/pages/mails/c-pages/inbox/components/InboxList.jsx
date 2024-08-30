@@ -1,7 +1,7 @@
 import { useProjects } from '@/pages/category/c-pages/organization/hook/useProjects';
 import { API_INBOXES_BY_ACCOUNT_ID } from '@/utils/apiConst';
 import { dataService } from '@/utils/dataService';
-import { formatTime } from '@/utils/index';
+import { createOptions, formatTime } from '@/utils/index';
 import UilInbox from '@iconscout/react-unicons/icons/uil-inbox';
 import { Empty, Input, notification, Pagination, Select, Skeleton } from 'antd';
 import Paragraph from 'antd/lib/typography/Paragraph';
@@ -24,8 +24,8 @@ export const InboxList = React.memo(({ setSelectedInbox, selectedInbox }) => {
   const { pageSize, current, total } = pagination;
 
   const [inboxList, setInboxList] = useState([]);
-  const [selectedDepartmentId, setSelectedDepartmentId] = useState();
-  const [selectedProjectId, setSelectedProjectId] = useState();
+  const [selectedDepartmentId, setSelectedDepartmentId] = useState('');
+  const [selectedProjectId, setSelectedProjectId] = useState('');
 
   const [search, setSearchSender] = useState('');
   const [selectedAccountId, setSelectedAccountId] = useState();
@@ -105,23 +105,9 @@ export const InboxList = React.memo(({ setSelectedInbox, selectedInbox }) => {
     setSelectedInbox(null);
   };
 
-  const accountsSelect =
-    mailAccountList?.length > 0
-      ? mailAccountList.map((item) => ({
-          value: item.id,
-          label: item.email,
-        }))
-      : [];
-
-  const departmentsSelect = [
-    { label: t('Common_All'), value: '' },
-    ...(departments?.length > 0
-      ? departments.map((item) => ({
-          value: item.id,
-          label: item.name,
-        }))
-      : []),
-  ];
+  const accountOptions = createOptions(mailAccountList, 'email');
+  const departmentOptions = createOptions(departments, 'name');
+  const projectOptions = createOptions(projects, 'name');
 
   return (
     <>
@@ -134,37 +120,30 @@ export const InboxList = React.memo(({ setSelectedInbox, selectedInbox }) => {
             placeholder={t('Common_SelectDepartment')}
             onChange={(value) => {
               setSelectedDepartmentId(value);
+              setSelectedProjectId('');
               setSelectedAccountId('');
               handleReset();
             }}
             loading={loadingDepartments}
             disabled={loadingDepartments}
-            defaultValue=""
-            options={departmentsSelect}
+            value={selectedDepartmentId}
+            options={departmentOptions}
           />
 
           <span className="label mb-8">{t('Chọn dự án')}</span>
           <Select
+            style={{ width: '100%', marginBottom: 20 }}
             popupClassName="dropdown-select"
             loading={loadingProjects}
             disabled={loadingProjects || !selectedDepartmentId}
             onChange={(value) => {
               setSelectedProjectId(value);
-              setSelectedDepartmentId('');
               setSelectedAccountId('');
               handleReset();
             }}
-            style={{ width: '100%', marginBottom: 20 }}
-            defaultValue=""
-          >
-            <Select.Option value="">{t('Common_All')}</Select.Option>
-            {projects?.length > 0 &&
-              projects.map((item) => (
-                <Select.Option key={item.id} value={item.id}>
-                  {item.name}
-                </Select.Option>
-              ))}
-          </Select>
+            value={selectedProjectId}
+            options={projectOptions}
+          />
         </>
       </div>
 
@@ -180,8 +159,8 @@ export const InboxList = React.memo(({ setSelectedInbox, selectedInbox }) => {
           }}
           loading={loadingMailAccounts}
           disabled={loadingMailAccounts}
-          defaultValue={selectedAccountId}
-          options={accountsSelect}
+          value={selectedAccountId}
+          options={accountOptions}
           key={selectedAccountId}
         />
       </div>

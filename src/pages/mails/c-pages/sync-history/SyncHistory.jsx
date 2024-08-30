@@ -5,6 +5,7 @@ import { Tag } from '@/components/tags/tags';
 import { BorderLessHeading, Main } from '@/container/styled';
 import axios from '@/mock/index';
 import { API_MAIL_TASK_HISTORIES } from '@/utils/apiConst';
+import { createOptions } from '@/utils/index';
 import { Col, Row, Select, Skeleton } from 'antd';
 import { useMailAccounts } from 'hooks/useMailAccounts';
 import { useEffect, useState } from 'react';
@@ -154,6 +155,8 @@ const SyncHistory = () => {
     getList({ ...searchParams, shouldLoading: false, page_size: pageSize, accountId });
   };
 
+  const accountOptions = createOptions(mailAccountList, 'email');
+
   return (
     <>
       <PageHeader className="invoice-page-header-main" title={t('Common_SyncHistory')} />
@@ -171,16 +174,9 @@ const SyncHistory = () => {
                       disabled={loadingMailAccounts}
                       onChange={handleSelectAccount}
                       style={{ width: 200, marginLeft: 10 }}
-                      defaultValue=""
-                    >
-                      <Select.Option value="">{t('Common_All')}</Select.Option>
-                      {mailAccountList?.length > 0 &&
-                        mailAccountList.map((item) => (
-                          <Select.Option key={item.id} value={item.id}>
-                            {item.name}
-                          </Select.Option>
-                        ))}
-                    </Select>
+                      value={searchParams.accountId}
+                      options={accountOptions}
+                    />
                   </div>
                 </div>
                 {isLoadingGetList ? (
