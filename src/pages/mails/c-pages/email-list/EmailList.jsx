@@ -25,7 +25,7 @@ const EmailList = () => {
     visible: false,
     editVisible: false,
     update: {},
-    pagination: { current: 1, pageSize: 20, total: 0 },
+    pagination: { current: 1, pageSize: 20 },
   });
 
   const { pagination, visible, editVisible } = state;

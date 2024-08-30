@@ -33,12 +33,10 @@ const Customers = () => {
   const { list, searchLoading, isLoadingGetList, getList, setList } = useGetProviders(updatePagination);
 
   const [state, setState] = useState({
-    selectedRowKeys: 0,
-    selectedRows: 0,
     visible: false,
     editVisible: false,
     update: {},
-    pagination: { current: 1, pageSize: 20, total: 0 },
+    pagination: { current: 1, pageSize: 20 },
   });
 
   const { pagination } = state;
