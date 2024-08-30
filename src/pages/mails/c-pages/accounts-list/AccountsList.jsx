@@ -18,7 +18,7 @@ import DataTable from './components/DataTable';
 import UpdateAccount from './components/UpdateAccount';
 import useDataTable from './hooks/useDataTable';
 
-const EmailList = () => {
+const AccountList = () => {
   const { t } = useTranslation();
 
   const [state, setState] = useState({
@@ -225,4 +225,4 @@ const EmailList = () => {
   );
 };
 
-export default EmailList;
+export default AccountList;

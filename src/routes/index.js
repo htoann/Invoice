@@ -9,7 +9,7 @@ const InvoiceList = lazy(() => import('@/pages/invoice/InvoiceList'));
 const ConnectTaxAuthority = lazy(() => import('@/pages/invoice/c-pages/ConnectTaxAuthority'));
 
 const Email = lazy(() => import('@/pages/mails/c-pages/inbox/Inbox'));
-const EmailList = lazy(() => import('@/pages/mails/c-pages/email-list/EmailList'));
+const AccountsList = lazy(() => import('@/pages/mails/c-pages/accounts-list/AccountsList'));
 const SyncHistory = lazy(() => import('@/pages/mails/c-pages/sync-history/SyncHistory'));
 
 const Products = lazy(() => import('@/pages/category/c-pages/products/Products'));
@@ -40,7 +40,7 @@ const Index = React.memo(() => {
         <Route path={routes.invoice} element={<InvoiceList />} />
         <Route path={routes.invoiceConnectTax} element={<ConnectTaxAuthority />} />
 
-        <Route path={routes.emailAccount} element={<EmailList />} />
+        <Route path={routes.emailAccount} element={<AccountsList />} />
         <Route path={routes.emailSync} element={<SyncHistory />} />
         <Route path={routes.email + '/*'} element={<Email />} />
 
