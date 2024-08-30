@@ -129,12 +129,10 @@ export const defaultPaginationConfig = {
   // showTotal: (total) => `Tổng số ${total}`,
 };
 
-export const createOptions = (list, labelKey) => [
-  { label: i18next.t('Common_All'), value: '' },
-  ...(list?.length > 0
-    ? list.map((item) => ({
-        value: item.id,
-        label: item[labelKey],
-      }))
-    : []),
+export const createOptions = (list = [], labelKey, hasAll = true) => [
+  ...(hasAll ? [{ label: i18next.t('Common_All'), value: '' }] : []),
+  ...list.map((item) => ({
+    value: item.id,
+    label: item[labelKey],
+  })),
 ];

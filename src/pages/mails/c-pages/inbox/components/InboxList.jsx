@@ -28,7 +28,7 @@ export const InboxList = React.memo(({ setSelectedInbox, selectedInbox }) => {
   const [selectedProjectId, setSelectedProjectId] = useState('');
 
   const [search, setSearchSender] = useState('');
-  const [selectedAccountId, setSelectedAccountId] = useState();
+  const [selectedAccountId, setSelectedAccountId] = useState(null);
   const [loading, setLoading] = useState(false);
 
   const selectFirstAccount = (accountList) => {
@@ -78,7 +78,7 @@ export const InboxList = React.memo(({ setSelectedInbox, selectedInbox }) => {
   }, [selectedAccountId]);
 
   useEffect(() => {
-    setSelectedAccountId(undefined);
+    setSelectedAccountId(null);
   }, [selectedDepartmentId]);
 
   const resetCurrentPage = () => {
@@ -105,20 +105,20 @@ export const InboxList = React.memo(({ setSelectedInbox, selectedInbox }) => {
     setSelectedInbox(null);
   };
 
-  const accountOptions = createOptions(mailAccountList, 'email');
+  const accountOptions = createOptions(mailAccountList, 'email', false);
   const departmentOptions = createOptions(departments, 'name');
   const projectOptions = createOptions(projects, 'name');
 
   const handleChangeDepartment = (value) => {
     setSelectedDepartmentId(value);
     setSelectedProjectId('');
-    setSelectedAccountId('');
+    setSelectedAccountId(null);
     handleReset();
   };
 
   const handleChangeProject = (value) => {
     setSelectedProjectId(value);
-    setSelectedAccountId('');
+    setSelectedAccountId(null);
     handleReset();
   };
 
