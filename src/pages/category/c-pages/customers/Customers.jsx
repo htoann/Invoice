@@ -7,30 +7,20 @@ import { dataService } from '@/utils/dataService';
 import { formatTime } from '@/utils/index';
 import UilEdit from '@iconscout/react-unicons/icons/uil-edit';
 import UilTrash from '@iconscout/react-unicons/icons/uil-trash-alt';
-import { Col, Popconfirm, Row, Skeleton, notification } from 'antd';
+import { Col, Popconfirm, Row, notification } from 'antd';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import CreateCustomer from './components/CreateCustomer';
 import DataTable from './components/DataTable';
 import EditCustomer from './components/EditCustomer';
-import useGetProviders from './hooks/useGetCustomers';
+import { useGetCustomers } from './hooks/useGetCustomers';
 import { columnDataCustomer } from './utils';
 
 const Customers = () => {
   const { t } = useTranslation();
 
-  const updatePagination = (response) => {
-    setState((prev) => ({
-      ...prev,
-      pagination: {
-        ...prev.pagination,
-        total: Number(response?.data?.count) || 0,
-      },
-    }));
-  };
-
-  const { list, searchLoading, isLoadingGetList, getList, setList } = useGetProviders(updatePagination);
+  const { list, loading, getList, setList } = useGetCustomers(setState);
 
   const [state, setState] = useState({
     visible: false,
@@ -45,8 +35,8 @@ const Customers = () => {
   const [searchParams, setSearchParams] = useState({});
 
   useEffect(() => {
-    getList({ ...searchParams, page: current, page_size: pageSize });
-  }, [current, pageSize]);
+    getList({ searchParams, page: current, page_size: pageSize });
+  }, [current, pageSize, searchParams]);
 
   const handleDelete = async (id) => {
     try {
@@ -166,18 +156,14 @@ const Customers = () => {
           <Col xs={24}>
             <BorderLessHeading>
               <Cards headless>
-                {isLoadingGetList ? (
-                  <Skeleton active style={{ marginTop: 30 }} />
-                ) : (
-                  <DataTable
-                    tableData={tableDataSource}
-                    columns={dataTableColumn}
-                    rowSelection={rowSelection}
-                    state={state}
-                    setState={setState}
-                    loading={searchLoading}
-                  />
-                )}
+                <DataTable
+                  tableData={tableDataSource}
+                  columns={dataTableColumn}
+                  rowSelection={rowSelection}
+                  state={state}
+                  setState={setState}
+                  loading={loading}
+                />
               </Cards>
             </BorderLessHeading>
           </Col>

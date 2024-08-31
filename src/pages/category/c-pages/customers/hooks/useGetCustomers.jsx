@@ -3,34 +3,28 @@ import { dataService } from '@/utils/dataService';
 import { notification } from 'antd';
 import { useState } from 'react';
 
-const useGetCustomers = (onHandleResult) => {
+export const useGetCustomers = (setState) => {
   const [list, setList] = useState([]);
-  const [searchLoading, setSearchLoading] = useState(false);
-  const [isLoadingGetList, setIsLoadingGetList] = useState(false);
+  const [loading, setLoading] = useState(false);
 
-  const getList = async ({
-    page = 1,
-    page_size = 20,
-    searchLoading: isSearchLoading = true,
-    searchParams = {},
-  } = {}) => {
+  const getList = async ({ page = 1, page_size = 20, searchParams = {} } = {}) => {
+    setLoading(true);
     try {
-      if (isSearchLoading) {
-        setSearchLoading(true);
-      } else {
-        setIsLoadingGetList(true);
-      }
-
       const response = await dataService.get(API_CUSTOMERS, {
-        ...(Object.keys(searchParams).length && { ...searchParams }),
         page,
         page_size,
+        // eslint-disable-next-line no-unused-vars
+        ...Object.fromEntries(Object.entries(searchParams).filter(([_, v]) => v)),
       });
 
-      if (response?.data) {
-        setList(response?.data?.results);
-        onHandleResult && onHandleResult(response);
-      }
+      setList(response?.data?.results);
+      setState((prev) => ({
+        ...prev,
+        pagination: {
+          ...prev.pagination,
+          total: Number(response?.data?.count) || 0,
+        },
+      }));
     } catch (error) {
       console.error(error);
       notification.error({
@@ -38,21 +32,14 @@ const useGetCustomers = (onHandleResult) => {
         description: 'Không thể tải danh sách khách hàng. Vui lòng thử lại sau.',
       });
     } finally {
-      if (isSearchLoading) {
-        setSearchLoading(false);
-      } else {
-        setIsLoadingGetList(false);
-      }
+      setLoading(false);
     }
   };
 
   return {
     list,
-    searchLoading,
-    isLoadingGetList,
+    loading,
     getList,
     setList,
   };
 };
-
-export default useGetCustomers;
