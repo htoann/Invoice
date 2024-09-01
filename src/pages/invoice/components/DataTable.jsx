@@ -5,18 +5,20 @@ import { API_INVOICES_EXCEL } from '@/utils/apiConst';
 import { dataService } from '@/utils/dataService';
 import { defaultPaginationConfig, downloadFile, formatTime } from '@/utils/index';
 import { DownloadOutlined } from '@ant-design/icons';
-import { DatePicker, notification, Select, Space, Table } from 'antd';
+import { DatePicker, notification, Space, Table } from 'antd';
 import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { DataTableStyleWrap } from '../style';
+import TaxNumberSelect from './TaxNumberSelect';
 
 function DataTable({ loading, tableData, columns, state, setState, getInvoiceList }) {
   const { t } = useTranslation();
   const [startDate, setStartDate] = useState();
   const [endDate, setEndDate] = useState();
   const [loadingExport, setLoadingExport] = useState(false);
-  const [taxNumber, setTaxNumber] = useState();
+
+  const [taxNumber, setTaxNumber] = useState('');
 
   const { pagination, date_from, date_to, loaiHoaDon } = state;
   const { current, pageSize } = pagination;
@@ -124,19 +126,7 @@ function DataTable({ loading, tableData, columns, state, setState, getInvoiceLis
             </div>
 
             <div className="invoice-datatable-filter__input">
-              <span className="label">{t('Chọn mã số thuế')}</span>
-              <Select
-                showSearch
-                filterOption={(input, option) => (option?.label ?? '').toLowerCase().includes(input.toLowerCase())}
-                onChange={handleChangeTaxNumber}
-                style={{ width: 200 }}
-                defaultValue={taxNumber ? taxNumber : ''}
-                options={[
-                  { value: '', label: 'Tất cả' },
-                  { value: '0315367844', label: '0315367844' },
-                  { value: '0315367845', label: '0315367845' },
-                ]}
-              />
+              <TaxNumberSelect taxNumber={taxNumber} onChange={handleChangeTaxNumber} />
             </div>
           </div>
 

@@ -22,7 +22,7 @@ export const FilterHeader = ({
 
   return (
     <div style={{ display: 'flex', gap: 2, flexWrap: 'auto', alignItems: 'center', marginBottom: 20 }}>
-      <span className="label">{t('Common_SelectDepartment')}</span>
+      <span className="label">{t('Common_Department')}</span>
       <Select
         popupClassName="dropdown-select"
         loading={loadingDepartments}
@@ -34,7 +34,7 @@ export const FilterHeader = ({
       />
 
       <span className="label" style={{ marginLeft: 30 }}>
-        {t('Common_SelectProject')}
+        {t('Common_Project')}
       </span>
       <Select
         popupClassName="dropdown-select"

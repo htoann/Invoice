@@ -12,6 +12,8 @@ export const API_INVOICES_CHANGE = '/invoices-change/';
 
 export const API_INVOICES_CONNECT_AUTHORITY = '/invoice_credentials/ ';
 
+export const API_INVOICES_TAXES_NUMBER = '/invoices/nbmst';
+
 // Mails
 export const API_MAILS_ACCOUNTS = `/mails/accounts/`;
 

@@ -126,7 +126,7 @@ export const InboxList = React.memo(({ setSelectedInbox, selectedInbox }) => {
     <>
       <div style={{ display: 'flex', gap: 2, flexWrap: 'auto', flexDirection: 'column' }}>
         <>
-          <span className="label mb-8">{t('Common_SelectDepartment')}</span>
+          <span className="label mb-8">{t('Common_Department')}</span>
           <Select
             popupClassName="dropdown-select"
             style={{ width: '100%', marginBottom: 20 }}
@@ -138,7 +138,7 @@ export const InboxList = React.memo(({ setSelectedInbox, selectedInbox }) => {
             options={departmentOptions}
           />
 
-          <span className="label mb-8">{t('Common_SelectProject')}</span>
+          <span className="label mb-8">{t('Common_Project')}</span>
           <Select
             style={{ width: '100%', marginBottom: 20 }}
             popupClassName="dropdown-select"
@@ -152,7 +152,7 @@ export const InboxList = React.memo(({ setSelectedInbox, selectedInbox }) => {
       </div>
 
       <div style={{ display: 'flex', gap: 2, flexWrap: 'auto', flexDirection: 'column' }}>
-        <span className="label mb-8">{t('Common_SelectAccount')}</span>
+        <span className="label mb-8">{t('Common_Account')}</span>
         <Select
           popupClassName="dropdown-select"
           style={{ width: '100%', marginBottom: 20 }}
