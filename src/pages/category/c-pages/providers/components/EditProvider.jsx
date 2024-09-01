@@ -13,8 +13,8 @@ const EditProvider = ({ state, setState, list, setList }) => {
   const { t } = useTranslation();
   const [form] = Form.useForm();
 
-  const defaultProvideId = state?.update?.province;
-  const defaultDistrictId = state?.update?.district;
+  const defaultProvideId = state?.update?.province?.id;
+  const defaultDistrictId = state?.update?.district?.id;
 
   const [loading, setLoading] = useState(false);
 
