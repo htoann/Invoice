@@ -20,14 +20,14 @@ import { columnDataCustomer } from './utils';
 const Customers = () => {
   const { t } = useTranslation();
 
-  const { list, loading, getList, setList } = useGetCustomers(setState);
-
   const [state, setState] = useState({
     visible: false,
     editVisible: false,
     update: {},
     pagination: { current: 1, pageSize: 20 },
   });
+
+  const { list, loading, getList, setList } = useGetCustomers(setState);
 
   const { pagination } = state;
   const { current, pageSize } = pagination;

@@ -20,14 +20,14 @@ import { columnDataProvider } from './utils';
 const Providers = () => {
   const { t } = useTranslation();
 
-  const { list, loading, getList, setList } = useGetProviders(setState);
-
   const [state, setState] = useState({
     visible: false,
     editVisible: false,
     update: {},
     pagination: { current: 1, pageSize: 20 },
   });
+
+  const { list, loading, getList, setList } = useGetProviders(setState);
 
   const { pagination } = state;
   const { current, pageSize } = pagination;
