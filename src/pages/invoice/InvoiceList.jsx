@@ -35,7 +35,7 @@ function InvoiceList() {
 
   const tableDataSource = handleTableDataSource(invoiceList, current, pageSize);
 
-  const getInvoiceList = async (loaihdon = 'purchase', date_from, date_to, taxNumber) => {
+  const getInvoiceList = async (loaihdon = 'purchase', date_from, date_to, nbmst) => {
     setLoading(true);
     try {
       const response = await dataService.get(API_INVOICES, {
@@ -44,7 +44,7 @@ function InvoiceList() {
         loaihdon,
         ...(date_from && { date_from }),
         ...(date_to && { date_to }),
-        ...(taxNumber && { taxNumber }),
+        ...(nbmst && { nbmst }),
       });
 
       if (response?.data) {

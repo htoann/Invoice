@@ -32,10 +32,6 @@ const TaxNumberSelect = ({ taxNumber, onChange }) => {
     getTaxList();
   }, []);
 
-  const handleSearch = (taxNumber) => {
-    getTaxList(taxNumber);
-  };
-
   const taxOptions = [
     {
       label: t('Common_All'),
@@ -47,6 +43,8 @@ const TaxNumberSelect = ({ taxNumber, onChange }) => {
     })),
   ];
 
+  const filterTax = (input, option) => (option?.label ?? '').toLowerCase().includes(input.toLowerCase());
+
   return (
     <div style={{ display: 'flex', flexDirection: 'column' }}>
       <span className="label">{t('Mã số thuế')}</span>
@@ -55,10 +53,9 @@ const TaxNumberSelect = ({ taxNumber, onChange }) => {
         placeholder={t('Chọn mã số thuế')}
         value={taxNumber}
         onChange={onChange}
-        onSearch={handleSearch}
         options={taxOptions}
         loading={loading}
-        filterOption={false}
+        filterOption={filterTax}
         style={{ width: 200 }}
       />
     </div>
