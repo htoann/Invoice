@@ -3,7 +3,7 @@ import { BasicFormWrapper } from '@/container/styled';
 import i18n from '@/i18n/config';
 import { useProjects } from '@/pages/category/c-pages/organization/hook/useProjects';
 import { Form, Input, Select } from 'antd';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 const locale = i18n.language;
@@ -11,13 +11,9 @@ const locale = i18n.language;
 export const ModalAccount = ({ form, handleOk, state, onCancel, loading, textSubmit, departments }) => {
   const { t } = useTranslation();
 
-  const [selectedDepartmentId, setSelectedDepartmentId] = useState();
+  const [selectedDepartmentId, setSelectedDepartmentId] = useState(state?.update?.department);
 
   const { projects } = useProjects(null, selectedDepartmentId);
-
-  useEffect(() => {
-    form.setFieldValue('project', undefined);
-  }, [selectedDepartmentId]);
 
   return (
     <BasicFormWrapper>
@@ -37,7 +33,13 @@ export const ModalAccount = ({ form, handleOk, state, onCancel, loading, textSub
           label={t('Common_Department')}
           rules={[{ required: true, message: t('Department_PleaseSelect') }]}
         >
-          <Select placeholder={t('Department_PleaseSelect')} onChange={(value) => setSelectedDepartmentId(value)}>
+          <Select
+            placeholder={t('Department_PleaseSelect')}
+            onChange={(value) => {
+              setSelectedDepartmentId(value);
+              form.setFieldValue('project', undefined);
+            }}
+          >
             {departments?.map((item) => (
               <Select.Option key={item.id} value={item.id}>
                 {item.name}
