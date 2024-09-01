@@ -125,8 +125,12 @@ export const defaultPaginationConfig = {
   showSizeChanger: true,
   showPrevNextJumpers: true,
   pageSize: 20,
+  showTotal: (total) => (
+    <span style={{ marginTop: 4, display: 'flex' }}>
+      {i18next.t('Common_TotalItems')} {total}
+    </span>
+  ),
   // showQuickJumper: true,
-  // showTotal: (total) => `Tổng số ${total}`,
 };
 
 export const createOptions = (list = [], labelKey, hasAll = true) => [
