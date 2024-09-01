@@ -31,9 +31,8 @@ const EditProvider = ({ state, setState, list, setList }) => {
   }, [defaultProvideId, defaultDistrictId]);
 
   const handleOk = async (values) => {
+    setLoading(true);
     try {
-      setLoading(true);
-
       const response = await dataService.put(API_PROVIDER(state.update.id), {
         ...values,
         id: state.update.id,
