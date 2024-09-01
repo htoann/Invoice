@@ -20,6 +20,7 @@ const Drawer = ({
   btnText = 'Open',
   btnType = 'primary',
   isBtn = true,
+  closable = true,
   ...btnProps
 }) => {
   const [state, setState] = useState({
@@ -87,7 +88,7 @@ const Drawer = ({
       <DrawerStyle
         title={title}
         placement={state.placement}
-        closable={false}
+        closable={closable}
         onClose={onClose}
         open={state.open}
         getContainer={false}
