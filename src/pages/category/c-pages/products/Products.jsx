@@ -6,7 +6,8 @@ import { API_PRODUCT, API_PRODUCTS } from '@/utils/apiConst';
 import { dataService } from '@/utils/dataService';
 import UilEdit from '@iconscout/react-unicons/icons/uil-edit';
 import UilTrash from '@iconscout/react-unicons/icons/uil-trash-alt';
-import { Col, Popconfirm, Row, Skeleton, notification } from 'antd';
+import { Col, Popconfirm, Row, notification } from 'antd';
+import { useList } from 'hooks/useListCommon';
 import { useUnit } from 'hooks/useUnit';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -30,77 +31,12 @@ const Products = () => {
   const { pagination } = state;
   const { current, pageSize } = pagination;
 
-  const [list, setList] = useState([]);
-  const [isLoadingGetList, setIsLoadingGetList] = useState(false);
-  const [searchLoading, setSearchLoading] = useState(false);
-  const [searchParams, setSearchParams] = useState({
-    mahang: '',
-    tenHangBan: '',
-    tenHangMua: '',
-    donViTinh: '',
-    taiKhoanHang: '',
-    taiKhoanGiaVon: '',
-    taiKhoanDoanhThu: '',
-  });
+  const [searchParams, setSearchParams] = useState({});
 
-  const getList = async ({
-    mahang = '',
-    tenHangBan = '',
-    tenHangMua = '',
-    donViTinh = '',
-    taiKhoanHang = '',
-    taiKhoanGiaVon = '',
-    taiKhoanDoanhThu = '',
-    page = 1,
-    page_size = 20,
-    searchLoading = true,
-  } = {}) => {
-    try {
-      if (searchLoading) {
-        setSearchLoading(true);
-      } else {
-        setIsLoadingGetList(true);
-      }
-
-      const response = await dataService.get(API_PRODUCTS, {
-        mahang,
-        tenHangBan,
-        tenHangMua,
-        donViTinh,
-        taiKhoanHang,
-        taiKhoanGiaVon,
-        taiKhoanDoanhThu,
-        page,
-        page_size,
-      });
-
-      if (response?.data) {
-        setList(response?.data?.results);
-        setState((prev) => ({
-          ...prev,
-          pagination: {
-            ...prev.pagination,
-            total: Number(response?.data?.count) || 0,
-          },
-        }));
-      }
-    } catch (error) {
-      console.error(error);
-      notification.error({
-        message: 'Lỗi',
-        description: 'Không thể tải danh sách hàng hóa. Vui lòng thử lại sau.',
-      });
-    } finally {
-      if (searchLoading) {
-        setSearchLoading(false);
-      } else {
-        setIsLoadingGetList(false);
-      }
-    }
-  };
+  const { list, loading, getList, setList } = useList(state, setState, API_PRODUCTS, 'hàng hoá');
 
   useEffect(() => {
-    getList({ ...searchParams, page: current, page_size: pageSize });
+    getList(searchParams);
   }, [current, pageSize]);
 
   const showEditModal = (data) => {
@@ -207,18 +143,14 @@ const Products = () => {
           <Col xs={24}>
             <BorderLessHeading>
               <Cards headless>
-                {isLoadingGetList ? (
-                  <Skeleton active style={{ marginTop: 30 }} />
-                ) : (
-                  <DataTable
-                    tableData={tableDataSource}
-                    columns={dataTableColumn}
-                    rowSelection={rowSelection}
-                    state={state}
-                    setState={setState}
-                    loading={searchLoading}
-                  />
-                )}
+                <DataTable
+                  tableData={tableDataSource}
+                  columns={dataTableColumn}
+                  rowSelection={rowSelection}
+                  state={state}
+                  setState={setState}
+                  loading={loading}
+                />
               </Cards>
             </BorderLessHeading>
           </Col>

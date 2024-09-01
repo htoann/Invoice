@@ -2,19 +2,19 @@ import { Cards } from '@/components/cards/frame/cards-frame';
 import CustomHeader from '@/components/HeaderCommon';
 import { PageHeader } from '@/components/page-headers/page-headers';
 import { BorderLessHeading, Main } from '@/container/styled';
-import { API_CUSTOMER } from '@/utils/apiConst';
+import { API_CUSTOMER, API_CUSTOMERS } from '@/utils/apiConst';
 import { dataService } from '@/utils/dataService';
 import { formatTime } from '@/utils/index';
 import UilEdit from '@iconscout/react-unicons/icons/uil-edit';
 import UilTrash from '@iconscout/react-unicons/icons/uil-trash-alt';
 import { Col, Popconfirm, Row, notification } from 'antd';
+import { useList } from 'hooks/useListCommon';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import CreateCustomer from './components/CreateCustomer';
 import DataTable from './components/DataTable';
 import EditCustomer from './components/EditCustomer';
-import { useGetCustomers } from './hooks/useGetCustomers';
 import { columnDataCustomer } from './utils';
 
 const Customers = () => {
@@ -27,15 +27,15 @@ const Customers = () => {
     pagination: { current: 1, pageSize: 20 },
   });
 
-  const { list, loading, getList, setList } = useGetCustomers(setState);
-
   const { pagination } = state;
   const { current, pageSize } = pagination;
+
+  const { list, loading, getList, setList } = useList(state, setState, API_CUSTOMERS, 'khách hàng');
 
   const [searchParams, setSearchParams] = useState({});
 
   useEffect(() => {
-    getList({ searchParams, page: current, page_size: pageSize });
+    getList(searchParams);
   }, [current, pageSize, searchParams]);
 
   const handleDelete = async (id) => {

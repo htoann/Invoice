@@ -3,9 +3,9 @@ import { PageHeader } from '@/components/page-headers/page-headers';
 import { MailAccountSelect } from '@/components/select-common/MailAccountSelect';
 import { Tag } from '@/components/tags/tags';
 import { BorderLessHeading, Main } from '@/container/styled';
-import axios from '@/mock/index';
 import { API_MAIL_TASK_HISTORIES } from '@/utils/apiConst';
-import { Col, Row, Skeleton } from 'antd';
+import { Col, Row } from 'antd';
+import { useList } from 'hooks/useListCommon';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import DataTable from './components/DataTable';
@@ -17,62 +17,16 @@ const SyncHistory = () => {
   const [state, setState] = useState({
     pagination: { current: 1, pageSize: 20 },
   });
+  const [searchParams, setSearchParams] = useState({ state: '', note: '', accountId: '' });
 
   const { pagination } = state;
   const { current, pageSize } = pagination;
 
-  const [list, setList] = useState([]);
-  const [isLoadingGetList, setIsLoadingGetList] = useState(false);
-  const [searchLoading, setSearchLoading] = useState(false);
-  const [searchParams, setSearchParams] = useState({ state: '', note: '', accountId: '' });
-
-  const getList = async ({
-    state = null,
-    note = '',
-    accountId = '',
-    page = 1,
-    page_size = 20,
-    searchLoading = true,
-  } = {}) => {
-    try {
-      if (searchLoading) {
-        setSearchLoading(true);
-      } else {
-        setIsLoadingGetList(true);
-      }
-
-      const response = await axios.get(API_MAIL_TASK_HISTORIES, {
-        state,
-        note,
-        page,
-        page_size,
-        account_id: accountId,
-      });
-
-      if (response?.data) {
-        setList(response?.data?.results);
-        setState((prev) => ({
-          ...prev,
-          pagination: {
-            ...prev.pagination,
-            total: Number(response?.data?.count) || 0,
-          },
-        }));
-      }
-    } catch (error) {
-      console.error(error);
-    } finally {
-      if (searchLoading) {
-        setSearchLoading(false);
-      } else {
-        setIsLoadingGetList(false);
-      }
-    }
-  };
+  const { list, loading, getList } = useList(state, setState, API_MAIL_TASK_HISTORIES, 'lịch sử đồng bộ');
 
   useEffect(() => {
-    getList({ ...searchParams, page: current, page_size: pageSize });
-  }, [current, pageSize]);
+    getList(searchParams);
+  }, [current, pageSize, searchParams]);
 
   const tableDataSource = list.map((item, index) => {
     const { id, time, name, state, note, totalInvoice, newInvoice } = item;
@@ -99,7 +53,7 @@ const SyncHistory = () => {
 
   const handleSelectAccount = (accountId) => {
     setSearchParams({ ...searchParams, accountId });
-    getList({ ...searchParams, shouldLoading: false, page_size: pageSize, accountId });
+    getList({ ...searchParams, accountId });
   };
 
   return (
@@ -115,17 +69,13 @@ const SyncHistory = () => {
                     <MailAccountSelect onChange={handleSelectAccount} value={searchParams?.accountId} />
                   </div>
                 </div>
-                {isLoadingGetList ? (
-                  <Skeleton active style={{ marginTop: 30 }} />
-                ) : (
-                  <DataTable
-                    tableData={tableDataSource}
-                    columns={dataTableColumn}
-                    pagination={pagination}
-                    setState={setState}
-                    loading={searchLoading}
-                  />
-                )}
+                <DataTable
+                  tableData={tableDataSource}
+                  columns={dataTableColumn}
+                  pagination={pagination}
+                  setState={setState}
+                  loading={loading}
+                />
               </Cards>
             </BorderLessHeading>
           </Col>

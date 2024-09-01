@@ -37,7 +37,6 @@ function ConnectTaxAuthority() {
 
   const handleOk = async (values) => {
     setSaving(true);
-
     try {
       const response = await dataService.post(API_INVOICES_CONNECT_AUTHORITY, {
         ...values,

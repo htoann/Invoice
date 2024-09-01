@@ -2,19 +2,19 @@ import { Cards } from '@/components/cards/frame/cards-frame';
 import CustomHeader from '@/components/HeaderCommon';
 import { PageHeader } from '@/components/page-headers/page-headers';
 import { BorderLessHeading, Main } from '@/container/styled';
-import { API_PROVIDER } from '@/utils/apiConst';
+import { API_PROVIDER, API_PROVIDERS } from '@/utils/apiConst';
 import { dataService } from '@/utils/dataService';
 import { formatTime } from '@/utils/index';
 import UilEdit from '@iconscout/react-unicons/icons/uil-edit';
 import UilTrash from '@iconscout/react-unicons/icons/uil-trash-alt';
 import { Col, Popconfirm, Row, notification } from 'antd';
+import { useList } from 'hooks/useListCommon';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import CreateProvider from './components/CreateProvider';
 import DataTable from './components/DataTable';
 import EditProvider from './components/EditProvider';
-import { useGetProviders } from './hooks/useGetProviders';
 import { columnDataProvider } from './utils';
 
 const Providers = () => {
@@ -26,16 +26,15 @@ const Providers = () => {
     update: {},
     pagination: { current: 1, pageSize: 20 },
   });
+  const [searchParams, setSearchParams] = useState({});
 
-  const { list, loading, getList, setList } = useGetProviders(setState);
+  const { list, loading, getList, setList } = useList(state, setState, API_PROVIDERS, 'nhà cung cấp');
 
   const { pagination } = state;
   const { current, pageSize } = pagination;
 
-  const [searchParams, setSearchParams] = useState({});
-
   useEffect(() => {
-    getList({ searchParams, page: current, page_size: pageSize });
+    getList(searchParams);
   }, [current, pageSize, searchParams]);
 
   const handleDelete = async (id) => {

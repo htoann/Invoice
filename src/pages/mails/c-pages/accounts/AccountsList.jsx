@@ -11,6 +11,7 @@ import { useProjects } from '@/pages/category/c-pages/organization/hook/useProje
 import { API_MAILS_ACCOUNT_BY_ACCOUNT_ID, API_MAILS_ACCOUNTS } from '@/utils/apiConst';
 import { dataService } from '@/utils/dataService';
 import { useGetAllDepartments } from 'hooks/useGetAllDepartments';
+import { useList } from 'hooks/useListCommon';
 import { CreateAccount } from './components/CreateAccount';
 import { DataTable } from './components/DataTable';
 import { FilterHeader } from './components/FilterHeader';
@@ -31,46 +32,21 @@ const AccountList = () => {
   const { pagination, visible, editVisible } = state;
   const { current, pageSize } = pagination;
 
-  const [accounts, setAccounts] = useState([]);
-  const [loading, setLoading] = useState(false);
   const [searchParams, setSearchParams] = useState({ name: '', email: '', departmentId: '', projectId: '' });
 
   const { departmentId } = searchParams || {};
   const { loadingDepartments, departments } = useGetAllDepartments();
   const { projects, loadingProjects } = useProjects(null, departmentId);
 
-  const getList = async () => {
-    setLoading(true);
-    try {
-      const response = await dataService.get(API_MAILS_ACCOUNTS, {
-        page: current,
-        page_size: pageSize,
-        ...Object.fromEntries(Object.entries(searchParams).filter(([_, v]) => v)),
-      });
-
-      if (response?.data) {
-        setAccounts(response?.data?.results);
-        setState((prev) => ({
-          ...prev,
-          pagination: {
-            ...prev.pagination,
-            total: Number(response?.data?.count) || 0,
-          },
-        }));
-      }
-    } catch (error) {
-      console.error(error);
-      notification.error({
-        message: 'Lỗi',
-        description: 'Không thể tải danh sách tài khoản. Vui lòng thử lại sau.',
-      });
-    } finally {
-      setLoading(false);
-    }
-  };
+  const {
+    list: accounts,
+    loading,
+    getList,
+    setList: setAccounts,
+  } = useList(state, setState, API_MAILS_ACCOUNTS, 'tài khoản');
 
   useEffect(() => {
-    getList();
+    getList(searchParams);
   }, [current, pageSize, searchParams]);
 
   const showModal = () => {

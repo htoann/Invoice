@@ -140,3 +140,16 @@ export const createOptions = (list = [], labelKey, hasAll = true) => [
     label: item[labelKey],
   })),
 ];
+
+export const camelToSnake = (camelStr) => {
+  return camelStr.replace(/[A-Z]/g, (letter) => `_${letter.toLowerCase()}`).replace(/^_/, '');
+};
+
+export const convertKeysToSnakeCase = (obj) => {
+  return Object.entries(obj).reduce((acc, [key, value]) => {
+    const snakeCaseKey = key.replace(/[A-Z]/g, (letter) => `_${letter.toLowerCase()}`).replace(/^_/, '');
+
+    acc[snakeCaseKey] = value;
+    return acc;
+  }, {});
+};

@@ -1,11 +1,11 @@
 import { useProjects } from '@/pages/category/c-pages/organization/hook/useProjects';
 import { API_INBOXES_BY_ACCOUNT_ID } from '@/utils/apiConst';
-import { dataService } from '@/utils/dataService';
 import { createOptions, formatTime } from '@/utils/index';
 import UilInbox from '@iconscout/react-unicons/icons/uil-inbox';
-import { Empty, Input, notification, Pagination, Select, Skeleton } from 'antd';
+import { Empty, Input, Pagination, Select, Skeleton } from 'antd';
 import Paragraph from 'antd/lib/typography/Paragraph';
 import { useGetAllDepartments } from 'hooks/useGetAllDepartments';
+import { useList } from 'hooks/useListCommon';
 import { useMailAccounts } from 'hooks/useMailAccounts';
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -23,13 +23,11 @@ export const InboxList = React.memo(({ setSelectedInbox, selectedInbox }) => {
 
   const { pageSize, current, total } = pagination;
 
-  const [inboxList, setInboxList] = useState([]);
   const [selectedDepartmentId, setSelectedDepartmentId] = useState('');
   const [selectedProjectId, setSelectedProjectId] = useState('');
 
   const [search, setSearchSender] = useState('');
   const [selectedAccountId, setSelectedAccountId] = useState(null);
-  const [loading, setLoading] = useState(false);
 
   const selectFirstAccount = (accountList) => {
     setSelectedAccountId(accountList[0].id);
@@ -44,33 +42,15 @@ export const InboxList = React.memo(({ setSelectedInbox, selectedInbox }) => {
     selectedProjectId,
   );
 
-  const getList = async ({ accountId, search = '', page = 1, page_size = 20 } = {}) => {
-    try {
-      setLoading(true);
-      const response = await dataService.get(API_INBOXES_BY_ACCOUNT_ID(accountId), {
-        search,
-        page,
-        page_size,
-      });
-
-      setInboxList(response?.data?.results);
-      setPagination((prev) => ({
-        ...prev,
-        total: Number(response?.data?.count) || 0,
-      }));
-    } catch (error) {
-      console.error(error);
-      notification.error({
-        message: 'Lỗi',
-        description: 'Không thể tải danh sách hộp thư. Vui lòng thử lại sau.',
-      });
-    } finally {
-      setLoading(false);
-    }
-  };
+  const {
+    list: inboxList,
+    loading,
+    getList,
+    setList: setInboxList,
+  } = useList(pagination, setPagination, API_INBOXES_BY_ACCOUNT_ID(selectedAccountId), 'hộp thư');
 
   useEffect(() => {
-    if (selectedAccountId) getList({ search, page: current, page_size: pageSize, accountId: selectedAccountId });
+    if (selectedAccountId) getList({ search, accountId: selectedAccountId });
   }, [selectedAccountId, current, pageSize]);
 
   useEffect(() => {
@@ -177,7 +157,7 @@ export const InboxList = React.memo(({ setSelectedInbox, selectedInbox }) => {
           setSearchSender(event.target.value);
         }}
         onPressEnter={() => {
-          getList({ search, page_size: pageSize, accountId: selectedAccountId });
+          getList({ search, accountId: selectedAccountId });
           resetCurrentPage();
           setSelectedInbox(null);
         }}
