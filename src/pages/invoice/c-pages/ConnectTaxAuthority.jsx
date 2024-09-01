@@ -61,7 +61,7 @@ function ConnectTaxAuthority() {
   };
 
   return (
-    <div style={{ width: '35%', maxWidth: '100%', margin: 'auto' }}>
+    <div style={{ width: '35rem', maxWidth: '100%', margin: 'auto' }}>
       <PageHeader className="invoice-page-header-main" title={t('Common_ConnectTaxAuthorities')} />
       <Main>
         <Row gutter={15}>
