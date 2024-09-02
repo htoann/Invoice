@@ -2,12 +2,11 @@ import { routes } from '@/routes/const';
 import { formatCurrency } from '@/utils/index';
 import i18next from 'i18next';
 
-export const handleTableDataSource = (invoiceList) => {
+export const handleTableDataSource = (invoiceList, current, pageSize) => {
   return invoiceList?.length > 0
-    ? invoiceList.map((item) => {
+    ? invoiceList.map((item, index) => {
         return {
-          // stt: (current - 1) * pageSize + index + 1,
-          id: item.no,
+          id: (current - 1) * pageSize + index + 1,
           khmshdon: <span>{item.khmshdon}</span>,
           khhdon: <span>{item.khhdon}</span>,
           shdon: <span>{item.shdon}</span>,

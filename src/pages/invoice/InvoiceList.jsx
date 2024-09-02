@@ -21,7 +21,8 @@ function InvoiceList() {
     date_to: undefined,
   });
 
-  const { loaiHoaDon, invoiceList } = state;
+  const { loaiHoaDon, invoiceList, pagination } = state;
+  const { current, pageSize } = pagination;
 
   const handleResponse = (response) => {
     setState((prev) => ({
@@ -47,7 +48,7 @@ function InvoiceList() {
             <BorderLessHeading>
               <Cards headless>
                 <DataTable
-                  tableData={handleTableDataSource(invoiceList)}
+                  tableData={handleTableDataSource(invoiceList, current, pageSize)}
                   columns={useInvoiceDataTable()}
                   state={state}
                   setState={setState}
