@@ -7,10 +7,10 @@ import { Link } from 'react-router-dom';
 import { Cards } from '@/components/cards/frame/cards-frame';
 import { PageHeader } from '@/components/page-headers/page-headers';
 import { BorderLessHeading, Main } from '@/container/styled';
-import { useProjects } from '@/pages/category/c-pages/organization/hook/useProjects';
 import { API_MAILS_ACCOUNT_BY_ACCOUNT_ID, API_MAILS_ACCOUNTS } from '@/utils/apiConst';
 import { dataService } from '@/utils/dataService';
-import { useGetAllDepartments } from 'hooks/useGetAllDepartments';
+import { useGetAllDepartments } from 'hooks/org-structure/useGetAllDepartments';
+import { useGetProjects } from 'hooks/org-structure/useGetProjects';
 import { useList } from 'hooks/useListCommon';
 import { CreateAccount } from './components/CreateAccount';
 import { DataTable } from './components/DataTable';
@@ -36,7 +36,7 @@ const AccountList = () => {
 
   const { departmentId } = searchParams || {};
   const { loadingDepartments, departments } = useGetAllDepartments();
-  const { projects, loadingProjects } = useProjects(null, departmentId);
+  const { projects, loadingProjects } = useGetProjects(null, departmentId);
 
   const {
     list: accounts,

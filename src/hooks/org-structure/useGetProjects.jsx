@@ -4,12 +4,13 @@ import { notification } from 'antd';
 import { useAppState } from 'context/AppContext';
 import { useEffect } from 'react';
 
-export const useProjects = (selectedBranchId, selectedDepartmentId) => {
+export const useGetProjects = (branchId, departmentId) => {
   const { projects, setProjects, loadingProjects, setLoadingProjects } = useAppState();
 
   const getProjects = async () => {
     setProjects([]);
-    if (!selectedDepartmentId) {
+
+    if (!departmentId) {
       return;
     }
 
@@ -17,8 +18,8 @@ export const useProjects = (selectedBranchId, selectedDepartmentId) => {
 
     try {
       const response = await dataService.get(API_PROJECTS, {
-        branch: selectedBranchId,
-        department: selectedDepartmentId,
+        branch: branchId,
+        department: departmentId,
       });
       setProjects(response.data);
     } catch (error) {
@@ -33,8 +34,8 @@ export const useProjects = (selectedBranchId, selectedDepartmentId) => {
   };
 
   useEffect(() => {
-    selectedDepartmentId && getProjects();
-  }, [selectedDepartmentId, selectedBranchId]);
+    departmentId && getProjects();
+  }, [branchId, departmentId]);
 
   return { projects, setProjects, loadingProjects, setLoadingProjects, getProjects };
 };

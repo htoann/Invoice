@@ -4,7 +4,7 @@ import { notification } from 'antd';
 import { useAppState } from 'context/AppContext';
 import { useEffect } from 'react';
 
-export const useBranches = () => {
+export const useGetBranches = () => {
   const { branches, setBranches, loadingBranches, setLoadingBranches } = useAppState();
 
   const getBranches = async () => {

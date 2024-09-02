@@ -1,12 +1,12 @@
-import { useProjects } from '@/pages/category/c-pages/organization/hook/useProjects';
+import { useGetMailAccounts } from '@/pages/mails/hooks/useGetMailAccounts';
 import { API_INBOXES_BY_ACCOUNT_ID } from '@/utils/apiConst';
 import { createOptions, formatTime } from '@/utils/index';
 import UilInbox from '@iconscout/react-unicons/icons/uil-inbox';
 import { Empty, Input, Pagination, Select, Skeleton } from 'antd';
 import Paragraph from 'antd/lib/typography/Paragraph';
-import { useGetAllDepartments } from 'hooks/useGetAllDepartments';
+import { useGetAllDepartments } from 'hooks/org-structure/useGetAllDepartments';
+import { useGetProjects } from 'hooks/org-structure/useGetProjects';
 import { useList } from 'hooks/useListCommon';
-import { useMailAccounts } from 'hooks/useMailAccounts';
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
@@ -34,9 +34,9 @@ export const InboxList = React.memo(({ setSelectedInbox, selectedInbox }) => {
   };
 
   const { loadingDepartments, departments } = useGetAllDepartments();
-  const { projects, loadingProjects } = useProjects(null, selectedDepartmentId);
+  const { projects, loadingProjects } = useGetProjects(null, selectedDepartmentId);
 
-  const { mailAccountList, loadingMailAccounts } = useMailAccounts(
+  const { mailAccountList, loadingMailAccounts } = useGetMailAccounts(
     selectFirstAccount,
     selectedDepartmentId,
     selectedProjectId,

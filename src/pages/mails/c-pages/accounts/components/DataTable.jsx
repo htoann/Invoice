@@ -13,10 +13,10 @@ export const DataTable = ({ tableData, columns, pagination, setState, loading })
             pagination={{ ...defaultPaginationConfig, ...pagination }}
             dataSource={tableData}
             columns={columns}
-            onChange={(_pagination) => {
+            onChange={(pagination) => {
               setState((prev) => ({
                 ...prev,
-                pagination: _pagination,
+                pagination,
               }));
             }}
             loading={loading}

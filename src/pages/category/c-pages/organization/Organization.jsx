@@ -1,19 +1,19 @@
 import { PageHeader } from '@/components/page-headers/page-headers';
 import { Main } from '@/container/styled';
 import { Row } from 'antd';
-import { useBranches } from 'hooks/useBranches';
+import { useGetBranches } from 'hooks/org-structure/useGetBranches';
+import { useGetDepartments } from 'hooks/org-structure/useGetDepartments';
+import { useGetProjects } from 'hooks/org-structure/useGetProjects';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import BranchList from './c-pages/Branch';
 import DepartmentList from './c-pages/Department';
 import ProjectList from './c-pages/Project';
-import { useDepartments } from './hook/useDepartments';
-import { useProjects } from './hook/useProjects';
 
 export const Organization = () => {
   const { t } = useTranslation();
 
-  const { branches, setBranches, loadingBranches, getBranches } = useBranches();
+  const { branches, setBranches, loadingBranches, getBranches } = useGetBranches();
   const [selectedBranchId, setSelectedBranchId] = useState(null);
 
   const {
@@ -23,9 +23,12 @@ export const Organization = () => {
     getDepartments,
     loadingDepartments,
     setSelectedDepartmentId,
-  } = useDepartments(selectedBranchId);
+  } = useGetDepartments(selectedBranchId);
 
-  const { projects, setProjects, getProjects, loadingProjects } = useProjects(selectedBranchId, selectedDepartmentId);
+  const { projects, setProjects, getProjects, loadingProjects } = useGetProjects(
+    selectedBranchId,
+    selectedDepartmentId,
+  );
 
   const onResetDeleteBranch = () => {
     setSelectedBranchId(null);

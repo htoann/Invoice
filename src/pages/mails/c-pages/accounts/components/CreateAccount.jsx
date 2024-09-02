@@ -7,14 +7,9 @@ import { useTranslation } from 'react-i18next';
 import { ModalAccount } from './Modal';
 
 export const CreateAccount = ({ state, setState, accounts, setAccounts, departments }) => {
-  const [loading, setLoading] = useState(false);
-  const [form] = Form.useForm();
   const { t } = useTranslation();
-
-  const onCancel = () => {
-    setState({ ...state, visible: false });
-    form.resetFields();
-  };
+  const [form] = Form.useForm();
+  const [loading, setLoading] = useState(false);
 
   const createNewAccount = async (data) => {
     try {
@@ -45,6 +40,11 @@ export const CreateAccount = ({ state, setState, accounts, setAccounts, departme
         description: t('Mail_CreateAccount_Error'),
       });
     }
+  };
+
+  const onCancel = () => {
+    setState({ ...state, visible: false });
+    form.resetFields();
   };
 
   return (

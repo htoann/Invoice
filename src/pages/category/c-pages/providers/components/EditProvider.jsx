@@ -3,7 +3,7 @@ import { Modal } from '@/components/modals/antd-modals';
 import { API_PROVIDER } from '@/utils/apiConst';
 import { dataService } from '@/utils/dataService';
 import { Form, notification } from 'antd';
-import { useBranches } from 'hooks/useBranches';
+import { useGetBranches } from 'hooks/org-structure/useGetBranches';
 import { useDivision } from 'hooks/vietnam-division';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -19,7 +19,7 @@ const EditProvider = ({ state, setState, list, setList }) => {
   const [loading, setLoading] = useState(false);
 
   const { provinces, districts, communes, setProvinceId, setDistrictId } = useDivision();
-  const { branches } = useBranches();
+  const { branches } = useGetBranches();
 
   useEffect(() => {
     if (defaultProvideId) {

@@ -1,8 +1,8 @@
 import { Button } from '@/components/buttons/buttons';
 import { BasicFormWrapper } from '@/container/styled';
 import i18n from '@/i18n/config';
-import { useProjects } from '@/pages/category/c-pages/organization/hook/useProjects';
 import { Form, Input, Select } from 'antd';
+import { useGetProjects } from 'hooks/org-structure/useGetProjects';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
@@ -13,7 +13,7 @@ export const ModalAccount = ({ form, handleOk, state, onCancel, loading, textSub
 
   const [selectedDepartmentId, setSelectedDepartmentId] = useState(state?.update?.department);
 
-  const { projects } = useProjects(null, selectedDepartmentId);
+  const { projects } = useGetProjects(null, selectedDepartmentId);
 
   return (
     <BasicFormWrapper>

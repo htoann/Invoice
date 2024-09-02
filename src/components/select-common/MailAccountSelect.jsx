@@ -1,12 +1,12 @@
+import { useGetMailAccounts } from '@/pages/mails/hooks/useGetMailAccounts';
 import { createOptions } from '@/utils/index';
 import { Select } from 'antd';
-import { useMailAccounts } from 'hooks/useMailAccounts';
 import { useTranslation } from 'react-i18next';
 
 export const MailAccountSelect = ({ onChange, value, labelStyle, selectStyle }) => {
   const { t } = useTranslation();
 
-  const { loadingMailAccounts, mailAccountList } = useMailAccounts();
+  const { loadingMailAccounts, mailAccountList } = useGetMailAccounts();
 
   const accountOptions = createOptions(mailAccountList, 'email');
 
