@@ -1,35 +1,22 @@
 import { API_INVOICES_TAXES_NUMBER } from '@/utils/apiConst';
-import { dataService } from '@/utils/dataService';
-import { Select, notification } from 'antd';
+import { Select } from 'antd';
+import { useList } from 'hooks/useListCommon';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 const TaxNumberSelect = ({ taxNumber, onChange }) => {
   const { t } = useTranslation();
   const [taxList, setTaxList] = useState([]);
-  const [loading, setLoading] = useState(false);
 
-  const getTaxList = async (taxNumber = '') => {
-    setLoading(true);
-    try {
-      const response = await dataService.get(API_INVOICES_TAXES_NUMBER, {
-        ...(taxNumber && { nbmst: taxNumber }),
-      });
-      const taxAccounts = response?.data || [];
-      setTaxList(taxAccounts);
-    } catch (error) {
-      console.error(error);
-      notification.error({
-        message: t('Error'),
-        description: t('Không thể tải danh sách mã số thuế. Vui lòng thử lại sau.'),
-      });
-    } finally {
-      setLoading(false);
-    }
+  const handleResponse = (response) => {
+    const taxAccounts = response?.data || [];
+    setTaxList(taxAccounts);
   };
 
+  const { loading, getList } = useList(null, null, API_INVOICES_TAXES_NUMBER, 'mã số thuế', handleResponse);
+
   useEffect(() => {
-    getTaxList();
+    getList();
   }, []);
 
   const taxOptions = [

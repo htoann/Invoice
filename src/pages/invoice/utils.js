@@ -1,10 +1,12 @@
+import { routes } from '@/routes/const';
 import { formatCurrency } from '@/utils/index';
+import i18next from 'i18next';
 
-export const handleTableDataSource = (invoiceList, current, pageSize) => {
+export const handleTableDataSource = (invoiceList) => {
   return invoiceList?.length > 0
-    ? invoiceList.map((item, index) => {
+    ? invoiceList.map((item) => {
         return {
-          stt: (current - 1) * pageSize + index + 1,
+          // stt: (current - 1) * pageSize + index + 1,
           id: item.no,
           khmshdon: <span>{item.khmshdon}</span>,
           khhdon: <span>{item.khhdon}</span>,
@@ -39,3 +41,8 @@ export const handleTableDataSource = (invoiceList, current, pageSize) => {
       })
     : [];
 };
+
+export const pageRoutes = [
+  { path: routes.invoice, breadcrumbName: i18next.t('Invoice_Management') },
+  { path: routes.invoice, breadcrumbName: i18next.t('Invoice_List') },
+];

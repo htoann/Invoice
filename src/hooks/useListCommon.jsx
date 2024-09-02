@@ -3,10 +3,10 @@ import { notification } from 'antd';
 import { useState } from 'react';
 import { convertKeysToSnakeCase } from '../utils';
 
-export const useList = (state, setState, apiUrl, litsName) => {
+export const useList = (state, setState, apiUrl, litsName, onHandleResponse) => {
   const [list, setList] = useState([]);
   const [loading, setLoading] = useState(false);
-  const { current, pageSize } = state?.pagination ? state.pagination : state;
+  const { current, pageSize } = state?.pagination ? state.pagination : state || {};
 
   const getList = async (searchParams = {}) => {
     setLoading(true);
@@ -17,20 +17,24 @@ export const useList = (state, setState, apiUrl, litsName) => {
         ...Object.fromEntries(Object.entries(convertKeysToSnakeCase(searchParams)).filter(([, v]) => v)),
       });
 
-      setList(response?.data?.results);
-      if (state?.pagination) {
-        setState((prev) => ({
-          ...prev,
-          total: Number(response?.data?.count) || 0,
-        }));
+      if (onHandleResponse) {
+        onHandleResponse(response);
       } else {
-        setState((prev) => ({
-          ...prev,
-          pagination: {
-            ...prev.pagination,
+        setList(response?.data?.results);
+        if (state?.pagination) {
+          setState((prev) => ({
+            ...prev,
             total: Number(response?.data?.count) || 0,
-          },
-        }));
+          }));
+        } else {
+          setState((prev) => ({
+            ...prev,
+            pagination: {
+              ...prev.pagination,
+              total: Number(response?.data?.count) || 0,
+            },
+          }));
+        }
       }
     } catch (error) {
       console.error(error);

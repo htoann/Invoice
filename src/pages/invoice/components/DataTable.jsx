@@ -6,7 +6,6 @@ import { dataService } from '@/utils/dataService';
 import { defaultPaginationConfig, downloadFile, formatTime } from '@/utils/index';
 import { DownloadOutlined } from '@ant-design/icons';
 import { DatePicker, notification, Space, Table } from 'antd';
-import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { DataTableStyleWrap } from '../style';
@@ -24,7 +23,7 @@ function DataTable({ loading, tableData, columns, state, setState, getInvoiceLis
   const { current, pageSize } = pagination;
 
   useEffect(() => {
-    getInvoiceList(loaiHoaDon, date_from, date_to, taxNumber);
+    getInvoiceList({ loaiHoaDon, date_from, date_to, taxNumber });
   }, [current, pageSize, loaiHoaDon, date_from, date_to, taxNumber]);
 
   const handleLoaiHoaDonSearch = (loaiHoaDon) => {
@@ -86,10 +85,6 @@ function DataTable({ loading, tableData, columns, state, setState, getInvoiceLis
     setEndDate(e?._d || null);
   };
 
-  const handleChangeTaxNumber = (value) => {
-    setTaxNumber(value);
-  };
-
   return (
     <DataTableStyleWrap>
       <div className="invoice-datatable-filter">
@@ -125,7 +120,7 @@ function DataTable({ loading, tableData, columns, state, setState, getInvoiceLis
             </div>
 
             <div className="invoice-datatable-filter__input">
-              <TaxNumberSelect taxNumber={taxNumber} onChange={handleChangeTaxNumber} />
+              <TaxNumberSelect taxNumber={taxNumber} onChange={(value) => setTaxNumber(value)} />
             </div>
           </div>
 
@@ -164,8 +159,4 @@ function DataTable({ loading, tableData, columns, state, setState, getInvoiceLis
   );
 }
 
-DataTable.propTypes = {
-  tableData: PropTypes.array,
-  columns: PropTypes.array,
-};
 export default DataTable;
