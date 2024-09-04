@@ -23,7 +23,7 @@ function DataTable({ loading, tableData, columns, state, setState, getInvoiceLis
   const { current, pageSize } = pagination;
 
   useEffect(() => {
-    getInvoiceList({ loaiHoaDon, date_from, date_to, taxNumber });
+    getInvoiceList({ loaiHoaDon, date_from, date_to, nbmst: taxNumber });
   }, [current, pageSize, loaiHoaDon, date_from, date_to, taxNumber]);
 
   const handleLoaiHoaDonSearch = (loaiHoaDon) => {
