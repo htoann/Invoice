@@ -85,9 +85,14 @@ class DataService {
 }
 
 const refreshAccessToken = async () => {
+  const refreshToken = getCookie(REFRESH_TOKEN);
+  if (!refreshToken) {
+    return Promise.reject(new Error('No token available'));
+  }
+
   try {
     const response = await axios.post(`${API_ENDPOINT}/auth/refresh/`, {
-      refresh: getCookie(REFRESH_TOKEN),
+      refresh: refreshToken,
     });
 
     if (response?.data?.token) {
@@ -97,13 +102,15 @@ const refreshAccessToken = async () => {
       return access_token;
     }
   } catch (error) {
-    console.error('Failed to refresh token:', error);
-    refreshTokenPromise = null;
-
-    clearLogoutLocalStorageAndCookie();
-
-    return Promise.reject(error);
+    handleRefreshError(error);
   }
+};
+
+const handleRefreshError = (error) => {
+  console.error('Failed to refresh token:', error);
+  refreshTokenPromise = null;
+  clearLogoutLocalStorageAndCookie();
+  return Promise.reject(error);
 };
 
 client.interceptors.request.use((config) => {
@@ -139,12 +146,8 @@ client.interceptors.response.use(
           originalRequest.headers['Authorization'] = `Bearer ${accessToken}`;
           return client(originalRequest);
         })
-        .catch((refreshError) => {
-          refreshTokenPromise = null;
-
-          clearLogoutLocalStorageAndCookie();
-
-          return Promise.reject(refreshError);
+        .catch((error) => {
+          handleRefreshError(error);
         });
 
       return new Promise((resolve, reject) => {
