@@ -9,32 +9,18 @@ let refreshTokenPromise = null;
 let failedQueue = [];
 
 const processQueue = (error, accessToken = null) => {
-  failedQueue.forEach((prom) => {
-    if (accessToken) {
-      prom.resolve(accessToken);
-    } else {
-      prom.reject(error);
-    }
-  });
+  failedQueue.forEach((prom) => (accessToken ? prom.resolve(accessToken) : prom.reject(error)));
   failedQueue = [];
 };
 
 const authHeader = () => {
-  if (getCookie(ACCESS_TOKEN)) {
-    return {
-      Authorization: `Bearer ${getCookie(ACCESS_TOKEN)}`,
-    };
-  }
-
-  return {};
+  const token = getCookie(ACCESS_TOKEN);
+  return token ? { Authorization: `Bearer ${token}` } : {};
 };
 
 const client = axios.create({
   baseURL: API_ENDPOINT,
-  headers: {
-    ...authHeader(),
-    'Content-Type': 'application/json',
-  },
+  headers: { ...authHeader(), 'Content-Type': 'application/json' },
 });
 
 class DataService {
@@ -114,11 +100,8 @@ const handleRefreshError = (error) => {
 };
 
 client.interceptors.request.use((config) => {
-  const requestConfig = config;
-  const { headers } = config;
-  requestConfig.headers = { ...headers, ...authHeader() };
-
-  return requestConfig;
+  config.headers = { ...config.headers, ...authHeader() };
+  return config;
 });
 
 client.interceptors.response.use(
