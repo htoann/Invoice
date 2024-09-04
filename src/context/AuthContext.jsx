@@ -24,10 +24,10 @@ export const AuthProvider = ({ children }) => {
   const { userInfo, isLoggedIn, orgId, loading } = authState || {};
 
   useEffect(() => {
-    if (!userInfo) {
+    if (!userInfo && isLoggedIn) {
       getProfileInfo();
     }
-  }, [userInfo]);
+  }, [userInfo, isLoggedIn]);
 
   const getProfileInfo = async () => {
     try {
