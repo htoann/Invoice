@@ -30,14 +30,11 @@ export const AuthProvider = ({ children }) => {
   }, [userInfo]);
 
   const getProfileInfo = async () => {
-    setState({ loading: true });
     try {
       const response = await dataService.get(API_USER_INFO);
       setState({ userInfo: response.data });
     } catch (err) {
       console.error(err);
-    } finally {
-      setState({ loading: false });
     }
   };
 
