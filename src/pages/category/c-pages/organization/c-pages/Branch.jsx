@@ -6,12 +6,25 @@ import { API_BRANCH, API_BRANCHES } from '@/utils/apiConst';
 import { dataService } from '@/utils/dataService';
 import { RightOutlined } from '@ant-design/icons';
 import { Col, Empty, Form, Input, Menu, notification, Skeleton } from 'antd';
+import { useAppState } from 'context/AppContext';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import MenuItem from '../components/MenuItem';
 
-const BranchList = ({ list, setList, getList, loadingList, selectedItem, setSelectedItem, onResetDeleteBranch }) => {
+const BranchList = () => {
   const { t } = useTranslation();
+
+  const {
+    branches,
+    setBranches,
+    loadingBranches,
+    getBranches,
+    selectedBranch,
+    setSelectedBranch,
+    setSelectedBranchId,
+    setSelectedDepartmentId,
+  } = useAppState();
+
   const [showCreate, setShowCreate] = useState(false);
   const [showEdit, setShowEdit] = useState(false);
   const [branchEdit, setBranchEdit] = useState(null);
@@ -29,7 +42,7 @@ const BranchList = ({ list, setList, getList, loadingList, selectedItem, setSele
         ...values,
       });
 
-      getList();
+      getBranches();
       setShowCreate(false);
       form.resetFields();
 
@@ -56,8 +69,8 @@ const BranchList = ({ list, setList, getList, loadingList, selectedItem, setSele
       });
       const updatedAccount = response.data;
 
-      const updatedAccounts = list.map((acc) => (acc.id === updatedAccount.id ? updatedAccount : acc));
-      setList(updatedAccounts);
+      const updatedAccounts = branches.map((acc) => (acc.id === updatedAccount.id ? updatedAccount : acc));
+      setBranches(updatedAccounts);
 
       form.resetFields();
       setShowEdit(false);
@@ -83,8 +96,9 @@ const BranchList = ({ list, setList, getList, loadingList, selectedItem, setSele
 
       await dataService.delete(API_BRANCH(id));
 
-      setList(list.filter((item) => item.id !== id));
-      onResetDeleteBranch();
+      setBranches(branches.filter((item) => item.id !== id));
+      setSelectedBranchId(null);
+      setSelectedDepartmentId(null);
 
       notification.success({
         message: t('Common_Branch'),
@@ -152,13 +166,13 @@ const BranchList = ({ list, setList, getList, loadingList, selectedItem, setSele
           <Menu
             style={{ width: '100%', minHeight: 'calc(100vh - 290px)', borderRight: 'none' }}
             mode="inline"
-            selectedKeys={[selectedItem]}
-            onClick={({ key }) => setSelectedItem(key)}
+            selectedKeys={[selectedBranch]}
+            onClick={({ key }) => setSelectedBranch(key)}
             itemIcon={<RightOutlined />}
           >
-            {loadingList ? (
+            {loadingBranches ? (
               <Skeleton active style={{ marginTop: 10, paddingRight: 10 }} />
-            ) : list?.length > 0 ? (
+            ) : branches?.length > 0 ? (
               <>
                 <Button
                   onClick={() => handleCreate()}
@@ -169,7 +183,7 @@ const BranchList = ({ list, setList, getList, loadingList, selectedItem, setSele
                 >
                   + {t('Branch_Create')}
                 </Button>
-                {list.map((department) => (
+                {branches.map((department) => (
                   <Menu.Item key={department.id}>
                     <MenuItem
                       key={department.id}

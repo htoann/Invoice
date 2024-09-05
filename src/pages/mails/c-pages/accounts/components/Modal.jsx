@@ -2,8 +2,9 @@ import { Button } from '@/components/buttons/buttons';
 import { BasicFormWrapper } from '@/container/styled';
 import i18n from '@/i18n/config';
 import { Form, Input, Select } from 'antd';
-import { useGetProjects } from 'hooks/org-structure/useGetProjects';
-import { useState } from 'react';
+import { useAppState } from 'context/AppContext';
+import { useGetOrgStructure } from 'hooks/useGetOrgStructure';
+import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 
 const locale = i18n.language;
@@ -11,9 +12,13 @@ const locale = i18n.language;
 export const ModalAccount = ({ form, handleOk, state, onCancel, loading, textSubmit, departments }) => {
   const { t } = useTranslation();
 
-  const [selectedDepartmentId, setSelectedDepartmentId] = useState(state?.update?.department);
+  useGetOrgStructure();
 
-  const { projects } = useGetProjects(null, selectedDepartmentId);
+  const { setSelectedDepartmentId, projects } = useAppState();
+
+  useEffect(() => {
+    setSelectedDepartmentId(state?.update?.department);
+  }, [state?.update?.department]);
 
   return (
     <BasicFormWrapper>

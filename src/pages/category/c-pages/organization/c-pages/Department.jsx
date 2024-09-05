@@ -6,12 +6,22 @@ import { API_DEPARTMENT, API_DEPARTMENTS } from '@/utils/apiConst';
 import { dataService } from '@/utils/dataService';
 import { RightOutlined } from '@ant-design/icons';
 import { Col, Empty, Form, Input, Menu, notification, Skeleton } from 'antd';
+import { useAppState } from 'context/AppContext';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import MenuItem from '../components/MenuItem';
 
-const DepartmentList = ({ list, setList, getList, loadingList, selectedItem, setSelectedItem, selectedBranchId }) => {
+const DepartmentList = () => {
   const { t } = useTranslation();
+  const {
+    departments,
+    setDepartments,
+    loadingDepartments,
+    getDepartments,
+    selectedDepartment,
+    setSelectedDepartment,
+    selectedBranchId,
+  } = useAppState();
 
   const [showCreate, setShowCreate] = useState(false);
   const [showEdit, setShowEdit] = useState(false);
@@ -41,7 +51,7 @@ const DepartmentList = ({ list, setList, getList, loadingList, selectedItem, set
         branch: selectedBranchId,
       });
 
-      getList();
+      getDepartments();
       setShowCreate(false);
       form.resetFields();
 
@@ -70,8 +80,8 @@ const DepartmentList = ({ list, setList, getList, loadingList, selectedItem, set
       });
 
       const updatedAccount = response.data;
-      const updatedAccounts = list.map((acc) => (acc.id === updatedAccount.id ? updatedAccount : acc));
-      setList(updatedAccounts);
+      const updatedAccounts = departments.map((acc) => (acc.id === updatedAccount.id ? updatedAccount : acc));
+      setDepartments(updatedAccounts);
 
       form.resetFields();
       setShowEdit(false);
@@ -97,8 +107,8 @@ const DepartmentList = ({ list, setList, getList, loadingList, selectedItem, set
 
       await dataService.delete(API_DEPARTMENT(id));
 
-      setList(list.filter((item) => item.id !== id));
-      setSelectedItem(null);
+      setDepartments(departments.filter((item) => item.id !== id));
+      setSelectedDepartment(null);
 
       notification.success({
         message: t('Common_Department'),
@@ -155,13 +165,13 @@ const DepartmentList = ({ list, setList, getList, loadingList, selectedItem, set
           <Menu
             style={{ width: '100%', minHeight: 'calc(100vh - 290px)', borderRight: 'none' }}
             mode="inline"
-            selectedKeys={[selectedItem]}
-            onClick={({ key }) => setSelectedItem(key)}
+            selectedKeys={[selectedDepartment]}
+            onClick={({ key }) => setSelectedDepartment(key)}
             itemIcon={<RightOutlined />}
           >
-            {loadingList ? (
+            {loadingDepartments ? (
               <Skeleton active style={{ marginTop: 10, paddingRight: 10 }} />
-            ) : list?.length > 0 ? (
+            ) : departments?.length > 0 ? (
               <>
                 <Button
                   onClick={() => handleCreate()}
@@ -172,7 +182,7 @@ const DepartmentList = ({ list, setList, getList, loadingList, selectedItem, set
                 >
                   + {t('Department_Create')}
                 </Button>
-                {list.map((department) => (
+                {departments.map((department) => (
                   <Menu.Item key={department.id}>
                     <MenuItem
                       key={department.id}

@@ -6,13 +6,16 @@ import { API_PROJECT, API_PROJECTS } from '@/utils/apiConst';
 import { dataService } from '@/utils/dataService';
 import { RightOutlined } from '@ant-design/icons';
 import { Col, Empty, Form, Input, Menu, notification, Skeleton } from 'antd';
+import { useAppState } from 'context/AppContext';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 import MenuItem from '../components/MenuItem';
 
-const ProjectList = ({ list, setList, getList, loadingList, selectedBranchId, selectedDepartmentId }) => {
+const ProjectList = () => {
   const { t } = useTranslation();
+
+  const { projects, setProjects, loadingProjects, getProjects, selectedBranchId, selectedDepartmentId } = useAppState();
 
   const [showCreate, setShowCreate] = useState(false);
   const [showEdit, setShowEdit] = useState(false);
@@ -43,7 +46,7 @@ const ProjectList = ({ list, setList, getList, loadingList, selectedBranchId, se
         department: selectedDepartmentId,
       });
 
-      getList();
+      getProjects();
       setShowCreate(false);
       form.resetFields();
 
@@ -72,8 +75,8 @@ const ProjectList = ({ list, setList, getList, loadingList, selectedBranchId, se
         department: selectedDepartmentId,
       });
       const updatedProject = response.data;
-      const updatedProjects = list.map((proj) => (proj.id === updatedProject.id ? updatedProject : proj));
-      setList(updatedProjects);
+      const updatedProjects = projects.map((proj) => (proj.id === updatedProject.id ? updatedProject : proj));
+      setProjects(updatedProjects);
 
       form.resetFields();
       setShowEdit(false);
@@ -99,7 +102,7 @@ const ProjectList = ({ list, setList, getList, loadingList, selectedBranchId, se
 
       await dataService.delete(API_PROJECT(projectId));
 
-      setList(list.filter((item) => item.id !== projectId));
+      setProjects(projects.filter((item) => item.id !== projectId));
 
       notification.success({
         message: t('Common_Project'),
@@ -158,9 +161,9 @@ const ProjectList = ({ list, setList, getList, loadingList, selectedBranchId, se
             mode="inline"
             itemIcon={<RightOutlined />}
           >
-            {loadingList ? (
+            {loadingProjects ? (
               <Skeleton active style={{ marginTop: 10, paddingRight: 10 }} />
-            ) : list?.length > 0 ? (
+            ) : projects?.length > 0 ? (
               <>
                 <Button
                   onClick={() => handleCreate()}
@@ -171,7 +174,7 @@ const ProjectList = ({ list, setList, getList, loadingList, selectedBranchId, se
                 >
                   + {t('Project_Create')}
                 </Button>
-                {list.map((project) => (
+                {projects.map((project) => (
                   <Menu.Item key={project.id}>
                     <MenuItem
                       key={project.id}

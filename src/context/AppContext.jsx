@@ -1,3 +1,6 @@
+import { API_BRANCHES, API_DEPARTMENTS, API_PROJECTS } from '@/utils/apiConst';
+import { dataService } from '@/utils/dataService';
+import { notification } from 'antd';
 import Cookies from 'js-cookie';
 import { createContext, useCallback, useContext, useState } from 'react';
 
@@ -36,12 +39,86 @@ export const AppProvider = ({ children }) => {
 
   const [branches, setBranches] = useState([]);
   const [loadingBranches, setLoadingBranches] = useState(false);
+  const [selectedBranchId, setSelectedBranchId] = useState('');
 
   const [departments, setDepartments] = useState([]);
   const [loadingDepartments, setLoadingDepartments] = useState(true);
+  const [selectedDepartmentId, setSelectedDepartmentId] = useState('');
 
   const [projects, setProjects] = useState([]);
   const [loadingProjects, setLoadingProjects] = useState(false);
+  const [selectedProjectId, setSelectedProjectId] = useState('');
+
+  const getBranches = async () => {
+    try {
+      setLoadingBranches(true);
+      const response = await dataService.get(API_BRANCHES);
+      setBranches(response.data);
+    } catch (error) {
+      console.error(error);
+      notification.error({
+        message: 'Lỗi',
+        description: 'Không thể tải danh sách chi nhánh. Vui lòng thử lại sau.',
+      });
+    } finally {
+      setLoadingBranches(false);
+    }
+  };
+
+  const getDepartments = async () => {
+    setDepartments([]);
+    setSelectedDepartmentId(null);
+
+    // Fix later
+    // if (!selectedBranchId) {
+    //   setLoadingDepartments(false);
+    //   return;
+    // }
+
+    setLoadingDepartments(true);
+
+    try {
+      // Fix later
+      const response = await dataService.get(API_DEPARTMENTS, {
+        ...(selectedBranchId && { branch: selectedBranchId }),
+      });
+      setDepartments(response.data);
+    } catch (error) {
+      console.error(error);
+      notification.error({
+        message: 'Lỗi',
+        description: 'Không thể tải danh sách phòng ban. Vui lòng thử lại sau.',
+      });
+    } finally {
+      setLoadingDepartments(false);
+    }
+  };
+
+  const getProjects = async () => {
+    setProjects([]);
+
+    if (!selectedDepartmentId) {
+      return;
+    }
+
+    setLoadingProjects(true);
+
+    try {
+      const response = await dataService.get(API_PROJECTS, {
+        branch: selectedBranchId,
+        department: selectedDepartmentId,
+      });
+      setProjects(response.data);
+    } catch (error) {
+      console.error(error);
+      notification.error({
+        message: 'Lỗi',
+        description: 'Không thể tải danh sách dự án. Vui lòng thử lại sau.',
+      });
+    } finally {
+      setLoadingProjects(false);
+    }
+  };
 
   return (
     <AppContext.Provider
@@ -57,16 +134,25 @@ export const AppProvider = ({ children }) => {
         setBranches,
         loadingBranches,
         setLoadingBranches,
+        getBranches,
+        selectedBranchId,
+        setSelectedBranchId,
 
         departments,
         setDepartments,
         loadingDepartments,
         setLoadingDepartments,
+        getDepartments,
+        selectedDepartmentId,
+        setSelectedDepartmentId,
 
         projects,
         setProjects,
         loadingProjects,
         setLoadingProjects,
+        getProjects,
+        selectedProjectId,
+        setSelectedProjectId,
       }}
     >
       {children}

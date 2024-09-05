@@ -3,7 +3,8 @@ import { Modal } from '@/components/modals/antd-modals';
 import { API_PROVIDERS } from '@/utils/apiConst';
 import { dataService } from '@/utils/dataService';
 import { Form, notification } from 'antd';
-import { useGetBranches } from 'hooks/org-structure/useGetBranches';
+import { useAppState } from 'context/AppContext';
+import { useGetOrgStructure } from 'hooks/useGetOrgStructure';
 import { useDivision } from 'hooks/vietnam-division';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -13,10 +14,13 @@ const CreateProvider = ({ state, setState, list, setList }) => {
   const { t } = useTranslation();
   const [form] = Form.useForm();
 
+  useGetOrgStructure();
+
+  const { branches } = useAppState();
+
   const [loading, setLoading] = useState(false);
 
   const { provinces, districts, communes, setProvinceId, setDistrictId } = useDivision();
-  const { branches } = useGetBranches();
 
   const createNew = async (data) => {
     setLoading(true);

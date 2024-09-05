@@ -9,8 +9,8 @@ import { PageHeader } from '@/components/page-headers/page-headers';
 import { BorderLessHeading, Main } from '@/container/styled';
 import { API_MAILS_ACCOUNT_BY_ACCOUNT_ID, API_MAILS_ACCOUNTS } from '@/utils/apiConst';
 import { dataService } from '@/utils/dataService';
-import { useGetAllDepartments } from 'hooks/org-structure/useGetAllDepartments';
-import { useGetProjects } from 'hooks/org-structure/useGetProjects';
+import { useAppState } from 'context/AppContext';
+import { useGetOrgStructure } from 'hooks/useGetOrgStructure';
 import { useList } from 'hooks/useListCommon';
 import { CreateAccount } from './components/CreateAccount';
 import { DataTable } from './components/DataTable';
@@ -34,9 +34,13 @@ const AccountList = () => {
 
   const [searchParams, setSearchParams] = useState({ name: '', email: '', departmentId: '', projectId: '' });
 
-  const { departmentId } = searchParams || {};
-  const { loadingDepartments, departments } = useGetAllDepartments();
-  const { projects, loadingProjects } = useGetProjects(null, departmentId);
+  useGetOrgStructure();
+
+  const { loadingDepartments, departments, projects, loadingProjects, setSelectedDepartmentId } = useAppState();
+
+  useEffect(() => {
+    setSelectedDepartmentId(searchParams?.departmentId);
+  }, [searchParams?.departmentId]);
 
   const {
     list: accounts,

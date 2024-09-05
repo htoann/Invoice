@@ -29,7 +29,7 @@ export const FilterHeader = ({
         disabled={loadingDepartments}
         onChange={handleChangeDepartment}
         style={{ width: 200, marginLeft: 10 }}
-        value={searchParams.departmentId}
+        value={searchParams?.departmentId}
         options={departmentOptions}
       />
 

@@ -4,8 +4,8 @@ import { createOptions, formatTime } from '@/utils/index';
 import UilInbox from '@iconscout/react-unicons/icons/uil-inbox';
 import { Empty, Input, Pagination, Select, Skeleton } from 'antd';
 import Paragraph from 'antd/lib/typography/Paragraph';
-import { useGetAllDepartments } from 'hooks/org-structure/useGetAllDepartments';
-import { useGetProjects } from 'hooks/org-structure/useGetProjects';
+import { useAppState } from 'context/AppContext';
+import { useGetOrgStructure } from 'hooks/useGetOrgStructure';
 import { useList } from 'hooks/useListCommon';
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -23,8 +23,19 @@ export const InboxList = React.memo(({ setSelectedInbox, selectedInbox }) => {
 
   const { pageSize, current, total } = pagination;
 
-  const [selectedDepartmentId, setSelectedDepartmentId] = useState('');
-  const [selectedProjectId, setSelectedProjectId] = useState('');
+  useGetOrgStructure();
+
+  const {
+    loadingDepartments,
+    departments,
+    selectedDepartmentId,
+    setSelectedDepartmentId,
+
+    projects,
+    loadingProjects,
+    selectedProjectId,
+    setSelectedProjectId,
+  } = useAppState();
 
   const [search, setSearchSender] = useState('');
   const [selectedAccountId, setSelectedAccountId] = useState(null);
@@ -32,9 +43,6 @@ export const InboxList = React.memo(({ setSelectedInbox, selectedInbox }) => {
   const selectFirstAccount = (accountList) => {
     setSelectedAccountId(accountList[0].id);
   };
-
-  const { loadingDepartments, departments } = useGetAllDepartments();
-  const { projects, loadingProjects } = useGetProjects(null, selectedDepartmentId);
 
   const { mailAccountList, loadingMailAccounts } = useGetMailAccounts(
     selectFirstAccount,
