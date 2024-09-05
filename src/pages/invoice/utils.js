@@ -6,7 +6,7 @@ export const handleTableDataSource = (invoiceList, current, pageSize) => {
   return invoiceList?.length > 0
     ? invoiceList.map((item, index) => {
         return {
-          id: (current - 1) * pageSize + index + 1,
+          stt: (current - 1) * pageSize + index + 1,
           khmshdon: <span>{item.khmshdon}</span>,
           khhdon: <span>{item.khhdon}</span>,
           shdon: <span>{item.shdon}</span>,

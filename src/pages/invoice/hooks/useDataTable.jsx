@@ -6,8 +6,8 @@ export const useInvoiceDataTable = () => {
   return [
     {
       title: t('Common_STT'),
-      dataIndex: 'id',
-      key: 'id',
+      dataIndex: 'stt',
+      key: 'stt',
     },
     {
       title: t('Invoice_ModelCode'),

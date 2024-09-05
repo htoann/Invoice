@@ -16,7 +16,6 @@ function DataTable({ loading, tableData, columns, state, setState, getInvoiceLis
   const [startDate, setStartDate] = useState();
   const [endDate, setEndDate] = useState();
   const [taxNumber, setTaxNumber] = useState('');
-
   const [loadingExport, setLoadingExport] = useState(false);
 
   const { pagination, date_from, date_to, loaiHoaDon, invoiceList } = state;
