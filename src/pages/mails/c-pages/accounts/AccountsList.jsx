@@ -24,7 +24,7 @@ const AccountList = () => {
 
   useGetOrgStructure();
 
-  const { setSelectedDepartmentId } = useAppState();
+  const { setSelectedBranchId, setSelectedDepartmentId, setSelectedProjectId } = useAppState();
 
   const [state, setState] = useState({
     visible: false,
@@ -32,7 +32,13 @@ const AccountList = () => {
     update: {},
     pagination: { current: 1, pageSize: 20 },
   });
-  const [searchParams, setSearchParams] = useState({ name: '', email: '', departmentId: '', projectId: '' });
+  const [searchParams, setSearchParams] = useState({
+    name: '',
+    email: '',
+    branchId: '',
+    departmentId: '',
+    projectId: '',
+  });
 
   const { pagination, visible, editVisible } = state;
   const { current, pageSize } = pagination;
@@ -105,15 +111,23 @@ const AccountList = () => {
     handleFilterChange('branchId', branchId);
     handleFilterChange('departmentId', '');
     handleFilterChange('projectId', '');
+
+    setSelectedBranchId(branchId);
+    setSelectedDepartmentId('');
+    setSelectedProjectId('');
   };
 
   const handleChangeDepartment = (departmentId) => {
     handleFilterChange('departmentId', departmentId);
     handleFilterChange('projectId', '');
+
+    setSelectedDepartmentId(departmentId);
+    setSelectedProjectId('');
   };
 
   const handleChangeProject = (projectId) => {
     handleFilterChange('projectId', projectId);
+    setSelectedProjectId(projectId);
   };
 
   return (
