@@ -2,7 +2,6 @@ import { Button } from '@/components/buttons/buttons';
 import { TableWrapper } from '@/container/styled';
 import { defaultPaginationConfig } from '@/utils/index';
 import { Table } from 'antd';
-import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 import { DataTableStyleWrap } from '../style';
 
@@ -65,8 +64,4 @@ function DataTable({ rowSelection, tableData, columns, pagination, setState, sta
   );
 }
 
-DataTable.propTypes = {
-  tableData: PropTypes.array,
-  columns: PropTypes.array,
-};
 export default DataTable;

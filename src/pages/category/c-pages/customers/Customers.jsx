@@ -26,13 +26,12 @@ const Customers = () => {
     update: {},
     pagination: { current: 1, pageSize: 20 },
   });
+  const [searchParams, setSearchParams] = useState({});
 
   const { pagination } = state;
   const { current, pageSize } = pagination;
 
   const { list, loading, getList, setList } = useList(state, setState, API_CUSTOMERS, 'khách hàng');
-
-  const [searchParams, setSearchParams] = useState({});
 
   useEffect(() => {
     getList(searchParams);
