@@ -1,6 +1,5 @@
 import { Button } from '@/components/buttons/buttons';
 import { Cards } from '@/components/cards/frame/cards-frame';
-import { FilterOrgStructure } from '@/components/FilterOrgStructure';
 import { PageHeader } from '@/components/page-headers/page-headers';
 import { Main } from '@/container/styled';
 import UilAlignLeft from '@iconscout/react-unicons/icons/uil-align-left';
@@ -10,6 +9,8 @@ import { useAppState } from 'context/AppContext';
 import { useGetOrgStructure } from 'hooks/useGetOrgStructure';
 import { useEffect, useLayoutEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useGetMailAccounts } from '../../hooks/useGetMailAccounts';
+import { FilterHeader } from './components/FilterHeader';
 import { InboxList } from './components/InboxList';
 import MailDetail from './components/MailDetail';
 import { EmailWrapper } from './components/style';
@@ -20,13 +21,7 @@ function Email() {
 
   useGetOrgStructure();
 
-  const {
-    selectedDepartmentId,
-    setSelectedDepartmentId,
-    selectedProjectId,
-    setSelectedProjectId,
-    setSelectedAccountId,
-  } = useAppState();
+  const { selectedDepartmentId, selectedProjectId, setSelectedAccountId } = useAppState();
 
   const [selectedInbox, setSelectedInbox] = useState('');
 
@@ -74,18 +69,15 @@ function Email() {
     setSelectedInbox(null);
   };
 
-  const changeDepartment = (value) => {
-    setSelectedDepartmentId(value);
-    setSelectedProjectId('');
-    setSelectedAccountId(null);
-    handleReset();
+  const selectFirstAccount = (accountList) => {
+    setSelectedAccountId(accountList[0].id);
   };
 
-  const changeProject = (value) => {
-    setSelectedProjectId(value);
-    setSelectedAccountId(null);
-    handleReset();
-  };
+  const { mailAccountList, loadingMailAccounts } = useGetMailAccounts(
+    selectFirstAccount,
+    selectedDepartmentId,
+    selectedProjectId,
+  );
 
   return (
     <>
@@ -94,11 +86,10 @@ function Email() {
       <Main>
         <EmailWrapper>
           <Cards headless>
-            <FilterOrgStructure
-              onChangeDepartment={changeDepartment}
-              onChange={changeProject}
-              departmentId={selectedDepartmentId}
-              projectId={selectedProjectId}
+            <FilterHeader
+              handleReset={handleReset}
+              loadingMailAccounts={loadingMailAccounts}
+              mailAccountList={mailAccountList}
             />
           </Cards>
 
@@ -126,6 +117,7 @@ function Email() {
                       setPagination={setPagination}
                       setSearchSender={setSearchSender}
                       search={search}
+                      loadingMailAccounts={loadingMailAccounts}
                     />
                   </div>
                 </Cards>

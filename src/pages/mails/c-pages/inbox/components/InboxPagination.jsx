@@ -1,7 +1,7 @@
 import { Pagination } from 'antd';
 import { useAppState } from 'context/AppContext';
 
-export const MailPagination = ({ loadingMailAccounts, inboxList, pagination, setPagination }) => {
+export const InboxPagination = ({ loadingMailAccounts, inboxList, pagination, setPagination }) => {
   const { loadingDepartments } = useAppState();
 
   const { pageSize, current, total } = pagination;

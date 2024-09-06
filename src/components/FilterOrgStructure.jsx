@@ -3,7 +3,7 @@ import { Select } from 'antd';
 import { useAppState } from 'context/AppContext';
 import { useTranslation } from 'react-i18next';
 
-export const FilterOrgStructure = ({ onChangeDepartment, onChangeProject, departmentId, projectId, style }) => {
+export const FilterOrgStructure = ({ onChangeDepartment, onChangeProject, departmentId, projectId, moreElements }) => {
   const { t } = useTranslation();
 
   const { loadingDepartments, departments, projects, loadingProjects } = useAppState();
@@ -12,7 +12,7 @@ export const FilterOrgStructure = ({ onChangeDepartment, onChangeProject, depart
   const projectOptions = createOptions(projects, 'name');
 
   return (
-    <div style={{ display: 'flex', gap: 2, flexWrap: 'auto', alignItems: 'center', ...style }}>
+    <div style={{ display: 'flex', gap: 2, flexWrap: 'auto', alignItems: 'center' }}>
       <span className="label">{t('Common_Department')}</span>
       <Select
         popupClassName="dropdown-select"
@@ -36,6 +36,8 @@ export const FilterOrgStructure = ({ onChangeDepartment, onChangeProject, depart
         value={projectId}
         options={projectOptions}
       />
+
+      {elements}
     </div>
   );
 };
