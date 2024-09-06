@@ -24,6 +24,8 @@ const AccountList = () => {
 
   useGetOrgStructure();
 
+  const { setSelectedDepartmentId } = useAppState();
+
   const [state, setState] = useState({
     visible: false,
     editVisible: false,
@@ -31,13 +33,12 @@ const AccountList = () => {
     pagination: { current: 1, pageSize: 20 },
   });
   const [searchParams, setSearchParams] = useState({ name: '', email: '', departmentId: '', projectId: '' });
-  const { setSelectedDepartmentId } = useAppState();
 
   const { pagination, visible, editVisible } = state;
   const { current, pageSize } = pagination;
 
   useEffect(() => {
-    setSelectedDepartmentId(searchParams?.departmentId);
+    searchParams?.departmentId && setSelectedDepartmentId(searchParams?.departmentId);
   }, [searchParams?.departmentId]);
 
   const {

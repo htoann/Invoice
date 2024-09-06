@@ -1,3 +1,4 @@
+import { FilterOrgStructure } from '@/components/FilterOrgStructure';
 import { useGetMailAccounts } from '@/pages/mails/hooks/useGetMailAccounts';
 import { API_INBOXES_BY_ACCOUNT_ID } from '@/utils/apiConst';
 import { createOptions, formatTime } from '@/utils/index';
@@ -27,12 +28,9 @@ export const InboxList = React.memo(({ setSelectedInbox, selectedInbox }) => {
 
   const {
     loadingDepartments,
-    departments,
     selectedDepartmentId,
     setSelectedDepartmentId,
 
-    projects,
-    loadingProjects,
     selectedProjectId,
     setSelectedProjectId,
   } = useAppState();
@@ -94,17 +92,15 @@ export const InboxList = React.memo(({ setSelectedInbox, selectedInbox }) => {
   };
 
   const accountOptions = createOptions(mailAccountList, 'email', false);
-  const departmentOptions = createOptions(departments, 'name');
-  const projectOptions = createOptions(projects, 'name');
 
-  const handleChangeDepartment = (value) => {
+  const changeDepartment = (value) => {
     setSelectedDepartmentId(value);
     setSelectedProjectId('');
     setSelectedAccountId(null);
     handleReset();
   };
 
-  const handleChangeProject = (value) => {
+  const changeProject = (value) => {
     setSelectedProjectId(value);
     setSelectedAccountId(null);
     handleReset();
@@ -112,32 +108,12 @@ export const InboxList = React.memo(({ setSelectedInbox, selectedInbox }) => {
 
   return (
     <>
-      <div style={{ display: 'flex', gap: 2, flexWrap: 'auto', flexDirection: 'column' }}>
-        <>
-          <span className="label mb-8">{t('Common_Department')}</span>
-          <Select
-            popupClassName="dropdown-select"
-            style={{ width: '100%', marginBottom: 20 }}
-            placeholder={t('Common_SelectDepartment')}
-            onChange={handleChangeDepartment}
-            loading={loadingDepartments}
-            disabled={loadingDepartments}
-            value={selectedDepartmentId}
-            options={departmentOptions}
-          />
-
-          <span className="label mb-8">{t('Common_Project')}</span>
-          <Select
-            style={{ width: '100%', marginBottom: 20 }}
-            popupClassName="dropdown-select"
-            loading={loadingProjects}
-            disabled={loadingProjects || !selectedDepartmentId}
-            onChange={handleChangeProject}
-            value={selectedProjectId}
-            options={projectOptions}
-          />
-        </>
-      </div>
+      <FilterOrgStructure
+        onChangeDepartment={changeDepartment}
+        onChange={changeProject}
+        departmentId={selectedDepartmentId}
+        projectId={selectedProjectId}
+      />
 
       <div style={{ display: 'flex', gap: 2, flexWrap: 'auto', flexDirection: 'column' }}>
         <span className="label mb-8">{t('Common_Account')}</span>
