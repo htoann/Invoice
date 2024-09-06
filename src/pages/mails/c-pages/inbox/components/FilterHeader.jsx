@@ -7,14 +7,7 @@ import { useTranslation } from 'react-i18next';
 export const FilterHeader = ({ handleReset, loadingMailAccounts, mailAccountList }) => {
   const { t } = useTranslation();
 
-  const {
-    selectedDepartmentId,
-    setSelectedDepartmentId,
-    selectedProjectId,
-    setSelectedProjectId,
-    setSelectedAccountId,
-    selectedAccountId,
-  } = useAppState();
+  const { setSelectedDepartmentId, setSelectedProjectId, setSelectedAccountId, selectedAccountId } = useAppState();
 
   const changeDepartment = (value) => {
     setSelectedDepartmentId(value);
@@ -35,9 +28,7 @@ export const FilterHeader = ({ handleReset, loadingMailAccounts, mailAccountList
     <>
       <FilterOrgStructure
         onChangeDepartment={changeDepartment}
-        onChange={changeProject}
-        departmentId={selectedDepartmentId}
-        projectId={selectedProjectId}
+        onChangeProject={changeProject}
         moreElements={
           <>
             <span className="label" style={{ marginLeft: 30 }}>
