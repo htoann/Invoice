@@ -15,6 +15,8 @@ import { EmailNav } from './style';
 export const InboxList = React.memo(({ setSelectedInbox, selectedInbox }) => {
   const { t } = useTranslation();
 
+  useGetOrgStructure();
+
   const [pagination, setPagination] = useState({
     pageSize: 20,
     current: 1,
@@ -22,8 +24,6 @@ export const InboxList = React.memo(({ setSelectedInbox, selectedInbox }) => {
   });
 
   const { pageSize, current, total } = pagination;
-
-  useGetOrgStructure();
 
   const {
     loadingDepartments,

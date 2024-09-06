@@ -12,9 +12,9 @@ import { dataService } from '@/utils/dataService';
 import { useAppState } from 'context/AppContext';
 import { useGetOrgStructure } from 'hooks/useGetOrgStructure';
 import { useList } from 'hooks/useListCommon';
+import { FilterOrgStructure } from '../../../../components/FilterOrgStructure';
 import { CreateAccount } from './components/CreateAccount';
 import { DataTable } from './components/DataTable';
-import { FilterHeader } from './components/FilterHeader';
 import { UpdateAccount } from './components/UpdateAccount';
 import { useTableDataSource } from './hooks/useDataSource';
 import { useTableColumnAccount } from './hooks/useDataTable';
@@ -22,21 +22,19 @@ import { useTableColumnAccount } from './hooks/useDataTable';
 const AccountList = () => {
   const { t } = useTranslation();
 
+  useGetOrgStructure();
+
   const [state, setState] = useState({
     visible: false,
     editVisible: false,
     update: {},
     pagination: { current: 1, pageSize: 20 },
   });
+  const [searchParams, setSearchParams] = useState({ name: '', email: '', departmentId: '', projectId: '' });
+  const { setSelectedDepartmentId } = useAppState();
 
   const { pagination, visible, editVisible } = state;
   const { current, pageSize } = pagination;
-
-  const [searchParams, setSearchParams] = useState({ name: '', email: '', departmentId: '', projectId: '' });
-
-  useGetOrgStructure();
-
-  const { loadingDepartments, departments, projects, loadingProjects, setSelectedDepartmentId } = useAppState();
 
   useEffect(() => {
     setSelectedDepartmentId(searchParams?.departmentId);
@@ -86,7 +84,6 @@ const AccountList = () => {
 
   const tableDataSource = useTableDataSource({
     accounts,
-    departments,
     current,
     pageSize,
     showEditModal,
@@ -103,6 +100,15 @@ const AccountList = () => {
     setSearchParams((prevParams) => ({ ...prevParams, [key]: value }));
   };
 
+  const handleChangeDepartment = (departmentId) => {
+    handleFilterChange('departmentId', departmentId);
+    handleFilterChange('projectId', '');
+  };
+
+  const handleChangeProject = (projectId) => {
+    handleFilterChange('projectId', projectId);
+  };
+
   return (
     <>
       <PageHeader className="invoice-page-header-main" title={t('Mail_AccountList_Title')} />
@@ -111,13 +117,11 @@ const AccountList = () => {
           <Col xs={24}>
             <BorderLessHeading>
               <Cards>
-                <FilterHeader
-                  departments={departments}
-                  projects={projects}
-                  loadingDepartments={loadingDepartments}
-                  loadingProjects={loadingProjects}
-                  searchParams={searchParams}
-                  handleFilterChange={handleFilterChange}
+                <FilterOrgStructure
+                  onChangeDepartment={handleChangeDepartment}
+                  onChangeProject={handleChangeProject}
+                  departmentId={searchParams?.departmentId}
+                  projectId={searchParams?.projectId}
                 />
                 <Button onClick={showModal} type="primary" key="1">
                   <Link to="#">+ {t('Mail_AccountList_Create')}</Link>
@@ -135,25 +139,9 @@ const AccountList = () => {
         </Row>
       </Main>
 
-      {visible && (
-        <CreateAccount
-          state={state}
-          setState={setState}
-          accounts={accounts}
-          setAccounts={setAccounts}
-          departments={departments}
-        />
-      )}
+      {visible && <CreateAccount state={state} setState={setState} accounts={accounts} setAccounts={setAccounts} />}
 
-      {editVisible && (
-        <UpdateAccount
-          state={state}
-          setState={setState}
-          accounts={accounts}
-          setAccounts={setAccounts}
-          departments={departments}
-        />
-      )}
+      {editVisible && <UpdateAccount state={state} setState={setState} accounts={accounts} setAccounts={setAccounts} />}
     </>
   );
 };

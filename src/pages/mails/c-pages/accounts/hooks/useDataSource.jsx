@@ -1,10 +1,12 @@
 import { UilEdit, UilTrash } from '@iconscout/react-unicons';
 import { Popconfirm } from 'antd';
+import { useAppState } from 'context/AppContext';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 
-export const useTableDataSource = ({ accounts, departments, current, pageSize, showEditModal, handleDelete }) => {
+export const useTableDataSource = ({ accounts, current, pageSize, showEditModal, handleDelete }) => {
   const { t } = useTranslation();
+  const { departments } = useAppState();
 
   const tableDataSource =
     accounts?.length > 0

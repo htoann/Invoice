@@ -2,12 +2,14 @@ import { Modal } from '@/components/modals/antd-modals';
 import { API_MAILS_ACCOUNT_BY_ACCOUNT_ID } from '@/utils/apiConst';
 import { dataService } from '@/utils/dataService';
 import { Form, notification } from 'antd';
+import { useAppState } from 'context/AppContext';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ModalAccount } from './Modal';
 
-export const UpdateAccount = ({ state, setState, accounts, setAccounts, departments }) => {
+export const UpdateAccount = ({ state, setState, accounts, setAccounts }) => {
   const [form] = Form.useForm();
+  const { departments } = useAppState();
   const [loading, setLoading] = useState(false);
   const { t } = useTranslation();
 
