@@ -1,24 +1,29 @@
 import { API_MAILS_ACCOUNTS } from '@/utils/apiConst';
 import { dataService } from '@/utils/dataService';
 import { notification } from 'antd';
+import { useAppState } from 'context/AppContext';
 import { useEffect, useState } from 'react';
 
-export const useGetMailAccounts = (onHandleResult, selectedDepartmentId = '', selectedProjectId = '') => {
+export const useGetMailAccounts = () => {
+  const { selectedBranchId, selectedDepartmentId, selectedProjectId, setSelectedAccountId } = useAppState();
+
   const [mailAccountList, setMailAccountList] = useState([]);
   const [loadingMailAccounts, setLoadingMailAccounts] = useState(false);
 
-  const getMailAccounts = async ({ departmentId = '', projectId = '' } = {}) => {
+  const getMailAccounts = async () => {
     try {
       setLoadingMailAccounts(true);
 
       const response = await dataService.get(API_MAILS_ACCOUNTS, {
-        department_id: departmentId,
-        project_id: projectId,
+        ...(selectedBranchId && { branch_id: selectedBranchId }),
+        ...(selectedDepartmentId && { department_id: selectedDepartmentId }),
+        ...(selectedProjectId && { project_id: selectedProjectId }),
       });
+
       const mailAccounts = response?.data?.results;
       setMailAccountList(mailAccounts);
 
-      mailAccounts?.length > 0 && onHandleResult && onHandleResult(mailAccounts);
+      mailAccounts?.[0]?.id && setSelectedAccountId(mailAccounts[0]?.id);
     } catch (error) {
       console.error(error);
       notification.error({
@@ -31,8 +36,8 @@ export const useGetMailAccounts = (onHandleResult, selectedDepartmentId = '', se
   };
 
   useEffect(() => {
-    getMailAccounts({ departmentId: selectedDepartmentId, ...(selectedProjectId && { projectId: selectedProjectId }) });
-  }, [selectedDepartmentId, selectedProjectId]);
+    getMailAccounts();
+  }, [selectedBranchId, selectedDepartmentId, selectedProjectId]);
 
   return { mailAccountList, setMailAccountList, loadingMailAccounts, setLoadingMailAccounts };
 };

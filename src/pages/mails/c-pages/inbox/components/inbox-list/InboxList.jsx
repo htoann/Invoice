@@ -14,7 +14,7 @@ export const InboxList = ({ setSelectedInbox, selectedInbox, pagination, setPagi
 
   const { pageSize, current } = pagination;
 
-  const { selectedDepartmentId, setSelectedAccountId, selectedAccountId, selectedProjectId } = useAppState();
+  const { selectedDepartmentId, setSelectedAccountId, selectedAccountId } = useAppState();
 
   const {
     list: inboxList,
@@ -42,10 +42,6 @@ export const InboxList = ({ setSelectedInbox, selectedInbox, pagination, setPagi
     }));
   };
 
-  const selectFirstAccount = (accountList) => {
-    setSelectedAccountId(accountList[0].id);
-  };
-
   const handleReset = () => {
     setSearchSender('');
     setPagination({
@@ -55,11 +51,7 @@ export const InboxList = ({ setSelectedInbox, selectedInbox, pagination, setPagi
     setSelectedInbox(null);
   };
 
-  const { mailAccountList, loadingMailAccounts } = useGetMailAccounts(
-    selectFirstAccount,
-    selectedDepartmentId,
-    selectedProjectId,
-  );
+  const { mailAccountList, loadingMailAccounts } = useGetMailAccounts();
 
   const accountOptions = createOptions(mailAccountList, 'email', false);
 
