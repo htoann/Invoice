@@ -21,9 +21,9 @@ export const useGetMailAccounts = () => {
       });
 
       const mailAccounts = response?.data?.results;
-      setMailAccountList(mailAccounts);
 
-      mailAccounts?.[0]?.id && setSelectedAccountId(mailAccounts[0]?.id);
+      setMailAccountList(mailAccounts);
+      setSelectedAccountId(mailAccounts?.[0]?.id);
     } catch (error) {
       console.error(error);
       notification.error({

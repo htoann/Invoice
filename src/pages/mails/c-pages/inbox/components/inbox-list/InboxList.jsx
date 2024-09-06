@@ -14,7 +14,7 @@ export const InboxList = ({ setSelectedInbox, selectedInbox, pagination, setPagi
 
   const { pageSize, current } = pagination;
 
-  const { selectedDepartmentId, setSelectedAccountId, selectedAccountId } = useAppState();
+  const { setSelectedAccountId, selectedAccountId } = useAppState();
 
   const {
     list: inboxList,
@@ -30,10 +30,6 @@ export const InboxList = ({ setSelectedInbox, selectedInbox, pagination, setPagi
   useEffect(() => {
     setInboxList([]);
   }, [selectedAccountId]);
-
-  useEffect(() => {
-    setSelectedAccountId('');
-  }, [selectedDepartmentId]);
 
   const resetCurrentPage = () => {
     setPagination((prev) => ({
