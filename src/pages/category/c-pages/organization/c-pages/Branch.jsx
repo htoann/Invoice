@@ -19,7 +19,7 @@ const BranchList = () => {
     setBranches,
     loadingBranches,
     getBranches,
-    selectedBranch,
+    selectedBranchId,
     setSelectedBranchId,
     setSelectedDepartmentId,
   } = useAppState();
@@ -165,7 +165,7 @@ const BranchList = () => {
           <Menu
             style={{ width: '100%', minHeight: 'calc(100vh - 290px)', borderRight: 'none' }}
             mode="inline"
-            selectedKeys={[selectedBranch]}
+            selectedKeys={[selectedBranchId]}
             onClick={({ key }) => setSelectedBranchId(key)}
             itemIcon={<RightOutlined />}
           >

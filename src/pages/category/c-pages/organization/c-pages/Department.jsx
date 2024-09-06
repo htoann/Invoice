@@ -18,7 +18,7 @@ const DepartmentList = () => {
     setDepartments,
     loadingDepartments,
     getDepartments,
-    selectedDepartment,
+    selectedDepartmentId,
     setSelectedDepartmentId,
     selectedBranchId,
   } = useAppState();
@@ -165,7 +165,7 @@ const DepartmentList = () => {
           <Menu
             style={{ width: '100%', minHeight: 'calc(100vh - 290px)', borderRight: 'none' }}
             mode="inline"
-            selectedKeys={[selectedDepartment]}
+            selectedKeys={[selectedDepartmentId]}
             onClick={({ key }) => setSelectedDepartmentId(key)}
             itemIcon={<RightOutlined />}
           >
