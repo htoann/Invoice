@@ -1,7 +1,6 @@
 import { Cards } from '@/components/cards/frame/cards-frame';
 import { PageHeader } from '@/components/page-headers/page-headers';
 import { MailAccountSelect } from '@/components/select-common/MailAccountSelect';
-import { Tag } from '@/components/tags/tags';
 import { BorderLessHeading, Main } from '@/container/styled';
 import { API_MAIL_TASK_HISTORIES } from '@/utils/apiConst';
 import { Col, Row } from 'antd';
@@ -10,6 +9,7 @@ import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import DataTable from './components/DataTable';
 import { useTableColumnSyncHistory } from './hooks/useDataTable';
+import { useTableDataSource } from './hooks/useTableDataSource';
 
 const SyncHistory = () => {
   const { t } = useTranslation();
@@ -28,22 +28,7 @@ const SyncHistory = () => {
     getList(searchParams);
   }, [current, pageSize, searchParams]);
 
-  const tableDataSource = list.map((item, index) => {
-    const { id, time, name, state, note, totalInvoice, newInvoice } = item;
-    return {
-      key: id,
-      stt: (current - 1) * pageSize + index + 1,
-      id,
-      time: <span>{time}</span>,
-      name: <span>{name}</span>,
-      state: (
-        <Tag color={state === 1 ? '#01b81a' : '#f5222d'}>{state === 1 ? t('Common_Success') : t('Common_Failure')}</Tag>
-      ),
-      note: <span>{note}</span>,
-      totalInvoice: <span>{totalInvoice}</span>,
-      newInvoice: <span>{newInvoice}</span>,
-    };
-  });
+  const tableDataSource = useTableDataSource(list, current, pageSize);
 
   const dataTableColumn = useTableColumnSyncHistory({
     searchParams,

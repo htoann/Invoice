@@ -1,7 +1,6 @@
 import { TableWrapper } from '@/container/styled';
 import { defaultPaginationConfig } from '@/utils/index';
 import { Table } from 'antd';
-import PropTypes from 'prop-types';
 import { DataTableStyleWrap } from '../style';
 
 function DataTable({ tableData, columns, pagination, setState, loading }) {
@@ -14,10 +13,10 @@ function DataTable({ tableData, columns, pagination, setState, loading }) {
             pagination={{ ...defaultPaginationConfig, ...pagination }}
             dataSource={tableData}
             columns={columns}
-            onChange={(_pagination) => {
+            onChange={(pagination) => {
               setState((prev) => ({
                 ...prev,
-                pagination: _pagination,
+                pagination,
               }));
             }}
             loading={loading}
@@ -28,8 +27,4 @@ function DataTable({ tableData, columns, pagination, setState, loading }) {
   );
 }
 
-DataTable.propTypes = {
-  tableData: PropTypes.array,
-  columns: PropTypes.array,
-};
 export default DataTable;
