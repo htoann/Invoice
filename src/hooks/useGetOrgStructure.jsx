@@ -2,7 +2,8 @@ import { useAppState } from 'context/AppContext';
 import { useEffect } from 'react';
 
 export const useGetOrgStructure = () => {
-  const { getBranches, selectedBranchId, getDepartments, selectedDepartmentId, getProjects } = useAppState();
+  const { getBranches, selectedBranchId, getDepartments, selectedDepartmentId, getProjects, resetOrgStructure } =
+    useAppState();
 
   useEffect(() => {
     getBranches();
@@ -15,4 +16,10 @@ export const useGetOrgStructure = () => {
   useEffect(() => {
     selectedDepartmentId && getProjects();
   }, [selectedBranchId, selectedDepartmentId]);
+
+  useEffect(() => {
+    return () => {
+      resetOrgStructure();
+    };
+  }, []);
 };

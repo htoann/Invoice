@@ -118,6 +118,22 @@ export const AppProvider = ({ children }) => {
     }
   };
 
+  const resetOrgStructure = () => {
+    setBranches([]);
+    setLoadingBranches(false);
+    setSelectedBranchId('');
+
+    setDepartments([]);
+    setLoadingDepartments(false);
+    setSelectedDepartmentId('');
+
+    setProjects([]);
+    setLoadingProjects(false);
+    setSelectedProjectId('');
+
+    setSelectedAccountId('');
+  };
+
   return (
     <AppContext.Provider
       value={{
@@ -154,6 +170,8 @@ export const AppProvider = ({ children }) => {
 
         selectedAccountId,
         setSelectedAccountId,
+
+        resetOrgStructure,
       }}
     >
       {children}
