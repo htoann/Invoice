@@ -37,7 +37,7 @@ export const FilterOrgStructure = ({ onChangeDepartment, onChangeProject, depart
         options={projectOptions}
       />
 
-      {elements}
+      {moreElements}
     </div>
   );
 };
