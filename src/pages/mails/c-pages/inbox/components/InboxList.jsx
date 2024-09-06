@@ -2,23 +2,23 @@ import { useGetMailAccounts } from '@/pages/mails/hooks/useGetMailAccounts';
 import { API_INBOXES_BY_ACCOUNT_ID } from '@/utils/apiConst';
 import { createOptions, formatTime } from '@/utils/index';
 import UilInbox from '@iconscout/react-unicons/icons/uil-inbox';
-import { Empty, Input, Pagination, Select, Skeleton } from 'antd';
+import { Empty, Input, Select, Skeleton } from 'antd';
 import Paragraph from 'antd/lib/typography/Paragraph';
 import { useAppState } from 'context/AppContext';
 import { useList } from 'hooks/useListCommon';
 import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
+import { MailPagination } from './MailPagination';
 import { EmailNav } from './style';
 
 export const InboxList = React.memo(
   ({ setSelectedInbox, selectedInbox, pagination, setPagination, search, setSearchSender }) => {
     const { t } = useTranslation();
 
-    const { pageSize, current, total } = pagination;
+    const { pageSize, current } = pagination;
 
     const {
-      loadingDepartments,
       selectedDepartmentId,
 
       selectedProjectId,
@@ -60,14 +60,6 @@ export const InboxList = React.memo(
       setPagination((prev) => ({
         ...prev,
         current: 1,
-      }));
-    };
-
-    const handlePageChange = (page, pageSize) => {
-      setPagination((prev) => ({
-        ...prev,
-        current: page,
-        pageSize,
       }));
     };
 
@@ -116,19 +108,12 @@ export const InboxList = React.memo(
           }}
         />
 
-        {!loadingMailAccounts && !loadingDepartments && inboxList?.length > 0 && (
-          <div style={{ display: 'flex', justifyContent: 'center', marginTop: 20 }}>
-            <Pagination
-              current={current}
-              pageSize={pageSize}
-              onChange={handlePageChange}
-              total={total}
-              showSizeChanger
-              onShowSizeChange={(current, size) => setPagination((prev) => ({ ...prev, pageSize: size }))}
-              showLessItems
-            />
-          </div>
-        )}
+        <MailPagination
+          loadingMailAccounts={loadingMailAccounts}
+          pagination={pagination}
+          setPagination={setPagination}
+          inboxList={inboxList}
+        />
 
         {loading || loadingMailAccounts ? (
           <>

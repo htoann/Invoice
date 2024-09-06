@@ -24,15 +24,15 @@ export const useList = (state, setState, apiUrl, litsName, onHandleResponse) => 
         if (state?.pagination) {
           setState((prev) => ({
             ...prev,
-            total: Number(response?.data?.count) || 0,
-          }));
-        } else {
-          setState((prev) => ({
-            ...prev,
             pagination: {
               ...prev.pagination,
               total: Number(response?.data?.count) || 0,
             },
+          }));
+        } else {
+          setState((prev) => ({
+            ...prev,
+            total: Number(response?.data?.count) || 0,
           }));
         }
       }
