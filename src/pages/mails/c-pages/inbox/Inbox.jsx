@@ -75,8 +75,8 @@ function Email() {
             <FilterHeader handleReset={handleReset} />
           </Cards>
 
-          <Row gutter={25}>
-            <Col className="trigger-col" xxl={8} xl={9} lg={10} xs={24}>
+          <Row gutter={25} style={{ height: '100%' }}>
+            <Col className="trigger-col" xxl={8} xl={9} lg={10} xs={24} style={{ height: '100%' }}>
               {selectedInbox && responsive <= 991 && (
                 <Button type="link" className="mail-sidebar-trigger" style={{ marginTop: 0 }} onClick={toggleCollapsed}>
                   {collapsed ? <UilAlignLeft /> : <UilAlignRight />}
@@ -86,7 +86,7 @@ function Email() {
               <div
                 className={`mail-sidebar ${selectedInbox && responsive <= 991 ? (collapsed ? 'show' : 'hide') : ''}`}
               >
-                <Cards headless>
+                <Cards headless noMargin>
                   <div
                     className={
                       responsive <= 991 ? 'mail-sidebar-bottom mail-sidebar-bottom-scroll' : 'mail-sidebar-bottom'
@@ -105,14 +105,15 @@ function Email() {
               </div>
             </Col>
 
-            <Col xxl={16} xl={15} lg={14} xs={24}>
+            <Col xxl={16} xl={15} lg={14} xs={24} style={{ height: '100%' }}>
               {selectedInbox ? (
                 <MailDetail selectedInbox={selectedInbox} />
               ) : (
                 <Cards
                   headless
-                  style={{ height: 'calc(100vh - 200px)' }}
+                  style={{ height: 'calc(100vh - 290px)' }}
                   bodyStyle={{ margin: 'auto', height: '100%', display: 'flex' }}
+                  noMargin
                 >
                   <Empty description={t('Common_SelectAnEmail')} style={{ margin: 'auto' }} />
                 </Cards>

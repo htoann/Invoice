@@ -680,16 +680,16 @@ const PageHeader = Styled.figure`
     }
 `;
 export {
+  BannerCardWrap,
+  BannerCarouselWrap,
+  BannerCtaWrap,
+  BannerLongWrap,
+  BannerNormal,
+  BannerWrapper,
   Figure2,
   Figure3,
   Figure6,
   Figure7,
   Figure8,
-  BannerWrapper,
-  BannerNormal,
-  BannerCarouselWrap,
-  BannerLongWrap,
-  BannerCardWrap,
-  BannerCtaWrap,
   PageHeader,
 };

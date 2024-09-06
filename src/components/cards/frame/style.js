@@ -63,7 +63,8 @@ const BtnWrapper = (theme) => `
 const CardFrame = Styled(Card)`
 
   ${({ isButton, theme }) => isButton && BtnWrapper(theme)}
-  margin-bottom: 25px !important;
+
+  margin-bottom: ${({ noMargin }) => (noMargin ? '0' : '25px !important')};
 
   background-color: ${({ theme }) => theme[theme.mainContent]['white-background']};
   .ant-card-head{
