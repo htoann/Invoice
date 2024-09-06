@@ -30,13 +30,11 @@ export const FilterHeader = ({ handleReset, loadingMailAccounts, mailAccountList
         onChangeDepartment={changeDepartment}
         onChangeProject={changeProject}
         moreElements={
-          <>
-            <span className="label" style={{ marginLeft: 30 }}>
-              {t('Common_Account')}
-            </span>
+          <div style={{ display: 'flex', flexDirection: 'column', marginLeft: 30 }}>
+            <span className="label">{t('Common_Account')}</span>
             <Select
               popupClassName="dropdown-select"
-              style={{ width: 300, marginLeft: 10 }}
+              style={{ width: 300, marginTop: 10 }}
               placeholder={t('Common_SelectAccount')}
               onChange={(value) => {
                 setSelectedAccountId(value);
@@ -48,7 +46,7 @@ export const FilterHeader = ({ handleReset, loadingMailAccounts, mailAccountList
               options={accountOptions}
               key={selectedAccountId}
             />
-          </>
+          </div>
         }
       />
     </>

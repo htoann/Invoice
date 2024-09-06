@@ -36,40 +36,44 @@ export const FilterOrgStructure = ({
 
   return (
     <div style={{ display: 'flex', gap: 2, flexWrap: 'auto', alignItems: 'center' }}>
-      <span className="label">{t('Common_Branch')}</span>
-      <Select
-        popupClassName="dropdown-select"
-        style={{ width: 200, marginLeft: 10 }}
-        loading={loadingBranches}
-        disabled={loadingBranches}
-        onChange={onChangeBranch}
-        value={defaultBranchId}
-        options={branchOptions}
-      />
+      <div style={{ display: 'flex', flexDirection: 'column' }}>
+        <span className="label">{t('Common_Branch')}</span>
+        <Select
+          popupClassName="dropdown-select"
+          style={{ width: 250, marginTop: 10 }}
+          loading={loadingBranches}
+          disabled={loadingBranches}
+          onChange={onChangeBranch}
+          value={defaultBranchId}
+          options={branchOptions}
+        />
+      </div>
 
-      <span className="label">{t('Common_Department')}</span>
-      <Select
-        popupClassName="dropdown-select"
-        style={{ width: 200, marginLeft: 10 }}
-        loading={loadingDepartments}
-        disabled={loadingDepartments}
-        onChange={onChangeDepartment}
-        value={defaultDepartmentId}
-        options={departmentOptions}
-      />
+      <div style={{ display: 'flex', flexDirection: 'column', marginLeft: 30 }}>
+        <span className="label">{t('Common_Department')}</span>
+        <Select
+          popupClassName="dropdown-select"
+          style={{ width: 250, marginTop: 10 }}
+          loading={loadingDepartments}
+          disabled={loadingDepartments}
+          onChange={onChangeDepartment}
+          value={defaultDepartmentId}
+          options={departmentOptions}
+        />
+      </div>
 
-      <span className="label" style={{ marginLeft: 30 }}>
-        {t('Common_Project')}
-      </span>
-      <Select
-        popupClassName="dropdown-select"
-        style={{ width: 200, marginLeft: 10 }}
-        loading={loadingProjects}
-        disabled={loadingProjects || !selectedDepartmentId}
-        onChange={onChangeProject}
-        value={defaultProjectId}
-        options={projectOptions}
-      />
+      <div style={{ display: 'flex', flexDirection: 'column', marginLeft: 30 }}>
+        <span className="label">{t('Common_Project')}</span>
+        <Select
+          popupClassName="dropdown-select"
+          style={{ width: 250, marginTop: 10 }}
+          loading={loadingProjects}
+          disabled={loadingProjects || !selectedDepartmentId}
+          onChange={onChangeProject}
+          value={defaultProjectId}
+          options={projectOptions}
+        />
+      </div>
 
       {moreElements}
     </div>
