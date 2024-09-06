@@ -1,20 +1,12 @@
 import { Cards } from '@/components/cards/frame/cards-frame';
 import Heading from '@/components/heading/heading';
-import { Popover } from '@/components/popup/popup';
-// import csvImg from '@/static/img/files/csv.png';
-// import pdfImg from '@/static/img/files/pdf.png';
-import AttachmentLogo from '@/static/img/files/attach2.png';
-import { API_ENDPOINT, formatDataSize, formatTime } from '@/utils/index';
-import UilAngleDown from '@iconscout/react-unicons/icons/uil-angle-down';
-import UilImport from '@iconscout/react-unicons/icons/uil-import';
-import { Avatar, Col, Row } from 'antd';
-import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
+
+import { Col, Row } from 'antd';
 import { MailDetailsWrapper, MessageDetails } from '../style';
+import { AttachmentList } from './AttachmentList';
+import { Header } from './Header';
 
 function MailDetail({ selectedInbox: email }) {
-  const { t } = useTranslation();
-
   const cleanedBody = email?.body?.replace(/<style[\s\S]*?<\/style>/gi, '');
 
   return (
@@ -32,107 +24,11 @@ function MailDetail({ selectedInbox: email }) {
                 </div>
               </div>
 
-              <div className="message-box d-flex justify-content-between align-items-center">
-                <div className="message-author">
-                  <Avatar size={48} style={{ backgroundColor: '#8231D3' }}>
-                    {email?.sender?.charAt(0)?.toUpperCase()}
-                  </Avatar>
-                  <div>
-                    <Heading as="h4">{email?.sender}</Heading>
-                    <Popover
-                      content={
-                        <ul className="mail-props">
-                          <li>
-                            <span>{t('Common_From')}:</span> <span>{email?.sender}</span>{' '}
-                          </li>
-                          <li>
-                            <span>{t('Common_To')}:</span> <span>{email?.receiver}</span>{' '}
-                          </li>
-                          {email?.cc && email?.cc !== '()' && (
-                            <li>
-                              <span>{t('Common_CC')}:</span> <span>{email?.cc}</span>{' '}
-                            </li>
-                          )}
-                          {email?.bcc && email?.bcc !== '()' && (
-                            <li>
-                              <span>{t('Common_BCC')}:</span> <span>{email?.bcc}</span>{' '}
-                            </li>
-                          )}
-                          <li>
-                            <span>{t('Common_Date')}:</span>{' '}
-                            <span>{formatTime(email?.date, 'HH:mm D MMMM, YYYY')}</span>
-                          </li>
-                        </ul>
-                      }
-                    >
-                      <Link to="#">
-                        {t('Common_To')} {email?.receiver}
-                        <UilAngleDown />
-                      </Link>
-                    </Popover>
-                  </div>
-                </div>
-
-                <div className="message-excerpt">
-                  <span>{formatTime(email?.date, 'HH:mm D MMMM, YYYY')}</span>
-                </div>
-              </div>
+              <Header email={email} />
 
               <div className="message-body" dangerouslySetInnerHTML={{ __html: cleanedBody }} />
 
-              {!!email?.attachments?.length && (
-                <>
-                  <hr style={{ marginTop: 30, marginBottom: 15, marginLeft: 60 }} />
-                  <p style={{ paddingLeft: 60, fontWeight: 600, marginBottom: 10 }}>
-                    {email?.attachments?.length} {t('Mail_Attachments')}
-                  </p>
-                </>
-              )}
-
-              <div style={{ display: 'flex', flexWrap: 'wrap', marginLeft: 40 }}>
-                {email?.attachments?.length > 0 &&
-                  email?.attachments.map((item) => (
-                    <Link
-                      className="message-attachments"
-                      key={item.id}
-                      to={`${API_ENDPOINT}/mails/attachments/${item.id}`}
-                      target="_blank"
-                    >
-                      <figure style={{ width: 150 }}>
-                        <div className="attachment-image">
-                          <img
-                            src={AttachmentLogo}
-                            alt=""
-                            width={60}
-                            height={60}
-                            style={{ display: 'flex', margin: 'auto' }}
-                          />
-                        </div>
-                        <div className="attachment-hover">
-                          <div className="btn-link" to={`${API_ENDPOINT}/mails/attachments/${item.id}`} target="_blank">
-                            <UilImport />
-                          </div>
-                        </div>
-                        <figcaption>
-                          <Heading as="h4">
-                            <div
-                              style={{
-                                whiteSpace: 'nowrap',
-                                overflow: 'hidden',
-                                textOverflow: 'ellipsis',
-                                width: '100%',
-                              }}
-                              title={item.file_name}
-                            >
-                              {item.file_name}
-                            </div>
-                          </Heading>
-                          <p>{formatDataSize(item.size)}</p>
-                        </figcaption>
-                      </figure>
-                    </Link>
-                  ))}
-              </div>
+              <AttachmentList />
             </MessageDetails>
           </Col>
         </Row>
