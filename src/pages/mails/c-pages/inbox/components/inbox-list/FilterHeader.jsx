@@ -2,7 +2,15 @@ import { FilterOrgStructure } from '@/components/FilterOrgStructure';
 import { useAppState } from 'context/AppContext';
 
 export const FilterHeader = ({ handleReset }) => {
-  const { setSelectedDepartmentId, setSelectedProjectId, setSelectedAccountId } = useAppState();
+  const { setSelectedDepartmentId, setSelectedProjectId, setSelectedAccountId, setSelectedBranchId } = useAppState();
+
+  const changeBranch = (value) => {
+    setSelectedBranchId(value);
+    setSelectedDepartmentId('');
+    setSelectedProjectId('');
+    setSelectedAccountId('');
+    handleReset();
+  };
 
   const changeDepartment = (value) => {
     setSelectedDepartmentId(value);
@@ -19,7 +27,11 @@ export const FilterHeader = ({ handleReset }) => {
 
   return (
     <>
-      <FilterOrgStructure onChangeDepartment={changeDepartment} onChangeProject={changeProject} />
+      <FilterOrgStructure
+        onChangeBranch={changeBranch}
+        onChangeDepartment={changeDepartment}
+        onChangeProject={changeProject}
+      />
     </>
   );
 };
