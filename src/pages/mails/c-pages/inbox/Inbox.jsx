@@ -10,9 +10,9 @@ import { useGetOrgStructure } from 'hooks/useGetOrgStructure';
 import { useEffect, useLayoutEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useGetMailAccounts } from '../../hooks/useGetMailAccounts';
-import { FilterHeader } from './components/FilterHeader';
-import { InboxList } from './components/InboxList';
-import MailDetail from './components/MailDetail';
+import { FilterHeader } from './components/inbox-list/FilterHeader';
+import { InboxList } from './components/inbox-list/InboxList';
+import MailDetail from './components/mail-detail/MailDetail';
 import { EmailWrapper } from './components/style';
 import { pageRoutes } from './utils';
 

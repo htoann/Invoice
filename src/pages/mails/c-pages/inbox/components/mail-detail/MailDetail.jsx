@@ -10,7 +10,7 @@ import UilImport from '@iconscout/react-unicons/icons/uil-import';
 import { Avatar, Col, Row } from 'antd';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
-import { MailDetailsWrapper, MessageDetails } from './style';
+import { MailDetailsWrapper, MessageDetails } from '../style';
 
 function MailDetail({ selectedInbox: email }) {
   const { t } = useTranslation();
