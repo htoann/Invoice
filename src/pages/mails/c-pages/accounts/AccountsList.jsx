@@ -124,7 +124,7 @@ const AccountList = () => {
                   departmentId={searchParams?.departmentId}
                   projectId={searchParams?.projectId}
                 />
-                <Button onClick={showModal} type="primary" key="1">
+                <Button onClick={showModal} type="primary" key="1" style={{ marginTop: 25 }}>
                   <Link to="#">+ {t('Mail_AccountList_Create')}</Link>
                 </Button>
                 <DataTable

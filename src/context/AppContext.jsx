@@ -49,6 +49,8 @@ export const AppProvider = ({ children }) => {
   const [loadingProjects, setLoadingProjects] = useState(false);
   const [selectedProjectId, setSelectedProjectId] = useState('');
 
+  const [selectedAccountId, setSelectedAccountId] = useState('');
+
   const getBranches = async () => {
     try {
       setLoadingBranches(true);
@@ -67,7 +69,7 @@ export const AppProvider = ({ children }) => {
 
   const getDepartments = async () => {
     setDepartments([]);
-    setSelectedDepartmentId(null);
+    setSelectedDepartmentId('');
 
     // Fix later
     // if (!selectedBranchId) {
@@ -153,6 +155,9 @@ export const AppProvider = ({ children }) => {
         getProjects,
         selectedProjectId,
         setSelectedProjectId,
+
+        selectedAccountId,
+        setSelectedAccountId,
       }}
     >
       {children}

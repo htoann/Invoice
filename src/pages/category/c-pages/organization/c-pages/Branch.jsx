@@ -97,8 +97,8 @@ const BranchList = () => {
       await dataService.delete(API_BRANCH(id));
 
       setBranches(branches.filter((item) => item.id !== id));
-      setSelectedBranchId(null);
-      setSelectedDepartmentId(null);
+      setSelectedBranchId('');
+      setSelectedDepartmentId('');
 
       notification.success({
         message: t('Common_Branch'),
