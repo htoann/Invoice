@@ -10,6 +10,7 @@ export const FilterOrgStructure = ({
   branchId,
   departmentId,
   projectId,
+  mode = 'horizontal',
 }) => {
   const { t } = useTranslation();
 
@@ -33,13 +34,41 @@ export const FilterOrgStructure = ({
   const defaultDepartmentId = departmentId || selectedDepartmentId;
   const defaultProjectId = projectId || selectedProjectId;
 
+  const isHorizontal = mode === 'horizontal';
+
+  const containerStyles = {
+    display: 'flex',
+    gap: isHorizontal ? 30 : 10,
+    alignItems: 'center',
+    flexDirection: isHorizontal ? 'row' : 'column',
+    flexWrap: isHorizontal ? 'wrap' : 'nowrap',
+  };
+
+  const itemContainerStyles = {
+    display: 'flex',
+    flexDirection: isHorizontal ? 'row' : 'column',
+    alignItems: 'center',
+    marginBottom: isHorizontal ? 0 : 10,
+  };
+
+  const labelStyles = {
+    marginRight: isHorizontal ? 10 : 0,
+  };
+
+  const selectStyles = {
+    width: 200,
+    marginTop: isHorizontal ? 0 : 10,
+  };
+
   return (
-    <div style={{ display: 'flex', gap: 2, flexWrap: 'auto', alignItems: 'center' }}>
-      <div style={{ display: 'flex', flexDirection: 'column' }}>
-        <span className="label">{t('Common_Branch')}</span>
+    <div style={containerStyles}>
+      <div style={itemContainerStyles}>
+        <span className="label" style={labelStyles}>
+          {t('Common_Branch')}
+        </span>
         <Select
           popupClassName="dropdown-select"
-          style={{ width: 250, marginTop: 10 }}
+          style={selectStyles}
           loading={loadingBranches}
           disabled={loadingBranches}
           onChange={onChangeBranch}
@@ -48,11 +77,13 @@ export const FilterOrgStructure = ({
         />
       </div>
 
-      <div style={{ display: 'flex', flexDirection: 'column', marginLeft: 30 }}>
-        <span className="label">{t('Common_Department')}</span>
+      <div style={itemContainerStyles}>
+        <span className="label" style={labelStyles}>
+          {t('Common_Department')}
+        </span>
         <Select
           popupClassName="dropdown-select"
-          style={{ width: 250, marginTop: 10 }}
+          style={selectStyles}
           loading={loadingDepartments}
           disabled={loadingDepartments || !defaultBranchId}
           onChange={onChangeDepartment}
@@ -61,11 +92,13 @@ export const FilterOrgStructure = ({
         />
       </div>
 
-      <div style={{ display: 'flex', flexDirection: 'column', marginLeft: 30 }}>
-        <span className="label">{t('Common_Project')}</span>
+      <div style={itemContainerStyles}>
+        <span className="label" style={labelStyles}>
+          {t('Common_Project')}
+        </span>
         <Select
           popupClassName="dropdown-select"
-          style={{ width: 250, marginTop: 10 }}
+          style={selectStyles}
           loading={loadingProjects}
           disabled={loadingProjects || !defaultDepartmentId}
           onChange={onChangeProject}
