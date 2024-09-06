@@ -8,12 +8,8 @@ export const useGetOrgStructure = () => {
     getBranches();
   }, []);
 
-  // useEffect(() => {
-  //   selectedBranchId && getDepartments();
-  // }, [selectedBranchId]);
-
   useEffect(() => {
-    getDepartments();
+    selectedBranchId && getDepartments();
   }, [selectedBranchId]);
 
   useEffect(() => {

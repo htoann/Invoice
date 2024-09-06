@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 
 import { Cards } from '@/components/cards/frame/cards-frame';
+import { FilterOrgStructure } from '@/components/FilterOrgStructure';
 import { PageHeader } from '@/components/page-headers/page-headers';
 import { BorderLessHeading, Main } from '@/container/styled';
 import { API_MAILS_ACCOUNT_BY_ACCOUNT_ID, API_MAILS_ACCOUNTS } from '@/utils/apiConst';
@@ -12,7 +13,6 @@ import { dataService } from '@/utils/dataService';
 import { useAppState } from 'context/AppContext';
 import { useGetOrgStructure } from 'hooks/useGetOrgStructure';
 import { useList } from 'hooks/useListCommon';
-import { FilterOrgStructure } from '../../../../components/FilterOrgStructure';
 import { CreateAccount } from './components/CreateAccount';
 import { DataTable } from './components/DataTable';
 import { UpdateAccount } from './components/UpdateAccount';
@@ -101,6 +101,12 @@ const AccountList = () => {
     setSearchParams((prevParams) => ({ ...prevParams, [key]: value }));
   };
 
+  const handleChangeBranch = (branchId) => {
+    handleFilterChange('branchId', branchId);
+    handleFilterChange('departmentId', '');
+    handleFilterChange('projectId', '');
+  };
+
   const handleChangeDepartment = (departmentId) => {
     handleFilterChange('departmentId', departmentId);
     handleFilterChange('projectId', '');
@@ -119,8 +125,10 @@ const AccountList = () => {
             <BorderLessHeading>
               <Cards>
                 <FilterOrgStructure
+                  onChangeBranch={handleChangeBranch}
                   onChangeDepartment={handleChangeDepartment}
                   onChangeProject={handleChangeProject}
+                  branchId={searchParams?.branchId}
                   departmentId={searchParams?.departmentId}
                   projectId={searchParams?.projectId}
                 />

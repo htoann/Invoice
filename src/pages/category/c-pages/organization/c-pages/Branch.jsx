@@ -20,7 +20,6 @@ const BranchList = () => {
     loadingBranches,
     getBranches,
     selectedBranch,
-    setSelectedBranch,
     setSelectedBranchId,
     setSelectedDepartmentId,
   } = useAppState();
@@ -167,7 +166,7 @@ const BranchList = () => {
             style={{ width: '100%', minHeight: 'calc(100vh - 290px)', borderRight: 'none' }}
             mode="inline"
             selectedKeys={[selectedBranch]}
-            onClick={({ key }) => setSelectedBranch(key)}
+            onClick={({ key }) => setSelectedBranchId(key)}
             itemIcon={<RightOutlined />}
           >
             {loadingBranches ? (

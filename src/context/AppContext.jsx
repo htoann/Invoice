@@ -42,7 +42,7 @@ export const AppProvider = ({ children }) => {
   const [selectedBranchId, setSelectedBranchId] = useState('');
 
   const [departments, setDepartments] = useState([]);
-  const [loadingDepartments, setLoadingDepartments] = useState(true);
+  const [loadingDepartments, setLoadingDepartments] = useState(false);
   const [selectedDepartmentId, setSelectedDepartmentId] = useState('');
 
   const [projects, setProjects] = useState([]);
@@ -71,19 +71,15 @@ export const AppProvider = ({ children }) => {
     setDepartments([]);
     setSelectedDepartmentId('');
 
-    // Fix later
-    // if (!selectedBranchId) {
-    //   setLoadingDepartments(false);
-    //   return;
-    // }
+    if (!selectedBranchId) {
+      setLoadingDepartments(false);
+      return;
+    }
 
     setLoadingDepartments(true);
 
     try {
-      // Fix later
-      const response = await dataService.get(API_DEPARTMENTS, {
-        ...(selectedBranchId && { branch: selectedBranchId }),
-      });
+      const response = await dataService.get(API_DEPARTMENTS, { branch: selectedBranchId });
       setDepartments(response.data);
     } catch (error) {
       console.error(error);

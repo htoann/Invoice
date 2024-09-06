@@ -19,7 +19,7 @@ const DepartmentList = () => {
     loadingDepartments,
     getDepartments,
     selectedDepartment,
-    setSelectedDepartment,
+    setSelectedDepartmentId,
     selectedBranchId,
   } = useAppState();
 
@@ -108,7 +108,7 @@ const DepartmentList = () => {
       await dataService.delete(API_DEPARTMENT(id));
 
       setDepartments(departments.filter((item) => item.id !== id));
-      setSelectedDepartment(null);
+      setSelectedDepartmentId(null);
 
       notification.success({
         message: t('Common_Department'),
@@ -166,7 +166,7 @@ const DepartmentList = () => {
             style={{ width: '100%', minHeight: 'calc(100vh - 290px)', borderRight: 'none' }}
             mode="inline"
             selectedKeys={[selectedDepartment]}
-            onClick={({ key }) => setSelectedDepartment(key)}
+            onClick={({ key }) => setSelectedDepartmentId(key)}
             itemIcon={<RightOutlined />}
           >
             {loadingDepartments ? (
