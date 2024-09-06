@@ -7,7 +7,6 @@ export const FilterOrgStructure = ({
   onChangeBranch,
   onChangeDepartment,
   onChangeProject,
-  moreElements,
   branchId,
   departmentId,
   projectId,
@@ -74,8 +73,6 @@ export const FilterOrgStructure = ({
           options={projectOptions}
         />
       </div>
-
-      {moreElements}
     </div>
   );
 };

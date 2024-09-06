@@ -5,11 +5,9 @@ import { Main } from '@/container/styled';
 import UilAlignLeft from '@iconscout/react-unicons/icons/uil-align-left';
 import UilAlignRight from '@iconscout/react-unicons/icons/uil-align-right';
 import { Col, Empty, Row } from 'antd';
-import { useAppState } from 'context/AppContext';
 import { useGetOrgStructure } from 'hooks/useGetOrgStructure';
 import { useEffect, useLayoutEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useGetMailAccounts } from '../../hooks/useGetMailAccounts';
 import { FilterHeader } from './components/inbox-list/FilterHeader';
 import { InboxList } from './components/inbox-list/InboxList';
 import MailDetail from './components/mail-detail/MailDetail';
@@ -20,8 +18,6 @@ function Email() {
   const { t } = useTranslation();
 
   useGetOrgStructure();
-
-  const { selectedDepartmentId, selectedProjectId, setSelectedAccountId } = useAppState();
 
   const [selectedInbox, setSelectedInbox] = useState('');
 
@@ -69,16 +65,6 @@ function Email() {
     setSelectedInbox(null);
   };
 
-  const selectFirstAccount = (accountList) => {
-    setSelectedAccountId(accountList[0].id);
-  };
-
-  const { mailAccountList, loadingMailAccounts } = useGetMailAccounts(
-    selectFirstAccount,
-    selectedDepartmentId,
-    selectedProjectId,
-  );
-
   return (
     <>
       <PageHeader className="invoice-page-header-main" title={t('Common_Inbox')} routes={pageRoutes} />
@@ -86,11 +72,7 @@ function Email() {
       <Main>
         <EmailWrapper>
           <Cards headless>
-            <FilterHeader
-              handleReset={handleReset}
-              loadingMailAccounts={loadingMailAccounts}
-              mailAccountList={mailAccountList}
-            />
+            <FilterHeader handleReset={handleReset} />
           </Cards>
 
           <Row gutter={25}>
@@ -117,7 +99,6 @@ function Email() {
                       setPagination={setPagination}
                       setSearchSender={setSearchSender}
                       search={search}
-                      loadingMailAccounts={loadingMailAccounts}
                     />
                   </div>
                 </Cards>
