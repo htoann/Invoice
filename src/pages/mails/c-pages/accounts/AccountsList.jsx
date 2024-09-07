@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import { Button, notification } from 'antd';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -81,6 +80,7 @@ const AccountList = () => {
         description: t('Mail_EmailList_DeleteSuccess'),
       });
     } catch (error) {
+      console.error(error);
       notification.error({
         message: t('Mail_AccountList_Title'),
         description: t('Mail_EmailList_DeleteError'),
