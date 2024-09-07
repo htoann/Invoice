@@ -63,8 +63,6 @@ export const formatTime = (date, format = 'DD-MM-YYYY-HHmmss') => {
 
 export const getAntdLocale = (language) => {
   switch (language) {
-    case 'vi':
-      return viVN;
     case 'en':
       return enUS;
     default:
@@ -140,10 +138,6 @@ export const createOptions = (list = [], labelKey, hasAll = true) => [
     label: item[labelKey],
   })),
 ];
-
-export const camelToSnake = (camelStr) => {
-  return camelStr.replace(/[A-Z]/g, (letter) => `_${letter.toLowerCase()}`).replace(/^_/, '');
-};
 
 export const convertKeysToSnakeCase = (obj) => {
   return Object.entries(obj).reduce((acc, [key, value]) => {
