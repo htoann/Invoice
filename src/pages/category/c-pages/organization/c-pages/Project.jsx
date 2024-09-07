@@ -157,7 +157,7 @@ const ProjectList = () => {
       <BorderLessHeading>
         <Cards title={t('Common_Project')}>
           <StyledMenu
-            style={{ width: '100%', minHeight: 'calc(100vh - 290px)', borderRight: 'none' }}
+            style={{ width: '100%', minHeight: 'var(--org-structure)', borderRight: 'none' }}
             mode="inline"
             itemIcon={<RightOutlined />}
           >
@@ -191,7 +191,7 @@ const ProjectList = () => {
                 description={t('Project_NotFound')}
                 className="common-center"
                 style={{
-                  minHeight: 'calc(100vh - 290px)',
+                  minHeight: 'var(--org-structure)',
                 }}
               >
                 <Button size="small" type="primary" onClick={() => handleCreate()}>

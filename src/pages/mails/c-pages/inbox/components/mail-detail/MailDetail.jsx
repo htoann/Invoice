@@ -12,7 +12,7 @@ function MailDetail({ selectedInbox: email }) {
   return (
     <MailDetailsWrapper>
       <Cards headless noMargin>
-        <Row gutter={15} style={{ maxHeight: 'calc(100vh - 345px)' }}>
+        <Row gutter={15} style={{ maxHeight: 'var(--mail-detail)' }}>
           <Col style={{ width: '100%' }}>
             <MessageDetails>
               <div className="d-flex justify-content-between align-items-center">

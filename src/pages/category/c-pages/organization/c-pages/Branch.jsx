@@ -163,7 +163,7 @@ const BranchList = () => {
       <BorderLessHeading>
         <Cards title={t('Common_Branch')}>
           <Menu
-            style={{ width: '100%', minHeight: 'calc(100vh - 290px)', borderRight: 'none' }}
+            style={{ width: '100%', minHeight: 'var(--org-structure)', borderRight: 'none' }}
             mode="inline"
             selectedKeys={[selectedBranchId]}
             onClick={({ key }) => setSelectedBranchId(key)}
@@ -199,7 +199,7 @@ const BranchList = () => {
                 description={t('Branch_Empty_Description')}
                 className="common-center"
                 style={{
-                  minHeight: 'calc(100vh - 290px)',
+                  minHeight: 'var(--org-structure)',
                 }}
               >
                 <Button size="small" type="primary" onClick={() => handleCreate()}>

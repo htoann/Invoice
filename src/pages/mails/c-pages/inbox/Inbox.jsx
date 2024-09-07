@@ -111,7 +111,7 @@ function Email() {
               ) : (
                 <Cards
                   headless
-                  style={{ height: 'calc(100vh - 290px)' }}
+                  style={{ height: 'var(--mail-inbox)' }}
                   bodyStyle={{ margin: 'auto', height: '100%', display: 'flex' }}
                   noMargin
                 >
