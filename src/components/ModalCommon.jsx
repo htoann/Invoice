@@ -16,11 +16,13 @@ export const ModalCommon = ({
 }) => {
   const { t } = useTranslation();
 
-  const renderField = (type, key, options = []) => {
+  const renderField = (type, name, options = []) => {
     switch (type) {
-      case 'select':
+      case 'select': {
+        const loadingValue = (dataUpdate?.[name]?.id || dataUpdate?.[name] || options?.[0]?.id) && !options?.length;
+
         return (
-          <Select>
+          <Select disabled={loadingValue} loading={loadingValue}>
             {options?.map((option, index) => (
               <Select.Option key={index} value={option.id}>
                 {t(option.name)}
@@ -28,6 +30,7 @@ export const ModalCommon = ({
             ))}
           </Select>
         );
+      }
       case 'date':
         return <DatePicker format="DD/MM/yyyy" />;
       case 'checkbox':
@@ -64,6 +67,7 @@ export const ModalCommon = ({
         <Row gutter={size === 'large' ? 24 : 0}>
           {fields.map(({ name, label, type, options, required }) => (
             <Col span={size === 'large' ? 12 : 24} key={name}>
+              {console.log(!options?.length)}
               <Form.Item
                 initialValue={
                   type === 'select'

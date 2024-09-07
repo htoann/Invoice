@@ -1,11 +1,39 @@
+import { API_PROVIDER } from '@/utils/apiConst';
+import { dataService } from '@/utils/dataService';
 import { formatTime } from '@/utils/index';
 import { UilEdit, UilTrash } from '@iconscout/react-unicons';
-import { Popconfirm } from 'antd';
+import { notification, Popconfirm } from 'antd';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 
-const useDataTableSource = (list, current, pageSize, showEditModal, handleDelete) => {
+const useDataTableSource = (list, current, pageSize, setState, setList) => {
   const { t } = useTranslation();
+
+  const showEditModal = (data) => {
+    setState((prevState) => ({
+      ...prevState,
+      editVisible: true,
+      update: data,
+    }));
+  };
+
+  const handleDelete = async (id) => {
+    try {
+      await dataService.delete(API_PROVIDER(id));
+      setList(list.filter((account) => account.id !== id));
+
+      notification.success({
+        message: t('Common_Success'),
+        description: t('Common_DeleteSuccess'),
+      });
+    } catch (error) {
+      console.error(error);
+      notification.error({
+        message: t('Common_Failure'),
+        description: t('Common_DeleteFailure'),
+      });
+    }
+  };
 
   const tableDataSource =
     list?.map((item, index) => {

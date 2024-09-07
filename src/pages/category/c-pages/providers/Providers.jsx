@@ -1,9 +1,8 @@
 import { Cards } from '@/components/cards/frame/cards-frame';
 import { PageHeader } from '@/components/page-headers/page-headers';
 import { BorderLessHeading, Main } from '@/container/styled';
-import { API_PROVIDER, API_PROVIDERS } from '@/utils/apiConst';
-import { dataService } from '@/utils/dataService';
-import { Col, Row, notification } from 'antd';
+import { API_PROVIDERS } from '@/utils/apiConst';
+import { Col, Row } from 'antd';
 import { useList } from 'hooks/useListCommon';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -34,27 +33,6 @@ const Providers = () => {
     getList(searchParams);
   }, [current, pageSize, searchParams]);
 
-  const handleDelete = async (id) => {
-    try {
-      await dataService.delete(API_PROVIDER(id));
-      setList(list.filter((account) => account.id !== id));
-
-      notification.success({
-        message: t('Common_Success'),
-        description: t('Common_DeleteSuccess'),
-      });
-    } catch (error) {
-      console.error(error);
-      notification.error({
-        message: t('Common_Failure'),
-        description: t('Common_DeleteFailure'),
-      });
-    }
-  };
-
-  const tableDataSource = useDataTableSource(list, current, pageSize, showEditModal, handleDelete);
-  const dataTableColumn = useDataTableColumn(columnDataProvider, searchParams, setSearchParams, setState);
-
   const rowSelection = {
     onChange: (selectedRowKeys, selectedRows) => {
       setState({ ...state, selectedRowKeys, selectedRows });
@@ -64,13 +42,8 @@ const Providers = () => {
     }),
   };
 
-  const showEditModal = (data) => {
-    setState({
-      ...state,
-      editVisible: true,
-      update: data,
-    });
-  };
+  const tableDataSource = useDataTableSource(list, current, pageSize, setState, setList);
+  const dataTableColumn = useDataTableColumn(columnDataProvider, searchParams, setSearchParams, setState);
 
   return (
     <>
