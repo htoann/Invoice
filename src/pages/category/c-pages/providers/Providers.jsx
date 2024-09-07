@@ -1,20 +1,17 @@
 import { Cards } from '@/components/cards/frame/cards-frame';
-import CustomHeader from '@/components/HeaderCommon';
 import { PageHeader } from '@/components/page-headers/page-headers';
 import { BorderLessHeading, Main } from '@/container/styled';
 import { API_PROVIDER, API_PROVIDERS } from '@/utils/apiConst';
 import { dataService } from '@/utils/dataService';
-import { formatTime } from '@/utils/index';
-import UilEdit from '@iconscout/react-unicons/icons/uil-edit';
-import UilTrash from '@iconscout/react-unicons/icons/uil-trash-alt';
-import { Col, Popconfirm, Row, notification } from 'antd';
+import { Col, Row, notification } from 'antd';
 import { useList } from 'hooks/useListCommon';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
 import CreateProvider from './components/CreateProvider';
 import DataTable from './components/DataTable';
 import EditProvider from './components/EditProvider';
+import useDataTableColumn from './hooks/useDataTableColumn';
+import useDataTableSource from './hooks/useDataTableSource';
 import { columnDataProvider } from './utils';
 
 const Providers = () => {
@@ -55,96 +52,8 @@ const Providers = () => {
     }
   };
 
-  const tableDataSource =
-    list?.map((item, index) => {
-      const stt = (current - 1) * pageSize + index + 1;
-
-      const formattedFields = Object.fromEntries(
-        Object.entries(item).map(([key, value]) => {
-          let formattedValue;
-
-          switch (key) {
-            case 'is_individual':
-              formattedValue = value ? t('Common_Individual') : t('Common_Org');
-              break;
-
-            case 'branch':
-            case 'province':
-            case 'district':
-            case 'commune':
-              formattedValue = value?.name;
-              break;
-
-            case 'is_customer':
-              formattedValue = value ? '✓' : '';
-              break;
-
-            case 'status':
-              formattedValue = value === 1 ? t('Common_Using') : t('Common_NotUsing');
-              break;
-
-            case 'id_issue_day':
-            case 'created_at':
-            case 'updated_at':
-              formattedValue = formatTime(value, 'DD/MM/YYYY');
-              break;
-
-            default:
-              formattedValue = value;
-              break;
-          }
-
-          return [key, <span key={key}>{formattedValue}</span>];
-        }),
-      );
-
-      return {
-        key: item.id,
-        stt,
-        ...formattedFields,
-        action: (
-          <div className="table-actions">
-            <Link className="edit" to="#" onClick={() => showEditModal(item)}>
-              <UilEdit />
-            </Link>
-            <Popconfirm
-              title={t('Common_AreYouSureDelete')}
-              onConfirm={() => handleDelete(item.id)}
-              okText={t('Common_Yes')}
-              cancelText={t('Common_No')}
-            >
-              <Link className="invoice-delete" to="#">
-                <UilTrash />
-              </Link>
-            </Popconfirm>
-          </div>
-        ),
-      };
-    }) || [];
-
-  const dataTableColumn = columnDataProvider.map((col) => ({
-    title:
-      col.key === 'stt' || col.key === 'action' ? (
-        t(col.title)
-      ) : (
-        <CustomHeader
-          title={col.title}
-          name={col.dataIndex}
-          searchParams={searchParams}
-          setSearchParams={setSearchParams}
-          setState={setState}
-        />
-      ),
-    dataIndex: col.dataIndex,
-    key: col.key,
-    sorter:
-      col.key !== 'stt' && col.key !== 'action'
-        ? (a, b) => a[col.dataIndex].props.children.localeCompare(b[col.dataIndex].props.children)
-        : false,
-    fixed: col?.fixed,
-    className: col.key === 'stt' || col.key === 'action' ? '' : 'searchInput',
-    width: col?.width,
-  }));
+  const tableDataSource = useDataTableSource(list, current, pageSize, showEditModal, handleDelete);
+  const dataTableColumn = useDataTableColumn(columnDataProvider, searchParams, setSearchParams, setState);
 
   const rowSelection = {
     onChange: (selectedRowKeys, selectedRows) => {
