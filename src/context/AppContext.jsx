@@ -72,7 +72,6 @@ export const AppProvider = ({ children }) => {
     setSelectedDepartmentId('');
 
     if (!selectedBranchId) {
-      setLoadingDepartments(false);
       return;
     }
 
@@ -95,7 +94,7 @@ export const AppProvider = ({ children }) => {
   const getProjects = async () => {
     setProjects([]);
 
-    if (!selectedDepartmentId) {
+    if (!selectedBranchId && !selectedDepartmentId) {
       return;
     }
 

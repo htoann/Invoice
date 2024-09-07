@@ -7,7 +7,6 @@ import UilEdit from '@iconscout/react-unicons/icons/uil-edit';
 import UilTrash from '@iconscout/react-unicons/icons/uil-trash-alt';
 import { Popconfirm, notification } from 'antd';
 import { useList } from 'hooks/useListCommon';
-import { useUnit } from 'hooks/useUnit';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
@@ -18,7 +17,6 @@ import { columnDataProduct } from './utils';
 
 const Products = () => {
   const { t } = useTranslation();
-  const { EUnit } = useUnit();
 
   const [state, setState] = useState({
     visible: false,
@@ -77,7 +75,7 @@ const Products = () => {
         mahang: <span>{mahang}</span>,
         tenHangBan: <span>{tenHangBan}</span>,
         tenHangMua: <span>{tenHangMua}</span>,
-        donViTinh: <span>{EUnit[donViTinh]}</span>,
+        donViTinh: <span>{donViTinh}</span>,
         taiKhoanHang: <span>{taiKhoanHang}</span>,
         taiKhoanGiaVon: <span>{taiKhoanGiaVon}</span>,
         taiKhoanDoanhThu: <span>{taiKhoanDoanhThu}</span>,

@@ -1,12 +1,12 @@
 import { Button } from '@/components/buttons/buttons';
 import { BasicFormWrapper } from '@/container/styled';
 import { AutoComplete, Form, Input, Select } from 'antd';
-import { useUnit } from 'hooks/useUnit';
 import { useTranslation } from 'react-i18next';
 
 const ModalHangHoa = ({ form, handleOk, state, onCancel, loading, textSubmit }) => {
   const { t } = useTranslation();
-  const { unitOptions } = useUnit();
+
+  const unitOptions = [];
 
   return (
     <BasicFormWrapper>

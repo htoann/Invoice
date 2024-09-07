@@ -14,7 +14,7 @@ export const useGetOrgStructure = () => {
   }, [selectedBranchId]);
 
   useEffect(() => {
-    selectedDepartmentId && getProjects();
+    selectedBranchId && selectedDepartmentId && getProjects();
   }, [selectedBranchId, selectedDepartmentId]);
 
   useEffect(() => {
