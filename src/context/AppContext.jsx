@@ -52,8 +52,8 @@ export const AppProvider = ({ children }) => {
   const [selectedAccountId, setSelectedAccountId] = useState('');
 
   const getBranches = async () => {
+    setLoadingBranches(true);
     try {
-      setLoadingBranches(true);
       const response = await dataService.get(API_BRANCHES);
       setBranches(response.data);
     } catch (error) {
