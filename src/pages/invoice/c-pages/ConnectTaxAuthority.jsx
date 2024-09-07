@@ -1,10 +1,10 @@
 import { Button } from '@/components/buttons/buttons';
-import { Cards } from '@/components/cards/frame/cards-frame';
 import { PageHeader } from '@/components/page-headers/page-headers';
-import { BasicFormWrapper, BorderLessHeading, Main } from '@/container/styled';
+import { BasicFormWrapper } from '@/container/styled';
+import { LayoutContent } from '@/layout/LayoutContent';
 import { API_INVOICES_CONNECT_AUTHORITY } from '@/utils/apiConst';
 import { dataService } from '@/utils/dataService';
-import { Col, Form, Input, notification, Row, Skeleton } from 'antd';
+import { Form, Input, notification, Skeleton } from 'antd';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
@@ -62,45 +62,37 @@ function ConnectTaxAuthority() {
   return (
     <div style={{ width: '35rem', maxWidth: '100%', margin: 'auto' }}>
       <PageHeader className="invoice-page-header-main" title={t('Common_ConnectTaxAuthorities')} />
-      <Main>
-        <Row gutter={15}>
-          <Col xs={24}>
-            <BorderLessHeading>
-              <Cards>
-                {loading ? (
-                  <Skeleton active style={{ marginTop: 30 }} />
-                ) : (
-                  <BasicFormWrapper>
-                    <Form form={form} name="taxConnect" onFinish={handleOk}>
-                      <Form.Item
-                        name="username"
-                        rules={[{ required: true, message: 'Vui lòng nhập tên đăng nhập' }]}
-                        label="Tên đăng nhập"
-                      >
-                        <Input placeholder="name@example.com" />
-                      </Form.Item>
+      <LayoutContent borderLessHeading cards>
+        {loading ? (
+          <Skeleton active style={{ marginTop: 30 }} />
+        ) : (
+          <BasicFormWrapper>
+            <Form form={form} name="taxConnect" onFinish={handleOk}>
+              <Form.Item
+                name="username"
+                rules={[{ required: true, message: 'Vui lòng nhập tên đăng nhập' }]}
+                label="Tên đăng nhập"
+              >
+                <Input placeholder="name@example.com" />
+              </Form.Item>
 
-                      <Form.Item
-                        name="password"
-                        label="Mật khẩu"
-                        rules={[{ required: true, message: 'Vui lòng nhập mật khẩu' }]}
-                      >
-                        <Input.Password placeholder="Mật khẩu" />
-                      </Form.Item>
+              <Form.Item
+                name="password"
+                label="Mật khẩu"
+                rules={[{ required: true, message: 'Vui lòng nhập mật khẩu' }]}
+              >
+                <Input.Password placeholder="Mật khẩu" />
+              </Form.Item>
 
-                      <div style={{ justifyContent: 'end', display: 'flex' }}>
-                        <Button htmlType="submit" size="default" type="primary" loading={saving}>
-                          Cập nhật
-                        </Button>
-                      </div>
-                    </Form>
-                  </BasicFormWrapper>
-                )}
-              </Cards>
-            </BorderLessHeading>
-          </Col>
-        </Row>
-      </Main>
+              <div style={{ justifyContent: 'end', display: 'flex' }}>
+                <Button htmlType="submit" size="default" type="primary" loading={saving}>
+                  Cập nhật
+                </Button>
+              </div>
+            </Form>
+          </BasicFormWrapper>
+        )}
+      </LayoutContent>
     </div>
   );
 }

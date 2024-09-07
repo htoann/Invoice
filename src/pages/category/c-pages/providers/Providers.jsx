@@ -1,8 +1,6 @@
-import { Cards } from '@/components/cards/frame/cards-frame';
 import { PageHeader } from '@/components/page-headers/page-headers';
-import { BorderLessHeading, Main } from '@/container/styled';
+import { LayoutContent } from '@/layout/LayoutContent';
 import { API_PROVIDERS } from '@/utils/apiConst';
-import { Col, Row } from 'antd';
 import { useList } from 'hooks/useListCommon';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -48,24 +46,16 @@ const Providers = () => {
   return (
     <>
       <PageHeader className="invoice-page-header-main" title={t('Common_ListProviders')} />
-      <Main>
-        <Row gutter={15}>
-          <Col xs={24}>
-            <BorderLessHeading>
-              <Cards headless>
-                <DataTable
-                  tableData={tableDataSource}
-                  columns={dataTableColumn}
-                  rowSelection={rowSelection}
-                  state={state}
-                  setState={setState}
-                  loading={loading}
-                />
-              </Cards>
-            </BorderLessHeading>
-          </Col>
-        </Row>
-      </Main>
+      <LayoutContent borderLessHeading cards cardsProps={{ headless: 'headless' }}>
+        <DataTable
+          tableData={tableDataSource}
+          columns={dataTableColumn}
+          rowSelection={rowSelection}
+          state={state}
+          setState={setState}
+          loading={loading}
+        />
+      </LayoutContent>
 
       {state.visible && <CreateProvider state={state} setState={setState} list={list} setList={setList} />}
 

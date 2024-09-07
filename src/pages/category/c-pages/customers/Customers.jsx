@@ -1,13 +1,12 @@
-import { Cards } from '@/components/cards/frame/cards-frame';
 import CustomHeader from '@/components/HeaderCommon';
 import { PageHeader } from '@/components/page-headers/page-headers';
-import { BorderLessHeading, Main } from '@/container/styled';
+import { LayoutContent } from '@/layout/LayoutContent';
 import { API_CUSTOMER, API_CUSTOMERS } from '@/utils/apiConst';
 import { dataService } from '@/utils/dataService';
 import { formatTime } from '@/utils/index';
 import UilEdit from '@iconscout/react-unicons/icons/uil-edit';
 import UilTrash from '@iconscout/react-unicons/icons/uil-trash-alt';
-import { Col, Popconfirm, Row, notification } from 'antd';
+import { Popconfirm, notification } from 'antd';
 import { useList } from 'hooks/useListCommon';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -150,24 +149,16 @@ const Customers = () => {
   return (
     <>
       <PageHeader className="invoice-page-header-main" title={t('Common_ListCustomers')} />
-      <Main>
-        <Row gutter={15}>
-          <Col xs={24}>
-            <BorderLessHeading>
-              <Cards headless>
-                <DataTable
-                  tableData={tableDataSource}
-                  columns={dataTableColumn}
-                  rowSelection={rowSelection}
-                  state={state}
-                  setState={setState}
-                  loading={loading}
-                />
-              </Cards>
-            </BorderLessHeading>
-          </Col>
-        </Row>
-      </Main>
+      <LayoutContent borderLessHeading cards cardsProps={{ headless: 'headless' }}>
+        <DataTable
+          tableData={tableDataSource}
+          columns={dataTableColumn}
+          rowSelection={rowSelection}
+          state={state}
+          setState={setState}
+          loading={loading}
+        />
+      </LayoutContent>
 
       {state.visible && <CreateCustomer state={state} setState={setState} list={list} setList={setList} />}
 

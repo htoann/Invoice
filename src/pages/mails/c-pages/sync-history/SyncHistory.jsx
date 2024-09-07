@@ -1,9 +1,7 @@
-import { Cards } from '@/components/cards/frame/cards-frame';
 import { PageHeader } from '@/components/page-headers/page-headers';
 import { MailAccountSelect } from '@/components/select-common/MailAccountSelect';
-import { BorderLessHeading, Main } from '@/container/styled';
+import { LayoutContent } from '@/layout/LayoutContent';
 import { API_MAIL_TASK_HISTORIES } from '@/utils/apiConst';
-import { Col, Row } from 'antd';
 import { useList } from 'hooks/useListCommon';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -44,28 +42,20 @@ const SyncHistory = () => {
   return (
     <>
       <PageHeader className="invoice-page-header-main" title={t('Common_SyncHistory')} />
-      <Main>
-        <Row gutter={15}>
-          <Col xs={24}>
-            <BorderLessHeading>
-              <Cards>
-                <div style={{ display: 'flex', gap: 20, flexWrap: 'auto' }}>
-                  <div style={{ display: 'flex', gap: 2, flexWrap: 'auto', alignItems: 'center' }}>
-                    <MailAccountSelect onChange={handleSelectAccount} value={searchParams?.accountId} />
-                  </div>
-                </div>
-                <DataTable
-                  tableData={tableDataSource}
-                  columns={dataTableColumn}
-                  pagination={pagination}
-                  setState={setState}
-                  loading={loading}
-                />
-              </Cards>
-            </BorderLessHeading>
-          </Col>
-        </Row>
-      </Main>
+      <LayoutContent borderLessHeading cards>
+        <div style={{ display: 'flex', gap: 20, flexWrap: 'auto' }}>
+          <div style={{ display: 'flex', gap: 2, flexWrap: 'auto', alignItems: 'center' }}>
+            <MailAccountSelect onChange={handleSelectAccount} value={searchParams?.accountId} />
+          </div>
+        </div>
+        <DataTable
+          tableData={tableDataSource}
+          columns={dataTableColumn}
+          pagination={pagination}
+          setState={setState}
+          loading={loading}
+        />
+      </LayoutContent>
     </>
   );
 };

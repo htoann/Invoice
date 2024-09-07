@@ -1,8 +1,6 @@
-import { Cards } from '@/components/cards/frame/cards-frame';
 import { PageHeader } from '@/components/page-headers/page-headers';
-import { BorderLessHeading, Main } from '@/container/styled';
+import { LayoutContent } from '@/layout/LayoutContent';
 import { API_INVOICES } from '@/utils/apiConst';
-import { Col, Row } from 'antd';
 import { useList } from 'hooks/useListCommon';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -42,24 +40,16 @@ function InvoiceList() {
   return (
     <>
       <PageHeader className="invoice-page-header-main" title={pageTitle} routes={pageRoutes} />
-      <Main>
-        <Row gutter={15}>
-          <Col xs={24}>
-            <BorderLessHeading>
-              <Cards headless>
-                <DataTable
-                  tableData={handleTableDataSource(invoiceList, current, pageSize)}
-                  columns={useInvoiceDataTable()}
-                  state={state}
-                  setState={setState}
-                  getInvoiceList={getInvoiceList}
-                  loading={loading}
-                />
-              </Cards>
-            </BorderLessHeading>
-          </Col>
-        </Row>
-      </Main>
+      <LayoutContent borderLessHeading cards cardsProps={{ headless: 'headless' }}>
+        <DataTable
+          tableData={handleTableDataSource(invoiceList, current, pageSize)}
+          columns={useInvoiceDataTable()}
+          state={state}
+          setState={setState}
+          getInvoiceList={getInvoiceList}
+          loading={loading}
+        />
+      </LayoutContent>
     </>
   );
 }

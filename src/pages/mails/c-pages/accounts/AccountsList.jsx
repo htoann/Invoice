@@ -1,13 +1,12 @@
 /* eslint-disable no-unused-vars */
-import { Button, Col, notification, Row } from 'antd';
+import { Button, notification } from 'antd';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 
-import { Cards } from '@/components/cards/frame/cards-frame';
 import { FilterOrgStructure } from '@/components/FilterOrgStructure';
 import { PageHeader } from '@/components/page-headers/page-headers';
-import { BorderLessHeading, Main } from '@/container/styled';
+import { LayoutContent } from '@/layout/LayoutContent';
 import { API_MAILS_ACCOUNT_BY_ACCOUNT_ID, API_MAILS_ACCOUNTS } from '@/utils/apiConst';
 import { dataService } from '@/utils/dataService';
 import { useAppState } from 'context/AppContext';
@@ -133,34 +132,26 @@ const AccountList = () => {
   return (
     <>
       <PageHeader className="invoice-page-header-main" title={t('Mail_AccountList_Title')} />
-      <Main>
-        <Row gutter={15}>
-          <Col xs={24}>
-            <BorderLessHeading>
-              <Cards>
-                <FilterOrgStructure
-                  onChangeBranch={handleChangeBranch}
-                  onChangeDepartment={handleChangeDepartment}
-                  onChangeProject={handleChangeProject}
-                  branchId={searchParams?.branchId}
-                  departmentId={searchParams?.departmentId}
-                  projectId={searchParams?.projectId}
-                />
-                <Button onClick={showModal} type="primary" key="1" style={{ marginTop: 25 }}>
-                  <Link to="#">+ {t('Mail_AccountList_Create')}</Link>
-                </Button>
-                <DataTable
-                  tableData={tableDataSource}
-                  columns={dataTableColumn}
-                  pagination={pagination}
-                  setState={setState}
-                  loading={loading}
-                />
-              </Cards>
-            </BorderLessHeading>
-          </Col>
-        </Row>
-      </Main>
+      <LayoutContent borderLessHeading cards>
+        <FilterOrgStructure
+          onChangeBranch={handleChangeBranch}
+          onChangeDepartment={handleChangeDepartment}
+          onChangeProject={handleChangeProject}
+          branchId={searchParams?.branchId}
+          departmentId={searchParams?.departmentId}
+          projectId={searchParams?.projectId}
+        />
+        <Button onClick={showModal} type="primary" key="1" style={{ marginTop: 25 }}>
+          <Link to="#">+ {t('Mail_AccountList_Create')}</Link>
+        </Button>
+        <DataTable
+          tableData={tableDataSource}
+          columns={dataTableColumn}
+          pagination={pagination}
+          setState={setState}
+          loading={loading}
+        />
+      </LayoutContent>
 
       {visible && <CreateAccount state={state} setState={setState} accounts={accounts} setAccounts={setAccounts} />}
 
