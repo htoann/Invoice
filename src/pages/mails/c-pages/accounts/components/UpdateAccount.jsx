@@ -1,6 +1,5 @@
 import { Modal } from '@/components/modals/antd-modals';
-import { API_MAILS_ACCOUNT_BY_ACCOUNT_ID } from '@/utils/apiConst';
-import { dataService } from '@/utils/dataService';
+import { API_MAILS_ACCOUNT_BY_ACCOUNT_ID, dataService } from '@/service';
 import { Form, notification } from 'antd';
 import { useAppState } from 'context/AppContext';
 import { useState } from 'react';

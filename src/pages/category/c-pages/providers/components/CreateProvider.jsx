@@ -1,7 +1,6 @@
 import { ModalCommon } from '@/components/ModalCommon';
 import { Modal } from '@/components/modals/antd-modals';
-import { API_PROVIDERS } from '@/utils/apiConst';
-import { dataService } from '@/utils/dataService';
+import { API_PROVIDERS, dataService } from '@/service';
 import { Form, notification } from 'antd';
 import { useAppState } from 'context/AppContext';
 import { useGetOrgStructure } from 'hooks/useGetOrgStructure';

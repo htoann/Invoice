@@ -1,5 +1,4 @@
-import { API_PROVIDER } from '@/utils/apiConst';
-import { dataService } from '@/utils/dataService';
+import { API_PROVIDER, dataService } from '@/service';
 import { formatTime } from '@/utils/index';
 import { UilEdit, UilTrash } from '@iconscout/react-unicons';
 import { notification, Popconfirm } from 'antd';

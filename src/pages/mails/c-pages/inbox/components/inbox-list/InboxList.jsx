@@ -1,5 +1,5 @@
 import { useGetMailAccounts } from '@/pages/mails/hooks/useGetMailAccounts';
-import { API_INBOXES_BY_ACCOUNT_ID } from '@/utils/apiConst';
+import { API_INBOXES_BY_ACCOUNT_ID } from '@/service';
 import { createOptions } from '@/utils/index';
 import { Empty, Input, Select, Skeleton } from 'antd';
 import { useAppState } from 'context/AppContext';

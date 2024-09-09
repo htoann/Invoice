@@ -1,7 +1,7 @@
+import { getCookie, setCookie } from '@/utils/cookie';
 import { ACCESS_TOKEN, API_ENDPOINT, clearLogoutLocalStorageAndCookie, REFRESH_TOKEN } from '@/utils/index';
 import axios from 'axios';
 import { API_LOGIN, API_REGISTER } from './apiConst';
-import { getCookie, setCookie } from './cookie';
 
 const whiteListAPIs = [API_LOGIN, API_REGISTER];
 

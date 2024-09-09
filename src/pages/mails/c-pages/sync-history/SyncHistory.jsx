@@ -1,7 +1,7 @@
 import { PageHeader } from '@/components/page-headers/page-headers';
 import { MailAccountSelect } from '@/components/select-common/MailAccountSelect';
 import { LayoutContent } from '@/layout/LayoutContent';
-import { API_MAIL_TASK_HISTORIES } from '@/utils/apiConst';
+import { API_MAIL_TASK_HISTORIES } from '@/service';
 import { useList } from 'hooks/useListCommon';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';

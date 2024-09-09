@@ -1,5 +1,4 @@
-import { API_PROVINCES } from '@/utils/apiConst';
-import { dataService } from '@/utils/dataService';
+import { API_PROVINCES, dataService } from '@/service';
 import { notification } from 'antd';
 import { useEffect, useState } from 'react';
 

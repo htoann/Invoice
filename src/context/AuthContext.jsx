@@ -1,6 +1,5 @@
-import { API_LOGIN, API_REGISTER, API_USER_INFO } from '@/utils/apiConst';
+import { API_LOGIN, API_REGISTER, API_USER_INFO, dataService } from '@/service';
 import { setCookie } from '@/utils/cookie';
-import { dataService } from '@/utils/dataService';
 import { getLocalStorage, setLocalStorage } from '@/utils/localStorage';
 import { notification } from 'antd';
 import { jwtDecode } from 'jwt-decode';

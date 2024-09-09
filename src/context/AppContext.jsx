@@ -1,5 +1,4 @@
-import { API_BRANCHES, API_DEPARTMENTS, API_PROJECTS } from '@/utils/apiConst';
-import { dataService } from '@/utils/dataService';
+import { API_BRANCHES, API_DEPARTMENTS, API_PROJECTS, dataService } from '@/service';
 import { notification } from 'antd';
 import Cookies from 'js-cookie';
 import { createContext, useCallback, useContext, useState } from 'react';

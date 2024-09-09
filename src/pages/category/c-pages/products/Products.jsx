@@ -1,8 +1,7 @@
 import CustomHeader from '@/components/HeaderCommon';
 import { PageHeader } from '@/components/page-headers/page-headers';
 import { LayoutContent } from '@/layout/LayoutContent';
-import { API_PRODUCT, API_PRODUCTS } from '@/utils/apiConst';
-import { dataService } from '@/utils/dataService';
+import { API_PRODUCT, API_PRODUCTS, dataService } from '@/service';
 import UilEdit from '@iconscout/react-unicons/icons/uil-edit';
 import UilTrash from '@iconscout/react-unicons/icons/uil-trash-alt';
 import { Popconfirm, notification } from 'antd';

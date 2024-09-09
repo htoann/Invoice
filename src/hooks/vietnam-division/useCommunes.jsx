@@ -1,5 +1,4 @@
-import { API_COMMUNES } from '@/utils/apiConst';
-import { dataService } from '@/utils/dataService';
+import { API_COMMUNES, dataService } from '@/service';
 import { notification } from 'antd';
 import { useEffect, useState } from 'react';
 

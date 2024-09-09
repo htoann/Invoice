@@ -1,8 +1,7 @@
 import { Button } from '@/components/buttons/buttons';
 import { Tab } from '@/components/tabs/tabs';
 import { TableWrapper } from '@/container/styled';
-import { API_INVOICES_EXCEL } from '@/utils/apiConst';
-import { dataService } from '@/utils/dataService';
+import { API_INVOICES_EXCEL, dataService } from '@/service';
 import { defaultPaginationConfig, downloadFile, formatTime } from '@/utils/index';
 import { DownloadOutlined } from '@ant-design/icons';
 import { DatePicker, notification, Space, Table } from 'antd';

@@ -1,7 +1,7 @@
 import { Cards } from '@/components/cards/frame/cards-frame';
 import { BorderLessHeading, TableDefaultStyle } from '@/container/styled';
 import axios from '@/mock/index';
-import { API_BUSINESS_STATUS } from '@/utils/apiConst';
+import { API_BUSINESS_STATUS } from '@/service';
 import { Table } from 'antd';
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';

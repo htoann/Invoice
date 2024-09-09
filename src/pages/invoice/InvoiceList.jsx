@@ -1,6 +1,6 @@
 import { PageHeader } from '@/components/page-headers/page-headers';
 import { LayoutContent } from '@/layout/LayoutContent';
-import { API_INVOICES } from '@/utils/apiConst';
+import { API_INVOICES } from '@/service';
 import { useList } from 'hooks/useListCommon';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';

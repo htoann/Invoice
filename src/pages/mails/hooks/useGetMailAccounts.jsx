@@ -1,5 +1,4 @@
-import { API_MAILS_ACCOUNTS } from '@/utils/apiConst';
-import { dataService } from '@/utils/dataService';
+import { API_MAILS_ACCOUNTS, dataService } from '@/service';
 import { notification } from 'antd';
 import { useAppState } from 'context/AppContext';
 import { useEffect, useState } from 'react';

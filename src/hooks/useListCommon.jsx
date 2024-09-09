@@ -1,4 +1,4 @@
-import { dataService } from '@/utils/dataService';
+import { dataService } from '@/service';
 import { notification } from 'antd';
 import { useState } from 'react';
 import { convertKeysToSnakeCase } from '../utils';

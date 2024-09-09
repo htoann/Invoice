@@ -1,6 +1,5 @@
 import { Modal } from '@/components/modals/antd-modals';
-import { API_PRODUCTS } from '@/utils/apiConst';
-import { dataService } from '@/utils/dataService';
+import { API_PRODUCTS, dataService } from '@/service';
 import { Form, notification } from 'antd';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';

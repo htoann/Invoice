@@ -1,4 +1,4 @@
-import { API_INVOICES_TAXES_NUMBER } from '@/utils/apiConst';
+import { API_INVOICES_TAXES_NUMBER } from '@/service';
 import { Select } from 'antd';
 import { useList } from 'hooks/useListCommon';
 import { useEffect, useState } from 'react';
