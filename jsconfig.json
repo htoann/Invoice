@@ -14,7 +14,8 @@
       "@/routes/*": ["./routes/*"],
       "@/static/*": ["./static/*"],
       "@/utils/*": ["./utils/*"],
-      "@/mock/*": ["./mock/*"]
+      "@/mock/*": ["./mock/*"],
+      "@/service/*": ["./service/*"]
     }
   },
   "exclude": ["node_modules", "build"]

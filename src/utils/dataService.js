@@ -13,125 +13,67 @@ const processQueue = (error, accessToken = null) => {
   failedQueue = [];
 };
 
-const authHeader = () => {
-  const token = getCookie(ACCESS_TOKEN);
-  return token ? { Authorization: `Bearer ${token}` } : {};
-};
-
-const client = axios.create({
-  baseURL: API_ENDPOINT,
-  headers: { ...authHeader(), 'Content-Type': 'application/json' },
-});
-
 class DataService {
-  static get(path = '', params = {}, config = {}) {
-    return client({
-      method: 'GET',
-      url: path,
-      headers: { ...authHeader() },
-      params,
-      ...config,
-    });
-  }
-
-  static post(path = '', data = {}, optionalHeader = {}) {
-    return client({
-      method: 'POST',
-      url: path,
-      data,
-      headers: { ...authHeader(), ...optionalHeader },
-    });
-  }
-
-  static patch(path = '', data = {}) {
-    return client({
-      method: 'PATCH',
-      url: path,
-      data: JSON.stringify(data),
-      headers: { ...authHeader() },
-    });
-  }
-
-  static put(path = '', data = {}) {
-    return client({
-      method: 'PUT',
-      url: path,
-      data: JSON.stringify(data),
-      headers: { ...authHeader() },
-    });
-  }
-
-  static delete(path = '') {
-    return client({
-      method: 'DELETE',
-      url: path,
-      headers: { ...authHeader() },
-    });
-  }
-}
-
-const refreshAccessToken = async () => {
-  const refreshToken = getCookie(REFRESH_TOKEN);
-  if (!refreshToken) {
-    return Promise.reject(new Error('No token available'));
-  }
-
-  try {
-    const response = await axios.post(`${API_ENDPOINT}/auth/refresh/`, {
-      refresh: refreshToken,
+  constructor() {
+    this.client = axios.create({
+      baseURL: API_ENDPOINT,
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.authHeader(),
+      },
     });
 
-    if (response?.data?.token) {
-      const { access_token, refresh_token } = response.data.token;
-      setCookie(ACCESS_TOKEN, access_token);
-      setCookie(REFRESH_TOKEN, refresh_token);
-      return access_token;
-    }
-  } catch (error) {
-    handleRefreshError(error);
+    this.initializeInterceptors();
   }
-};
 
-const handleRefreshError = (error) => {
-  console.error('Failed to refresh token:', error);
-  refreshTokenPromise = null;
-  clearLogoutLocalStorageAndCookie();
-  return Promise.reject(error);
-};
+  authHeader() {
+    const token = getCookie(ACCESS_TOKEN);
+    return token ? { Authorization: `Bearer ${token}` } : {};
+  }
 
-client.interceptors.request.use((config) => {
-  config.headers = { ...config.headers, ...authHeader() };
-  return config;
-});
+  initializeInterceptors() {
+    this.client.interceptors.request.use(
+      (config) => {
+        config.headers = { ...config.headers, ...this.authHeader() };
+        return config;
+      },
+      (error) => Promise.reject(error),
+    );
 
-client.interceptors.response.use(
-  (response) => response,
-  async (error) => {
+    this.client.interceptors.response.use(
+      (response) => response,
+      (error) => this.handleResponseError(error),
+    );
+  }
+
+  async handleResponseError(error) {
     const { response, config } = error;
     if (response?.status === 401 && !whiteListAPIs.includes(config.url)) {
-      const originalRequest = error.config;
+      const originalRequest = config;
 
       if (refreshTokenPromise) {
         return refreshTokenPromise
           .then((accessToken) => {
-            originalRequest.headers['Authorization'] = `Bearer ${accessToken}`;
-            return client(originalRequest);
+            if (accessToken) {
+              originalRequest.headers['Authorization'] = `Bearer ${accessToken}`;
+              return this.client(originalRequest);
+            }
           })
           .catch((err) => Promise.reject(err));
       }
 
-      refreshTokenPromise = refreshAccessToken()
+      refreshTokenPromise = this.refreshAccessToken()
         .then((accessToken) => {
           refreshTokenPromise = null;
-          client.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
-          processQueue(null, accessToken);
+          if (accessToken) {
+            this.client.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
+            processQueue(null, accessToken);
 
-          originalRequest.headers['Authorization'] = `Bearer ${accessToken}`;
-          return client(originalRequest);
+            originalRequest.headers['Authorization'] = `Bearer ${accessToken}`;
+            return this.client(originalRequest);
+          }
         })
-        .catch((error) => {
-          handleRefreshError(error);
-        });
+        .catch(this.handleRefreshError);
 
       return new Promise((resolve, reject) => {
         failedQueue.push({ resolve, reject });
@@ -139,7 +81,64 @@ client.interceptors.response.use(
     }
 
     return Promise.reject(error);
-  },
-);
+  }
 
-export { DataService as dataService };
+  async refreshAccessToken() {
+    const refreshToken = getCookie(REFRESH_TOKEN);
+    if (!refreshToken) {
+      return Promise.reject(new Error('No refresh token available'));
+    }
+
+    try {
+      const response = await axios.post(`${API_ENDPOINT}/auth/refresh/`, {
+        refresh: refreshToken,
+      });
+
+      if (response?.data?.token) {
+        const { access_token, refresh_token } = response.data.token;
+        setCookie(ACCESS_TOKEN, access_token);
+        setCookie(REFRESH_TOKEN, refresh_token);
+        return access_token;
+      }
+    } catch (error) {
+      return this.handleRefreshError(error);
+    }
+  }
+
+  handleRefreshError(error) {
+    console.error('Failed to refresh token:', error);
+    refreshTokenPromise = null;
+    clearLogoutLocalStorageAndCookie();
+    return Promise.reject(error);
+  }
+
+  async get(path, params = {}, config = {}) {
+    return this.client.get(path, { params, ...config });
+  }
+
+  async post(path, data = {}, optionalHeader = {}) {
+    return this.client.post(path, data, {
+      headers: { ...this.authHeader(), ...optionalHeader },
+    });
+  }
+
+  async patch(path, data = {}) {
+    return this.client.patch(path, data, {
+      headers: { ...this.authHeader() },
+    });
+  }
+
+  async put(path, data = {}) {
+    return this.client.put(path, data, {
+      headers: { ...this.authHeader() },
+    });
+  }
+
+  async delete(path) {
+    return this.client.delete(path, {
+      headers: { ...this.authHeader() },
+    });
+  }
+}
+
+export const dataService = new DataService();
