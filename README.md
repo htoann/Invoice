@@ -1,8 +1,6 @@
 # 🚀 Invoice System
 
-## Just do it
-
-[Invoice on vercel](https://invoice-sys.vercel.app/)
+[Invoice on Vercel](https://invoice-sys.vercel.app/)
 
 ---
 
