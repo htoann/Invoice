@@ -1,14 +1,12 @@
 import { Modal } from '@/components/modals/antd-modals';
 import { API_MAILS_ACCOUNTS, dataService } from '@/service';
 import { Form, notification } from 'antd';
-import { useAppState } from 'context/AppContext';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ModalAccount } from './Modal';
 
 export const CreateAccount = ({ state, setState, accounts, setAccounts }) => {
   const { t } = useTranslation();
-  const { departments } = useAppState();
   const [form] = Form.useForm();
   const [loading, setLoading] = useState(false);
 
@@ -57,7 +55,6 @@ export const CreateAccount = ({ state, setState, accounts, setAccounts }) => {
           onCancel={onCancel}
           loading={loading}
           textSubmit={t('Common_Create')}
-          departments={departments}
         />
       </div>
     </Modal>
