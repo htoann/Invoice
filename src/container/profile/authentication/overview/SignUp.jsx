@@ -1,7 +1,6 @@
 import { Checkbox } from '@/components/checkbox/checkbox';
 import { Button, Col, Form, Input, Row } from 'antd';
 import { useAuth } from 'context/AuthContext';
-import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthFormWrap } from './Style';
@@ -11,16 +10,8 @@ function SignUp() {
   const { register } = useAuth();
   const navigate = useNavigate();
 
-  const [state, setState] = useState({
-    values: null,
-    checked: null,
-  });
   const handleSubmit = (values) => {
     register(values, () => navigate('/'));
-  };
-
-  const onChange = (checked) => {
-    setState({ ...state, checked });
   };
 
   return (
@@ -57,7 +48,7 @@ function SignUp() {
               </Form.Item>
 
               <div className="invoice-auth-extra-links">
-                <Checkbox onChange={onChange} checked={state.checked}>
+                <Checkbox>
                   Tạo tài khoản nghĩa là bạn đồng ý với Điều khoản dịch vụ và Chính sách quyền riêng tư của chúng tôi
                 </Checkbox>
               </div>
