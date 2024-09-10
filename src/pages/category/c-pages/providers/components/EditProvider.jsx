@@ -1,5 +1,4 @@
 import { ModalCommon } from '@/components/ModalCommon';
-import { Modal } from '@/components/modals';
 import { API_PROVIDER, dataService } from '@/service';
 import { Form, notification } from 'antd';
 import { useAppState } from 'context/AppContext';
@@ -86,21 +85,20 @@ const EditProvider = ({ state, setState, list, setList }) => {
   };
 
   return (
-    <Modal title={t('Provider_Update')} open={state.editVisible} onCancel={onCancel} width={1000}>
-      <div className="project-modal">
-        <ModalCommon
-          form={form}
-          handleOk={handleOk}
-          onCancel={onCancel}
-          loading={loading}
-          textSubmit={t('Common_Update')}
-          fields={fields}
-          onValuesChange={onFormValuesChange}
-          size="large"
-          dataUpdate={state.update}
-        />
-      </div>
-    </Modal>
+    <ModalCommon
+      width={1000}
+      title={t('Provider_Update')}
+      open={state.editVisible}
+      form={form}
+      handleOk={handleOk}
+      onCancel={onCancel}
+      loading={loading}
+      textSubmit={t('Common_Update')}
+      fields={fields}
+      onValuesChange={onFormValuesChange}
+      size="large"
+      dataUpdate={state.update}
+    />
   );
 };
 

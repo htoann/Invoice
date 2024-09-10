@@ -1,5 +1,4 @@
 import { ModalCommon } from '@/components/ModalCommon';
-import { Modal } from '@/components/modals';
 import { API_PROVIDERS, dataService } from '@/service';
 import { Form, notification } from 'antd';
 import { useAppState } from 'context/AppContext';
@@ -87,20 +86,19 @@ const CreateProvider = ({ state, setState, list, setList }) => {
   };
 
   return (
-    <Modal title={t('Provider_Create')} open={state.visible} onCancel={onCancel} width={1000}>
-      <div className="project-modal">
-        <ModalCommon
-          form={form}
-          handleOk={handleOk}
-          onCancel={onCancel}
-          loading={loading}
-          textSubmit={t('Common_Create')}
-          fields={fields}
-          onValuesChange={onFormValuesChange}
-          size="large"
-        />
-      </div>
-    </Modal>
+    <ModalCommon
+      width={1000}
+      open={state.visible}
+      title={t('Provider_Create')}
+      form={form}
+      handleOk={handleOk}
+      onCancel={onCancel}
+      loading={loading}
+      textSubmit={t('Common_Create')}
+      fields={fields}
+      onValuesChange={onFormValuesChange}
+      size="large"
+    />
   );
 };
 

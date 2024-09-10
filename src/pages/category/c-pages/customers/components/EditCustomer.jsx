@@ -1,5 +1,4 @@
 import { ModalCommon } from '@/components/ModalCommon';
-import { Modal } from '@/components/modals';
 import { API_CUSTOMER, dataService } from '@/service';
 import { Form, notification } from 'antd';
 import { useState } from 'react';
@@ -49,20 +48,19 @@ const EditCustomer = ({ state, setState, list, setList }) => {
   };
 
   return (
-    <Modal title={t('Customer_Update')} open={state.editVisible} onCancel={onCancel} width={1000}>
-      <div className="project-modal">
-        <ModalCommon
-          form={form}
-          handleOk={handleOk}
-          onCancel={onCancel}
-          loading={loading}
-          textSubmit={t('Common_Update')}
-          fields={fieldsModalCustomer}
-          size="large"
-          dataUpdate={state.update}
-        />
-      </div>
-    </Modal>
+    <ModalCommon
+      title={t('Customer_Update')}
+      open={state.editVisible}
+      form={form}
+      handleOk={handleOk}
+      onCancel={onCancel}
+      loading={loading}
+      textSubmit={t('Common_Update')}
+      fields={fieldsModalCustomer}
+      size="large"
+      dataUpdate={state.update}
+      width={1000}
+    />
   );
 };
 

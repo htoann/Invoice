@@ -1,4 +1,5 @@
 import { Button } from '@/components/buttons';
+import { Modal } from '@/components/modals';
 import { BasicFormWrapper } from '@/container/styled';
 import { AutoComplete, Checkbox, Col, DatePicker, Form, Input, InputNumber, Row, Select } from 'antd';
 import { useTranslation } from 'react-i18next';
@@ -13,6 +14,9 @@ export const ModalCommon = ({
   fields,
   onValuesChange,
   size = 'default',
+  title,
+  open,
+  width = 620,
 }) => {
   const { t } = useTranslation();
 
@@ -66,38 +70,40 @@ export const ModalCommon = ({
   };
 
   return (
-    <BasicFormWrapper>
-      <Form form={form} name="contactEdit" onFinish={handleOk} autoComplete="off" onValuesChange={onValuesChange}>
-        <Row gutter={size === 'large' ? 24 : 0}>
-          {fields.map(({ name, label, type, options, required, rules }) => (
-            <Col span={size === 'large' ? 12 : 24} key={name}>
-              <Form.Item
-                initialValue={
-                  type === 'select'
-                    ? dataUpdate?.[name]?.id || dataUpdate?.[name] || options?.[0]?.id
-                    : dataUpdate?.[name]
-                }
-                label={t(label)}
-                name={name}
-                valuePropName={type === 'checkbox' ? 'checked' : 'value'}
-                rules={getRules(type, required, rules)}
-                style={{ marginBottom: 14 }}
-              >
-                {renderField(type, name, options)}
-              </Form.Item>
-            </Col>
-          ))}
-        </Row>
+    <Modal title={title} open={open} onCancel={onCancel} width={width}>
+      <BasicFormWrapper>
+        <Form form={form} name="contactEdit" onFinish={handleOk} autoComplete="off" onValuesChange={onValuesChange}>
+          <Row gutter={size === 'large' ? 24 : 0}>
+            {fields.map(({ name, label, type, options, required, rules }) => (
+              <Col span={size === 'large' ? 12 : 24} key={name}>
+                <Form.Item
+                  initialValue={
+                    type === 'select'
+                      ? dataUpdate?.[name]?.id || dataUpdate?.[name] || options?.[0]?.id
+                      : dataUpdate?.[name]
+                  }
+                  label={t(label)}
+                  name={name}
+                  valuePropName={type === 'checkbox' ? 'checked' : 'value'}
+                  rules={getRules(type, required, rules)}
+                  style={{ marginBottom: 14 }}
+                >
+                  {renderField(type, name, options)}
+                </Form.Item>
+              </Col>
+            ))}
+          </Row>
 
-        <div style={{ justifyContent: 'end', display: 'flex' }}>
-          <Button size="default" type="white" outlined style={{ marginRight: 8 }} onClick={onCancel}>
-            {t('Common_Cancel')}
-          </Button>
-          <Button type="primary" htmlType="submit" size="default" key="submit" loading={loading}>
-            {textSubmit}
-          </Button>
-        </div>
-      </Form>
-    </BasicFormWrapper>
+          <div style={{ justifyContent: 'end', display: 'flex' }}>
+            <Button size="default" type="white" outlined style={{ marginRight: 8 }} onClick={onCancel}>
+              {t('Common_Cancel')}
+            </Button>
+            <Button type="primary" htmlType="submit" size="default" key="submit" loading={loading}>
+              {textSubmit}
+            </Button>
+          </div>
+        </Form>
+      </BasicFormWrapper>
+    </Modal>
   );
 };

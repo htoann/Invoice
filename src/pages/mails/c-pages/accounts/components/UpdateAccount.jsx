@@ -1,4 +1,3 @@
-import { Modal } from '@/components/modals';
 import { API_MAILS_ACCOUNT_BY_ACCOUNT_ID, dataService } from '@/service';
 import { Form, notification } from 'antd';
 import { useState } from 'react';
@@ -44,15 +43,15 @@ export const UpdateAccount = ({ state, setState, accounts, setAccounts }) => {
   };
 
   return (
-    <Modal title={t('Mail_UpdateAccount_Title')} open={state.editVisible} onCancel={onCancel}>
-      <ModalAccount
-        form={form}
-        handleOk={handleOk}
-        state={state}
-        onCancel={onCancel}
-        loading={loading}
-        textSubmit={t('Common_Save')}
-      />
-    </Modal>
+    <ModalAccount
+      title={t('Mail_UpdateAccount_Title')}
+      open={state.editVisible}
+      form={form}
+      handleOk={handleOk}
+      state={state}
+      onCancel={onCancel}
+      loading={loading}
+      textSubmit={t('Common_Save')}
+    />
   );
 };

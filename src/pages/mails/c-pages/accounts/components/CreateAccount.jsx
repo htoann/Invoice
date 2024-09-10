@@ -1,4 +1,3 @@
-import { Modal } from '@/components/modals';
 import { API_MAILS_ACCOUNTS, dataService } from '@/service';
 import { Form, notification } from 'antd';
 import { useState } from 'react';
@@ -47,16 +46,14 @@ export const CreateAccount = ({ state, setState, accounts, setAccounts }) => {
   };
 
   return (
-    <Modal title={t('Mail_CreateAccount_Title')} open={state.visible} onCancel={onCancel}>
-      <div className="project-modal">
-        <ModalAccount
-          form={form}
-          handleOk={handleOk}
-          onCancel={onCancel}
-          loading={loading}
-          textSubmit={t('Common_Create')}
-        />
-      </div>
-    </Modal>
+    <ModalAccount
+      title={t('Mail_CreateAccount_Title')}
+      open={state.visible}
+      form={form}
+      handleOk={handleOk}
+      onCancel={onCancel}
+      loading={loading}
+      textSubmit={t('Common_Create')}
+    />
   );
 };

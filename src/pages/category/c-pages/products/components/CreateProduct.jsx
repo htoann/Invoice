@@ -1,5 +1,4 @@
 import { ModalCommon } from '@/components/ModalCommon';
-import { Modal } from '@/components/modals';
 import { API_PRODUCTS, dataService } from '@/service';
 import { Form, notification } from 'antd';
 import { useState } from 'react';
@@ -48,18 +47,16 @@ const CreateProduct = ({ state, setState, list, setList }) => {
   };
 
   return (
-    <Modal title={t('Product_Create_Title')} open={state.visible} onCancel={onCancel}>
-      <div className="project-modal">
-        <ModalCommon
-          form={form}
-          handleOk={handleOk}
-          onCancel={onCancel}
-          loading={loading}
-          textSubmit={t('Common_Create')}
-          fields={fieldsModalProduct}
-        />
-      </div>
-    </Modal>
+    <ModalCommon
+      title={t('Product_Create_Title')}
+      open={state.visible}
+      form={form}
+      handleOk={handleOk}
+      onCancel={onCancel}
+      loading={loading}
+      textSubmit={t('Common_Create')}
+      fields={fieldsModalProduct}
+    />
   );
 };
 

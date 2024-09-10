@@ -1,5 +1,4 @@
 import { ModalCommon } from '@/components/ModalCommon';
-import { Modal } from '@/components/modals';
 import { API_CUSTOMERS, dataService } from '@/service';
 import { Form, notification } from 'antd';
 import { useState } from 'react';
@@ -49,19 +48,18 @@ const CreateCustomer = ({ state, setState, list, setList }) => {
   };
 
   return (
-    <Modal title={t('Customer_Create')} open={state.visible} onCancel={onCancel} width={1000}>
-      <div className="project-modal">
-        <ModalCommon
-          form={form}
-          handleOk={handleOk}
-          onCancel={onCancel}
-          loading={loading}
-          textSubmit={t('Common_Create')}
-          fields={fieldsModalCustomer}
-          size="large"
-        />
-      </div>
-    </Modal>
+    <ModalCommon
+      open={state.visible}
+      title={t('Customer_Create')}
+      form={form}
+      handleOk={handleOk}
+      onCancel={onCancel}
+      loading={loading}
+      textSubmit={t('Common_Create')}
+      fields={fieldsModalCustomer}
+      size="large"
+      width={1000}
+    />
   );
 };
 
