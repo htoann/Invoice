@@ -1,4 +1,4 @@
-import { Button } from '../buttons/buttons';
+import { Button } from '../buttons';
 import { NewsletterStyle } from './Style';
 
 function Newsletter() {

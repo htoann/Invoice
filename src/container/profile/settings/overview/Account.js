@@ -1,5 +1,5 @@
-import { Button } from '@/components/buttons/buttons';
-import { Cards } from '@/components/cards/frame/cards-frame';
+import { Button } from '@/components/buttons';
+import { Cards } from '@/components/cards/frame';
 import Heading from '@/components/heading';
 import { BasicFormWrapper } from '@/container/styled';
 import { Col, Form, Input, Row } from 'antd';

@@ -1,4 +1,4 @@
-import { Button } from '@/components/buttons/buttons';
+import { Button } from '@/components/buttons';
 import { BasicFormWrapper } from '@/container/styled';
 import { AutoComplete, Form, Input, Select } from 'antd';
 import { useTranslation } from 'react-i18next';

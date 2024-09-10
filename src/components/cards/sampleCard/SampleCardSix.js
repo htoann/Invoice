@@ -3,7 +3,7 @@ import propTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { Dropdown } from '../../dropdown';
-import { Cards } from '../frame/cards-frame';
+import { Cards } from '../frame';
 
 const CardWrapper = styled.figure`
   display: flex;

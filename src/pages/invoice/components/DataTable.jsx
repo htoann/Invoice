@@ -1,4 +1,4 @@
-import { Button } from '@/components/buttons/buttons';
+import { Button } from '@/components/buttons';
 import { Tab } from '@/components/tabs/tabs';
 import { TableWrapper } from '@/container/styled';
 import { API_INVOICES_EXCEL, dataService } from '@/service';

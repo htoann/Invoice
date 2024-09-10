@@ -1,7 +1,7 @@
 import { Popover } from '@/components/popup';
 import { UilBook, UilDownloadAlt, UilFile, UilFileAlt, UilPrint, UilTimes } from '@iconscout/react-unicons';
 import { NavLink } from 'react-router-dom';
-import { Button } from '../buttons';
+import { Button } from '..';
 
 function ExportButtonPageHeader() {
   const content = (

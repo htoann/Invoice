@@ -1,5 +1,5 @@
 import { ModalCommon } from '@/components/ModalCommon';
-import { Modal } from '@/components/modals/antd-modals';
+import { Modal } from '@/components/modals';
 import { API_PROVIDER, dataService } from '@/service';
 import { Form, notification } from 'antd';
 import { useAppState } from 'context/AppContext';

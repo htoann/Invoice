@@ -1,4 +1,4 @@
-import { Button } from '@/components/buttons/buttons';
+import { Button } from '@/components/buttons';
 import { PageHeader } from '@/components/page-headers';
 import { BasicFormWrapper } from '@/container/styled';
 import { LayoutContent } from '@/layout/LayoutContent';

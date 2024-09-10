@@ -1,6 +1,6 @@
 import propTypes from 'prop-types';
 import styled from 'styled-components';
-import { Button } from '../../buttons/buttons';
+import { Button } from '../../buttons';
 
 const CardWrapper = styled.figure`
   background: ${({ theme }) => theme[theme.mainContent]['white-background']};

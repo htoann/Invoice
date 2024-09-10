@@ -1,4 +1,4 @@
-import { Button } from '@/components/buttons/buttons';
+import { Button } from '@/components/buttons';
 import { BasicFormWrapper } from '@/container/styled';
 import i18n from '@/i18n/config';
 import { Form, Input, Select } from 'antd';

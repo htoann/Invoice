@@ -1,4 +1,4 @@
-import { Button } from '@/components/buttons/buttons';
+import { Button } from '@/components/buttons';
 import { UilEdit } from '@iconscout/react-unicons';
 
 const EditButton = ({ onClick }) => (

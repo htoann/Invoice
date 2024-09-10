@@ -1,4 +1,4 @@
-import { Cards } from '@/components/cards/frame/cards-frame';
+import { Cards } from '@/components/cards/frame';
 import Heading from '@/components/heading';
 import { UilBell, UilCamera, UilSetting, UilUser, UilUsersAlt } from '@iconscout/react-unicons';
 import { Upload } from 'antd';

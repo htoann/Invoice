@@ -1,5 +1,5 @@
-import { Button } from '@/components/buttons/buttons';
-import { Cards } from '@/components/cards/frame/cards-frame';
+import { Button } from '@/components/buttons';
+import { Cards } from '@/components/cards/frame';
 import { PageHeader } from '@/components/page-headers';
 import { Main } from '@/container/styled';
 import { UilAlignLeft, UilAlignRight } from '@iconscout/react-unicons';

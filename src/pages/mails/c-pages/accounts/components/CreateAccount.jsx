@@ -1,4 +1,4 @@
-import { Modal } from '@/components/modals/antd-modals';
+import { Modal } from '@/components/modals';
 import { API_MAILS_ACCOUNTS, dataService } from '@/service';
 import { Form, notification } from 'antd';
 import { useState } from 'react';

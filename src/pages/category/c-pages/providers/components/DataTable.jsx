@@ -1,4 +1,4 @@
-import { Button } from '@/components/buttons/buttons';
+import { Button } from '@/components/buttons';
 import { TableWrapper } from '@/container/styled';
 import { defaultPaginationConfig } from '@/utils/index';
 import { Table } from 'antd';

@@ -1,7 +1,7 @@
 import { Carousel } from 'antd';
 import propTypes from 'prop-types';
-import { Button } from '../buttons/buttons';
-import { Cards } from '../cards/frame/cards-frame';
+import { Button } from '../buttons';
+import { Cards } from '../cards/frame';
 import {
   BannerCardWrap,
   BannerCarouselWrap,

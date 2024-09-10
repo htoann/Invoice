@@ -1,4 +1,4 @@
-import { Button } from '@/components/buttons/buttons';
+import { Button } from '@/components/buttons';
 import Heading from '@/components/heading';
 import { Spin } from 'antd';
 import { useEffect, useState } from 'react';

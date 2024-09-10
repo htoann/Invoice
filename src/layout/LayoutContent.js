@@ -1,4 +1,4 @@
-import { Cards } from '@/components/cards/frame/cards-frame';
+import { Cards } from '@/components/cards/frame';
 import { BorderLessHeading, Main } from '@/container/styled';
 import { Col, Row } from 'antd';
 

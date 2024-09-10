@@ -1,7 +1,7 @@
 import { DateRangePickerOne } from '@/components/datePicker/datePicker';
 import { Popover } from '@/components/popup';
 import { UilCalendar } from '@iconscout/react-unicons';
-import { Button } from '../buttons';
+import { Button } from '..';
 
 function CalendarButtonPageHeader() {
   const content = <DateRangePickerOne />;

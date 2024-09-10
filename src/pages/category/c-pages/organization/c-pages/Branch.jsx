@@ -1,6 +1,6 @@
-import { Button } from '@/components/buttons/buttons';
-import { Cards } from '@/components/cards/frame/cards-frame';
-import { Modal } from '@/components/modals/antd-modals';
+import { Button } from '@/components/buttons';
+import { Cards } from '@/components/cards/frame';
+import { Modal } from '@/components/modals';
 import { BasicFormWrapper, BorderLessHeading } from '@/container/styled';
 import { API_BRANCH, API_BRANCHES, dataService } from '@/service';
 import { RightOutlined } from '@ant-design/icons';

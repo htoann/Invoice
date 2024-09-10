@@ -1,5 +1,5 @@
 import { AutoComplete } from '@/components/auto-complete/auto-complete';
-import { Cards } from '@/components/cards/frame/cards-frame';
+import { Cards } from '@/components/cards/frame';
 import Heading from '@/components/heading';
 import { PageHeader } from '@/components/page-headers';
 import { Col, Pagination, Row } from 'antd';

@@ -1,4 +1,4 @@
-import { Cards } from '@/components/cards/frame/cards-frame';
+import { Cards } from '@/components/cards/frame';
 import Heading from '@/components/heading';
 import { BasicFormWrapper } from '@/container/styled';
 import { Button, Col, Form, Input, Row } from 'antd';

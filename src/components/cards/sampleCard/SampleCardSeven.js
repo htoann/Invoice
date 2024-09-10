@@ -3,7 +3,7 @@ import propTypes from 'prop-types';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { Button } from '../../buttons/buttons';
+import { Button } from '../../buttons';
 import { Checkbox } from '../../checkbox/checkbox';
 import { Dropdown } from '../../dropdown';
 
