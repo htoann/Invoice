@@ -1,9 +1,10 @@
+import { ModalCommon } from '@/components/ModalCommon';
 import { Modal } from '@/components/modals';
 import { API_PRODUCT, dataService } from '@/service';
 import { Form, notification } from 'antd';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import ModalAccount from './Modal';
+import { fieldsModalProduct } from './../utils';
 
 const EditProduct = ({ state, setState, list, setList }) => {
   const { t } = useTranslation();
@@ -48,13 +49,14 @@ const EditProduct = ({ state, setState, list, setList }) => {
 
   return (
     <Modal title={t('Product_UpdateTitle')} open={state.editVisible} onCancel={onCancel}>
-      <ModalAccount
+      <ModalCommon
         form={form}
         handleOk={handleOk}
-        state={state}
+        dataUpdate={state.update}
         onCancel={onCancel}
         loading={loading}
         textSubmit={t('Common_Save')}
+        fields={fieldsModalProduct}
       />
     </Modal>
   );

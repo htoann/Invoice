@@ -1,9 +1,10 @@
+import { ModalCommon } from '@/components/ModalCommon';
 import { Modal } from '@/components/modals';
 import { API_PRODUCTS, dataService } from '@/service';
 import { Form, notification } from 'antd';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import ModalHangHoa from './Modal';
+import { fieldsModalProduct } from './../utils';
 
 const CreateProduct = ({ state, setState, list, setList }) => {
   const [loading, setLoading] = useState(false);
@@ -49,12 +50,13 @@ const CreateProduct = ({ state, setState, list, setList }) => {
   return (
     <Modal title={t('Product_Create_Title')} open={state.visible} onCancel={onCancel}>
       <div className="project-modal">
-        <ModalHangHoa
+        <ModalCommon
           form={form}
           handleOk={handleOk}
           onCancel={onCancel}
           loading={loading}
           textSubmit={t('Common_Create')}
+          fields={fieldsModalProduct}
         />
       </div>
     </Modal>

@@ -29,3 +29,18 @@ export const columnDataProduct = [
   { title: 'Product_AccountRevenue', dataIndex: 'taiKhoanDoanhThu', key: 'taiKhoanDoanhThu' },
   { title: 'Common_Action', dataIndex: 'action', key: 'action', fixed: 'right' },
 ];
+
+export const fieldsModalProduct = [
+  {
+    name: 'mahang',
+    label: 'Product_Code',
+    type: 'input',
+    required: true,
+  },
+  { name: 'donViTinh', label: 'Product_Unit', type: 'select', options: [] },
+  { name: 'taiKhoanHang', label: 'Product_AccountGoods', type: 'input', suffix: ' (15_)' },
+  { name: 'taiKhoanGiaVon', label: 'Product_AccountCost', type: 'input', suffix: ' (63_)' },
+  { name: 'taiKhoanDoanhThu', label: 'Product_AccountRevenue', type: 'input', suffix: ' (51_)' },
+  { name: 'tenHangBan', label: 'Product_SellingName', type: 'autocomplete' },
+  { name: 'tenHangMua', label: 'Product_PurchasingName', type: 'input' },
+];

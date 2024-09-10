@@ -47,7 +47,11 @@ export const ModalCommon = ({
     }
   };
 
-  const getRules = (type, required) => {
+  const getRules = (type, required, defaultRules) => {
+    if (defaultRules) {
+      return defaultRules;
+    }
+
     const rules = [];
 
     if (required) {
@@ -65,9 +69,8 @@ export const ModalCommon = ({
     <BasicFormWrapper>
       <Form form={form} name="contactEdit" onFinish={handleOk} autoComplete="off" onValuesChange={onValuesChange}>
         <Row gutter={size === 'large' ? 24 : 0}>
-          {fields.map(({ name, label, type, options, required }) => (
+          {fields.map(({ name, label, type, options, required, rules }) => (
             <Col span={size === 'large' ? 12 : 24} key={name}>
-              {console.log(!options?.length)}
               <Form.Item
                 initialValue={
                   type === 'select'
@@ -77,7 +80,7 @@ export const ModalCommon = ({
                 label={t(label)}
                 name={name}
                 valuePropName={type === 'checkbox' ? 'checked' : 'value'}
-                rules={getRules(type, required)}
+                rules={getRules(type, required, rules)}
                 style={{ marginBottom: 14 }}
               >
                 {renderField(type, name, options)}
