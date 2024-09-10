@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@pezhmanparsaee/react-custom-scrollbars": "^4.3.1",
+    "@tooni/iconscout-unicons-react": "^1.0.1",
     "antd": "4.24.16",
     "axios": "^1.7.2",
     "axios-mock-adapter": "^1.22.0",

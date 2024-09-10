@@ -1977,6 +1977,11 @@
     content-type "^1.0.5"
     tslib "^2.6.2"
 
+"@tooni/iconscout-unicons-react@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@tooni/iconscout-unicons-react/-/iconscout-unicons-react-1.0.1.tgz#221c07c0dfbd587a2352caa4ed568ce3c37fd9a1"
+  integrity sha512-6gUB1lNWcjWU+4fXv+CxR00dG+gXwzKLoUO5eAQ8vD8g02WFhvbZiyIWwqZ5TV0zOWjuUUNIF2zCrmoWJWaQ6w==
+
 "@tootallnate/once@1":
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/@tootallnate/once/-/once-1.1.2.tgz#ccb91445360179a04e7fe6aff78c00ffc1eeaf82"
