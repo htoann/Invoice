@@ -4,13 +4,24 @@ import { theme } from './src/utils/theme/themeVariables';
 
 module.exports = {
   webpack: {
-    configure: {
-      resolve: {
+    configure: (webpackConfig) => {
+      webpackConfig.resolve = {
+        ...webpackConfig.resolve,
         fallback: {
           path: false,
           stream: false,
         },
-      },
+        alias: {
+          '@': path.resolve(__dirname, 'src'),
+        },
+      };
+
+      webpackConfig.optimization = {
+        ...webpackConfig.optimization,
+        usedExports: true,
+      };
+
+      return webpackConfig;
     },
     alias: {
       '@': path.resolve(__dirname, 'src'),
