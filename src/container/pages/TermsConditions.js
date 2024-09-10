@@ -1,4 +1,4 @@
-import { PageHeader } from '@/components/page-headers/page-headers';
+import { PageHeader } from '@/components/page-headers';
 import { Col, Row } from 'antd';
 import { Link } from 'react-router-dom';
 import { Main } from '../styled';

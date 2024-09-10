@@ -1,4 +1,4 @@
-import Heading from '@/components/heading/heading';
+import Heading from '@/components/heading';
 import { Main } from '../styled';
 import { MaintenanceWrapper } from './style';
 

@@ -1,5 +1,5 @@
-import Heading from '@/components/heading/heading';
-import { Popover } from '@/components/popup/popup';
+import Heading from '@/components/heading';
+import { Popover } from '@/components/popup';
 import { Scrollbars } from '@pezhmanparsaee/react-custom-scrollbars';
 import { Badge } from 'antd';
 import { useAppState } from 'context/AppContext';

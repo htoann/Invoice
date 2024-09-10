@@ -1,8 +1,8 @@
-import UilEllipsisH from '@iconscout/react-unicons/icons/uil-ellipsis-h';
+import { UilEllipsisH } from '@iconscout/react-unicons';
 import propTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { Dropdown } from '../../dropdown/dropdown';
+import { Dropdown } from '../../dropdown';
 import { Cards } from '../frame/cards-frame';
 
 const CardWrapper = styled.figure`

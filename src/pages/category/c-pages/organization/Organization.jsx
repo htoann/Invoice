@@ -1,4 +1,4 @@
-import { PageHeader } from '@/components/page-headers/page-headers';
+import { PageHeader } from '@/components/page-headers';
 import { Main } from '@/container/styled';
 import { Row } from 'antd';
 import { useAppState } from 'context/AppContext';

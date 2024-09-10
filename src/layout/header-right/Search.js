@@ -1,5 +1,4 @@
-import UilSearch from '@iconscout/react-unicons/icons/uil-search';
-import UilTimes from '@iconscout/react-unicons/icons/uil-times';
+import { UilSearch, UilTimes } from '@iconscout/react-unicons';
 import { Form, Input } from 'antd';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';

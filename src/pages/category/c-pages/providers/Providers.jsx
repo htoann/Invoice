@@ -1,4 +1,4 @@
-import { PageHeader } from '@/components/page-headers/page-headers';
+import { PageHeader } from '@/components/page-headers';
 import { LayoutContent } from '@/layout/LayoutContent';
 import { API_PROVIDERS } from '@/service';
 import { useList } from 'hooks/useListCommon';

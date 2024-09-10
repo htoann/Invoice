@@ -1,5 +1,5 @@
 import { Cards } from '@/components/cards/frame/cards-frame';
-import { PageHeader } from '@/components/page-headers/page-headers';
+import { PageHeader } from '@/components/page-headers';
 import { Col, Row, Skeleton } from 'antd';
 import { lazy, Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';

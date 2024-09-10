@@ -1,10 +1,5 @@
-import { Popover } from '@/components/popup/popup';
-import UilBook from '@iconscout/react-unicons/icons/uil-book-open';
-import UilDownloadAlt from '@iconscout/react-unicons/icons/uil-download-alt';
-import UilFile from '@iconscout/react-unicons/icons/uil-file';
-import UilFileAlt from '@iconscout/react-unicons/icons/uil-file-alt';
-import UilPrint from '@iconscout/react-unicons/icons/uil-print';
-import UilTimes from '@iconscout/react-unicons/icons/uil-times';
+import { Popover } from '@/components/popup';
+import { UilBook, UilDownloadAlt, UilFile, UilFileAlt, UilPrint, UilTimes } from '@iconscout/react-unicons';
 import { NavLink } from 'react-router-dom';
 import { Button } from '../buttons';
 

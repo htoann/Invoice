@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 
 import { FilterOrgStructure } from '@/components/FilterOrgStructure';
-import { PageHeader } from '@/components/page-headers/page-headers';
+import { PageHeader } from '@/components/page-headers';
 import { LayoutContent } from '@/layout/LayoutContent';
 import { API_MAILS_ACCOUNT_BY_ACCOUNT_ID, API_MAILS_ACCOUNTS, dataService } from '@/service';
 import { useAppState } from 'context/AppContext';

@@ -1,7 +1,7 @@
-import Heading from '@/components/heading/heading';
+import Heading from '@/components/heading';
 import AttachmentLogo from '@/static/img/files/attach2.png';
 import { API_ENDPOINT, formatDataSize } from '@/utils/index';
-import UilImport from '@iconscout/react-unicons/icons/uil-import';
+import { UilImport } from '@iconscout/react-unicons';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 // import csvImg from '@/static/img/files/csv.png';

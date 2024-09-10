@@ -1,10 +1,10 @@
+import Heading from '@/components/heading';
+import { Popover } from '@/components/popup';
 import { Col, Row } from 'antd';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ReactSVG } from 'react-svg';
 import { SettingDropdown } from './Style';
-import Heading from '@/components/heading/heading';
-import { Popover } from '@/components/popup/popup';
 
 const Settings = React.memo(() => {
   const content = (

@@ -1,11 +1,8 @@
 import { Button } from '@/components/buttons/buttons';
 import { Cards } from '@/components/cards/frame/cards-frame';
-import Heading from '@/components/heading/heading';
-import { PageHeader } from '@/components/page-headers/page-headers';
-import UilFrown from '@iconscout/react-unicons/icons/uil-frown';
-import UilMinus from '@iconscout/react-unicons/icons/uil-minus';
-import UilPlus from '@iconscout/react-unicons/icons/uil-plus';
-import UilSmile from '@iconscout/react-unicons/icons/uil-smile';
+import Heading from '@/components/heading';
+import { PageHeader } from '@/components/page-headers';
+import { UilFrown, UilMinus, UilPlus, UilSmile } from '@iconscout/react-unicons';
 import { Col, Collapse, Row } from 'antd';
 import { Link } from 'react-router-dom';
 import { Main } from '../styled';

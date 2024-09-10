@@ -1,6 +1,6 @@
-import { Dropdown } from '@/components/dropdown/dropdown';
-import Heading from '@/components/heading/heading';
-import UilellipsisH from '@iconscout/react-unicons/icons/uil-ellipsis-h';
+import { Dropdown } from '@/components/dropdown';
+import Heading from '@/components/heading';
+import { UilEllipsisH } from '@iconscout/react-unicons';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { CardFrame } from './style';
@@ -40,7 +40,7 @@ const Cards = (props) => {
               {more && (
                 <Dropdown content={more} placement="bottom">
                   <Link onClick={(e) => e.preventDefault()} to="#">
-                    {!moreText ? <UilellipsisH /> : 'More'}
+                    {!moreText ? <UilEllipsisH /> : 'More'}
                   </Link>
                 </Dropdown>
               )}

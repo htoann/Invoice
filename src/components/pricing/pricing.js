@@ -1,4 +1,4 @@
-import UilCheck from '@iconscout/react-unicons/icons/uil-check';
+import { UilCheck } from '@iconscout/react-unicons';
 import PropTypes from 'prop-types';
 import { ListStyle } from './style';
 

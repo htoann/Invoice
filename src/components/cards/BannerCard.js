@@ -1,10 +1,8 @@
-import UilEllipsis from '@iconscout/react-unicons/icons/uil-ellipsis-h';
-import UilEye from '@iconscout/react-unicons/icons/uil-eye';
-import UilHeart from '@iconscout/react-unicons/icons/uil-heart';
+import { UilEllipsis, UilEye, UilHeart } from '@iconscout/react-unicons';
 import propTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { Dropdown } from '../dropdown/dropdown';
+import { Dropdown } from '../dropdown';
 
 const CardWrapper = styled.figure`
   margin-bottom: 0;

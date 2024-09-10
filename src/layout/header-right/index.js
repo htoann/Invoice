@@ -1,23 +1,17 @@
 /* eslint-disable no-unused-vars */
-import UilAngleDown from '@iconscout/react-unicons/icons/uil-angle-down';
-import UilSignout from '@iconscout/react-unicons/icons/uil-signout';
-import { Avatar } from 'antd';
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { InfoWrapper, NavAuth, UserDropDown } from './Style';
-
-import Heading from '@/components/heading/heading';
-import { Popover } from '@/components/popup/popup';
+import Heading from '@/components/heading';
+import { Popover } from '@/components/popup';
 import EngImg from '@/static/img/flag/en.png';
 import VieImg from '@/static/img/flag/vi.png';
 import { setLocalStorage } from '@/utils/localStorage';
-import UilBell from '@iconscout/react-unicons/icons/uil-bell';
-import UilSetting from '@iconscout/react-unicons/icons/uil-setting';
-import UilUser from '@iconscout/react-unicons/icons/uil-user';
-import UilUsersAlt from '@iconscout/react-unicons/icons/uil-users-alt';
+import { UilAngleDown, UilBell, UilSetting, UilSignout, UilUser, UilUsersAlt } from '@iconscout/react-unicons';
+import { Avatar } from 'antd';
 import { useAuth } from 'context/AuthContext';
+import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 import Customizer from './Customizer';
+import { InfoWrapper, NavAuth, UserDropDown } from './Style';
 
 const AuthInfo = React.memo(() => {
   const { i18n, t } = useTranslation();

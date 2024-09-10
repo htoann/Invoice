@@ -1,7 +1,7 @@
 import { Button } from '@/components/buttons/buttons';
 import { Cards } from '@/components/cards/frame/cards-frame';
-import Heading from '@/components/heading/heading';
-import { PageHeader } from '@/components/page-headers/page-headers';
+import Heading from '@/components/heading';
+import { PageHeader } from '@/components/page-headers';
 import { List } from '@/components/pricing/pricing';
 import { Col, Row } from 'antd';
 import { Main } from '../styled';

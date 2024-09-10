@@ -1,5 +1,5 @@
 import { Button } from '@/components/buttons/buttons';
-import { PageHeader } from '@/components/page-headers/page-headers';
+import { PageHeader } from '@/components/page-headers';
 import { BasicFormWrapper } from '@/container/styled';
 import { LayoutContent } from '@/layout/LayoutContent';
 import { API_INVOICES_CONNECT_AUTHORITY, dataService } from '@/service';

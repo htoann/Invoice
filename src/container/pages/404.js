@@ -1,5 +1,5 @@
 import { Button } from '@/components/buttons/buttons';
-import Heading from '@/components/heading/heading';
+import Heading from '@/components/heading';
 import { Spin } from 'antd';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';

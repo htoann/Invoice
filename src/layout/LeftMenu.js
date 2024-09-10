@@ -1,14 +1,18 @@
-import { UilClipboardAlt, UilCreateDashboard, UilInvoice, UilTable } from '@iconscout/react-unicons';
+import { routes } from '@/routes/const';
+import {
+  UilClipboardAlt,
+  UilCreateDashboard,
+  UilEllipsisV,
+  UilEnvelope,
+  UilInvoice,
+  UilTable,
+} from '@iconscout/react-unicons';
 import { Menu, Tooltip } from 'antd';
+import { useAppState } from 'context/AppContext';
+import propTypes from 'prop-types';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link, NavLink } from 'react-router-dom';
-
-import { routes } from '@/routes/const';
-import UilEllipsisV from '@iconscout/react-unicons/icons/uil-ellipsis-v';
-import UilEnvelope from '@iconscout/react-unicons/icons/uil-envelope';
-import { useAppState } from 'context/AppContext';
-import propTypes from 'prop-types';
 
 export const LeftMenu = ({ toggleCollapsed }) => {
   const { t } = useTranslation();

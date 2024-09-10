@@ -1,16 +1,15 @@
 import { Button } from '@/components/buttons/buttons';
 import { Cards } from '@/components/cards/frame/cards-frame';
-import { PageHeader } from '@/components/page-headers/page-headers';
+import { PageHeader } from '@/components/page-headers';
 import { Main } from '@/container/styled';
-import UilAlignLeft from '@iconscout/react-unicons/icons/uil-align-left';
-import UilAlignRight from '@iconscout/react-unicons/icons/uil-align-right';
+import { UilAlignLeft, UilAlignRight } from '@iconscout/react-unicons';
 import { Col, Empty, Row } from 'antd';
 import { useGetOrgStructure } from 'hooks/useGetOrgStructure';
 import { useEffect, useLayoutEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { FilterHeader } from './components/inbox-list/FilterHeader';
 import { InboxList } from './components/inbox-list/InboxList';
-import MailDetail from './components/mail-detail/MailDetail';
+import MailDetail from './components/mail-detail';
 import { EmailWrapper } from './components/style';
 import { pageRoutes } from './utils';
 

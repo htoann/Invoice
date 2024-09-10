@@ -1,5 +1,5 @@
 import { theme } from '@/utils/theme/themeVariables';
-import UilEllipsisV from '@iconscout/react-unicons/icons/uil-ellipsis-v';
+import { UilEllipsisV } from '@iconscout/react-unicons';
 import { Scrollbars } from '@pezhmanparsaee/react-custom-scrollbars';
 import { Button, Col, Layout, Row } from 'antd';
 import { useAppState } from 'context/AppContext';

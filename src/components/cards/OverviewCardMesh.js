@@ -1,6 +1,5 @@
 /* eslint-disable no-unused-vars */
-import UilDown from '@iconscout/react-unicons/icons/uil-arrow-down';
-import UilUp from '@iconscout/react-unicons/icons/uil-arrow-up';
+import { UilDown, UilUp } from '@iconscout/react-unicons';
 import { Card } from 'antd';
 import propTypes from 'prop-types';
 import { useEffect, useState } from 'react';

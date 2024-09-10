@@ -1,6 +1,6 @@
 import { Button } from '@/components/buttons/buttons';
 import { Cards } from '@/components/cards/frame/cards-frame';
-import Heading from '@/components/heading/heading';
+import Heading from '@/components/heading';
 import { Col, Row, Switch } from 'antd';
 import { Link } from 'react-router-dom';
 import { NotificationWrapper } from './style';

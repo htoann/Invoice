@@ -1,4 +1,4 @@
-import { PageHeader } from '@/components/page-headers/page-headers';
+import { PageHeader } from '@/components/page-headers';
 import { MailAccountSelect } from '@/components/select-common/MailAccountSelect';
 import { LayoutContent } from '@/layout/LayoutContent';
 import { API_MAIL_TASK_HISTORIES } from '@/service';

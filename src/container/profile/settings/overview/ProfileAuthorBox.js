@@ -1,12 +1,8 @@
-import UilBell from '@iconscout/react-unicons/icons/uil-bell';
-import UilCamera from '@iconscout/react-unicons/icons/uil-camera';
-import UilSetting from '@iconscout/react-unicons/icons/uil-setting';
-import UilUser from '@iconscout/react-unicons/icons/uil-user';
-import UilUsersAlt from '@iconscout/react-unicons/icons/uil-users-alt';
+import { Cards } from '@/components/cards/frame/cards-frame';
+import Heading from '@/components/heading';
+import { UilBell, UilCamera, UilSetting, UilUser, UilUsersAlt } from '@iconscout/react-unicons';
 import { Upload } from 'antd';
 import { Link, NavLink } from 'react-router-dom';
-import { Cards } from '@/components/cards/frame/cards-frame';
-import Heading from '@/components/heading/heading';
 import { ProfileAuthorBox } from './style';
 
 function AuthorBox() {

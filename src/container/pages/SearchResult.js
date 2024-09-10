@@ -1,7 +1,7 @@
 import { AutoComplete } from '@/components/auto-complete/auto-complete';
 import { Cards } from '@/components/cards/frame/cards-frame';
-import Heading from '@/components/heading/heading';
-import { PageHeader } from '@/components/page-headers/page-headers';
+import Heading from '@/components/heading';
+import { PageHeader } from '@/components/page-headers';
 import { Col, Pagination, Row } from 'antd';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
