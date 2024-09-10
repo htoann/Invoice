@@ -1,4 +1,4 @@
-import { Drawer } from '@/components/drawer/drawer';
+import { Drawer } from '@/components/drawer';
 // import Left from '@/static/img/layouts/side.png';
 // import Top from '@/static/img/layouts/top.png';
 import Left from '@/static/img/layouts/left.png';
