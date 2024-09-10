@@ -14,7 +14,7 @@ export const useList = (state, setState, apiUrl, litsName, onHandleResponse) => 
       const response = await dataService.get(apiUrl, {
         page: current,
         page_size: pageSize,
-        ...Object.fromEntries(Object.entries(convertKeysToSnakeCase(searchParams)).filter(([, v]) => v)),
+        ...convertKeysToSnakeCase(searchParams),
       });
 
       if (onHandleResponse) {

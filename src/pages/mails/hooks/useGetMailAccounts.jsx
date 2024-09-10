@@ -14,9 +14,9 @@ export const useGetMailAccounts = () => {
       setLoadingMailAccounts(true);
 
       const response = await dataService.get(API_MAILS_ACCOUNTS, {
-        ...(selectedBranchId && { branch_id: selectedBranchId }),
-        ...(selectedDepartmentId && { department_id: selectedDepartmentId }),
-        ...(selectedProjectId && { project_id: selectedProjectId }),
+        branch_id: selectedBranchId,
+        department_id: selectedDepartmentId,
+        project_id: selectedProjectId,
       });
 
       const mailAccounts = response?.data?.results;

@@ -1,5 +1,11 @@
 import { getCookie, setCookie } from '@/utils/cookie';
-import { ACCESS_TOKEN, API_ENDPOINT, clearLogoutLocalStorageAndCookie, REFRESH_TOKEN } from '@/utils/index';
+import {
+  ACCESS_TOKEN,
+  API_ENDPOINT,
+  clearLogoutLocalStorageAndCookie,
+  filterEmptyArrayObject,
+  REFRESH_TOKEN,
+} from '@/utils/index';
 import axios from 'axios';
 import { API_LOGIN, API_REGISTER } from './apiConst';
 
@@ -113,7 +119,7 @@ class DataService {
   }
 
   async get(path, params = {}, config = {}) {
-    return this.client.get(path, { params, ...config });
+    return this.client.get(path, { params: filterEmptyArrayObject(params), ...config });
   }
 
   async post(path, data = {}, optionalHeader = {}) {

@@ -147,3 +147,7 @@ export const convertKeysToSnakeCase = (obj) => {
     return acc;
   }, {});
 };
+
+export const filterEmptyArrayObject = (arrayObject) => {
+  return Object.fromEntries(Object.entries(arrayObject).filter(([, v]) => v));
+};

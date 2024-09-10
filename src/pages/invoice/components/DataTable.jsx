@@ -39,8 +39,8 @@ function DataTable({ loading, tableData, columns, state, setState, getInvoiceLis
         API_INVOICES_EXCEL,
         {
           loaihdon: loaiHoaDon,
-          ...(date_from && { date_from }),
-          ...(date_to && { date_to }),
+          date_from,
+          date_to,
         },
         {
           responseType: 'blob',
