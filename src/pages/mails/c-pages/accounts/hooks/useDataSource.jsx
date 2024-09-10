@@ -1,4 +1,4 @@
-import { UilEdit, UilTrash } from '@iconscout/react-unicons';
+import { UilEdit, UilTrash } from '@tooni/iconscout-unicons-react';
 import { Popconfirm } from 'antd';
 import { useAppState } from 'context/AppContext';
 import { useTranslation } from 'react-i18next';

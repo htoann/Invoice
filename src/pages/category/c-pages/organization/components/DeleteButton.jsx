@@ -1,5 +1,5 @@
 import { Button } from '@/components/buttons';
-import { UilTrash } from '@iconscout/react-unicons';
+import { UilTrash } from '@tooni/iconscout-unicons-react';
 import { Popconfirm } from 'antd';
 import { useTranslation } from 'react-i18next';
 

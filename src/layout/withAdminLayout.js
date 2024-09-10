@@ -1,6 +1,6 @@
 import { theme } from '@/utils/theme/themeVariables';
-import { UilEllipsisV } from '@iconscout/react-unicons';
 import { Scrollbars } from '@pezhmanparsaee/react-custom-scrollbars';
+import { UilEllipsisV } from '@tooni/iconscout-unicons-react';
 import { Button, Col, Layout, Row } from 'antd';
 import { useAppState } from 'context/AppContext';
 import { useCallback, useEffect, useState } from 'react';

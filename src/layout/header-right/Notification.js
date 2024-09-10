@@ -1,7 +1,7 @@
 import Heading from '@/components/heading';
 import { Popover } from '@/components/popup';
-import { UilHdd, UilUpload } from '@iconscout/react-unicons';
 import { Scrollbars } from '@pezhmanparsaee/react-custom-scrollbars';
+import { UilHdd, UilUpload } from '@tooni/iconscout-unicons-react';
 import { Badge } from 'antd';
 import { useAppState } from 'context/AppContext';
 import PropTypes from 'prop-types';

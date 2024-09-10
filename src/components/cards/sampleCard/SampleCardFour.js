@@ -1,4 +1,4 @@
-import { UilEye, UilHeart } from '@iconscout/react-unicons';
+import { UilEye, UilHeart } from '@tooni/iconscout-unicons-react';
 import propTypes from 'prop-types';
 import styled from 'styled-components';
 

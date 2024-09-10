@@ -3,7 +3,7 @@ import { PageHeader } from '@/components/page-headers';
 import { LayoutContent } from '@/layout/LayoutContent';
 import { API_CUSTOMER, API_CUSTOMERS, dataService } from '@/service';
 import { formatTime } from '@/utils/index';
-import { UilEdit, UilTrash } from '@iconscout/react-unicons';
+import { UilEdit, UilTrash } from '@tooni/iconscout-unicons-react';
 import { Popconfirm, notification } from 'antd';
 import { useList } from 'hooks/useListCommon';
 import { useEffect, useState } from 'react';

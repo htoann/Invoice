@@ -1,4 +1,4 @@
-import { UilArrowLeft, UilArrowRight } from '@iconscout/react-unicons';
+import { UilArrowLeft, UilArrowRight } from '@tooni/iconscout-unicons-react';
 import { Button, Col, message, Row } from 'antd';
 import PropTypes from 'prop-types';
 import { useState } from 'react';

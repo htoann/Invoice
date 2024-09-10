@@ -2,7 +2,7 @@ import { Button } from '@/components/buttons';
 import { TableWrapper } from '@/container/styled';
 import { defaultPaginationConfig } from '@/utils/index';
 import { DownloadOutlined } from '@ant-design/icons';
-import { UilFileExport } from '@iconscout/react-unicons';
+import { UilFileExport } from '@tooni/iconscout-unicons-react';
 import { Select, Table } from 'antd';
 import { useTranslation } from 'react-i18next';
 import { DataTableStyleWrap } from '../style';

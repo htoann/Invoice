@@ -1,7 +1,7 @@
 import Heading from '@/components/heading';
 import { Popover } from '@/components/popup';
 import { formatTime } from '@/utils/index';
-import { UilAngleDown } from '@iconscout/react-unicons';
+import { UilAngleDown } from '@tooni/iconscout-unicons-react';
 import { Avatar } from 'antd';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';

@@ -6,7 +6,7 @@ import {
   UilEnvelope,
   UilInvoice,
   UilTable,
-} from '@iconscout/react-unicons';
+} from '@tooni/iconscout-unicons-react';
 import { Menu, Tooltip } from 'antd';
 import { useAppState } from 'context/AppContext';
 import propTypes from 'prop-types';

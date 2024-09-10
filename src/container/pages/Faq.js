@@ -2,7 +2,7 @@ import { Button } from '@/components/buttons';
 import { Cards } from '@/components/cards/frame';
 import Heading from '@/components/heading';
 import { PageHeader } from '@/components/page-headers';
-import { UilFrown, UilMinus, UilPlus, UilSmile } from '@iconscout/react-unicons';
+import { UilFrown, UilMinus, UilPlus, UilSmile } from '@tooni/iconscout-unicons-react';
 import { Col, Collapse, Row } from 'antd';
 import { Link } from 'react-router-dom';
 import { Main } from '../styled';

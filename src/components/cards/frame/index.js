@@ -1,6 +1,6 @@
 import { Dropdown } from '@/components/dropdown';
 import Heading from '@/components/heading';
-import { UilEllipsisH } from '@iconscout/react-unicons';
+import { UilEllipsisH } from '@tooni/iconscout-unicons-react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { CardFrame } from './style';

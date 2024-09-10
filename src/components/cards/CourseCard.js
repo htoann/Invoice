@@ -1,4 +1,4 @@
-import { UilBook, UilClock } from '@iconscout/react-unicons';
+import { UilBook, UilClock } from '@tooni/iconscout-unicons-react';
 import { Card, Col } from 'antd';
 import propTypes from 'prop-types';
 import { Link } from 'react-router-dom';

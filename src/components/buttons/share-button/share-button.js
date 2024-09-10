@@ -1,5 +1,12 @@
 import { Popover } from '@/components/popup';
-import { UilFacebook, UilInstagram, UilLinkedin, UilRss, UilShareAlt, UilTwitter } from '@iconscout/react-unicons';
+import {
+  UilFacebook,
+  UilInstagram,
+  UilLinkedin,
+  UilRss,
+  UilShareAlt,
+  UilTwitter,
+} from '@tooni/iconscout-unicons-react';
 import { NavLink } from 'react-router-dom';
 import { Button } from '..';
 

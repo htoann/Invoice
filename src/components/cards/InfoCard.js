@@ -1,4 +1,4 @@
-import * as Unicons from '@iconscout/react-unicons';
+import * as Unicons from '@tooni/iconscout-unicons-react';
 import propTypes from 'prop-types';
 import { InfoCardStyle } from './Style';
 

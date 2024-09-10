@@ -1,6 +1,6 @@
 import { Cards } from '@/components/cards/frame';
 import Heading from '@/components/heading';
-import { UilBell, UilCamera, UilSetting, UilUser, UilUsersAlt } from '@iconscout/react-unicons';
+import { UilBell, UilCamera, UilSetting, UilUser, UilUsersAlt } from '@tooni/iconscout-unicons-react';
 import { Upload } from 'antd';
 import { Link, NavLink } from 'react-router-dom';
 import { ProfileAuthorBox } from './style';

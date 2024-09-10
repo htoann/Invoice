@@ -2,7 +2,7 @@ import { Button } from '@/components/buttons';
 import { Cards } from '@/components/cards/frame';
 import { PageHeader } from '@/components/page-headers';
 import { Main } from '@/container/styled';
-import { UilAlignLeft, UilAlignRight } from '@iconscout/react-unicons';
+import { UilAlignLeft, UilAlignRight } from '@tooni/iconscout-unicons-react';
 import { Col, Empty, Row } from 'antd';
 import { useGetOrgStructure } from 'hooks/useGetOrgStructure';
 import { useEffect, useLayoutEffect, useState } from 'react';

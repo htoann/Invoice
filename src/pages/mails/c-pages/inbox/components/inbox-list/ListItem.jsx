@@ -1,5 +1,5 @@
 import { formatTime } from '@/utils/index';
-import { UilInbox } from '@iconscout/react-unicons';
+import { UilInbox } from '@tooni/iconscout-unicons-react';
 import Paragraph from 'antd/lib/typography/Paragraph';
 import { Link } from 'react-router-dom';
 import { EmailNav } from '../style';

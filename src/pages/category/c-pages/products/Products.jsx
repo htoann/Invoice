@@ -2,7 +2,7 @@ import CustomHeader from '@/components/HeaderCommon';
 import { PageHeader } from '@/components/page-headers';
 import { LayoutContent } from '@/layout/LayoutContent';
 import { API_PRODUCT, API_PRODUCTS, dataService } from '@/service';
-import { UilEdit, UilTrash } from '@iconscout/react-unicons';
+import { UilEdit, UilTrash } from '@tooni/iconscout-unicons-react';
 import { Popconfirm, notification } from 'antd';
 import { useList } from 'hooks/useListCommon';
 import { useEffect, useState } from 'react';

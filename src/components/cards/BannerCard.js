@@ -1,4 +1,4 @@
-import { UilEllipsis, UilEye, UilHeart } from '@iconscout/react-unicons';
+import { UilEllipsis, UilEye, UilHeart } from '@tooni/iconscout-unicons-react';
 import propTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';

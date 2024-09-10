@@ -1,4 +1,4 @@
-import { UilEllipsisH } from '@iconscout/react-unicons';
+import { UilEllipsisH } from '@tooni/iconscout-unicons-react';
 import propTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';

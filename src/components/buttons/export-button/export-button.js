@@ -1,5 +1,5 @@
 import { Popover } from '@/components/popup';
-import { UilBook, UilDownloadAlt, UilFile, UilFileAlt, UilPrint, UilTimes } from '@iconscout/react-unicons';
+import { UilBook, UilDownloadAlt, UilFile, UilFileAlt, UilPrint, UilTimes } from '@tooni/iconscout-unicons-react';
 import { NavLink } from 'react-router-dom';
 import { Button } from '..';
 

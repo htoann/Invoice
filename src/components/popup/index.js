@@ -1,4 +1,4 @@
-import { UilCheck } from '@iconscout/react-unicons';
+import { UilCheck } from '@tooni/iconscout-unicons-react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { Content, PopoverStyle, Title } from './style';

@@ -1,4 +1,4 @@
-import * as Unicons from '@iconscout/react-unicons';
+import * as Unicons from '@tooni/iconscout-unicons-react';
 import PropTypes from 'prop-types';
 import { Child, TabBasic } from './style';
 

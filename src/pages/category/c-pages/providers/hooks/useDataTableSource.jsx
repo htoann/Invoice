@@ -1,6 +1,6 @@
 import { API_PROVIDER, dataService } from '@/service';
 import { formatTime } from '@/utils/index';
-import { UilEdit, UilTrash } from '@iconscout/react-unicons';
+import { UilEdit, UilTrash } from '@tooni/iconscout-unicons-react';
 import { notification, Popconfirm } from 'antd';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
