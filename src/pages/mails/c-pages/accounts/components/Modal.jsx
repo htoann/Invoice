@@ -9,16 +9,25 @@ import { useTranslation } from 'react-i18next';
 
 const locale = i18n.language;
 
-export const ModalAccount = ({ form, handleOk, state, onCancel, loading, textSubmit, departments }) => {
+export const ModalAccount = ({ form, handleOk, state, onCancel, loading, textSubmit }) => {
   const { t } = useTranslation();
 
   useGetOrgStructure();
 
-  const { setSelectedDepartmentId, projects } = useAppState();
+  const {
+    branches,
+    selectedBranchId,
+    setSelectedBranchId,
+    departments,
+    selectedDepartmentId,
+    setSelectedDepartmentId,
+    projects,
+  } = useAppState();
 
   useEffect(() => {
-    setSelectedDepartmentId(state?.update?.department);
-  }, [state?.update?.department]);
+    state?.update?.branch && setSelectedBranchId(state?.update?.branch);
+    state?.update?.department && setSelectedDepartmentId(state?.update?.department);
+  }, [state?.update?.branch, state?.update?.department]);
 
   return (
     <BasicFormWrapper>
@@ -32,6 +41,23 @@ export const ModalAccount = ({ form, handleOk, state, onCancel, loading, textSub
           <Input placeholder={t('Common_EnterAccountName')} autoComplete="off" />
         </Form.Item>
 
+        <Form.Item label={t('Common_Branch')} rules={[{ required: true, message: t('Branch_PleaseSelect') }]}>
+          <Select
+            placeholder={t('Branch_PleaseSelect')}
+            onChange={(value) => {
+              setSelectedBranchId(value);
+              form.setFieldValue('department', undefined);
+              form.setFieldValue('project', undefined);
+            }}
+          >
+            {branches?.map((item) => (
+              <Select.Option key={item.id} value={item.id}>
+                {item.name}
+              </Select.Option>
+            ))}
+          </Select>
+        </Form.Item>
+
         <Form.Item
           name="department"
           initialValue={state?.update?.department || undefined}
@@ -39,6 +65,7 @@ export const ModalAccount = ({ form, handleOk, state, onCancel, loading, textSub
           rules={[{ required: true, message: t('Department_PleaseSelect') }]}
         >
           <Select
+            disabled={!selectedBranchId}
             placeholder={t('Department_PleaseSelect')}
             onChange={(value) => {
               setSelectedDepartmentId(value);
@@ -54,7 +81,7 @@ export const ModalAccount = ({ form, handleOk, state, onCancel, loading, textSub
         </Form.Item>
 
         <Form.Item name="project" initialValue={state?.update?.project || undefined} label={t('Common_Project')}>
-          <Select placeholder={t('Common_SelectProject')}>
+          <Select disabled={!selectedDepartmentId} placeholder={t('Common_SelectProject')}>
             {projects?.map((item) => (
               <Select.Option key={item.id} value={item.id}>
                 {item.name}

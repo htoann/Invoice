@@ -204,6 +204,7 @@
   "Branch_DeleteSuccess": "Chi nhánh đã được xóa thành công.",
   "Branch_DeleteError": "Có lỗi xảy ra khi xóa chi nhánh.",
   "Branch_Empty_Description": "Không tìm thấy chi nhánh nào",
+  "Branch_PleaseSelect": "Vui lòng chọn chi nhánh",
 
   "Department_CreateSuccess": "Phòng ban đã được thêm thành công.",
   "Department_CreateError": "Có lỗi xảy ra khi thêm phòng ban.",
