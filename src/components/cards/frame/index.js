@@ -21,7 +21,7 @@ const Cards = (props) => {
     bodypadding,
     className,
     style,
-    noMargin,
+    nomargin,
   } = props;
   return (
     <>
@@ -34,7 +34,7 @@ const Cards = (props) => {
           bordered={border}
           className={className}
           bodypadding={bodypadding && bodypadding}
-          noMargin={noMargin}
+          nomargin={nomargin}
           extra={
             <>
               {more && (
@@ -60,7 +60,7 @@ const Cards = (props) => {
           style={{ width: '100%', ...style }}
           bordered={border}
           className={className}
-          noMargin={noMargin}
+          nomargin={nomargin}
         >
           {title && <Heading as="h4">{title}</Heading>}
           {caption && <p>{caption}</p>}

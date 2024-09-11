@@ -85,7 +85,7 @@ function Email() {
               <div
                 className={`mail-sidebar ${selectedInbox && responsive <= 991 ? (collapsed ? 'show' : 'hide') : ''}`}
               >
-                <Cards headless noMargin>
+                <Cards headless nomargin>
                   <div
                     className={
                       responsive <= 991 ? 'mail-sidebar-bottom mail-sidebar-bottom-scroll' : 'mail-sidebar-bottom'
@@ -112,7 +112,7 @@ function Email() {
                   headless
                   style={{ height: 'var(--mail-inbox)' }}
                   bodyStyle={{ margin: 'auto', height: '100%', display: 'flex' }}
-                  noMargin
+                  nomargin
                 >
                   <Empty description={t('Common_SelectAnEmail')} style={{ margin: 'auto' }} />
                 </Cards>

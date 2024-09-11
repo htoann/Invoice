@@ -10,7 +10,7 @@ function MailDetail({ selectedInbox: email }) {
 
   return (
     <MailDetailsWrapper>
-      <Cards headless noMargin>
+      <Cards headless nomargin>
         <Row gutter={15} style={{ maxHeight: 'var(--mail-detail)' }}>
           <Col style={{ width: '100%' }}>
             <MessageDetails>
