@@ -1,13 +1,13 @@
 import { useAppState } from 'context/AppContext';
 import { useEffect } from 'react';
 
-export const useGetOrgStructure = () => {
+export const useGetOrgStructure = (stateToTrack) => {
   const { getBranches, selectedBranchId, getDepartments, selectedDepartmentId, getProjects, resetOrgStructure } =
     useAppState();
 
   useEffect(() => {
     getBranches();
-  }, []);
+  }, [stateToTrack?.visible, stateToTrack?.editVisible]);
 
   useEffect(() => {
     selectedBranchId && getDepartments();
@@ -21,5 +21,5 @@ export const useGetOrgStructure = () => {
     return () => {
       resetOrgStructure();
     };
-  }, []);
+  }, [stateToTrack?.visible, stateToTrack?.editVisible]);
 };

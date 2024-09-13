@@ -19,8 +19,6 @@ import { useTableColumnAccount } from './hooks/useDataTable';
 const AccountList = () => {
   const { t } = useTranslation();
 
-  useGetOrgStructure();
-
   const { setSelectedBranchId, setSelectedDepartmentId, setSelectedProjectId } = useAppState();
 
   const [state, setState] = useState({
@@ -39,6 +37,8 @@ const AccountList = () => {
 
   const { pagination, visible, editVisible } = state;
   const { current, pageSize } = pagination;
+
+  useGetOrgStructure(state);
 
   useEffect(() => {
     searchParams?.departmentId && setSelectedDepartmentId(searchParams?.departmentId);
