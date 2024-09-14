@@ -16,6 +16,7 @@ function DataTable({ loading, tableData, columns, state, setState, getInvoiceLis
   const [endDate, setEndDate] = useState();
   const [taxNumber, setTaxNumber] = useState('');
   const [loadingExport, setLoadingExport] = useState(false);
+  const [selectedRowKeys, setSelectedRowKeys] = useState([]);
 
   const { pagination, date_from, date_to, loaiHoaDon, invoiceList } = state;
   const { current, pageSize } = pagination;
@@ -41,6 +42,7 @@ function DataTable({ loading, tableData, columns, state, setState, getInvoiceLis
           loaihdon: loaiHoaDon,
           date_from,
           date_to,
+          ids: selectedRowKeys,
         },
         {
           responseType: 'blob',
@@ -81,6 +83,17 @@ function DataTable({ loading, tableData, columns, state, setState, getInvoiceLis
       date_to: e?._d ? formatTime(e._d, 'DD-MM-YYYY') : null,
     }));
     setEndDate(e?._d || null);
+  };
+
+  const rowSelection = {
+    onChange: (selectedRowKeys) => {
+      setSelectedRowKeys(selectedRowKeys);
+    },
+    getCheckboxProps: (record) => {
+      return {
+        id: record.id,
+      };
+    },
   };
 
   return (
@@ -143,13 +156,14 @@ function DataTable({ loading, tableData, columns, state, setState, getInvoiceLis
             pagination={{ ...defaultPaginationConfig, ...pagination }}
             dataSource={tableData}
             columns={columns}
+            loading={loading}
+            rowSelection={rowSelection}
             onChange={(pagination) => {
               setState((prev) => ({
                 ...prev,
                 pagination,
               }));
             }}
-            loading={loading}
           />
         </TableWrapper>
       </div>
