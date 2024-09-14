@@ -152,7 +152,6 @@
   "Invoice_OriginalInvoiceDate": "Kỳ hoá đơn gốc bị thay thế",
   "Invoice_ChangeType": "Loại thay đổi",
   "Invoice_ChangeDate": "Ngày thay đổi",
-  "Invoice_TaxCode": "Mã số thuế",
   "Invoice_CompanyName": "Tên công ty",
   "Invoice_InformationVerificationResult": "Kết quả đối chiếu thông tin",
   "Invoice_CompanyStatus": "Tình trạng doanh nghiệp",

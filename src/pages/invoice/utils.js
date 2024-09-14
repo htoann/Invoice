@@ -30,7 +30,7 @@ export const handleTableDataSource = (invoiceList, current, pageSize) => {
           matracuu: <span>{item.matracuu}</span>,
           sohdgoc: <span>{item.sohdgoc}</span>,
           sohdgocngay: <span>{item.sohdgocngay}</span>,
-          loaitd: <span>{item.loaitd}</span>,
+          loaitd: item?.loaitd?.split('\n')?.map((line, index) => <span key={index}>{line}</span>),
           ngaytd: <span>{item.ngaytd}</span>,
           msttd: <span>{item.msttd}</span>,
           tentd: <span>{item.tentd}</span>,
@@ -190,7 +190,7 @@ export const handleDataTable = (loaiHoaDon) => {
       sorter: (a, b) => a?.ngaytd?.props?.children?.localeCompare(b?.ngaytd?.props?.children),
     },
     {
-      title: i18next.t('Invoice_TaxCode'),
+      title: i18next.t('Common_TaxCode'),
       dataIndex: 'msttd',
       key: 'msttd',
       sorter: (a, b) => a?.msttd?.props?.children?.localeCompare(b?.msttd?.props?.children),

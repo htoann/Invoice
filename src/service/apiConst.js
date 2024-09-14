@@ -8,6 +8,8 @@ export const API_INVOICES = '/invoices/';
 
 export const API_INVOICES_EXCEL = '/invoices/excel';
 
+export const API_INVOICES_ZIP = '/invoices/zip';
+
 export const API_INVOICES_CHANGE = '/invoices-change/';
 
 export const API_INVOICES_CONNECT_AUTHORITY = '/invoice_credentials/ ';

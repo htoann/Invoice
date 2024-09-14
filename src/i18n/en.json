@@ -73,6 +73,7 @@
   "Common_Goods": "Goods",
   "Common_ExpenseItem": "Expense Item",
   "Common_Department": "Department",
+  "Common_TaxCode": "Tax Code",
 
   "Dashboard_BusinessStatus": "Business Status",
   "Dashboard_InvoicesChange": "Invoices changed by seller - Supplier",
@@ -108,7 +109,6 @@
   "Invoice_OriginalInvoiceDate": "Original Invoice Date Being Replaced (Day/Month/Year)",
   "Invoice_ChangeType": "Change Type",
   "Invoice_ChangeDate": "Change Date",
-  "Invoice_TaxCode": "Tax Code",
   "Invoice_CompanyName": "Company Name",
   "Invoice_InformationVerificationResult": "Information Verification Result",
   "Invoice_CompanyStatus": "Company Status",
