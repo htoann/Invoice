@@ -16,6 +16,7 @@ function DataTable({ loading, tableData, columns, state, setState, getInvoiceLis
   const [endDate, setEndDate] = useState();
   const [taxNumber, setTaxNumber] = useState('');
   const [loadingExport, setLoadingExport] = useState(false);
+  const [loadingDownload, setLoadingDownload] = useState(false);
   const [selectedRowKeys, setSelectedRowKeys] = useState([]);
 
   const { pagination, date_from, date_to, loaiHoaDon, invoiceList } = state;
@@ -58,6 +59,34 @@ function DataTable({ loading, tableData, columns, state, setState, getInvoiceLis
       });
     } finally {
       setLoadingExport(false);
+    }
+  };
+
+  const handleDownload = async () => {
+    setLoadingDownload(true);
+    try {
+      const response = await dataService.get(
+        API_INVOICES_EXCEL,
+        {
+          loaihdon: loaiHoaDon,
+          date_from,
+          date_to,
+          ids: selectedRowKeys,
+        },
+        {
+          responseType: 'blob',
+        },
+      );
+
+      downloadFile(response, `HDDT${formatTime(startDate || endDate)}.xlsx`);
+    } catch (error) {
+      console.error(error);
+      notification.error({
+        message: 'Lỗi',
+        description: 'Không thể tải hóa đơn. Vui lòng thử lại sau.',
+      });
+    } finally {
+      setLoadingDownload(false);
     }
   };
 
@@ -135,18 +164,33 @@ function DataTable({ loading, tableData, columns, state, setState, getInvoiceLis
             </div>
           </div>
 
-          <Button
-            style={{ marginTop: 20 }}
-            type="primary"
-            size="small"
-            outlined
-            onClick={handleExport}
-            disabled={!invoiceList?.length || loadingExport}
-            loading={loadingExport}
-          >
-            <DownloadOutlined />
-            {t('Common_ExportExcel')}
-          </Button>
+          <div>
+            <Button
+              style={{ marginTop: 20, marginRight: 10 }}
+              type="primary"
+              size="small"
+              outlined
+              onClick={handleDownload}
+              disabled={!selectedRowKeys?.length || loadingDownload}
+              loading={loadingDownload}
+            >
+              <DownloadOutlined />
+              {t('Common_BatchDownload')}
+            </Button>
+
+            <Button
+              style={{ marginTop: 20 }}
+              type="primary"
+              size="small"
+              outlined
+              onClick={handleExport}
+              disabled={!invoiceList?.length || loadingExport}
+              loading={loadingExport}
+            >
+              <DownloadOutlined />
+              {t('Common_ExportExcel')}
+            </Button>
+          </div>
         </div>
       </div>
 
