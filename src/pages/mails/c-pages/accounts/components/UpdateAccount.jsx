@@ -2,7 +2,7 @@ import { API_MAILS_ACCOUNT_BY_ACCOUNT_ID, dataService } from '@/service';
 import { Form, notification } from 'antd';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { ModalAccount } from './Modal';
+import { ModalAccount } from './ModalAccount';
 
 export const UpdateAccount = ({ state, setState, accounts, setAccounts }) => {
   const [form] = Form.useForm();
