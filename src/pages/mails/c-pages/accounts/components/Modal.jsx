@@ -13,7 +13,7 @@ const locale = i18n.language;
 export const ModalAccount = ({ form, handleOk, state, onCancel, loading, textSubmit, title, open }) => {
   const { t } = useTranslation();
 
-  useGetOrgStructure(state);
+  useGetOrgStructure({ ...(!state && { visible: open }), ...(state && { editVisible: open }) }, true, open);
 
   const {
     branches,

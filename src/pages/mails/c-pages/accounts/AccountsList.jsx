@@ -19,7 +19,14 @@ import { useTableColumnAccount } from './hooks/useDataTable';
 const AccountList = () => {
   const { t } = useTranslation();
 
-  const { setSelectedBranchId, setSelectedDepartmentId, setSelectedProjectId } = useAppState();
+  const {
+    selectedBranchId,
+    setSelectedBranchId,
+    selectedDepartmentId,
+    setSelectedDepartmentId,
+    setSelectedProjectId,
+    selectedProjectId,
+  } = useAppState();
 
   const [state, setState] = useState({
     visible: false,
@@ -38,11 +45,17 @@ const AccountList = () => {
   const { pagination, visible, editVisible } = state;
   const { current, pageSize } = pagination;
 
-  useGetOrgStructure(state);
+  useGetOrgStructure(state, true, !state?.visible && !state?.editVisible);
+
+  const { branchId, departmentId, projectId } = searchParams || {};
 
   useEffect(() => {
-    searchParams?.departmentId && setSelectedDepartmentId(searchParams?.departmentId);
-  }, [searchParams?.departmentId]);
+    if (!state?.visible && !state?.editVisible) {
+      branchId && setSelectedBranchId(branchId);
+      departmentId && setSelectedDepartmentId(departmentId);
+      projectId && setSelectedProjectId(projectId);
+    }
+  }, [selectedBranchId, branchId, selectedDepartmentId, departmentId, selectedProjectId, projectId]);
 
   const {
     list: accounts,
@@ -139,6 +152,7 @@ const AccountList = () => {
           branchId={searchParams?.branchId}
           departmentId={searchParams?.departmentId}
           projectId={searchParams?.projectId}
+          needTakeDefaultValue
         />
         <Button onClick={showModal} type="primary" key="1" style={{ marginTop: 25 }}>
           <Link to="#">+ {t('Mail_AccountList_Create')}</Link>

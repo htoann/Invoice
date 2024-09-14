@@ -1,25 +1,40 @@
 import { useAppState } from 'context/AppContext';
 import { useEffect } from 'react';
 
-export const useGetOrgStructure = (stateToTrack) => {
+export const useGetOrgStructure = (stateToTrack, isCondition, condition) => {
   const { getBranches, selectedBranchId, getDepartments, selectedDepartmentId, getProjects, resetOrgStructure } =
     useAppState();
 
-  useEffect(() => {
-    getBranches();
-  }, [stateToTrack?.visible, stateToTrack?.editVisible]);
+  const isVisible = stateToTrack?.visible || false;
+  const isEditVisible = stateToTrack?.editVisible || false;
 
   useEffect(() => {
-    selectedBranchId && getDepartments();
+    if (isCondition) {
+      condition && getBranches();
+    } else {
+      getBranches();
+    }
+  }, [isVisible, isEditVisible]);
+
+  useEffect(() => {
+    if (isCondition) {
+      condition && selectedBranchId && getDepartments();
+    } else {
+      selectedBranchId && getDepartments();
+    }
   }, [selectedBranchId]);
 
   useEffect(() => {
-    selectedBranchId && selectedDepartmentId && getProjects();
+    if (isCondition) {
+      condition && selectedBranchId && selectedDepartmentId && getProjects();
+    } else {
+      selectedBranchId && selectedDepartmentId && getProjects();
+    }
   }, [selectedBranchId, selectedDepartmentId]);
 
   useEffect(() => {
     return () => {
       resetOrgStructure();
     };
-  }, [stateToTrack?.visible, stateToTrack?.editVisible]);
+  }, [isVisible, isEditVisible]);
 };
