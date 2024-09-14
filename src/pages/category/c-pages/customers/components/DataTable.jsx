@@ -44,9 +44,8 @@ function DataTable({ rowSelection, tableData, columns, pagination, setState, sta
         <TableWrapper className="table-data-view table-responsive">
           <Table
             className="table-search-selection"
-            rowSelection={{
-              ...rowSelection,
-            }}
+            rowSelection={rowSelection}
+            loading={loading}
             pagination={{ ...defaultPaginationConfig, ...pagination }}
             dataSource={tableData}
             columns={columns}
@@ -56,7 +55,6 @@ function DataTable({ rowSelection, tableData, columns, pagination, setState, sta
                 pagination: _pagination,
               }));
             }}
-            loading={loading}
           />
         </TableWrapper>
       </div>
