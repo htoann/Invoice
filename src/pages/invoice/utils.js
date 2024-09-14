@@ -44,7 +44,7 @@ export const handleTableDataSource = (invoiceList, current, pageSize) => {
     : [];
 };
 
-export const handleDataTable = (loaiHoaDon) => {
+export const handleDataTable = (invoiceType) => {
   return [
     {
       title: i18next.t('Common_STT'),
@@ -95,13 +95,13 @@ export const handleDataTable = (loaiHoaDon) => {
       sorter: (a, b) => a?.chinhanh?.props?.children?.localeCompare(b?.chinhanh?.props?.children),
     },
     {
-      title: loaiHoaDon === 'sold' ? i18next.t('Invoice_BuyerTaxCode') : i18next.t('Invoice_SellerTaxCode'),
+      title: isPurchase(invoiceType) ? i18next.t('Invoice_SellerTaxCode') : i18next.t('Invoice_BuyerTaxCode'),
       dataIndex: 'mst',
       key: 'mst',
       sorter: (a, b) => a?.mst?.props?.children?.localeCompare(b?.mst?.props?.children),
     },
     {
-      title: loaiHoaDon === 'sold' ? i18next.t('Invoice_BuyerName') : i18next.t('Invoice_SellerName'),
+      title: isPurchase(invoiceType) ? i18next.t('Invoice_SellerName') : i18next.t('Invoice_BuyerName'),
       dataIndex: 'ten',
       key: 'ten',
       sorter: (a, b) => a?.ten?.props?.children?.localeCompare(b?.ten?.props?.children),
@@ -233,3 +233,7 @@ export const pageRoutes = [
   { path: routes.invoice, breadcrumbName: i18next.t('Invoice_Management') },
   { path: routes.invoice, breadcrumbName: i18next.t('Invoice_List') },
 ];
+
+export const isPurchase = (invoiceType) => {
+  return isPurchase(invoiceType);
+};

@@ -14,7 +14,7 @@ const DataTable = ({ rowSelection, tableData, columns, pagination, setState, sta
   const handleLoaiHoaDonSearch = (value) => {
     setState((prev) => ({
       ...prev,
-      loaiHoaDon: value,
+      invoiceType: value,
     }));
   };
 
