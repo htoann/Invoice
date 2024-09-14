@@ -5,8 +5,7 @@ import { useList } from 'hooks/useListCommon';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import DataTable from './components/DataTable';
-import { useInvoiceDataTable } from './hooks/useDataTable';
-import { handleTableDataSource, pageRoutes } from './utils';
+import { handleDataTable, handleTableDataSource, pageRoutes } from './utils';
 
 function InvoiceList() {
   const { t } = useTranslation();
@@ -43,7 +42,7 @@ function InvoiceList() {
       <LayoutContent borderLessHeading cards cardsProps={{ headless: 'headless' }}>
         <DataTable
           tableData={handleTableDataSource(invoiceList, current, pageSize)}
-          columns={useInvoiceDataTable()}
+          columns={handleDataTable(loaiHoaDon)}
           state={state}
           setState={setState}
           getInvoiceList={getInvoiceList}

@@ -1,4 +1,3 @@
-import { Checkbox } from '@/components/checkbox/checkbox';
 import { Button, Col, Form, Input, Row } from 'antd';
 import { useAuth } from 'context/AuthContext';
 import { useTranslation } from 'react-i18next';
@@ -47,11 +46,11 @@ function SignUp() {
                 <Input placeholder={t('Common_OrgCode')} style={{ height: 45 }} />
               </Form.Item>
 
-              <div className="invoice-auth-extra-links">
+              {/* <div className="invoice-auth-extra-links">
                 <Checkbox>
                   Tạo tài khoản nghĩa là bạn đồng ý với Điều khoản dịch vụ và Chính sách quyền riêng tư của chúng tôi
                 </Checkbox>
-              </div>
+              </div> */}
               <Form.Item>
                 <Button className="btn-create" htmlType="submit" type="primary" size="large">
                   Tạo tài khoản
