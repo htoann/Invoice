@@ -43,7 +43,11 @@ export const ModalAccount = ({ form, handleOk, state, onCancel, loading, textSub
             <Input placeholder={t('Common_EnterAccountName')} autoComplete="off" />
           </Form.Item>
 
-          <Form.Item label={t('Common_Branch')} rules={[{ required: true, message: t('Branch_PleaseSelect') }]}>
+          <Form.Item
+            name="branch"
+            label={t('Common_Branch')}
+            rules={[{ required: true, message: t('Branch_PleaseSelect') }]}
+          >
             <Select
               placeholder={t('Branch_PleaseSelect')}
               onChange={(value) => {
