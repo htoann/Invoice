@@ -18,6 +18,7 @@ export const handleTableDataSource = (invoiceList, current, pageSize) => {
           chinhanh: <span>{item.chinhanh}</span>,
           mst: <span>{item.mst}</span>,
           ten: <span>{item.ten}</span>,
+          dchi: <span>{item.dchi}</span>,
           tgtcthue: <span>{formatCurrency(item.tgtcthue)}</span>,
           tgtthue: <span>{formatCurrency(item.tgtthue)}</span>,
           ttcktmai: <span>{formatCurrency(item.ttcktmai)}</span>,
