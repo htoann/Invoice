@@ -95,7 +95,7 @@ export const HeaderTable = ({ state, selectedRowKeys, searchParams, setSearchPar
 
   return (
     <div style={{ justifyContent: 'space-between', display: 'flex', alignItems: 'center', flexWrap: 'wrap' }}>
-      <div className="invoice-datatable-filter__left" style={{ gap: 10 }}>
+      <div className="invoice-datatable-filter__left">
         <div className="invoice-datatable-filter__input">
           <span className="label">{t('Invoice_StartDate')}</span>
           <DatePicker
@@ -103,6 +103,7 @@ export const HeaderTable = ({ state, selectedRowKeys, searchParams, setSearchPar
             onChange={(e) => handleDateChange('date_from', e?._d, setStartDate)}
             format="DD/MM/yyyy"
             disabledDate={disabledStartDate}
+            style={{ minWidth: '200px' }}
           />
         </div>
 
@@ -113,6 +114,7 @@ export const HeaderTable = ({ state, selectedRowKeys, searchParams, setSearchPar
             onChange={(e) => handleDateChange('date_to', e?._d, setEndDate)}
             format="DD/MM/yyyy"
             disabledDate={disabledEndDate}
+            style={{ minWidth: '200px' }}
           />
         </div>
 
@@ -120,22 +122,38 @@ export const HeaderTable = ({ state, selectedRowKeys, searchParams, setSearchPar
           <span className="label">
             {isPurchase(invoiceType) ? t('Mã số thuế người bán') : t('Mã số thuế người mua')}
           </span>
-          <Input value={taxNumber} onChange={(e) => handleFilterChange('taxNumber', e?.target?.value)} />
+          <Input
+            value={taxNumber}
+            onChange={(e) => handleFilterChange('taxNumber', e?.target?.value)}
+            style={{ minWidth: '200px' }}
+          />
         </div>
 
         <div className="invoice-datatable-filter__input">
           <span className="label">{t('Ký hiệu mẫu số')}</span>
-          <Input value={khmshdon} onChange={(e) => handleFilterChange('khmshdon', e?.target?.value)} />
+          <Input
+            value={khmshdon}
+            onChange={(e) => handleFilterChange('khmshdon', e?.target?.value)}
+            style={{ minWidth: '200px' }}
+          />
         </div>
 
         <div className="invoice-datatable-filter__input">
           <span className="label">{t('Ký hiệu hóa đơn')}</span>
-          <Input value={khhdon} onChange={(e) => handleFilterChange('khhdon', e?.target?.value)} />
+          <Input
+            value={khhdon}
+            onChange={(e) => handleFilterChange('khhdon', e?.target?.value)}
+            style={{ minWidth: '200px' }}
+          />
         </div>
 
         <div className="invoice-datatable-filter__input">
           <span className="label">{t('Số hóa đơn')}</span>
-          <Input value={shdon} onChange={(e) => handleFilterChange('shdon', e?.target?.value)} />
+          <Input
+            value={shdon}
+            onChange={(e) => handleFilterChange('shdon', e?.target?.value)}
+            style={{ minWidth: '200px' }}
+          />
         </div>
       </div>
 
