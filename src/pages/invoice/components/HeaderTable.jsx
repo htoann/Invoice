@@ -169,17 +169,19 @@ export const HeaderTable = ({ state, selectedRowKeys, searchParams, setSearchPar
 
       <div style={{ display: 'flex', marginLeft: 'auto' }}>
         <Dropdown menu={downloadProps}>
-          <Button
-            style={{ marginTop: 20, marginRight: 10 }}
-            type="primary"
-            size="small"
-            outlined
-            disabled={!selectedRowKeys?.length || loadingDownload}
-            loading={loadingDownload}
-          >
-            <DownloadOutlined />
-            {t('Common_BatchDownload')}
-          </Button>
+          <div>
+            <Button
+              style={{ marginTop: 20, marginRight: 10 }}
+              type="primary"
+              size="small"
+              outlined
+              disabled={!selectedRowKeys?.length || loadingDownload}
+              loading={loadingDownload}
+            >
+              <DownloadOutlined />
+              {t('Common_BatchDownload')}
+            </Button>
+          </div>
         </Dropdown>
 
         <Button
