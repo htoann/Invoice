@@ -93,68 +93,65 @@ export const HeaderTable = ({ state, selectedRowKeys, searchParams, setSearchPar
     onClick: ({ key }) => handleDownload(key),
   };
 
+  const inputStyle = { minWidth: '200px' };
+
+  const invoiceDateInputs = [
+    {
+      label: t('Invoice_StartDate'),
+      placeholder: t('Invoice_SelectStartDate'),
+      value: startDate,
+      onChange: (e) => handleDateChange('date_from', e?._d, setStartDate),
+      disabledDate: disabledStartDate,
+    },
+    {
+      label: t('Invoice_EndDate'),
+      placeholder: t('Invoice_SelectEndDate'),
+      value: endDate,
+      onChange: (e) => handleDateChange('date_to', e?._d, setEndDate),
+      disabledDate: disabledEndDate,
+    },
+  ];
+
+  const invoiceSearchInputs = [
+    {
+      label: isPurchase(invoiceType) ? t('Mã số thuế người bán') : t('Mã số thuế người mua'),
+      value: taxNumber,
+      onChange: (e) => handleFilterChange('taxNumber', e?.target?.value),
+    },
+    {
+      label: t('Ký hiệu mẫu số'),
+      value: khmshdon,
+      onChange: (e) => handleFilterChange('khmshdon', e?.target?.value),
+    },
+    {
+      label: t('Ký hiệu hóa đơn'),
+      value: khhdon,
+      onChange: (e) => handleFilterChange('khhdon', e?.target?.value),
+    },
+    { label: t('Số hóa đơn'), value: shdon, onChange: (e) => handleFilterChange('shdon', e?.target?.value) },
+  ];
+
   return (
     <div style={{ justifyContent: 'space-between', display: 'flex', alignItems: 'center', flexWrap: 'wrap' }}>
       <div className="invoice-datatable-filter__left">
-        <div className="invoice-datatable-filter__input">
-          <span className="label">{t('Invoice_StartDate')}</span>
-          <DatePicker
-            placeholder={t('Invoice_SelectStartDate')}
-            onChange={(e) => handleDateChange('date_from', e?._d, setStartDate)}
-            format="DD/MM/yyyy"
-            disabledDate={disabledStartDate}
-            style={{ minWidth: '200px' }}
-          />
-        </div>
-
-        <div className="invoice-datatable-filter__input">
-          <span className="label">{t('Invoice_EndDate')}</span>
-          <DatePicker
-            placeholder={t('Invoice_SelectEndDate')}
-            onChange={(e) => handleDateChange('date_to', e?._d, setEndDate)}
-            format="DD/MM/yyyy"
-            disabledDate={disabledEndDate}
-            style={{ minWidth: '200px' }}
-          />
-        </div>
-
-        <div className="invoice-datatable-filter__input">
-          <span className="label">
-            {isPurchase(invoiceType) ? t('Mã số thuế người bán') : t('Mã số thuế người mua')}
-          </span>
-          <Input
-            value={taxNumber}
-            onChange={(e) => handleFilterChange('taxNumber', e?.target?.value)}
-            style={{ minWidth: '200px' }}
-          />
-        </div>
-
-        <div className="invoice-datatable-filter__input">
-          <span className="label">{t('Ký hiệu mẫu số')}</span>
-          <Input
-            value={khmshdon}
-            onChange={(e) => handleFilterChange('khmshdon', e?.target?.value)}
-            style={{ minWidth: '200px' }}
-          />
-        </div>
-
-        <div className="invoice-datatable-filter__input">
-          <span className="label">{t('Ký hiệu hóa đơn')}</span>
-          <Input
-            value={khhdon}
-            onChange={(e) => handleFilterChange('khhdon', e?.target?.value)}
-            style={{ minWidth: '200px' }}
-          />
-        </div>
-
-        <div className="invoice-datatable-filter__input">
-          <span className="label">{t('Số hóa đơn')}</span>
-          <Input
-            value={shdon}
-            onChange={(e) => handleFilterChange('shdon', e?.target?.value)}
-            style={{ minWidth: '200px' }}
-          />
-        </div>
+        {invoiceDateInputs.map(({ label, placeholder, onChange, disabledDate }, index) => (
+          <div key={index} className="invoice-datatable-filter__input">
+            <span className="label">{label}</span>
+            <DatePicker
+              placeholder={placeholder}
+              onChange={onChange}
+              format="DD/MM/yyyy"
+              disabledDate={disabledDate}
+              style={inputStyle}
+            />
+          </div>
+        ))}
+        {invoiceSearchInputs.map(({ label, value, onChange }, index) => (
+          <div key={index} className="invoice-datatable-filter__input">
+            <span className="label">{label}</span>
+            <Input value={value} onChange={onChange} style={inputStyle} />
+          </div>
+        ))}
       </div>
 
       <div style={{ display: 'flex', marginLeft: 'auto' }}>
