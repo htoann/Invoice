@@ -235,5 +235,5 @@ export const pageRoutes = [
 ];
 
 export const isPurchase = (invoiceType) => {
-  return isPurchase(invoiceType);
+  return invoiceType === 'purchase';
 };
