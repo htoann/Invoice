@@ -112,7 +112,7 @@ export const watchObject = (object = {}, methods = [], callbackBefore = () => {}
 };
 
 export const formatCurrency = (amount = 0) => {
-  return amount.toLocaleString('en-US');
+  return amount?.toLocaleString('en-US');
 };
 
 export const defaultPaginationConfig = {
