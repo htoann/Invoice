@@ -168,7 +168,7 @@ export const HeaderTable = ({ state, selectedRowKeys, searchParams, setSearchPar
       </div>
 
       <div style={{ display: 'flex', marginLeft: 'auto' }}>
-        <Dropdown menu={downloadProps}>
+        <Dropdown menu={downloadProps} disabled={!selectedRowKeys?.length || loadingDownload}>
           <div>
             <Button
               style={{ marginTop: 20, marginRight: 10 }}
