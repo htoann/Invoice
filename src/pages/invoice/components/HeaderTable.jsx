@@ -20,6 +20,8 @@ export const HeaderTable = ({ state, selectedRowKeys, searchParams, setSearchPar
   const [loadingExport, setLoadingExport] = useState(false);
   const [loadingDownload, setLoadingDownload] = useState(false);
 
+  const DATE_FORMAT = 'DD-MM-YYYY';
+
   const handleExport = async () => {
     setLoadingExport(true);
     try {
@@ -67,28 +69,16 @@ export const HeaderTable = ({ state, selectedRowKeys, searchParams, setSearchPar
     }
   };
 
-  const disabledStartDate = (current) => {
-    return endDate && current ? current?._d?.getTime() > endDate.getTime() : false;
-  };
+  const disabledStartDate = (current) => endDate && current && current?._d?.getTime() > endDate.getTime();
 
-  const disabledEndDate = (current) => {
-    return startDate && current ? current?._d?.getTime() < startDate.getTime() : false;
-  };
+  const disabledEndDate = (current) => startDate && current && current?._d?.getTime() < startDate.getTime();
 
-  const handleStartDateChange = (e) => {
+  const handleDateChange = (key, value, setValue) => {
     setSearchParams((prev) => ({
       ...prev,
-      date_from: e?._d ? formatTime(e._d, 'DD-MM-YYYY') : null,
+      [key]: value ? formatTime(value, DATE_FORMAT) : null,
     }));
-    setStartDate(e?._d || null);
-  };
-
-  const handleEndDateChange = (e) => {
-    setSearchParams((prev) => ({
-      ...prev,
-      date_to: e?._d ? formatTime(e._d, 'DD-MM-YYYY') : null,
-    }));
-    setEndDate(e?._d || null);
+    setValue(value || null);
   };
 
   const handleFilterChange = (key, value) => {
@@ -110,7 +100,7 @@ export const HeaderTable = ({ state, selectedRowKeys, searchParams, setSearchPar
           <span className="label">{t('Invoice_StartDate')}</span>
           <DatePicker
             placeholder={t('Invoice_SelectStartDate')}
-            onChange={handleStartDateChange}
+            onChange={(e) => handleDateChange('date_from', e?._d, setStartDate)}
             format="DD/MM/yyyy"
             disabledDate={disabledStartDate}
           />
@@ -120,7 +110,7 @@ export const HeaderTable = ({ state, selectedRowKeys, searchParams, setSearchPar
           <span className="label">{t('Invoice_EndDate')}</span>
           <DatePicker
             placeholder={t('Invoice_SelectEndDate')}
-            onChange={handleEndDateChange}
+            onChange={(e) => handleDateChange('date_to', e?._d, setEndDate)}
             format="DD/MM/yyyy"
             disabledDate={disabledEndDate}
           />
