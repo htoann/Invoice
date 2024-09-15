@@ -25,16 +25,9 @@ export const HeaderTable = ({ state, selectedRowKeys, searchParams, setSearchPar
     try {
       const response = await dataService.get(
         API_INVOICES_EXCEL,
-        {
-          loaihdon: invoiceType,
-          date_from,
-          date_to,
-        },
-        {
-          responseType: 'blob',
-        },
+        { loaihdon: invoiceType, date_from, date_to },
+        { responseType: 'blob' },
       );
-
       downloadFile(response, `HDDT_${formatTime(new Date(), 'YYYYMMDDHHmm')}.xlsx`);
     } catch (error) {
       console.error(error);
@@ -60,11 +53,8 @@ export const HeaderTable = ({ state, selectedRowKeys, searchParams, setSearchPar
           mst: taxNumber,
           ...(selectedRowKeys?.length && { ids: JSON.stringify(selectedRowKeys) }),
         },
-        {
-          responseType: 'blob',
-        },
+        { responseType: 'blob' },
       );
-
       downloadFile(response, `HDDT_${formatTime(new Date(), 'YYYYMMDDHHmm')}.zip`);
     } catch (error) {
       console.error(error);
@@ -102,23 +92,15 @@ export const HeaderTable = ({ state, selectedRowKeys, searchParams, setSearchPar
   };
 
   const handleFilterChange = (key, value) => {
-    setSearchParams((prevParams) => ({ ...prevParams, [key]: value }));
+    setSearchParams((prev) => ({ ...prev, [key]: value }));
   };
 
-  const downloadProps = {
+  const downloadMenu = {
     items: [
-      {
-        label: 'PDF',
-        key: 'pdf',
-      },
-      {
-        label: 'XML',
-        key: 'xml',
-      },
+      { label: 'PDF', key: 'pdf' },
+      { label: 'XML', key: 'xml' },
     ],
-    onClick: ({ key }) => {
-      handleDownload(key);
-    },
+    onClick: ({ key }) => handleDownload(key),
   };
 
   return (
@@ -168,7 +150,7 @@ export const HeaderTable = ({ state, selectedRowKeys, searchParams, setSearchPar
       </div>
 
       <div style={{ display: 'flex', marginLeft: 'auto' }}>
-        <Dropdown menu={downloadProps} disabled={!selectedRowKeys?.length || loadingDownload}>
+        <Dropdown menu={downloadMenu} disabled={!selectedRowKeys?.length || loadingDownload}>
           <div>
             <Button
               style={{ marginTop: 20, marginRight: 10 }}

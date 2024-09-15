@@ -116,7 +116,7 @@ const AccountList = () => {
   });
 
   const handleFilterChange = (key, value) => {
-    setSearchParams((prevParams) => ({ ...prevParams, [key]: value }));
+    setSearchParams((prev) => ({ ...prev, [key]: value }));
   };
 
   const handleChangeBranch = (branchId) => {
