@@ -1,10 +1,10 @@
 import { Button } from '@/components/buttons';
 import { API_INVOICES_EXCEL, API_INVOICES_ZIP } from '@/service/apiConst';
 import { dataService } from '@/service/dataService';
-import { downloadFile, formatTime } from '@/utils/index';
+import { debounce, downloadFile, formatTime } from '@/utils/index';
 import { DownloadOutlined } from '@ant-design/icons';
 import { DatePicker, Dropdown, Input, notification } from 'antd';
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { isPurchase } from '../utils';
 
@@ -85,6 +85,11 @@ export const HeaderTable = ({ state, selectedRowKeys, searchParams, setSearchPar
     setSearchParams((prev) => ({ ...prev, [key]: value }));
   };
 
+  const debouncedFilterChange = useCallback(
+    debounce((key, value) => handleFilterChange(key, value), 300),
+    [],
+  );
+
   const downloadMenu = {
     items: [
       { label: 'PDF', key: 'pdf' },
@@ -116,19 +121,19 @@ export const HeaderTable = ({ state, selectedRowKeys, searchParams, setSearchPar
     {
       label: isPurchase(invoiceType) ? t('Mã số thuế người bán') : t('Mã số thuế người mua'),
       value: taxNumber,
-      onChange: (e) => handleFilterChange('taxNumber', e?.target?.value),
+      paramKey: 'taxNumber',
     },
     {
       label: t('Ký hiệu mẫu số'),
       value: khmshdon,
-      onChange: (e) => handleFilterChange('khmshdon', e?.target?.value),
+      paramKey: 'khmshdon',
     },
     {
       label: t('Ký hiệu hóa đơn'),
       value: khhdon,
-      onChange: (e) => handleFilterChange('khhdon', e?.target?.value),
+      paramKey: 'khhdon',
     },
-    { label: t('Số hóa đơn'), value: shdon, onChange: (e) => handleFilterChange('shdon', e?.target?.value) },
+    { label: t('Số hóa đơn'), value: shdon, paramKey: 'shdon' },
   ];
 
   return (
@@ -146,10 +151,15 @@ export const HeaderTable = ({ state, selectedRowKeys, searchParams, setSearchPar
             />
           </div>
         ))}
-        {invoiceSearchInputs.map(({ label, value, onChange }, index) => (
+
+        {invoiceSearchInputs.map(({ label, value, paramKey }, index) => (
           <div key={index} className="invoice-datatable-filter__input">
             <span className="label">{label}</span>
-            <Input value={value} onChange={onChange} style={inputStyle} />
+            <Input
+              defaultValue={value}
+              onChange={(e) => debouncedFilterChange(paramKey, e?.target?.value)}
+              style={inputStyle}
+            />
           </div>
         ))}
       </div>

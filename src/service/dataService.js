@@ -3,7 +3,7 @@ import {
   ACCESS_TOKEN,
   API_ENDPOINT,
   clearLogoutLocalStorageAndCookie,
-  filterEmptyArrayObject,
+  filterEmptyFieldObject,
   REFRESH_TOKEN,
 } from '@/utils/index';
 import axios from 'axios';
@@ -151,7 +151,7 @@ class DataService {
   }
 
   async get(path, params = {}, config = {}) {
-    return this.client.get(path, { params: filterEmptyArrayObject(params), ...config });
+    return this.client.get(path, { params: filterEmptyFieldObject(params), ...config });
   }
 
   async post(path, data = {}, optionalHeader = {}) {

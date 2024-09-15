@@ -8,6 +8,7 @@ import { removeLocalStorage } from './localStorage';
 export const API_ENDPOINT = process.env.REACT_APP_API_ENDPOINT;
 export const HDDT_CAPTCHA_ENDPOINT = process.env.REACT_APP_HDDT_CAPTCHA;
 export const REACT_MODE = process.env.REACT_APP_MODE;
+
 export const ACCESS_TOKEN = 'accessToken';
 export const REFRESH_TOKEN = 'refreshToken';
 export const LOGGED_IN = 'loggedIn';
@@ -56,9 +57,7 @@ export const downloadFile = (response, fileName = getFileName(response)) => {
 };
 
 export const formatTime = (date, format = 'DD-MM-YYYY-HHmmss') => {
-  if (!date) return dayjs(new Date()).format(format);
-
-  return dayjs(date).format(format);
+  return dayjs(date || new Date()).format(format);
 };
 
 export const getAntdLocale = (language) => {
@@ -112,10 +111,7 @@ export const watchObject = (object = {}, methods = [], callbackBefore = () => {}
   });
 };
 
-export const formatCurrency = (amount) => {
-  if (!amount) {
-    amount = 0;
-  }
+export const formatCurrency = (amount = 0) => {
   return amount.toLocaleString('en-US');
 };
 
@@ -148,6 +144,16 @@ export const convertKeysToSnakeCase = (obj) => {
   }, {});
 };
 
-export const filterEmptyArrayObject = (arrayObject) => {
+export const filterEmptyFieldObject = (arrayObject) => {
   return Object.fromEntries(Object.entries(arrayObject).filter(([, v]) => v));
+};
+
+export const debounce = (func, delay) => {
+  let timerId;
+  return (...args) => {
+    if (timerId) {
+      clearTimeout(timerId);
+    }
+    timerId = setTimeout(() => func(...args), delay);
+  };
 };
