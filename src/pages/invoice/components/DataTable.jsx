@@ -10,8 +10,8 @@ import { HeaderTable } from './HeaderTable';
 
 function DataTable({ loading, tableData, columns, state, setState, getInvoiceList }) {
   const { t } = useTranslation();
-  const [selectedRowKeys, setSelectedRowKeys] = useState([]);
 
+  const [selectedRowKeys, setSelectedRowKeys] = useState([]);
   const [searchParams, setSearchParams] = useState({
     taxNumber: '',
     khmshdon: ' ',
@@ -26,8 +26,9 @@ function DataTable({ loading, tableData, columns, state, setState, getInvoiceLis
   const { taxNumber, date_from, date_to } = searchParams;
 
   useEffect(() => {
-    const mst = isPurchase(invoiceType) ? { nbmst: taxNumber } : { nmmst: taxNumber };
-    getInvoiceList({ loaihdon: invoiceType, date_from, date_to, ...mst, ...searchParams });
+    const mstKey = isPurchase(invoiceType) ? 'nbmst' : 'nmmst';
+
+    getInvoiceList({ loaihdon: invoiceType, date_from, date_to, [mstKey]: taxNumber, ...searchParams });
   }, [current, pageSize, invoiceType, date_from, date_to, searchParams]);
 
   const handleChangeInvoiceType = (invoiceType) => {
