@@ -14,7 +14,9 @@ export const useTableDataSource = ({ accounts, current, pageSize, showEditModal,
           id: item?.id,
           name: <span>{item?.name}</span>,
           email: <span>{item?.email}</span>,
+          branch: <span>{item?.branch?.name}</span>,
           department: <span>{item?.department?.name}</span>,
+          project: <span>{item?.project?.name}</span>,
           action: (
             <div className="table-actions">
               <Link className="edit" to="#" onClick={() => showEditModal(item)}>
