@@ -165,14 +165,14 @@ export const HeaderTable = ({ state, selectedRowKeys, searchParams, setSearchPar
       </div>
 
       <div style={{ display: 'flex', marginLeft: 'auto' }}>
-        <Dropdown menu={downloadMenu} disabled={!selectedRowKeys?.length || loadingDownload}>
+        <Dropdown menu={downloadMenu} disabled={!invoiceList?.length || loadingDownload}>
           <div>
             <Button
               style={{ marginTop: 20, marginRight: 10 }}
               type="primary"
               size="small"
               outlined
-              disabled={!selectedRowKeys?.length || loadingDownload}
+              disabled={!invoiceList?.length || loadingDownload}
               loading={loadingDownload}
             >
               <DownloadOutlined />
