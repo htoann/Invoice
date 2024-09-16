@@ -54,7 +54,16 @@ const AccountList = () => {
       departmentId && setSelectedDepartmentId(departmentId);
       projectId && setSelectedProjectId(projectId);
     }
-  }, [selectedBranchId, branchId, selectedDepartmentId, departmentId, selectedProjectId, projectId]);
+  }, [
+    selectedBranchId,
+    branchId,
+    selectedDepartmentId,
+    departmentId,
+    selectedProjectId,
+    projectId,
+    state?.visible,
+    state.editVisible,
+  ]);
 
   const {
     list: accounts,

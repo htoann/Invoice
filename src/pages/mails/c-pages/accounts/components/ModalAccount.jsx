@@ -13,7 +13,9 @@ const locale = i18n.language;
 export const ModalAccount = ({ form, handleOk, state, onCancel, loading, textSubmit, title, open }) => {
   const { t } = useTranslation();
 
-  useGetOrgStructure({ ...(!state && { visible: open }), ...(state && { editVisible: open }) }, true, open);
+  const { branch, department, project, name, email, password } = state?.update || {};
+
+  useGetOrgStructure({ visible: open, editVisible: open }, true, open);
 
   const {
     branches,
@@ -26,9 +28,9 @@ export const ModalAccount = ({ form, handleOk, state, onCancel, loading, textSub
   } = useAppState();
 
   useEffect(() => {
-    state?.update?.branch && setSelectedBranchId(state?.update?.branch?.id);
-    state?.update?.department && setSelectedDepartmentId(state?.update?.department?.id);
-  }, [state?.update?.branch, state?.update?.department]);
+    branch?.id && setSelectedBranchId(branch.id);
+    department?.id && setSelectedDepartmentId(department.id);
+  }, [branch?.id, department?.id]);
 
   return (
     <Modal title={title} open={open} onCancel={onCancel}>
@@ -36,7 +38,7 @@ export const ModalAccount = ({ form, handleOk, state, onCancel, loading, textSub
         <Form form={form} name="edit_account" onFinish={handleOk} autoComplete="off">
           <Form.Item
             name="name"
-            initialValue={state?.update?.name}
+            initialValue={name}
             label={t('Common_AccountName')}
             rules={[{ message: t('Common_PleaseEnterAccountName'), required: true }]}
           >
@@ -47,7 +49,7 @@ export const ModalAccount = ({ form, handleOk, state, onCancel, loading, textSub
             name="branch"
             label={t('Common_Branch')}
             rules={[{ required: true, message: t('Branch_PleaseSelect') }]}
-            initialValue={state?.update?.branch?.id || undefined}
+            initialValue={branch?.id || undefined}
           >
             <Select
               placeholder={t('Branch_PleaseSelect')}
@@ -67,7 +69,7 @@ export const ModalAccount = ({ form, handleOk, state, onCancel, loading, textSub
 
           <Form.Item
             name="department"
-            initialValue={state?.update?.department?.id || undefined}
+            initialValue={department?.id || undefined}
             label={t('Common_Department')}
             rules={[{ required: true, message: t('Department_PleaseSelect') }]}
           >
@@ -87,7 +89,12 @@ export const ModalAccount = ({ form, handleOk, state, onCancel, loading, textSub
             </Select>
           </Form.Item>
 
-          <Form.Item name="project" initialValue={state?.update?.project?.id || undefined} label={t('Common_Project')}>
+          <Form.Item
+            name="project"
+            initialValue={project?.id || undefined}
+            label={t('Common_Project')}
+            rules={[{ required: true, message: t('Project_PleaseSelect') }]}
+          >
             <Select disabled={!selectedDepartmentId} placeholder={t('Common_SelectProject')}>
               {projects?.map((item) => (
                 <Select.Option key={item.id} value={item.id}>
@@ -99,7 +106,7 @@ export const ModalAccount = ({ form, handleOk, state, onCancel, loading, textSub
 
           <Form.Item
             name="email"
-            initialValue={state?.update.email}
+            initialValue={email}
             label={t('Common_Email')}
             rules={[
               {
@@ -114,7 +121,7 @@ export const ModalAccount = ({ form, handleOk, state, onCancel, loading, textSub
 
           <Form.Item
             name="password"
-            initialValue={state?.update?.password}
+            initialValue={password}
             label={t('Common_AppPassword')}
             rules={[{ required: true, message: t('Common_PleaseEnterPassword') }]}
           >

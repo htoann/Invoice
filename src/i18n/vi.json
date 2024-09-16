@@ -31,7 +31,7 @@
   "Common_AccountName": "Tên tài khoản",
   "Common_EnterAccountName": "Nhập tên tài khoản",
   "Common_PleaseEnterAccountName": "Vui lòng nhập tên tài khoản!",
-  "Common_PleaseEnterEmail": "Vui lòng nhập email!",
+  "Common_PleaseEnterEmail": "Vui lòng nhập email",
   "Common_Email": "Địa chỉ email",
   "Common_Password": "Mật khẩu",
   "Common_AppPassword": "Mật khẩu ứng dụng",
@@ -231,6 +231,7 @@
   "Project_DeleteSuccess": "Dự án đã được xóa thành công.",
   "Project_DeleteError": "Có lỗi xảy ra khi xóa dự án.",
   "Project_NotFound": "Không tìm thấy dự án nào",
+  "Project_PleaseSelect": "Vui lòng chọn dự án",
 
   "Product_Create_Title": "Tạo hàng hoá",
   "Product_CreateSuccess": "Hàng hoá đã được tạo thành công",
