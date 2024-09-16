@@ -44,25 +44,25 @@ const AccountList = () => {
   const { pagination, visible, editVisible } = state;
   const { current, pageSize } = pagination;
 
-  useGetOrgStructure(state, true, !state?.visible && !state?.editVisible);
+  useGetOrgStructure(state, true, !visible && !editVisible);
 
   const { branchId, departmentId, projectId } = searchParams || {};
 
   useEffect(() => {
-    if (!state?.visible && !state?.editVisible) {
+    if (!visible && !editVisible) {
       branchId && setSelectedBranchId(branchId);
       departmentId && setSelectedDepartmentId(departmentId);
       projectId && setSelectedProjectId(projectId);
     }
   }, [
     selectedBranchId,
-    branchId,
     selectedDepartmentId,
-    departmentId,
     selectedProjectId,
+    branchId,
+    departmentId,
     projectId,
-    state?.visible,
-    state.editVisible,
+    visible,
+    editVisible,
   ]);
 
   const {

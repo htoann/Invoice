@@ -15,7 +15,9 @@ export const ModalAccount = ({ form, handleOk, state, onCancel, loading, textSub
 
   const { branch, department, project, name, email, password } = state?.update || {};
 
-  useGetOrgStructure({ visible: open, editVisible: open }, true, open);
+  const stateToTrack = { ...(!state && { visible: open }), ...(state && { editVisible: open }) };
+
+  useGetOrgStructure(stateToTrack, true, open);
 
   const {
     branches,
