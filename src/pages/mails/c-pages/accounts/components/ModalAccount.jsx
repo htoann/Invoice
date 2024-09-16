@@ -26,8 +26,8 @@ export const ModalAccount = ({ form, handleOk, state, onCancel, loading, textSub
   } = useAppState();
 
   useEffect(() => {
-    state?.update?.branch && setSelectedBranchId(state?.update?.branch);
-    state?.update?.department && setSelectedDepartmentId(state?.update?.department);
+    state?.update?.branch && setSelectedBranchId(state?.update?.branch?.id);
+    state?.update?.department && setSelectedDepartmentId(state?.update?.department?.id);
   }, [state?.update?.branch, state?.update?.department]);
 
   return (
@@ -47,6 +47,7 @@ export const ModalAccount = ({ form, handleOk, state, onCancel, loading, textSub
             name="branch"
             label={t('Common_Branch')}
             rules={[{ required: true, message: t('Branch_PleaseSelect') }]}
+            initialValue={state?.update?.branch?.id || undefined}
           >
             <Select
               placeholder={t('Branch_PleaseSelect')}
@@ -66,7 +67,7 @@ export const ModalAccount = ({ form, handleOk, state, onCancel, loading, textSub
 
           <Form.Item
             name="department"
-            initialValue={state?.update?.department || undefined}
+            initialValue={state?.update?.department?.id || undefined}
             label={t('Common_Department')}
             rules={[{ required: true, message: t('Department_PleaseSelect') }]}
           >
@@ -86,7 +87,7 @@ export const ModalAccount = ({ form, handleOk, state, onCancel, loading, textSub
             </Select>
           </Form.Item>
 
-          <Form.Item name="project" initialValue={state?.update?.project || undefined} label={t('Common_Project')}>
+          <Form.Item name="project" initialValue={state?.update?.project?.id || undefined} label={t('Common_Project')}>
             <Select disabled={!selectedDepartmentId} placeholder={t('Common_SelectProject')}>
               {projects?.map((item) => (
                 <Select.Option key={item.id} value={item.id}>
