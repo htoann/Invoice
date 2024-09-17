@@ -11,6 +11,7 @@ export const FilterOrgStructure = ({
   departmentId,
   projectId,
   mode = 'horizontal',
+  needTakeDefaultValue,
 }) => {
   const { t } = useTranslation();
 
@@ -30,9 +31,9 @@ export const FilterOrgStructure = ({
   const departmentOptions = createOptions(departments, 'name');
   const projectOptions = createOptions(projects, 'name');
 
-  const defaultBranchId = branchId || selectedBranchId;
-  const defaultDepartmentId = departmentId || selectedDepartmentId;
-  const defaultProjectId = projectId || selectedProjectId;
+  const defaultBranchId = needTakeDefaultValue ? branchId : branchId || selectedBranchId;
+  const defaultDepartmentId = needTakeDefaultValue ? departmentId : departmentId || selectedDepartmentId;
+  const defaultProjectId = needTakeDefaultValue ? projectId : projectId || selectedProjectId;
 
   const isHorizontal = mode === 'horizontal';
 

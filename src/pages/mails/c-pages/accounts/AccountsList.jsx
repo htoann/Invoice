@@ -1,15 +1,13 @@
-import { Button, notification } from 'antd';
-import { useEffect, useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
-
 import { FilterOrgStructure } from '@/components/FilterOrgStructure';
 import { PageHeader } from '@/components/page-headers';
 import { LayoutContent } from '@/layout/LayoutContent';
 import { API_MAILS_ACCOUNT_BY_ACCOUNT_ID, API_MAILS_ACCOUNTS, dataService } from '@/service';
+import { Button, notification } from 'antd';
 import { useAppState } from 'context/AppContext';
-import { useGetOrgStructure } from 'hooks/useGetOrgStructure';
-import { useList } from 'hooks/useListCommon';
+import { useGetOrgStructure, useList } from 'hooks';
+import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 import { CreateAccount } from './components/CreateAccount';
 import { DataTable } from './components/DataTable';
 import { UpdateAccount } from './components/UpdateAccount';
@@ -19,7 +17,14 @@ import { useTableColumnAccount } from './hooks/useDataTable';
 const AccountList = () => {
   const { t } = useTranslation();
 
-  const { setSelectedBranchId, setSelectedDepartmentId, setSelectedProjectId } = useAppState();
+  const {
+    selectedBranchId,
+    setSelectedBranchId,
+    selectedDepartmentId,
+    setSelectedDepartmentId,
+    setSelectedProjectId,
+    selectedProjectId,
+  } = useAppState();
 
   const [state, setState] = useState({
     visible: false,
@@ -27,6 +32,7 @@ const AccountList = () => {
     update: {},
     pagination: { current: 1, pageSize: 20 },
   });
+
   const [searchParams, setSearchParams] = useState({
     name: '',
     email: '',
@@ -38,11 +44,26 @@ const AccountList = () => {
   const { pagination, visible, editVisible } = state;
   const { current, pageSize } = pagination;
 
-  useGetOrgStructure(state);
+  useGetOrgStructure(state, true, !visible && !editVisible);
+
+  const { branchId, departmentId, projectId } = searchParams || {};
 
   useEffect(() => {
-    searchParams?.departmentId && setSelectedDepartmentId(searchParams?.departmentId);
-  }, [searchParams?.departmentId]);
+    if (!visible && !editVisible) {
+      branchId && setSelectedBranchId(branchId);
+      departmentId && setSelectedDepartmentId(departmentId);
+      projectId && setSelectedProjectId(projectId);
+    }
+  }, [
+    selectedBranchId,
+    selectedDepartmentId,
+    selectedProjectId,
+    branchId,
+    departmentId,
+    projectId,
+    visible,
+    editVisible,
+  ]);
 
   const {
     list: accounts,
@@ -102,7 +123,7 @@ const AccountList = () => {
   });
 
   const handleFilterChange = (key, value) => {
-    setSearchParams((prevParams) => ({ ...prevParams, [key]: value }));
+    setSearchParams((prev) => ({ ...prev, [key]: value }));
   };
 
   const handleChangeBranch = (branchId) => {
@@ -139,6 +160,7 @@ const AccountList = () => {
           branchId={searchParams?.branchId}
           departmentId={searchParams?.departmentId}
           projectId={searchParams?.projectId}
+          needTakeDefaultValue
         />
         <Button onClick={showModal} type="primary" key="1" style={{ marginTop: 25 }}>
           <Link to="#">+ {t('Mail_AccountList_Create')}</Link>

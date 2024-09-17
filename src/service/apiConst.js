@@ -6,7 +6,9 @@ export const API_USER_INFO = '/auth/profile/';
 // Invoice
 export const API_INVOICES = '/invoices/';
 
-export const API_INVOICES_EXCEL = '/invoices_excel';
+export const API_INVOICES_EXCEL = '/invoices/excel';
+
+export const API_INVOICES_ZIP = '/invoices/zip';
 
 export const API_INVOICES_CHANGE = '/invoices-change/';
 

@@ -93,10 +93,10 @@ export const InboxList = ({ setSelectedInbox, selectedInbox, pagination, setPagi
       />
 
       {loading || loadingMailAccounts ? (
-        <>
+        <div style={{ margin: 20 }}>
           <Skeleton active style={{ marginTop: 20 }} />
           <Skeleton style={{ marginTop: 10 }} active />
-        </>
+        </div>
       ) : (
         <>
           {inboxList?.length > 0 ? (

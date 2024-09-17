@@ -46,7 +46,7 @@ const Checkbox = (props) => {
   };
 
   const onChecked = (e) => {
-    return onChange(e.target.checked, e.target.value);
+    return onChange && onChange(e.target.checked, e.target.value);
   };
 
   return !multiple ? (

@@ -3,7 +3,7 @@ import {
   ACCESS_TOKEN,
   API_ENDPOINT,
   clearLogoutLocalStorageAndCookie,
-  filterEmptyArrayObject,
+  filterEmptyFieldObject,
   REFRESH_TOKEN,
 } from '@/utils/index';
 import axios from 'axios';
@@ -13,10 +13,30 @@ const whiteListAPIs = [API_LOGIN, API_REGISTER];
 
 let refreshTokenPromise = null;
 let failedQueue = [];
+let refreshAttempts = 0;
+let refreshTimeout = null;
+
+const MAX_REFRESH_ATTEMPTS = 3;
+const REFRESH_INTERVAL = 60000; // 1 minute
 
 const processQueue = (error, accessToken = null) => {
   failedQueue.forEach((prom) => (accessToken ? prom.resolve(accessToken) : prom.reject(error)));
   failedQueue = [];
+};
+
+const resetRefreshAttempts = () => {
+  refreshAttempts = 0;
+  if (refreshTimeout) {
+    clearTimeout(refreshTimeout);
+    refreshTimeout = null;
+  }
+};
+
+const incrementRefreshAttempts = () => {
+  refreshAttempts += 1;
+  if (refreshAttempts === 1) {
+    refreshTimeout = setTimeout(resetRefreshAttempts, REFRESH_INTERVAL);
+  }
 };
 
 class DataService {
@@ -57,6 +77,11 @@ class DataService {
     if (response?.status === 401 && !whiteListAPIs.includes(config.url)) {
       const originalRequest = config;
 
+      if (refreshAttempts >= MAX_REFRESH_ATTEMPTS) {
+        this.logout();
+        return Promise.reject(new Error('Max refresh attempts exceeded'));
+      }
+
       if (refreshTokenPromise) {
         return refreshTokenPromise
           .then((accessToken) => {
@@ -74,7 +99,6 @@ class DataService {
           if (accessToken) {
             this.client.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
             processQueue(null, accessToken);
-
             originalRequest.headers['Authorization'] = `Bearer ${accessToken}`;
             return this.client(originalRequest);
           }
@@ -90,8 +114,11 @@ class DataService {
   }
 
   async refreshAccessToken() {
+    incrementRefreshAttempts();
+
     const refreshToken = getCookie(REFRESH_TOKEN);
     if (!refreshToken) {
+      this.logout();
       return Promise.reject(new Error('No refresh token available'));
     }
 
@@ -113,13 +140,18 @@ class DataService {
 
   handleRefreshError(error) {
     console.error('Failed to refresh token:', error);
-    refreshTokenPromise = null;
-    clearLogoutLocalStorageAndCookie();
+    this.logout();
     return Promise.reject(error);
   }
 
+  logout() {
+    refreshTokenPromise = null;
+    resetRefreshAttempts();
+    clearLogoutLocalStorageAndCookie();
+  }
+
   async get(path, params = {}, config = {}) {
-    return this.client.get(path, { params: filterEmptyArrayObject(params), ...config });
+    return this.client.get(path, { params: filterEmptyFieldObject(params), ...config });
   }
 
   async post(path, data = {}, optionalHeader = {}) {

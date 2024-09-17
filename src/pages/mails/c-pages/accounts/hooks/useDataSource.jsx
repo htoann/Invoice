@@ -1,12 +1,10 @@
 import { UilEdit, UilTrash } from '@tooni/iconscout-unicons-react';
 import { Popconfirm } from 'antd';
-import { useAppState } from 'context/AppContext';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 
 export const useTableDataSource = ({ accounts, current, pageSize, showEditModal, handleDelete }) => {
   const { t } = useTranslation();
-  const { departments } = useAppState();
 
   const tableDataSource =
     accounts?.length > 0
@@ -16,7 +14,9 @@ export const useTableDataSource = ({ accounts, current, pageSize, showEditModal,
           id: item?.id,
           name: <span>{item?.name}</span>,
           email: <span>{item?.email}</span>,
-          department: <span>{departments?.find((dept) => dept?.id === item?.department)?.name}</span>,
+          branch: <span>{item?.branch?.name}</span>,
+          department: <span>{item?.department?.name}</span>,
+          project: <span>{item?.project?.name}</span>,
           action: (
             <div className="table-actions">
               <Link className="edit" to="#" onClick={() => showEditModal(item)}>

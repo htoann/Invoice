@@ -5,8 +5,7 @@ import { useList } from 'hooks/useListCommon';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import DataTable from './components/DataTable';
-import { useInvoiceDataTable } from './hooks/useDataTable';
-import { handleTableDataSource, pageRoutes } from './utils';
+import { handleDataTable, handleTableDataSource, isPurchase, pageRoutes } from './utils';
 
 function InvoiceList() {
   const { t } = useTranslation();
@@ -14,12 +13,10 @@ function InvoiceList() {
   const [state, setState] = useState({
     invoiceList: [],
     pagination: { current: 1, pageSize: 20 },
-    loaiHoaDon: 'purchase',
-    date_from: undefined,
-    date_to: undefined,
+    invoiceType: 'purchase',
   });
 
-  const { loaiHoaDon, invoiceList, pagination } = state;
+  const { invoiceType, invoiceList, pagination } = state;
   const { current, pageSize } = pagination;
 
   const handleResponse = (response) => {
@@ -35,7 +32,7 @@ function InvoiceList() {
 
   const { loading, getList: getInvoiceList } = useList(state, setState, API_INVOICES, 'khách hàng', handleResponse);
 
-  const pageTitle = `${t('Invoice_List')} ${loaiHoaDon === 'purchase' ? t('Common_Purchase') : t('Common_Sold')}`;
+  const pageTitle = `${t('Invoice_List')} ${isPurchase(invoiceType) ? t('Common_Purchase') : t('Common_Sold')}`;
 
   return (
     <>
@@ -43,7 +40,7 @@ function InvoiceList() {
       <LayoutContent borderLessHeading cards cardsProps={{ headless: 'headless' }}>
         <DataTable
           tableData={handleTableDataSource(invoiceList, current, pageSize)}
-          columns={useInvoiceDataTable()}
+          columns={handleDataTable(invoiceType)}
           state={state}
           setState={setState}
           getInvoiceList={getInvoiceList}

@@ -14,7 +14,7 @@ const DataTable = ({ rowSelection, tableData, columns, pagination, setState, sta
   const handleLoaiHoaDonSearch = (value) => {
     setState((prev) => ({
       ...prev,
-      loaiHoaDon: value,
+      invoiceType: value,
     }));
   };
 
@@ -101,19 +101,17 @@ const DataTable = ({ rowSelection, tableData, columns, pagination, setState, sta
         <TableWrapper className="table-data-view table-responsive">
           <Table
             className="table-search-selection"
-            rowSelection={{
-              ...rowSelection,
-            }}
+            rowSelection={rowSelection}
             pagination={{ ...defaultPaginationConfig, ...pagination }}
             dataSource={tableData}
             columns={columns}
+            loading={loading}
             onChange={(_pagination) => {
               setState((prev) => ({
                 ...prev,
                 pagination: _pagination,
               }));
             }}
-            loading={loading}
           />
         </TableWrapper>
       </div>

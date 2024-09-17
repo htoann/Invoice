@@ -14,9 +14,18 @@ const DataTableStyleWrap = Styled.div`
             display: inline-flex;
             align-items: center;
             flex-wrap: wrap;
-            // @media only screen and (max-width: 767px){
-            //     margin-bottom: 20px;
-            // }
+
+            // Responsive header
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 10px;
+            width: 100%;
+
+            @media (max-width: 1468px) {
+                grid-template-columns: repeat(3, 1fr) !important;
+            }
+            // End responsive header
+
             @media only screen and (max-width: 475px){
                 flex-direction: column;
                 align-items: flex-start;
