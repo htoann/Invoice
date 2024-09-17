@@ -23,7 +23,7 @@ const useDataTableColumn = (columnDataProvider, searchParams, setSearchParams, s
       key: col.key,
       sorter:
         col.key !== 'stt' && col.key !== 'action'
-          ? (a, b) => a[col.dataIndex].props.children.localeCompare(b[col.dataIndex].props.children)
+          ? (a, b) => a?.[col.dataIndex]?.props?.children?.localeCompare(b?.[col.dataIndex]?.props?.children)
           : false,
       fixed: col?.fixed,
       className: col.key === 'stt' || col.key === 'action' ? '' : 'searchInput',

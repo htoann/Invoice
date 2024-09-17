@@ -14,13 +14,13 @@ export const useTableColumnSyncHistory = (propsCustomHeader) => {
       title: t('Common_Time'),
       dataIndex: 'time',
       key: 'time',
-      sorter: (a, b) => a.time.props.children.localeCompare(b.time.props.children),
+      sorter: (a, b) => a?.time?.props?.children?.localeCompare(b?.time?.props?.children),
     },
     {
       title: t('Common_Query'),
       dataIndex: 'name',
       key: 'name',
-      sorter: (a, b) => a.name.props.children.localeCompare(b.name.props.children),
+      sorter: (a, b) => a?.name?.props?.children?.localeCompare(b?.name?.props?.children),
     },
     {
       title: <CustomHeader title="Common_Status" name="state" {...propsCustomHeader} />,
@@ -33,7 +33,7 @@ export const useTableColumnSyncHistory = (propsCustomHeader) => {
       title: <CustomHeader title="Common_Note" name="note" {...propsCustomHeader} />,
       dataIndex: 'note',
       key: 'note',
-      sorter: (a, b) => a.note.props.children.localeCompare(b.note.props.children),
+      sorter: (a, b) => a?.note?.props?.children?.localeCompare(b?.note?.props?.children),
       className: 'searchInput',
     },
     {
