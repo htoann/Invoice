@@ -56,12 +56,14 @@ export const AuthProvider = ({ children }) => {
     setAuthState({ isLoggedIn: true, loading: false, orgId: organization_id });
   };
 
-  const handleAuthError = (authType) => {
+  const handleAuthError = (err, msg) => {
+    console.error(err);
     setState({ isLoggedIn: false, loading: false });
-
+    const errMsg =
+      err?.response?.data?.errors?.code === 'org_not_found' ? t('Auth_Failed_Org') : t('Auth_Failed_Credential');
     notification.error({
-      message: t(`Auth_${authType}`),
-      description: t(`Auth_${authType}_Failed`),
+      message: msg,
+      description: errMsg,
     });
   };
 
@@ -72,8 +74,7 @@ export const AuthProvider = ({ children }) => {
       handleAuthSuccess(data.token);
       handleSuccess && handleSuccess();
     } catch (err) {
-      console.error(err);
-      handleAuthError('SignIn');
+      handleAuthError(err, t(`Auth_SignIn`));
     }
   };
 
@@ -84,8 +85,7 @@ export const AuthProvider = ({ children }) => {
       handleAuthSuccess(response.data.token, 'SignUp');
       handleSuccess && handleSuccess();
     } catch (err) {
-      console.error(err);
-      handleAuthError('SignUp');
+      handleAuthError(err, t(`Auth_SignUp`));
     }
   };
 

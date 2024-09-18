@@ -39,11 +39,11 @@ function SignUp() {
               </Form.Item>
 
               <Form.Item
-                label={t('Common_OrgCode')}
+                label={t('Common_TaxCode')}
                 name="org_code"
-                rules={[{ required: true, message: t('Common_OrgCodeRequired') }]}
+                rules={[{ required: true, message: t('Common_TaxCodeRequired') }]}
               >
-                <Input placeholder={t('Common_OrgCode')} style={{ height: 45 }} />
+                <Input placeholder={t('Common_TaxCode')} style={{ height: 45 }} />
               </Form.Item>
 
               {/* <div className="invoice-auth-extra-links">

@@ -43,10 +43,10 @@ function SignIn() {
 
               <Form.Item
                 name="org_code"
-                label={t('Common_OrgCode')}
-                rules={[{ message: t('Common_OrgCodeRequired'), required: true }]}
+                label={t('Common_TaxCode')}
+                rules={[{ message: t('Common_TaxCodeRequired'), required: true }]}
               >
-                <Input placeholder={t('Common_OrgCode')} style={{ height: 45 }} />
+                <Input placeholder={t('Common_TaxCode')} style={{ height: 45 }} />
               </Form.Item>
 
               <Form.Item>
