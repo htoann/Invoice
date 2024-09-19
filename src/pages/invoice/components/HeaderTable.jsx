@@ -1,7 +1,8 @@
 import { Button } from '@/components/buttons';
 import { API_INVOICES_EXCEL, API_INVOICES_ZIP } from '@/service/apiConst';
 import { dataService } from '@/service/dataService';
-import { debounce, downloadFile, formatTime } from '@/utils/index';
+import dayjs from '@/utils/dayjs';
+import { DATE_FORMAT_DASH, DATE_FORMAT_SLASH, debounce, downloadFile, formatTime } from '@/utils/index';
 import { DownloadOutlined } from '@ant-design/icons';
 import { DatePicker, Dropdown, Input, notification } from 'antd';
 import { useCallback, useState } from 'react';
@@ -14,13 +15,11 @@ export const HeaderTable = ({ state, selectedRowKeys, searchParams, setSearchPar
   const { invoiceType, invoiceList } = state;
   const { taxNumber, khmshdon, khhdon, shdon, date_from, date_to } = searchParams;
 
-  const [startDate, setStartDate] = useState();
-  const [endDate, setEndDate] = useState();
+  const [startDate, setStartDate] = useState(dayjs(date_from, DATE_FORMAT_DASH).toDate());
+  const [endDate, setEndDate] = useState(dayjs(date_to, DATE_FORMAT_DASH).toDate());
 
   const [loadingExport, setLoadingExport] = useState(false);
   const [loadingDownload, setLoadingDownload] = useState(false);
-
-  const DATE_FORMAT = 'DD-MM-YYYY';
 
   const handleExport = async () => {
     setLoadingExport(true);
@@ -78,7 +77,7 @@ export const HeaderTable = ({ state, selectedRowKeys, searchParams, setSearchPar
   const handleDateChange = (key, value, setValue) => {
     setSearchParams((prev) => ({
       ...prev,
-      [key]: value ? formatTime(value, DATE_FORMAT) : null,
+      [key]: value ? formatTime(value, DATE_FORMAT_DASH) : null,
     }));
     setValue(value || null);
   };
@@ -106,15 +105,15 @@ export const HeaderTable = ({ state, selectedRowKeys, searchParams, setSearchPar
     {
       label: t('Invoice_StartDate'),
       placeholder: t('Invoice_SelectStartDate'),
-      value: startDate,
-      onChange: (e) => handleDateChange('date_from', e?._d, setStartDate),
+      value: date_from,
+      onChange: (e) => handleDateChange('date_from', e?.$d, setStartDate),
       disabledDate: disabledStartDate,
     },
     {
       label: t('Invoice_EndDate'),
       placeholder: t('Invoice_SelectEndDate'),
-      value: endDate,
-      onChange: (e) => handleDateChange('date_to', e?._d, setEndDate),
+      value: date_to,
+      onChange: (e) => handleDateChange('date_to', e?.$d, setEndDate),
       disabledDate: disabledEndDate,
     },
   ];
@@ -141,15 +140,16 @@ export const HeaderTable = ({ state, selectedRowKeys, searchParams, setSearchPar
   return (
     <div style={{ justifyContent: 'space-between', display: 'flex', alignItems: 'center', flexWrap: 'wrap' }}>
       <div className="invoice-datatable-filter__left">
-        {invoiceDateInputs.map(({ label, placeholder, onChange, disabledDate }, index) => (
+        {invoiceDateInputs.map(({ label, placeholder, onChange, disabledDate, value }, index) => (
           <div key={index} className="invoice-datatable-filter__input">
             <span className="label">{label}</span>
             <DatePicker
               placeholder={placeholder}
               onChange={onChange}
-              format="DD/MM/yyyy"
+              format={DATE_FORMAT_SLASH}
               disabledDate={disabledDate}
               style={inputStyle}
+              defaultValue={dayjs(value, DATE_FORMAT_DASH)}
             />
           </div>
         ))}

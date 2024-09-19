@@ -1,7 +1,8 @@
 import { Tab } from '@/components/tabs/tabs';
 import { TableWrapper } from '@/container/styled';
-import { defaultPaginationConfig } from '@/utils/index';
+import { DATE_FORMAT_DASH, defaultPaginationConfig, formatTime } from '@/utils/index';
 import { Space, Table } from 'antd';
+import dayjs from 'dayjs';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { DataTableStyleWrap } from '../style';
@@ -18,8 +19,8 @@ function DataTable({ loading, tableData, columns, state, setState, getInvoiceLis
     khmshdon: ' ',
     khhdon: '',
     shdon: '',
-    date_from: undefined,
-    date_to: undefined,
+    date_from: formatTime(dayjs().subtract(1, 'month').startOf('day').toDate(), DATE_FORMAT_DASH),
+    date_to: formatTime(dayjs().endOf('day').toDate(), DATE_FORMAT_DASH),
   });
 
   const { pagination, invoiceType } = state;
