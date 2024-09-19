@@ -1366,18 +1366,18 @@ const TermsConditionsStyle = Styled.div`
 `;
 
 export {
-  PricingCard,
-  ListGroup,
+  AddUser,
   Badge,
-  UserCard,
+  ComingSoonStyleWrapper,
+  ErrorWrapper,
   FaqCategoryBox,
   FaqSupportBox,
   FaqWrapper,
-  SearchResultWrapper,
-  ResultList,
+  ListGroup,
   MaintenanceWrapper,
-  ErrorWrapper,
-  ComingSoonStyleWrapper,
-  AddUser,
+  PricingCard,
+  ResultList,
+  SearchResultWrapper,
   TermsConditionsStyle,
+  UserCard,
 };
