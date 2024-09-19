@@ -15,11 +15,11 @@ export const HeaderTable = ({ state, selectedRowKeys, searchParams, setSearchPar
   const { invoiceType, invoiceList } = state;
   const { taxNumber, khmshdon, khhdon, shdon, date_from, date_to } = searchParams;
 
-  const [startDate, setStartDate] = useState(dayjs(date_from, DATE_FORMAT_DASH).toDate());
-  const [endDate, setEndDate] = useState(dayjs(date_to, DATE_FORMAT_DASH).toDate());
-
   const [loadingExport, setLoadingExport] = useState(false);
   const [loadingDownload, setLoadingDownload] = useState(false);
+
+  const fromDate = dayjs(date_from, DATE_FORMAT_DASH).toDate();
+  const toDate = dayjs(date_to, DATE_FORMAT_DASH).toDate();
 
   const handleExport = async () => {
     setLoadingExport(true);
@@ -70,16 +70,11 @@ export const HeaderTable = ({ state, selectedRowKeys, searchParams, setSearchPar
     }
   };
 
-  const disabledStartDate = (current) => endDate && current && current?._d?.getTime() > endDate.getTime();
-
-  const disabledEndDate = (current) => startDate && current && current?._d?.getTime() < startDate.getTime();
-
-  const handleDateChange = (key, value, setValue) => {
+  const handleDateChange = (key, value) => {
     setSearchParams((prev) => ({
       ...prev,
       [key]: value ? formatTime(value, DATE_FORMAT_DASH) : null,
     }));
-    setValue(value || null);
   };
 
   const handleFilterChange = (key, value) => {
@@ -106,15 +101,15 @@ export const HeaderTable = ({ state, selectedRowKeys, searchParams, setSearchPar
       label: t('Invoice_StartDate'),
       placeholder: t('Invoice_SelectStartDate'),
       value: date_from,
-      onChange: (e) => handleDateChange('date_from', e?.$d, setStartDate),
-      disabledDate: disabledStartDate,
+      onChange: (e) => handleDateChange('date_from', e?.$d),
+      disabledDate: (current) => toDate && current && current.isAfter(toDate, 'day'),
     },
     {
       label: t('Invoice_EndDate'),
       placeholder: t('Invoice_SelectEndDate'),
       value: date_to,
-      onChange: (e) => handleDateChange('date_to', e?.$d, setEndDate),
-      disabledDate: disabledEndDate,
+      onChange: (e) => handleDateChange('date_to', e?.$d),
+      disabledDate: (current) => fromDate && current && current.isBefore(fromDate, 'day'),
     },
   ];
 

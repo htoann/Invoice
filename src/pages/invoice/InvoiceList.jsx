@@ -37,7 +37,7 @@ function InvoiceList() {
   return (
     <>
       <PageHeader className="invoice-page-header-main" title={pageTitle} routes={pageRoutes} />
-      <LayoutContent borderLessHeading cards cardsProps={{ headless: 'headless' }}>
+      <LayoutContent borderLessHeading cards cardsProps={{ headless: true }}>
         <DataTable
           tableData={handleTableDataSource(invoiceList, current, pageSize)}
           columns={handleDataTable(invoiceType)}
