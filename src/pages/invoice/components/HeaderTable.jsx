@@ -59,10 +59,12 @@ export const HeaderTable = ({ state, selectedRowKeys, searchParams, setSearchPar
       );
       downloadFile(response, `HDDT_${formatTime(new Date(), 'YYYYMMDDHHmm')}.zip`);
     } catch (error) {
-      console.error(error);
+      const errorMsg =
+        error?.response?.status === '404' ? t('Không tìm thấy file để tải về.') : t('Có lỗi xảy ra khi tải file');
+
       notification.error({
         message: 'Lỗi',
-        description: 'Không thể tải hóa đơn. Vui lòng thử lại sau.',
+        description: errorMsg,
       });
     } finally {
       setLoadingDownload(false);
