@@ -3,20 +3,18 @@ import 'antd/dist/antd.less';
 import { useAppState } from 'context/AppContext';
 import { useAuth } from 'context/AuthContext';
 import { lazy, useEffect, useState } from 'react';
-import { useTranslation } from 'react-i18next';
 import { Navigate, Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import './index.scss';
 import Auth from './routes/auth';
 import Index from './routes/index';
 import ProtectedRoute from './routes/protectedRoute';
-import { getAntdLocale } from './utils';
+import { customLocale } from './utils';
 import { themeColor } from './utils/theme/themeVariables';
 
 const NotFound = lazy(() => import('./container/pages/404'));
 
 export const App = () => {
-  const { i18n } = useTranslation();
   const { isLoggedIn } = useAuth();
 
   const { rtl, topMenu, layoutMode: mainContent } = useAppState();
@@ -34,7 +32,7 @@ export const App = () => {
   }, [setPath]);
 
   return (
-    <ConfigProvider direction={rtl ? 'rtl' : 'ltr'} locale={getAntdLocale(i18n.language)}>
+    <ConfigProvider direction={rtl ? 'rtl' : 'ltr'} locale={customLocale}>
       <ThemeProvider theme={{ ...themeColor, rtl, topMenu, mainContent }}>
         <Router basename={process.env.PUBLIC_URL}>
           {!isLoggedIn ? (

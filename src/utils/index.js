@@ -1,3 +1,4 @@
+import i18n from '@/i18n/config';
 import enUS from 'antd/lib/locale/en_US';
 import viVN from 'antd/lib/locale/vi_VN';
 import i18next from 'i18next';
@@ -63,12 +64,21 @@ export const formatTime = (date, format = 'DD-MM-YYYY-HHmmss') => {
   return dayjs(date || new Date()).format(format);
 };
 
-export const getAntdLocale = (language) => {
+export const getAntdLocale = (language = i18n.language) => {
   switch (language) {
     case 'en':
       return enUS;
     default:
       return viVN;
+  }
+};
+
+export const getAntdLocaleString = (language = i18n.language) => {
+  switch (language) {
+    case 'en':
+      return 'en_US';
+    default:
+      return 'vi_VN';
   }
 };
 
@@ -159,4 +169,16 @@ export const debounce = (func, delay) => {
     }
     timerId = setTimeout(() => func(...args), delay);
   };
+};
+
+export const customLocale = {
+  ...getAntdLocale(),
+  DatePicker: {
+    lang: {
+      ...getAntdLocale().DatePicker?.lang,
+      shortWeekDays: ['CN', 'T2', 'T3', 'T4', 'T5', 'T6', 'T7'],
+      shortMonths: ['Th1', 'Th2', 'Th3', 'Th4', 'Th5', 'Th6', 'Th7', 'Th8', 'Th9', 'Th10', 'Th11', 'Th12'],
+      firstDayOfWeek: 1,
+    },
+  },
 };
