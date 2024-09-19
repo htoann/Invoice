@@ -14,6 +14,9 @@ export const REFRESH_TOKEN = 'refreshToken';
 export const LOGGED_IN = 'loggedIn';
 export const ORG_ID = 'orgId';
 
+export const DATE_FORMAT_DASH = 'DD-MM-YYYY';
+export const DATE_FORMAT_SLASH = 'DD/MM/YYYY';
+
 const getFileName = (response) => {
   try {
     const contentDisposition = response?.headers?.get('Content-Disposition');
