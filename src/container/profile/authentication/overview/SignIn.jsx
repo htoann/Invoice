@@ -41,14 +41,6 @@ function SignIn() {
                 <Input.Password placeholder={t('Common_Password')} style={{ height: 45 }} />
               </Form.Item>
 
-              <Form.Item
-                name="org_code"
-                label={t('Common_TaxCode')}
-                rules={[{ message: t('Common_TaxCodeRequired'), required: true }]}
-              >
-                <Input placeholder={t('Common_TaxCode')} style={{ height: 45 }} />
-              </Form.Item>
-
               <Form.Item>
                 <Button className="btn-signIn" htmlType="submit" type="primary" size="large">
                   {loading ? t('Auth_SigningIn') : t('Auth_SignIn')}

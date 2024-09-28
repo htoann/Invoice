@@ -14,6 +14,7 @@ export const ACCESS_TOKEN = 'accessToken';
 export const REFRESH_TOKEN = 'refreshToken';
 export const LOGGED_IN = 'loggedIn';
 export const ORG_ID = 'orgId';
+export const ORG_LIST = 'orgList';
 
 export const DATE_FORMAT_DASH = 'DD-MM-YYYY';
 export const DATE_FORMAT_SLASH = 'DD/MM/YYYY';

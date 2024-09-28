@@ -3,9 +3,10 @@ import Heading from '@/components/heading';
 import { Popover } from '@/components/popup';
 import EngImg from '@/static/img/flag/en.png';
 import VieImg from '@/static/img/flag/vi.png';
-import { setLocalStorage } from '@/utils/localStorage';
+import { createOptions, ORG_ID, ORG_LIST } from '@/utils/index';
+import { getLocalStorage, setLocalStorage } from '@/utils/localStorage';
 import { UilAngleDown, UilBell, UilSetting, UilSignout, UilUser, UilUsersAlt } from '@tooni/iconscout-unicons-react';
-import { Avatar } from 'antd';
+import { Avatar, Select } from 'antd';
 import { useAuth } from 'context/AuthContext';
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -101,8 +102,22 @@ const AuthInfo = React.memo(() => {
     </NavAuth>
   );
 
+  const orgOptions = createOptions(getLocalStorage(ORG_LIST) || [], 'tax_code', false);
+  const orgId = getLocalStorage(ORG_ID || (getLocalStorage(ORG_LIST) || [])[0]);
+
   return (
     <InfoWrapper>
+      <Select
+        popupClassName="dropdown-select"
+        onChange={(orgId) => {
+          setLocalStorage(ORG_ID, orgId);
+          window.location.reload();
+        }}
+        value={orgId}
+        options={orgOptions}
+        style={{ marginRight: 12 }}
+        key={orgId}
+      />
       {/* <Notification /> */}
       {/* <Settings /> */}
       <Customizer />
