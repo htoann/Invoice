@@ -4,8 +4,10 @@ import {
   API_ENDPOINT,
   clearLogoutLocalStorageAndCookie,
   filterEmptyFieldObject,
+  ORG_ID,
   REFRESH_TOKEN,
 } from '@/utils/index';
+import { getLocalStorage } from '@/utils/localStorage';
 import axios from 'axios';
 import { API_LOGIN, API_REGISTER } from './apiConst';
 
@@ -45,6 +47,7 @@ class DataService {
       baseURL: API_ENDPOINT,
       headers: {
         'Content-Type': 'application/json',
+        'X-Organization-ID': getLocalStorage(ORG_ID),
         ...this.authHeader(),
       },
     });

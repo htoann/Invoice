@@ -9,7 +9,6 @@ function DataTable({ tableData, columns, pagination, setState, loading }) {
       <div className="invoice-datatable" style={{ marginTop: 30 }}>
         <TableWrapper className="table-data-view table-responsive">
           <Table
-            className="table-search"
             pagination={{ ...defaultPaginationConfig, ...pagination }}
             dataSource={tableData}
             columns={columns}

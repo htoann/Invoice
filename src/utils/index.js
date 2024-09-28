@@ -14,6 +14,7 @@ export const ACCESS_TOKEN = 'accessToken';
 export const REFRESH_TOKEN = 'refreshToken';
 export const LOGGED_IN = 'loggedIn';
 export const ORG_ID = 'orgId';
+export const ORG_LIST = 'orgList';
 
 export const DATE_FORMAT_DASH = 'DD-MM-YYYY';
 export const DATE_FORMAT_SLASH = 'DD/MM/YYYY';
@@ -64,6 +65,10 @@ export const formatTime = (date, format = 'DD-MM-YYYY-HHmmss') => {
   return dayjs(date || new Date()).format(format);
 };
 
+export const formatDate = (date, format = 'DD/MM/YYYY') => {
+  return dayjs(date || new Date()).format(format);
+};
+
 export const getAntdLocale = (language = i18n.language) => {
   switch (language) {
     case 'en':
@@ -104,6 +109,7 @@ export const clearLogoutLocalStorageAndCookie = () => {
   removeCookie(REFRESH_TOKEN);
   removeLocalStorage(LOGGED_IN);
   removeLocalStorage(ORG_ID);
+  removeLocalStorage(ORG_LIST);
 };
 
 export const watchObject = (object = {}, methods = [], callbackBefore = () => {}, callbackAfter = () => {}) => {

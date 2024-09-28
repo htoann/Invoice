@@ -23,7 +23,7 @@ export const API_MAILS_ACCOUNT_BY_ACCOUNT_ID = (accountId) => `/mails/accounts/$
 
 export const API_INBOXES_BY_ACCOUNT_ID = (accountId) => `${API_MAILS_ACCOUNT_BY_ACCOUNT_ID(accountId)}inboxes/`;
 
-export const API_MAIL_TASK_HISTORIES = '/mails/task_histories/';
+export const API_MAIL_TASK_HISTORIES = '/mails/histories/';
 
 // Products
 export const API_PRODUCTS = '/products/';

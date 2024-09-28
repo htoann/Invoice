@@ -3,9 +3,10 @@ import Heading from '@/components/heading';
 import { Popover } from '@/components/popup';
 import EngImg from '@/static/img/flag/en.png';
 import VieImg from '@/static/img/flag/vi.png';
-import { setLocalStorage } from '@/utils/localStorage';
+import { createOptions, ORG_ID, ORG_LIST } from '@/utils/index';
+import { getLocalStorage, setLocalStorage } from '@/utils/localStorage';
 import { UilAngleDown, UilBell, UilSetting, UilSignout, UilUser, UilUsersAlt } from '@tooni/iconscout-unicons-react';
-import { Avatar } from 'antd';
+import { Avatar, Select } from 'antd';
 import { useAuth } from 'context/AuthContext';
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -17,9 +18,12 @@ const AuthInfo = React.memo(() => {
   const { i18n, t } = useTranslation();
   const { logOut, userInfo } = useAuth();
 
+  const [settingOpen, setSettingOpen] = useState(false);
+
   const [state, setState] = useState({
     flag: i18n.language,
   });
+
   const { flag } = state;
 
   const signOut = (e) => {
@@ -56,7 +60,7 @@ const AuthInfo = React.memo(() => {
             </Link>
           </li>
           <li>
-            <Link to="#">
+            <Link to="#" onClick={() => setSettingOpen(true)}>
               <UilSetting /> {t('User_Settings')}
             </Link>
           </li>
@@ -101,11 +105,26 @@ const AuthInfo = React.memo(() => {
     </NavAuth>
   );
 
+  const orgOptions = createOptions(getLocalStorage(ORG_LIST) || [], 'tax_code', false);
+  const orgCode = getLocalStorage(ORG_ID) || (getLocalStorage(ORG_LIST) || [])?.[0].tax_code;
+
   return (
     <InfoWrapper>
+      <Select
+        popupClassName="dropdown-select"
+        onChange={(orgId) => {
+          setLocalStorage(ORG_ID, orgId);
+          window.location.reload();
+        }}
+        value={orgCode}
+        options={orgOptions}
+        style={{ marginRight: 12, minWidth: 100 }}
+        key={orgCode}
+      />
+      <Customizer open={settingOpen} onClose={() => setSettingOpen(false)} />
       {/* <Notification /> */}
       {/* <Settings /> */}
-      <Customizer />
+      {/* <Customizer /> */}
       {/* <div className="invoice-nav-actions__item invoice-nav-actions__language">
         <Popover placement="bottomRight" content={country} trigger="click">
           <Link to="#" className="invoice-nav-action-link">

@@ -38,14 +38,6 @@ function SignUp() {
                 <Input.Password placeholder={t('Common_Password')} style={{ height: 45 }} />
               </Form.Item>
 
-              <Form.Item
-                label={t('Common_TaxCode')}
-                name="org_code"
-                rules={[{ required: true, message: t('Common_TaxCodeRequired') }]}
-              >
-                <Input placeholder={t('Common_TaxCode')} style={{ height: 45 }} />
-              </Form.Item>
-
               {/* <div className="invoice-auth-extra-links">
                 <Checkbox>
                   Tạo tài khoản nghĩa là bạn đồng ý với Điều khoản dịch vụ và Chính sách quyền riêng tư của chúng tôi

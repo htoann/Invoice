@@ -5,7 +5,7 @@ import { notification } from 'antd';
 import { jwtDecode } from 'jwt-decode';
 import { createContext, useCallback, useContext, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { ACCESS_TOKEN, clearLogoutLocalStorageAndCookie, LOGGED_IN, ORG_ID, REFRESH_TOKEN } from '../utils';
+import { ACCESS_TOKEN, clearLogoutLocalStorageAndCookie, LOGGED_IN, ORG_ID, ORG_LIST, REFRESH_TOKEN } from '../utils';
 import { watchObject } from './../utils/index';
 
 const AuthContext = createContext();
@@ -15,7 +15,6 @@ export const AuthProvider = ({ children }) => {
 
   const [authState, setAuthState] = useState({
     isLoggedIn: getLocalStorage(LOGGED_IN) || false,
-    orgId: getLocalStorage(ORG_ID) || null,
     loading: false,
     userInfo: null,
   });
@@ -23,10 +22,10 @@ export const AuthProvider = ({ children }) => {
   const { userInfo, isLoggedIn, orgId, loading } = authState || {};
 
   useEffect(() => {
-    if (!userInfo && isLoggedIn) {
+    if (!userInfo && isLoggedIn && getLocalStorage(ORG_ID)) {
       getProfileInfo();
     }
-  }, [userInfo, isLoggedIn]);
+  }, [userInfo, isLoggedIn, getLocalStorage(ORG_ID)]);
 
   const getProfileInfo = async () => {
     try {
@@ -45,15 +44,16 @@ export const AuthProvider = ({ children }) => {
 
   const handleAuthSuccess = (token) => {
     const { access_token, refresh_token } = token;
-    const { organization_id } = jwtDecode(access_token);
+    const { organizations } = jwtDecode(access_token);
 
     setCookie(ACCESS_TOKEN, access_token);
     setCookie(REFRESH_TOKEN, refresh_token);
 
     setLocalStorage(LOGGED_IN, true);
-    setLocalStorage(ORG_ID, organization_id);
+    setLocalStorage(ORG_LIST, organizations);
+    organizations?.[0]?.id && setLocalStorage(ORG_ID, organizations?.[0]?.id);
 
-    setAuthState({ isLoggedIn: true, loading: false, orgId: organization_id });
+    setAuthState({ isLoggedIn: true, loading: false });
   };
 
   const handleAuthError = (err, msg) => {

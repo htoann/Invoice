@@ -9,11 +9,11 @@ import { useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { isPurchase } from '../utils';
 
-export const HeaderTable = ({ state, selectedRowKeys, searchParams, setSearchParams }) => {
+export const HeaderTable = ({ state, setState, selectedRowKeys, searchParams, setSearchParams }) => {
   const { t } = useTranslation();
 
   const { invoiceType, invoiceList } = state;
-  const { taxNumber, khmshdon, khhdon, shdon, date_from, date_to } = searchParams;
+  const { taxNumber, ten, khhdon, shdon, date_from, date_to } = searchParams;
 
   const [loadingExport, setLoadingExport] = useState(false);
   const [loadingDownload, setLoadingDownload] = useState(false);
@@ -70,15 +70,27 @@ export const HeaderTable = ({ state, selectedRowKeys, searchParams, setSearchPar
     }
   };
 
+  const resetPagination = () => {
+    setState((prev) => ({
+      ...prev,
+      pagination: {
+        ...prev.pagination,
+        current: 1,
+      },
+    }));
+  };
+
   const handleDateChange = (key, value) => {
     setSearchParams((prev) => ({
       ...prev,
       [key]: value ? formatTime(value, DATE_FORMAT_DASH) : null,
     }));
+    resetPagination();
   };
 
   const handleFilterChange = (key, value) => {
     setSearchParams((prev) => ({ ...prev, [key]: value }));
+    resetPagination();
   };
 
   const debouncedFilterChange = useCallback(
@@ -120,9 +132,9 @@ export const HeaderTable = ({ state, selectedRowKeys, searchParams, setSearchPar
       paramKey: 'taxNumber',
     },
     {
-      label: t('Ký hiệu mẫu số'),
-      value: khmshdon,
-      paramKey: 'khmshdon',
+      label: isPurchase(invoiceType) ? t('Invoice_SellerName') : t('Invoice_BuyerName'),
+      value: ten,
+      paramKey: 'ten',
     },
     {
       label: t('Ký hiệu hóa đơn'),
