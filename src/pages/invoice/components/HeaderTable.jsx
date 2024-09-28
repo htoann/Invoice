@@ -13,7 +13,7 @@ export const HeaderTable = ({ state, selectedRowKeys, searchParams, setSearchPar
   const { t } = useTranslation();
 
   const { invoiceType, invoiceList } = state;
-  const { taxNumber, khmshdon, khhdon, shdon, date_from, date_to } = searchParams;
+  const { taxNumber, ten, khhdon, shdon, date_from, date_to } = searchParams;
 
   const [loadingExport, setLoadingExport] = useState(false);
   const [loadingDownload, setLoadingDownload] = useState(false);
@@ -120,9 +120,9 @@ export const HeaderTable = ({ state, selectedRowKeys, searchParams, setSearchPar
       paramKey: 'taxNumber',
     },
     {
-      label: t('Ký hiệu mẫu số'),
-      value: khmshdon,
-      paramKey: 'khmshdon',
+      label: isPurchase(invoiceType) ? t('Invoice_SellerName') : t('Invoice_BuyerName'),
+      value: ten,
+      paramKey: 'ten',
     },
     {
       label: t('Ký hiệu hóa đơn'),
