@@ -2,7 +2,7 @@ import CustomHeader from '@/components/HeaderCommon';
 import { useTranslation } from 'react-i18next';
 
 export const useTableColumnSyncHistory = (propsCustomHeader) => {
-  const t = useTranslation();
+  const { t } = useTranslation();
 
   const columns = [
     {
