@@ -1,5 +1,4 @@
 import { PageHeader } from '@/components/page-headers';
-import { MailAccountSelect } from '@/components/select-common/MailAccountSelect';
 import { LayoutContent } from '@/layout/LayoutContent';
 import { API_MAIL_TASK_HISTORIES } from '@/service';
 import { useList } from 'hooks/useListCommon';
@@ -28,26 +27,12 @@ const SyncHistory = () => {
 
   const tableDataSource = useTableDataSource(list, current, pageSize);
 
-  const dataTableColumn = useTableColumnSyncHistory({
-    searchParams,
-    setSearchParams,
-    setState,
-  });
-
-  const handleSelectAccount = (accountId) => {
-    setSearchParams({ ...searchParams, accountId });
-    getList({ ...searchParams, accountId });
-  };
+  const dataTableColumn = useTableColumnSyncHistory();
 
   return (
     <>
       <PageHeader className="invoice-page-header-main" title={t('Common_SyncHistory')} />
-      <LayoutContent borderLessHeading cards>
-        <div style={{ display: 'flex', gap: 20, flexWrap: 'auto' }}>
-          <div style={{ display: 'flex', gap: 2, flexWrap: 'auto', alignItems: 'center' }}>
-            <MailAccountSelect onChange={handleSelectAccount} value={searchParams?.accountId} />
-          </div>
-        </div>
+      <LayoutContent borderLessHeading cards cardsProps={{ headless: 'headless' }}>
         <DataTable
           tableData={tableDataSource}
           columns={dataTableColumn}

@@ -77,6 +77,7 @@ function DataTable({ loading, tableData, columns, state, setState, getInvoiceLis
         </Space>
         <HeaderTable
           state={state}
+          setState={setState}
           selectedRowKeys={selectedRowKeys}
           searchParams={searchParams}
           setSearchParams={setSearchParams}

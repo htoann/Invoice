@@ -1,7 +1,6 @@
-import CustomHeader from '@/components/HeaderCommon';
 import { useTranslation } from 'react-i18next';
 
-export const useTableColumnSyncHistory = (propsCustomHeader) => {
+export const useTableColumnSyncHistory = () => {
   const { t } = useTranslation();
 
   const columns = [
@@ -11,42 +10,42 @@ export const useTableColumnSyncHistory = (propsCustomHeader) => {
       key: 'stt',
     },
     {
+      title: t('Common_Account'),
+      dataIndex: 'account',
+      key: 'account',
+      sorter: (a, b) => a?.account?.props?.children?.localeCompare(b?.account?.props?.children),
+    },
+    {
       title: t('Common_Time'),
       dataIndex: 'time',
       key: 'time',
       sorter: (a, b) => a?.time?.props?.children?.localeCompare(b?.time?.props?.children),
     },
     {
-      title: t('Common_Query'),
-      dataIndex: 'name',
-      key: 'name',
-      sorter: (a, b) => a?.name?.props?.children?.localeCompare(b?.name?.props?.children),
-    },
-    {
-      title: <CustomHeader title="Common_Status" name="state" {...propsCustomHeader} />,
-      dataIndex: 'state',
-      key: 'state',
-      sorter: (a, b) => a.state.props.children > b.state.props.children,
+      title: t('Ngày bắt đầu'),
+      dataIndex: 'start_date',
+      key: 'start_date',
+      sorter: (a, b) => a?.start_date.props?.children > b?.start_date.props?.children,
       className: 'searchInput',
     },
     {
-      title: <CustomHeader title="Common_Note" name="note" {...propsCustomHeader} />,
-      dataIndex: 'note',
-      key: 'note',
-      sorter: (a, b) => a?.note?.props?.children?.localeCompare(b?.note?.props?.children),
+      title: t('Ngày kết thúc'),
+      dataIndex: 'end_date',
+      key: 'end_date',
+      sorter: (a, b) => a?.end_date?.props?.children?.localeCompare(b?.end_date?.props?.children),
       className: 'searchInput',
     },
     {
       title: t('SyncHistory_TotalInvoice'),
-      dataIndex: 'totalInvoice',
-      key: 'totalInvoice',
-      sorter: (a, b) => a.totalInvoice.props.children > b.totalInvoice.props.children,
+      dataIndex: 'num_of_invoices',
+      key: 'num_of_invoices',
+      sorter: (a, b) => a?.num_of_invoices.props?.children > b?.num_of_invoices.props?.children,
     },
     {
-      title: t('SyncHistory_NewInvoice'),
-      dataIndex: 'newInvoice',
-      key: 'newInvoice',
-      sorter: (a, b) => a.newInvoice.props.children > b.newInvoice.props.children,
+      title: t('Common_Status'),
+      dataIndex: 'status',
+      key: 'status',
+      sorter: (a, b) => a?.status.props?.children > b?.status.props?.children,
     },
   ];
 

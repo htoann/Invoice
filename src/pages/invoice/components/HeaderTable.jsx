@@ -9,7 +9,7 @@ import { useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { isPurchase } from '../utils';
 
-export const HeaderTable = ({ state, selectedRowKeys, searchParams, setSearchParams }) => {
+export const HeaderTable = ({ state, setState, selectedRowKeys, searchParams, setSearchParams }) => {
   const { t } = useTranslation();
 
   const { invoiceType, invoiceList } = state;
@@ -70,15 +70,27 @@ export const HeaderTable = ({ state, selectedRowKeys, searchParams, setSearchPar
     }
   };
 
+  const resetPagination = () => {
+    setState((prev) => ({
+      ...prev,
+      pagination: {
+        ...prev.pagination,
+        current: 1,
+      },
+    }));
+  };
+
   const handleDateChange = (key, value) => {
     setSearchParams((prev) => ({
       ...prev,
       [key]: value ? formatTime(value, DATE_FORMAT_DASH) : null,
     }));
+    resetPagination();
   };
 
   const handleFilterChange = (key, value) => {
     setSearchParams((prev) => ({ ...prev, [key]: value }));
+    resetPagination();
   };
 
   const debouncedFilterChange = useCallback(
