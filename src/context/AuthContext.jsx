@@ -51,7 +51,7 @@ export const AuthProvider = ({ children }) => {
 
     setLocalStorage(LOGGED_IN, true);
     setLocalStorage(ORG_LIST, organizations);
-    setLocalStorage(ORG_ID, organizations[0].id);
+    organizations?.[0]?.id && setLocalStorage(ORG_ID, organizations?.[0]?.id);
 
     setAuthState({ isLoggedIn: true, loading: false });
   };
