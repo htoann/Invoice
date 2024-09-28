@@ -75,7 +75,6 @@ export const TopMenu = () => {
               </li>
               <li>
                 <Link to={routes.emailSync}>{t('Common_SyncHistory')}</Link>
-                <Link to="#">{t('Common_SyncHistory')}</Link>
               </li>
             </ul>
           </li>
