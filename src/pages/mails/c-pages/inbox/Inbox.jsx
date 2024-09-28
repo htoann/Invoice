@@ -1,5 +1,6 @@
 import { Button } from '@/components/buttons';
 import { Cards } from '@/components/cards/frame';
+import { FilterOrgStructureHeader } from '@/components/FilterOrgStructureHeader';
 import { PageHeader } from '@/components/page-headers';
 import { Main } from '@/container/styled';
 import { UilAlignLeft, UilAlignRight } from '@tooni/iconscout-unicons-react';
@@ -7,7 +8,6 @@ import { Col, Empty, Row } from 'antd';
 import { useGetOrgStructure } from 'hooks/useGetOrgStructure';
 import { useEffect, useLayoutEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { FilterHeader } from './components/inbox-list/FilterHeader';
 import { InboxList } from './components/inbox-list/InboxList';
 import MailDetail from './components/mail-detail';
 import { EmailWrapper } from './components/style';
@@ -71,7 +71,7 @@ function Email() {
       <Main>
         <EmailWrapper>
           <Cards headless>
-            <FilterHeader handleReset={handleReset} />
+            <FilterOrgStructureHeader handleReset={handleReset} />
           </Cards>
 
           <Row gutter={25} style={{ height: '100%' }}>

@@ -1,7 +1,7 @@
 import { FilterOrgStructure } from '@/components/FilterOrgStructure';
 import { useAppState } from 'context/AppContext';
 
-export const FilterHeader = ({ handleReset }) => {
+export const FilterOrgStructureHeader = ({ handleReset }) => {
   const { setSelectedDepartmentId, setSelectedProjectId, setSelectedAccountId, setSelectedBranchId } = useAppState();
 
   const changeBranch = (value) => {

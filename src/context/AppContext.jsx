@@ -68,7 +68,7 @@ export const AppProvider = ({ children }) => {
 
   const getDepartments = async () => {
     setDepartments([]);
-    setSelectedDepartmentId('');
+    // setSelectedDepartmentId(''); selectedDepartment was reset incorrectly
 
     if (!selectedBranchId) {
       return;
