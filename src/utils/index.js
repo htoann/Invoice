@@ -105,6 +105,7 @@ export const clearLogoutLocalStorageAndCookie = () => {
   removeCookie(REFRESH_TOKEN);
   removeLocalStorage(LOGGED_IN);
   removeLocalStorage(ORG_ID);
+  removeLocalStorage(ORG_LIST);
 };
 
 export const watchObject = (object = {}, methods = [], callbackBefore = () => {}, callbackAfter = () => {}) => {
