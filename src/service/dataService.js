@@ -47,7 +47,6 @@ class DataService {
       baseURL: API_ENDPOINT,
       headers: {
         'Content-Type': 'application/json',
-        'X-Organization-ID': getLocalStorage(ORG_ID),
         ...this.authHeader(),
       },
     });
@@ -63,7 +62,7 @@ class DataService {
   initializeInterceptors() {
     this.client.interceptors.request.use(
       (config) => {
-        config.headers = { ...config.headers, ...this.authHeader() };
+        config.headers = { ...config.headers, ...this.authHeader(), 'X-Organization-ID': getLocalStorage(ORG_ID) };
         return config;
       },
       (error) => Promise.reject(error),
