@@ -115,7 +115,7 @@ const AuthInfo = React.memo(() => {
         }}
         value={orgId}
         options={orgOptions}
-        style={{ marginRight: 12, minWidth: 250 }}
+        style={{ marginRight: 12, minWidth: 100 }}
         key={orgId}
       />
       {/* <Notification /> */}
