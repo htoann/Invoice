@@ -47,7 +47,7 @@ class DataService {
       baseURL: API_ENDPOINT,
       headers: {
         'Content-Type': 'application/json',
-        'X-Organization_ID': getLocalStorage(ORG_ID),
+        'X-Organization-ID': getLocalStorage(ORG_ID),
         ...this.authHeader(),
       },
     });
