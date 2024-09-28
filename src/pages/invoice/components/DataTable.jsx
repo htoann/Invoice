@@ -16,7 +16,6 @@ function DataTable({ loading, tableData, columns, state, setState, getInvoiceLis
 
   const [searchParams, setSearchParams] = useState({
     taxNumber: '',
-    khmshdon: ' ',
     khhdon: '',
     shdon: '',
     ten: '',
@@ -26,19 +25,22 @@ function DataTable({ loading, tableData, columns, state, setState, getInvoiceLis
 
   const { pagination, invoiceType } = state;
   const { current, pageSize } = pagination;
-  const { taxNumber, date_from, date_to } = searchParams;
+  const { taxNumber, ten, date_from, date_to } = searchParams;
 
   useEffect(() => {
     const mstKey = isPurchase(invoiceType) ? 'nbmst' : 'nmmst';
     const tenKey = isPurchase(invoiceType) ? 'nbten' : 'nmten';
+    const newSearchParams = Object.fromEntries(
+      Object.entries(searchParams).filter(([key, value]) => value && !['ten', 'taxNumber'].includes(key)),
+    );
 
     getInvoiceList({
       loaihdon: invoiceType,
       date_from,
       date_to,
+      ...newSearchParams,
       [mstKey]: taxNumber,
-      [tenKey]: taxNumber,
-      ...searchParams,
+      [tenKey]: ten,
     });
   }, [current, pageSize, invoiceType, date_from, date_to, searchParams]);
 
