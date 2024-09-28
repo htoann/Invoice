@@ -640,7 +640,7 @@ const MailDetailsWrapper = Styled.div`
     padding-top: 30px !important;
     /* max-height: calc(-198px + 100vh); */
     /* overflow: auto; */
-    overflow-x: hidden;
+    overflow: auto;
   }
   .ant-card-head-wrapper{
     @media only screen and (max-width: 767px){
@@ -953,6 +953,7 @@ const MessageDetails = Styled.div`
     margin-top: 25px;
     padding-bottom: 1px;
     width: 100%;
+    // overflow: auto;
 
     @media only screen and (max-width: 767px){
       ${({ theme }) => (theme.rtl ? 'padding-right' : 'padding-left')}: 0px;
@@ -1194,7 +1195,7 @@ const EmailWrapper = Styled.div`
 
   .mail-sidebar-bottom{
     padding: 25px 15px 0 15px;
-    height: calc(100vh - 290px);
+    height: var(--mail-inbox);
     overflow: scroll;
     display: flex;
     flex-direction: column;

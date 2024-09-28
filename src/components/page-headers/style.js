@@ -269,4 +269,4 @@ const HeaderWrapper = Styled.div`
   }
 `;
 
-export { PageHeaderStyle, HeaderWrapper };
+export { HeaderWrapper, PageHeaderStyle };

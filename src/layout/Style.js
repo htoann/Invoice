@@ -952,7 +952,7 @@ const TopMenuStyle = Styled.div`
                         &:before{
                             position: absolute;
                             ${({ theme }) => (theme.rtl ? 'left' : 'right')}: -14px;
-                            top: 50%;
+                            top: 55%;
                             transform: translateY(-50%);
                             font-family: "FontAwesome";
                             content: '\f107';
