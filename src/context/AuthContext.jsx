@@ -22,10 +22,10 @@ export const AuthProvider = ({ children }) => {
   const { userInfo, isLoggedIn, orgId, loading } = authState || {};
 
   useEffect(() => {
-    if (!userInfo && isLoggedIn) {
+    if (!userInfo && isLoggedIn && getLocalStorage(ORG_ID)) {
       getProfileInfo();
     }
-  }, [userInfo, isLoggedIn]);
+  }, [userInfo, isLoggedIn, getLocalStorage(ORG_ID)]);
 
   const getProfileInfo = async () => {
     try {
