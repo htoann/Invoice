@@ -1,11 +1,11 @@
-import { Drawer } from '@/components/drawer';
 // import Left from '@/static/img/layouts/side.png';
 // import Top from '@/static/img/layouts/top.png';
 import Left from '@/static/img/layouts/left.png';
+import { Drawer } from 'antd';
 import { useAppState } from 'context/AppContext';
 import { useTranslation } from 'react-i18next';
 
-const Customizer = () => {
+const Customizer = ({ open, onClose }) => {
   const { t } = useTranslation();
   const { changeMenuMode } = useAppState();
 
@@ -20,7 +20,7 @@ const Customizer = () => {
   };
 
   return (
-    <Drawer title={t('User_Settings')} isBtn={false} size="extra-small" shape="circle" type="light">
+    <Drawer open={open} title={t('User_Settings')} size="extra-small" shape="circle" type="light" onClose={onClose}>
       <div className="customizer__body">
         {/* <div className="customizer__single">
           <h4>Layout Type</h4>

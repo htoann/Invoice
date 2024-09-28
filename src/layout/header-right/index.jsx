@@ -18,9 +18,12 @@ const AuthInfo = React.memo(() => {
   const { i18n, t } = useTranslation();
   const { logOut, userInfo } = useAuth();
 
+  const [settingOpen, setSettingOpen] = useState(false);
+
   const [state, setState] = useState({
     flag: i18n.language,
   });
+
   const { flag } = state;
 
   const signOut = (e) => {
@@ -57,7 +60,7 @@ const AuthInfo = React.memo(() => {
             </Link>
           </li>
           <li>
-            <Link to="#">
+            <Link to="#" onClick={() => setSettingOpen(true)}>
               <UilSetting /> {t('User_Settings')}
             </Link>
           </li>
@@ -118,9 +121,10 @@ const AuthInfo = React.memo(() => {
         style={{ marginRight: 12, minWidth: 100 }}
         key={orgCode}
       />
+      <Customizer open={settingOpen} onClose={() => setSettingOpen(false)} />
       {/* <Notification /> */}
       {/* <Settings /> */}
-      <Customizer />
+      {/* <Customizer /> */}
       {/* <div className="invoice-nav-actions__item invoice-nav-actions__language">
         <Popover placement="bottomRight" content={country} trigger="click">
           <Link to="#" className="invoice-nav-action-link">
