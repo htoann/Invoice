@@ -91,12 +91,7 @@ export const ModalAccount = ({ form, handleOk, state, onCancel, loading, textSub
             </Select>
           </Form.Item>
 
-          <Form.Item
-            name="project"
-            initialValue={project?.id || undefined}
-            label={t('Common_Project')}
-            rules={[{ required: true, message: t('Project_PleaseSelect') }]}
-          >
+          <Form.Item name="project" initialValue={project?.id || undefined} label={t('Common_Project')}>
             <Select disabled={!selectedDepartmentId} placeholder={t('Common_SelectProject')}>
               {projects?.map((item) => (
                 <Select.Option key={item.id} value={item.id}>

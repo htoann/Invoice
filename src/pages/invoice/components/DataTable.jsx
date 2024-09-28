@@ -19,6 +19,7 @@ function DataTable({ loading, tableData, columns, state, setState, getInvoiceLis
     khmshdon: ' ',
     khhdon: '',
     shdon: '',
+    ten: '',
     date_from: formatTime(dayjs().subtract(1, 'month').startOf('day').toDate(), DATE_FORMAT_DASH),
     date_to: formatTime(dayjs().endOf('day').toDate(), DATE_FORMAT_DASH),
   });
@@ -29,8 +30,16 @@ function DataTable({ loading, tableData, columns, state, setState, getInvoiceLis
 
   useEffect(() => {
     const mstKey = isPurchase(invoiceType) ? 'nbmst' : 'nmmst';
+    const tenKey = isPurchase(invoiceType) ? 'nbten' : 'nmten';
 
-    getInvoiceList({ loaihdon: invoiceType, date_from, date_to, [mstKey]: taxNumber, ...searchParams });
+    getInvoiceList({
+      loaihdon: invoiceType,
+      date_from,
+      date_to,
+      [mstKey]: taxNumber,
+      [tenKey]: taxNumber,
+      ...searchParams,
+    });
   }, [current, pageSize, invoiceType, date_from, date_to, searchParams]);
 
   const handleChangeInvoiceType = (invoiceType) => {
