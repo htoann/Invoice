@@ -103,7 +103,7 @@ const AuthInfo = React.memo(() => {
   );
 
   const orgOptions = createOptions(getLocalStorage(ORG_LIST) || [], 'tax_code', false);
-  const orgId = getLocalStorage(ORG_ID) || (getLocalStorage(ORG_LIST) || [])[0];
+  const orgCode = getLocalStorage(ORG_ID) || (getLocalStorage(ORG_LIST) || [])?.[0].tax_code;
 
   return (
     <InfoWrapper>
@@ -113,10 +113,10 @@ const AuthInfo = React.memo(() => {
           setLocalStorage(ORG_ID, orgId);
           window.location.reload();
         }}
-        value={orgId}
+        value={orgCode}
         options={orgOptions}
         style={{ marginRight: 12, minWidth: 100 }}
-        key={orgId}
+        key={orgCode}
       />
       {/* <Notification /> */}
       {/* <Settings /> */}
