@@ -103,7 +103,7 @@ const AuthInfo = React.memo(() => {
   );
 
   const orgOptions = createOptions(getLocalStorage(ORG_LIST) || [], 'tax_code', false);
-  const orgId = getLocalStorage(ORG_ID || (getLocalStorage(ORG_LIST) || [])[0]);
+  const orgId = getLocalStorage(ORG_ID) || (getLocalStorage(ORG_LIST) || [])[0];
 
   return (
     <InfoWrapper>
