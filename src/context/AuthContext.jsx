@@ -5,7 +5,7 @@ import { notification } from 'antd';
 import { jwtDecode } from 'jwt-decode';
 import { createContext, useCallback, useContext, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { ACCESS_TOKEN, clearLogoutLocalStorageAndCookie, LOGGED_IN, ORG_LIST, REFRESH_TOKEN } from '../utils';
+import { ACCESS_TOKEN, clearLogoutLocalStorageAndCookie, LOGGED_IN, ORG_ID, ORG_LIST, REFRESH_TOKEN } from '../utils';
 import { watchObject } from './../utils/index';
 
 const AuthContext = createContext();
@@ -51,6 +51,7 @@ export const AuthProvider = ({ children }) => {
 
     setLocalStorage(LOGGED_IN, true);
     setLocalStorage(ORG_LIST, organizations);
+    setLocalStorage(ORG_ID, organizations[0].id);
 
     setAuthState({ isLoggedIn: true, loading: false });
   };
