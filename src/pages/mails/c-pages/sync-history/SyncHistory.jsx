@@ -14,7 +14,6 @@ const SyncHistory = () => {
   const [state, setState] = useState({
     pagination: { current: 1, pageSize: 20 },
   });
-  const [searchParams, setSearchParams] = useState({ state: '', note: '', accountId: '' });
 
   const { pagination } = state;
   const { current, pageSize } = pagination;
@@ -22,8 +21,8 @@ const SyncHistory = () => {
   const { list, loading, getList } = useList(state, setState, API_MAIL_TASK_HISTORIES, 'lịch sử đồng bộ');
 
   useEffect(() => {
-    getList(searchParams);
-  }, [current, pageSize, searchParams]);
+    getList();
+  }, [current, pageSize]);
 
   const tableDataSource = useTableDataSource(list, current, pageSize);
 

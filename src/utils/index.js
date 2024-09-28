@@ -65,6 +65,10 @@ export const formatTime = (date, format = 'DD-MM-YYYY-HHmmss') => {
   return dayjs(date || new Date()).format(format);
 };
 
+export const formatDate = (date, format = 'DD/MM/YYYY') => {
+  return dayjs(date || new Date()).format(format);
+};
+
 export const getAntdLocale = (language = i18n.language) => {
   switch (language) {
     case 'en':
