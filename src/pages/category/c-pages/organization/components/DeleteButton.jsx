@@ -14,7 +14,7 @@ const DeleteButton = ({ onConfirm, loading }) => {
   return (
     <div onClick={handleClick} style={{ height: 45 }}>
       <Popconfirm
-        title={t('Common_DeleteConfirm')}
+        title={t('Common_AreYouSureDelete')}
         onConfirm={onConfirm}
         okText={t('Common_Yes')}
         cancelText={t('Common_No')}
