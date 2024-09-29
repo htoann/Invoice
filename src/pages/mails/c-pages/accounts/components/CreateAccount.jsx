@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ModalAccount } from './ModalAccount';
 
-export const CreateAccount = ({ state, setState, accounts, setAccounts }) => {
+export const CreateAccount = ({ state, setState, getList }) => {
   const { t } = useTranslation();
   const [form] = Form.useForm();
   const [loading, setLoading] = useState(false);
@@ -25,7 +25,7 @@ export const CreateAccount = ({ state, setState, accounts, setAccounts }) => {
   const handleOk = async (values) => {
     const newAccount = await createNewAccount(values);
     if (newAccount) {
-      setAccounts([newAccount, ...accounts]);
+      getList();
       onCancel();
       notification.success({
         message: t('Common_Success'),

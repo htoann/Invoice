@@ -173,10 +173,8 @@ const AccountList = () => {
           loading={loading}
         />
       </LayoutContent>
-
-      {visible && <CreateAccount state={state} setState={setState} accounts={accounts} setAccounts={setAccounts} />}
-
-      {editVisible && <UpdateAccount state={state} setState={setState} accounts={accounts} setAccounts={setAccounts} />}
+      {visible && <CreateAccount state={state} setState={setState} getList={() => getList(searchParams)} />}
+      {editVisible && <UpdateAccount state={state} setState={setState} getList={() => getList(searchParams)} />}
     </>
   );
 };

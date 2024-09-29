@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ModalAccount } from './ModalAccount';
 
-export const UpdateAccount = ({ state, setState, accounts, setAccounts }) => {
+export const UpdateAccount = ({ state, setState, getList }) => {
   const [form] = Form.useForm();
   const [loading, setLoading] = useState(false);
   const { t } = useTranslation();
@@ -18,11 +18,9 @@ export const UpdateAccount = ({ state, setState, accounts, setAccounts }) => {
     try {
       setLoading(true);
 
-      const response = await dataService.put(API_MAILS_ACCOUNT_BY_ACCOUNT_ID(state.update.id), values);
-      const updatedAccount = response.data;
+      await dataService.put(API_MAILS_ACCOUNT_BY_ACCOUNT_ID(state.update.id), values);
 
-      const updatedAccounts = accounts.map((acc) => (acc.id === updatedAccount.id ? updatedAccount : acc));
-      setAccounts(updatedAccounts);
+      getList();
 
       form.resetFields();
       onCancel();
