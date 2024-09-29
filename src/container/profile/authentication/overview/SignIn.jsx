@@ -1,8 +1,7 @@
-import { routes } from '@/routes/const';
 import { Button, Col, Form, Input, Row } from 'antd';
 import { useAuth } from 'context/AuthContext';
 import { useTranslation } from 'react-i18next';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { AuthFormWrap } from './Style';
 
 function SignIn() {
@@ -48,12 +47,13 @@ function SignIn() {
               </Form.Item>
             </Form>
           </div>
-          <div className="invoice-authentication-bottom">
+          <div style={{ padding: 5 }}></div>
+          {/* <div className="invoice-authentication-bottom">
             <p>
               {t('Auth_DontHaveAccount')}
               <Link to={routes.register}>{t('Auth_SignUp')}</Link>
             </p>
-          </div>
+          </div> */}
         </AuthFormWrap>
       </Col>
     </Row>
