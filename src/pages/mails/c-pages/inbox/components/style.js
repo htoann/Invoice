@@ -951,17 +951,14 @@ const MessageDetails = Styled.div`
   .message-body{
     ${({ theme }) => (theme.rtl ? 'padding-right' : 'padding-left')}: 60px;
     margin-top: 25px;
-    padding-bottom: 1px;
     width: 100%;
-    // overflow: auto;
+    margin-bottom: 0 !important;
 
     @media only screen and (max-width: 767px){
       ${({ theme }) => (theme.rtl ? 'padding-right' : 'padding-left')}: 0px;
       margin-top: 18px;
     },
     
-    /* word-break: break-word; */
-
     .welcome-text{
       font-size: 15px;
       margin-bottom: 40px;
@@ -972,7 +969,6 @@ const MessageDetails = Styled.div`
       color: ${({ theme }) => theme[theme.mainContent]['gray-text']};
       font-size: 15px;
       line-height: 1.667;
-      // margin-bottom: 55px;
     }
     h1{
       font-size: 15px;

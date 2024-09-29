@@ -27,7 +27,7 @@ function MailDetail({ selectedInbox: email }) {
 
               <div className="message-body" dangerouslySetInnerHTML={{ __html: cleanedBody }} />
 
-              <AttachmentList />
+              <AttachmentList email={email} />
             </MessageDetails>
           </Col>
         </Row>
