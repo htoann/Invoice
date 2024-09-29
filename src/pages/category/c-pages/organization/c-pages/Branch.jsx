@@ -165,7 +165,10 @@ const BranchList = () => {
             style={{ width: '100%', minHeight: 'var(--org-structure)', borderRight: 'none' }}
             mode="inline"
             selectedKeys={[selectedBranchId]}
-            onClick={({ key }) => setSelectedBranchId(key)}
+            onClick={({ key }) => {
+              setSelectedBranchId(key);
+              setSelectedDepartmentId('');
+            }}
             itemIcon={<RightOutlined />}
           >
             {loadingBranches ? (
