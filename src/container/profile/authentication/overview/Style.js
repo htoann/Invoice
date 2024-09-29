@@ -2,7 +2,7 @@ import Styled from 'styled-components';
 
 const AuthenticationWrap = Styled.div`
   position: relative;
-  padding: 120px 0;
+  padding: 100px 0;
   background-position: top;
   background-repeat: no-repeat;
   background-size: 100%;
