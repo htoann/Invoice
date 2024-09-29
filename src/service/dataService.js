@@ -47,7 +47,6 @@ class DataService {
       baseURL: API_ENDPOINT,
       headers: {
         'Content-Type': 'application/json',
-        ...this.authHeader(),
       },
     });
 
