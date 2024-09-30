@@ -9,9 +9,7 @@ function ProtectedRoute({ Component, path }) {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (isLoggedIn) {
-      navigate('/');
-    } else {
+    if (!isLoggedIn) {
       navigate(routes.login);
     }
   }, [isLoggedIn]);

@@ -18,7 +18,7 @@ function ConnectTaxAuthority() {
     setLoading(true);
     try {
       const response = await dataService.get(API_INVOICES_CONNECT_AUTHORITY);
-      form.setFieldsValue(response?.data);
+      !!response?.data?.length && form.setFieldsValue(response?.data);
     } catch (error) {
       console.error(error);
       notification.error({
@@ -35,6 +35,7 @@ function ConnectTaxAuthority() {
   }, []);
 
   const handleOk = async (values) => {
+    console.log(values);
     setSaving(true);
     try {
       const response = await dataService.post(API_INVOICES_CONNECT_AUTHORITY, {
@@ -58,6 +59,8 @@ function ConnectTaxAuthority() {
     }
   };
 
+  console.log(form);
+
   return (
     <div style={{ width: '35rem', maxWidth: '100%', margin: 'auto' }}>
       <PageHeader className="invoice-page-header-main" title={t('Common_ConnectTaxAuthorities')} />
@@ -66,7 +69,7 @@ function ConnectTaxAuthority() {
           <Skeleton active style={{ marginTop: 30 }} />
         ) : (
           <BasicFormWrapper>
-            <Form form={form} name="taxConnect" onFinish={handleOk}>
+            <Form form={form} onFinish={handleOk} autoComplete="off">
               <Form.Item
                 name="username"
                 rules={[{ required: true, message: 'Vui lòng nhập tên đăng nhập' }]}
