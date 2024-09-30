@@ -31,6 +31,7 @@ export const AuthProvider = ({ children }) => {
     try {
       const response = await dataService.get(API_USER_INFO);
       setState({ userInfo: response.data });
+      setLocalStorage(ORG_LIST, response.data?.organizations);
     } catch (err) {
       console.error(err);
     }
