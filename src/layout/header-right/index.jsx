@@ -3,7 +3,7 @@ import Heading from '@/components/heading';
 import { Popover } from '@/components/popup';
 import EngImg from '@/static/img/flag/en.png';
 import VieImg from '@/static/img/flag/vi.png';
-import { ORG_ID } from '@/utils/index';
+import { ORG_ID, ORG_LIST } from '@/utils/index';
 import { getLocalStorage, setLocalStorage } from '@/utils/localStorage';
 import { UilAngleDown, UilBell, UilSetting, UilSignout, UilUser, UilUsersAlt } from '@tooni/iconscout-unicons-react';
 import { Avatar, Select, Tooltip } from 'antd';
@@ -105,8 +105,8 @@ const AuthInfo = React.memo(() => {
     </NavAuth>
   );
 
-  const orgs = userInfo?.organizations || [];
-  const orgCode = getLocalStorage(ORG_ID) || (userInfo?.organizations || [])?.[0]?.tax_code;
+  const orgs = userInfo?.organizations || getLocalStorage(ORG_LIST) || [];
+  const orgCode = orgs.length ? (getLocalStorage(ORG_ID) || orgs?.[0]?.id) : null;
 
   return (
     <InfoWrapper>
