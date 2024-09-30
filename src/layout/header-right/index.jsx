@@ -3,10 +3,10 @@ import Heading from '@/components/heading';
 import { Popover } from '@/components/popup';
 import EngImg from '@/static/img/flag/en.png';
 import VieImg from '@/static/img/flag/vi.png';
-import { createOptions, ORG_ID, ORG_LIST } from '@/utils/index';
+import { ORG_ID, ORG_LIST } from '@/utils/index';
 import { getLocalStorage, setLocalStorage } from '@/utils/localStorage';
 import { UilAngleDown, UilBell, UilSetting, UilSignout, UilUser, UilUsersAlt } from '@tooni/iconscout-unicons-react';
-import { Avatar, Select } from 'antd';
+import { Avatar, Select, Tooltip } from 'antd';
 import { useAuth } from 'context/AuthContext';
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -105,8 +105,8 @@ const AuthInfo = React.memo(() => {
     </NavAuth>
   );
 
-  const orgOptions = createOptions(getLocalStorage(ORG_LIST) || [], 'tax_code', false);
-  const orgCode = getLocalStorage(ORG_ID) || (getLocalStorage(ORG_LIST) || [])?.[0].tax_code;
+  const orgs = getLocalStorage(ORG_LIST) || [];
+  const orgCode = getLocalStorage(ORG_ID) || (getLocalStorage(ORG_LIST) || [])?.[0]?.tax_code;
 
   return (
     <InfoWrapper>
@@ -117,9 +117,29 @@ const AuthInfo = React.memo(() => {
           window.location.reload();
         }}
         value={orgCode}
-        options={orgOptions}
-        style={{ marginRight: 12, minWidth: 100 }}
+        style={{ marginRight: 12, minWidth: 100, maxWidth: 250 }}
         key={orgCode}
+        options={orgs.map((org) => ({
+          value: org.id,
+          label: (
+            <div>
+              <Tooltip title={org.name} showArrow={false} placement="left">
+                <div
+                  style={{
+                    fontSize: '14px',
+                    textOverflow: 'ellipsis',
+                    width: '100%',
+                    whiteSpace: 'nowrap',
+                    overflow: 'hidden',
+                  }}
+                >
+                  {org.name}
+                </div>
+                <div style={{ fontSize: '12px', color: '#888' }}>{org.tax_code}</div>
+              </Tooltip>
+            </div>
+          ),
+        }))}
       />
       <Customizer open={settingOpen} onClose={() => setSettingOpen(false)} />
       {/* <Notification /> */}
