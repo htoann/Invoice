@@ -18,7 +18,12 @@ function ConnectTaxAuthority() {
     setLoading(true);
     try {
       const response = await dataService.get(API_INVOICES_CONNECT_AUTHORITY);
-      !!response?.data?.length && form.setFieldsValue(response?.data);
+
+      response?.data &&
+        typeof response?.data === 'object' &&
+        !Array.isArray(response?.data) &&
+        Object.keys(response?.data)?.length > 0 &&
+        form.setFieldsValue(response?.data);
     } catch (error) {
       console.error(error);
       notification.error({
