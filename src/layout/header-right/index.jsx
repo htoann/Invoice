@@ -36,7 +36,7 @@ const AuthInfo = React.memo(() => {
       <div className="user-dropdown">
         <figure className="user-dropdown__info">
           <Avatar size={48} style={{ backgroundColor: '#8231D3' }}>
-            {userInfo?.username?.charAt(0)?.toUpperCase()}
+            {(userInfo?.last_name || userInfo?.username)?.charAt(0)?.toUpperCase()}
           </Avatar>
           <figcaption style={{ margin: 'auto 0' }}>
             <Heading as="h5">
@@ -158,7 +158,7 @@ const AuthInfo = React.memo(() => {
         <Popover placement="bottomRight" content={userContent} action="click">
           <Link to="#" className="invoice-nav-action-link">
             <Avatar size={40} style={{ backgroundColor: '#8231D3' }}>
-              {userInfo?.username?.charAt(0)?.toUpperCase()}
+              {(userInfo?.last_name || userInfo?.username)?.charAt(0)?.toUpperCase()}
             </Avatar>
             <span className="invoice-nav-actions__author--name">
               {userInfo?.first_name && userInfo?.last_name
