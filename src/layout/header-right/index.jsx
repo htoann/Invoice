@@ -119,7 +119,7 @@ const AuthInfo = React.memo(() => {
           window.location.reload();
         }}
         value={orgCode}
-        style={{ marginRight: 12, minWidth: 100, maxWidth: 250 }}
+        style={{ marginRight: 12, minWidth: 200, maxWidth: 300 }}
         key={orgCode}
         options={orgs.map((org) => ({
           value: org.id,
@@ -128,7 +128,7 @@ const AuthInfo = React.memo(() => {
               <Tooltip title={org.name} showArrow={false} placement="left">
                 <div
                   style={{
-                    fontSize: '14px',
+                    fontSize: '13px',
                     textOverflow: 'ellipsis',
                     width: '100%',
                     whiteSpace: 'nowrap',
