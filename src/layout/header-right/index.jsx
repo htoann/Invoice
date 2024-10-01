@@ -38,7 +38,7 @@ const AuthInfo = React.memo(() => {
           <Avatar size={48} style={{ backgroundColor: '#8231D3' }}>
             {userInfo?.username?.charAt(0)?.toUpperCase()}
           </Avatar>
-          <figcaption style={{ margin: 'auto' }}>
+          <figcaption style={{ margin: 'auto 0' }}>
             <Heading as="h5">
               <div
                 style={{
@@ -48,7 +48,9 @@ const AuthInfo = React.memo(() => {
                   maxWidth: '80px',
                 }}
               >
-                {userInfo?.username}
+                {userInfo?.first_name && userInfo?.last_name
+                  ? `${userInfo?.first_name} ${userInfo?.last_name}`
+                  : userInfo?.username}
               </div>
             </Heading>
           </figcaption>
@@ -106,7 +108,7 @@ const AuthInfo = React.memo(() => {
   );
 
   const orgs = userInfo?.organizations || getLocalStorage(ORG_LIST) || [];
-  const orgCode = orgs.length ? (getLocalStorage(ORG_ID) || orgs?.[0]?.id) : null;
+  const orgCode = orgs.length ? getLocalStorage(ORG_ID) || orgs?.[0]?.id : null;
 
   return (
     <InfoWrapper>
@@ -158,7 +160,11 @@ const AuthInfo = React.memo(() => {
             <Avatar size={40} style={{ backgroundColor: '#8231D3' }}>
               {userInfo?.username?.charAt(0)?.toUpperCase()}
             </Avatar>
-            <span className="invoice-nav-actions__author--name">{userInfo?.username}</span>
+            <span className="invoice-nav-actions__author--name">
+              {userInfo?.first_name && userInfo?.last_name
+                ? `${userInfo?.first_name} ${userInfo?.last_name}`
+                : userInfo?.username}
+            </span>
             <UilAngleDown />
           </Link>
         </Popover>

@@ -199,6 +199,7 @@ const LayoutContainer = Styled.div`
                     min-width: 60px;
                     display: flex;
                     justify-content: center;
+                    display: block;
 
                     margin: ${({ theme }) => (theme.rtl ? '0 10px 0 6px' : '0 6px 0 10px')};
                     color: ${({ theme }) => theme[theme.mainContent]['gray-text']};
