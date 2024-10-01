@@ -86,7 +86,7 @@ const Customizer = ({ open, onClose }) => {
               </a>
               <span style={{ display: 'flex', justifyContent: 'center', fontWeight: 500 }}>{t('Common_MenuLeft')}</span>
             </li>
-            <li className="customizer-list__item" style={{ marginLeft: 40 }}>
+            <li className="customizer-list__item" style={{ marginLeft: 70 }}>
               <a
                 onClick={() => {
                   changeNavbar(true);
