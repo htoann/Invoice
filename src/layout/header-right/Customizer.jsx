@@ -82,7 +82,7 @@ const Customizer = ({ open, onClose }) => {
                   changeNavbar(false);
                 }}
               >
-                <img src={Left} alt="" width="100" />
+                <img src={Left} alt="" width="80" />
               </a>
               <span style={{ display: 'flex', justifyContent: 'center', fontWeight: 500 }}>{t('Common_MenuLeft')}</span>
             </li>
@@ -92,7 +92,7 @@ const Customizer = ({ open, onClose }) => {
                   changeNavbar(true);
                 }}
               >
-                <img src={Left} alt="" style={{ transform: 'rotate(90deg)' }} width="100" />
+                <img src={Left} alt="" style={{ transform: 'rotate(90deg)' }} width="80" />
               </a>
               <span style={{ display: 'flex', justifyContent: 'center', fontWeight: 500 }}>{t('Common_MenuTop')}</span>
             </li>
