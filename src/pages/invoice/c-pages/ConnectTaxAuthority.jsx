@@ -77,7 +77,7 @@ function ConnectTaxAuthority() {
                 rules={[{ required: true, message: 'Vui lòng nhập tên đăng nhập' }]}
                 label="Tên đăng nhập"
               >
-                <Input placeholder="name@example.com" />
+                <Input placeholder="Tên đăng nhập" />
               </Form.Item>
 
               <Form.Item
