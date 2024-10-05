@@ -122,14 +122,12 @@
 
   "Mail_CreateAccount_Title": "Create Account",
   "Mail_CreateAccount_Success": "Account successfully created",
-  "Mail_CreateAccount_Error": "Error occurred while creating account",
   "Mail_AccountList_Title": "Email List",
   "Mail_AccountList_Create": "Add Email",
   "Mail_EmailList_DeleteSuccess": "Account successfully deleted.",
   "Mail_EmailList_DeleteError": "Unable to delete account. Please try again later.",
   "Mail_UpdateAccount_Title": "Update Account",
   "Mail_UpdateAccount_Success": "Account successfully updated.",
-  "Mail_UpdateAccount_Error": "Unable to update account. Please try again.",
   "Mail_Search": "Search by sender",
 
   "SyncHistory_TotalInvoice": "Total Invoices",

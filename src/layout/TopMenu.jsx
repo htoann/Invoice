@@ -57,7 +57,7 @@ export const TopMenu = () => {
                 <Link to={routes.invoice}>{t('Common_InvoiceList')}</Link>
               </li>
               <li>
-                <Link to={routes.invoiceConnectTax}>Kết nối cơ quan thuế</Link>
+                <Link to={routes.invoiceConnectTax}>{t('Common_ConnectTaxAuthorities')}</Link>
               </li>
             </ul>
           </li>

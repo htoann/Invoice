@@ -14,8 +14,16 @@ export const CreateAccount = ({ state, setState, getList }) => {
       setLoading(true);
       const response = await dataService.post(API_MAILS_ACCOUNTS, data);
       return response.data;
-    } catch (error) {
-      console.error(error);
+    } catch (err) {
+      console.error(err);
+      const errMsg =
+        err?.response?.data?.errors?.code === 'duplicated_email'
+          ? t('Common_DuplicatedEmailAccount')
+          : t('Auth_Failed_Credential');
+      notification.error({
+        message: t('Common_Error'),
+        description: errMsg,
+      });
       return null;
     } finally {
       setLoading(false);
@@ -32,11 +40,6 @@ export const CreateAccount = ({ state, setState, getList }) => {
         description: t('Mail_CreateAccount_Success'),
       });
       form.resetFields();
-    } else {
-      notification.error({
-        message: t('Common_Error'),
-        description: t('Mail_CreateAccount_Error'),
-      });
     }
   };
 

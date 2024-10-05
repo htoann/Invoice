@@ -112,6 +112,7 @@
   "Common_Project": "Dự án",
   "Common_TotalItems": "Tổng số",
   "Common_BatchDownload": "Tải xuống hàng loạt",
+  "Common_DuplicatedEmailAccount": "Tài khoản email đã tồn tại",
 
   "Dashboard_BusinessStatus": "Trạng thái doanh nghiệp",
   "Dashboard_InvoicesChange": "Hóa đơn bị thay đổi bởi người bán - Nhà cung cấp",
@@ -162,16 +163,15 @@
   "Invoice_SelectEndDate": "Đến ngày",
   "Invoice_GetTaxConnectFailure": "Không thể lấy thông tin cơ quan thuế",
 
+
   "Mail_CreateAccount_Title": "Tạo tài khoản",
   "Mail_CreateAccount_Success": "Tài khoản đã được tạo thành công",
-  "Mail_CreateAccount_Error": "Đã xảy ra lỗi khi tạo tài khoản",
   "Mail_AccountList_Title": "Danh sách tài khoản",
   "Mail_AccountList_Create": "Thêm tài khoản",
   "Mail_EmailList_DeleteSuccess": "Tài khoản đã được xóa thành công.",
   "Mail_EmailList_DeleteError": "Không thể xóa tài khoản. Vui lòng thử lại sau.",
   "Mail_UpdateAccount_Title": "Cập nhật tài khoản",
   "Mail_UpdateAccount_Success": "Tài khoản đã được cập nhật thành công.",
-  "Mail_UpdateAccount_Error": "Không thể cập nhật tài khoản. Vui lòng thử lại.",
   "Mail_Search": "Tìm kiếm theo tiêu đề email hoặc người gửi",
   "Mail_Attachments": "tệp đính kèm",
   "Mail_NoticeAppPassword": "Lưu ý rằng mật khẩu ứng dụng khác với mật khẩu email",

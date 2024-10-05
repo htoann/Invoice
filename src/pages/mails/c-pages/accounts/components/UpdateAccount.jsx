@@ -29,11 +29,15 @@ export const UpdateAccount = ({ state, setState, getList }) => {
         message: t('Common_Success'),
         description: t('Mail_UpdateAccount_Success'),
       });
-    } catch (error) {
-      console.error(error);
+    } catch (err) {
+      console.error(err);
+      const errMsg =
+        err?.response?.data?.errors?.code === 'duplicated_email'
+          ? t('Common_DuplicatedEmailAccount')
+          : t('Auth_Failed_Credential');
       notification.error({
         message: t('Common_Error'),
-        description: t('Mail_UpdateAccount_Error'),
+        description: errMsg,
       });
     } finally {
       setLoading(false);
