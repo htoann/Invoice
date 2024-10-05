@@ -122,11 +122,7 @@ export const ModalAccount = ({ form, handleOk, state, onCancel, loading, textSub
             label={t('Common_AppPassword')}
             rules={[{ required: true, message: t('Common_PleaseEnterPassword') }]}
           >
-            <Input.Password
-              disabled={state?.update.password}
-              placeholder="xczh qecu sgjk ibjy"
-              autoComplete="app-password"
-            />
+            <Input.Password placeholder="xczh qecu sgjk ibjy" autoComplete="app-password" />
           </Form.Item>
 
           {!state?.update?.password && (
