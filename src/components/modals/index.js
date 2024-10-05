@@ -14,6 +14,7 @@ const Modal = (props) => {
     footer = null,
     width = 620,
     children,
+    top,
   } = props;
 
   return (
@@ -25,6 +26,7 @@ const Modal = (props) => {
       type={color ? type : false}
       width={width}
       className={className}
+      style={top ? { top: `${top}px` } : undefined}
       footer={
         footer || footer === null
           ? footer

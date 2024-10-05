@@ -1,3 +1,6 @@
+import { Button } from '@/components/buttons';
+import { Modal } from '@/components/modals';
+import { BasicFormWrapper } from '@/container/styled';
 import { API_MAILS_ACCOUNT_BY_ACCOUNT_ID, dataService } from '@/service';
 import { Form, notification } from 'antd';
 import { useState } from 'react';
@@ -5,9 +8,10 @@ import { useTranslation } from 'react-i18next';
 import { ModalAccount } from './ModalAccount';
 
 export const UpdateAccount = ({ state, setState, getList }) => {
+  const { t } = useTranslation();
   const [form] = Form.useForm();
   const [loading, setLoading] = useState(false);
-  const { t } = useTranslation();
+  const [showConfirm, setShowConfirm] = useState(false);
 
   const onCancel = () => {
     setState({ ...state, editVisible: false });
@@ -15,6 +19,11 @@ export const UpdateAccount = ({ state, setState, getList }) => {
   };
 
   const handleOk = async (values) => {
+    if (values?.password !== state?.update?.password) {
+      setShowConfirm(true);
+      return;
+    }
+
     try {
       setLoading(true);
 
@@ -45,15 +54,33 @@ export const UpdateAccount = ({ state, setState, getList }) => {
   };
 
   return (
-    <ModalAccount
-      title={t('Mail_UpdateAccount_Title')}
-      open={state.editVisible}
-      form={form}
-      handleOk={handleOk}
-      state={state}
-      onCancel={onCancel}
-      loading={loading}
-      textSubmit={t('Common_Save')}
-    />
+    <>
+      <ModalAccount
+        title={t('Mail_UpdateAccount_Title')}
+        open={state.editVisible}
+        form={form}
+        handleOk={handleOk}
+        state={state}
+        onCancel={onCancel}
+        loading={loading}
+        textSubmit={t('Common_Save')}
+      />
+
+      <Modal title={t('Common_Warning')} open={showConfirm} onCancel={() => setShowConfirm(false)} top="200">
+        <BasicFormWrapper>
+          <Form form={form} name="contactEdit" onFinish={handleOk} autoComplete="off">
+            {t('Mail_UpdatePasswordWarning')}
+            <div style={{ justifyContent: 'end', display: 'flex' }}>
+              <Button size="default" type="white" outlined style={{ marginRight: 8 }} onClick={onCancel}>
+                {t('Common_Cancel')}
+              </Button>
+              <Button type="primary" htmlType="submit" size="default" key="submit" loading={loading}>
+                {t('Common_Continue')}
+              </Button>
+            </div>
+          </Form>
+        </BasicFormWrapper>
+      </Modal>
+    </>
   );
 };

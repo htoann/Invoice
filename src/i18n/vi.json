@@ -113,6 +113,8 @@
   "Common_TotalItems": "Tổng số",
   "Common_BatchDownload": "Tải xuống hàng loạt",
   "Common_DuplicatedEmailAccount": "Tài khoản email đã tồn tại",
+  "Common_Continue": "Tiếp tục",
+  "Common_Warning": "Cảnh báo",
 
   "Dashboard_BusinessStatus": "Trạng thái doanh nghiệp",
   "Dashboard_InvoicesChange": "Hóa đơn bị thay đổi bởi người bán - Nhà cung cấp",
@@ -176,6 +178,7 @@
   "Mail_Attachments": "tệp đính kèm",
   "Mail_NoticeAppPassword": "Lưu ý rằng mật khẩu ứng dụng khác với mật khẩu email",
   "Mail_HowToCreateAppPassword": "Cách tạo mật khẩu ứng dụng",
+  "Mail_UpdatePasswordWarning": "Nếu thay đổi mật khẩu email, hệ thống sẽ tiến hành đồng bộ lại dữ liệu hộp thư đến. Bạn có muốn tiếp tục?",
 
   "SyncHistory_TotalInvoice": "Tổng số hóa đơn",
   "SyncHistory_NewInvoice": "Hóa đơn mới",
