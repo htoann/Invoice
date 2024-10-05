@@ -19,21 +19,17 @@ export const UpdateAccount = ({ state, setState, getList }) => {
   };
 
   const handleOk = async (values) => {
-    if (values?.password !== state?.update?.password) {
+    if (values?.password !== state?.update?.password && !showConfirm) {
       setShowConfirm(true);
       return;
     }
 
     try {
       setLoading(true);
-
       await dataService.put(API_MAILS_ACCOUNT_BY_ACCOUNT_ID(state.update.id), values);
-
       getList();
-
       form.resetFields();
       onCancel();
-
       notification.success({
         message: t('Common_Success'),
         description: t('Mail_UpdateAccount_Success'),
@@ -62,7 +58,7 @@ export const UpdateAccount = ({ state, setState, getList }) => {
         handleOk={handleOk}
         state={state}
         onCancel={onCancel}
-        loading={loading}
+        loading={loading && !showConfirm}
         textSubmit={t('Common_Save')}
       />
 
@@ -71,7 +67,13 @@ export const UpdateAccount = ({ state, setState, getList }) => {
           <Form form={form} name="contactEdit" onFinish={handleOk} autoComplete="off">
             {t('Mail_UpdatePasswordWarning')}
             <div style={{ justifyContent: 'end', display: 'flex' }}>
-              <Button size="default" type="white" outlined style={{ marginRight: 8 }} onClick={onCancel}>
+              <Button
+                size="default"
+                type="white"
+                outlined
+                style={{ marginRight: 8 }}
+                onClick={() => setShowConfirm(false)}
+              >
                 {t('Common_Cancel')}
               </Button>
               <Button type="primary" htmlType="submit" size="default" key="submit" loading={loading}>
