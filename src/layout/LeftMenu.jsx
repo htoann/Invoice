@@ -107,6 +107,7 @@ export const LeftMenu = ({ toggleCollapsed }) => {
         // { path: routes.categoryProduct, textKey: t('Common_Goods'), key: 'Hàng hoá' },
         { path: '#', textKey: t('Common_Goods'), key: 'Hàng hoá' },
         { path: routes.emailAccount, textKey: t('Common_ExpenseItem'), key: 'Khoản mục chi phí' },
+        { path: routes.categoryTaxPayer, textKey: t('Thông tin người nộp thuế'), key: 'Thông tin người nộp thuế' },
       ]),
     ),
     getItem(

@@ -100,6 +100,9 @@ export const TopMenu = () => {
               <li>
                 <Link to="#">{t('Common_ExpenseItem')}</Link>
               </li>
+              <li>
+                <Link to={routes.categoryTaxPayer}>{t('Thông tin người nộp thuế')}</Link>
+              </li>
             </ul>
           </li>
 

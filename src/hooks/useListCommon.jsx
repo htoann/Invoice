@@ -3,7 +3,7 @@ import { notification } from 'antd';
 import { useState } from 'react';
 import { convertKeysToSnakeCase } from '../utils';
 
-export const useList = (state, setState, apiUrl, litsName, onHandleResponse) => {
+export const useList = (state, setState, apiUrl, listName, onHandleResponse) => {
   const [list, setList] = useState([]);
   const [loading, setLoading] = useState(false);
   const { current, pageSize } = state?.pagination ? state.pagination : state || {};
@@ -40,7 +40,7 @@ export const useList = (state, setState, apiUrl, litsName, onHandleResponse) => 
       console.error(error);
       notification.error({
         message: 'Lỗi',
-        description: `Không thể tải danh sách ${litsName}. Vui lòng thử lại sau.`,
+        description: `Không thể tải danh sách ${listName}. Vui lòng thử lại sau.`,
       });
     } finally {
       setLoading(false);

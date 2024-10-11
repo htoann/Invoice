@@ -14,4 +14,5 @@ export const routes = {
   categoryProduct: '/danh-muc/hang-hoa',
   categoryProvider: '/danh-muc/nha-cung-cap',
   categoryCustomer: '/danh-muc/khach-hang',
+  categoryTaxPayer: '/danh-muc/thong-tin-thue',
 };
