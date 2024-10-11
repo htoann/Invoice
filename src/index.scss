@@ -70,6 +70,7 @@ tr[data-row-key='searchInput'] {
 }
 
 // Common class name
+
 .dropdown-select {
   .ant-select-item-option-content {
     padding: 5px !important;
@@ -116,8 +117,6 @@ tr[data-row-key='searchInput'] {
   }
 }
 
-// End common class name
-
 .subMenu {
   min-width: 250px;
   width: max-content !important;
@@ -128,18 +127,3 @@ tr[data-row-key='searchInput'] {
     margin-bottom: 15px;
   }
 }
-
-// .ant-input,
-// .ant-input-number-input {
-//   padding: 8px 20px;
-// }
-
-// .ant-col:has(.ant-checkbox-wrapper) {
-//   .ant-form-item {
-//     margin-bottom: 0 !important;
-
-//     .ant-form-item-row {
-//       flex-direction: row !important;
-//     }
-//   }
-// }
