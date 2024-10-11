@@ -2,7 +2,7 @@ import { Col, Row } from 'antd';
 import React from 'react';
 
 import OverviewCard from '@/components/cards/OverviewCard';
-import OverviewData from '@/mock/demoData/overviewData.json';
+import OverviewData from '@/mock/dashboard/overviewData.json';
 import { OverviewDataStyleWrap } from '../Style';
 
 const Overview = React.memo(() => {
