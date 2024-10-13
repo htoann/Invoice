@@ -1,10 +1,11 @@
 import { Button } from '@/components/buttons';
 import { Modal } from '@/components/modals';
+import { API_TAX_PAYER_EXCEL } from '@/service/apiConst';
+import { dataService } from '@/service/dataService';
 import { ORG_LIST } from '@/utils/index';
 import { getLocalStorage } from '@/utils/localStorage';
 import { UploadOutlined } from '@ant-design/icons';
 import { Checkbox, List, message, Upload } from 'antd';
-import axios from 'axios';
 import { useAuth } from 'context/AuthContext';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -14,7 +15,7 @@ export const UploadFile = () => {
   const { userInfo } = useAuth();
 
   const [file, setFile] = useState(null);
-  const [selectedCompanies, setSelectCompanies] = useState([]);
+  const [selectOrgs, setSelectOrgs] = useState([]);
   const [modalOpen, setModalOpen] = useState(false);
   const [loading, setLoading] = useState(false);
 
@@ -22,13 +23,13 @@ export const UploadFile = () => {
 
   const onReset = () => {
     setFile(null);
-    setSelectCompanies([]);
+    setSelectOrgs([]);
   };
 
   const uploadProps = {
     beforeUpload: (selectedFile) => {
       setFile(selectedFile);
-      if (selectedCompanies.length === 0) {
+      if (selectOrgs.length === 0) {
         setModalOpen(true);
         return Upload.LIST_IGNORE;
       }
@@ -44,12 +45,12 @@ export const UploadFile = () => {
 
     const formData = new FormData();
     formData.append('file', file);
-    formData.append('orgs', selectedCompanies);
+    formData.append('organization_ids', selectOrgs);
 
     setLoading(true);
 
-    axios
-      .post('https://660d2bd96ddfa2943b33731c.mockapi.io/api/upload', formData)
+    dataService
+      .post(API_TAX_PAYER_EXCEL, formData)
       .then(() => {
         message.success(`${file.name} file uploaded successfully`);
         onReset();
@@ -68,20 +69,20 @@ export const UploadFile = () => {
   };
 
   const handleSelectItem = (id) => {
-    const isSelected = selectedCompanies.includes(id);
+    const isSelected = selectOrgs.includes(id);
     if (isSelected) {
-      setSelectCompanies(selectedCompanies.filter((item) => item !== id));
+      setSelectOrgs(selectOrgs.filter((item) => item !== id));
     } else {
-      setSelectCompanies([...selectedCompanies, id]);
+      setSelectOrgs([...selectOrgs, id]);
     }
   };
 
   const handleSelectAll = (e) => {
     const isChecked = e.target.checked;
     if (isChecked) {
-      setSelectCompanies(orgs.map((item) => item.id));
+      setSelectOrgs(orgs.map((item) => item.id));
     } else {
-      setSelectCompanies([]);
+      setSelectOrgs([]);
     }
   };
 
@@ -110,7 +111,7 @@ export const UploadFile = () => {
               key="submit"
               loading={loading}
               onClick={handleUpload}
-              disabled={!selectedCompanies?.length}
+              disabled={!selectOrgs?.length}
             >
               {t('Common_Continue')}
             </Button>
@@ -118,8 +119,8 @@ export const UploadFile = () => {
         }
       >
         <Checkbox
-          checked={selectedCompanies?.length === orgs?.length}
-          indeterminate={!!selectedCompanies?.length && selectedCompanies?.length < orgs?.length}
+          checked={selectOrgs?.length === orgs?.length}
+          indeterminate={!!selectOrgs?.length && selectOrgs?.length < orgs?.length}
           onChange={handleSelectAll}
           style={{ marginBottom: 16, marginLeft: 24, fontWeight: 500 }}
         >
@@ -133,7 +134,7 @@ export const UploadFile = () => {
             <List.Item>
               <Checkbox
                 style={{ margin: '2px 0', width: '100%' }}
-                checked={selectedCompanies.includes(item.id)}
+                checked={selectOrgs.includes(item.id)}
                 onChange={() => handleSelectItem(item.id)}
               >
                 <span style={{ marginLeft: 10 }}>{item.name}</span>

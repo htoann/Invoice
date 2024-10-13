@@ -1,6 +1,6 @@
 import { PageHeader } from '@/components/page-headers';
 import { LayoutContent } from '@/layout/LayoutContent';
-import { API_CUSTOMERS } from '@/service';
+import { API_TAX_PAYER } from '@/service/apiConst';
 import { formatTime } from '@/utils/index';
 import { useList } from 'hooks/useListCommon';
 import { useEffect, useState } from 'react';
@@ -18,7 +18,7 @@ const Customers = () => {
   const { pagination } = state;
   const { current, pageSize } = pagination;
 
-  const { list, loading, getList } = useList(state, setState, API_CUSTOMERS, 'thông tin người nộp thuế');
+  const { list, loading, getList } = useList(state, setState, API_TAX_PAYER, 'thông tin người nộp thuế');
 
   useEffect(() => {
     getList();

@@ -54,6 +54,9 @@ export const API_PROVIDER = (providerId) => `/orgs/providers/${providerId}/`;
 export const API_CUSTOMERS = '/orgs/customers/';
 export const API_CUSTOMER = (customerId) => `/orgs/customers/${customerId}/`;
 
+export const API_TAX_PAYER = '/tax_payers/';
+export const API_TAX_PAYER_EXCEL = '/tax_payers/excel/';
+
 //
 
 export const API_BUSINESS_STATUS = '/business-status/';
