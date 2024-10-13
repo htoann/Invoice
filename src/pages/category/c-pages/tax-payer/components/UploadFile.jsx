@@ -46,13 +46,15 @@ export const UploadFile = () => {
     const formData = new FormData();
     formData.append('file', file);
     selectOrgs.forEach((orgId) => {
-      formData.append('organization_ids[]', orgId);
+      formData.append('organization_ids[]', +orgId);
     });
 
     setLoading(true);
 
     dataService
-      .post(API_TAX_PAYER_EXCEL, formData)
+      .post(API_TAX_PAYER_EXCEL, formData, {
+        'Content-Type': 'multipart/form-data',
+      })
       .then(() => {
         message.success(`${file.name} file uploaded successfully`);
         onReset();
