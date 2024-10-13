@@ -19,7 +19,7 @@ function DataTable({ tableData, columns, pagination, setState, loading, list }) 
     setLoadingExport(true);
     try {
       const response = await dataService.get(API_TAX_PAYER_EXCEL, {}, { responseType: 'blob' });
-      downloadFile(response, `HDDT_${formatTime(new Date(), 'YYYYMMDDHHmm')}.xlsx`);
+      downloadFile(response, `TTNNT_${formatTime(new Date(), 'YYYYMMDDHHmm')}.xlsx`);
     } catch (error) {
       console.error(error);
       notification.error({
