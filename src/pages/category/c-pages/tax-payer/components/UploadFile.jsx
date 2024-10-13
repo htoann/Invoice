@@ -56,7 +56,8 @@ export const UploadFile = () => {
         'Content-Type': 'multipart/form-data',
       })
       .then(() => {
-        message.success(`${file.name} file uploaded successfully`);
+        message.success(`${file.name} đã được tải lên thành công`);
+        setIsModalOpen(false);
         onReset();
       })
       .catch(() => {
