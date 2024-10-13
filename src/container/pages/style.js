@@ -830,7 +830,7 @@ const MaintenanceWrapper = Styled.div`
   justify-content: center;
   flex-direction: column;
   width: 100%;
-  min-height: 100vh;
+  min-height: 90vh;
   text-align: center;
   img{
     margin-bottom: 72px;
@@ -862,7 +862,7 @@ const ErrorWrapper = Styled.div`
   justify-content: center;
   flex-direction: column;
   width: 100%;
-  min-height: 100vh;
+  min-height: 90vh;
   text-align: center;
   img{
     margin-bottom: 100px;

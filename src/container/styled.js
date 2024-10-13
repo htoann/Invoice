@@ -2302,7 +2302,6 @@ const TableWrapper = Styled.div`
         }
         .table-actions{
             text-align: ${({ theme }) => (theme.rtl ? 'left' : 'right')};
-            /* min-width: 150px !important; */
             text-align: center !important;
             button{
                 height: 40px;

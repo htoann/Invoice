@@ -20,7 +20,6 @@ const Style = Styled(Table)`
       }
     }
     .ant-table-selection-extra{
-      /* ${({ theme }) => (theme.rtl ? 'right: 15px;' : 'left: -15px;')} */
       right: 15px;
     }
   }
@@ -448,9 +447,6 @@ const EmailNav = Styled.nav`
     margin-top: 20px;
     margin-bottom: 20px;
     padding: 0;
-    /* Disable scroll lỏ for now */
-    /* max-height: calc(100vh - 418px);
-    overflow: auto; */
     padding-right: 5px;
     li{
       &:has(.empty) {
@@ -638,8 +634,6 @@ const EmailNav = Styled.nav`
 const MailDetailsWrapper = Styled.div`
   .ant-card-body{
     padding-top: 30px !important;
-    /* max-height: calc(-198px + 100vh); */
-    /* overflow: auto; */
     overflow: auto;
   }
   .ant-card-head-wrapper{
@@ -1131,16 +1125,6 @@ const EmailWrapper = Styled.div`
     padding: 0;
     background: transparent !important;
   }
-  .trigger-col {
-    /* min-width: 600px; */
-
-    button{
-      svg{
-        /* width: 18px;
-        height: 18px; */
-      }
-    }
-  }
   .ant-btn-link{
     background: #fff !important;
     margin-bottom: 25px;
@@ -1165,15 +1149,12 @@ const EmailWrapper = Styled.div`
       background: #fff;
       position: fixed;
       ${({ theme }) => (theme.rtl ? 'right' : 'left')}: 0;
-      /* top: 60px; */
       top: 72px;
       width: 500px;
       height: 100%;
       z-index: 99;
     }
     .ant-card{
-      /* min-height: 900px; */
-      /* height: 100%; */
       height: auto;
       .ant-card-body{
         padding: 0px !important;
@@ -1198,7 +1179,6 @@ const EmailWrapper = Styled.div`
   }
 
   .mail-sidebar-bottom-scroll {
-    /* max-height: calc(100vh - 190px); */
     height: calc(100vh - 72px);
     overflow: auto;
   }
