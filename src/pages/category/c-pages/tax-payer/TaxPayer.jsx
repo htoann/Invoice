@@ -1,7 +1,6 @@
 import { PageHeader } from '@/components/page-headers';
 import { LayoutContent } from '@/layout/LayoutContent';
 import { API_TAX_PAYER } from '@/service/apiConst';
-import { formatTime } from '@/utils/index';
 import { useList } from 'hooks/useListCommon';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -28,12 +27,7 @@ const Customers = () => {
     list?.map((item, index) => ({
       key: item.id,
       stt: (current - 1) * pageSize + index + 1,
-      ...Object.fromEntries(
-        Object.entries(item).map(([key, value]) => [
-          key,
-          <span key={key}>{key === 'ngay_thay_doi_tt' ? formatTime(value, 'DD/MM/YYYY') : value}</span>,
-        ]),
-      ),
+      ...Object.fromEntries(Object.entries(item).map(([key, value]) => [key, <span key={key}>{value}</span>])),
     })) || [];
 
   const dataTableColumn = columnDataCustomer.map((col) => ({
