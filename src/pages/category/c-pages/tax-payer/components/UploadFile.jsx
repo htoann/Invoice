@@ -162,7 +162,7 @@ import { Button } from '@/components/buttons';
 import { API_TAX_PAYER_EXCEL } from '@/service/apiConst';
 import { dataService } from '@/service/dataService';
 import { UploadOutlined } from '@ant-design/icons';
-import { message, Upload } from 'antd';
+import { message, notification, Upload } from 'antd';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
@@ -185,8 +185,15 @@ export const UploadFile = ({ getList }) => {
         message.success(`${file.name} đã được tải lên thành công`);
         getList();
       })
-      .catch(() => {
-        message.error('Nhập excel thất bại');
+      .catch((err) => {
+        const errMsg =
+          err?.response?.data?.errors?.code === 'invalid_organization'
+            ? t('Vui lòng sử dụng mã số thuế mà bạn có quyền quản lý.')
+            : t('Có lỗi xảy ra khi nhập excel.');
+        notification.error({
+          message: t('Thông tin người nộp thuế'),
+          description: errMsg,
+        });
       })
       .finally(() => {
         setLoading(false);
