@@ -16,8 +16,8 @@ export const UploadFile = () => {
 
   const [file, setFile] = useState(null);
   const [selectOrgs, setSelectOrgs] = useState([]);
-  const [modalOpen, setModalOpen] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const orgs = userInfo?.organizations || getLocalStorage(ORG_LIST) || [];
 
@@ -30,7 +30,7 @@ export const UploadFile = () => {
     beforeUpload: (selectedFile) => {
       setFile(selectedFile);
       if (selectOrgs.length === 0) {
-        setModalOpen(true);
+        setIsModalOpen(true);
         return Upload.LIST_IGNORE;
       }
       return false;
@@ -45,7 +45,9 @@ export const UploadFile = () => {
 
     const formData = new FormData();
     formData.append('file', file);
-    formData.append('organization_ids', selectOrgs);
+    selectOrgs.forEach((orgId) => {
+      formData.append('organization_ids[]', orgId);
+    });
 
     setLoading(true);
 
@@ -56,7 +58,7 @@ export const UploadFile = () => {
         onReset();
       })
       .catch(() => {
-        message.error('Upload failed.');
+        message.error('Nhập excel thất bại');
       })
       .finally(() => {
         setLoading(false);
@@ -64,7 +66,7 @@ export const UploadFile = () => {
   };
 
   const handleModalCancel = () => {
-    setModalOpen(false);
+    setIsModalOpen(false);
     onReset();
   };
 
@@ -96,7 +98,7 @@ export const UploadFile = () => {
 
       <Modal
         title={t('Chọn công ty')}
-        open={modalOpen}
+        open={isModalOpen}
         onOk={handleUpload}
         onCancel={handleModalCancel}
         top="100"
