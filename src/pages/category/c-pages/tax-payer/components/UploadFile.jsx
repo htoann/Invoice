@@ -125,6 +125,7 @@ export const UploadFile = () => {
           indeterminate={!!selectOrgs?.length && selectOrgs?.length < orgs?.length}
           onChange={handleSelectAll}
           style={{ marginBottom: 16, marginLeft: 24, fontWeight: 500 }}
+          disabled={!selectOrgs?.length}
         >
           <span style={{ marginLeft: 10 }}>{t('Chọn tất cả')}</span>
         </Checkbox>
