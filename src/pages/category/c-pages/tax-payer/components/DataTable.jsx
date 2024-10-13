@@ -1,6 +1,6 @@
 import { Button } from '@/components/buttons';
 import { TableWrapper } from '@/container/styled';
-import { API_INVOICES_EXCEL } from '@/service/apiConst';
+import { API_TAX_PAYER_EXCEL } from '@/service/apiConst';
 import { dataService } from '@/service/dataService';
 import { defaultPaginationConfig, downloadFile, formatTime } from '@/utils/index';
 import { DownloadOutlined } from '@ant-design/icons';
@@ -18,7 +18,7 @@ function DataTable({ tableData, columns, pagination, setState, loading, list }) 
   const handleExport = async () => {
     setLoadingExport(true);
     try {
-      const response = await dataService.get(API_INVOICES_EXCEL, {}, { responseType: 'blob' });
+      const response = await dataService.get(API_TAX_PAYER_EXCEL, {}, { responseType: 'blob' });
       downloadFile(response, `HDDT_${formatTime(new Date(), 'YYYYMMDDHHmm')}.xlsx`);
     } catch (error) {
       console.error(error);
