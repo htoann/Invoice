@@ -5,7 +5,7 @@ import { dataService } from '@/service/dataService';
 import { ORG_LIST } from '@/utils/index';
 import { getLocalStorage } from '@/utils/localStorage';
 import { UploadOutlined } from '@ant-design/icons';
-import { Checkbox, List, message, Upload } from 'antd';
+import { Checkbox, List, message, Tooltip, Upload } from 'antd';
 import { useAuth } from 'context/AuthContext';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -134,16 +134,20 @@ export const UploadFile = () => {
         </Checkbox>
 
         <List
-          style={{ maxHeight: '500px', overflowY: 'auto', paddingRight: 10 }}
+          style={{ maxHeight: '500px', overflowY: 'auto' }}
           dataSource={orgs}
           renderItem={(item) => (
-            <List.Item>
+            <List.Item style={{ margin: '0 24px', paddingLeft: 0 }}>
               <Checkbox
                 style={{ margin: '2px 0', width: '100%' }}
                 checked={selectOrgs.includes(item.id)}
                 onChange={() => handleSelectItem(item.id)}
               >
-                <span style={{ marginLeft: 10 }}>{item.name}</span>
+                <Tooltip title={item.name}>
+                  <span className="text-ellipsis" style={{ marginLeft: 10, width: 490 }}>
+                    {item.name}
+                  </span>
+                </Tooltip>
               </Checkbox>
             </List.Item>
           )}

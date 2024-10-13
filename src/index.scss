@@ -127,3 +127,10 @@ tr[data-row-key='searchInput'] {
     margin-bottom: 15px;
   }
 }
+
+.text-ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+}
