@@ -58,6 +58,7 @@ const Customers = () => {
           setState={setState}
           loading={loading}
           list={list}
+          getList={getList}
         />
       </LayoutContent>
     </>

@@ -10,7 +10,7 @@ import { useTranslation } from 'react-i18next';
 import { DataTableStyleWrap } from '../style';
 import { UploadFile } from './UploadFile';
 
-function DataTable({ tableData, columns, pagination, setState, loading, list }) {
+function DataTable({ tableData, columns, pagination, setState, loading, list, getList }) {
   const { t } = useTranslation();
 
   const [loadingExport, setLoadingExport] = useState(false);
@@ -36,7 +36,7 @@ function DataTable({ tableData, columns, pagination, setState, loading, list }) 
       <div className="invoice-datatable-filter">
         <div style={{ justifyContent: 'space-between', display: 'flex', alignItems: 'center', flexWrap: 'wrap' }}>
           <div style={{ display: 'flex', marginLeft: 'auto', gap: 10 }}>
-            <UploadFile />
+            <UploadFile getList={getList} />
             <Button
               type="primary"
               size="small"

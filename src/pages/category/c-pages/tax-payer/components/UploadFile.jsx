@@ -10,7 +10,7 @@ import { useAuth } from 'context/AuthContext';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-export const UploadFile = () => {
+export const UploadFile = ({ getList }) => {
   const { t } = useTranslation();
   const { userInfo } = useAuth();
 
@@ -59,6 +59,7 @@ export const UploadFile = () => {
         message.success(`${file.name} đã được tải lên thành công`);
         setIsModalOpen(false);
         onReset();
+        getList();
       })
       .catch(() => {
         message.error('Nhập excel thất bại');
