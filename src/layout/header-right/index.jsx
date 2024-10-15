@@ -131,7 +131,7 @@ const AuthInfo = React.memo(() => {
           window.location.reload();
         }}
         value={orgCode}
-        style={{ marginRight: 12, minWidth: 200, maxWidth: 300 }}
+        style={{ marginRight: 12, marginLeft: 12, minWidth: 200, maxWidth: 300 }}
         key={orgCode}
         options={optionsOrg}
       />
