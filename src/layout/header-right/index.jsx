@@ -109,6 +109,18 @@ const AuthInfo = React.memo(() => {
 
   const orgs = userInfo?.organizations || getLocalStorage(ORG_LIST) || [];
   const orgCode = orgs.length ? getLocalStorage(ORG_ID) || orgs?.[0]?.id : null;
+  const optionsOrg =
+    orgs?.map(({ id, name, tax_code }) => ({
+      value: id,
+      label: (
+        <Tooltip title={name} showArrow={false} placement="left">
+          <div style={{ fontSize: '13px', textOverflow: 'ellipsis', whiteSpace: 'nowrap', overflow: 'hidden' }}>
+            {name}
+          </div>
+          <div style={{ fontSize: '12px', color: '#888' }}>{tax_code}</div>
+        </Tooltip>
+      ),
+    })) || [];
 
   return (
     <InfoWrapper>
@@ -121,31 +133,7 @@ const AuthInfo = React.memo(() => {
         value={orgCode}
         style={{ marginRight: 12, minWidth: 200, maxWidth: 300 }}
         key={orgCode}
-        options={
-          orgs?.length
-            ? orgs?.map((org) => ({
-                value: org.id,
-                label: (
-                  <div>
-                    <Tooltip title={org.name} showArrow={false} placement="left">
-                      <div
-                        style={{
-                          fontSize: '13px',
-                          textOverflow: 'ellipsis',
-                          width: '100%',
-                          whiteSpace: 'nowrap',
-                          overflow: 'hidden',
-                        }}
-                      >
-                        {org.name}
-                      </div>
-                      <div style={{ fontSize: '12px', color: '#888' }}>{org.tax_code}</div>
-                    </Tooltip>
-                  </div>
-                ),
-              }))
-            : []
-        }
+        options={optionsOrg}
       />
       <Customizer open={settingOpen} onClose={() => setSettingOpen(false)} />
       {/* <Notification /> */}
