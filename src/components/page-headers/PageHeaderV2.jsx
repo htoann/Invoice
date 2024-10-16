@@ -150,4 +150,4 @@ PageHeader.propTypes = {
   buttons: PropTypes.array,
 };
 
-export default PageHeader;
+export { PageHeader };
