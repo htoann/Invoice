@@ -1,4 +1,4 @@
-import { PageHeader } from '@/components/page-headers';
+import PageHeader from '@/components/page-headers/Lmao';
 import { LayoutContent } from '@/layout/LayoutContent';
 import { API_INVOICES } from '@/service';
 import { useList } from 'hooks/useListCommon';
@@ -36,7 +36,7 @@ function InvoiceList() {
 
   return (
     <>
-      <PageHeader className="invoice-page-header-main" title={pageTitle} routes={pageRoutes} />
+      <PageHeader title={pageTitle} routes={pageRoutes} />
       <LayoutContent borderLessHeading cards cardsProps={{ headless: true }}>
         <DataTable
           tableData={handleTableDataSource(invoiceList, current, pageSize)}
