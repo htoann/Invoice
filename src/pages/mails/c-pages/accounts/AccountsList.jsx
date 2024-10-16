@@ -1,8 +1,9 @@
+import { Button } from '@/components/buttons';
 import { FilterOrgStructure } from '@/components/FilterOrgStructure';
 import { PageHeader } from '@/components/page-headers';
 import { LayoutContent } from '@/layout/LayoutContent';
 import { API_MAILS_ACCOUNT_BY_ACCOUNT_ID, API_MAILS_ACCOUNTS, dataService } from '@/service';
-import { Button, notification } from 'antd';
+import { notification } from 'antd';
 import { useAppState } from 'context/AppContext';
 import { useGetOrgStructure, useList } from 'hooks';
 import { useEffect, useState } from 'react';
