@@ -1,6 +1,7 @@
 import { FilterOrgStructureHeader } from '@/components/FilterOrgStructureHeader';
 import { PageHeader } from '@/components/page-headers';
 import { LayoutContent } from '@/layout/LayoutContent';
+import { routes } from '@/routes/const';
 import { API_MAIL_TASK_HISTORIES } from '@/service';
 import { useAppState } from 'context/AppContext';
 import { useGetOrgStructure } from 'hooks';
@@ -44,9 +45,14 @@ const SyncHistory = () => {
     }));
   };
 
+  const pageRoutes = [
+    { path: routes.emailSync, breadcrumbName: t('Common_Inbox') },
+    { path: routes.emailSync, breadcrumbName: t('Common_SyncHistory') },
+  ];
+
   return (
     <>
-      <PageHeader className="invoice-page-header-main" title={t('Common_SyncHistory')} />
+      <PageHeader className="invoice-page-header-main" title={t('Common_SyncHistory')} routes={pageRoutes} />
       <LayoutContent borderLessHeading cards>
         <FilterOrgStructureHeader handleReset={handleReset} />
 

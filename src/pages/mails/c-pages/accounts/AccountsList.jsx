@@ -2,6 +2,7 @@ import { Button } from '@/components/buttons';
 import { FilterOrgStructure } from '@/components/FilterOrgStructure';
 import { PageHeader } from '@/components/page-headers';
 import { LayoutContent } from '@/layout/LayoutContent';
+import { routes } from '@/routes/const';
 import { API_MAILS_ACCOUNT_BY_ACCOUNT_ID, API_MAILS_ACCOUNTS, dataService } from '@/service';
 import { notification } from 'antd';
 import { useAppState } from 'context/AppContext';
@@ -150,9 +151,14 @@ const AccountList = () => {
     setSelectedProjectId(projectId);
   };
 
+  const pageRoutes = [
+    { path: routes.emailAccount, breadcrumbName: t('Common_Inbox') },
+    { path: routes.emailAccount, breadcrumbName: t('Mail_AccountList_Title') },
+  ];
+
   return (
     <>
-      <PageHeader className="invoice-page-header-main" title={t('Mail_AccountList_Title')} />
+      <PageHeader className="invoice-page-header-main" title={t('Mail_AccountList_Title')} routes={pageRoutes} />
       <LayoutContent borderLessHeading cards>
         <FilterOrgStructure
           onChangeBranch={handleChangeBranch}

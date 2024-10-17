@@ -87,7 +87,7 @@ export const LeftMenu = ({ toggleCollapsed }) => {
       ]),
     ),
     getItem(
-      t('Common_Mail'),
+      t('Common_Inbox'),
       'inbox',
       !topMenu && <UilEnvelope />,
       createMenuItems([
