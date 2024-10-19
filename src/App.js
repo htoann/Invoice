@@ -1,5 +1,4 @@
 import { ConfigProvider } from 'antd';
-import 'antd/dist/antd.less';
 import { useAppState } from 'context/AppContext';
 import { useAuth } from 'context/AuthContext';
 import { lazy, useEffect, useState } from 'react';
