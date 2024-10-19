@@ -107,7 +107,7 @@ export const handleDataTable = (invoiceType) => {
       sorter: (a, b) => a?.ten?.props?.children?.localeCompare(b?.ten?.props?.children),
     },
     {
-      title: i18next.t('Địa chỉ người bán'),
+      title: isPurchase(invoiceType) ? i18next.t('Địa chỉ người bán') : i18next.t('Địa chỉ người mua'),
       dataIndex: 'dchi',
       key: 'dchi',
       sorter: (a, b) => a?.dchi?.props?.children?.localeCompare(b?.dchi?.props?.children),
