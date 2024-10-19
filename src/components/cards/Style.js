@@ -779,4 +779,4 @@ const ProfileCardWrapper = Styled.figure`
   `}
 `;
 
-export { OverviewCardWrap, OverviewCardMeshWrap, InfoCardStyle, NewsletterStyle, CourseCardWrap, ProfileCardWrapper };
+export { CourseCardWrap, InfoCardStyle, NewsletterStyle, OverviewCardMeshWrap, OverviewCardWrap, ProfileCardWrapper };
