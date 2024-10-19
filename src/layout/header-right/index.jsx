@@ -110,17 +110,19 @@ const AuthInfo = React.memo(() => {
   const orgs = userInfo?.organizations || getLocalStorage(ORG_LIST) || [];
   const orgCode = orgs.length ? getLocalStorage(ORG_ID) || orgs?.[0]?.id : null;
   const optionsOrg =
-    orgs?.map(({ id, name, tax_code }) => ({
-      value: id,
-      label: (
-        <Tooltip title={name} showArrow={false} placement="left">
-          <div style={{ fontSize: '13px', textOverflow: 'ellipsis', whiteSpace: 'nowrap', overflow: 'hidden' }}>
-            {name}
-          </div>
-          <div style={{ fontSize: '12px', color: '#888' }}>{tax_code}</div>
-        </Tooltip>
-      ),
-    })) || [];
+    orgs?.length > 0
+      ? orgs?.map(({ id, name, tax_code }) => ({
+          value: id,
+          label: (
+            <Tooltip title={name} showArrow={false} placement="left">
+              <div style={{ fontSize: '13px', textOverflow: 'ellipsis', whiteSpace: 'nowrap', overflow: 'hidden' }}>
+                {name}
+              </div>
+              <div style={{ fontSize: '12px', color: '#888' }}>{tax_code}</div>
+            </Tooltip>
+          ),
+        }))
+      : [];
 
   return (
     <InfoWrapper>
