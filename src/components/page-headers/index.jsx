@@ -2,10 +2,11 @@ import { Breadcrumb } from 'antd';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { ReactSVG } from 'react-svg';
-import { HeaderWrapper, PageHeaderStyle } from './style';
+import { BreadcrumbWrapper, HeaderContent, HeaderWrapper, Title, TitleSection } from './style';
 
 function PageHeader(props) {
-  const { title, subTitle, routes, buttons, ghost, bgColor, className } = props;
+  const { title, routes, className } = props;
+
   const breadcrumb = routes ? (
     <Breadcrumb separator={<span className="invoice-separator" />}>
       {routes.map((route, index) =>
@@ -13,25 +14,20 @@ function PageHeader(props) {
           <Breadcrumb.Item key={index}>{route.breadcrumbName}</Breadcrumb.Item>
         ) : (
           <Breadcrumb.Item key={index}>
-            <ReactSVG src={require(`@/static/img/icon/home.svg`).default} />{' '}
+            <ReactSVG src={require(`@/static/img/icon/home.svg`).default} />
             <Link to={route.path}>{route.breadcrumbName}</Link>
           </Breadcrumb.Item>
         ),
       )}
     </Breadcrumb>
-  ) : (
-    ''
-  );
+  ) : null;
+
   return (
-    <HeaderWrapper bgColor={bgColor}>
-      <PageHeaderStyle
-        className={className}
-        title={title}
-        subTitle={subTitle}
-        breadcrumb={breadcrumb}
-        extra={buttons}
-        ghost={ghost}
-      />
+    <HeaderWrapper className={className}>
+      <HeaderContent>
+        <TitleSection>{title && <Title>{title}</Title>}</TitleSection>
+      </HeaderContent>
+      <BreadcrumbWrapper>{breadcrumb}</BreadcrumbWrapper>
     </HeaderWrapper>
   );
 }
@@ -43,7 +39,6 @@ PageHeader.propTypes = {
   className: PropTypes.string,
   routes: PropTypes.arrayOf(PropTypes.object),
   buttons: PropTypes.array,
-  ghost: PropTypes.bool,
 };
 
 export { PageHeader };
