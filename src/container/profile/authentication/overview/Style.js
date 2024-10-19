@@ -2,12 +2,12 @@ import Styled from 'styled-components';
 
 const AuthenticationWrap = Styled.div`
   position: relative;
-  padding: 120px 0;
+  padding: 130px 0;
   background-position: top;
   background-repeat: no-repeat;
   background-size: 100%;
   @media only screen and (max-width: 1399px){
-    padding: 80px 0;
+    padding: 130px 0;
   }
   .invoice-authentication-wrap{
     @media only screen and (max-width: 767px){
