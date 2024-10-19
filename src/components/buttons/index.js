@@ -2,8 +2,6 @@ import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { ButtonStyled, ButtonStyledGroup } from './styled';
 
-// @Todo props spreading
-
 function Button(props) {
   const {
     type = 'default',

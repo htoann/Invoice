@@ -52,7 +52,7 @@ function SignUp() {
           </div>
           <div className="invoice-authentication-bottom">
             <p>
-              Đã có tài khoản?<Link to="/">Đăng nhập</Link>
+              Đã có tài khoản?<Link to="/">{t('Auth_SignIn')}</Link>
             </p>
           </div>
         </AuthFormWrap>

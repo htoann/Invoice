@@ -9,6 +9,7 @@ import Auth from './routes/auth';
 import Index from './routes/index';
 import ProtectedRoute from './routes/protectedRoute';
 import { customLocale } from './utils';
+import { defaultTheme } from './utils/theme/defaultTheme';
 import { themeColor } from './utils/theme/themeVariables';
 
 const NotFound = lazy(() => import('./container/pages/404'));
@@ -31,7 +32,16 @@ export const App = () => {
   }, [setPath]);
 
   return (
-    <ConfigProvider direction={rtl ? 'rtl' : 'ltr'} locale={customLocale}>
+    <ConfigProvider
+      direction={rtl ? 'rtl' : 'ltr'}
+      locale={customLocale}
+      componentSize="large"
+      theme={{
+        token: {
+          colorPrimary: defaultTheme.colorPrimary,
+        },
+      }}
+    >
       <ThemeProvider theme={{ ...themeColor, rtl, topMenu, mainContent }}>
         <Router basename={process.env.PUBLIC_URL}>
           {!isLoggedIn ? (

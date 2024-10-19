@@ -37,7 +37,7 @@ function SignIn() {
                 label={t('Common_Password')}
                 rules={[{ message: t('Common_PleaseEnterPassword'), required: true }]}
               >
-                <Input.Password placeholder={t('Common_Password')} style={{ height: 45 }} />
+                <Input.Password placeholder={t('Common_Password')} />
               </Form.Item>
 
               <Form.Item>

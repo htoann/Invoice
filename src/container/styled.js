@@ -1829,10 +1829,10 @@ const BasicFormWrapper = Styled.div`
                 }
             }
         }
-        .ant-input-affix-wrapper > input.ant-input{
-            padding-top: 12px;
-            padding-bottom: 12px;
-        }
+        // .ant-input-affix-wrapper > input.ant-input{
+        //     padding-top: 12px;
+        //     padding-bottom: 12px;
+        // }
         .ant-input-affix-wrapper .ant-input-prefix svg{
             color: #9299B8;
         }
