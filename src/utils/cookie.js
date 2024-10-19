@@ -3,6 +3,10 @@ import Cookies from 'js-cookie';
 const getCookie = (key) => {
   const data = Cookies.get(key);
 
+  if (data === 'undefined' || data === null) {
+    return undefined;
+  }
+
   try {
     return JSON.parse(data);
   } catch {
@@ -19,4 +23,4 @@ const removeCookie = (key) => {
   Cookies.remove(key);
 };
 
-export { getCookie, setCookie, removeCookie };
+export { getCookie, removeCookie, setCookie };
