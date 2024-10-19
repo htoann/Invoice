@@ -634,6 +634,7 @@ const MailDetailsWrapper = Styled.div`
   .ant-card-body{
     padding-top: 30px !important;
     overflow: auto;
+    max-height: var(--mail-detail)
   }
   .ant-card-head-wrapper{
     @media only screen and (max-width: 767px){
@@ -788,6 +789,7 @@ const EmailHeader = Styled.div`
 
 const MessageDetails = Styled.div`
   padding: 0 30px;
+  width: fit-content;
   .message-box {
     @media only screen and (max-width: 767px){
       flex-flow: column;

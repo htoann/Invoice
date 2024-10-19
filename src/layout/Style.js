@@ -27,71 +27,7 @@ const LayoutContainer = Styled.div`
         background-color: ${({ theme }) => theme[theme.mainContent]['main-background']};
     }
 
-    .invoice-nav-actions__searchbar{
-        display: flex;
-        align-items: center;
-        svg,
-        img{
-            width: 16px;
-            height: 16px;
-            color: ${({ theme }) => theme[theme.mainContent]['gray-light-text']};
-        }
-        .invoice-searchbar{
-            opacity: 0;
-            visibility: hidden;
-            transition: .35s;
-            @media only screen and (max-width: 767px){
-                position: fixed;
-                top: 45px;
-                right: 0;
-                min-width: 280px;
-                z-index: 98;
-                box-shadow: 0 5px 30px ${({ theme }) => theme[theme.mainContent]['gray-text']}15;
-            }
-            input{
-                user-select: none;
-                pointer-events: none;
-                &:focus{
-                    outline: none;
-                    box-shadow: 0 0;
-                }
-            }
-            .ant-form-item{
-                margin-bottom: 0;
-            }
-        }
-        &.show{
-            .invoice-searchbar{
-                opacity: 1;
-                visibility: visible;
-                input{
-                    user-select: all;
-                    pointer-events: all;
-                }
-            }
-            .invoice-search-icon{
-                display: none;
-            }
-            .invoice-close-icon{
-                display: block !important;
-                top: 2px;
-                svg{
-                    color: ${({ theme }) => theme[theme.mainContent]['gray-text']};
-                }
-            }
-        }
-        .invoice-close-icon{
-            display: none !important;
-        }
-        a{
-            line-height: .8;
-            position: relative;
-            top: 2px;
-            @media only screen and (max-width: 767px){
-                top: 0;
-            }
-        }
-    }
+    // Search bar deleted
 
     /* invoice Header Style */
     .invoice-header-content{
@@ -117,12 +53,12 @@ const LayoutContainer = Styled.div`
                     line-height: 0;
                     margin-top: 4px;
                     color: ${({ theme }) => theme[theme.mainContent]['extra-light']};
-                    @media only screen and (max-width: 875px){
-                        padding: ${({ theme }) => (theme.rtl ? '0 10px 0 20px' : '0 20px 0 10px')};
+                    @media only screen and (max-width: 995px){
+                        padding: ${({ theme }) => (theme.rtl ? '0 30px 0 20px' : '0 20px 0 30px')};
                     }
                     @media only screen and (max-width: 767px){
                         order: -1;
-                        padding: ${({ theme }) => (theme.rtl ? '0 0 0 15px' : '0 15px 0 0')};
+                        padding: ${({ theme }) => (theme.rtl ? '0 0 0 20px' : '0 20px 0 0')};
                     }
                 }
             }
@@ -150,7 +86,7 @@ const LayoutContainer = Styled.div`
                 align-items: center;
                 flex: auto;
                 padding-right: 12px;
-                @media only screen and (max-width: 767px){
+                @media only screen and (max-width: 1328px){
                     display: none;
                 }
                 .invoice-nav-actions__language,
@@ -211,7 +147,7 @@ const LayoutContainer = Styled.div`
         }
         .invoice-header-content__mobile{
             display: none;
-            @media only screen and (max-width: 767px){
+            @media only screen and (max-width: 1328px){
                 display: block;
             }
             .invoice-mobile-action{
@@ -224,33 +160,24 @@ const LayoutContainer = Styled.div`
                 @media only screen and (max-width: 767px){
                     ${({ theme }) => (theme.rtl ? 'left' : 'right')}: 15px;
                 }
-                a,
-                .btn-search{
+                a{
                     display: inline-flex;
                     color: ${({ theme }) => theme['light-color']};
-                    &.btn-search{
-                        ${({ theme }) => (theme.rtl ? 'margin-left' : 'margin-right')}: 18px;
-                        @media only screen and (max-width: 475px){
-                            ${({ theme }) => (theme.rtl ? 'margin-left' : 'margin-right')}: 10px;
-                        }
-                    }
                     svg{
                         width: 18px;
                         height: 18px;
-                    }
-                }
-                .invoice-searchbar{
-                    .ant-input{
-                        border: 0 none;
-                    }
-                    .ant-row{
-                        margin-bottom: 0;
                     }
                 }
             }
         }
     }
     .invoice-header-more{
+        @media only screen and (min-width: 1328px){
+            display: none;
+        }
+        @media only screen and (max-width: 1328px){
+            display: block;
+        }
         .invoice-nav-actions__author{
             .invoice-nav-actions__author--name{
                 display: none;
@@ -724,7 +651,6 @@ const LayoutContainer = Styled.div`
     .antd-main-layout{
         ${({ theme }) => (!theme.rtl ? 'margin-left' : 'margin-right')}: ${({ theme }) =>
           theme.topMenu ? 0 : '280px'};
-        /* margin-top: 90px; */
         margin-top: 74px;
         transition: 0.3s ease;
         
@@ -738,29 +664,6 @@ const LayoutContainer = Styled.div`
             margin-left: 0;
             margin-right: 0;
         }
-    }
-    .admin-footer{
-        background-color: ${({ theme }) => theme[theme.mainContent]['white-background']};
-        @media print {
-            display: none;
-        }
-        .admin-footer__copyright{
-            display: inline-block;
-            width: 100%;
-            font-weight: 500;
-            color: ${({ theme }) => theme[theme.mainContent]['gray-text']};
-            @media only screen and (max-width: 767px){
-                text-align: center;
-                margin-bottom: 10px;
-            }
-            a{
-                display: inline-block;
-                margin-left: 4px;
-                font-weight: 500;
-                color: ${({ theme }) => theme['primary-color']};
-            }
-        }
-        
     }
     /* Common Styles */
     .ant-radio-button-wrapper-checked {
@@ -806,20 +709,6 @@ const SmallScreenAuthInfo = Styled.div`
     .invoice-nav-actions__searchbar{
         display: none !important;
     }
-`;
-
-const SmallScreenSearch = Styled.div`
-        background-color: ${({ theme }) => theme[theme.mainContent]['white-background']};
-        width: 100%;
-        position: fixed;
-        margin-top: ${({ hide }) => (hide ? '0px' : '64px')};
-        top: 0;
-        ${({ theme }) => (!theme.rtl ? 'left' : 'right')}: 0;
-        transition: .3s;
-        opacity: ${({ hide }) => (hide ? 0 : 1)};
-        z-index: ${({ hide }) => (hide ? -1 : 999)};
-        box-shadow: 0 2px 30px #9299b810;
-
 `;
 
 const ModeSwitch = Styled.div`
@@ -1258,13 +1147,4 @@ const FooterStyle = Styled(Footer)`
     
 `;
 
-export {
-  FooterStyle,
-  LayoutContainer,
-  ModeSwitch,
-  NavTitle,
-  SmallScreenAuthInfo,
-  SmallScreenSearch,
-  TopMenuSearch,
-  TopMenuStyle,
-};
+export { FooterStyle, LayoutContainer, ModeSwitch, NavTitle, SmallScreenAuthInfo, TopMenuSearch, TopMenuStyle };

@@ -1,3 +1,5 @@
+import leftBarIcon from '@/static/img/icon/left-bar.svg';
+import logoDark from '@/static/img/logo_dark.png';
 import { theme } from '@/utils/theme/themeVariables';
 import { Scrollbars } from '@pezhmanparsaee/react-custom-scrollbars';
 import { UilEllipsisV } from '@tooni/iconscout-unicons-react';
@@ -10,20 +12,32 @@ import { REACT_MODE } from '../utils';
 import { LeftMenu } from './LeftMenu';
 import { LayoutContainer, SmallScreenAuthInfo, TopMenuSearch } from './Style';
 import { TopMenu } from './TopMenu';
-import SearchBar from './header-right/Search';
 import AuthInfo from './header-right/index';
 
 const { Header, Sider, Content } = Layout;
 
 const WithAdminLayout = (WrappedComponent) => {
   const LayoutComponent = (props) => {
+    const { rtl, topMenu, layoutMode } = useAppState();
     const [collapsed, setCollapsed] = useState(false);
     const [hide, setHide] = useState(true);
 
-    const { rtl, topMenu, layoutMode } = useAppState();
+    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+    useEffect(() => {
+      const handleResize = () => {
+        setWindowWidth(window.innerWidth);
+      };
+
+      window.addEventListener('resize', handleResize);
+
+      return () => {
+        window.removeEventListener('resize', handleResize);
+      };
+    }, []);
 
     const updateDimensions = useCallback(() => {
-      setCollapsed(window.innerWidth <= 1200);
+      setCollapsed(windowWidth <= 1200);
     }, []);
 
     useEffect(() => {
@@ -40,7 +54,7 @@ const WithAdminLayout = (WrappedComponent) => {
     }, []);
 
     const toggleCollapsedMobile = useCallback(() => {
-      if (window.innerWidth <= 990) {
+      if (windowWidth <= 990) {
         setCollapsed((prevCollapsed) => !prevCollapsed);
       }
     }, []);
@@ -100,37 +114,22 @@ const WithAdminLayout = (WrappedComponent) => {
             <div className="invoice-header-content d-flex">
               <div className="invoice-header-content__left">
                 <div className="navbar-brand align-center-v">
-                  <Link
-                    className={topMenu && window.innerWidth > 991 ? 'invoice-logo top-menu' : 'invoice-logo'}
-                    to="/"
-                  >
-                    {REACT_MODE !== 'ave' && (
-                      <img
-                        src={
-                          layoutMode === 'lightMode'
-                            ? require(`@/static/img/logo_dark.png`)
-                            : require(`@/static/img/logo_dark.png`).default
-                        }
-                        alt=""
-                      />
-                    )}
+                  <Link className={topMenu && windowWidth > 991 ? 'invoice-logo top-menu' : 'invoice-logo'} to="/">
+                    {REACT_MODE !== 'ave' && <img src={logoDark} alt="logo" />}
                   </Link>
-                  {!topMenu || window.innerWidth <= 991 ? (
+                  {!topMenu || windowWidth <= 991 ? (
                     <Button type="link" onClick={toggleCollapsed}>
-                      <img
-                        src={require(`@/static/img/icon/${collapsed ? 'left-bar.svg' : 'left-bar.svg'}`)}
-                        alt="menu"
-                      />
+                      <img src={leftBarIcon} alt="menu" />
                     </Button>
                   ) : null}
                 </div>
               </div>
               <div className="invoice-header-content__right d-flex">
                 <div className="invoice-navbar-menu d-flex align-center-v">
-                  {topMenu && window.innerWidth > 991 ? <TopMenu /> : ''}
+                  {topMenu && windowWidth > 991 && <TopMenu />}
                 </div>
                 <div className="invoice-nav-actions">
-                  {topMenu && window.innerWidth > 991 ? (
+                  {topMenu && windowWidth > 991 ? (
                     <TopMenuSearch>
                       <div className="top-right-wrap d-flex">
                         <AuthInfo />
@@ -143,10 +142,6 @@ const WithAdminLayout = (WrappedComponent) => {
               </div>
               <div className="invoice-header-content__mobile">
                 <div className="invoice-mobile-action">
-                  <div className="btn-search" to="#">
-                    <SearchBar />
-                  </div>
-
                   <Link className="btn-auth" onClick={onShowHide} to="#">
                     <UilEllipsisV />
                   </Link>
@@ -156,7 +151,7 @@ const WithAdminLayout = (WrappedComponent) => {
           </Header>
           <div className="invoice-header-more">
             <Row>
-              <Col md={0} sm={24} xs={24}>
+              <Col>
                 <div className="invoice-header-more-inner">
                   <SmallScreenAuthInfo hide={hide}>
                     <AuthInfo rtl={rtl} />
@@ -166,7 +161,7 @@ const WithAdminLayout = (WrappedComponent) => {
             </Row>
           </div>
           <Layout>
-            {!topMenu || window.innerWidth <= 991 ? (
+            {!topMenu || windowWidth <= 991 ? (
               <ThemeProvider theme={theme}>
                 <Sider
                   width={280}
@@ -196,10 +191,8 @@ const WithAdminLayout = (WrappedComponent) => {
             </Layout>
           </Layout>
         </Layout>
-        {window.innerWidth <= 991 ? (
+        {windowWidth <= 991 && (
           <span className={collapsed ? 'invoice-shade' : 'invoice-shade show'} onClick={toggleCollapsed} />
-        ) : (
-          ''
         )}
       </LayoutContainer>
     );

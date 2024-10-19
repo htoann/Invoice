@@ -1,6 +1,5 @@
 import { Cards } from '@/components/cards/frame';
 import Heading from '@/components/heading';
-import { Col, Row } from 'antd';
 import { MailDetailsWrapper, MessageDetails } from '../style';
 import { AttachmentList } from './AttachmentList';
 import { Header } from './Header';
@@ -11,26 +10,19 @@ function MailDetail({ selectedInbox: email }) {
   return (
     <MailDetailsWrapper>
       <Cards headless nomargin>
-        <Row gutter={15} style={{ maxHeight: 'var(--mail-detail)' }}>
-          <Col style={{ width: '100%' }}>
-            <MessageDetails>
-              <div className="d-flex justify-content-between align-items-center">
-                <div className="message-subject">
-                  <Heading as="h2">
-                    {email?.subject}
-                    <span className="mail-badge primary">{email?.type || 'Inbox'}</span>
-                  </Heading>
-                </div>
-              </div>
-
-              <Header email={email} />
-
-              <div className="message-body" dangerouslySetInnerHTML={{ __html: cleanedBody }} />
-
-              <AttachmentList email={email} />
-            </MessageDetails>
-          </Col>
-        </Row>
+        <MessageDetails>
+          <div className="d-flex justify-content-between align-items-center">
+            <div className="message-subject">
+              <Heading as="h2">
+                {email?.subject}
+                <span className="mail-badge primary">{email?.type || 'Inbox'}</span>
+              </Heading>
+            </div>
+          </div>
+          <Header email={email} />
+          <div className="message-body" dangerouslySetInnerHTML={{ __html: cleanedBody }} />
+          <AttachmentList email={email} />
+        </MessageDetails>
       </Cards>
     </MailDetailsWrapper>
   );
