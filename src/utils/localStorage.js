@@ -1,6 +1,10 @@
 const getLocalStorage = (key) => {
   const data = localStorage.getItem(key);
 
+  if (data === 'undefined' || data === null) {
+    return undefined;
+  }
+
   try {
     return JSON.parse(data);
   } catch {
