@@ -109,6 +109,7 @@ const AuthInfo = React.memo(() => {
 
   const orgs = userInfo?.organizations || getLocalStorage(ORG_LIST) || [];
   const orgCode = orgs.length ? getLocalStorage(ORG_ID) || orgs?.[0]?.id : null;
+  console.log(orgs);
   const optionsOrg =
     orgs?.length > 0
       ? orgs?.map(({ id, name, tax_code }) => ({
