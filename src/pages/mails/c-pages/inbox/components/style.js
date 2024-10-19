@@ -193,7 +193,6 @@ const Style = Styled(Table)`
   }
   .ant-table-thead > tr:first-child > th:last-child {
     border-top-right-radius: 4px;
-    text-align: ${({ theme }) => (!theme.rtl ? 'right' : 'left')};
   }
   .ant-pagination-item {
     display: none;

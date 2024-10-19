@@ -781,9 +781,10 @@ const Main = Styled.div`
         box-shadow: 0 0;
     }
 
-    /* Taglist */
+    /* Tag list */
+
     .ant-tag{
-        margin: 5px;
+        // margin: 5px;
     }
     .tagList-wrap{
         margin: -5px;
@@ -2242,7 +2243,6 @@ const TableWrapper = Styled.div`
                     }
                     &:last-child{
                         border-radius: 0 10px 10px 0 !important;
-                        text-align: ${({ theme }) => (theme.rtl ? 'left' : 'right')};
                     }
                     color: ${({ theme }) => theme[theme.mainContent]['gray-text']};
                     background: ${({ theme }) => theme['bg-color-light']};
