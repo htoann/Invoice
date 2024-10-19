@@ -34,7 +34,7 @@ const Cards = (props) => {
           bordered={border}
           className={className}
           bodypadding={bodypadding && bodypadding}
-          nomargin={nomargin}
+          nomargin={nomargin?.toString()}
           extra={
             <>
               {more && (
@@ -60,7 +60,7 @@ const Cards = (props) => {
           style={{ width: '100%', ...style }}
           bordered={border}
           className={className}
-          nomargin={nomargin}
+          nomargin={nomargin?.toString()}
         >
           {title && <Heading as="h4">{title}</Heading>}
           {caption && <p>{caption}</p>}
