@@ -88,41 +88,6 @@ const Main = Styled.div`
                 align-items: center;
                 position: relative;
                 top: 3px;
-                .invoice-total-chart-total{
-                    font-size: 18px;
-                    font-weight: 600;
-                    color: ${({ theme }) => theme[theme.mainContent]['dark-text']};
-                    @media only screen and (max-width: 991px){
-                        font-size: 15px;
-                    }
-                }
-                .invoice-total-chart-status{
-                    display: flex;
-                    align-items: center;
-                    font-size: 14px;
-                    font-weight: 500;
-                    ${({ theme }) => (!theme.rtl ? 'margin-left' : 'margin-right')}: 8px;
-                    @media only screen and (max-width: 991px){
-                        font-size: 12px;
-                    }
-                    i,
-                    svg{
-                        width: 22px;
-                        height: 22px;
-                        margin-right: -1px;
-                        ${({ theme }) => (!theme.rtl ? 'margin-right' : 'margin-left')}: -1px;
-                        @media only screen and (max-width: 991px){
-                            width: 18px;
-                            height: 18px;
-                        }
-                    }
-                    &.invoice-total-chart-status-growth{
-                        color: ${({ theme }) => theme['success-color']};
-                    }
-                    &.invoice-total-chart-status-down{
-                        color: ${({ theme }) => theme['danger-color']};
-                    }
-                }
             }
         }
     }
@@ -1305,13 +1270,6 @@ const Main = Styled.div`
                 
     }
 
-    /* Rechart */
-    .recharts-default-legend{
-        .recharts-legend-item{
-            min-width: 100px !important;
-        }
-    }
-
     /*  Radio */
     .ant-radio{
         &.ant-radio-disabled{
@@ -1368,42 +1326,6 @@ const Main = Styled.div`
         .ant-btn {
             margin: 4px;
         }
-    }
-    /* Chart Label */
-
-    .chart-label {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-bottom: 6px;
-        color: #5a5f7d;
-    }
-
-    .chart-label .label-dot {
-        ${({ theme }) => (theme.rtl ? 'margin-left' : 'margin-right')}: 8px;
-        width: 7px;
-        height: 7px;
-        border-radius: 50%;
-    }
-
-    .chart-label .label-dot.dot-success {
-        background: #20c997;
-    }
-
-    .chart-label .label-dot.dot-info {
-        background: #5f63f2;
-    }
-
-    .chart-label .label-dot.dot-warning {
-        background: #fa8b0c;
-    }
-
-    .chart-label .label-dot {
-        display: block;
-        width: 7px;
-        height: 7px;
-        border-radius: 50%;
-        ${({ theme }) => (theme.rtl ? 'margin-left' : 'margin-right')}: 10px;
     }
 
     // Ant comment action

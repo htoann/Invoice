@@ -169,34 +169,6 @@ const SettingDropdown = Styled.div`
     }
 `;
 
-const NestedDropdown = Styled.div`
-    .support-dropdown{
-        padding: 10px 15px;
-        text-align: ${({ theme }) => (!theme.rtl ? 'left' : 'right')};
-        ul{
-            &:not(:last-child){
-                margin-bottom: 16px;
-            }
-            h1{
-                font-size: 14px;
-                font-weight: 400;
-                color: ${({ theme }) => theme[theme.mainContent]['light-text']};
-            }
-            li{
-                a{
-                    font-weight: 500;
-                    padding: 4px 16px;
-                    color: ${({ theme }) => theme[theme.mainContent]['dark-text']};
-                    &:hover{
-                        background: #fff;
-                        color: ${({ theme }) => theme['primary-color']};
-                    }
-                }
-            }
-        }
-    }
-`;
-
 const UserDropDown = Styled.div`
     .user-dropdown{
         width: 200px;
@@ -350,4 +322,4 @@ const NavAuth = Styled.span`
     }
 `;
 
-export { InfoWrapper, NavAuth, NestedDropdown, SettingDropdown, UserActionDropDown, UserDropDown };
+export { InfoWrapper, NavAuth, SettingDropdown, UserActionDropDown, UserDropDown };

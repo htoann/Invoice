@@ -189,63 +189,11 @@ ul {
   resize: none;
 }
 
-/* invoice Delete Modal */ // deleted
-
-/* invoice Export Modal */ // deleted
-
 /* ant radio group */
 
 .ant-radio-button-wrapper-checked {
   color: #fff;
 }
-
-/* chart growth upward */
-
-.growth-downward p,
-.growth-upward p {
-  font-size: 14px;
-  color: #868eae;
-  margin: 0;
-}
-
-.growth-downward h1 sub svg,
-.growth-upward h1 sub svg {
-  position: relative;
-  top: 2px;
-  font-size: 14px;
-  font-weight: 600;
-  left: 5px;
-  bottom: 0;
-}
-
-.growth-downward h1 sub {
-  color: #ff0f0f;
-}
-
-.growth-upward h1 sub {
-  color: #01b81a;
-}
-
-/* Chart */
-
-.chart-label {
-  display: flex;
-}
-
-.chart-label .chart-label__single {
-  align-items: center;
-}
-
-.chart-label .chart-label__single:not(:last-child) {
-  margin-right: 40px;
-}
-
-.chart-label .chart-label__single p {
-  margin: 0;
-  color: #868eae;
-}
-
-/* revenue doughnut */ // deleted
 
 /* progressbars */
 
@@ -753,28 +701,6 @@ ul {
   font-size: 28px;
 }
 
-/* Breadcrumb demo */
-
-.demo {
-  margin: 16px;
-}
-
-.demo-nav {
-  height: 30px;
-  line-height: 30px;
-  margin-bottom: 16px;
-  background: #f8f8f8;
-}
-
-.demo-nav a {
-  line-height: 30px;
-  padding: 0 8px;
-}
-
-.app-list {
-  margin-top: 16px;
-}
-
 /* Modal */
 
 .ant-modal .ant-modal-content {
@@ -788,92 +714,6 @@ ul {
 .ant-modal-body p:last-child {
   margin-bottom: 0;
 }
-
-// .project-modal {
-//   padding: 5px !important;
-// }
-
-// .project-modal .projects-members {
-//   margin-top: -12px;
-// }
-
-// .project-modal .projects-members img {
-//   margin: 6px;
-// }
-
-// .project-modal .ant-form-item-control-input {
-//   margin-top: 10px;
-//   min-height: auto;
-// }
-
-// .project-modal .ant-select-selector {
-//   border-color: #e3e6ef;
-// }
-
-// .project-modal .ant-picker {
-//   width: 100%;
-// }
-
-// .project-modal-footer {
-//   padding: 10px !important;
-//   text-align: left !important;
-// }
-
-// .invoice-addTask-modal {
-//   max-width: 390px;
-// }
-
-// .invoice-addTask-modal .ant-modal-header {
-//   border-bottom: 0 none;
-//   padding-bottom: 0 !important;
-// }
-
-// .invoice-addTask-modal .ant-modal-header .ant-modal-title {
-//   font-size: 16px;
-//   font-weight: 500;
-//   color: #0a0a0a;
-// }
-
-// .invoice-addTask-modal .invoice-addTask-modal-inner .ant-form-item {
-//   margin-bottom: 15px;
-// }
-
-// .invoice-addTask-modal .ant-modal-header .ant-modal-close-x svg {
-//   color: #9299b8;
-// }
-
-// .invoice-addTask-modal .ant-form-item-control-input {
-//   min-height: 36px;
-// }
-
-// .invoice-addTask-modal input::placeholder,
-// .invoice-addTask-modal textarea::placeholder {
-//   color: #9299b8;
-// }
-
-// .invoice-addTask-modal input,
-// .invoice-addTask-modal textarea {
-//   padding: 6px 20px;
-//   border-radius: 5px;
-// }
-
-// .invoice-addTask-modal textarea {
-//   resize: none;
-//   min-height: 125px;
-// }
-
-// .invoice-addTask-modal .invoice-modal-actions {
-//   display: flex;
-//   justify-content: flex-end;
-//   margin: -6px;
-// }
-
-// .invoice-addTask-modal .invoice-modal-actions button {
-//   font-size: 14px;
-//   margin: 6px;
-//   height: 38px;
-//   border-radius: 5px;
-// }
 
 /* slider */
 
@@ -1345,12 +1185,6 @@ ul {
   height: 10px !important;
 }
 
-/* Time Picker */
-
-// .ant-picker {
-//   min-width: 250px;
-// }
-
 /* Input Affix */
 
 .ant-input-affix-wrapper > input.ant-input {
@@ -1510,7 +1344,7 @@ html[dir='rtl'] .invoice-upload-basic .invoice-upload-browse {
   border-color: #e3e6ef;
 }
 
-/* Leaflet COntainer */
+/* Leaflet Container */
 
 .leaflet-container {
   z-index: 0;
@@ -1531,7 +1365,6 @@ html[dir='rtl'] .invoice-upload-basic .invoice-upload-browse {
   padding: 16px 25px;
 }
 
-
 /* Table Responsive */
 
 .table-responsive .ant-table-content {
@@ -1543,37 +1376,6 @@ html[dir='rtl'] .invoice-upload-basic .invoice-upload-browse {
 
 .table-responsive .ant-table-content .ant-table-cell {
   white-space: nowrap;
-}
-
-/* Rich TextEditor  */
-
-.RichTextEditor__root___2QXK- {
-  border: 0 none !important;
-}
-
-.RichTextEditor__root___2QXK- .EditorToolbar__root___3_Aqz {
-  margin: 0;
-  border-color: #f1f2f6;
-}
-
-.RichTextEditor__root___2QXK- .ButtonWrap__root___1EO_R button {
-  padding: 0;
-  border: 0 none;
-  background: #fff;
-  margin-right: 8px;
-}
-
-.RichTextEditor__root___2QXK- .Dropdown__root___3ALmx .Dropdown__value___34Py9 {
-  border: 0 none;
-}
-
-.RichTextEditor__root___2QXK- .Dropdown__root___3ALmx select {
-  border-right-width: 0px;
-  direction: ltr;
-}
-
-.RichTextEditor__editor___1QqIU .DraftEditor-editorContainer {
-  border: 0 none;
 }
 
 /* ChatBox Dropdown */
@@ -1823,317 +1625,7 @@ html[dir='rtl'] .invoice-upload-basic .invoice-upload-browse {
   font-weight: 500;
 }
 
-/* File Export Import Modal */
-.invoice-export-wrap .ant-modal {
-  width: 390px !important;
-}
-
-.invoice-export-wrap .ant-modal .ant-modal-header {
-  border-bottom: 0 none;
-  padding: 18px 30px 0 30px;
-}
-
-.invoice-export-wrap .ant-modal .ant-modal-body {
-  padding: 25px 30px 30px 30px;
-}
-
-.invoice-export-wrap .ant-modal .invoice-button-grp {
-  text-align: right;
-}
-
-.invoice-export-wrap .ant-modal .invoice-button-grp {
-  margin: 20px -8px -8px -8px;
-}
-
-.invoice-export-wrap .ant-modal .invoice-button-grp button {
-  font-size: 14px;
-  font-weight: 500;
-  text-align: right;
-  height: 40px;
-  padding: 0 16px;
-  margin: 8px;
-}
-
-.invoice-export-wrap .ant-modal .invoice-button-grp button.ant-btn-white {
-  color: #9299b8 !important;
-}
-
-.invoice-export-wrap .ant-form-item-control-input {
-  min-height: 36px;
-}
-
-.invoice-export-wrap .ant-form-item-control-input input {
-  font-size: 14px;
-  font-weight: 400;
-  padding: 6px 20px;
-  border-radius: 5px;
-  color: #9299b8;
-}
-
-.invoice-export-wrap .ant-select-single {
-  width: 100% !important;
-}
-
-.invoice-export-wrap .ant-form .ant-form-item {
-  margin-bottom: 15px;
-}
-
-.invoice-export-wrap .ant-select-single .ant-select-selector {
-  padding: 0 20px;
-  border-color: #e3e6ef !important;
-}
-
-.invoice-create-file .invoice-button-grp {
-  text-align: right;
-}
-
-.invoice-create-file .ant-modal {
-  width: 390px !important;
-}
-
-.invoice-create-file .ant-modal .ant-form-item {
-  margin-bottom: 20px;
-}
-
-.invoice-create-file .ant-modal-header {
-  border-bottom: 0 none;
-  padding-bottom: 6px;
-}
-
-.invoice-create-file .invoice-button-grp button {
-  height: 40px;
-  border-radius: 5px;
-  margin: 5px;
-}
-
-.invoice-create-file .ant-form-item-control-input {
-  border-radius: 5px;
-}
-
-.invoice-create-file .ant-form-item-control-input input {
-  border: 1px solid #e3e6ef;
-}
-
-/* Task Modal */
-.invoice-task-details .ant-modal-content .ant-modal-close {
-  top: 10px;
-}
-
-.invoice-task-details .ant-modal-header {
-  border-bottom: 0 none;
-  padding: 30px 30px 0;
-}
-
-.invoice-task-details .ant-modal {
-  width: 600px !important;
-}
-
-.invoice-task-details .ant-modal-header .ant-modal-title h4 {
-  font-size: 20px;
-  font-weight: 500;
-  color: #0a0a0a;
-  margin-bottom: 4px;
-}
-
-.invoice-task-details .ant-modal-header .ant-modal-title .sub-text {
-  font-size: 14px;
-  font-weight: 400;
-  color: #868eae;
-}
-
-.invoice-task-details .invoice-task-details-modal .invoice-task-details__label {
-  font-size: 16px;
-  display: block;
-  margin-bottom: 8px;
-}
-
-.invoice-task-details .invoice-task-details-modal .invoice-task-details-modal__description textarea {
-  padding: 10px 20px;
-  min-height: 88px;
-  width: 100%;
-  border: 0 none;
-  border-radius: 4px;
-  background-color: #f4f5f7;
-  resize: none;
-}
-
-.invoice-task-details .invoice-task-details-modal .invoice-task-details-modal__description textarea:focus {
-  outline: none;
-}
-
-.invoice-task-details .invoice-task-details-modal .invoice-task-details-modal__description textarea::placeholder {
-  color: #404040;
-  font-size: 15px;
-}
-
-.invoice-task-details .ant-modal-body {
-  padding: 14px 30px 30px 30px;
-}
-
-.invoice-task-details .ant-modal-body .invoice-checklist-block {
-  margin-top: 26px;
-}
-
-.invoice-task-details .ant-modal-body .invoice-checklist-block .addChecklist-wrap {
-  position: relative;
-}
-
-.invoice-task-details .ant-modal-body .invoice-checklist-block .addChecklist-form {
-  position: absolute;
-  width: 240px;
-  padding: 18px;
-  left: 0;
-  top: 50px;
-  box-shadow: 0 15px 30px #9299bb30;
-  background-color: #fff;
-  border: 1px solid #e3e6ef;
-  border-radius: 6px;
-  z-index: 222;
-}
-
-html[dir='rtl'] .invoice-task-details .ant-modal-body .invoice-checklist-block .addChecklist-form {
-  left: auto;
-  right: 0;
-}
-
-.invoice-task-details .ant-modal-body .invoice-checklist-block .addChecklist-form .add-checklist {
-  padding: 10px;
-  border-radius: 4px;
-  background-color: #fff;
-  width: 100%;
-  height: 38px;
-  border: 1px solid #e3e6ef;
-}
-
-.invoice-task-details .ant-modal-body .invoice-checklist-block .addChecklist-form .addChecklist-form-action {
-  margin-top: 15px;
-}
-
-.invoice-task-details .ant-modal-body .invoice-checklist-block .addChecklist-form .addChecklist-form-action a {
-  position: relative;
-  top: 3px;
-  display: inline-flex;
-  align-items: center;
-  line-height: 1;
-}
-
-.invoice-task-details .ant-modal-body .invoice-checklist-block .addChecklist-form .addChecklist-form-action a svg {
-  color: #9299bb;
-}
-
-.invoice-task-details .ant-modal-body .invoice-checklist-block .addChecklist-form .addChecklist-form-action .btn-add {
-  margin-right: 15px;
-}
-
-html[dir='rtl']
-  .invoice-task-details
-  .ant-modal-body
-  .invoice-checklist-block
-  .addChecklist-form
-  .addChecklist-form-action
-  .btn-add {
-  margin-left: 15px;
-  margin-right: 0;
-}
-
-.invoice-task-details .ant-modal-body .invoice-checklist-block button {
-  height: 38px;
-  padding: 0px 18.37px;
-}
-
-.invoice-task-details .ant-modal-body .invoice-checklist-row {
-  margin-top: 26px;
-}
-
-.invoice-task-details .ant-modal-body .invoice-checklist-row .invoice-checklist-item:not(:last-child) {
-  margin-bottom: 30px;
-}
-
-.invoice-task-details .ant-modal-body .invoice-checklist-row .invoice-checklist-item__top {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 10px;
-}
-
-.invoice-task-details .ant-modal-body .invoice-checklist-row .invoice-checklist-item__top button {
-  padding: 0px 16.32px;
-  color: #525768;
-  background-color: #f4f5f7;
-}
-
-.invoice-task-details .ant-modal-body .invoice-checklist-row .invoice-checklist-item__title {
-  font-size: 16px;
-  font-weight: 500;
-  color: #090e30;
-  margin-bottom: 0;
-}
-
-.invoice-task-details
-  .ant-modal-body
-  .invoice-checklist-row
-  .invoice-checklist__progress
-  .ant-progress-inner
-  .ant-progress-bg {
-  height: 5px !important;
-  background-color: #01b81a;
-}
-
-.invoice-task-details
-  .ant-modal-body
-  .invoice-checklist-row
-  .invoice-checklist__progress
-  .ant-progress
-  .ant-progress-text {
-  font-size: 12px;
-  font-weight: 500;
-  order: -1;
-  margin: 0 10px 0 0;
-}
-
-html[dir='rtl']
-  .invoice-task-details
-  .ant-modal-body
-  .invoice-checklist-row
-  .invoice-checklist__progress
-  .ant-progress
-  .ant-progress-text {
-  margin: 0 0 0 10px;
-}
-
-.invoice-task-details .ant-modal-body .invoice-checklist-tasks {
-  margin: 5px 0 5px 0;
-}
-
-.invoice-task-details .ant-modal-body .invoice-checklist-tasks .ant-checkbox-wrapper .ant-checkbox-inner {
-  width: 18px;
-  height: 18px;
-  border-color: #c6d0dc;
-}
-
-.invoice-task-details
-  .ant-modal-body
-  .invoice-checklist-tasks
-  .ant-checkbox-wrapper
-  .ant-checkbox-checked
-  .ant-checkbox-inner {
-  background-color: #01b81a;
-}
-
-.invoice-task-details .ant-modal-body .invoice-checklist-tasks .ant-checkbox-wrapper .ant-checkbox-checked:after {
-  border-color: #01b81a;
-}
-
-.invoice-task-details .ant-modal-body .invoice-checklist-item .invoice-checklist-tasks-wrap button {
-  padding: 0px 35px;
-  color: #525768;
-  background-color: #f4f5f7;
-}
-
-.invoice-task-details .ant-modal-body {
-  max-height: 800px;
-  overflow-y: auto;
-}
+// Page header
 
 @media (max-width: 767px) {
   .ant-page-header {
@@ -2173,7 +1665,7 @@ html[dir='rtl']
   color: #8231d3;
 }
 
-/* Layout Css */
+/* Layout css */
 
 .ant-menu-dark .ant-menu-item a {
   font-weight: 400;
@@ -2200,36 +1692,7 @@ html[dir='rtl']
   background: transparent;
 }
 
-/* Chart Label */
-
-.chart-label {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 6px;
-  color: #404040;
-}
-
-.chart-label .label-dot {
-  margin-right: 8px;
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-}
-
-.chart-label .label-dot.dot-success {
-  background: #01b81a;
-}
-
-.chart-label .label-dot.dot-info {
-  background: #8231d3;
-}
-
-.chart-label .label-dot.dot-warning {
-  background: #fa8b0c;
-}
-
-/* NOtification CSS */
+/* Notification css */
 
 .ant-notification {
   z-index: 99999 !important;
@@ -2528,7 +1991,7 @@ html[dir='rtl']
   padding-right: 15px;
 }
 
-/* Emprt */
+/* Empty */
 
 .ant-empty .ant-empty-footer button {
   padding: 0px 15.58px !important;
@@ -2698,7 +2161,7 @@ html[dir='rtl']
   }
 }
 
-/* card spin loader */
+/* Card spin loader */
 
 .ant-card-body .sd-spin div,
 .ant-card-body .spin div {
@@ -2729,10 +2192,6 @@ html[dir='rtl']
   color: red;
 }
 
-/* vectormap zoom in / zoom out */ // deleted
-
-/* masonry-grid start from here */ // deleted
-
 /* Style your items */
 
 .common-ul {
@@ -2748,14 +2207,8 @@ li.active > .display {
   display: block;
 }
 
-/* rtl section from here */ // deleted
-
-/* Dark Mode Css */ // deleted
-
 /* Top Menu */
 
 .invoice-topMenu .invoice-blog-details .invoice-share-links {
   margin-left: 1000px !important;
 }
-
-/* Auth0 style */ // deleted
