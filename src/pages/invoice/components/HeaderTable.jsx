@@ -26,7 +26,7 @@ export const HeaderTable = ({ state, setState, selectedRowKeys, searchParams, se
     try {
       const response = await dataService.get(
         API_INVOICES_EXCEL,
-        { loaihdon: invoiceType, date_from, date_to },
+        { loaihdon: invoiceType, ...searchParams },
         { responseType: 'blob' },
       );
       downloadFile(response, `HDDT_${formatTime(new Date(), 'YYYYMMDDHHmm')}.xlsx`);
@@ -48,11 +48,10 @@ export const HeaderTable = ({ state, setState, selectedRowKeys, searchParams, se
         API_INVOICES_ZIP,
         {
           loaihdon: invoiceType,
-          date_from,
-          date_to,
           type,
           mst: taxNumber,
           ...(selectedRowKeys?.length && { ids: JSON.stringify(selectedRowKeys) }),
+          ...searchParams,
         },
         { responseType: 'blob' },
       );
