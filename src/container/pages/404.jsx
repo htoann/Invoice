@@ -1,5 +1,6 @@
 import { Button } from '@/components/buttons';
 import Heading from '@/components/heading';
+import img404 from '@/static/img/pages/404.svg';
 import { Spin } from 'antd';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -28,7 +29,7 @@ function NotFound() {
         </div>
       ) : (
         <ErrorWrapper>
-          <img src={require(`@/static/img/pages/404.svg`).default} alt="404" />
+          <img src={img404} alt="404" />
           <Heading className="error-text" as="h3">
             404
           </Heading>

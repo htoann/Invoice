@@ -24,7 +24,7 @@ function ComingSoon() {
                   {layoutMode === 'lightMode' ? (
                     <img src={require('@/static/img/logo_dark.png')} alt="" />
                   ) : (
-                    <img src={require('@/static/img/logo_white.svg').default} alt="" />
+                    <img src={require('@/static/img/logo_white.svg')} alt="" />
                   )}
                 </div>
                 <div className="coming-soon-content">

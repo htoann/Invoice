@@ -19,27 +19,6 @@ const AuthenticationWrap = Styled.div`
   }
 `;
 
-const Content = Styled.div`
-    padding: 100px;
-    @media only screen and (max-width: 1599px){
-      padding: 50px;
-    }
-    @media only screen and (max-width: 991px){
-      padding: 20px;
-    }
-    @media only screen and (max-width: 767px){
-      text-align: center;
-    }
-    .auth-content-figure{
-      @media only screen and (max-width: 1199px){
-        max-width: 420px;
-      }
-      @media only screen and (max-width: 991px){
-        max-width: 100%;
-      }
-    }
-`;
-
 const AuthFormWrap = Styled.div`
   border-radius: 6px;
   margin-top: 25px;
@@ -325,4 +304,4 @@ const AuthFormWrap = Styled.div`
 }
 `;
 
-export { AuthFormWrap, AuthenticationWrap, Content };
+export { AuthFormWrap, AuthenticationWrap };

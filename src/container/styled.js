@@ -1718,22 +1718,6 @@ const TableDefaultStyle = Styled.div`
     }
 `;
 
-const TagInput = Styled.div`
-    padding: 12px;
-    border-radius: 4px;
-    border: 1px solid ${({ theme }) => theme[theme.mainContent]['border-color-secondary']};
-    margin: -3px;
-    .ant-tag{
-        margin: 3px;
-        font-size: 11px;
-        padding: 0 4px;
-        border: 0 none;
-        height: 24px;
-        display: inline-flex;
-        align-items: center;
-    }
-`;
-
 const BasicFormWrapper = Styled.div`
     .ant-form {
         .form-item{
@@ -2250,4 +2234,4 @@ const TableWrapper = Styled.div`
     }
 `;
 
-export { BasicFormWrapper, BorderLessHeading, Main, TableDefaultStyle, TableWrapper, TagInput };
+export { BasicFormWrapper, BorderLessHeading, Main, TableDefaultStyle, TableWrapper };
