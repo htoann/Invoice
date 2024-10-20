@@ -1,16 +1,4 @@
-import { Layout } from 'antd';
 import Styled from 'styled-components';
-
-const { Footer } = Layout;
-
-const NavTitle = Styled.p`
-    font-size: 12px;
-    font-weight: 500;
-    text-transform: uppercase;
-    color: rgb(146, 153, 184);
-    padding: 0px 15px;
-    display: flex;
-`;
 
 const LayoutContainer = Styled.div`
     .ant-layout {
@@ -18,7 +6,7 @@ const LayoutContainer = Styled.div`
         .ant-layout-header{
             padding: ${({ theme }) => (!theme.rtl ? '0 5px 0 0' : '0 0 0 5px')};
             height: 72px;
-            @media only screen and (max-width: 991px){
+            @media only screen and (max-width: 1328px){
                 padding: 0 10px;
             }
         }
@@ -26,8 +14,6 @@ const LayoutContainer = Styled.div`
     .ant-layout.layout {
         background-color: ${({ theme }) => theme[theme.mainContent]['main-background']};
     }
-
-    // Search bar deleted
 
     /* invoice Header Style */
     .invoice-header-content{
@@ -54,7 +40,7 @@ const LayoutContainer = Styled.div`
                     margin-top: 4px;
                     color: ${({ theme }) => theme[theme.mainContent]['extra-light']};
                     @media only screen and (max-width: 995px){
-                        padding: ${({ theme }) => (theme.rtl ? '0 30px 0 20px' : '0 20px 0 30px')};
+                        padding: ${({ theme }) => (theme.rtl ? '0 15px 0 20px' : '0 20px 0 15px')};
                     }
                     @media only screen and (max-width: 767px){
                         order: -1;
@@ -63,6 +49,9 @@ const LayoutContainer = Styled.div`
                 }
             }
             .invoice-logo{
+                @media only screen and (max-width: 1328px){
+                    ${({ theme }) => (theme.rtl ? 'margin-left' : 'margin-right')}: 20px;
+                }
                 @media only screen and (max-width: 875px){
                     ${({ theme }) => (theme.rtl ? 'margin-left' : 'margin-right')}: 4px;
                 }
@@ -86,7 +75,7 @@ const LayoutContainer = Styled.div`
                 align-items: center;
                 flex: auto;
                 padding-right: 12px;
-                @media only screen and (max-width: 1328px){
+                @media only screen and (max-width: 991px){
                     display: none;
                 }
                 .invoice-nav-actions__language,
@@ -147,7 +136,7 @@ const LayoutContainer = Styled.div`
         }
         .invoice-header-content__mobile{
             display: none;
-            @media only screen and (max-width: 1328px){
+            @media only screen and (max-width: 991px){
                 display: block;
             }
             .invoice-mobile-action{
@@ -271,7 +260,7 @@ const LayoutContainer = Styled.div`
     /* Sidebar styles */
     .ant-layout-sider {
         box-shadow: 0 0 20px ${({ theme }) => theme['extra-light-color']}05;
-        @media (max-width: 991px){
+        @media (max-width: 1328px){
             box-shadow: 0 0 10px #00000020;
         }
         @media print {
@@ -306,8 +295,6 @@ const LayoutContainer = Styled.div`
                 }
             }
             & + .antd-main-layout{
-                /* Comment for now */
-                /* ${({ theme }) => (!theme.rtl ? 'margin-left' : 'margin-right')}: 80px; */
                 ${({ theme }) => (!theme.rtl ? 'margin-left' : 'margin-right')}: 0;
 
             }
@@ -552,7 +539,6 @@ const LayoutContainer = Styled.div`
                             width: 16px;
                             height: 16px;
                         }
-                                                
                         .ant-menu-submenu-arrow{
                             right: auto;
                             ${({ theme }) => (theme.rtl ? 'left' : 'right')}: 15px;
@@ -641,11 +627,10 @@ const LayoutContainer = Styled.div`
             }
         }
     }
-    @media only screen and (max-width: 1150px){
+    @media only screen and (max-width: 1328px){
         .ant-layout-sider.ant-layout-sider-collapsed{
             ${({ theme }) => (!theme.rtl ? 'left' : 'right')}: -80px !important;
         }
-
     }
 
     .antd-main-layout{
@@ -653,11 +638,6 @@ const LayoutContainer = Styled.div`
           theme.topMenu ? 0 : '280px'};
         margin-top: 74px;
         transition: 0.3s ease;
-        
-        /* Comment for now */
-        /* @media only screen and (max-width: 1150px){
-            ${({ theme }) => (!theme.rtl ? 'margin-left' : 'margin-right')}: auto !important;
-        } */
 
         @media print {
             width: 100%;
@@ -708,23 +688,6 @@ const SmallScreenAuthInfo = Styled.div`
     }
     .invoice-nav-actions__searchbar{
         display: none !important;
-    }
-`;
-
-const ModeSwitch = Styled.div`
-    background: #ddd;
-    width: 200px;
-    position: fixed;
-    ${({ theme }) => (theme.rtl ? 'left' : 'right')}: 0;
-    top: 50%;
-    margin-top: -100px;
-    z-index: 9999;
-    display: flex;
-    flex-direction: column;
-    padding: 15px;
-    border-radius: 5px;
-    button{
-        margin-top: 5px;
     }
 `;
 
@@ -1118,33 +1081,4 @@ const TopMenuStyle = Styled.div`
     }
 `;
 
-const FooterStyle = Styled(Footer)`
-    padding: 20px 30px 18px;    
-    font-size: 14px;
-    background-color: ${({ theme }) => theme[theme.mainContent]['light-background']};
-    width: 100%;
-    box-shadow: 0 -5px 10px rgba(146,153,184, 0.05);   
-    
-    .admin-footer__links{
-        margin: 0 -9px;
-        text-align: ${({ theme }) => (theme.rtl ? 'left' : 'right')};
-        @media only screen and (max-width: 767px){
-            text-align: center;
-        }
-        a {
-            margin: 0 9px;
-            color: ${({ theme }) => theme[theme.mainContent]['gray-text']};
-            &:hover{
-                color: ${({ theme }) => theme['primary-color']};
-            }
-            &:not(:last-child) {
-                ${({ theme }) => (theme.rtl ? 'margin-left' : 'margin-right')}: 15px;
-            }
-
-            
-        }
-    }
-    
-`;
-
-export { FooterStyle, LayoutContainer, ModeSwitch, NavTitle, SmallScreenAuthInfo, TopMenuSearch, TopMenuStyle };
+export { LayoutContainer, SmallScreenAuthInfo, TopMenuSearch, TopMenuStyle };

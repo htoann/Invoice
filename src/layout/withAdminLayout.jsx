@@ -114,10 +114,10 @@ const WithAdminLayout = (WrappedComponent) => {
             <div className="invoice-header-content d-flex">
               <div className="invoice-header-content__left">
                 <div className="navbar-brand align-center-v">
-                  <Link className={topMenu && windowWidth > 991 ? 'invoice-logo top-menu' : 'invoice-logo'} to="/">
+                  <Link className={topMenu && windowWidth > 1328 ? 'invoice-logo top-menu' : 'invoice-logo'} to="/">
                     {REACT_MODE !== 'ave' && <img src={logoDark} alt="logo" />}
                   </Link>
-                  {!topMenu || windowWidth <= 991 ? (
+                  {!topMenu || windowWidth <= 1328 ? (
                     <Button type="link" onClick={toggleCollapsed}>
                       <img src={leftBarIcon} alt="menu" />
                     </Button>
@@ -126,10 +126,10 @@ const WithAdminLayout = (WrappedComponent) => {
               </div>
               <div className="invoice-header-content__right d-flex">
                 <div className="invoice-navbar-menu d-flex align-center-v">
-                  {topMenu && windowWidth > 991 && <TopMenu />}
+                  {topMenu && windowWidth > 1328 && <TopMenu />}
                 </div>
                 <div className="invoice-nav-actions">
-                  {topMenu && windowWidth > 991 ? (
+                  {topMenu && windowWidth > 1328 ? (
                     <TopMenuSearch>
                       <div className="top-right-wrap d-flex">
                         <AuthInfo />
@@ -161,29 +161,30 @@ const WithAdminLayout = (WrappedComponent) => {
             </Row>
           </div>
           <Layout>
-            {!topMenu || windowWidth <= 991 ? (
-              <ThemeProvider theme={theme}>
-                <Sider
-                  width={280}
-                  style={SideBarStyle}
-                  collapsed={collapsed}
-                  theme={layoutMode === 'lightMode' ? 'light' : 'dark'}
-                >
-                  <Scrollbars
-                    className="custom-scrollbar"
-                    autoHide
-                    autoHideTimeout={500}
-                    autoHideDuration={200}
-                    renderThumbHorizontal={renderThumbHorizontal}
-                    renderThumbVertical={renderThumbVertical}
-                    renderView={renderView}
-                    renderTrackVertical={(props) => <div {...props} className="invoice-track-vertical" />}
+            {!topMenu ||
+              (windowWidth <= 1328 && (
+                <ThemeProvider theme={theme}>
+                  <Sider
+                    width={280}
+                    style={SideBarStyle}
+                    collapsed={collapsed}
+                    theme={layoutMode === 'lightMode' ? 'light' : 'dark'}
                   >
-                    <LeftMenu topMenu={topMenu} toggleCollapsed={toggleCollapsedMobile} />
-                  </Scrollbars>
-                </Sider>
-              </ThemeProvider>
-            ) : null}
+                    <Scrollbars
+                      className="custom-scrollbar"
+                      autoHide
+                      autoHideTimeout={500}
+                      autoHideDuration={200}
+                      renderThumbHorizontal={renderThumbHorizontal}
+                      renderThumbVertical={renderThumbVertical}
+                      renderView={renderView}
+                      renderTrackVertical={(props) => <div {...props} className="invoice-track-vertical" />}
+                    >
+                      <LeftMenu topMenu={topMenu} toggleCollapsed={toggleCollapsedMobile} />
+                    </Scrollbars>
+                  </Sider>
+                </ThemeProvider>
+              ))}
             <Layout className="antd-main-layout">
               <Content>
                 <WrappedComponent {...props} />
@@ -191,7 +192,7 @@ const WithAdminLayout = (WrappedComponent) => {
             </Layout>
           </Layout>
         </Layout>
-        {windowWidth <= 991 && (
+        {windowWidth <= 1328 && (
           <span className={collapsed ? 'invoice-shade' : 'invoice-shade show'} onClick={toggleCollapsed} />
         )}
       </LayoutContainer>

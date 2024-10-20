@@ -149,7 +149,7 @@ export const LeftMenu = ({ toggleCollapsed }) => {
     <Menu
       onOpenChange={onOpenChange}
       onClick={onClick}
-      mode={!topMenu || window.innerWidth <= 991 ? 'inline' : 'horizontal'}
+      mode={!topMenu || window.innerWidth <= 1328 ? 'inline' : 'horizontal'}
       defaultSelectedKeys={
         !topMenu
           ? [

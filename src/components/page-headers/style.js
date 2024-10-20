@@ -9,7 +9,7 @@ export const HeaderWrapper = styled.div`
   border-radius: 5px;
   margin: 4px 0;
 
-  @media only screen and (max-width: 991px) {
+  @media only screen and (max-width: 1328px) {
     padding: 18px 15px 12px;
   }
 
