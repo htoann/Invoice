@@ -1,7 +1,9 @@
 import WithAdminLayout from '@/layout/withAdminLayout';
 import { Spin } from 'antd';
+import { usePermission } from 'hooks/checkUserPermission';
 import React, { lazy, Suspense, useEffect } from 'react';
 import { Route, Routes, useLocation } from 'react-router-dom';
+import { PERMISSIONS } from '../utils';
 import { routes } from './const';
 
 const Dashboard = lazy(() => import('@/pages/dashboard'));
@@ -22,10 +24,26 @@ const NotFound = lazy(() => import('@/container/pages/404'));
 
 const Index = React.memo(() => {
   const { pathname } = useLocation();
+  const checkPermission = usePermission();
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [pathname]);
+
+  const routesConfig = [
+    { path: '/', element: <Dashboard />, index: true },
+    { path: routes.invoice, element: <InvoiceList />, permission: PERMISSIONS.INVOICE_LIST_VIEW },
+    { path: routes.invoiceConnectTax, element: <ConnectTaxAuthority /> },
+    { path: routes.emailAccount, element: <AccountsList /> },
+    { path: routes.emailSync, element: <SyncHistory /> },
+    { path: routes.email + '/*', element: <Email /> },
+    { path: routes.categoryProduct, element: <Products /> },
+    { path: routes.categoryProvider, element: <Providers /> },
+    { path: routes.categoryCustomer, element: <Customers /> },
+    { path: routes.categoryOrg, element: <Organization /> },
+    { path: routes.categoryTaxPayer, element: <TaxPayer /> },
+    { path: '*', element: <NotFound /> },
+  ];
 
   return (
     <Suspense
@@ -36,22 +54,12 @@ const Index = React.memo(() => {
       }
     >
       <Routes>
-        <Route index path="/" element={<Dashboard />} />
-
-        <Route path={routes.invoice} element={<InvoiceList />} />
-        <Route path={routes.invoiceConnectTax} element={<ConnectTaxAuthority />} />
-
-        <Route path={routes.emailAccount} element={<AccountsList />} />
-        <Route path={routes.emailSync} element={<SyncHistory />} />
-        <Route path={routes.email + '/*'} element={<Email />} />
-
-        <Route path={routes.categoryProduct} element={<Products />} />
-        <Route path={routes.categoryProvider} element={<Providers />} />
-        <Route path={routes.categoryCustomer} element={<Customers />} />
-        <Route path={routes.categoryOrg} element={<Organization />} />
-        <Route path={routes.categoryTaxPayer} element={<TaxPayer />} />
-
-        <Route path="*" element={<NotFound />} />
+        {routesConfig.map(
+          (route, index) =>
+            (!route.permission || checkPermission(route.permission)) && (
+              <Route key={index} path={route.path} element={route.element} index={route.index} />
+            ),
+        )}
       </Routes>
     </Suspense>
   );

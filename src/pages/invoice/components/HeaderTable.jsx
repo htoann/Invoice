@@ -1,8 +1,8 @@
-import { Button } from '@/components/buttons';
+import { ButtonPermission } from '@/components/buttons';
 import { API_INVOICES_EXCEL, API_INVOICES_ZIP } from '@/service/apiConst';
 import { dataService } from '@/service/dataService';
 import dayjs from '@/utils/dayjs';
-import { DATE_FORMAT_DASH, DATE_FORMAT_SLASH, debounce, downloadFile, formatTime } from '@/utils/index';
+import { DATE_FORMAT_DASH, DATE_FORMAT_SLASH, debounce, downloadFile, formatTime, PERMISSIONS } from '@/utils/index';
 import { DownloadOutlined } from '@ant-design/icons';
 import { DatePicker, Dropdown, Input, notification } from 'antd';
 import { useCallback, useState } from 'react';
@@ -172,11 +172,11 @@ export const HeaderTable = ({ state, setState, selectedRowKeys, searchParams, se
         ))}
       </div>
 
-      <div style={{ display: 'flex', marginLeft: 'auto' }}>
+      <div style={{ display: 'flex', marginLeft: 'auto', gap: 10, marginTop: 20 }}>
         <Dropdown menu={downloadMenu} disabled={!invoiceList?.length || loadingDownload}>
           <div>
-            <Button
-              style={{ marginTop: 20, marginRight: 10 }}
+            <ButtonPermission
+              permissions={PERMISSIONS.INVOICE_LIST_DOWNLOAD}
               type="primary"
               size="small"
               outlined
@@ -185,12 +185,12 @@ export const HeaderTable = ({ state, setState, selectedRowKeys, searchParams, se
             >
               <DownloadOutlined />
               {t('Common_BatchDownload')}
-            </Button>
+            </ButtonPermission>
           </div>
         </Dropdown>
 
-        <Button
-          style={{ marginTop: 20 }}
+        <ButtonPermission
+          permissions={PERMISSIONS.INVOICE_LIST_EXPORT}
           type="primary"
           size="small"
           outlined
@@ -200,7 +200,7 @@ export const HeaderTable = ({ state, setState, selectedRowKeys, searchParams, se
         >
           <DownloadOutlined />
           {t('Common_ExportExcel')}
-        </Button>
+        </ButtonPermission>
       </div>
     </div>
   );

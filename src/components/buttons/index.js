@@ -1,3 +1,4 @@
+import { withPermission } from '@/layout/withPermission';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { ButtonStyled, ButtonStyledGroup } from './styled';
@@ -89,4 +90,6 @@ BtnGroup.propTypes = {
   children: PropTypes.arrayOf(PropTypes.node).isRequired,
 };
 
-export { BtnGroup, Button };
+const ButtonPermission = withPermission(Button);
+
+export { BtnGroup, Button, ButtonPermission };

@@ -19,6 +19,12 @@ export const ORG_LIST = 'orgList';
 export const DATE_FORMAT_DASH = 'DD-MM-YYYY';
 export const DATE_FORMAT_SLASH = 'DD/MM/YYYY';
 
+export const PERMISSIONS = {
+  INVOICE_LIST_VIEW: 'INVOICE_LIST_VIEW',
+  INVOICE_LIST_DOWNLOAD: 'INVOICE_LIST_DOWNLOAD',
+  INVOICE_LIST_EXPORT: 'INVOICE_LIST_EXPORT',
+};
+
 const getFileName = (response) => {
   try {
     const contentDisposition = response?.headers?.get('Content-Disposition');

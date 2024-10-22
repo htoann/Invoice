@@ -14,11 +14,11 @@ const DataTableStyleWrap = Styled.div`
             display: inline-flex;
             align-items: center;
             flex-wrap: wrap;
+            gap: 10px 20px;
 
             // Responsive header
             display: grid;
-            grid-template-columns: repeat(6, 1fr);
-            gap: 10px;
+            grid-template-columns: repeat(6, minmax(0, 1fr));
             width: 100%;
 
             @media (max-width: 1468px) {
@@ -42,7 +42,6 @@ const DataTableStyleWrap = Styled.div`
             .invoice-datatable-filter__input{
                 display: flex;
                 flex-direction: column;
-                padding-right: 20px;
                 @media only screen and (max-width: 475px){
                     margin-bottom: 15px;
                     padding-right: 0;

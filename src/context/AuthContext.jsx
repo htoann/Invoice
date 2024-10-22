@@ -30,7 +30,13 @@ export const AuthProvider = ({ children }) => {
   const getProfileInfo = async () => {
     try {
       const response = await dataService.get(API_USER_INFO);
-      setState({ userInfo: response.data });
+      // setState({ userInfo: response.data });
+      setState({
+        userInfo: {
+          ...response.data,
+          permissions: ['INVOICE_LIST_VIEW', 'INVOICE_LIST_DOWNLOAD', 'INVOICE_LIST_EXPORT'],
+        },
+      });
       setLocalStorage(ORG_LIST, response.data?.organizations);
     } catch (err) {
       console.error(err);
