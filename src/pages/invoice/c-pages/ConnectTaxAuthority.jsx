@@ -119,19 +119,18 @@ function ConnectTaxAuthority() {
     }
   };
 
-  const renderAlert = () => {
-    status && (
+  const renderAlert = () =>
+    status ? (
       <div style={{ marginBottom: 15 }}>
         <Alert
           message={alertMessage}
           type={alertType}
-          description={status === EStatusTax.Failure && 'Kiểm tra thông tin đăng nhập'}
+          description={status === EStatusTax.Failure ? 'Kiểm tra thông tin đăng nhập' : undefined}
           showIcon
           icon={alertIcon}
         />
       </div>
-    );
-  };
+    ) : null;
 
   return (
     <div style={{ width: '35rem', maxWidth: '100%', margin: 'auto' }}>
