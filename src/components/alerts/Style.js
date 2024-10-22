@@ -19,7 +19,6 @@ const outline = (theme, type) => {
 const AlertWrap = Styled(Alert)`
   border-radius: ${({ shape }) => (!shape ? '4px' : '40px')} !important;
   border-width: 0px !important;
-  margin: 15px 0 0 0!important;
   padding: 16.5px 20px!important;
   .ant-alert-message{
     line-height: 1.8;
