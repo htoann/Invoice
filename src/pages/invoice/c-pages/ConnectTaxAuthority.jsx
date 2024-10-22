@@ -7,18 +7,7 @@ import { API_INVOICES_CONNECT_AUTHORITY, dataService } from '@/service';
 import { Form, Input, notification, Skeleton } from 'antd';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-
-const statusTypeMap = {
-  1: 'info',
-  2: 'success',
-  3: 'error',
-};
-
-const statusTextMap = {
-  1: 'Đang chờ kết nối',
-  2: 'Kết nối thành công',
-  3: 'Kết nối thất bại',
-};
+import { statusIconMap, statusTextMap, statusTypeMap } from '../utils';
 
 function ConnectTaxAuthority() {
   const { t } = useTranslation();
@@ -30,6 +19,7 @@ function ConnectTaxAuthority() {
 
   const alertType = statusTypeMap[status] || 'info';
   const alertMessage = statusTextMap[status] || '';
+  const alertIcon = statusIconMap[status] || null;
 
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -118,7 +108,13 @@ function ConnectTaxAuthority() {
           <BasicFormWrapper>
             {status && (
               <div style={{ marginBottom: 15 }}>
-                <Alert message={alertMessage} type={alertType} />
+                <Alert
+                  message={alertMessage}
+                  type={alertType}
+                  description={status === 3 && 'Kiểm tra thông tin đăng nhập'}
+                  showIcon
+                  icon={alertIcon}
+                />
               </div>
             )}
             <Form form={form} onFinish={handleOk} autoComplete="off">

@@ -1,6 +1,29 @@
 import { routes } from '@/routes/const';
 import { formatCurrency } from '@/utils/index';
+import { UilCheckCircle, UilExclamationTriangle, UilInfoCircle } from '@tooni/iconscout-unicons-react';
 import i18next from 'i18next';
+
+export const isPurchase = (invoiceType) => {
+  return invoiceType === 'purchase';
+};
+
+export const statusTypeMap = {
+  1: 'info',
+  2: 'success',
+  3: 'error',
+};
+
+export const statusTextMap = {
+  1: 'Đang chờ kết nối',
+  2: 'Kết nối thành công',
+  3: 'Kết nối thất bại',
+};
+
+export const statusIconMap = {
+  1: <UilInfoCircle />,
+  2: <UilCheckCircle />,
+  3: <UilExclamationTriangle />,
+};
 
 export const handleTableDataSource = (invoiceList, current, pageSize) => {
   return invoiceList?.length > 0
@@ -233,7 +256,3 @@ export const pageRoutes = [
   { path: routes.invoice, breadcrumbName: i18next.t('Invoice_Management') },
   { path: routes.invoice, breadcrumbName: i18next.t('Invoice_List') },
 ];
-
-export const isPurchase = (invoiceType) => {
-  return invoiceType === 'purchase';
-};
