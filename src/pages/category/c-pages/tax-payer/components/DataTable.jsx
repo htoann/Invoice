@@ -42,7 +42,7 @@ function DataTable({ tableData, columns, pagination, setState, loading, list, ge
               size="small"
               outlined
               onClick={handleExport}
-              disabled={!list?.length || loadingExport}
+              disabled={loadingExport}
               loading={loadingExport}
             >
               <DownloadOutlined />
