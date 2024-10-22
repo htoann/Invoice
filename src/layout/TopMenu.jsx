@@ -47,7 +47,7 @@ export const TopMenu = () => {
             <WithPermission permissions={menu.permission} key={menu.key}>
               <li className={menu.subMenu ? 'has-subMenu' : ''}>
                 <Link to={menu.to || '#'} className="parent">
-                  {t(menu.key)}
+                  {t(menu.text)}
                 </Link>
 
                 {menu.subMenu && (
@@ -55,7 +55,7 @@ export const TopMenu = () => {
                     {menu.subMenu.map((subMenu) => (
                       <WithPermission key={subMenu.key} permissions={subMenu.permission}>
                         <li>
-                          <Link to={subMenu.to}>{t(subMenu.key)}</Link>
+                          <Link to={subMenu.to}>{t(subMenu.text)}</Link>
                         </li>
                       </WithPermission>
                     ))}

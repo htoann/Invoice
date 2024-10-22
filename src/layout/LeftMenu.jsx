@@ -1,4 +1,3 @@
-import { routes } from '@/routes/const';
 import {
   UilClipboardAlt,
   UilCreateDashboard,
@@ -9,13 +8,16 @@ import {
 } from '@tooni/iconscout-unicons-react';
 import { Menu, Tooltip } from 'antd';
 import { useAppState } from 'context/AppContext';
+import { usePermission } from 'hooks/checkUserPermission';
 import propTypes from 'prop-types';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link, NavLink } from 'react-router-dom';
+import { menuItems } from './const';
 
 export const LeftMenu = ({ toggleCollapsed }) => {
   const { t } = useTranslation();
+  const checkPermission = usePermission();
 
   const getItem = (label, key, icon, children, type) => {
     return {
@@ -64,86 +66,37 @@ export const LeftMenu = ({ toggleCollapsed }) => {
   };
 
   const createMenuItems = (items) => {
-    return items.map((item) => getItem(createNavLink(item.path, item.textKey), item.key, null));
+    return items
+      .map((item) => {
+        if (checkPermission(item.permission)) {
+          return getItem(createNavLink(item.to, item.text), item.key, null);
+        }
+        return null;
+      })
+      .filter(Boolean);
   };
 
-  const items = [
-    getItem(
-      <NavLink to="/">{t('Common_Overview')}</NavLink>,
-      'overview',
-      !topMenu && (
-        <NavLink className="menuItem-icon" to="/">
-          <UilCreateDashboard />
-        </NavLink>
-      ),
-    ),
-    getItem(
-      t('Invoice_Management'),
-      'manage_invoices',
-      !topMenu && <UilInvoice />,
-      createMenuItems([
-        { path: routes.invoice, textKey: t('Common_InvoiceList'), key: 'invoice-list' },
-        { path: routes.invoiceConnectTax, textKey: t('Common_ConnectTaxAuthorities'), key: 'Kết nối cơ quan thuế' },
-      ]),
-    ),
-    getItem(
-      t('Common_Inbox'),
-      'inbox',
-      !topMenu && <UilEnvelope />,
-      createMenuItems([
-        { path: routes.emailAccount, textKey: t('Mail_AccountList_Title'), key: 'Danh sách email' },
-        { path: routes.emailInbox, textKey: t('Common_Inbox'), key: 'Hộp thư đến' },
-        { path: routes.emailSync, textKey: t('Common_SyncHistory'), key: 'Lịch sử đồng bộ' },
-      ]),
-    ),
-    getItem(
-      t('Common_Category'),
-      'category',
-      !topMenu && <UilTable />,
-      createMenuItems([
-        { path: routes.categoryOrg, textKey: t('Common_OrgStructure'), key: t('Common_OrgStructure') },
-        { path: routes.categoryProvider, textKey: t('Common_Supplier'), key: 'Nhà cung cấp' },
-        { path: routes.categoryCustomer, textKey: t('Common_Customer'), key: 'Khách hàng' },
-        { path: '#', textKey: t('Common_Goods'), key: 'Hàng hoá' },
-        { path: '#', textKey: t('Common_Goods'), key: 'Hàng hoá' },
-        { path: '#', textKey: t('Common_ExpenseItem'), key: 'Khoản mục chi phí' },
-        { path: routes.categoryTaxPayer, textKey: t('Thông tin người nộp thuế'), key: 'Thông tin người nộp thuế' },
-      ]),
-    ),
-    getItem(
-      t('Common_Report'),
-      'report',
-      !topMenu && <UilClipboardAlt />,
-      createMenuItems([
-        {
-          path: routes.emailAccount,
-          textKey: 'Báo cáo tổng hợp hoá đơn mua vào/bán ra',
-          key: 'Báo cáo tổng hợp hoá đơn mua vào/bán ra',
-        },
-        {
-          path: routes.emailAccount,
-          textKey: 'Bảng kê hoá đơn thay thế/điều chỉnh',
-          key: 'Bảng kê hoá đơn thay thế/điều chỉnh',
-        },
-        {
-          path: routes.emailAccount,
-          textKey: 'Xuất dữ liệu cho phần mềm kế toán',
-          key: 'Xuất dữ liệu cho phần mềm kế toán',
-        },
-        { path: routes.emailAccount, textKey: 'Báo cáo kiểm tra đơn giá', key: 'Báo cáo kiểm tra đơn giá' },
-        {
-          path: routes.emailAccount,
-          textKey: 'Báo cáo đối chiếu chênh lệch hoá đơn',
-          key: 'Báo cáo đối chiếu chênh lệch hoá đơn',
-        },
-        {
-          path: routes.emailAccount,
-          textKey: 'Bổ sung đối chiếu tờ khai thuế theo từng lần kiểm tra',
-          key: 'Bổ sung đối chiếu tờ khai thuế theo từng lần kiểm tra',
-        },
-      ]),
-    ),
-  ];
+  const items = menuItems
+    .map((item) => {
+      if (checkPermission(item.permission)) {
+        return getItem(
+          item.subMenu ? t(item.text) : <NavLink to={item.to || '#'}>{t(item.text)}</NavLink>,
+          item.key,
+          !topMenu && (
+            <NavLink className="menuItem-icon" to={item.to || '#'}>
+              {item.key === 'Common_Overview' ? <UilCreateDashboard /> : null}
+              {item.key === 'Invoice_Management' ? <UilInvoice /> : null}
+              {item.key === 'Common_Inbox' ? <UilEnvelope /> : null}
+              {item.key === 'Common_Category' ? <UilTable /> : null}
+              {item.key === 'Common_Report' ? <UilClipboardAlt /> : null}
+            </NavLink>
+          ),
+          item.subMenu ? createMenuItems(item.subMenu) : undefined,
+        );
+      }
+      return null;
+    })
+    .filter(Boolean);
 
   return (
     <Menu

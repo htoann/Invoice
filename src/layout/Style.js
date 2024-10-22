@@ -428,6 +428,8 @@ const LayoutContainer = Styled.div`
                     }
                     .ant-menu-title-content{
                         text-transform: capitalize;
+                        font-weight: 500;
+                        color: ${({ theme }) => theme[theme.mainContent]['gray-text']};
                         ${({ theme }) => (!theme.rtl ? 'padding-left' : 'padding-right')}: 16px;
                     }
                 }
