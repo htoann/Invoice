@@ -19,8 +19,8 @@ function ConnectTaxAuthority() {
   const [loading, setLoading] = useState(false);
   const [saving, setSaving] = useState(false);
   const [status, setStatus] = useState(null);
-  const [showWarning, setShowWarning] = useState(false);
-  const [showFistSave, setShowFirstSave] = useState(false);
+  const [showWarningUpdate, setShowWarningUpdate] = useState(false);
+  const [showWarningCreate, setShowWarningCreate] = useState(false);
 
   const alertType = statusTypeMap[status] || 'info';
   const alertMessage = statusTextMap[status] || '';
@@ -29,8 +29,8 @@ function ConnectTaxAuthority() {
   const intervalRef = useRef(null);
 
   useEffect(() => {
-    (!showFistSave || !showWarning) && setSaving(false);
-  }, [showWarning, showFistSave]);
+    (!showWarningCreate || !showWarningUpdate) && setSaving(false);
+  }, [showWarningUpdate, showWarningCreate]);
 
   useEffect(() => {
     const fetchStatus = async () => {
@@ -114,9 +114,23 @@ function ConnectTaxAuthority() {
       });
     } finally {
       setSaving(false);
-      setShowWarning(false);
-      setShowFirstSave(false);
+      setShowWarningUpdate(false);
+      setShowWarningCreate(false);
     }
+  };
+
+  const renderAlert = () => {
+    status && (
+      <div style={{ marginBottom: 15 }}>
+        <Alert
+          message={alertMessage}
+          type={alertType}
+          description={status === EStatusTax.Failure && 'Kiểm tra thông tin đăng nhập'}
+          showIcon
+          icon={alertIcon}
+        />
+      </div>
+    );
   };
 
   return (
@@ -127,24 +141,14 @@ function ConnectTaxAuthority() {
           <Skeleton active style={{ marginTop: 30 }} />
         ) : (
           <BasicFormWrapper>
-            {status && (
-              <div style={{ marginBottom: 15 }}>
-                <Alert
-                  message={alertMessage}
-                  type={alertType}
-                  description={status === EStatusTax.Failure && 'Kiểm tra thông tin đăng nhập'}
-                  showIcon
-                  icon={alertIcon}
-                />
-              </div>
-            )}
+            {renderAlert()}
             <Form
               form={form}
               onFinish={() => {
                 if (isCreate) {
-                  setShowFirstSave(true);
+                  setShowWarningCreate(true);
                 } else {
-                  setShowWarning(true);
+                  setShowWarningUpdate(true);
                 }
               }}
               autoComplete="off"
@@ -176,16 +180,16 @@ function ConnectTaxAuthority() {
       </LayoutContent>
 
       <WarningModal
-        open={showWarning}
-        setOpen={setShowWarning}
+        open={showWarningUpdate}
+        setOpen={setShowWarningUpdate}
         onConfirm={handleOk}
         loading={saving}
         description="Nếu thay đổi thông tin đăng nhập, hệ thống sẽ tiến hành đồng bộ lại dữ liệu hoá đơn. Bạn có muốn tiếp tục?"
       />
 
       <WarningModal
-        open={showFistSave}
-        setOpen={setShowFirstSave}
+        open={showWarningCreate}
+        setOpen={setShowWarningCreate}
         onConfirm={handleOk}
         loading={saving}
         description="Hệ thống sẽ tiến hành đồng bộ dữ liệu hoá đơn lần đầu. Bạn có muốn tiếp tục?"
