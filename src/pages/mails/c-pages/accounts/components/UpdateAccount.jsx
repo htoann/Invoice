@@ -1,6 +1,4 @@
-import { Button } from '@/components/buttons';
-import { Modal } from '@/components/modals';
-import { BasicFormWrapper } from '@/container/styled';
+import { WarningModal } from '@/components/modals/ModalAlert';
 import { API_MAILS_ACCOUNT_BY_ACCOUNT_ID, dataService } from '@/service';
 import { Form, notification } from 'antd';
 import { useState } from 'react';
@@ -62,27 +60,13 @@ export const UpdateAccount = ({ state, setState, getList }) => {
         textSubmit={t('Common_Save')}
       />
 
-      <Modal title={t('Common_Warning')} open={showConfirm} onCancel={() => setShowConfirm(false)} top="200">
-        <BasicFormWrapper>
-          <Form form={form} name="contactEdit" onFinish={handleOk} autoComplete="off">
-            {t('Mail_UpdatePasswordWarning')}
-            <div style={{ justifyContent: 'end', display: 'flex' }}>
-              <Button
-                size="default"
-                type="white"
-                outlined
-                style={{ marginRight: 8 }}
-                onClick={() => setShowConfirm(false)}
-              >
-                {t('Common_Cancel')}
-              </Button>
-              <Button type="primary" htmlType="submit" size="default" key="submit" loading={loading}>
-                {t('Common_Continue')}
-              </Button>
-            </div>
-          </Form>
-        </BasicFormWrapper>
-      </Modal>
+      <WarningModal
+        open={showConfirm}
+        setOpen={setShowConfirm}
+        onConfirm={handleOk}
+        loading={loading}
+        description={t('Mail_UpdatePasswordWarning')}
+      />
     </>
   );
 };

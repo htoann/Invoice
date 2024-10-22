@@ -195,7 +195,7 @@ export const HeaderTable = ({ state, setState, selectedRowKeys, searchParams, se
           size="small"
           outlined
           onClick={handleExport}
-          disabled={!invoiceList?.length || loadingExport}
+          disabled={loadingExport}
           loading={loadingExport}
         >
           <DownloadOutlined />

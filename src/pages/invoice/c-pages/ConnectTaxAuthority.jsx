@@ -1,5 +1,6 @@
 import Alert from '@/components/alerts/alerts';
 import { Button } from '@/components/buttons';
+import { WarningModal } from '@/components/modals/ModalAlert';
 import { PageHeader } from '@/components/page-headers';
 import { BasicFormWrapper } from '@/container/styled';
 import { LayoutContent } from '@/layout/LayoutContent';
@@ -13,15 +14,23 @@ function ConnectTaxAuthority() {
   const { t } = useTranslation();
   const [form] = Form.useForm();
 
+  const [isCreate, setIsCreate] = useState(false);
+
   const [loading, setLoading] = useState(false);
   const [saving, setSaving] = useState(false);
   const [status, setStatus] = useState(null);
+  const [showWarning, setShowWarning] = useState(false);
+  const [showFistSave, setShowFirstSave] = useState(false);
 
   const alertType = statusTypeMap[status] || 'info';
   const alertMessage = statusTextMap[status] || '';
   const alertIcon = statusIconMap[status] || null;
 
   const intervalRef = useRef(null);
+
+  useEffect(() => {
+    (!showFistSave || !showWarning) && setSaving(false);
+  }, [showWarning, showFistSave]);
 
   useEffect(() => {
     const fetchStatus = async () => {
@@ -53,11 +62,9 @@ function ConnectTaxAuthority() {
       const { status, ...fields } = response?.data || {};
 
       setStatus(status);
-      fields &&
-        typeof fields === 'object' &&
-        !Array.isArray(fields) &&
-        Object.keys(fields)?.length > 0 &&
-        form.setFieldsValue(fields);
+      fields && Object.keys(fields)?.length > 0 && form.setFieldsValue(fields);
+
+      setIsCreate(!response?.data?.username);
     } catch (error) {
       console.error(error);
       notification.error({
@@ -73,14 +80,19 @@ function ConnectTaxAuthority() {
     getList();
   }, []);
 
-  const handleOk = async (values) => {
+  const handleOk = async () => {
+    const values = form.getFieldsValue();
+
     setSaving(true);
-    setStatus(1);
+    setStatus(EStatusTax.Waiting);
+
     try {
       const response = await dataService.post(API_INVOICES_CONNECT_AUTHORITY, { ...values });
       const { status, ...fields } = response?.data || {};
 
       form.setFieldsValue(fields);
+
+      setIsCreate(!response?.data?.username);
 
       notification.success({
         message: t('Common_ConnectTaxAuthorities'),
@@ -102,6 +114,8 @@ function ConnectTaxAuthority() {
       });
     } finally {
       setSaving(false);
+      setShowWarning(false);
+      setShowFirstSave(false);
     }
   };
 
@@ -124,7 +138,17 @@ function ConnectTaxAuthority() {
                 />
               </div>
             )}
-            <Form form={form} onFinish={handleOk} autoComplete="off">
+            <Form
+              form={form}
+              onFinish={() => {
+                if (isCreate) {
+                  setShowFirstSave(true);
+                } else {
+                  setShowWarning(true);
+                }
+              }}
+              autoComplete="off"
+            >
               <Form.Item
                 name="username"
                 rules={[{ required: true, message: 'Vui lòng nhập tên đăng nhập' }]}
@@ -142,14 +166,30 @@ function ConnectTaxAuthority() {
               </Form.Item>
 
               <div style={{ justifyContent: 'end', display: 'flex' }}>
-                <Button htmlType="submit" size="default" type="primary" loading={saving}>
-                  {t('Common_Update')}
+                <Button htmlType="submit" size="default" type="primary">
+                  {isCreate ? t('Common_Save') : t('Common_Update')}
                 </Button>
               </div>
             </Form>
           </BasicFormWrapper>
         )}
       </LayoutContent>
+
+      <WarningModal
+        open={showWarning}
+        setOpen={setShowWarning}
+        onConfirm={handleOk}
+        loading={saving}
+        description="Nếu thay đổi thông tin đăng nhập, hệ thống sẽ tiến hành đồng bộ lại dữ liệu hoá đơn. Bạn có muốn tiếp tục?"
+      />
+
+      <WarningModal
+        open={showFistSave}
+        setOpen={setShowFirstSave}
+        onConfirm={handleOk}
+        loading={saving}
+        description="Hệ thống sẽ tiến hành đồng bộ dữ liệu hoá đơn lần đầu. Bạn có muốn tiếp tục?"
+      />
     </div>
   );
 }
