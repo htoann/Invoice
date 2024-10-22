@@ -1,3 +1,4 @@
+import Forbidden from '@/container/pages/Forbidden';
 import WithAdminLayout from '@/layout/withAdminLayout';
 import { Spin } from 'antd';
 import { usePermission } from 'hooks/checkUserPermission';
@@ -20,7 +21,7 @@ const Providers = lazy(() => import('@/pages/category/c-pages/providers/Provider
 const Organization = lazy(() => import('@/pages/category/c-pages/organization/Organization'));
 const TaxPayer = lazy(() => import('@/pages/category/c-pages/tax-payer/TaxPayer'));
 
-const NotFound = lazy(() => import('@/container/pages/404'));
+const NotFound = lazy(() => import('@/container/pages/NotFound'));
 
 const Index = React.memo(() => {
   const { pathname } = useLocation();
@@ -54,11 +55,12 @@ const Index = React.memo(() => {
       }
     >
       <Routes>
-        {routesConfig.map(
-          (route, index) =>
-            (!route.permission || checkPermission(route.permission)) && (
-              <Route key={index} path={route.path} element={route.element} index={route.index} />
-            ),
+        {routesConfig.map((route, index) =>
+          !route.permission || checkPermission(route.permission) ? (
+            <Route key={index} path={route.path} element={route.element} index={route.index} />
+          ) : (
+            <Route key={index} path={route.path} element={<Forbidden />} index={route.index} />
+          ),
         )}
       </Routes>
     </Suspense>

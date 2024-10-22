@@ -114,6 +114,7 @@
   "Common_DuplicatedEmailAccount": "Tài khoản email đã tồn tại",
   "Common_Continue": "Tiếp tục",
   "Common_Warning": "Cảnh báo",
+  "Common_Forbidden": "Xin lỗi, bạn không có quyền truy cập trang này",
 
   "Dashboard_BusinessStatus": "Trạng thái doanh nghiệp",
   "Dashboard_InvoicesChange": "Hóa đơn bị thay đổi bởi người bán - Nhà cung cấp",

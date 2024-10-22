@@ -12,7 +12,7 @@ import ProtectedRoute from './routes/protectedRoute';
 import { customLocale } from './utils';
 import { themeColor } from './utils/theme/themeVariables';
 
-const NotFound = lazy(() => import('./container/pages/404'));
+const NotFound = lazy(() => import('./container/pages/NotFound'));
 
 export const App = () => {
   const { isLoggedIn } = useAuth();
