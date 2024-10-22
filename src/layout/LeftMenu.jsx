@@ -83,7 +83,7 @@ export const LeftMenu = ({ toggleCollapsed }) => {
       !topMenu && <UilInvoice />,
       createMenuItems([
         { path: routes.invoice, textKey: t('Common_InvoiceList'), key: 'invoice-list' },
-        { path: routes.invoice, textKey: t('Common_ConnectTaxAuthorities'), key: 'Kết nối cơ quan thuế' },
+        { path: routes.invoiceConnectTax, textKey: t('Common_ConnectTaxAuthorities'), key: 'Kết nối cơ quan thuế' },
       ]),
     ),
     getItem(
