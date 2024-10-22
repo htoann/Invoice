@@ -55,7 +55,7 @@ function ConnectTaxAuthority() {
     } catch (error) {
       const errMsg =
         error?.response?.data?.errors?.code === 'invalid_invoice_credentials'
-          ? t('Tên người dùng hoặc mật khẩu không hợp lệ')
+          ? t('Tên đăng nhập hoặc mật khẩu không hợp lệ')
           : t('Common_UpdateFailure');
       notification.error({
         message: t('Common_ConnectTaxAuthorities'),
