@@ -37,10 +37,12 @@ function ConnectTaxAuthority() {
       await getStatus();
     };
 
-    intervalRef.current = setInterval(fetchStatus, 10000);
+    if (status !== EStatusTax.Success && status !== EStatusTax.Failure) {
+      intervalRef.current = setInterval(fetchStatus, 10000);
+    }
 
     return () => clearInterval(intervalRef.current);
-  }, []);
+  }, [status]);
 
   const getStatus = async () => {
     try {
@@ -88,20 +90,12 @@ function ConnectTaxAuthority() {
 
     try {
       const response = await dataService.post(API_INVOICES_CONNECT_AUTHORITY, { ...values });
-      const { status, ...fields } = response?.data || {};
-
-      form.setFieldsValue(fields);
-
       setIsCreate(!response?.data?.username);
 
       notification.success({
         message: t('Common_ConnectTaxAuthorities'),
         description: t('Common_UpdateSuccess'),
       });
-
-      if (status === EStatusTax.Success || status === EStatusTax.Failure) {
-        clearInterval(intervalRef.current);
-      }
     } catch (error) {
       const errMsg =
         error?.response?.data?.errors?.code === 'invalid_invoice_credentials'
