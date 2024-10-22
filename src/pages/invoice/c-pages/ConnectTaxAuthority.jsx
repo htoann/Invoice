@@ -25,13 +25,10 @@ function ConnectTaxAuthority() {
         Object.keys(response?.data)?.length > 0 &&
         form.setFieldsValue(response?.data);
     } catch (error) {
-      const errMsg =
-        error?.response?.data?.errors?.code === 'invalid_invoice_credentials'
-          ? t('Tên người dùng hoặc mật khẩu hóa đơn không hợp lệ')
-          : t('Common_ErrorOccur');
+      console.error(error);
       notification.error({
         message: t('Common_ConnectTaxAuthorities'),
-        description: errMsg,
+        description: t('Invoice_GetTaxConnectFailure'),
       });
     } finally {
       setLoading(false);
@@ -56,10 +53,13 @@ function ConnectTaxAuthority() {
         description: t('Common_UpdateSuccess'),
       });
     } catch (error) {
-      console.error(error);
+      const errMsg =
+        error?.response?.data?.errors?.code === 'invalid_invoice_credentials'
+          ? t('Tên người dùng hoặc mật khẩu hóa đơn không hợp lệ')
+          : t('Common_ErrorOccur');
       notification.error({
         message: t('Common_ConnectTaxAuthorities'),
-        description: t('Common_UpdateFailure'),
+        description: errMsg,
       });
     } finally {
       setSaving(false);
