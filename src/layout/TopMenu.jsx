@@ -1,8 +1,9 @@
-import { routes } from '@/routes/const';
 import { useLayoutEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
+import { menuItems } from './const';
 import { TopMenuStyle } from './Style';
+import { WithPermission } from './withPermission';
 
 export const TopMenu = () => {
   const { t } = useTranslation();
@@ -42,106 +43,27 @@ export const TopMenu = () => {
     <TopMenuStyle>
       <div className="invoice-top-menu">
         <ul>
-          <li>
-            <Link to="/" className="parent">
-              {t('Common_Overview')}
-            </Link>
-          </li>
+          {menuItems.map((menu) => (
+            <WithPermission permissions={menu.permission} key={menu.key}>
+              <li className={menu.subMenu ? 'has-subMenu' : ''}>
+                <Link to={menu.to || '#'} className="parent">
+                  {t(menu.key)}
+                </Link>
 
-          <li className="has-subMenu">
-            <Link to="#" className="parent">
-              {t('Invoice_Management')}
-            </Link>
-            <ul className="subMenu">
-              <li>
-                <Link to={routes.invoice}>{t('Common_InvoiceList')}</Link>
+                {menu.subMenu && (
+                  <ul className="subMenu">
+                    {menu.subMenu.map((subMenu) => (
+                      <WithPermission key={subMenu.key} permissions={subMenu.permission}>
+                        <li>
+                          <Link to={subMenu.to}>{t(subMenu.key)}</Link>
+                        </li>
+                      </WithPermission>
+                    ))}
+                  </ul>
+                )}
               </li>
-              <li>
-                <Link to={routes.invoiceConnectTax}>{t('Common_ConnectTaxAuthorities')}</Link>
-              </li>
-            </ul>
-          </li>
-
-          <li className="has-subMenu">
-            <Link to={routes.emailAccount} className="parent">
-              {t('Common_Inbox')}
-            </Link>
-            <ul className="subMenu">
-              <li>
-                <Link to={routes.emailAccount}>{t('Mail_AccountList_Title')}</Link>
-              </li>
-              <li>
-                <Link to={routes.emailInbox}>{t('Common_Inbox')}</Link>
-              </li>
-              <li>
-                <Link to={routes.emailSync}>{t('Common_SyncHistory')}</Link>
-              </li>
-            </ul>
-          </li>
-
-          <li className="has-subMenu">
-            <Link to="#" className="parent">
-              {t('Common_Category')}
-            </Link>
-            <ul className="subMenu">
-              <li>
-                <Link to={routes.categoryOrg}>{t('Common_OrgStructure')}</Link>
-              </li>
-              <li>
-                <Link to={routes.categoryProvider}>{t('Common_Supplier')}</Link>
-              </li>
-              <li>
-                <Link to={routes.categoryCustomer}>{t('Common_Customer')}</Link>
-              </li>
-              <li>
-                {/* <Link to={routes.categoryProduct}>{t('Common_Goods')}</Link> */}
-                <Link to="#">{t('Common_Goods')}</Link>
-              </li>
-              <li>
-                <Link to="#">{t('Common_ExpenseItem')}</Link>
-              </li>
-              <li>
-                <Link to={routes.categoryTaxPayer}>{t('Thông tin người nộp thuế')}</Link>
-              </li>
-            </ul>
-          </li>
-
-          <li className="has-subMenu">
-            <Link to="#" className="parent">
-              {t('Common_Report')}
-            </Link>
-            <ul className="subMenu">
-              <li>
-                <Link to="#">Báo cáo tổng hợp hoá đơn mua vào/bán ra</Link>
-              </li>
-              <li>
-                <Link to="#">Bảng kê hoá đơn thay thế/điều chỉnh</Link>
-              </li>
-              <li>
-                <Link to="#">Xuất dữ liệu cho phần mềm kế toán</Link>
-              </li>
-              <li>
-                <Link to="#">Báo cáo kiểm tra đơn giá</Link>
-              </li>
-              <li>
-                <Link to="#">Báo cáo đối chiếu chênh lệch hoá đơn</Link>
-              </li>
-              <li>
-                <Link to="#">Bổ sung đối chiếu tờ khai thuế theo từng lần kiểm tra</Link>
-              </li>
-            </ul>
-          </li>
-
-          {/* <li className="has-subMenu">
-            <Link to="#" className="parent">
-              {t('Common_ConnectTaxAuthorities')}
-            </Link>
-            <ul className="subMenu">
-              <li>
-                <Link to="#">Bảng kê hoá đơn</Link>
-              </li>
-            </ul>
-          </li> */}
+            </WithPermission>
+          ))}
         </ul>
       </div>
     </TopMenuStyle>

@@ -104,7 +104,7 @@ export const LeftMenu = ({ toggleCollapsed }) => {
         { path: routes.categoryOrg, textKey: t('Common_OrgStructure'), key: t('Common_OrgStructure') },
         { path: routes.categoryProvider, textKey: t('Common_Supplier'), key: 'Nhà cung cấp' },
         { path: routes.categoryCustomer, textKey: t('Common_Customer'), key: 'Khách hàng' },
-        // { path: routes.categoryProduct, textKey: t('Common_Goods'), key: 'Hàng hoá' },
+        { path: '#', textKey: t('Common_Goods'), key: 'Hàng hoá' },
         { path: '#', textKey: t('Common_Goods'), key: 'Hàng hoá' },
         { path: '#', textKey: t('Common_ExpenseItem'), key: 'Khoản mục chi phí' },
         { path: routes.categoryTaxPayer, textKey: t('Thông tin người nộp thuế'), key: 'Thông tin người nộp thuế' },

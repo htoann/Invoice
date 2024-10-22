@@ -11,3 +11,13 @@ export const withPermission = (Component) => {
     return <Component {...props} />;
   };
 };
+
+export const WithPermission = ({ children, permissions }) => {
+  const checkPermission = usePermission();
+
+  if (!!permissions?.length && !checkPermission(permissions)) {
+    return null;
+  }
+
+  return <>{children}</>;
+};

@@ -8,6 +8,38 @@ import { useTranslation } from 'react-i18next';
 import { ACCESS_TOKEN, clearLogoutLocalStorageAndCookie, LOGGED_IN, ORG_ID, ORG_LIST, REFRESH_TOKEN } from '../utils';
 import { watchObject } from './../utils/index';
 
+const fakePermissions = [
+  'INVOICE_MENU',
+  'INVOICE_LIST_VIEW',
+  'INVOICE_LIST_DOWNLOAD',
+  'INVOICE_LIST_EXPORT',
+  'TAX_VIEW',
+
+  // Email-related permissions
+  'EMAIL_MENU',
+  'INBOX_VIEW',
+  'EMAIL_ACCOUNT_VIEW',
+  'SYNC_HISTORY_VIEW',
+
+  // Category-related permissions
+  'CATEGORY_MENU',
+  'ORG_STRUCTURE_VIEW',
+  'SUPPLIER_VIEW',
+  'CUSTOMER_VIEW',
+  'GOODS_VIEW',
+  'EXPENSE_ITEM_VIEW',
+  'TAXPAYER_INFO_VIEW',
+
+  // Report-related permissions
+  'REPORT_MENU',
+  'REPORT_INVOICE_SUMMARY',
+  'REPORT_INVOICE_ADJUSTMENT',
+  'EXPORT_DATA',
+  'REPORT_PRICE_CHECK',
+  'REPORT_INVOICE_RECONCILIATION',
+  'SUPPLEMENT_TAX_REPORT',
+];
+
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
@@ -34,7 +66,7 @@ export const AuthProvider = ({ children }) => {
       setState({
         userInfo: {
           ...response.data,
-          permissions: ['INVOICE_LIST_VIEW', 'INVOICE_LIST_DOWNLOAD', 'INVOICE_LIST_EXPORT'],
+          permissions: fakePermissions,
         },
       });
       setLocalStorage(ORG_LIST, response.data?.organizations);
