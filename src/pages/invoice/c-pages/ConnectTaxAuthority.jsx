@@ -5,9 +5,9 @@ import { BasicFormWrapper } from '@/container/styled';
 import { LayoutContent } from '@/layout/LayoutContent';
 import { API_INVOICES_CONNECT_AUTHORITY, dataService } from '@/service';
 import { Form, Input, notification, Skeleton } from 'antd';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { statusIconMap, statusTextMap, statusTypeMap } from '../utils';
+import { EStatusTax, statusIconMap, statusTextMap, statusTypeMap } from '../utils';
 
 function ConnectTaxAuthority() {
   const { t } = useTranslation();
@@ -21,18 +21,21 @@ function ConnectTaxAuthority() {
   const alertMessage = statusTextMap[status] || '';
   const alertIcon = statusIconMap[status] || null;
 
-  useEffect(() => {
-    const intervalId = setInterval(() => {
-      getStatus();
-    }, 10000);
+  const intervalRef = useRef(null);
 
-    return () => clearInterval(intervalId);
+  useEffect(() => {
+    const fetchStatus = async () => {
+      await getStatus();
+    };
+
+    intervalRef.current = setInterval(fetchStatus, 10000);
+
+    return () => clearInterval(intervalRef.current);
   }, []);
 
   const getStatus = async () => {
     try {
       const response = await dataService.get(API_INVOICES_CONNECT_AUTHORITY);
-
       setStatus(response?.data?.status);
     } catch (error) {
       console.error(error);
@@ -47,7 +50,6 @@ function ConnectTaxAuthority() {
     setLoading(true);
     try {
       const response = await dataService.get(API_INVOICES_CONNECT_AUTHORITY);
-
       const { status, ...fields } = response?.data || {};
 
       setStatus(status);
@@ -73,22 +75,27 @@ function ConnectTaxAuthority() {
 
   const handleOk = async (values) => {
     setSaving(true);
+    setStatus(1);
     try {
-      const response = await dataService.post(API_INVOICES_CONNECT_AUTHORITY, {
-        ...values,
-      });
+      const response = await dataService.post(API_INVOICES_CONNECT_AUTHORITY, { ...values });
+      const { status, ...fields } = response?.data || {};
 
-      form.setFieldsValue(response.data);
+      form.setFieldsValue(fields);
 
       notification.success({
         message: t('Common_ConnectTaxAuthorities'),
         description: t('Common_UpdateSuccess'),
       });
+
+      if (status === EStatusTax.Success || status === EStatusTax.Failure) {
+        clearInterval(intervalRef.current);
+      }
     } catch (error) {
       const errMsg =
         error?.response?.data?.errors?.code === 'invalid_invoice_credentials'
           ? t('Tên đăng nhập hoặc mật khẩu không hợp lệ')
           : t('Common_UpdateFailure');
+
       notification.error({
         message: t('Common_ConnectTaxAuthorities'),
         description: errMsg,
@@ -111,7 +118,7 @@ function ConnectTaxAuthority() {
                 <Alert
                   message={alertMessage}
                   type={alertType}
-                  description={status === 3 && 'Kiểm tra thông tin đăng nhập'}
+                  description={status === EStatusTax.Failure && 'Kiểm tra thông tin đăng nhập'}
                   showIcon
                   icon={alertIcon}
                 />

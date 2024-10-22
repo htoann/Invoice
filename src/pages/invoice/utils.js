@@ -25,6 +25,12 @@ export const statusIconMap = {
   3: <UilExclamationTriangle />,
 };
 
+export const EStatusTax = {
+  Waiting: 1,
+  Success: 2,
+  Failure: 3,
+};
+
 export const handleTableDataSource = (invoiceList, current, pageSize) => {
   return invoiceList?.length > 0
     ? invoiceList.map((item, index) => {
