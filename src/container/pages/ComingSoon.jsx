@@ -5,7 +5,7 @@ import { useAppState } from 'context/AppContext';
 import FontAwesome from 'react-fontawesome';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
-import { Main } from '../styled';
+import { Main } from '../style';
 import { ComingSoonStyleWrapper } from './style';
 
 function ComingSoon() {

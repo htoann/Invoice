@@ -1,5 +1,5 @@
 import { Button } from '@/components/button';
-import { TableWrapper } from '@/container/styled';
+import { TableWrapper } from '@/container/style';
 import { defaultPaginationConfig } from '@/utils/index';
 import { Table } from 'antd';
 import { useTranslation } from 'react-i18next';

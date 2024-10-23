@@ -1,5 +1,5 @@
 import { PageHeader } from '@/components/page-header';
-import { Main } from '@/container/styled';
+import { Main } from '@/container/style';
 import { Row } from 'antd';
 import { useAppState } from 'context/AppContext';
 import { useGetOrgStructure } from 'hooks/useGetOrgStructure';

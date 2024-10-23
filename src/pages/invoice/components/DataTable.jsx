@@ -1,5 +1,5 @@
 import { Tab } from '@/components/tabs';
-import { TableWrapper } from '@/container/styled';
+import { TableWrapper } from '@/container/style';
 import { DATE_FORMAT_DASH, defaultPaginationConfig, formatTime } from '@/utils/index';
 import { Space, Table } from 'antd';
 import dayjs from 'dayjs';

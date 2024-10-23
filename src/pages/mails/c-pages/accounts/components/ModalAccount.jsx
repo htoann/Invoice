@@ -1,6 +1,6 @@
 import { Button } from '@/components/button';
 import { Modal } from '@/components/modal';
-import { BasicFormWrapper } from '@/container/styled';
+import { BasicFormWrapper } from '@/container/style';
 import i18n from '@/i18n/config';
 import { Form, Input, Select } from 'antd';
 import { useAppState } from 'context/AppContext';

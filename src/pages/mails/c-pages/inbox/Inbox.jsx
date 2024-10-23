@@ -2,7 +2,7 @@ import { Button } from '@/components/button';
 import { Cards } from '@/components/card';
 import { FilterOrgStructureHeader } from '@/components/FilterOrgStructureHeader';
 import { PageHeader } from '@/components/page-header';
-import { Main } from '@/container/styled';
+import { Main } from '@/container/style';
 import { UilAlignLeft, UilAlignRight } from '@tooni/iconscout-unicons-react';
 import { Col, Empty, Row } from 'antd';
 import { useGetOrgStructure } from 'hooks/useGetOrgStructure';

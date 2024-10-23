@@ -5,7 +5,7 @@ import { Spin } from 'antd';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { NavLink } from 'react-router-dom';
-import { Main } from '../styled';
+import { Main } from '../style';
 import { ErrorWrapper } from './style';
 
 function Forbidden() {

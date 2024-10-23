@@ -1,5 +1,5 @@
 import { Button } from '@/components/button';
-import { TableWrapper } from '@/container/styled';
+import { TableWrapper } from '@/container/style';
 import { defaultPaginationConfig } from '@/utils/index';
 import { DownloadOutlined } from '@ant-design/icons';
 import { UilFileExport } from '@tooni/iconscout-unicons-react';

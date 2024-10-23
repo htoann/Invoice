@@ -2,7 +2,7 @@ import Alert from '@/components/alert';
 import { Button } from '@/components/button';
 import { ConfirmModal } from '@/components/modal/ConfirmModal';
 import { PageHeader } from '@/components/page-header';
-import { BasicFormWrapper } from '@/container/styled';
+import { BasicFormWrapper } from '@/container/style';
 import { LayoutContent } from '@/layout/LayoutContent';
 import { API_INVOICES_CONNECT_AUTHORITY, dataService } from '@/service';
 import { Form, Input, notification, Skeleton } from 'antd';

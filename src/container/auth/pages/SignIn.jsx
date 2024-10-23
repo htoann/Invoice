@@ -2,7 +2,7 @@ import { Button, Col, Form, Input, Row } from 'antd';
 import { useAuth } from 'context/AuthContext';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
-import { AuthFormWrap } from './Style';
+import { AuthFormWrap } from './style';
 
 function SignIn() {
   const { t } = useTranslation();

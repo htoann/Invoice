@@ -1,6 +1,6 @@
 import { Cards } from '@/components/card';
 import { PageHeader } from '@/components/page-header';
-import { Main } from '@/container/styled';
+import { Main } from '@/container/style';
 import { Col, Row, Skeleton } from 'antd';
 import { Suspense } from 'react';
 import { useTranslation } from 'react-i18next';

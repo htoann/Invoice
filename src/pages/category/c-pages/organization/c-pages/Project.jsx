@@ -1,7 +1,7 @@
 import { Button } from '@/components/button';
 import { Cards } from '@/components/card';
 import { Modal } from '@/components/modal';
-import { BasicFormWrapper, BorderLessHeading } from '@/container/styled';
+import { BasicFormWrapper, BorderLessHeading } from '@/container/style';
 import { API_PROJECT, API_PROJECTS, dataService } from '@/service';
 import { RightOutlined } from '@ant-design/icons';
 import { Col, Empty, Form, Input, Menu, notification, Skeleton } from 'antd';

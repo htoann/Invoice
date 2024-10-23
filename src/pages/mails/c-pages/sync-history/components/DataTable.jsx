@@ -1,4 +1,4 @@
-import { TableWrapper } from '@/container/styled';
+import { TableWrapper } from '@/container/style';
 import { defaultPaginationConfig } from '@/utils/index';
 import { Table } from 'antd';
 import { DataTableStyleWrap } from '../style';

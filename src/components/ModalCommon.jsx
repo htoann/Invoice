@@ -1,6 +1,6 @@
 import { Button } from '@/components/button';
 import { Modal } from '@/components/modal';
-import { BasicFormWrapper } from '@/container/styled';
+import { BasicFormWrapper } from '@/container/style';
 import { AutoComplete, Checkbox, Col, DatePicker, Form, Input, InputNumber, Row, Select } from 'antd';
 import { useTranslation } from 'react-i18next';
 

@@ -1,7 +1,7 @@
 import { useAuth } from 'context/AuthContext';
 import React, { lazy, useEffect } from 'react';
 import { Route, Routes, useNavigate } from 'react-router-dom';
-import AuthLayout from '../container/auth/Index';
+import AuthLayout from '../container/auth';
 import { routes } from './const';
 
 const Login = lazy(() => import('../container/auth/pages/SignIn'));

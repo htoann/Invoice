@@ -1,5 +1,5 @@
 import { Cards } from '@/components/card';
-import { BorderLessHeading, TableDefaultStyle } from '@/container/styled';
+import { BorderLessHeading, TableDefaultStyle } from '@/container/style';
 import axios from '@/mock/index';
 import { API_INVOICES_CHANGE } from '@/service';
 import { Table } from 'antd';

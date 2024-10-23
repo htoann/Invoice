@@ -1,5 +1,5 @@
 import { Button } from '@/components/button';
-import { TableWrapper } from '@/container/styled';
+import { TableWrapper } from '@/container/style';
 import { API_TAX_PAYER_EXCEL } from '@/service/apiConst';
 import { dataService } from '@/service/dataService';
 import { defaultPaginationConfig, downloadFile, formatTime } from '@/utils/index';

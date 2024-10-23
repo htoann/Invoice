@@ -1,6 +1,6 @@
 import { Spin } from 'antd';
 import { Suspense } from 'react';
-import { AuthenticationWrap } from './pages/Style';
+import { AuthenticationWrap } from './pages/style';
 
 const AuthLayout = (WrapperContent) => {
   return function () {

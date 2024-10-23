@@ -1,5 +1,5 @@
 import { Cards } from '@/components/card';
-import { BorderLessHeading, Main } from '@/container/styled';
+import { BorderLessHeading, Main } from '@/container/style';
 import { Col, Row } from 'antd';
 
 export const LayoutContent = ({ children, rowProps, colProps, borderLessHeading, cards, cardsProps }) => (
