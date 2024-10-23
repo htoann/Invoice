@@ -3,9 +3,9 @@ import VieImg from '@/static/img/flag/vi.png';
 import { setLocalStorage } from '@/utils/localStorage';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
-import { NavAuth } from '../style';
+import { NavAuth } from '../../style';
 
-export const LanguageSetting = ({ setState }) => {
+export const LanguageOption = ({ setState }) => {
   const { t, i18n } = useTranslation();
 
   const onFlagChangeHandle = (value, e) => {

@@ -4,7 +4,7 @@ import { Avatar } from 'antd';
 import { useAuth } from 'context/AuthContext';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
-import { UserDropDown } from '../style';
+import { UserDropDown } from '../../style';
 
 export const UserMenu = ({ userInfo, setSettingOpen }) => {
   const { t } = useTranslation();
