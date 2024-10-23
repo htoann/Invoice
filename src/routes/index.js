@@ -9,7 +9,7 @@ import { routes } from './const';
 
 const Dashboard = lazy(() => import('@/pages/dashboard'));
 const InvoiceList = lazy(() => import('@/pages/invoice/InvoiceList'));
-const ConnectTaxAuthority = lazy(() => import('@/pages/invoice/c-pages/ConnectTaxAuthority'));
+const ConnectTaxAuthority = lazy(() => import('@/pages/invoice/c-pages/TaxConnect'));
 
 const Email = lazy(() => import('@/pages/mails/c-pages/inbox/Inbox'));
 const AccountsList = lazy(() => import('@/pages/mails/c-pages/accounts/AccountsList'));

@@ -10,21 +10,23 @@ import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { EStatusTax, statusIconMap, statusTextMap, statusTypeMap } from '../utils';
 
-function ConnectTaxAuthority() {
+function TaxConnect() {
   const { t } = useTranslation();
   const [form] = Form.useForm();
 
-  const [isCreate, setIsCreate] = useState(false);
-
-  const [loading, setLoading] = useState(false);
   const [saving, setSaving] = useState(false);
+  const [loadingInfo, setLoadingInfo] = useState(false);
+  const [isCreate, setIsCreate] = useState(false);
   const [status, setStatus] = useState(null);
   const [showWarningUpdate, setShowWarningUpdate] = useState(false);
   const [showWarningCreate, setShowWarningCreate] = useState(false);
 
-  const alertType = statusTypeMap[status] || 'info';
-  const alertMessage = statusTextMap[status] || '';
-  const alertIcon = statusIconMap[status] || null;
+  const alertProps = {
+    message: statusTextMap[status] || '',
+    type: statusTypeMap[status] || 'info',
+    icon: statusIconMap[status] || null,
+    description: status === EStatusTax.Failure ? 'Kiểm tra thông tin đăng nhập' : undefined,
+  };
 
   const intervalRef = useRef(null);
 
@@ -33,16 +35,16 @@ function ConnectTaxAuthority() {
   }, [showWarningUpdate, showWarningCreate]);
 
   useEffect(() => {
-    const fetchStatus = async () => {
-      await getStatus();
-    };
-
     if (status !== EStatusTax.Success && status !== EStatusTax.Failure) {
-      intervalRef.current = setInterval(fetchStatus, 10000);
+      intervalRef.current = setInterval(getStatus, 10000);
     }
 
     return () => clearInterval(intervalRef.current);
   }, [status]);
+
+  useEffect(() => {
+    getInfo();
+  }, []);
 
   const getStatus = async () => {
     try {
@@ -57,15 +59,14 @@ function ConnectTaxAuthority() {
     }
   };
 
-  const getList = async () => {
-    setLoading(true);
+  const getInfo = async () => {
+    setLoadingInfo(true);
     try {
       const response = await dataService.get(API_INVOICES_CONNECT_AUTHORITY);
       const { status, ...fields } = response?.data || {};
 
-      setStatus(status);
       fields && Object.keys(fields)?.length > 0 && form.setFieldsValue(fields);
-
+      setStatus(status);
       setIsCreate(!response?.data?.username);
     } catch (error) {
       console.error(error);
@@ -74,17 +75,12 @@ function ConnectTaxAuthority() {
         description: t('Invoice_GetTaxConnectFailure'),
       });
     } finally {
-      setLoading(false);
+      setLoadingInfo(false);
     }
   };
 
-  useEffect(() => {
-    getList();
-  }, []);
-
   const handleOk = async () => {
     const values = form.getFieldsValue();
-
     setSaving(true);
     setStatus(EStatusTax.Waiting);
 
@@ -114,23 +110,17 @@ function ConnectTaxAuthority() {
   };
 
   const renderAlert = () =>
-    status ? (
+    status && (
       <div style={{ marginBottom: 15 }}>
-        <Alert
-          message={alertMessage}
-          type={alertType}
-          description={status === EStatusTax.Failure ? 'Kiểm tra thông tin đăng nhập' : undefined}
-          showIcon
-          icon={alertIcon}
-        />
+        <Alert showIcon {...alertProps} />
       </div>
-    ) : null;
+    );
 
   return (
     <div style={{ width: '35rem', maxWidth: '100%', margin: 'auto' }}>
       <PageHeader className="invoice-page-header-main" title={t('Common_ConnectTaxAuthorities')} />
       <LayoutContent borderLessHeading cards>
-        {loading ? (
+        {loadingInfo ? (
           <Skeleton active style={{ marginTop: 30 }} />
         ) : (
           <BasicFormWrapper>
@@ -176,19 +166,19 @@ function ConnectTaxAuthority() {
         open={showWarningUpdate}
         setOpen={setShowWarningUpdate}
         onConfirm={handleOk}
-        loading={saving}
-        description="Nếu thay đổi thông tin đăng nhập, hệ thống sẽ tiến hành đồng bộ lại dữ liệu hoá đơn. Bạn có muốn tiếp tục?"
+        loadingInfo={saving}
+        description={t('Nếu thay đổi thông tin đăng nhập, hệ thống sẽ đồng bộ lại dữ liệu. Bạn có muốn tiếp tục?')}
       />
 
       <WarningModal
         open={showWarningCreate}
         setOpen={setShowWarningCreate}
         onConfirm={handleOk}
-        loading={saving}
-        description="Hệ thống sẽ tiến hành đồng bộ dữ liệu hoá đơn lần đầu. Bạn có muốn tiếp tục?"
+        loadingInfo={saving}
+        description={t('Hệ thống sẽ đồng bộ dữ liệu lần đầu. Bạn có muốn tiếp tục?')}
       />
     </div>
   );
 }
 
-export default ConnectTaxAuthority;
+export default TaxConnect;
