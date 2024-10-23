@@ -1,10 +1,10 @@
-import { Button } from '@/components/buttons';
-import { Modal } from '@/components/modals';
+import { Button } from '@/components/button';
+import { Modal } from '@/components/modal';
 import { BasicFormWrapper } from '@/container/styled';
 import { Form } from 'antd';
 import { useTranslation } from 'react-i18next';
 
-export const WarningModal = ({ open, setOpen, onConfirm, loading, description }) => {
+export const ConfirmModal = ({ open, setOpen, onConfirm, loading, description }) => {
   const { t } = useTranslation();
   const [form] = Form.useForm();
 

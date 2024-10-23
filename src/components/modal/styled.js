@@ -29,4 +29,4 @@ const ModalStyled = Styled(Modal)`
   ${({ theme, type }) => type && ModalStyledColor(type, theme)}
 `;
 
-export { ModalStyled, ModalStyledColor };
+export { ModalStyled };

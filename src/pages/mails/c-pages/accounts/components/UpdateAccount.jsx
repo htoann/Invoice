@@ -1,4 +1,4 @@
-import { WarningModal } from '@/components/modals/ModalAlert';
+import { ConfirmModal } from '@/components/modal/ConfirmModal';
 import { API_MAILS_ACCOUNT_BY_ACCOUNT_ID, dataService } from '@/service';
 import { Form, notification } from 'antd';
 import { useState } from 'react';
@@ -60,7 +60,7 @@ export const UpdateAccount = ({ state, setState, getList }) => {
         textSubmit={t('Common_Save')}
       />
 
-      <WarningModal
+      <ConfirmModal
         open={showConfirm}
         setOpen={setShowConfirm}
         onConfirm={handleOk}

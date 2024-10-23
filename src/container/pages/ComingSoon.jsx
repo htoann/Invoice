@@ -1,4 +1,4 @@
-import { Cards } from '@/components/cards/frame';
+import { Cards } from '@/components/card';
 import { PageHeader } from '@/components/page-headers';
 import { Col, Row } from 'antd';
 import { useAppState } from 'context/AppContext';

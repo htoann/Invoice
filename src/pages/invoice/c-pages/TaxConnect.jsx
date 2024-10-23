@@ -1,6 +1,6 @@
-import Alert from '@/components/alerts/alerts';
-import { Button } from '@/components/buttons';
-import { WarningModal } from '@/components/modals/ModalAlert';
+import Alert from '@/components/alert';
+import { Button } from '@/components/button';
+import { ConfirmModal } from '@/components/modal/ConfirmModal';
 import { PageHeader } from '@/components/page-headers';
 import { BasicFormWrapper } from '@/container/styled';
 import { LayoutContent } from '@/layout/LayoutContent';
@@ -162,7 +162,7 @@ function TaxConnect() {
         )}
       </LayoutContent>
 
-      <WarningModal
+      <ConfirmModal
         open={showWarningUpdate}
         setOpen={setShowWarningUpdate}
         onConfirm={handleOk}
@@ -170,7 +170,7 @@ function TaxConnect() {
         description={t('Nếu thay đổi thông tin đăng nhập, hệ thống sẽ đồng bộ lại dữ liệu. Bạn có muốn tiếp tục?')}
       />
 
-      <WarningModal
+      <ConfirmModal
         open={showWarningCreate}
         setOpen={setShowWarningCreate}
         onConfirm={handleOk}

@@ -1,4 +1,4 @@
-import { Cards } from '@/components/cards/frame';
+import { Cards } from '@/components/card';
 import Heading from '@/components/heading';
 import { MailDetailsWrapper, MessageDetails } from '../style';
 import { AttachmentList } from './AttachmentList';

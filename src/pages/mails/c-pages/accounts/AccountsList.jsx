@@ -1,4 +1,4 @@
-import { Button } from '@/components/buttons';
+import { Button } from '@/components/button';
 import { FilterOrgStructure } from '@/components/FilterOrgStructure';
 import { PageHeader } from '@/components/page-headers';
 import { LayoutContent } from '@/layout/LayoutContent';

@@ -1,4 +1,4 @@
-import { Button } from '@/components/buttons';
+import { Button } from '@/components/button';
 import { TableWrapper } from '@/container/styled';
 import { defaultPaginationConfig } from '@/utils/index';
 import { DownloadOutlined } from '@ant-design/icons';

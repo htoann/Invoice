@@ -1,4 +1,4 @@
-import { Button } from '@/components/buttons';
+import { Button } from '@/components/button';
 import Heading from '@/components/heading';
 import img404 from '@/static/img/pages/404.svg';
 import { Spin } from 'antd';

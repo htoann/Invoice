@@ -1,4 +1,4 @@
-import { Cards } from '@/components/cards/frame';
+import { Cards } from '@/components/card';
 import { BorderLessHeading, TableDefaultStyle } from '@/container/styled';
 import axios from '@/mock/index';
 import { API_BUSINESS_STATUS } from '@/service';

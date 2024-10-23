@@ -158,7 +158,7 @@
 //   );
 // };
 
-import { Button } from '@/components/buttons';
+import { Button } from '@/components/button';
 import { API_TAX_PAYER_EXCEL } from '@/service/apiConst';
 import { dataService } from '@/service/dataService';
 import { UploadOutlined } from '@ant-design/icons';

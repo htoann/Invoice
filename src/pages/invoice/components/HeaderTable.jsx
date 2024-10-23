@@ -1,4 +1,4 @@
-import { ButtonPermission } from '@/components/buttons';
+import { ButtonPermission } from '@/components/button';
 import { API_INVOICES_EXCEL, API_INVOICES_ZIP } from '@/service/apiConst';
 import { dataService } from '@/service/dataService';
 import dayjs from '@/utils/dayjs';

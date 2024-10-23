@@ -16,4 +16,5 @@ function Header({ name }) {
 Header.propTypes = {
   name: PropTypes.string,
 };
+
 export default Header;

@@ -1,5 +1,5 @@
 import PropTypes, { object } from 'prop-types';
-import { Button } from '../buttons';
+import { Button } from '../button';
 import { ModalStyled } from './styled';
 
 const Modal = (props) => {

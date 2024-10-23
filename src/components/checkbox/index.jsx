@@ -1,8 +1,8 @@
+import { Checkbox as CheckboxAntd } from 'antd';
 import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
-import { CheckboxStyle } from './style';
 
-const CheckboxGroup = CheckboxStyle.Group;
+const CheckboxGroup = CheckboxAntd.Group;
 
 const Checkbox = (props) => {
   const {
@@ -50,15 +50,15 @@ const Checkbox = (props) => {
   };
 
   return !multiple ? (
-    <CheckboxStyle checked={checked} onChange={onChecked} defaultChecked={defaultChecked} disabled={disabled}>
+    <CheckboxAntd checked={checked} onChange={onChecked} defaultChecked={defaultChecked} disabled={disabled}>
       {children}
-    </CheckboxStyle>
+    </CheckboxAntd>
   ) : (
     <div>
       <div style={{ borderBottom: '1px solid #E9E9E9' }}>
-        <CheckboxStyle indeterminate={state.indeterminate} onChange={onCheckAllChange} checked={state.checkAll}>
+        <CheckboxAntd indeterminate={state.indeterminate} onChange={onCheckAllChange} checked={state.checkAll}>
           Check all
-        </CheckboxStyle>
+        </CheckboxAntd>
       </div>
       <br />
       <CheckboxGroup options={plainOptions} value={state.checkedList} onChange={onMultiChange} />

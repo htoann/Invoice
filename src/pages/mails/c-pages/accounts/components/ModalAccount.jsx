@@ -1,5 +1,5 @@
-import { Button } from '@/components/buttons';
-import { Modal } from '@/components/modals';
+import { Button } from '@/components/button';
+import { Modal } from '@/components/modal';
 import { BasicFormWrapper } from '@/container/styled';
 import i18n from '@/i18n/config';
 import { Form, Input, Select } from 'antd';

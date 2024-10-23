@@ -4,8 +4,8 @@ import propTypes from 'prop-types';
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { ReactSVG } from 'react-svg';
-import CountUp from '../count-up/CountUp';
-import { OverviewCardWrap } from './Style';
+import CountUp from '../../count-up';
+import { OverviewCardWrap } from './style';
 
 const OverviewCard = ({
   data = {},

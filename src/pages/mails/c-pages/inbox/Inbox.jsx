@@ -1,5 +1,5 @@
-import { Button } from '@/components/buttons';
-import { Cards } from '@/components/cards/frame';
+import { Button } from '@/components/button';
+import { Cards } from '@/components/card';
 import { FilterOrgStructureHeader } from '@/components/FilterOrgStructureHeader';
 import { PageHeader } from '@/components/page-headers';
 import { Main } from '@/container/styled';

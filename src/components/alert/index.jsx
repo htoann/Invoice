@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { AlertWrap } from './Style';
+import { AlertWrap } from './style';
 
 function Alert({
   type = 'success',

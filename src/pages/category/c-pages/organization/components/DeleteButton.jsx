@@ -1,4 +1,4 @@
-import { Button } from '@/components/buttons';
+import { Button } from '@/components/button';
 import { UilTrash } from '@tooni/iconscout-unicons-react';
 import { Popconfirm } from 'antd';
 import { useTranslation } from 'react-i18next';

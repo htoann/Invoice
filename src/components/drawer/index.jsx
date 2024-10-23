@@ -3,7 +3,7 @@ import { Radio } from 'antd';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Button } from '../buttons';
+import { Button } from '../button';
 import { DrawerStyle } from './style';
 
 const RadioGroup = Radio.Group;

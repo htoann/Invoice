@@ -1,5 +1,5 @@
-import { Button } from '@/components/buttons';
-import { Modal } from '@/components/modals';
+import { Button } from '@/components/button';
+import { Modal } from '@/components/modal';
 import { BasicFormWrapper } from '@/container/styled';
 import { AutoComplete, Checkbox, Col, DatePicker, Form, Input, InputNumber, Row, Select } from 'antd';
 import { useTranslation } from 'react-i18next';

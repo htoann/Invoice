@@ -1,4 +1,4 @@
-import { Cards } from '@/components/cards/frame';
+import { Cards } from '@/components/card';
 import { PageHeader } from '@/components/page-headers';
 import { Main } from '@/container/styled';
 import { Col, Row, Skeleton } from 'antd';
