@@ -1,4 +1,4 @@
-import { Tab } from '@/components/tabs/tabs';
+import { Tab } from '@/components/tabs';
 import { TableWrapper } from '@/container/styled';
 import { DATE_FORMAT_DASH, defaultPaginationConfig, formatTime } from '@/utils/index';
 import { Space, Table } from 'antd';

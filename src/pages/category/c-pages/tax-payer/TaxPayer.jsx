@@ -1,4 +1,4 @@
-import { PageHeader } from '@/components/page-headers';
+import { PageHeader } from '@/components/page-header';
 import { LayoutContent } from '@/layout/LayoutContent';
 import { API_TAX_PAYER } from '@/service/apiConst';
 import { useList } from 'hooks/useListCommon';

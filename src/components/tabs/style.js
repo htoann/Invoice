@@ -98,4 +98,4 @@ const Child = Styled(TabPane)`
     
 `;
 
-export { TabBasic, Child };
+export { Child, TabBasic };

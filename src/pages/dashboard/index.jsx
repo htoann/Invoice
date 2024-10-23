@@ -1,5 +1,5 @@
 import { Cards } from '@/components/card';
-import { PageHeader } from '@/components/page-headers';
+import { PageHeader } from '@/components/page-header';
 import { Main } from '@/container/styled';
 import { Col, Row, Skeleton } from 'antd';
 import { Suspense } from 'react';

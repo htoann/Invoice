@@ -1,6 +1,6 @@
 import { Button } from '@/components/button';
 import { FilterOrgStructure } from '@/components/FilterOrgStructure';
-import { PageHeader } from '@/components/page-headers';
+import { PageHeader } from '@/components/page-header';
 import { LayoutContent } from '@/layout/LayoutContent';
 import { routes } from '@/routes/const';
 import { API_MAILS_ACCOUNT_BY_ACCOUNT_ID, API_MAILS_ACCOUNTS, dataService } from '@/service';

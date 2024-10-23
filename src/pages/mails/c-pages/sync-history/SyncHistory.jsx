@@ -1,5 +1,5 @@
 import { FilterOrgStructureHeader } from '@/components/FilterOrgStructureHeader';
-import { PageHeader } from '@/components/page-headers';
+import { PageHeader } from '@/components/page-header';
 import { LayoutContent } from '@/layout/LayoutContent';
 import { routes } from '@/routes/const';
 import { API_MAIL_TASK_HISTORIES } from '@/service';

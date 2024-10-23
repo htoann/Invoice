@@ -1,5 +1,5 @@
 import CustomHeader from '@/components/HeaderCommon';
-import { PageHeader } from '@/components/page-headers';
+import { PageHeader } from '@/components/page-header';
 import { LayoutContent } from '@/layout/LayoutContent';
 import { API_PRODUCT, API_PRODUCTS, dataService } from '@/service';
 import { UilEdit, UilTrash } from '@tooni/iconscout-unicons-react';

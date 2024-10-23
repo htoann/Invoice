@@ -1,5 +1,5 @@
 import { Cards } from '@/components/card';
-import { PageHeader } from '@/components/page-headers';
+import { PageHeader } from '@/components/page-header';
 import { Col, Row } from 'antd';
 import { useAppState } from 'context/AppContext';
 import FontAwesome from 'react-fontawesome';

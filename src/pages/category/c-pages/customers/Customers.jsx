@@ -1,5 +1,5 @@
 import CustomHeader from '@/components/HeaderCommon';
-import { PageHeader } from '@/components/page-headers';
+import { PageHeader } from '@/components/page-header';
 import { LayoutContent } from '@/layout/LayoutContent';
 import { API_CUSTOMER, API_CUSTOMERS, dataService } from '@/service';
 import { formatTime } from '@/utils/index';
