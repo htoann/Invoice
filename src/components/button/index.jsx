@@ -1,4 +1,4 @@
-import { withPermission } from '@/layout/withPermission';
+import { withPermission } from '@/layout/WithPermission';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { ButtonStyled, ButtonStyledGroup } from './styled';

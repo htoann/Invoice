@@ -12,7 +12,7 @@ import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import Customizer from './Customizer';
-import { InfoWrapper, NavAuth, UserDropDown } from './Style';
+import { InfoWrapper, NavAuth, UserDropDown } from './style';
 
 const AuthInfo = React.memo(() => {
   const { i18n, t } = useTranslation();

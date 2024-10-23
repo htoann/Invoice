@@ -1,5 +1,5 @@
 import Heading from '@/components/heading';
-import AttachmentLogo from '@/static/img/files/attach2.png';
+import AttachmentLogo from '@/static/img/files/attach.png';
 import { API_ENDPOINT, formatDataSize } from '@/utils/index';
 import { UilImport } from '@tooni/iconscout-unicons-react';
 import { useTranslation } from 'react-i18next';

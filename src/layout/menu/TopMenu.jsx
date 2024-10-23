@@ -1,9 +1,9 @@
 import { useLayoutEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
+import { TopMenuStyle } from '../style';
+import { WithPermission } from '../WithPermission';
 import { menuItems } from './const';
-import { TopMenuStyle } from './Style';
-import { WithPermission } from './withPermission';
 
 export const TopMenu = () => {
   const { t } = useTranslation();

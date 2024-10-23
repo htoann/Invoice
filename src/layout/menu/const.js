@@ -1,5 +1,5 @@
 import { routes } from '@/routes/const';
-import { PERMISSIONS } from '../utils';
+import { PERMISSIONS } from '../../utils';
 
 export const menuItems = [
   {

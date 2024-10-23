@@ -1,5 +1,5 @@
 import Forbidden from '@/container/pages/Forbidden';
-import WithAdminLayout from '@/layout/withAdminLayout';
+import LayoutWrapper from '@/layout/LayoutWrapper';
 import { Spin } from 'antd';
 import { usePermission } from 'hooks/checkUserPermission';
 import React, { lazy, Suspense, useEffect } from 'react';
@@ -67,4 +67,4 @@ const Index = React.memo(() => {
   );
 });
 
-export default WithAdminLayout(Index);
+export default LayoutWrapper(Index);

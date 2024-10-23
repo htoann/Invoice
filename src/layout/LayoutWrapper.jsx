@@ -9,14 +9,14 @@ import { useCallback, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import { REACT_MODE } from '../utils';
-import { LeftMenu } from './LeftMenu';
-import { LayoutContainer, SmallScreenAuthInfo, TopMenuSearch } from './Style';
-import { TopMenu } from './TopMenu';
 import AuthInfo from './header-right/index';
+import { LeftMenu } from './menu/LeftMenu';
+import { TopMenu } from './menu/TopMenu';
+import { LayoutContainer, SmallScreenAuthInfo, TopMenuSearch } from './style';
 
 const { Header, Sider, Content } = Layout;
 
-const WithAdminLayout = (WrappedComponent) => {
+const LayoutWrapper = (WrappedComponent) => {
   const LayoutComponent = (props) => {
     const { rtl, topMenu, layoutMode } = useAppState();
     const [collapsed, setCollapsed] = useState(false);
@@ -202,4 +202,4 @@ const WithAdminLayout = (WrappedComponent) => {
   return LayoutComponent;
 };
 
-export default WithAdminLayout;
+export default LayoutWrapper;

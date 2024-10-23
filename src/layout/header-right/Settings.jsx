@@ -4,7 +4,7 @@ import { Col, Row } from 'antd';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ReactSVG } from 'react-svg';
-import { SettingDropdown } from './Style';
+import { SettingDropdown } from './style';
 
 const Settings = React.memo(() => {
   const content = (
