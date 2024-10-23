@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ReactSVG } from 'react-svg';
-import { UserActionDropDown } from './style';
+import { UserActionDropDown } from '../style';
 
 const MessageBox = React.memo(() => {
   const { rtl } = useAppState();

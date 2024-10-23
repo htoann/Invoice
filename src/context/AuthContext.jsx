@@ -128,7 +128,7 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  const logOut = useCallback(() => {
+  const logout = useCallback(() => {
     setState({ loading: true });
     setAuthState({ isLoggedIn: false, loading: false });
     clearLogoutLocalStorageAndCookie();
@@ -148,7 +148,7 @@ export const AuthProvider = ({ children }) => {
         loading,
         login,
         register,
-        logOut,
+        logout,
         userInfo,
         orgId,
       }}
