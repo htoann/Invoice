@@ -64,7 +64,7 @@ const AlertWrap = Styled(Alert)`
 
   ${({ showIcon, theme }) =>
     showIcon &&
-    `padding: 16px 20px 20px!important;
+    `padding: 16px 20px !important;
     alert-empty-message{
       padding: 11px 40px 11px!important;
     }
