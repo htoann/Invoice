@@ -1,5 +1,4 @@
 import { useAuth } from 'context/AuthContext';
-import propTypes from 'prop-types';
 import { useEffect } from 'react';
 import { Navigate, Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 import { routes } from './const';
@@ -27,9 +26,5 @@ function ProtectedRoute({ Component, path }) {
     </Routes>
   );
 }
-
-ProtectedRoute.propTypes = {
-  path: propTypes.string.isRequired,
-};
 
 export default ProtectedRoute;

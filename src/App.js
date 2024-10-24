@@ -22,7 +22,7 @@ export const App = () => {
   return (
     <ConfigProvider direction={rtl ? 'rtl' : 'ltr'} locale={customLocale}>
       <ThemeProvider theme={{ ...themeColor, rtl, topMenu, mainContent }}>
-        <Router basename={process.env.PUBLIC_URL}>
+        <Router>
           {!isLoggedIn ? (
             <Routes>
               <Route path="/*" element={<Auth />} />

@@ -14,21 +14,22 @@ const fakePermissions = [
   'INVOICE_LIST_DOWNLOAD',
   'INVOICE_LIST_EXPORT',
   'TAX_VIEW',
+  'TAX_VIEW_UPDATE',
 
   // Email-related permissions
   'EMAIL_MENU',
-  'INBOX_VIEW',
   'EMAIL_ACCOUNT_VIEW',
+  'INBOX_VIEW',
   'SYNC_HISTORY_VIEW',
 
   // Category-related permissions
   'CATEGORY_MENU',
   'ORG_STRUCTURE_VIEW',
-  'SUPPLIER_VIEW',
+  'PROVIDER_VIEW',
   'CUSTOMER_VIEW',
-  'GOODS_VIEW',
+  'PRODUCT_VIEW',
   'EXPENSE_ITEM_VIEW',
-  'TAXPAYER_INFO_VIEW',
+  'TAXPAYER_VIEW',
 
   // Report-related permissions
   'REPORT_MENU',

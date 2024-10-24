@@ -5,7 +5,6 @@ export const routes = {
   invoice: '/hoa-don',
   invoiceConnectTax: '/ket-noi-co-quan-thue',
 
-  email: '/hop-thu',
   emailAccount: '/hop-thu/tai-khoan',
   emailInbox: '/hop-thu/hop-thu-den',
   emailSync: '/hop-thu/dong-bo',

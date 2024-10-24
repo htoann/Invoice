@@ -1,7 +1,7 @@
 import Forbidden from '@/container/pages/Forbidden';
 import LayoutWrapper from '@/layout/LayoutWrapper';
 import { Spin } from 'antd';
-import { usePermission } from 'hooks/checkUserPermission';
+import { usePermission } from 'hooks/usePermission';
 import React, { lazy, Suspense, useEffect } from 'react';
 import { Route, Routes, useLocation } from 'react-router-dom';
 import { PERMISSIONS } from '../utils';
@@ -33,16 +33,19 @@ const Index = React.memo(() => {
 
   const routesConfig = [
     { path: '/', element: <Dashboard />, index: true },
+
     { path: routes.invoice, element: <InvoiceList />, permission: PERMISSIONS.INVOICE_LIST_VIEW },
-    { path: routes.invoiceConnectTax, element: <ConnectTaxAuthority /> },
-    { path: routes.emailAccount, element: <AccountsList /> },
-    { path: routes.emailSync, element: <SyncHistory /> },
-    { path: routes.email + '/*', element: <Email /> },
-    { path: routes.categoryProduct, element: <Products /> },
-    { path: routes.categoryProvider, element: <Providers /> },
-    { path: routes.categoryCustomer, element: <Customers /> },
-    { path: routes.categoryOrg, element: <Organization /> },
-    { path: routes.categoryTaxPayer, element: <TaxPayer /> },
+    { path: routes.invoiceConnectTax, element: <ConnectTaxAuthority />, permission: PERMISSIONS.TAX_VIEW },
+
+    { path: routes.emailAccount, element: <AccountsList />, permission: PERMISSIONS.EMAIL_ACCOUNT_VIEW },
+    { path: routes.emailInbox, element: <Email />, permission: PERMISSIONS.INBOX_VIEW },
+    { path: routes.emailSync, element: <SyncHistory />, permission: PERMISSIONS.SYNC_HISTORY_VIEW },
+
+    { path: routes.categoryOrg, element: <Organization />, permission: PERMISSIONS.ORG_STRUCTURE_VIEW },
+    { path: routes.categoryProvider, element: <Providers />, permission: PERMISSIONS.PROVIDER_VIEW },
+    { path: routes.categoryCustomer, element: <Customers />, permission: PERMISSIONS.CUSTOMER_VIEW },
+    { path: routes.categoryProduct, element: <Products />, permission: PERMISSIONS.PRODUCT_VIEW },
+    { path: routes.categoryTaxPayer, element: <TaxPayer />, permission: PERMISSIONS.TAXPAYER_VIEW },
     { path: '*', element: <NotFound /> },
   ];
 

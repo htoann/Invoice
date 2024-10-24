@@ -8,7 +8,7 @@ import {
 } from '@tooni/iconscout-unicons-react';
 import { Menu, Tooltip } from 'antd';
 import { useAppState } from 'context/AppContext';
-import { usePermission } from 'hooks/checkUserPermission';
+import { usePermission } from 'hooks/usePermission';
 import propTypes from 'prop-types';
 import React from 'react';
 import { useTranslation } from 'react-i18next';

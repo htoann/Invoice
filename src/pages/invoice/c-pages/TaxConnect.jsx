@@ -1,10 +1,11 @@
 import Alert from '@/components/alert';
-import { Button } from '@/components/button';
+import { ButtonPermission } from '@/components/button';
 import { ConfirmModal } from '@/components/modal/ConfirmModal';
 import { PageHeader } from '@/components/page-header';
 import { BasicFormWrapper } from '@/container/style';
 import { LayoutContent } from '@/layout/LayoutContent';
 import { API_INVOICES_CONNECT_AUTHORITY, dataService } from '@/service';
+import { PERMISSIONS } from '@/utils/index';
 import { Form, Input, notification, Skeleton } from 'antd';
 import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -153,9 +154,14 @@ function TaxConnect() {
               </Form.Item>
 
               <div style={{ justifyContent: 'end', display: 'flex' }}>
-                <Button htmlType="submit" size="default" type="primary">
+                <ButtonPermission
+                  htmlType="submit"
+                  size="default"
+                  type="primary"
+                  permissions={PERMISSIONS.TAX_VIEW_UPDATE}
+                >
                   {isCreate ? t('Common_Save') : t('Common_Update')}
-                </Button>
+                </ButtonPermission>
               </div>
             </Form>
           </BasicFormWrapper>

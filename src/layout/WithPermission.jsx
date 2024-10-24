@@ -1,10 +1,11 @@
-import { usePermission } from 'hooks/checkUserPermission';
+import { usePermission } from 'hooks/usePermission';
 
 export const withPermission = (Component) => {
   return (props) => {
     const { permissions } = props;
 
     const checkPermission = usePermission();
+
     if (!checkPermission(permissions)) {
       return null;
     }
